@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3bc56d08f45ffd1e389a2dca1868a788d65e087e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 360ec3a6a6c9a3be16370aaf445f24a237a702e3
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306109"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998022"
 ---
 # <a name="send-a-message-to-the-bot"></a>Envío de un mensaje al bot
 
@@ -71,7 +72,7 @@ Para enviar uno o varios datos adjuntos como pate del objeto [Message](bot-frame
 
 ## <a id="upload-attachments"></a> Envío de datos adjuntos mediante carga
 
-A menudo, un cliente puede tener imágenes o documentos en un dispositivo que desea enviar al bot, pero no hay direcciones URL correspondientes a esos archivos. En esta situación, un cliente puede emitir una solicitud `POST /api/conversations/{conversationId}/upload` para enviar datos adjuntos al bot mediante carga. El formato y el contenido de la solicitud dependerán de si el cliente [envía un único dato adjunto](#upload-one-attachment) o [varios datos adjuntos](#upload-multiple-attachments).
+A menudo, un cliente puede tener imágenes o documentos en un dispositivo que desea enviar al bot, pero no hay direcciones URL correspondientes a esos archivos. En esta situación, un cliente puede emitir una solicitud `POST /api/conversations/{conversationId}/upload` para enviar datos adjuntos al bot mediante carga. El formato y el contenido de la solicitud dependerán de si el cliente [envía un único dato adjunto](#upload-one-attachment) o [envía varios datos adjuntos](#upload-multiple-attachments).
 
 ### <a id="upload-one-attachment"></a> Envío de un único dato adjunto mediante carga
 
@@ -118,7 +119,7 @@ Para enviar varios datos adjuntos mediante carga, emita una solicitud `POST` de 
 
 Puede incluir un objeto [Message](bot-framework-rest-direct-line-1-1-api-reference.md#message-object) en la solicitud con la adición de una parte que especifica como encabezado `Content-Type` el valor `application/vnd.microsoft.bot.message`. Esto permite al cliente personalizar el mensaje que contiene los datos adjuntos. Si la solicitud incluye un mensaje, los datos adjuntos especificados por otras partes de la carga se agregan como datos adjuntos a ese mensaje antes de enviarlo. 
 
-Los fragmentos de código siguientes proporcionan un ejemplo de la solicitud de envío de varios datos adjuntos y la respuesta. En este ejemplo, la solicitud envía un mensaje que contiene texto y un único dato adjunto de imagen. Se pueden agregar partes adicionales a la solicitud para incluir varios datos adjuntos en este mensaje.
+Los fragmentos de código siguientes proporcionan un ejemplo de la solicitud de envío de varios datos adjuntos y la respuesta. En este ejemplo, la solicitud envía un mensaje que contiene texto y un único adjunto de imagen. Se pueden agregar partes adicionales a la solicitud para incluir varios datos adjuntos en este mensaje.
 
 #### <a name="request"></a>Solicitud
 

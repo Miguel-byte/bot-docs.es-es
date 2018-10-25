@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 03/07/2018
-ms.openlocfilehash: 0406d489f7d1e27131b4b01411e86850ca4a17b8
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 06e2289dd0176364467d34846ffa7716483f6578
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304743"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000412"
 ---
 # <a name="bot-framework----activity"></a>Bot Framework: actividad
 
@@ -77,10 +78,10 @@ Las líneas que comienzan con marcadores con el formato `RXXXX` son requisitos e
 
 ### <a name="terminology"></a>Terminología
 
-actividad
+activity
 > Acción que expresa un bot, un canal o un cliente y que cumple el esquema de la actividad.
 
-canal
+channel
 > Software que envía y recibe actividades y las transforma en comportamientos de chat o aplicación y desde estos. Los canales son el almacén autoritativo de los datos de actividad.
 
 bot
@@ -95,10 +96,10 @@ remitente
 receptor
 > Software que acepta una actividad.
 
-punto de conexión
+endpoint
 > Ubicación direccionable mediante programación, donde un bot o un canal pueden recibir las actividades.
 
-dirección
+address
 > Identificador o dirección donde se puede establecer contacto con un usuario o un bot.
 
 campo
@@ -134,7 +135,7 @@ Entre los objetos de actividad se incluye una lista plana de pares nombre-valor,
 
 `R2006`: los destinatarios DEBERÍAN aceptar los eventos de tipos que no comprenden.
 
-### <a name="type"></a>Type
+### <a name="type"></a>Escriba
 
 El campo `type` controla el significado de cada actividad, que son cadenas cortas por convención (por ejemplo, "`message`"). Los remitentes pueden definir sus propios tipos de capa de aplicación, aunque se le anima a que elijan los valores que no tengan probabilidades de colidir con valores futuros bien definidos. Si los remitentes utilizan URI como valores de tipo, no DEBERÍAN implementar comparaciones de escala del URI para establecer la equivalencia.
 
@@ -196,7 +197,7 @@ El campo `localTimestamp` expresa el desplazamiento de datetime y la zona horari
 
 `R2051`: los canales DEBERÍAN conservar `localTimestamp` al reenviar las actividades de un remitente a los destinatarios.
 
-### <a name="from"></a>From
+### <a name="from"></a>De
 
 En el campo `from` se describe qué cliente, bot o canal generó una actividad. El valor del campo `from` es un objeto complejo de tipo [cuenta de canal](#channel-account).
 
@@ -248,7 +249,7 @@ El campo `replyToId` identifica la actividad previa para la que la actividad act
 
 `R2092`: los bots y los clientes PUEDEN omitir `replyToId` si saben que el canal no usa el campo, aunque la actividad que se envíe sea una respuesta a otra actividad.
 
-### <a name="entities"></a>Entities
+### <a name="entities"></a>Entidades
 
 El campo `entities` contiene una lista plana de objetos de metadatos que pertenecen a esta actividad. A diferencia de los datos adjuntos (consulte el campo [attachments](#attachments)), las entidades no necesariamente se manifiestan como elementos de contenido interactivo por el usuario y están diseñadas para omitirse si no se entienden. Los remitentes pueden incluir entidades que consideren que pueden resultar útiles para un destinatario, aunque no estén seguros de si el destinatario podrá aceptarlas. El valor de cada elemento de lista `entities` es un objeto complejo de tipo [entidad](#entity).
 
@@ -268,7 +269,7 @@ Los datos de extensibilidad del esquema de actividad se organizan principalmente
 
 `R2201`: si el formato `channelData` no está definido para el canal actual, los destinatarios DEBERÍAN omitir el contenido de `channelData`.
 
-### <a name="service-url"></a>Service URL
+### <a name="service-url"></a>URL de servicio
 
 Las actividades se envían con frecuencia de forma asincrónica, con conexiones independientes de transporte para el envío y la recepción de tráfico. Los canales usan el campo `serviceUrl` para denotar la dirección URL donde se pueden enviar las respuestas a la actividad actual. El valor del campo `serviceUrl` es de tipo cadena.
 
@@ -288,7 +289,7 @@ Las actividades de mensajes representan contenido diseñado para mostrarse dentr
 
 Las actividades de mensajes se identifican mediante un valor `type` de `message`.
 
-### <a name="text"></a>Text
+### <a name="text"></a>Texto
 
 El campo `text` incluye el contenido de texto, que puede estar en formato de Markdown, XML o como texto sin formato. El campo [`textFormat`](#text-format) controla el formato y no aplica ninguno si no se especifica o es ambiguo. El valor del campo `text` es de tipo cadena.
 
@@ -296,7 +297,7 @@ El campo `text` incluye el contenido de texto, que puede estar en formato de Mar
 
 `R3001`: los canales DEBERÍAN controlar el texto con formato `markdown` de una forma que se degrade correctamente para ese canal.
 
-### <a name="text-format"></a>Text format
+### <a name="text-format"></a>Formato de texto
 
 El campo `textFormat` indica si el campo [`text`](#text) debe interpretarse como [Markdown](https://daringfireball.net/projects/markdown/) [[4](#references)], texto sin formato o XML. El valor del campo `textFormat` es de tipo cadena y tiene los valores definidos de `markdown`, `plain` y `xml`. El valor predeterminado es `plain`. Este campo no está diseñado para ampliarse con valores arbitrarios.
 
@@ -316,7 +317,7 @@ El campo `textFormat` controla los campos adicionales de los datos adjuntos, etc
 
 `R3016`: los canales PUEDEN rechazar `textformat` del valor `xml`.
 
-### <a name="locale"></a>Locale
+### <a name="locale"></a>Configuración regional
 
 El campo `locale` transmite el código de idioma del campo [`text`](#text). El valor del campo `locale` es un código [ISO 639](https://www.iso.org/iso-639-language-codes.html) [[5](#references)] de una cadena.
 
@@ -324,7 +325,7 @@ El campo `locale` transmite el código de idioma del campo [`text`](#text). El v
 
 `R3021`: los destinatarios NO DEBERÍAN rechazar las actividades cuya configuración regional sea desconocida.
 
-### <a name="speak"></a>Speak
+### <a name="speak"></a>Leer
 
 El campo `speak` indica cómo la actividad debería ser oral a través de un sistema de texto a voz. El campo solo se usa para personalizar la representación de voz cuando el valor predeterminado se considera inadecuado. Reemplaza la síntesis de voz para cualquier contenido de la actividad, incluido el texto, los datos adjuntos y los resúmenes. El valor del campo `speak` tiene codificación [SSML](https://www.w3.org/TR/speech-synthesis/) [[6](#references)] en una cadena. El texto desencapsulado se permite y se actualiza automáticamente para la reconstrucción de SSML.
 
@@ -348,7 +349,7 @@ El campo `inputHint` indica si el generador de la actividad prevé o no una resp
 
 `R3042`: los destinatarios DEBERÍAN interpretar los valores no definidos como `accepting`.
 
-### <a name="attachments"></a>Attachments
+### <a name="attachments"></a>Datos adjuntos
 
 El campo `attachments` contiene una lista plana de los objetos que se mostrarán como parte de esta actividad. El valor de cada elemento de lista `attachments` es un objeto complejo de tipo [archivo adjunto](#attachment).
 
@@ -368,7 +369,7 @@ El campo `attachmentLayout` indica a los representadores de la interfaz de usuar
 
 `R3061`: los destinatarios DEBERÍAN interpretar los valores no definidos como `list`.
 
-### <a name="summary"></a>Summary
+### <a name="summary"></a>Resumen
 
 El campo `summary` contiene texto que se usa para reemplazar [`attachments`](#attachments) en canales que no lo admiten. El valor del campo `summary` es de tipo cadena.
 
@@ -382,7 +383,7 @@ El campo `summary` contiene texto que se usa para reemplazar [`attachments`](#at
 
 El campo `suggestedActions` contiene una carga de las acciones interactivas que pueden mostrarse al usuario. La compatibilidad con `suggestedActions` y su manifestación depende en gran medida del canal. El valor del campo `suggestedActions` es un objeto complejo de tipo [acciones sugeridas](#suggested-actions-2).
 
-### <a name="value"></a>Value
+### <a name="value"></a>Valor
 
 El campo `value` contiene una carga de programación específica de la actividad que se envía. Su significado y el formato se definen en las otras secciones de este documento que describen su uso.
 
@@ -394,7 +395,7 @@ El campo `expiration` contiene una hora en que la actividad debería considerars
 
 `R3090`: los remitentes siempre DEBERÍAN codificar el valor de los campos `expiration` como hora UTC y DEBERÍAN incluir siempre una Z como una marca de hora UTC explícita dentro del valor.
 
-### <a name="importance"></a>Importance
+### <a name="importance"></a>importancia
 
 El campo `importance` contiene un conjunto enumerado de valores para indicar al destinatario la importancia relativa de la actividad.  Depende del destinatario asignar estas sugerencias de importancia para la experiencia del usuario. El valor del campo `importance` es de tipo cadena y tiene los valores definidos de `low`, `normal` y `high`. El valor predeterminado es `normal`.
 
@@ -416,7 +417,7 @@ Las actividades de actualización de la relación de contacto indican un cambio 
 
 Las actividades de actualización de la relación de contacto se identifican mediante un valor `type` de `contactRelationUpdate`.
 
-### <a name="action"></a>Action
+### <a name="action"></a>.
 
 El campo `action` describe el significado de la actividad de actualización de la relación de contacto. El valor del campo `action` es una cadena. Solo se definen los valores de `add` y `remove`, que indican una relación entre los usuarios o bots en los campos `from` y `recipient`.
 
@@ -442,7 +443,7 @@ El campo `membersAdded` contiene una lista de los participantes del canal (bots 
 
 El campo `membersRemoved` contiene una lista de los participantes de canal (bots o usuarios) quitados de la conversación. El valor del campo `membersRemoved` es una matriz de tipo [`channelAccount`](#channel-account).
 
-### <a name="topic-name"></a>Topic name
+### <a name="topic-name"></a>Nombre del tema
 
 El campo `topicName` contiene la descripción o el tema del texto de la conversación. El valor del campo `topicName` es de tipo cadena.
 
@@ -460,11 +461,11 @@ Las actividades de finalización de la conversación se identifican mediante un 
 
 Los campos `code` y `text` son opcionales.
 
-### <a name="code"></a>Code
+### <a name="code"></a>Código
 
 El campo `code` contiene un valor de programación que describe por qué y cómo la conversación se terminó. El valor del campo `code` es de tipo cadena y su significado lo define el canal que envía la actividad.
 
-### <a name="text"></a>Text
+### <a name="text"></a>Texto
 
 El campo `text` incluye el contenido de texto opcional que se transmitirá a un usuario. El valor del campo `text` es de tipo cadena y su formato es de texto sin formato.
 
@@ -478,7 +479,7 @@ Las actividades de evento se identifican mediante un valor `type` de `event` y v
 
 `R5000`: los canales PUEDEN permitir mensajes de eventos definidos por la aplicación entre los clientes y los bots, si los clientes permiten la personalización de la aplicación.
 
-### <a name="name"></a>Name
+### <a name="name"></a>NOMBRE
 
 El campo `name` controla el significado del evento y el esquema del campo `value`. El valor del campo `name` es de tipo cadena.
 
@@ -486,7 +487,7 @@ El campo `name` controla el significado del evento y el esquema del campo `value
 
 `R5002`: los destinatarios DEBEN ignorar las actividades de evento con los campos `name` que no comprenden.
 
-### <a name="value"></a>Value
+### <a name="value"></a>Valor
 
 El campo `value` contiene parámetros específicos de este evento, tal como se define en el nombre del evento. El valor del campo `value` es de tipo complejo.
 
@@ -512,7 +513,7 @@ La lista de actividades de invocación definidas se incluye en el [Apéndice III
 
 `R5301`: los canales NO DEBERÍAN permitir mensajes de invocación definidos por la aplicación entre clientes y bots.
 
-### <a name="name"></a>Name
+### <a name="name"></a>NOMBRE
 
 El campo `name` controla el significado de la invocación y el esquema del campo `value`. El valor del campo `name` es de tipo cadena.
 
@@ -520,7 +521,7 @@ El campo `name` controla el significado de la invocación y el esquema del campo
 
 `R5402`: los destinatarios DEBEN ignorar las actividades de evento con los campos `name` que no comprenden.
 
-### <a name="value"></a>Value
+### <a name="value"></a>Valor
 
 El campo `value` contiene parámetros específicos de este evento, tal como se define en el nombre del evento. El valor del campo `value` es de tipo complejo.
 
@@ -614,11 +615,11 @@ Los datos adjuntos son el contenido que se incluye en una [actividad de mensajes
 
 `R7100`: los remitentes NO DEBERÍAN incluir los campos `content` y `contentUrl` en un único archivo adjunto.
 
-#### <a name="content-type"></a>Content type
+#### <a name="content-type"></a>Tipo de contenido
 
 El campo `contentType` describe el [tipo elemento multimedia MIME](https://www.iana.org/assignments/media-types/media-types.xhtml) [[8](#references)] del contenido de los datos adjuntos. El valor del campo `contentType` es de tipo cadena.
 
-#### <a name="content"></a>Content
+#### <a name="content"></a>Contenido
 
 Cuando existe, el campo `content` contiene un archivo adjunto de objeto JSON estructurado. El valor del campo `content` es un tipo complejo que define el campo `contentType`.
 
@@ -636,7 +637,7 @@ Cuando existe, el campo `contentUrl` contiene una dirección URL al contenido de
 
 `R7123`: los canales NO DEBERÍAN enviar URI de datos a los clientes o los bots.
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>NOMBRE
 
 El campo `name` contiene un nombre o nombre de archivo opcional para los datos adjuntos. El valor del campo `name` es de tipo cadena.
 
@@ -660,7 +661,7 @@ Las acciones de tarjeta solo son significativas cuando se envían a los canales.
 
 Los canales deciden cómo se manifiesta cada acción en su experiencia de usuario. En la mayoría de los casos, se puede hacer clic en las tarjetas. En otros casos, se pueden seleccionar mediante la entrada de voz. En los casos en que el canal no ofrece ninguna experiencia de activación interactiva (por ejemplo, cuando se interactúa a través de SMS), el canal no puede admitir la activación de ningún modo. La decisión sobre cómo se representan las acciones se controla mediante los requisitos normativos que se describen en otra sección de este documento (por ejemplo, en el formato de la tarjeta o en la definición de las [acciones sugeridas](#suggested-actions)).
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>Escriba
 
 El campo `type` describe el significado del botón y el comportamiento cuando se activa el botón. Los valores del campo `type` son cadenas cortas por convención (p. ej., "`openUrl`"). Consulte las secciones siguientes para conocer los requisitos específicos de cada tipo de acción.
 
@@ -676,7 +677,7 @@ El campo `type` describe el significado del botón y el comportamiento cuando se
 * Una acción de tipo `call` representa un número de teléfono al que se puede llamar.
 * Una acción de tipo `payment` representa una solicitud para proporcionar un pago.
 
-#### <a name="title"></a>Title
+#### <a name="title"></a>Título
 
 El campo `title` incluye el texto que se mostrará en la cara del botón. El valor del campo `title` es de tipo cadena y no contiene marcación.
 
@@ -828,7 +829,7 @@ Una acción `showImage` representa una imagen que se puede mostrar. Show Image u
 
 `R7402`: los destinatarios PUEDEN rechazar las acciones `showImage` cuyo campo `value` es un URI de datos, según se define en [RFC 2397](https://tools.ietf.org/html/rfc2397) [[9](#references)].
 
-#### <a name="signin"></a>Signin
+#### <a name="signin"></a>Inicio de sesión
 
 Una acción `signin` representa un hipervínculo que el sistema de inicio de sesión del cliente debe administrar. Signin utiliza los siguientes campos:
 * `type` ("`signin`")
@@ -870,7 +871,7 @@ Una acción `playAudio` representa un elemento multimedia de vídeo que se puede
 
 `R7432`: los remitentes NO DEBERÍAN enviar URI de datos, según se define en [RFC 2397](https://tools.ietf.org/html/rfc2397) [[9](#references)], sin saber con anterioridad si el canal los admite.
 
-#### <a name="call"></a>Call
+#### <a name="call"></a>Llamada
 
 Una acción `call` representa un número de teléfono al que se puede llamar. Call utiliza los siguientes campos:
 * `type` ("`call`")
@@ -944,7 +945,7 @@ Las entidades incluyen metadatos sobre una actividad o conversación. El campo `
 
 Se recomienda que las partes que proyectan un tipo de entidad existente en el formato de entidad de actividad resuelvan los conflictos con el nombre del campo `type` y las incompatibilidades con el requisito de serialización `R2001` como parte del enlace entre el esquema de entidad y el IRI.
 
-#### <a name="type"></a>Type
+#### <a name="type"></a>Escriba
 
 El campo `type` es obligatorio y define el significado y la forma de la entidad. `type` está pensado para contener [IRI](https://tools.ietf.org/html/rfc3987) [[3](#references)], aunque hay un pequeño número de tipos de entidad que no son de IRI definidos en el [Apéndice I](#appendix-ii---non-iri-entity-types).
 
@@ -962,7 +963,7 @@ Las acciones sugeridas se pueden enviar en el contenido del mensaje para crear e
 
 `R7701`: los remitentes DEBERÍAN omitir el campo `suggestedActions` si el campo `actions` está vacío.
 
-#### <a name="to"></a>To
+#### <a name="to"></a>Para
 
 El campo `to` contiene identificadores de la cuenta de canal a los que se deberían mostrar las acciones sugeridas. Este campo se puede utilizar para filtrar las acciones para un subconjunto de los participantes de la conversación.
 
@@ -1006,11 +1007,11 @@ El campo `type` describe el tipo de interacción social. El valor del campo `typ
 
 Las [entidades](#entity) de la actividad transmiten metadatos adicionales acerca de la actividad, como la ubicación de un usuario o la versión de la aplicación de mensajería que usa. Los tipos de actividad están diseñados para ser IRI, pero existe una pequeña lista de nombres que no son de IRI cuyo uso también es común. Este apéndice contiene una lista completa de los tipos de entidad que no son de IRI compatibles.
 
-| Tipo           | Equivalente del URI                          | DESCRIPCIÓN               |
+| Escriba           | Equivalente del URI                          | DESCRIPCIÓN               |
 | -------------- | --------------------------------------- | ------------------------- |
 | GeoCoordinates | https://schema.org/GeoCoordinates       | Coordenadas geográficas de Schema.org |
 | Mention        | https://botframework.com/schema/mention | @-mention                 |
-| Place          | https://schema.org/Place                | Lugar de Schema.org          |
+| Lugar          | https://schema.org/Place                | Lugar de Schema.org          |
 | Thing          | https://schema.org/Thing                | Cosa de Schema.org          |
 | clientInfo     | N/D                                     | Información del cliente de Skype         |
 
@@ -1032,13 +1033,13 @@ El campo `locale` de `clientInfo` está en desuso.
 
 `R9212`: los remitentes PUEDEN rellenar el campo `locale` en `clientInfo` por motivos de compatibilidad. Si no se requiere compatibilidad con destinatarios anteriores, los remitentes NO DEBERÍAN enviar la propiedad `locale`.
 
-#### <a name="country"></a>Country
+#### <a name="country"></a>País
 
 El campo `country` contiene la ubicación detectada del usuario. Este valor puede diferir de cualquier dato del valor [`locale`](#locale) porque `country` se detecta, mientras que `locale` suele ser la configuración de la aplicación o del usuario. El valor del campo `country` es un código de país de 2 o 3 letras de la [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) [[10](#references)].
 
 `R9220`: los canales NO DEBERÍAN permitir que los clientes especifiquen valores arbitrarios para el campo `country`. Los canales DEBERÍAN usar un mecanismo, como el GPS, la API de ubicación o la detección de direcciones IP, para establecer el país en que se genera una solicitud.
 
-#### <a name="platform"></a>Platform
+#### <a name="platform"></a>Plataforma
 
 El campo `platform` describe la plataforma de cliente de mensajería utilizada para generar la actividad. El valor del campo `platform` es una cadena y la lista de valores posibles y su significado la define el canal que la envía.
 

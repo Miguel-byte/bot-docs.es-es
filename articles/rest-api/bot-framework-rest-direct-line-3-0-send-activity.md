@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f881f353f04be95ce3785c2fd82b724dd58cb88
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305561"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000042"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envío de una actividad al bot
 

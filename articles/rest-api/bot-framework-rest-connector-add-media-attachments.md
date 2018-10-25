@@ -5,22 +5,23 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 39247ec3be4da7129989041269e930de8fa766ae
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305305"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997642"
 ---
-# <a name="add-media-attachments-to-messages"></a>Incorporación de datos adjuntos de elementos multimedia a mensajes
+# <a name="add-media-attachments-to-messages"></a>Incorporación de datos adjuntos con elementos multimedia a mensajes
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-media-attachments.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-receive-attachments.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-media-attachments.md)
 
-Los bots y los canales intercambian normalmente cadenas de texto, pero algunos canales también admiten el intercambio de datos adjuntos, lo que permite a su bot enviar mensajes más completos a los usuarios. Por ejemplo, el bot puede enviar datos adjuntos de elementos multimedia (como imágenes, vídeos, audio, archivos) y [tarjetas enriquecidas](bot-framework-rest-connector-add-rich-cards.md). En este artículo se describe cómo agregar datos adjuntos de elementos multimedia a mensajes mediante el servicio Bot Connector.
+Los bots y los canales suelen intercambiar cadenas de texto, pero algunos canales también admiten el intercambio de datos adjuntos, lo que permite a un bot enviar mensajes más completos a los usuarios. Por ejemplo, el bot puede enviar datos adjuntos de elementos multimedia (como imágenes, vídeos, audio, archivos) y [tarjetas enriquecidas](bot-framework-rest-connector-add-rich-cards.md). En este artículo se describe cómo agregar datos adjuntos de elementos multimedia a mensajes mediante el servicio Bot Connector.
 
 > [!TIP]
 > Para determinar el tipo y el número de datos adjuntos que admite un canal, y cómo el canal representa los datos adjuntos, consulte [Channel Inspector][ChannelInspector].

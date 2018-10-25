@@ -5,21 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f37d8e9215b0a2cd640431f237d1b8c53fad576b
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: a049d77d506fa3fa678a079de52aa424264847c9
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39304788"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997052"
 ---
 # <a name="key-concepts-in-direct-line-api-11"></a>Conceptos clave de la API Direct Line 1.1 de Bot Framework
 
 Para habilitar la comunicación entre el bot y su propia aplicación cliente, use la API Direct Line. 
 
 > [!IMPORTANT]
-> En este artículo se presentan los conceptos clave de la API Direct Line 1.1 y se proporciona información acerca de los recursos pertinentes para desarrolladores. Si va a crear una nueva conexión entre la aplicación cliente y un bot, use [API Direct Line 3.0](bot-framework-rest-direct-line-3-0-concepts.md) en su lugar.
+> En este artículo se presentan los conceptos clave de la API Direct Line 1.1 y se proporciona información acerca de los recursos pertinentes para desarrolladores. Si va a crear una nueva conexión entre la aplicación cliente y el bot, use [Direct Line API 3.0](bot-framework-rest-direct-line-3-0-concepts.md) en su lugar.
 
 ## <a name="authentication"></a>Autenticación
 
@@ -27,11 +28,11 @@ Las solicitudes de la API Direct Line 1.1 se pueden autenticar ya sea mediante u
 
 ## <a name="starting-a-conversation"></a>Inicio de una conversación
 
-Los clientes pueden abrir las conversaciones de Direct Line explícitamente y estas se pueden ejecutar siempre y cuando el cliente y el bot participen y tengan credenciales válidas. Para obtener más información, consulte [Start a conversation](bot-framework-rest-direct-line-1-1-start-conversation.md) (Inicio de una conversación).
+Los clientes pueden abrir las conversaciones de Direct Line explícitamente y estas se pueden ejecutar siempre y cuando el cliente y el bot participen y tengan credenciales válidas. Para obtener más información, consulte [Inicio de una conversación](bot-framework-rest-direct-line-1-1-start-conversation.md).
 
 ## <a name="sending-messages"></a>Envío de mensajes
 
-Con la API Direct Line 1.1, un cliente puede enviar mensajes a su bot mediante la emisión de solicitudes `HTTP POST`. Un cliente puede enviar un único mensaje por solicitud. Para obtener más información, consulte [Send a message to the bot](bot-framework-rest-direct-line-1-1-send-message.md) (Envío de un mensaje al bot).
+Con la API Direct Line 1.1, un cliente puede enviar mensajes a su bot mediante la emisión de solicitudes `HTTP POST`. Un cliente puede enviar un único mensaje por solicitud. Para más información, consulte [Envío de una actividad al bot](bot-framework-rest-direct-line-1-1-send-message.md).
 
 ## <a name="receiving-messages"></a>Recepción de mensajes
 
@@ -47,4 +48,4 @@ Como alternativa al uso de la biblioteca cliente de C#, puede generar su propia 
 
 ### <a name="web-chat-control"></a>Control Chat en web 
 
-Bot Framework proporciona un control que le permite insertar un bot con tecnología de Direct Line en la aplicación cliente. Para obtener más información, consulte <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Microsoft Bot Framework WebChat control</a> (Control Chat en web de Microsoft Bot Framework).
+Bot Framework proporciona un control que le permite insertar un bot con tecnología de Direct Line en la aplicación cliente. Para obtener más información, consulte <a href="https://github.com/Microsoft/BotFramework-WebChat" target="_blank">Control Chat en web de Microsoft Bot Framework</a>.

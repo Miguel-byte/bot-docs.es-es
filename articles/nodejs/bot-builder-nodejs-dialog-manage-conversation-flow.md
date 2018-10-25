@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 656b6304a576c553db948a348b1c6d8c3fc5ae71
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 133f085a857d1bb8bf7622e7adab19374902327d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905669"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997772"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Administración del flujo de conversación con diálogos
 
@@ -23,11 +24,11 @@ ms.locfileid: "42905669"
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-Administrar el flujo de conversación es una tarea esencial en la creación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Builder SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
+La administración del flujo de conversación es una tarea esencial en la compilación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Builder SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
 
 Un diálogo es como una función de un programa. Por lo general está diseñado para realizar una operación específica y se puede invocar con la frecuencia que sea necesaria. Puede encadenar varios diálogos para controlar casi cualquier flujo de conversación que desee que su bot controle. Bot Builder SDK para Node.js incluye características integradas como [avisos](bot-builder-nodejs-dialog-prompt.md) y [cascadas](bot-builder-nodejs-dialog-waterfall.md), que le ayudarán a administrar el flujo de conversación.
 
-En este artículo se proporciona una serie de ejemplos para explicar cómo administrar flujos de conversación sencillos y flujos complejos en los que el bot puede controlar las interrupciones y reanudar el flujo correctamente mediante diálogos. Los ejemplos se basan en los siguientes escenarios: 
+En este artículo se proporciona una serie de ejemplos para explicar cómo administrar flujos de conversación sencillos y complejos en los que el bot puede controlar las interrupciones y reanudar el flujo correctamente mediante diálogos. Los ejemplos se basan en los siguientes escenarios: 
 
 1. El bot realizará la reserva de una cena.
 2. El bot puede procesar una solicitud de "Ayuda" en cualquier fase de la reserva.
@@ -92,7 +93,7 @@ En la siguiente captura de pantalla se muestran los resultados de este bot que s
 
 ### <a name="prompt-user-for-input"></a>Petición de datos de entrada al usuario
 
-Cada paso de este ejemplo usa un aviso para solicitar datos de entrada al usuario. Un aviso es un tipo especial de diálogo que solicita datos de entrada al usuario, espera una respuesta y devuelve la respuesta al paso siguiente de la cascada. Consulte [Petición de datos de entrada al usuario](bot-builder-nodejs-dialog-prompt.md) para más información acerca de los muchos tipos diferentes de avisos que puede usar en su bot.
+Cada paso de este ejemplo usa un aviso para solicitar datos de entrada al usuario. Un aviso es un tipo especial de diálogo que solicita datos de entrada al usuario, espera una respuesta y devuelve la respuesta al paso siguiente de la cascada. Consulte [Petición de datos de entrada al usuario](bot-builder-nodejs-dialog-prompt.md) para más información acerca de los diferentes tipos de avisos que puede usar en su bot.
 
 En este ejemplo, el bot usa `Prompts.text()` para solicitar una respuesta libre al usuario en formato de texto. El usuario puede responder con cualquier texto y el bot debe decidir cómo controlar la respuesta. `Prompts.time()` usa la biblioteca [Chrono](https://github.com/wanasit/chrono) para analizar una cadena en busca de información sobre la fecha y hora. Esto permite que su bot comprenda más lenguaje natural para especificar la fecha y la hora. Por ejemplo: "6 de junio de 2017 a las 9 pm", "hoy a las 7:30 pm", "el próximo lunes a las 6 pm", etc.
 
@@ -162,7 +163,7 @@ bot.dialog('askForReserverName', [
 ]);
 ```
 
-Los resultados de la ejecución de este bot son exactamente los mismos que los del bot anterior en el que solo se usaba una cascada. No obstante, desde el punto de vista de la programación, hay dos diferencias principales:
+Los resultados de la ejecución de este bot son exactamente los mismos que los del bot anterior, en el que solo se usaba una cascada. No obstante, desde el punto de vista de la programación, hay dos diferencias principales:
 
 1. El diálogo predeterminado se dedica a administrar el flujo de la conversación.
 2. Un diálogo independiente administra la tarea de cada paso de la conversación. En este caso, el bot necesitaba tres fragmentos de información, por lo que realiza tres avisos al usuario. Ahora, cada aviso está contenido en su propio diálogo.

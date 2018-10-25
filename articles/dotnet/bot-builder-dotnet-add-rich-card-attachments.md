@@ -5,15 +5,16 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 9eb07a4ac63816b84830956bca0c3a3910669e0d
-ms.sourcegitcommit: 67445b42796d90661afc643c6bb6533e9a662cbc
+ms.openlocfilehash: f5687cc7faf4201485ced9535f2e98b0b4c2225a
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39574541"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998182"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
 
@@ -65,15 +66,15 @@ En esta tabla se enumeran los valores válidos para `CardAction.Type` y se descr
 
 | CardAction.Type | CardAction.Value | 
 |----|----|
-| openUrl | Dirección URL que se abrirá en el explorador integrado. |
-| imBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Este mensaje (del usuario al bot) será visible para todos los participantes de la conversación a través de la aplicación cliente que hospeda la conversación. |
+| openUrl | Dirección URL que se abrirá en el explorador integrado |
+| imBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Este mensaje (del usuario al bot) será visible para todos los participantes de la conversación mediante la aplicación cliente que hospeda la conversación. |
 | postBack | Texto del mensaje para enviar al bot (desde el usuario que hizo clic en el botón o que pulsó la tarjeta). Algunas aplicaciones cliente pueden mostrar este texto en la fuente del mensaje, donde estará visible para todos los participantes de la conversación. |
 | llamada | Destino de una llamada telefónica con este formato: **tel:123123123123** |
-| playAudio | Dirección URL del audio que se va a reproducir. |
-| playVideo | Dirección URL del vídeo que se va a reproducir. |
-| showImage | Dirección URL de la imagen que se va a mostrar. |
-| DownloadFile | Dirección URL del archivo que se va a descargar. |
-| signin | Dirección URL del flujo de OAuth que se va a iniciar. |
+| playAudio | Dirección URL del audio que se va a reproducir |
+| playVideo | Dirección URL del vídeo que se va a reproducir |
+| showImage | Dirección URL de la imagen que se va a mostrar |
+| DownloadFile | Dirección URL del archivo que se va a descargar |
+| signin | Dirección URL del flujo de OAuth que se va a iniciar |
 
 ## <a name="add-a-hero-card-to-a-message"></a>Incorporación de una tarjeta de imagen prominente a un mensaje
 

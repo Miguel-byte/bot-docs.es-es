@@ -5,22 +5,23 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 91385fa3e8ae1410679ca5274e40db7fe38bafea
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 2aac000b7e8dd52b00659ffecde5184df6c29991
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306272"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998692"
 ---
-# <a name="add-speech-to-messages"></a>Incorporación de voz a mensajes
+# <a name="add-speech-to-messages"></a>Incorporación de voz a los mensajes
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-text-to-speech.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-text-to-speech.md)
 > - [REST](../rest-api/bot-framework-rest-connector-text-to-speech.md)
 
-Si está creando un bot para un canal habilitado para voz, como Cortana, puede construir mensajes que especifique el texto que dirá el bot. También puede intentar influir en el estado del micrófono del cliente al especificar una [sugerencia de entrada](bot-framework-rest-connector-add-input-hints.md) para indicar si el bot acepta, espera o ignora la entrada del usuario.
+Si está creando un bot para un canal habilitado para voz, como Cortana, puede construir mensajes que especifiquen el texto que dirá el bot. Para intentar influir en el estado del micrófono del cliente, puede especificar una [sugerencia de entrada](bot-framework-rest-connector-add-input-hints.md) para indicar si el bot acepta, espera o ignora la entrada del usuario.
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Especificar el texto que dirá el bot
 
@@ -58,13 +59,13 @@ Content-Type: application/json
 
 ## <a name="input-hints"></a>Sugerencias de entrada
 
-Cuando envía un mensaje en un canal habilitado para voz, también puede intentar influir en el estado del micrófono del cliente al incluir una sugerencia de entrada para indicar si el bot acepta, espera o ignora la entrada del usuario. Para obtener más información, consulte [Incorporación de sugerencias de entrada a mensajes](bot-framework-rest-connector-add-input-hints.md).
+Cuando envía un mensaje en un canal habilitado para voz, puede intentar influir en el estado del micrófono del cliente e incluir una sugerencia de entrada para indicar si el bot acepta, espera o ignora la entrada del usuario. Para más información, consulte [Incorporación de sugerencias de entrada a los mensajes](bot-framework-rest-connector-add-input-hints.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
-- [Incorporación de sugerencias de entrada a mensajes](bot-framework-rest-connector-add-input-hints.md)
+- [Incorporación de sugerencias de entrada a los mensajes](bot-framework-rest-connector-add-input-hints.md)
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Lenguaje de marcado de síntesis de voz (SSML)</a>
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -5,21 +5,22 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 0bd98805023bc8f968ece591967ab2f4196531d4
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 20ae641a23399f5ee10aed9b31c4521f355903cf
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305784"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998964"
 ---
 # <a name="key-concepts"></a>Conceptos clave
 
 Puede usar los servicios Bot Connector y Bot State para comunicarse con los usuarios a través de varios canales, como Skype, correo electrónico, Slack y muchos más. En este artículo se presentan los conceptos clave de los servicios Bot Connector y Bot State.
 
 > [!IMPORTANT]
-> No se recomienda la API del servicio de estado de Bot Framework para entornos de producción y es posible que se encuentre en desuso en una versión futura. Se recomienda actualizar el código de bot para utilizar el almacenamiento en memoria para realizar pruebas o usar una de las **extensiones de Azure** para bots de producción. Para obtener más información, consulte el tema **Administración de datos de estado** para la implementación de [.NET](~/dotnet/bot-builder-dotnet-state.md) o [Node](~/nodejs/bot-builder-nodejs-state.md).
+> No se recomienda la API del servicio de estado de Bot Framework para entornos de producción y es posible que se encuentre en desuso en una versión futura. Se recomienda actualizar el código del bot para que use el almacenamiento en memoria para realizar pruebas o usar una de las **extensiones de Azure** para bots de producción. Para obtener más información, consulte el tema **Administración de datos de estado** para la implementación de [.NET](~/dotnet/bot-builder-dotnet-state.md) o [Node](~/nodejs/bot-builder-nodejs-state.md).
 
 ## <a name="bot-connector-service"></a>Servicio Bot Connector
 
@@ -27,7 +28,7 @@ El servicio Bot Connector permite al bot intercambiar mensajes con canales confi
 
 ### <a name="activity"></a>Actividad
 
-El servicio Bot Connector intercambia información entre el bot y el canal (usuario) pasando un objeto [Activity][Activity]. El tipo de actividad más común es **message**, pero hay otros tipos de actividades que se pueden usar para comunicar distintos tipos de información a un bot o canal. Para obtener información detallada sobre las actividades del servicio Bot Connector, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md).
+Bot Connector Service intercambia información entre el bot y el canal (usuario) pasando un objeto [Activity][Activity]. El tipo de actividad más común es **message**, pero hay otros tipos de actividades que se pueden usar para comunicar distintos tipos de información a un bot o canal. Para obtener información detallada sobre las actividades del servicio Bot Connector, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md).
 
 ## <a name="bot-state-service"></a>Servicio Bot State
 

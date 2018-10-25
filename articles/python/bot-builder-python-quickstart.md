@@ -6,15 +6,16 @@ author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 08/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6b63fe2780c51e57ee16c5e3dba5a83f46566157
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 4536bef820bc1e6e21ba2905fb643fe5608b3788
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707287"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999022"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-python"></a>Creación de un bot con Bot Builder SDK para Python
 
@@ -133,7 +134,7 @@ En el terminal local debería ver el mensaje "Started http server on localhost:9
 
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
-1. Haga clic en el vínculo **Open Bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
+1. Haga clic en el vínculo **Open bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
 2. Seleccione el archivo .bot ubicado en el directorio donde se creó el proyecto.
 
 ## <a name="interact-with-your-bot"></a>Interacción con el bot

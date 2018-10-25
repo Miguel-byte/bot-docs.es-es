@@ -5,14 +5,15 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 2e47591b04a91ce02cfeb6bd6485080426d201b5
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305093"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998112"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Referencia de API: Direct Line API 3.0
 
@@ -26,13 +27,13 @@ Para obtener acceso a Direct Line API 3.0, use este URI base para todas las soli
 
 ## <a name="headers"></a>encabezados
 
-Además de los encabezados de solicitud HTTP estándares, una solicitud de Direct Line API debe incluir un encabezado `Authorization` que especifique un secreto o un token para autenticar al cliente que emite la solicitud. Especifique el encabezado `Authorization` con este formato:
+Además de los encabezados de solicitud HTTP estándar, una solicitud de Direct Line API debe incluir un encabezado `Authorization` que especifique un secreto o un token para autenticar al cliente que emite la solicitud. Especifique el encabezado `Authorization` con este formato:
 
 ```http
 Authorization: Bearer SECRET_OR_TOKEN
 ```
 
-Para obtener más información sobre cómo obtener un secreto o un token que el cliente pueda usar para autenticar sus solicitudes de Direct Line API, consulte [Autenticación](bot-framework-rest-direct-line-3-0-authentication.md).
+Para más información sobre cómo obtener un secreto o un token que el cliente pueda usar para autenticar sus solicitudes de Direct Line API, consulte [Autenticación](bot-framework-rest-direct-line-3-0-authentication.md).
 
 ## <a name="http-status-codes"></a>Códigos de estado HTTP
 
@@ -85,7 +86,7 @@ HTTP/1.1 502 Bad Gateway
 ```
 
 ## <a name="token-operations"></a>Operaciones con tokens 
-Utilice estas operaciones para crear o actualizar un token que un cliente pueda utilizar para acceder a una conversación única.
+Use estas operaciones para crear o actualizar un token que un cliente pueda utilizar para acceder a una conversación única.
 
 | Operación | DESCRIPCIÓN |
 |----|----|
@@ -178,7 +179,7 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 | | |
 |----|----|
-| **Cuerpo de la solicitud** | Para un único archivo adjunto, rellene el cuerpo de la solicitud con el contenido del archivo. Para varios archivos adjuntos, cree un cuerpo de solicitud de varias partes que contenga una parte para cada archivo adjunto y, además (de manera opcional), una parte para el objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) que debe actuar como contenedor para los archivos adjuntos especificados. Para obtener más información, consulte [Envío de una actividad al bot](bot-framework-rest-direct-line-3-0-send-activity.md). |
+| **Cuerpo de la solicitud** | Para un único dato adjunto, rellene el cuerpo de la solicitud con el contenido del archivo. Para varios archivos adjuntos, cree un cuerpo de solicitud de varias partes que contenga una parte para cada archivo adjunto y, además (de manera opcional), una parte para el objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) que debe actuar como contenedor para los archivos adjuntos especificados. Para obtener más información, consulte [Envío de una actividad al bot](bot-framework-rest-direct-line-3-0-send-activity.md). |
 | **Devuelve** | Un objeto [ResourceResponse](bot-framework-rest-connector-api-reference.md#resourceresponse-object) que contiene una propiedad `id` que especifica el id. de la actividad que se envió al bot. | 
 
 > [!NOTE]
@@ -201,7 +202,7 @@ Define una conversación de Direct Line.<br/><br/>
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
-| **conversationId** | string | Id. que identifica de forma única la conversación para la cual el token especificado es válido. |
+| **conversationId** | string | Identificador que identifica de forma única la conversación para la cual el token especificado es válido. |
 | **expires_in** | número | Número de segundos hasta que expira el token. |
 | **streamUrl** | string | Dirección URL del flujo de mensajes de la conversación. |
 | **token** | string | Token válido para la conversación especificada. |

@@ -5,20 +5,20 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6fc7f73d406c1bbbc2b2671c9336df6bda10ade6
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: b9c8a0bc04cfcf96f6c81b624464e9698eab1699
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029763"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998968"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Plantilla de bot de empresa: personalización del bot
 
 > [!NOTE]
-> Este tema se aplica a las versiones v4 del SDK. 
+> Este tema se aplica a la versión v4 del SDK. 
 
 ## <a name="net"></a>.NET
 Después de haber implementado y comprobado que la plantilla de bot de empresa funciona de un extremo a otro como se muestra [aquí](bot-builder-enterprise-template-deployment.md) en las instrucciones, puede personalizar fácilmente el bot según su escenario y sus necesidades. El objetivo de la plantilla es proporcionar una base sólida sobre la que crear su experiencia conversacional.
@@ -80,7 +80,7 @@ Para actualizar un modelo de LUIS existente para la plantilla de empresa, siga e
 ```
 3. Ejecute el siguiente comando desde la raíz del proyecto con cada modelo actualizado a fin de actualizar sus clases LuisGen asociadas: 
 ```shell
-    luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen - -cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
+    luis export version --appId [LUIS_APP_ID] --versionId [LUIS_APP_VERSION] --authoringKey [YOUR_LUIS_AUTHORING_KEY] | luisgen --cs [CS_FILE_NAME] -o "\Dialogs\Shared\Resources"
 ```
 
 ### <a name="updating-an-existing-qnamaker-knowledge-base"></a>Actualización de una base de conocimiento de QnAMaker existente

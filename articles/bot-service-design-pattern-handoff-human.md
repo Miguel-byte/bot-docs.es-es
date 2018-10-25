@@ -5,14 +5,14 @@ author: matvelloso
 ms.author: mateusv
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: f786f79011da5e50b37f9797dca694f0e132296c
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305344"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998732"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversaciones de transición de bot a humano
 
@@ -88,7 +88,7 @@ Para ver un ejemplo completo que muestra cómo pasar las conversaciones de bot a
 ::: moniker range="azure-bot-service-3.0"
 
 - [Administración del flujo de conversación con diálogos (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
-- [Administración del flujo de conversación con diálogos (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md)
+- [Manage conversation flow with dialogs (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md) (Administración del flujo de conversación con cuadros de diálogo [Node.js])
 - <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a>
 
 

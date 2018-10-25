@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6f295794ca7d3cc17688337e70df2a52cdb665ed
-ms.sourcegitcommit: 87b5b0ca9b0d5e028ece9f7cc4948c5507062c2b
+ms.openlocfilehash: 5f5559ae16bc346d34e5cddfa741853044ec685f
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47029866"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997352"
 ---
 # <a name="enterprise-template---detailed-overview"></a>Introducción detallada a la plantilla de empresa
 
@@ -46,7 +46,7 @@ Se proporciona un componente de middleware que supervisa los textos y las superf
 
 ## <a name="telemetry"></a>Telemetría
 
-Proporcionar información sobre la involucración de los usuarios del Bot es muy importante. Esta información puede ayudarle a comprender los niveles de involucración de los usuarios, qué características del bot usan (intenciones) y las preguntas que las personas formulan que el bot no es capaz de responder (destacan las lagunas de conocimiento del bot que podrían solventarse con nuevos artículos de QnAMaker, por ejemplo).
+Proporcionar información sobre la involucración de los usuarios del Bot es muy importante. Esta información puede ayudarle a comprender los niveles de implicación de los usuarios, qué características del bot usan (intenciones) y las preguntas que las personas formulan que el bot no es capaz de responder (destacan las lagunas de conocimiento del bot que podrían solventarse con nuevos artículos de QnAMaker, por ejemplo).
 
 La integración de Application Insights proporciona datos técnicos/operativos importantes desde el principio, pero también puede usarse para capturar los eventos específicos del bot: mensajes enviados y recibidos y las operaciones de LUIS y QnAMaker.
 
@@ -69,7 +69,7 @@ Si bien este modelo funcionó bien, dos escenarios clave pueden suponer problema
 
 El [distribuidor](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) es una solución elegante a en este caso, ya que extrae las grabaciones de voz de los modelos LUIS configurados y las preguntas de QnAMaker y crea un modelo LUIS de distribución central.
 
-Así el bot puede identificar rápidamente el modelo LUIS o componente que debe administrar una grabación determinada y garantiza que los datos de QnAMaker se consideran del máximo nivel de intención sin procesarlos únicamente como con intención None como antes.
+Así, el bot puede identificar rápidamente el modelo LUIS o el componente que debe administrar una grabación determinada y garantiza que los datos de QnAMaker se consideran en el máximo nivel de intención, sin procesarlos únicamente como con intención None como antes.
 
 Esta herramienta de distribución también facilita la evaluación al resaltar la confusión y superponer los modelos LUIS y las bases de conocimiento de QnAMaker para destacar los problemas antes de la implementación.
 
@@ -77,6 +77,6 @@ El distribuidor se usa en el núcleo de cada proyecto que se crea con la plantil
 
 ## <a name="qnamaker"></a>QnAMaker
 
-[QnAMaker](https://www.qnamaker.ai/) ofrece a personas distintas de los desarrolladores conocimiento general en forma de parejas de preguntas y respuestas. Este conocimiento puede importarse desde orígenes de datos de preguntas frecuentes, manuales de productos e interactivamente desde el portal de QnaMaker.
+[QnAMaker](https://www.qnamaker.ai/) ofrece a personas que no sean desarrolladores conocimientos generales en forma de parejas de preguntas y respuestas. Este conocimiento puede importarse desde orígenes de datos de preguntas frecuentes, manuales de productos e interactivamente desde el portal de QnaMaker.
 
-En la carpeta de QnA de CogSvcModels se proporciona un conjunto de entradas de QnA de ejemplo en formato de archivo [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md). Entonces se usa [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) como parte del script de implementación para crear un archivo JSON de QnAMaker que la CLI de [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) (línea de comandos) usará después para publicar elementos en la base de conocimiento de QnAMaker.
+En la carpeta de QnA de CogSvcModels se proporciona un conjunto de entradas de QnA de ejemplo en formato de archivo [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md). Después, se usa [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) como parte del script de implementación para crear un archivo JSON de QnAMaker que la CLI de [QnAMaker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) (línea de comandos) usará después para publicar elementos en la base de conocimiento de QnAMaker.

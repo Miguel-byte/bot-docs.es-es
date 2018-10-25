@@ -5,16 +5,17 @@ author: RobStand
 ms.author: kamrani
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 66c6bc20013ff2de82e29af76e9c99898c8b13d9
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: cee7e79190d967590296ccbcfec7a112f2ae8588
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305769"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998598"
 ---
-# <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a mensajes
+# <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a los mensajes
 > [!div class="op_single_selector"]
 > - [.NET](../dotnet/bot-builder-dotnet-add-input-hints.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-send-input-hints.md)
@@ -92,7 +93,7 @@ Content-Type: application/json
  
 Para indicar que el bot no está preparado para recibir una entrada del usuario, establezca la propiedad `inputHint` en **ignoringInput** en el objeto [Activity][Activity] que representa el mensaje. En muchos canales, esto hará que se deshabilite el cuadro de entrada del cliente y que el micrófono se desactive. 
 
-En el ejemplo siguiente se muestra una solicitud que envía un mensaje y especifica que el bot está ignorando la entrada. En esta solicitud de ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; los URI base para las solicitudes que emite el bot pueden ser diferentes. Para más información sobre cómo establecer el URI base, vea [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri).
+En el ejemplo siguiente se muestra una solicitud que envía un mensaje y especifica que el bot está ignorando la entrada. En esta solicitud de ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; los URI base para las solicitudes que emite el bot pueden ser diferentes. Para obtener más información sobre cómo establecer el URI base, consulte [API Reference](bot-framework-rest-connector-api-reference.md#base-uri) (Referencia de la API).
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/5d5cdc723

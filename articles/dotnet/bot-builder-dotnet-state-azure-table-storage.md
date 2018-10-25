@@ -4,15 +4,16 @@ description: Aprenda a guardar y recuperar datos de estado mediante Azure Table 
 author: kaiqb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e5ff23caa1bdb1158ab19fa7c66e1fe4f6899f49
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 170741b3806a29d9583cf5caca773b452cbbbc01
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905118"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50000272"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-net"></a>Administración de datos de estado personalizado con Azure Table Storage para .NET
 

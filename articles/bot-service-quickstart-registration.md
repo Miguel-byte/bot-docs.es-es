@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc8b2723119a03e533f19dbf36446b7dbe0957df
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: dfc90f4c4c6e3ad00899569f667b5d3d88dcf042
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42906139"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999962"
 ---
 # <a name="register-a-bot-with-bot-service"></a>Registro de un bot en Bot Service
 
@@ -49,7 +50,7 @@ Para crear un **Bot Channels Registration**, haga lo siguiente:
    |         <strong>Suscripción</strong>          |        Su suscripción        |                                                                                Seleccione la suscripción de Azure que quiere usar.                                                                                 |
    |        <strong>Grupo de recursos</strong>         |         myResourceGroup         |                                 Puede crear un [grupo de recursos](/azure/azure-resource-manager/resource-group-overview#resource-groups) o elegir uno existente.                                  |
    |                    Ubicación                    |             Oeste de EE. UU.             |                                                        Elija una ubicación cerca de donde se implementa el bot o cerca de otros servicios a los que tendrá acceso su bot.                                                         |
-   |         <strong>Nivel de precios</strong>          |               F0                |             Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/en-us/pricing/details/bot-service/).              |
+   |         <strong>Plan de tarifa</strong>          |               F0                |             Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/en-us/pricing/details/bot-service/).              |
    |      <strong>Punto de conexión de mensajería</strong>       |               URL               |                                                                               Escriba la dirección URL de punto de conexión de mensajería del bot.                                                                                |
    |     <strong>Application Insights</strong>      |               Por                | Decida si quiere <strong>Activar</strong> o <strong>Desactivar</strong> [Application Insights](bot-service-manage-analytics.md). Si selecciona <strong>Activar</strong>, también debe especificar una ubicación regional. |
    | <strong>Id. y contraseña de la aplicación de Microsoft</strong> | Creación automática del id. y contraseña de la aplicación |              Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. En caso contrario, un Id. y contraseña nuevos de aplicación de Microsoft se crearán automáticamente en el proceso de creación del bot.               |
