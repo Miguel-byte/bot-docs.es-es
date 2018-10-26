@@ -6,15 +6,16 @@ author: DeniseMak
 ms.author: v-demak
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 10/09/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d1216cf863015e48a18c2f52e7326262c3b271ff
-ms.sourcegitcommit: a9270702536eb34dedf5128bf57889c1ffcd7f4c
+ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49088897"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49997402"
 ---
 # <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>Integración de varios servicios de LUIS y QnA con la herramienta de distribución
 

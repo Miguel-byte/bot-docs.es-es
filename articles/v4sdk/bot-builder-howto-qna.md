@@ -6,15 +6,16 @@ author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: cognitive-services
 ms.date: 10/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e3d7c0a541a4b7f8c2065c5db724e5d79ced54b8
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 3d488cc2bb61ef460ed45707596cb7db9e6c23e8
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315181"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999090"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Uso de QnA Maker para responder preguntas
 
@@ -72,7 +73,7 @@ Un método alternativo para obtener los valores de acceso de la base de conocimi
 Si ha cifrado el archivo de configuración, deberá proporcionar la clave secreta para actualizar el archivo.
 
 ## <a name="using-qna-maker"></a>Uso de QnA Maker
-Al inicializar el bot, primero se agrega una referencia a QnA Maker. Después, se la puede llamar con la lógica del bot.
+Al inicializar el bot, primero se agrega una referencia a QnA Maker. Luego, se invoca dentro de la lógica de nuestro bot.
 
 # <a name="ctabcs"></a>[C#](#tab/cs)
 Abra el ejemplo de QnA Maker que descargó anteriormente. Puede modificar el código según proceda.
