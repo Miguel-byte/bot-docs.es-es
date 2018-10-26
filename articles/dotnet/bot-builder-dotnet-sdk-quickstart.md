@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.prod: bot-framework
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5f3a02783242697fccf267bef2d56ed453880c67
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: d299e4bdfd503475bf1ec560da2aff1d3a199e47
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707981"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326392"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Creación de un bot con Bot Builder SDK para .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -35,7 +35,7 @@ En Visual Studio, cree un proyecto de bot.
 ![Proyecto de Visual Studio](../media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
 > [!TIP] 
-> Si es necesario, actualice los [paquetes NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio).
+> Si es necesario, cambie el tipo de compilación del proyecto a ``.Net Core 2.1``; si es necesario, actualice los [paquetes NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio).
 
 Gracias a la plantilla, el proyecto contiene todo el código necesario para crear el bot en esta guía de inicio rápido. Realmente no necesita escribir ningún código adicional.
 
@@ -47,13 +47,17 @@ Al hacer clic en el botón de ejecución, Visual Studio compila la aplicación, 
 
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
-1. Haga clic en el vínculo **Open Bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
+1. Haga clic en el vínculo **Open bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
 2. Seleccione el archivo .bot ubicado en el directorio donde se creó la solución de Visual Studio.
 
 ## <a name="interact-with-your-bot"></a>Interacción con el bot
 
 Envíe un mensaje al bot y este responderá con un mensaje.
-![Emulador en ejecución](../media/emulator-v4/emulator-running.png)
+
+![Ejecución del emulador](../media/emulator-v4/emulator-running.png)
+
+> [!NOTE]
+> Si observa que el mensaje no se puede enviar, puede que deba reiniciar la máquina dado que ngrok no ha obtenido aún los privilegios necesarios en el sistema (solo debe hacerse una vez).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

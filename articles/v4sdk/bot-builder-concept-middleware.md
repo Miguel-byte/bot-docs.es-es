@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 05/24/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 38f1bced73251eea11be86a76963aeaf1ec0f718
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 20f5387e7c1ea40e6b9848a1071e542dcd1cacaa
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389704"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383170"
 ---
 # <a name="middleware"></a>Software intermedio
 
@@ -24,7 +24,7 @@ El software intermedio es simplemente una clase que se encuentra entre el adapta
 
 El adaptador procesa y dirige las actividades entrantes a través de la canalización de software intermedio del bot a la lógica del bot y, luego, otra vez de vuelta. Cuando las actividades entran y salen de los bots, cada fragmento de software intermedio puede inspeccionar o actuar sobre la actividad, tanto antes como después de que se ejecute la lógica del bot.
 
-Antes de centrarse en el software intermedio, es importante entender los [bots en general](~/v4sdk/bot-builder-basics.md) y [cómo procesan las actividades](~/v4sdk/bot-builder-concept-activity-processing.md).
+Antes de centrarse en el software intermedio, es importante entender los [bots en general](~/v4sdk/bot-builder-basics.md) y [cómo procesan las actividades](~/v4sdk/bot-builder-basics.md#the-activity-processing-stack).
 
 ## <a name="uses-for-middleware"></a>Usos del software intermedio
 A menudo surge la siguiente pregunta: "¿Cuándo debo implementar acciones como middleware, en lugar de usar la lógica normal del bot?" El middleware le brinda oportunidades adicionales para interactuar con el flujo de conversación de los usuarios tanto antes como después de que se procese cada _turno_ de la conversación. También permite almacenar y recuperar información relativa a la conversación y llamar a una lógica de procesamiento adicional cuando sea necesario. A continuación encontrará algunos escenarios comunes que muestran situaciones en las que el middleware puede resultar útil.
@@ -33,7 +33,7 @@ A menudo surge la siguiente pregunta: "¿Cuándo debo implementar acciones como 
 Existen muchas situaciones que requieren que un bot haga algo en todas las actividades, o bien en las actividades de un tipo determinado. Por ejemplo, tal vez desee registrar todas las actividades de mensajes que recibe el bot, o proporcionar una respuesta de reserva si el bot no ha generado ninguna respuesta en este turno. El software intermedio es idóneo para hacerlo, ya que puede actuar tanto antes como después de que se haya ejecutado el resto de la lógica del bot.
 
 ### <a name="modifying-or-enhancing-the-turn-context"></a>Modificar o mejorar el contexto de turno
-Algunas conversaciones pueden ser mucho más provechosas si el bot tiene más información de la que se proporciona en la actividad. En este caso, el middleware podría comprobar la información de estado de la conversación que se tiene hasta el momento, consultar un origen de datos externo y anexarlo al objeto del [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) antes de pasar la ejecución a la lógica del bot. 
+Algunas conversaciones pueden ser mucho más provechosas si el bot tiene más información de la que se proporciona en la actividad. En este caso, el middleware podría comprobar la información de estado de la conversación que se tiene hasta el momento, consultar un origen de datos externo y anexarlo al objeto del [contexto de turno](~/v4sdk/bot-builder-basics.md#defining-a-turn) antes de pasar la ejecución a la lógica del bot. 
 
 El SDK define el middleware de registro que puede grabar las actividades de entrada y salida, pero el usuario también puede definir su propio middleware.
 
@@ -65,7 +65,7 @@ Los primeros elementos de la canalización de software intermedio probablemente 
 Los últimos elementos de la canalización de software intermedio deberían ser el software intermedio específico del bot, que es el que se implementa para realizar el procesamiento de cada mensaje que se envía al bot. Si el software intermedio usa información de estado u otra información definida en el contexto del bot, agréguela a la canalización de software intermedio después del software intermedio que modifica el estado o el contexto.
 
 ## <a name="short-circuiting"></a>Cortocircuitos
-Un concepto importante relacionado con el middleware (y los [controladores de respuestas](./bot-builder-concept-activity-processing.md#response-event-handlers)) es el _cortocircuito_. Si la ejecución va a continuar por las capas siguientes, el middleware (o un controlador de respuestas) debe pasar la ejecución mediante una llamada al delegado _next_.  Si no se llama al delegado next en dicho middleware (o controlador de respuestas), se producirá un cortocircuito en la canalización asociada y las capas posteriores no se ejecutarán, lo que significa que se omiten no solo toda la lógica del bot, sino también el middleware posterior de la canalización. Hay una sutil diferencia entre que el middleware cortocircuite un turno y que lo haga el controlador de respuestas.
+Un concepto importante relacionado con el middleware (y los [controladores de respuestas](bot-builder-basics.md#response-event-handlers)) es el _cortocircuito_. Si la ejecución va a continuar por las capas siguientes, el middleware (o un controlador de respuestas) debe pasar la ejecución mediante una llamada al delegado _next_.  Si no se llama al delegado next en dicho middleware (o controlador de respuestas), se producirá un cortocircuito en la canalización asociada y las capas posteriores no se ejecutarán, lo que significa que se omiten no solo toda la lógica del bot, sino también el middleware posterior de la canalización. Hay una sutil diferencia entre que el middleware cortocircuite un turno y que lo haga el controlador de respuestas.
 
 Si el middleware cortocircuita un turno, no se llama al controlador de turnos del bot, pero todo el código del middleware que se haya ejecutado antes de ese momento en la canalización se seguirá ejecutando hasta su finalización. 
 

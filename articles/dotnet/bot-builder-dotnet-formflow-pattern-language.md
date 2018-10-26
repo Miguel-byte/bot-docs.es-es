@@ -1,6 +1,6 @@
 ---
 title: Personalización de la experiencia de usuario con lenguaje de patrones | Microsoft Docs
-description: Aprenda a personalizar los avisos FormFlow y a invalidar las plantillas FormFlow mediante un lenguaje de patrones con Bot Builder SDK para .NET.
+description: Aprenda a personalizar los avisos FormFlow y a invalidar las plantillas FormFlow mediante un lenguaje de patrones con el SDK de Bot Builder para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a192b69b2ffbac428d80b2fe7c3fd9180caacd4f
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 8c1fe15436a00487483755af06897c4af1c70be2
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905587"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326502"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Personalización de la experiencia de usuario con lenguaje de patrones
 

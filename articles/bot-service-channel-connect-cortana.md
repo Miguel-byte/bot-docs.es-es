@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 04/30/2018
-ms.openlocfilehash: 6e694ce8b54ebd2405d7496d333c2bb27eb344f1
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: d8239f4139d27fd12507fed2cae45c67849ffe74
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305069"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326363"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Conectar un bot a Cortana
 
@@ -32,28 +32,23 @@ Al conectar su bot con el canal de Cortana, parte de la información básica sob
 | **Icono de habilidades** | Un icono que se muestra en el lienzo de Cortana cuando se invoca la habilidad. También se usa cuando las habilidades son detectables (como Microsoft Store). (32 KB máximo; solo PNG).|
 | **Nombre para mostrar** | El nombre de la habilidad de Cortana se muestra al usuario en la parte superior de la interfaz de usuario visual. (Límite de 30 caracteres). |
 | **Nombre de invocación** | Este es el nombre que los usuarios deben decir al invocar una habilidad. No debe tener más de tres palabras y debe ser fácil pronunciar. Consulte la [Invocation Name Guidelines][invocation] (Información del nombre de invocación) para obtener más información sobre cómo elegir este nombre.|
-| **Descripción** | Una descripción de la habilidad de Cortana. Se usa cuando las habilidades son detectables (como Microsoft Store). |
-| **Descripción breve** | Breve descripción de la funcionalidad de la habilidad; se usa para describir la habilidad en el cuaderno de Cortana. |
+
+![Configuración predeterminada](~/media/channels/cortana-defaultsettings.png)
 
 ## <a name="general-bot-information"></a>Información general sobre el bot
 
 En la sección **Manage user identity through connected services** (Administrar la identidad del usuario a través de los servicios conectados), seleccione esta opción para habilitarla. Rellene el formulario.
 
-Todos los campos marcados con un asterisco (*) son obligatorios. Los bots deben publicarse en Bot Framework antes de conectarlos Cortana.
+Todos los campos marcados con un asterisco (*) son obligatorios. Para que un bot se pueda publicar en Cornada, debe publicarse primero en Azure.
 
-![Proporcionar información general](~/media/channels/cortana-details.png)
+![Administración de identidades de usuario, parte 1](~/media/channels/cortana-manageidentity-1.png)
+![Administracion de identidades de usuario, parte 2](~/media/channels/cortana-manageidentity-2.png)
 
-### <a name="sign-in-at-invocation"></a>Iniciar sesión en la invocación
+### <a name="when-should-cortana-prompt-for-a-user-to-sign-in"></a>Cuándo debe solicitar Cortana a un usuario que inicie sesión
 
-Seleccione esta opción si quiere que Cortana inicie la sesión del usuario en el momento en que este último invoque la habilidad.
+Seleccione **Sign in at invocation** (Iniciar sesión durante la invocación) si quiere que Cortana inicie la sesión del usuario cuando invoca su habilidad.
 
-### <a name="sign-in-when-required"></a>Iniciar sesión cuando se solicite
-
-Seleccione esta opción si usa una tarjeta SignIn de Bot Framework para iniciar la sesión del usuario. Puede usar esta opción si quiere iniciar la sesión del usuario solo este si utiliza una función que requiera autenticación. Cuando su habilidad envía un mensaje que incluye la tarjeta SignIn como un archivo adjunto, Cortana ignora la tarjeta SignIn y realiza el flujo de autorización usando la configuración para conectar la cuenta.
-
-### <a name="connected-service-icon"></a>Icono de servicio conectado
-
-El icono que quiere mostrar cuando el usuario inicie sesión en la habilidad.
+Seleccione **Sign in when required** (Iniciar sesión cuando sea necesario) si usa una tarjeta de inicio de sesión de Bot Service para iniciar la sesión del usuario. Normalmente, usará esta opción si quiere iniciar la sesión del usuario solo si este utiliza una característica que requiera autenticación. Cuando su habilidad envía un mensaje que incluye la tarjeta de inicio de sesión como un archivo adjunto, Cortana la ignora y realiza el flujo de autorización mediante la configuración para conectar la cuenta.
 
 ### <a name="account-name"></a>Nombre de cuenta
 
@@ -71,13 +66,17 @@ Especifique los ámbitos que necesita el servicio (consulte la documentación de
 
 Establézcalo en `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`.
 
+### <a name="token-options"></a>Opciones de token
+
+Seleccione **POST**.
+
 ### <a name="grant-type"></a>Tipo de concesión
 
-Seleccione el código de autorización para usar el flujo de concesión de código. Seleccione Implícito para usar el flujo implícito.
+Seleccione **Authorization code** (Código de autorización) para usar el flujo de concesión de código, o seleccione **Implicit** (Implícito) para usar el flujo implícito.
 
 ### <a name="token-url"></a>Dirección URL de token
 
-Si selecciona el código de autorización, establézcalo en `https://login.microsoftonline.com/common/oauth2/v2.0/token`.
+En el tipo de concesión **Authorization code** (Código de autorización), establezca `https://login.microsoftonline.com/common/oauth2/v2.0/token`.
 
 ### <a name="client-secretpassword-for-third-party-services"></a>Contraseña o secreto de cliente para servicios de terceros
 
@@ -85,23 +84,23 @@ Contraseña del bot. Recibió la contraseña al registrar el bot.
 
 ### <a name="client-authentication-scheme"></a>Esquema de autenticación de clientes
 
-Seleccione HTTP Basic.
+Seleccione **HTTP Basic** (HTTP básica).
 
-### <a name="token-options"></a>Opciones de token
+### <a name="internet-access-required-to-authenticate-users"></a>Se necesita acceso a Internet para autenticar a los usuarios
 
-Establézcalo en POST.
+Deje esta opción desactivada.
 
 ### <a name="request-user-profile-data-optional"></a>Solicitar datos de perfil de usuario (opcional)
 
 Cortana proporciona acceso a diferentes tipos de información de perfil de usuario, que puede usar para personalizar el bot para el usuario. Por ejemplo, si una habilidad tiene acceso al nombre y la ubicación del usuario, entonces la habilidad puede proporcionar una respuesta personalizada como "Hola Kamran, espero que estés teniendo un día agradable en Bellevue, Washington".
 
-Haga clic en el enlace **Agregar una solicitud de perfil de usuario** y seleccione en la lista desplegable la información del perfil de usuario que quiera usar. Agregue un nombre descriptivo que se pueda usar para obtener acceso a esta información desde el código del bot.
+Haga clic en **Add a user profile request** (Agregar una solicitud de perfil de usuario) y seleccione en la lista desplegable la información del perfil de usuario que quiera usar. Agregue un nombre descriptivo que se pueda usar para obtener acceso a esta información desde el código del bot.
 
-### <a name="save-skill"></a>Guardar la habilidad
+### <a name="deploy-on-cortana"></a>Implementar en Cortana
 
-Cuando haya completado el formulario de registro de su habilidad de Cortana, haga clic en Guardar para completar la conexión. Esto le llevará de vuelta a la hoja Canales del bot, donde verá que ya está conectado a Cortana.
+Cuando haya completado el formulario de registro de su habilidad de Cortana, haga clic en **Deploy on Cortana** (Implementar en Cortana) para finalizar la conexión. Esto le llevará de vuelta a la hoja Canales del bot, donde verá que ya está conectado a Cortana.
 
-En este momento, su bot ya se ha implementado automáticamente como una habilidad de Cortana en su cuenta.
+En este momento su bot está implementado como una habilidad de Cortana en su cuenta.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

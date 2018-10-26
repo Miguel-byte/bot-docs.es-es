@@ -6,24 +6,20 @@ ms.author: v-shimma
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 04/25/2018
+ms.date: 08/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1eb47e76ef1bd6765d5ba93c27b97a8d9e6143db
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 96660ecb8bf7a69115e517bfa8ec97a79a3e8c90
+ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905309"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404021"
 ---
 # <a name="create-bots-with-azure-cli"></a>Creación de bots con la CLI de Azure
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label-v3.md)]
 
-[Herramientas de Bot Builder](https://github.com/microsoft/botbuilder-tools) es un conjunto de herramientas nuevo que permite administrar e interactuar con los recursos de bot directamente desde la línea de comandos. 
-
-En este tutorial se mostrará cómo:
-
-- Habilitar la extensión de bot de la CLI de Azure
+En este tutorial, aprenderá a: 
 - Crear un bot con la CLI de Azure 
 - Descargar una copia local para el desarrollo
 - Usar la nueva herramienta MSBot para almacenar toda la información de recursos de bot
@@ -33,45 +29,34 @@ En este tutorial se mostrará cómo:
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para habilitar estas herramientas desde la línea de comandos, necesita Node.js instalado en el equipo: 
-
+Para usar estas herramientas desde la línea de comandos, necesita Node.js instalado en el equipo: 
 - [Node.js (v8.5 o superior)](https://nodejs.org/en/)
 
-## <a name="1-enable-azure-cli"></a>1. Habilitación de la CLI de Azure
+## <a name="1-install-tools"></a>1. Instalación de herramientas
+1. [Instale](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) la versión más reciente de la CLI de Azure.
+2. [Instale](https://aka.ms/botbuilder-tools-readme) las herramientas de Bot Builder.
 
-Ahora puede administrar los bots mediante la [CLI de Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) como cualquier otro recurso de Azure. Para habilitar la CLI de Azure, siga los pasos siguientes:
-
-1. [Descargue](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) la CLI de Azure si aún no la tiene. 
-
-2. Escriba el comando siguiente para descargar el paquete de distribución Azure Bot Extension.
-
-```azurecli
-az extension add -n botservice
-```
+Ahora puede administrar los bots mediante la CLI de Azure como cualquier otro recurso de Azure.
 
 >[!TIP]
 > En la actualidad, Azure Bot Extension solo admite los bots v3.
   
-3. [Inicie sesión](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest) en la CLI de Azure mediante la ejecución del comando siguiente.
+3. Inicie sesión en la CLI de Azure mediante la ejecución del comando siguiente.
 
 ```azurecli
 az login
 ```
-Se le pedirá un código de autenticación temporal único. Para el inicio de sesión, use un explorador web y visite [Inicio de sesión del dispositivo](https://microsoft.com/devicelogin) de Microsoft, y pegue el código proporcionado por la CLI para continuar. 
+Se abrirá una ventana del explorador, lo que le permite iniciar sesión. Después de iniciar sesión, verá el mensaje siguiente:
 
-![Inicio de sesión del dispositivo de MS](media/bot-builder-tools/ms-device-login.png)
+![Inicio de sesión del dispositivo de MS](media/bot-builder-tools/az-browser-login.png)
 
-Después de iniciar sesión correctamente, verá la pantalla de bienvenida de la CLI de Azure, junto con una lista de las opciones disponibles para administrar las cuentas y los recursos.
+Y en la ventana de la línea de comandos, verá la siguiente información:
 
-![CLI de Azure Bot](media/bot-builder-tools/az-cli-bot.png)
-
-
- Para obtener una lista completa de los comandos de la CLI de Azure, [haga clic aquí](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest).
-
+![Comando de inicio de sesión de Azure](media/bot-builder-tools/az-login-command.png)
 
 ## <a name="2-create-a-new-bot-from-azure-cli"></a>2. Creación de un bot desde la CLI de Azure
 
-Con la CLI de Azure y la nueva extensión de bot, puede crear bots completamente desde la línea de comandos. 
+Use la CLI de Azure para crear bots completamente desde la línea de comandos. 
 
 ```azurecli
 az bot [command]
@@ -88,11 +73,11 @@ az bot [command]
 Para crear un bot desde la CLI, debe seleccionar un [grupo de recursos](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) existente, o bien crear uno. 
 
 ```azurecli
-az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --description "description-of-my-bot"
+az bot create --resource-group "my-resource-group" --name "my-bot-name" --kind "my-resource-type" --version v3 --description "description-of-my-bot"
 ```
-Después de una solicitud correcta, verá el mensaje de confirmación.
+Los valores permitidos para `--kind` son: `function, registration, webapp` y para `--version` son `v3, v4`.  Después de una solicitud correcta, verá el mensaje de confirmación.
 ```
-obtained msa app id and password. Provisioning bot now.
+Obtained msa app id and password. Provisioning bot now.
 ```
 
 > [!TIP]
@@ -116,42 +101,38 @@ El nuevo bot de eco se aprovisionará en el grupo de recursos en Azure; para pro
 
 ## <a name="3-download-the-bot-locally"></a>3. Descarga local del bot
 
-Hay dos maneras de descargar el código fuente del bot nuevo.
-- Descargarlo desde Azure Portal.
-- Descargarlo mediante la nueva CLI de Azure.
+Hay dos maneras de descargar el código fuente:
+- Desde Azure Portal.
+- Mediante la nueva CLI de Azure.
 
-Para descargar el código fuente del bot desde el portal, simplemente seleccione el recurso de bot y haga clic en **Compilar** bajo la administración de bots. Hay varias opciones disponibles para administrar o recuperar el código fuente del bot de forma local. 
+Para descargar el código fuente del bot desde [Azure portal](http://portal.azure.com), simplemente seleccione el recurso de bot y haga clic en **Compilar** bajo la administración de bots. Hay varias opciones disponibles para administrar o recuperar el código fuente del bot de forma local.
 
 ![Descarga del bot desde Azure Portal](media/bot-builder-tools/az-portal-manage-code.png)
 
-Para descargar el código fuente del bot mediante la CLI, escriba el comando siguiente. El bot se descargará a un subdirectorio. Si todavía no existe el subdirectorio, el comando lo creará de forma automática.
+Para descargar el código fuente del bot mediante la CLI, escriba el comando siguiente. El bot se descargará a una ubicación local.
 
 ```azurecli
 az bot download --name "my-bot-name" --resource-group "my-resource-group"
 ```
-Pero también puede especificar el directorio el que descargar el bot.
-Por ejemplo: 
 
 ![Comando de descarga desde la CLI](media/bot-builder-tools/cli-bot-download-command.png)
 
-![Descarga del bot desde la CLI](media/bot-builder-tools/cli-bot-download.png)
-
-El comando anterior permite descargar el código fuente del bot directamente a la ubicación especificada, lo que permite desarrollarlo de forma local.
-
-
 ## <a name="4-store-your-bot-information-with-msbot"></a>4. Almacenamiento de la información del bot con MSBot
 
-La nueva herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot) permite crear un archivo **.bot**, en el que se almacenan metadatos sobre otros servicios que consume el bot, todo en una única ubicación. Este archivo también permite que el bot se conecte a estos servicios desde la CLI. La herramienta está disponible como un módulo npm; para instalarlo, ejecute lo siguiente:
+La nueva herramienta MSBot permite crear un archivo **.bot**, en el que se almacenan metadatos sobre otros servicios que consume el bot, todo en una sola ubicación. Este archivo también permite que el bot se conecte a estos servicios desde la CLI. Las herramientas de MSBot admiten varios comandos, consulte el archivo [Léame](https://aka.ms/botbuilder-tools-msbot-readme) para más información. 
+
+Para instalar MSBot, ejecute:
 
 ```shell
-npm install -g msbot 
+npm install -g msbot
 ```
 
-Para crear un archivo bot desde la CLI, escriba **msbot init** seguido del nombre del bot y la dirección URL del punto de conexión de destino, por ejemplo:
+Para crear un archivo de bot desde la CLI, escriba **msbot init** seguido del nombre del bot y la dirección URL del punto de conexión de destino, por ejemplo:
 
 ```shell
 msbot init --name name-of-my-bot --endpoint http://localhost:bot-port-number/api/messages
 ```
+
 Para conectar el bot a un servicio, escriba **msbot connect** en la CLI, seguido del servicio adecuado:
 
 ```shell
@@ -166,36 +147,39 @@ msbot connect service-type
 | qna     |Conecta el bot a una base de conocimiento de QnA.|
 |help [cmd]  |Muestra la ayuda para [cmd].|
 
+Consulte el archivo [Léame](https://aka.ms/botbuilder-tools-msbot-readme) para obtener una lista completa de los servicios admitidos.
+
 ### <a name="connect-your-bot-to-abs-with-the-bot-file"></a>Conexión del bot a ABS con el archivo .bot
 
-Con la herramienta MSBot instalada, puede conectar fácilmente el bot a un grupo de recursos existente en Azure Bot Service si ejecuta el comando az bot **show**. 
+Con la herramienta MSBot instalada, puede conectar fácilmente el bot a un grupo de recursos existente en Azure Bot Service si ejecuta el comando az bot **show**.
 
 ```azurecli
 az bot show -n my-bot-name -g my-resource-group --msbot | msbot connect azure --stdin
 ```
 
-Esta operación tomará el punto de conexión, Id. de la aplicación y contraseña de MSA actuales del grupo de recursos de destino y actualizará la información correspondiente en el archivo .bot. 
+Esta operación tomará el punto de conexión, Id. de la aplicación y contraseña de MSA actuales del grupo de recursos de destino y actualizará la información correspondiente en el archivo .bot.
 
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5. Administración, actualización o creación de servicios de LUIS y QnA con las nuevas herramientas de Bot Builder
 
-Las [herramientas de Bot Builder](https://github.com/microsoft/botbuilder-tools) son un conjunto de herramientas nuevo que permite administrar los recursos de bot e interactuar con ellos directamente desde la línea de comandos. 
+Las [herramientas de Bot Builder](https://aka.ms/botbuilder-tools) son un conjunto de herramientas nuevo que permite administrar los recursos de bot e interactuar con ellos directamente desde la línea de comandos.
 
 >[!TIP]
 > Cada herramienta del generador de bots incluye un comando de ayuda global, accesible desde la línea de comandos si se escribe **-h** o **--help**. Este comando está disponible en cualquier momento desde cualquier acción, lo que proporcionará una representación útil de las opciones disponibles junto con sus descripciones.
 
 ### <a name="ludown"></a>LUDown
-[LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Ludown) permite describir y crear componentes de lenguaje eficaces para los bots mediante archivos **.lu**. El nuevo archivo .lu es un tipo de formato Markdown que la herramienta LUDown usa para generar los archivos .json específicos del servicio de destino. Actualmente, puede usar los archivos .lu para crear una aplicación de [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) o una base de conocimiento de [QnA](https://qnamaker.ai/Documentation/CreateKb) con formatos diferentes para cada una. LUDown está disponible como un módulo npm y se puede usar si se instala de forma global en la máquina:
+
+[LUDown](https://aka.ms/botbuilder-ludown) permite describir y crear componentes de lenguaje eficaces para los bots mediante archivos **.lu**. El nuevo archivo .lu es un tipo de formato Markdown que la herramienta LUDown usa para generar los archivos .json específicos del servicio de destino. Actualmente, puede usar los archivos .lu para crear una aplicación de [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) o una base de conocimiento de [QnA](https://qnamaker.ai/Documentation/CreateKb) con formatos diferentes para cada una. LUDown está disponible como un módulo npm y se puede usar si se instala de forma global en la máquina:
 
 ```shell
 npm install -g ludown
 ```
-La herramienta LUDown se puede usar para crear modelos de .json para LUIS y QnA.  
 
+La herramienta LUDown se puede usar para crear modelos de .json para LUIS y QnA.  
 
 ### <a name="creating-a-luis-application-with-ludown"></a>Creación de una aplicación de LUIS con LUDown
 
-Puede definir [intenciones](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) y [entidades](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities) para una aplicación de LUIS, tal como lo haría desde el portal de LUIS. 
+Puede definir [intenciones](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) y [entidades](https://docs.microsoft.com/azure/cognitive-services/luis/add-entities) para una aplicación de LUIS, tal como lo haría desde el portal de LUIS.
 
 `# \<intent-name\>` describe la sección de definición de una intención nueva. Las líneas siguientes contienen [expresiones](https://docs.microsoft.com/azure/cognitive-services/luis/add-example-utterances) que describen esa intención.
 
@@ -296,7 +280,7 @@ LUIS y QnA pueden usar los archivos JSON resultantes a través de sus portales c
 
 ### <a name="connect-to-luis-from-the-cli"></a>Conexión a LUIS desde la CLI 
 
-En el nuevo conjunto de herramientas se incluye una [extensión de LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/LUIS) que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar de la siguiente manera:
+En el nuevo conjunto de herramientas se incluye una [extensión de LUIS](https://aka.ms/botbuilder-luis-cli) que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar de la siguiente manera:
 
 ```shell
 npm install -g luis-apis
@@ -324,7 +308,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 
 ### <a name="connect-to-qna-from-the-cli"></a>Conectarse a QnA desde la CLI
 
-En el nuevo conjunto de herramientas se incluye una [extensión QnA](https://github.com/Microsoft/botbuilder-tools/tree/master/QnAMaker) que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar:
+En el nuevo conjunto de herramientas se incluye una [extensión QnA](https://aka.ms/botbuilder-tools-qnaMaker) que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar:
 
 ```shell
 npm install -g qnamaker
@@ -351,10 +335,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>Referencias
-- [Código fuente de las herramientas de Bot Builder](https://github.com/Microsoft/botbuilder-tools)
-- [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/MSBot)
-- [ChatDown](https://github.com/Microsoft/botbuilder-tools/tree/master/Chatdown)
-- [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/ludown)
+- [Herramientas de Bot Builder](https://aka.ms/botbuilder-tools-readme)
 - [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-

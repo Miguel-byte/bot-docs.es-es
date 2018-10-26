@@ -7,32 +7,33 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: b5a9d20c058fe425d727bf2e39597e7dd29ec077
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.date: 10/10/2018
+ms.openlocfilehash: 6e81b51243afc15714653aed7b9ca6513314071c
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389634"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315161"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Conexión de un bot a un Chat en web
+
+[!INCLUDE pre-release-label]
+
 Cuando se [crea un bot](bot-service-quickstart.md) con Bot Service, el canal Chat en web se configura automáticamente. El canal Chat en web incluye el control Chat en web, que proporciona la capacidad para que los usuarios interactúen con el bot directamente en una página web.
 
-![Ejemplo de chat en web](~/media/bot-service-channel-webchat/webchat-sample.png)
+![Ejemplo de chat en web](./media/bot-service-channel-webchat/create-a-bot.png)
 
 El canal Chat en web del portal de Framework Bot contiene todo lo que necesita para insertar el control Chat en web en una página web. Lo único que debe hacer para usar el control Chat en web es obtener la clave secreta del bot e insertar el control en una página web.
-
-[!INCLUDE [Channel Inspector intro](~/includes/snippet-channel-inspector.md)]
 
 ## <a id="step-1"></a> Obtener la clave secreta del bot
 
 1. Abra el bot en [Azure Portal](http://portal.azure.com) y haga clic en la hoja **Canales**.
 
 2. Haga clic en **Editar** en el canal **Chat en web**.  
-![Canal Chat en web](~/media/bot-service-channel-webchat/bot-service-channel-list.png)
+![Canal Chat en web](./media/bot-service-channel-webchat/bot-service-channel-list.png)
 
 3. En **Claves secretas**, haga clic en **Mostrar** para la primera clave.  
-![Clave secreta](~/media/bot-service-channel-webchat/secret-key.png)
+![Clave secreta](./media/bot-service-channel-webchat/secret-key.png)
 
 4. Copia la **clave secreta** y el **código para insertar**.
 
@@ -127,8 +128,8 @@ Puede cambiar el tamaño del control Chat en web mediante el uso del atributo `s
 <iframe style="height:480px; width:402px" src="... SEE ABOVE ..."></iframe>
 ```
 
-![Cliente de control de chat](~/media/chatwidget-client.png)
+![Cliente de control de chat](./media/chatwidget-client.png)
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-También puede [descargar el código fuente](https://github.com/Microsoft/BotFramework-WebChat) para el control de Chat en web en GitHub.
+También puede [descargar el código fuente](https://aka.ms/BotFramework-WebChat-V4) para el control de Chat en web en GitHub.

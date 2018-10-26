@@ -10,12 +10,12 @@ ms.prod: bot-framework
 ms.date: 09/19/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: af79bb40e3d24557fd898fa0a0ca2ef7b0286af4
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: bef0d5f3220cd818767f4eead5c5f4a09d047c26
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46707551"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383160"
 ---
 # <a name="language-understanding"></a>Language Understanding
 
@@ -56,11 +56,11 @@ Las **entidades precompiladas** ayudan a que el bot reconozca tipos comunes de i
 
 ## <a name="how-your-bot-gets-messages-from-luis"></a>Cómo obtiene el bot los mensajes de LUIS
 
-Una vez que haya configurado y conectado LUIS, el bot puede enviar el mensaje a la aplicación de LUIS, que devuelve una respuesta JSON que contiene las intenciones y entidades. A continuación, puede usar el [contexto de turno](bot-builder-concept-activity-processing.md#turn-context) del _controlador de turnos_ del bot para enrutar el flujo de la conversación según la intención de la respuesta de LUIS. 
+Una vez que haya configurado y conectado LUIS, el bot puede enviar el mensaje a la aplicación de LUIS, que devuelve una respuesta JSON que contiene las intenciones y entidades. A continuación, puede usar el [contexto de turno](~/v4sdk/bot-builder-basics.md#defining-a-turn) del _controlador de turnos_ del bot para enrutar el flujo de la conversación según la intención de la respuesta de LUIS. 
 
 ![Cómo se pasan las intenciones y entidades al bot](./media/cognitive-services-add-bot-language/cognitive-services-luis-message-flow-bot-code.png)
 
-Para comenzar a usar una aplicación de LUIS con el bot, consulte [Uso de LUIS para reconocimiento del lenguaje][luis-v4-how-to].
+Para comenzar a usar una aplicación de LUIS con el bot, consulte [Uso de LUIS para reconocimiento del lenguaje](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-v4-luis?view=azure-bot-service-4.0).
 
 ## <a name="best-practices-for-language-understanding"></a>Procedimientos recomendados para Language Understanding
 
@@ -99,7 +99,7 @@ La herramienta de distribución ayuda a integrar varias aplicaciones de LUIS y s
 
 ## <a name="use-luis-to-improve-speech-recognition"></a>Uso de LUIS para mejorar el reconocimiento de voz
 
-Para un bot con el que los usuarios van a hablar, la integración con LUIS puede ayudar al bot a identificar palabras que podrían malinterpretarse al convertir la voz en texto.  Por ejemplo, en un escenario de ajedrez, un usuario podría decir: "Move knight to A 7" (Mover Caballo a A7). Si no hay contexto para la intención del usuario, la expresión se podría reconocer como: "Move night 287" (Mover noche 287). Mediante la creación de entidades que representan coordenadas y piezas del ajedrez, y al etiquetarlas en las expresiones, se proporciona contexto para que el reconocimiento de voz las identifique. Puede [habilitar la preparación del reconocimiento de voz][speechrecognitionpriming] con canales de Bot Framework que se integran con Bing Speech, como Chat en web, Bot Framework Emulator y Cortana.  
+Para un bot con el que los usuarios van a hablar, la integración con LUIS puede ayudar al bot a identificar palabras que podrían malinterpretarse al convertir la voz en texto.  Por ejemplo, en un escenario de ajedrez, un usuario podría decir: "Move knight to A 7" (Mover Caballo a A7). Si no hay contexto para la intención del usuario, la expresión se podría reconocer como: "Move night 287" (Mover noche 287). Mediante la creación de entidades que representan coordenadas y piezas del ajedrez, y al etiquetarlas en las expresiones, se proporciona contexto para que el reconocimiento de voz las identifique. Puede [habilitar el reconocimiento de voz](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-speech-priming?view=azure-bot-service-4.0) con canales de Bot Framework que se integran con Bing Speech, como Web Chat, Bot Framework Emulator y Cortana.  
 
 ## <a name="additional-resources"></a>Recursos adicionales
 Consulte la documentación de [Cognitive Services](https://docs.microsoft.com/en-us/azure/cognitive-services/) para más información.

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: 8210f08ce3a14b9abb2638ef8be4b8b418dd69f7
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.openlocfilehash: f67c7ba658923873470e9653b38cd63fd1068491
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39306076"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315121"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>Conexión de un bot a Skype Empresarial
 
@@ -29,7 +29,7 @@ Abra el bot en [Azure Portal](https://portal.azure.com/), haga clic en la hoja *
 La conexión del bot a Skype Empresarial Online se realiza mediante un **administrador de inquilinos** de ese inquilino de Skype Empresarial.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Conexión de un bot a Skype Empresarial](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview)
+* [Bot Framework para Skype Empresarial](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview)
 
 
 

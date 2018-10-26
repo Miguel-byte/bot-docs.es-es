@@ -2,28 +2,26 @@
 title: Configuración de un bot para ejecutarlo en uno o más canales | Microsoft Docs
 description: Obtenga información sobre cómo configurar un bot para ejecutarlo en uno o más canales mediante el Portal de Framework Bot.
 keywords: canales de bot, configurar, cortana, facebook messenger, kik, slack, skype, azure portal
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 12/13/2017
-ms.openlocfilehash: cb682bf77f801c98d00deffa0fc63249962248cd
-ms.sourcegitcommit: dcbc8ad992a3e242a11ebcdf0ee99714d919a877
+ms.date: 09/22/2018
+ms.openlocfilehash: 8c7f10f5f7ce507c367f12b01b4b28ff1cc01c0f
+ms.sourcegitcommit: d4afc924b0e1907c4d6f7a6fc5ac1fe521aeef7e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39352924"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "47418827"
 ---
 # <a name="connect-a-bot-to-channels"></a>Conexión de un bot a canales
 
-Un canal es una conexión entre Bot Framework y aplicaciones de comunicación. Un bot se configura para conectarse a los canales en los que quiere que esté disponible. Por ejemplo, un bot conectado al canal de Skype se puede agregar a una lista de contactos y los usuarios pueden interactuar con él en Skype. 
+Un canal es una conexión entre el bot y las aplicaciones de comunicación. Un bot se configura para conectarse a los canales en los que quiere que esté disponible. El servicio Bot Framework, que se configura a través de Azure Portal, conecta su bot a estos canales y facilita la comunicación entre el bot y el usuario. Puede conectarse a muchos servicios muy utilizados, como [Cortana](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md) y [Slack](bot-service-channel-connect-slack.md), entre otros. [Skype](https://dev.skype.com/bots) y Chat en web están preconfigurados de forma automática. Además de los canales estándar que proporciona el servicio Bot Connector, también puede conectar el bot a su propia aplicación cliente que usa DirectLine como canal.
 
-Los canales incluyen muchos servicios populares, como [Cortana](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md) y [Slack](bot-service-channel-connect-slack.md), además de otros. [Skype](https://dev.skype.com/bots) y Chat en web están preconfigurados de forma automática. 
+El servicio Bot Framework le permite desarrollar un bot independientemente del canal mediante la normalización de los mensajes que el bot envía a un canal. Esto implica convertirlo del esquema del generador de bots al esquema del canal. Sin embargo, si el canal no es compatible con todos los aspectos del esquema del generador de bots, el servicio intentará convertir el mensaje a un formato que sea compatible con el canal. Por ejemplo, si el bot envía al canal SMS un mensaje que contiene una tarjeta con los botones de acción, el conector puede enviar la tarjeta como imagen e incluir las acciones como vínculos en el texto del mensaje.
 
-La conexión a los canales es rápida y sencilla en [Azure Portal](https://portal.azure.com).
 
-## <a name="get-started"></a>Introducción
 
 Para la mayoría de los canales, se debe proporcionar información de configuración de canal para ejecutar el bot en el canal. La mayoría de los canales requieren que el bot tenga una cuenta en el canal y otros, como Facebook Messenger, requieren que también tenga una aplicación registrada con el canal.
 
@@ -34,7 +32,7 @@ Para configurar el bot para que se conecte a un canal, siga los pasos siguientes
 3. En la hoja Servicio de bots, haga clic en **Canales** en **Administración de bots**.
 4. Haga clic en el icono del canal al que quiera agregar el bot.
 
-![Conexión a los canales](~/media/channels/connect-to-channels.png)
+![Conexión a los canales](./media/channels/connect-to-channels.png)
 
 Después de configurar el canal, los usuarios de ese canal pueden empezar a usar el bot.
 
@@ -42,5 +40,7 @@ Después de configurar el canal, los usuarios de ese canal pueden empezar a usar
 
 El proceso de publicación es diferente para cada canal.
 
-[!INCLUDE [publishing](~/includes/snippet-publish-to-channel.md)]
+[!INCLUDE [publishing](./includes/snippet-publish-to-channel.md)]
 
+## <a name="additional-resources"></a>Recursos adicionales
+El SDK incluye ejemplos que se pueden usar para crear bots. Visite el repositorio de [GitHub](https://github.com/Microsoft/BotBuilder-samples) para ver la lista de ejemplos.

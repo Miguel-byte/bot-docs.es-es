@@ -1,31 +1,37 @@
 ---
 title: Conexión de un bot a Skype | Microsoft Docs
-description: Obtenga información sobre cómo configurar un bot para acceder a través de la interfaz de Skpye.
+description: Aprenda a configurar un bot para acceder mediante la interfaz de Skype.
 keywords: skype, canales de bot, configurar skype, publicar, conectarse a canales
 author: v-ducvo
 ms.author: RobStand
 manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
-ms.date: 2/1/2018
-ms.openlocfilehash: 5dc4063125855113f813b8873b01df84c90e197e
-ms.sourcegitcommit: f576981342fb3361216675815714e24281e20ddf
+ms.date: 10/11/2018
+ms.openlocfilehash: 6fec83e7e37ba4759e8e305be8c98382f0bedeff
+ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39305089"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49315081"
 ---
 # <a name="connect-a-bot-to-skype"></a>Conexión de un bot a Skype
 
 Skype le mantiene conectado con los usuarios a través de mensajería instantánea, teléfono y videollamadas. Para ampliar esta funcionalidad, cree bots que los usuarios pueden detectar y con los que puedan interactuar a través de la interfaz de Skype.
 
-Para agregar el canal de Skype, abra el bot en [Azure Portal](https://portal.azure.com/), haga clic en la hoja **Canales** y luego en **Skype**. Esto le llevará a la página **Configurar Skype**. Rellene toda la información necesaria sobre el bot y haga clic en **Guardar** para conectarse al canal de Skype. Acepte los **Términos de servicio**, y el canal de Skype se agregará al bot.
+Para agregar el canal de Skype, abra el bot en [Azure Portal](https://portal.azure.com/), haga clic en la hoja **Canales** y luego en **Skype**.
 
 ![Agregar el canal de Skype](~/media/channels/skype-addchannel.png)
 
+Esto le llevará a la página **Configurar Skype**.
+
+![Configuración del canal de Skype](~/media/channels/skype_configure.png)
+
+Debe establecer la configuración en **Control web**, **Mensajería**, **Llamadas**, **Grupos** y **Publicación**. Vamos a verlos de uno en uno.
+
 ## <a name="web-control"></a>Control web
 
-Para insertar el bot en su sitio web, puede obtener el código haciendo clic en el botón **Obtener código para insertar** desde la sección **Control web**.
+Para insertar el bot en su sitio web, haga clic en el botón **Obtener código para insertar** de la sección **Control web**. Esto le dirigirá a la página de Skype para desarrolladores. Siga las instrucciones para obtener el código para insertar.
 
 ## <a name="messaging"></a>Mensajería
 
@@ -44,6 +50,8 @@ En esta sección se configura si el bot puede agregarse a un grupo y cómo se co
 En esta sección se establece la configuración de publicación del bot. Todos los campos con * son campos obligatorios.
 
 Los bots en **versión preliminar** están limitados a 100 contactos. Si necesita más de 100 contactos, envíe el bot para revisión. Al hacer clic en **Enviar para revisión**, hará automáticamente que el bot se pueda buscar en Skype si se lo acepta. Si no se aprueba la solicitud, se le notificará qué debe cambiar para que pueda aprobarse.
+
+Al terminar la configuración, haga clic en **Guardar** y acepte las **Condiciones del servicio**. El canal de Skype se habrá agregado al bot.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

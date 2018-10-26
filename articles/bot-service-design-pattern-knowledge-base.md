@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 12/13/2017
-ms.openlocfilehash: dd8869c26a87718177462db2508e41aa82810e21
-ms.sourcegitcommit: f0b22c6286e44578c11c9f15d22b542c199f0024
+ms.openlocfilehash: ab7e6a8e6bbb2cf12fca0371f2de561f4fb47fd8
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404081"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326532"
 ---
 # <a name="design-knowledge-bots"></a>Diseñar bots de conocimientos
 
@@ -129,7 +129,7 @@ Algunos bots de conocimientos podría usar QnA Maker para responder a preguntas 
 2. Puede llamar primero a LUIS y, si ninguna intención cumple una puntuación de umbral específica, se desencadena la intención "None" y llama a QnA Maker. También puede crear una intención de LUIS para QnA Maker y proporcionarle al modelo de LUIS las preguntas de QnA de ejemplo asignadas a "QnAIntent." 
 3. Puede llamar primero a QnA Maker y, si ninguna respuesta cumple una puntuación de umbral específica, llamar a LUIS. 
 
-Bot Builder SDK ofrece compatibilidad integrada con LUIS y QnA Maker. Esto permite desencadenar cuadros de diálogo o responder a preguntas automáticamente con LUIS o QnA Maker sin necesidad de implementar llamadas personalizadas a ninguna de estas herramientas. Vea las [plantillas de servicio de bot](bot-service-concept-templates.md) para más información.
+Bot Builder SDK ofrece compatibilidad integrada con LUIS y QnA Maker. Esto permite desencadenar cuadros de diálogo o responder a preguntas automáticamente con LUIS o QnA Maker sin necesidad de implementar llamadas personalizadas a ninguna de estas herramientas. Para más información, consulte el [Tutorial de la herramienta de distribución de Bot Builder](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0).
 
 > [!TIP]
 > Al implementar una combinación de LUIS, QnA Maker y Azure Search, pruebe las entradas con cada una de las herramientas para determinar la puntuación de umbral de cada uno de los modelos. LUIS, QnA Maker y Azure Search generan puntuaciones mediante criterios de puntuación diferentes, por lo que las puntuaciones generadas en estas herramientas no son comparables directamente. Además, LUIS y QnA Maker normalizan las puntuaciones. Una puntuación determinada podría considerarse "buena" en un modelo de LUIS, pero no en otro modelo. 

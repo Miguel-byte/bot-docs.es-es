@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/26/2018
-ms.openlocfilehash: 410f50f02dcea2bb64ccf0389e20f5cb76e2fd6b
-ms.sourcegitcommit: 3cb288cf2f09eaede317e1bc8d6255becf1aec61
+ms.openlocfilehash: 42273044cd1e32a3c78fa7fb1b83beac061ce0b8
+ms.sourcegitcommit: aef7d80ceb9c3ec1cfb40131709a714c42960965
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47389844"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49383180"
 ---
 # <a name="troubleshooting-general-problems"></a>Solución de problemas generales
 Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes de desarrollo de bots o problemas de funcionamiento.
@@ -39,10 +39,7 @@ En Visual Studio 2017, vaya a **Depurar** > **Windows** > **Configuración de ex
 En Visual Studio, puede elegir si depura [Solo mi código](https://msdn.microsoft.com/en-us/library/dn457346.aspx) o no. Examinar la pila de llamadas completa puede proporcionar información adicional sobre los problemas.
 
 **Asegúrese de que todos los métodos de diálogo finalizan con un plan para tratar el mensaje siguiente.**  
-Todos los métodos `IDialog` deberían finalizarse con `IDialogStack.Call`, `IDialogStack.Wait` o `IDialogStack.Done`. Estos métodos `IDialogStack` se exponen mediante el elemento `IDialogContext` que se pasa a cada método `IDialog`. Al llamar a `IDialogStack.Forward` y usar los avisos del sistema con los métodos estáticos `PromptDialog`, se llamará a uno de estos métodos en su implementación.
-
-**Asegúrese de que todos los diálogos son serializables.**  
-Esto puede ser tan simple como utilizar el atributo `[Serializable]` en las implementaciones de `IDialog`. Sin embargo, tenga en cuenta que los cierres de método anónimos no son serializables si hacen referencia a su entorno externo para capturar variables. Bot Framework admite un suplente de serialización basado en reflexión para ayudar a serializar los tipos que no están marcados como serializables.
+Todos los pasos del diálogo deben ir al paso siguiente de la cascada o finalizar el diálogo actual para que se extraigan de la pila. Si un paso no se controla correctamente, la conversación no continuará como se espera. Eche un vistazo al artículo de conceptos de [diálogos](v4sdk/bot-builder-concept-dialog.md) para más información sobre los diálogos.
 
 ## <a name="why-doesnt-the-typing-activity-do-anything"></a>¿Por qué la actividad de escritura no hace nada?
 Algunos canales no admiten actualizaciones de escritura transitorias en su cliente.
@@ -54,7 +51,14 @@ La biblioteca Connector es la exposición de la API REST. La biblioteca Builder 
 ## <a name="what-causes-an-error-with-http-status-code-429-too-many-requests"></a>¿Qué provoca un error con código de estado HTTP 429 "Demasiadas solicitudes"?
 
 Una respuesta de error con código de estado HTTP 429 indica que se han emitido demasiadas solicitudes en un período de tiempo determinado. El cuerpo de la respuesta debe incluir una explicación del problema y también puede especificar el intervalo mínimo necesario entre solicitudes. Un posible origen de este error es [ngrok](https://ngrok.com/). Si está en un plan gratuito y alcanza los límites de ngrok, vaya a la página de precios y límites en su sitio web para más [opciones](https://ngrok.com/product#pricing). 
- 
+
+## <a name="why-arent-my-bot-messages-getting-received-by-the-user"></a>¿Por qué el usuario no recibe los mensajes del bot?
+
+La actividad de mensaje generada en la respuesta se debe dirigir correctamente, de lo contrario no llega a su destino previsto. En la mayoría de los casos no necesitará controlar esto de forma explícita; el SDK se encarga del direccionamiento de la actividad de mensaje. 
+
+El direccionamiento correcto de una actividad significa incluir los detalles de *referencia de la conversación* junto con detalles sobre el remitente y el destinatario. En la mayoría de los casos, la actividad de mensaje se envía como respuesta a una que ha llegado. Por lo tanto, los detalles de direccionamiento se pueden obtener de la actividad de entrada. 
+
+Si examina los seguimientos o los registros de auditoría, puede comprobar para asegurarse de que los mensajes se direccionan correctamente. Si no es así, establezca un punto de interrupción en el bot y compruebe dónde se establecen los identificadores para el mensaje.
 
 ## <a name="how-can-i-run-background-tasks-in-aspnet"></a>¿Cómo puedo ejecutar tareas en segundo plano en ASP.NET? 
 
@@ -77,7 +81,7 @@ Bot Framework conservará el orden de los mensajes tanto como sea posible. Por e
 
 ## <a name="how-can-i-intercept-all-messages-between-the-user-and-my-bot"></a>¿Cómo puedo interceptar todos los mensajes entre el usuario y el bot?
 
-Mediante Bot Builder SDK para .NET, puede proporcionar implementaciones de las interfaces `IPostToBot` e `IBotToUser` al contenedor de inserción de dependencias `Autofac`. Mediante Bot Builder SDK para Node.js, puede usar middleware para el mismo propósito. El repositorio [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contiene bibliotecas de C# y Node.js que registrarán estos datos en una tabla de Azure.
+Mediante Bot Builder SDK para .NET, puede proporcionar implementaciones de las interfaces `IPostToBot` e `IBotToUser` al contenedor de inserción de dependencias `Autofac`. Mediante Bot Builder SDK para cualquier lenguaje, puede usar middleware para el mismo propósito. El repositorio [BotBuilder-Azure](https://github.com/Microsoft/BotBuilder-Azure) contiene bibliotecas de C# y Node.js que registrarán estos datos en una tabla de Azure.
 
 ## <a name="why-are-parts-of-my-message-text-being-dropped"></a>¿Por qué se eliminan partes del texto del mensaje?
 
@@ -127,6 +131,8 @@ Para solucionar este problema, establezca la propiedad `from` en cada mensaje qu
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>¿Qué hace que el servicio de Direct Line 3.0 responda con código de estado HTTP 502 "Puerta de enlace incorrecta"?
 Direct Line 3.0 devuelve el código de estado HTTP 502 cuando intenta ponerse en contacto con el bot pero la solicitud no finaliza correctamente. Este error indica que el bot devolvió un error o que la solicitud ha agotado el tiempo de espera. Para más información sobre los errores que genera el bot, vaya al panel del bot en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a> y haga clic en el vínculo "Problemas" del canal afectado. Si ha configurado Application Insights para el bot, también puede encontrar allí información detallada del error. 
 
+::: moniker range="azure-bot-service-3.0"
+
 ## <a name="what-is-the-idialogstackforward-method-in-the-bot-builder-sdk-for-net"></a>¿Qué es el método IDialogStack.Forward en Bot Builder SDK para. NET?
 
 El propósito principal de `IDialogStack.Forward` consiste en reutilizar un diálogo secundario existente que suele ser "reactivo", donde el diálogo secundario (en `IDialog.StartAsync`) espera un elemento `T` de un objeto con un controlador `ResumeAfter`. En particular, si tiene un diálogo secundario que espera un elemento `IMessageActivity` `T`, puede reenviar el elemento `IMessageActivity` entrante (que se recibió en algún diálogo primario) mediante el uso del método `IDialogStack.Forward`. Por ejemplo, para reenviar un elemento `IMessageActivity` entrante a un elemento `LuisDialog`, llame a `IDialogStack.Forward` para insertar el elemento `LuisDialog` en la pila de diálogos, ejecute el código de `LuisDialog.StartAsync` hasta que se programe una espera para el mensaje siguiente y, a continuación, alimente de inmediato la espera con el elemento `IMessageActivity` reenviado.
@@ -134,6 +140,8 @@ El propósito principal de `IDialogStack.Forward` consiste en reutilizar un diá
 `T` suele ser un elemento `IMessageActivity`, puesto que `IDialog.StartAsync` normalmente se construye para esperar a ese tipo de actividad. Puede usar `IDialogStack.Forward` a un elemento `LuisDialog` como un mecanismo para interceptar los mensajes del usuario para su procesamiento antes de reenviar el mensaje a un elemento `LuisDialog` existente. Como alternativa, también puede usar `DispatchDialog` con `ContinueToNextGroup` para ese propósito.
 
 Se espera encontrar el elemento reenviado en el primer controlador `ResumeAfter` (por ejemplo, `LuisDialog.MessageReceived`) que se ha programado por `StartAsync`.
+
+::: moniker-end
 
 ## <a name="what-is-the-difference-between-proactive-and-reactive"></a>¿Cuál es la diferencia entre "proactivo" y "reactivo"?
 

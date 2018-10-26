@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: bot-framework
 ms.date: 09/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 65d6edf123dac2e237ddde4fbe8b37c6913434ae
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 55145b4728d325bd258cc2cd95f3a265aaa50b0a
+ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46706961"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49326462"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -72,7 +72,7 @@ Tal vez diseñe su bot para que controle más de un tipo de tareas. Por ejemplo,
 
 ### <a name="recognize-intent"></a>Reconocimiento de intenciones
 
-El SDK Bot Builder proporciona _reconocedores_ que procesan un mensaje para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Llame al método asincrónico _recognize_ del reconocedor para determinar la intención del usuario a partir del contenido del mensaje. A continuación, puede llamar al método _get top scoring intent_ con el resultado para obtener la predicción más alta del reconocedor.
+El SDK Bot Builder proporciona _reconocedores_ que procesan un mensaje para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Llame al método asincrónico _recognize_ del reconocedor para determinar la intención del usuario a partir del contenido del mensaje. A continuación, puede llamar al método _get top scoring intent_ en el resultado para obtener la predicción más alta del reconocedor.
 
 Un reconocedor podría utilizar expresiones regulares, reconocimiento del lenguaje u otra lógica que desarrolle. Los siguientes son ejemplos de reconocedores posibles:
 
