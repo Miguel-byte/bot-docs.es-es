@@ -6,15 +6,16 @@ author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 9/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2cf5da32b563c310ee201090c938da9ff410a70c
-ms.sourcegitcommit: 3bf3dbb1a440b3d83e58499c6a2ac116fe04b2f6
+ms.openlocfilehash: 45bca42ddce527826d2723bc9a20a3c3e6c5aebe
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/23/2018
-ms.locfileid: "46708864"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998612"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -22,7 +23,7 @@ ms.locfileid: "46708864"
 
 El concepto central del SDK para administrar las conversaciones es la idea de diálogo. Los objetos de diálogo procesan las actividades de entrada y generan las respuestas de salida. La lógica de negocios del bot se ejecuta directa o indirectamente dentro de clases de diálogo.
 
-En tiempo de ejecución, las instancias de diálogo se organizan en una pila. El diálogo en la parte superior de la pila se conoce como ActiveDialog. El diálogo activo actual procesa la actividad de entrada. Entre cada turno de la conversación (que no está vinculado al tiempo y puede durar varios días), la pila se guarda. 
+En tiempo de ejecución, las instancias de diálogo se organizan en una pila. El diálogo en la parte superior de la pila se conoce como ActiveDialog. El diálogo activo actual procesa la actividad de entrada. La pila se guarda entre cada turno de la conversación (que no está vinculado al tiempo y puede durar varios días). 
 
 Un diálogo implementa tres funciones principales:
 - BeginDialog

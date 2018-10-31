@@ -139,121 +139,103 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 El bot puede responder a este mensaje de la forma normal o puede registrar su respuesta directamente en punto de conexión que haya especificado la propiedad `response_url` del objeto `payload`.
 Para obtener información sobre cuándo y cómo publicar una respuesta en `response_url`, consulte <a href="https://api.slack.com/docs/message-buttons" target="_blank">Botones de Slack</a>.
 
-Puede crear botones dinámicos con el código siguiente:
-```cs
-private async Task DemoButtonsAsync(IDialogContext context)
+Puede crear botones dinámicos con el código JSON siguiente.
+
+```json
+{
+    "text": "Would you like to play a game ? ",
+    "attachments": [
         {
-            var reply = context.MakeMessage();
-
-            string s = @"{
-                ""text"": ""Would you like to play a game ? "",
-                ""attachments"": [
-                    {
-                        ""text"": ""Choose a game to play!"",
-                        ""fallback"": ""You are unable to choose a game"",
-                        ""callback_id"": ""wopr_game"",
-                        ""color"": ""#3AA3E3"",
-                        ""attachment_type"": ""default"",
-                        ""actions"": [
-                            {
-                                ""name"": ""game"",
-                                ""text"": ""Chess"",
-                                ""type"": ""button"",
-                                ""value"": ""chess""
-                            },
-                            {
-                                ""name"": ""game"",
-                                ""text"": ""Falken's Maze"",
-                                ""type"": ""button"",
-                                ""value"": ""maze""
-                            },
-                            {
-                                ""name"": ""game"",
-                                ""text"": ""Thermonuclear War"",
-                                ""style"": ""danger"",
-                                ""type"": ""button"",
-                                ""value"": ""war"",
-                                ""confirm"": {
-                                    ""title"": ""Are you sure?"",
-                                    ""text"": ""Wouldn't you prefer a good game of chess?"",
-                                    ""ok_text"": ""Yes"",
-                                    ""dismiss_text"": ""No""
-                                }
-                            }
-                        ]
+            "text": "Choose a game to play!",
+            "fallback": "You are unable to choose a game",
+            "callback_id": "wopr_game",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "game",
+                    "text": "Chess",
+                    "type": "button",
+                    "value": "chess"
+                },
+                {
+                    "name": "game",
+                    "text": "Falken's Maze",
+                    "type": "button",
+                    "value": "maze"
+                },
+                {
+                    "name": "game",
+                    "text": "Thermonuclear War",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "war",
+                    "confirm": {
+                        "title": "Are you sure?",
+                        "text": "Wouldn't you prefer a good game of chess?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
                     }
-                ]
-            }";
-
-            reply.Text = null;
-            reply.ChannelData = JObject.Parse(s);
-            await context.PostAsync(reply);
-            context.Wait(MessageReceivedAsync);
+                }
+            ]
         }
+    ]
+}
 ```
 
-Para crear menús interactivos, use el código siguiente:
-```cs
-private async Task DemoMenuAsync(IDialogContext context)
+Para crear menús interactivos, use el siguiente código JSON:
+
+```json
+{
+    "text": "Would you like to play a game ? ",
+    "response_type": "in_channel",
+    "attachments": [
         {
-            var reply = context.MakeMessage();
-
-            string s = @"{
-                ""text"": ""Would you like to play a game ? "",
-                ""response_type"": ""in_channel"",
-                ""attachments"": [
-                    {
-                        ""text"": ""Choose a game to play"",
-                        ""fallback"": ""If you could read this message, you'd be choosing something fun to do right now."",
-                        ""color"": ""#3AA3E3"",
-                        ""attachment_type"": ""default"",
-                        ""callback_id"": ""game_selection"",
-                        ""actions"": [
-                            {
-                                ""name"": ""games_list"",
-                                ""text"": ""Pick a game..."",
-                                ""type"": ""select"",
-                                ""options"": [
-                                    {
-                                        ""text"": ""Hearts"",
-                                        ""value"": ""menu_id_hearts""
-                                    },
-                                    {
-                                        ""text"": ""Bridge"",
-                                        ""value"": ""menu_id_bridge""
-                                    },
-                                    {
-                                        ""text"": ""Checkers"",
-                                        ""value"": ""menu_id_checkers""
-                                    },
-                                    {
-                                        ""text"": ""Chess"",
-                                        ""value"": ""menu_id_chess""
-                                    },
-                                    {
-                                        ""text"": ""Poker"",
-                                        ""value"": ""menu_id_poker""
-                                    },
-                                    {
-                                        ""text"": ""Falken's Maze"",
-                                        ""value"": ""menu_id_maze""
-                                    },
-                                    {
-                                        ""text"": ""Global Thermonuclear War"",
-                                        ""value"": ""menu_id_war""
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }";
-
-            reply.Text = null;
-            reply.ChannelData = JObject.Parse(s);
-            await context.PostAsync(reply);
-            context.Wait(MessageReceivedAsync);
+            "text": "Choose a game to play",
+            "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "callback_id": "game_selection",
+            "actions": [
+                {
+                    "name": "games_list",
+                    "text": "Pick a game...",
+                    "type": "select",
+                    "options": [
+                        {
+                            "text": "Hearts",
+                            "value": "menu_id_hearts"
+                        },
+                        {
+                            "text": "Bridge",
+                            "value": "menu_id_bridge"
+                        },
+                        {
+                            "text": "Checkers",
+                            "value": "menu_id_checkers"
+                        },
+                        {
+                            "text": "Chess",
+                            "value": "menu_id_chess"
+                        },
+                        {
+                            "text": "Poker",
+                            "value": "menu_id_poker"
+                        },
+                        {
+                            "text": "Falken's Maze",
+                            "value": "menu_id_maze"
+                        },
+                        {
+                            "text": "Global Thermonuclear War",
+                            "value": "menu_id_war"
+                        }
+                    ]
+                }
+            ]
         }
+    ]
+}
 ```
 
 ## <a name="create-a-facebook-notification"></a>Crear una notificación de Facebook
@@ -394,4 +376,4 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Entidades y tipos de actividad](../bot-service-activities-entities.md)
-- [Esquema Activity de Bot Framework](https://github.com/Microsoft/BotBuilder/blob/hub/specs/botframework-activity/botframework-activity.md)
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)

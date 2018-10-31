@@ -5,15 +5,16 @@ author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 783d9e1fb3b90f6ba977440b3eefae5c16a1b8ca
-ms.sourcegitcommit: 2dc75701b169d822c9499e393439161bc87639d2
+ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42905840"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999172"
 ---
 # <a name="request-payment"></a>Solicitud de pago
 
@@ -101,7 +102,8 @@ Las devoluciones de llamada HTTP se enviarán al bot para indicar que debe reali
 ### <a name="shipping-address-update-and-shipping-option-update-callbacks"></a>Devoluciones de llamada de actualización de dirección de envío y actualización de opción de envío
 
 Cuando se recibe una devolución de llamada de actualización de dirección de envío o de actualización de opción de envío, se indicará al bot el estado actual de los detalles de pago del cliente en la propiedad `value` del evento.
-Como comerciante, debe tratar estas devoluciones de llamada como estáticas; dados los detalles de pago de entrada, calculará algunos detalles de pago de salida, y se producirá un error si el estado de entrada proporcionado por el cliente no es válido por algún motivo. Si el bot determina que la información especificada es válida tal cual, simplemente envíe el código de estado HTTP `200 OK` junto con los detalles de pago sin modificar. Como alternativa, el bot puede enviar el código de estado HTTP `200 OK` junto con los detalles de pago actualizados que deben aplicarse antes de que se pueda procesar el pedido. En algunos casos, el bot puede determinar que la información actualizada no es válida y que el pedido no puede procesarse tal cual. Por ejemplo, la dirección de envío del usuario puede especificar un país al que el proveedor del producto no realiza envíos. En ese caso, el bot puede enviar el código de estado HTTP `200 OK` y un mensaje que rellena la propiedad de error del objeto de detalles de pago. El envío de cualquier código de estado HTTP en el rango de `400` o `500` producirá un error genérico para el cliente.
+Como comerciante, debe tratar estas devoluciones de llamada como estáticas; dados los detalles de pago de entrada, calculará algunos detalles de pago de salida y se producirá un error si el estado de entrada proporcionado por el cliente no es válido por algún motivo. 
+Si el bot determina que la información especificada es válida tal cual, simplemente envíe el código de estado HTTP `200 OK` junto con los detalles de pago sin modificar. Como alternativa, el bot puede enviar el código de estado HTTP `200 OK` junto con los detalles de pago actualizados que deben aplicarse antes de que se pueda procesar el pedido. En algunos casos, el bot puede determinar que la información actualizada no es válida y que el pedido no puede procesarse tal cual. Por ejemplo, la dirección de envío del usuario puede especificar un país al que el proveedor del producto no realiza envíos. En ese caso, el bot puede enviar el código de estado HTTP `200 OK` y un mensaje que rellena la propiedad de error del objeto de detalles de pago. El envío de cualquier código de estado HTTP en el rango de `400` o `500` producirá un error genérico para el cliente.
 
 ### <a name="payment-complete-callbacks"></a>Devoluciones de llamada de finalización de pago
 

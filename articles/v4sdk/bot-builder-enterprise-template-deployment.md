@@ -5,15 +5,15 @@ author: darrenj
 ms.author: darrenj
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f4c5e0db9dae86f81414ccd9bbb1e5de4dce624
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326402"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999032"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Plantilla de bot de empresa: Implementación del bot
 
@@ -30,7 +30,7 @@ ms.locfileid: "49326402"
 npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 ```
 
-- Instale las herramientas de la línea de comandos (CLI) de Azure desde [aquí](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+- Instale las herramientas de la línea de comandos (CLI) de Azure desde [aquí](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Si ya tiene la herramienta de la línea de comandos (CLI) de Azure Bot Service instalada, asegúrese de que está actualizada a la versión más reciente mediante la desinstalación de la versión actual y, a continuación, la instalación de la nueva.
 
 - Instale la extensión de AZ para Bot Service.
 ```shell
@@ -101,6 +101,8 @@ Una vez completada, ejecute el proyecto de bot dentro de su entorno de desarroll
 
 A continuación, escriba ```hi``` para comprobar que todo funciona.
 
+Si hay algún problema con Bot Framework Emulator, asegúrese en primer lugar de que tiene la más reciente de Bot Framework Emulator. Si la versión anterior del emulador no se actualiza correctamente, desinstale y vuelva a instalar el emulador.
+
 ## <a name="deploy-to-azure"></a>Implementar en Azure
 
 Las pruebas pueden realizarse localmente por completo. Cuando esté listo para implementar el bot en Azure para realizar pruebas adicionales puede usar el comando siguiente para publicar el código fuente, esto se puede ejecutar cada vez que desee insertar actualizaciones de código fuente.
@@ -123,7 +125,7 @@ Registre `SignInDialog` en el constructor MainDialog:
 
 Agregue lo siguiente al código en la ubicación que desee para probar un flujo sencillo de inicio de sesión:
     
-`var signInResult = await dc.BeginAsync(SignInDialog.Name);`
+`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
 
 ### <a name="content-moderation"></a>Moderación de contenido
 

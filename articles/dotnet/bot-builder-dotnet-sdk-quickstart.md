@@ -6,15 +6,16 @@ author: kamrani
 ms.author: kamrani
 manager: kamrani
 ms.topic: get-started-article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d299e4bdfd503475bf1ec560da2aff1d3a199e47
-ms.sourcegitcommit: b8bd66fa955217cc00b6650f5d591b2b73c3254b
+ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49326392"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49999382"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Creación de un bot con Bot Builder SDK para .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -30,7 +31,7 @@ Esta guía de inicio rápido le orienta en el desarrollo de un bot con la planti
 ## <a name="create-a-bot"></a>Creación de un bot
 Instale la plantilla BotBuilderVSIX.vsix que descargó en la sección de requisitos previos. 
 
-En Visual Studio, cree un proyecto de bot.
+En Visual Studio, cree un nuevo proyecto de bot con la plantilla Echo Bot V4 de Bot Builder.
 
 ![Proyecto de Visual Studio](../media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 

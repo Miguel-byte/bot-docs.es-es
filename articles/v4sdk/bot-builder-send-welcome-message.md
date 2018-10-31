@@ -6,15 +6,16 @@ author: dashel
 ms.author: dashel
 manager: kamrani
 ms.topic: article
-ms.prod: bot-framework
+ms.service: bot-service
+ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2d32e618325e9ddc4abb5c3b42114c86c7644001
-ms.sourcegitcommit: 54ed5000c67a5b59e23b667547565dd96c7302f9
+ms.openlocfilehash: 09ace7b625fe0c66b3ba853249ef5bfc9c32084b
+ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49315141"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49998532"
 ---
 # <a name="send-welcome-message-to-users"></a>Envío de mensajes de bienvenida a los usuarios
 
@@ -24,7 +25,7 @@ En nuestro anterior artículo sobre diseño de [bienvenida al usuario](./bot-bui
 
 ## <a name="same-welcome-for-different-channels"></a>Misma bienvenida para diferentes canales
 
-En el siguiente ejemplo se observa en caso de actividad de _actualización de la conversación_ nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de solicitud para ignorar las entradas iniciales del usuario en la conversación. El código siguiente usa el ejemplo de bienvenida al usuario del repositorio de [GitHub](https://github.com/Microsoft/BotBuilder-Samples/).
+En el siguiente ejemplo se observa en caso de actividad de _actualización de la conversación_ nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de solicitud para ignorar las entradas iniciales del usuario en la conversación. El código de ejemplo siguiente usa los ejemplos de bienvenida al usuario del repositorio de GitHub para código [C#](https://aka.ms/bot-welcome-sample-cs) y [JS](https://aka.ms/bot-welcome-sample-js).
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -176,6 +177,16 @@ class MainDialog {
                 // Set the flag indicating the bot handled the user's first message.
                 await this.welcomedUserPropery.set(turnContext, true);
             }
+            . . .
+            
+            // Save state changes
+            await this.userState.saveChanges(turnContext);
+        } else if (turnContext.activity.type === ActivityTypes.ConversationUpdate) {
+            // Send greeting when users are added to the conversation.
+            await this.sendWelcomeMessage(turnContext);
+        } else {
+            // Generic message for all other activities
+            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
         }
     }
     
