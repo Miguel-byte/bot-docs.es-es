@@ -40,7 +40,7 @@ El evento [contactRelationUpdate][contactRelationUpdate] notifica al bot que un 
 
 Dado que los eventos **conversationUpdate** y **contactRelationUpdate** no se admiten en todos los canales, una manera universal de saludar a un usuario que se une a una conversación es agregar un primer diálogo de ejecución.
 
-En el ejemplo siguiente, agregamos una función que desencadena el diálogo cada vez que nunca hemos visto antes a un usuario. Puede personalizar la manera en que se desencadena una acción si proporciona un controlador [onFindAction] [onFindAction] para la acción. 
+En el ejemplo siguiente, agregamos una función que desencadena el diálogo cada vez que nunca hemos visto antes a un usuario. Puede personalizar la manera en que se desencadena una acción si proporciona un controlador [onFindAction][onFindAction] para la acción. 
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 

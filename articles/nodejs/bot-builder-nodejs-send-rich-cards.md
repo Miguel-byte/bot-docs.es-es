@@ -78,7 +78,7 @@ bot.dialog('showShirts', function (session) {
 }).triggerAction({ matches: /^(show|list)/i });
 ```
 En este ejemplo se usa la clase [Message][Message] para compilar un carrusel.  
-El carrusel está formado por una lista de clases [HeroCard] [ heroCard] que contienen una imagen, texto y un solo botón que desencadena la compra del elemento.  
+El carrusel está formado por una lista de clases [HeroCard][heroCard] que contienen una imagen, texto y un solo botón que desencadena la compra del elemento.  
 Al hacer clic en el botón **Comprar**, se desencadena el envío de un mensaje, por lo que se debe agregar un segundo diálogo para detectar el clic del botón. 
 
 ## <a name="handle-button-input"></a>Controlar la entrada del botón
