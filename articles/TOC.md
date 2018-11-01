@@ -28,7 +28,6 @@
 ### [Bot de Internet de las cosas](bot-service-scenario-internet-things.md)
 # Procedimiento
 ## [Diseño](design/TOC.md)
-## [Administración](manage/TOC.md)
 ## Desarrollo
 ### [Envío de mensajes de bienvenida a los usuarios](v4sdk/bot-builder-send-welcome-message.md)
 ### [Envío de mensajes de texto y de voz](v4sdk/bot-builder-howto-send-messages.md)
@@ -48,13 +47,15 @@
 ### [Uso de LUIS para el reconocimiento de lenguaje](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Uso de QnA Maker para responder a preguntas](v4sdk/bot-builder-howto-qna.md)
 ### [Adición de autenticación al bot](v4sdk/bot-builder-authentication.md)
-### [Descarga y reimplementación del código de un bot](bot-service-build-download-source-code.md)
-### [Configuración de la implementación continua](bot-service-build-continuous-deployment.md)
-### [Implementación de un bot local en Azure](bot-builder-howto-deploy-azure.md)
 ### [Implementación de una funcionalidad específica de canal](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
 ## [Depuración](debug/TOC.md)
+## Implementación
+### [Descarga y reimplementación del código de un bot](bot-service-build-download-source-code.md)
+### [Configuración de la implementación continua](bot-service-build-continuous-deployment.md)
+### [Implementación de un bot local en Azure](bot-builder-howto-deploy-azure.md)
+## [Administración](manage/TOC.md)
 # Referencia
 ## [Herramientas de Bot Builder](bot-builder-tools.md)
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)
