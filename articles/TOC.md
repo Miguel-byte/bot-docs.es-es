@@ -47,6 +47,7 @@
 ### [Uso de LUIS para el reconocimiento de lenguaje](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Uso de QnA Maker para responder a preguntas](v4sdk/bot-builder-howto-qna.md)
 ### [Adición de autenticación al bot](v4sdk/bot-builder-authentication.md)
+### [Implementación de almacenamiento personalizado en un bot](v4sdk/bot-builder-custom-storage.md)
 ### [Implementación de una funcionalidad específica de canal](v4sdk/bot-builder-channeldata.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
