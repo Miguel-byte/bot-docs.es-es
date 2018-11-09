@@ -7,20 +7,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dbf2fd06d76b3e79fbcdd30891807ea71329bffd
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 914c33033be3fe35db7cae6d54b5835cb032a5fd
+ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999062"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50965693"
 ---
 # <a name="localize-form-content"></a>Localización del contenido de un formulario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-El idioma de localización de un formulario viene determinado por las propiedades [CurrentUICulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentuiculture(v=vs.110).aspx) y [CurrentCulture](https://msdn.microsoft.com/en-us/library/system.threading.thread.currentculture(v=vs.110).aspx) del subproceso actual. De manera predeterminada, la referencia cultural se obtiene del campo **Configuración regional** del mensaje actual, pero es posible invalidar este comportamiento predeterminado. Según cómo se construye el bot, la información localizada puede proceder de hasta tres orígenes diferentes:
+El idioma de localización de un formulario viene determinado por las propiedades [CurrentUICulture](https://msdn.microsoft.com/library/system.threading.thread.currentuiculture(v=vs.110).aspx) y [CurrentCulture](https://msdn.microsoft.com/library/system.threading.thread.currentculture(v=vs.110).aspx) del subproceso actual.
+De manera predeterminada, la referencia cultural se obtiene del campo **Configuración regional** del mensaje actual, pero es posible invalidar este comportamiento predeterminado.
+Según cómo se construye el bot, la información localizada puede proceder de hasta tres orígenes diferentes:
 
 - la localización integrada para **PromptDialog** y **FormFlow**
 - un archivo de recursos que genera para las cadenas estáticas del formulario
@@ -28,7 +30,10 @@ El idioma de localización de un formulario viene determinado por las propiedade
 
 ## <a name="generate-a-resource-file-for-the-static-strings-in-your-form"></a>Generación de un archivo de recursos para las cadenas estáticas del formulario
 
-Las cadenas estáticas en un formulario incluyen las cadenas que genera el formulario a partir de la información de la clase de C# y las cadenas que especifica como avisos, plantillas, mensajes o confirmaciones. Las cadenas que se generan a partir de plantillas integradas no se consideran cadenas estáticas, puesto que esas cadenas ya están localizadas. Dado que muchas de las cadenas en un formulario se generan automáticamente, no es posible usar directamente las cadenas de recursos de C# normales. En su lugar, puede generar un archivo de recursos para las cadenas estáticas en el formulario mediante una llamada a `IFormBuilder.SaveResources` o mediante la herramienta **RView** que se incluye con el Bot Builder SDK para. NET.
+Las cadenas estáticas en un formulario incluyen las cadenas que genera el formulario a partir de la información de la clase de C# y las cadenas que especifica como avisos, plantillas, mensajes o confirmaciones.
+Las cadenas que se generan a partir de plantillas integradas no se consideran cadenas estáticas, puesto que esas cadenas ya están localizadas.
+Dado que muchas de las cadenas en un formulario se generan automáticamente, no es posible usar directamente las cadenas de recursos de C# normales.
+En su lugar, puede generar un archivo de recursos para las cadenas estáticas en el formulario mediante una llamada a `IFormBuilder.SaveResources` o mediante la herramienta **RView** que se incluye con el Bot Builder SDK para. NET.
 
 ### <a name="use-iformbuildersaveresources"></a>Uso de IFormBuilder.SaveResources
 
@@ -36,7 +41,9 @@ Puede generar un archivo de recursos mediante una llamada a [IFormBuilder.SaveRe
 
 ### <a name="use-rview"></a>Uso de RView
 
-Como alternativa, puede generar un archivo de recursos que se base en el archivo .dll o .exe usando la herramienta <a href="https://github.com/Microsoft/BotBuilder/tree/master/CSharp/Tools/RView" target="_blank">RView</a> que se incluye en el Bot Builder SDK para. NET. Para generar el archivo .resx, ejecute **rview** y especifique el ensamblado que contiene el método de creación de formularios estáticos y la ruta de acceso a ese método. En este fragmento de código se muestra cómo generar el archivo de recursos `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` con **RView**. 
+Como alternativa, puede generar un archivo de recursos que se base en el archivo .dll o .exe usando la herramienta <a href="https://aka.ms/v3-cs-RView-library" target="_blank">RView</a> que se incluye en el Bot Builder SDK para. NET.
+Para generar el archivo .resx, ejecute **rview** y especifique el ensamblado que contiene el método de creación de formularios estáticos y la ruta de acceso a ese método.
+En este fragmento de código se muestra cómo generar el archivo de recursos `Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.resx` con **RView**.
 
 ```csharp
 rview -g Microsoft.Bot.Sample.AnnotatedSandwichBot.dll Microsoft.Bot.Sample.AnnotatedSandwichBot.SandwichOrder.BuildForm
@@ -83,7 +90,7 @@ Cuando se crea el formulario, el método [IFormBuilder.Build][build] buscará au
 
 ### <a name="localize-resource-files"></a>Localización de archivos de recursos 
 
-Después de haber agregado archivos de recursos al proyecto, puede localizarlos con el <a href="https://developer.microsoft.com/en-us/windows/develop/multilingual-app-toolkit" target="_blank">Kit de herramientas para aplicaciones multilingües (MAT)</a>. Instale **MAT** y siga los pasos a continuación para habilitarlo para su proyecto:
+Después de haber agregado archivos de recursos al proyecto, puede localizarlos con el <a href="https://developer.microsoft.com/windows/develop/multilingual-app-toolkit" target="_blank">Kit de herramientas para aplicaciones multilingües (MAT)</a>. Instale **MAT** y siga los pasos a continuación para habilitarlo para su proyecto:
 
 1. Seleccione el proyecto en el Explorador de soluciones de Visual Studio.
 2. Haga clic en **Herramientas**, **Kit de herramientas de aplicaciones multilingües** y **Habilitar**.
