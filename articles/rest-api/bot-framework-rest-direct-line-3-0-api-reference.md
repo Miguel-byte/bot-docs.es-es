@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69f1f658520790ff429ecd25a190319e321164d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 36a95ec60af117a9a13843dc078bd9bd5cfde635
+ms.sourcegitcommit: 6ed90a4c90add925a0a865be1127041b7775fd3d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998112"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50234478"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Referencia de API: Direct Line API 3.0
 
@@ -223,5 +223,6 @@ Cuando un cliente envía un objeto [Activity](bot-framework-rest-connector-api-r
 - La propiedad `from` se debe rellenar con un id. de usuario elegido por el cliente.
 - Los archivos adjuntos pueden contener direcciones URL a los recursos existentes o direcciones URL cargadas a través del punto de conexión de los archivos adjuntos de Direct Line.
 - La propiedad `channelData` se conserva sin modificaciones.
+- El tamaño total de la actividad, cuando se serializa en JSON, no debe superar los 300 K caracteres.
 
 Es posible que los clientes [envíen](bot-framework-rest-direct-line-3-0-send-activity.md) una única actividad por solicitud. 

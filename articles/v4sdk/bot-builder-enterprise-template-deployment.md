@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32be8e2a4047c3c25dcdf2598eea3a7bbd12fbcc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
+ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999032"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50134705"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Plantilla de bot de empresa: Implementación del bot
 
@@ -21,6 +21,8 @@ ms.locfileid: "49999032"
 > Este tema se aplica a la versión v4 del SDK. 
 
 ## <a name="prerequisites"></a>Requisitos previos
+
+- Asegúrese de que ha actualizado [.NET Core](https://www.microsoft.com/net/download) a la versión más reciente.
 
 - Asegúrese de que el [administrador de paquetes de Node](https://nodejs.org/en/) está instalado.
 
@@ -40,7 +42,7 @@ az extension add -n botservice
 ## <a name="configuration"></a>Configuración
 
 - Recupere su clave de creación de LUIS.
-   - Repase [esta](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions) página de documentación para más información sobre el portal de LUIS correcto para la región en la que tiene planeado realizar la implementación. 
+   - Repase [esta](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-reference-regions) página de documentación para más información sobre el portal de LUIS correcto para la región en la que tiene planeado realizar la implementación. Tenga en cuenta que www.luis.ai se refiere a la región de EE. UU. y una clave de creación recuperada de este portal no funcionará con una implementación en Europa.
    - Una vez que haya iniciado sesión, haga clic en el nombre que aparece en la esquina superior derecha.
    - Seleccione Configuración y anote la clave de creación para el paso siguiente.
 
@@ -68,13 +70,13 @@ El nuevo proyecto de bot tiene un método de implementación que permite que el 
 
 > Una vez implementado, revise los planes de tarifas de los servicios creados y adáptelos a su escenario.
 
-El archivo README.md del proyecto creado contiene una línea de comandos de servicios de clonación de msbot de ejemplo que se ha actualizado con el nombre del bot creado y una versión genérica como se muestra a continuación. Asegúrese de que actualiza la clave de creación del paso anterior y elija la ubicación del centro de datos de Azure que desee usar (por ejemplo, westus o westeurope).
-
-> Asegúrese de que la clave de creación de LUIS que se recuperó en el paso anterior es para la región que va a especificar a continuación.
+El archivo README.md del proyecto creado contiene una línea de comandos de servicios de clonación de msbot de ejemplo que se ha actualizado con el nombre del bot creado y una versión genérica como se muestra a continuación. Asegúrese de que actualiza la clave de creación del paso anterior y elija la ubicación del centro de datos de Azure que desee usar (por ejemplo, westus o westeurope). Asegúrese de que la clave de creación de LUIS que se recuperó en el paso anterior es para la región que va a especificar a continuación (por ejemplo, westus para luis.ai o westeurope para eu.luis.ai).
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "westus"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
+
+> Hay un problema conocido con algunos usuarios por el cual puede experimentar el siguiente error al ejecutar la implementación `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. En esta situación, vaya a https://apps.dev.microsoft.com y cree manualmente una nueva aplicación mediante la recuperación del identificador de la aplicación y la contraseña o secreto. Ejecute el comando msbot clone services anterior pero proporcione dos nuevos argumentos `appId` y `appSecret` pasando los valores que acaba de recuperar.
 
 La herramienta msbot resumirá el plan de implementación incluyendo la ubicación y la SKU. Asegúrese de revisarlo antes de continuar.
 

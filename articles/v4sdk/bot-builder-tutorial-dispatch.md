@@ -1,5 +1,5 @@
 ---
-title: Integración de varios servicios de LUIS y QnA con la herramienta de distribución | Microsoft Docs
+title: Uso de servicios de LUIS y QnA con la herramienta de distribución | Microsoft Docs
 description: Obtenga información sobre cómo usar LUIS y QnA Maker en su bot.
 keywords: LUIS, QnA, herramienta de distribución, varios servicios
 author: DeniseMak
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e59a7fd86e3802ea23d59a439165a194314639f8
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4d029dc7361ac8a7fadb61141faf60d8a62eab3c
+ms.sourcegitcommit: a496714fb72550a743d738702f4f79e254c69d06
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997402"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50736683"
 ---
-# <a name="integrate-multiple-luis-and-qna-services-with-the-dispatch-tool"></a>Integración de varios servicios de LUIS y QnA con la herramienta de distribución
+# <a name="use-luis-and-qna-services-with-the-dispatch-tool"></a>Uso de los servicios de LUIS y de QnA con la herramienta de distribución
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
@@ -31,7 +31,9 @@ En este tutorial se muestra cómo usar un modelo de LUIS generado por la herrami
 | Aplicación de LUIS | Tiempo | Reconoce las intenciones Weather.GetForecast y Weather.GetCondition con los datos de ubicación.|
 | Servicio QnA Maker | Preguntas más frecuentes  | Proporciona respuestas a algunas preguntas sencillas sobre el bot. |
 
-El código para este artículo se toma del ejemplo **NLP con Dispatch** [[C#](https://aka.ms/dispatch-sample-cs)<!-- | [JS](https://aka.ms/dispatch-sample-js)-->].
+El código para este artículo se toma del ejemplo **NLP con Dispatch** [[C#](https://aka.ms/dispatch-sample-cs)].
+
+<!-- | [JS](https://aka.ms/dispatch-sample-js)-->
 
 Consulte [reconocimiento del lenguaje](bot-builder-concept-luis.md), para obtener información general de los servicios de lenguaje. Consulte los artículos para [LUIS](bot-builder-howto-v4-luis.md) y [QnA Maker](bot-builder-howto-qna.md), para obtener instrucciones sobre cómo implementar estas opciones en un bot.
 
