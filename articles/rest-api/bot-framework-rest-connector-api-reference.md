@@ -1,19 +1,19 @@
 ---
 title: Referencia de API | Microsoft Docs
 description: Obtenga información sobre los encabezados, operaciones, objetos y errores de los servicios Bot Connector y Bot State.
-author: RobStand
-ms.author: kamrani
+author: ivorb
+ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: cd4a0dd73feb18aa6f82699a51ab086c55c5d2cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/25/2018
+ms.openlocfilehash: 81192c9b5806d467c2a1fd292ee3d5db539e9ead
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998321"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916872"
 ---
 # <a name="api-reference"></a>Referencia de API
 
@@ -130,6 +130,7 @@ Use estas operaciones para crear conversaciones, enviar mensajes (actividades) y
 | [Enviar a conversación](#send-to-conversation) | Envía una actividad (mensaje) al final de la conversación especificada. | 
 | [Responder a actividad](#reply-to-activity) | Envía una actividad (mensaje) a la conversación especificada, como una respuesta a la actividad especificada. | 
 | [Obtener miembros de la conversación](#get-conversation-members) | Obtiene los miembros de la conversación especificada. |
+| [Obtener los miembros de la conversación paginados](#get-conversation-paged-members) | Obtiene los miembros de la conversación especificada una página a la vez. |
 | [Obtener miembros de la actividad](#get-activity-members) | Obtiene los miembros de la actividad especificada dentro de la conversación especificada. | 
 | [Actualizar actividad](#update-activity) | Actualiza una actividad existente. | 
 | [Eliminar actividad](#delete-activity) | Elimina una actividad existente. | 
@@ -178,6 +179,17 @@ GET /v3/conversations/{conversationId}/members
 |----|----|
 | **Cuerpo de la solicitud** | N/D |
 | **Devuelve** | Una matriz de objetos [ChannelAccount](#channelaccount-object) | 
+
+### <a name="get-conversation-paged-members"></a>Obtener los miembros de la conversación paginados
+Obtiene los miembros de la conversación especificada una página a la vez.
+```http
+GET /v3/conversations/{conversationId}/pagedmembers
+```
+
+| | |
+|----|----|
+| **Cuerpo de la solicitud** | N/D |
+| **Devuelve** | Una matriz de objetos [ChannelAccount](#channelaccount-object) y un token de continuación que se puede utilizar para obtener más valores.|
 
 ### <a name="get-activity-members"></a>Obtener miembros de la actividad
 Obtiene los miembros de la actividad especificada dentro de la conversación especificada.
@@ -386,7 +398,7 @@ El esquema define el objeto y sus propiedades que el bot puede usar para comunic
 | [Objeto ThumbnailCard](#thumbnailcard-object) | Define una tarjeta con una imagen en miniatura, título, texto y botones de acción. |
 | [Objeto ThumbnailUrl](#thumbnailurl-object) | Define la dirección URL al origen de una imagen. |
 | [Objeto VideoCard](#videocard-object) | Define una tarjeta que puede reproducir vídeos. |
-
+| [Objeto SemanticAction](#semanticaction-object) | Define una referencia a una acción mediante programación. |
 
 ### <a name="activity-object"></a>Objeto Activity
 Define un mensaje que se intercambia entre el bot y el usuario.<br/><br/> 
@@ -423,6 +435,7 @@ Define un mensaje que se intercambia entre el bot y el usuario.<br/><br/>
 | **topicName** | string | Tema de la conversación a la que pertenece la actividad. |
 | **type** | string | Tipo de actividad. Uno de estos valores: **contactRelationUpdate**, **conversationUpdate**, **deleteUserData**, **message**, **typing**, **endOfConversation**. Para obtener detalles sobre los tipos de actividad, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md). |
 | **value** | objeto | Valor de final abierto. |
+| **semanticAction** |[SemanticAction](#semanticaction-object) | Un objeto **SemanticAction** que representa una referencia a una acción mediante programación. |
 
 <a href="#objects">Volver a la tabla de esquema</a>
 
@@ -434,6 +447,7 @@ Define una tarjeta que puede reproducir archivos GIF animados o vídeos cortos.<
 | **autoloop** | boolean | Marca que indica si se debe reproducir la lista de archivos GIF animados cuando finaliza la última. Establezca esta propiedad en **true** para reproducir el archivo animado automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **autostart** | boolean | Marca que indica si se debe reproducir automáticamente el archivo de animación cuando se muestra la tarjeta. Establezca esta propiedad en **true** para reproducir el archivo animado automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
+| **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de archivos GIF animados para reproducir. |
 | **shareable** | boolean | Marca que indica si la animación puede compartirse con otros usuarios. Establezca esta propiedad en **true** si la animación puede compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
@@ -510,6 +524,7 @@ Define una tarjeta que puede reproducir un archivo de audio.<br/><br/>
 | **autoloop** | boolean | Marca que indica si se debe reproducir la lista de archivos de audio cuando finaliza la última. Establezca esta propiedad en **true** para reproducir los archivos de audio automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **autostart** | boolean | Marca que indica si se debe reproducir automáticamente el archivo de audio cuando se muestra la tarjeta. Establezca esta propiedad en **true** para reproducir el audio automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
+| **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de archivos de audio para reproducir. |
 | **shareable** | boolean | Marca que indica si los archivos de audio compartirse con otros usuarios. Establezca esta propiedad en **true** si el audio puede compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
@@ -845,6 +860,7 @@ Define una tarjeta que puede reproducir vídeos.<br/><br/>
 | **autoloop** | boolean | Marca que indica si se debe reproducir la lista de vídeos cuando finaliza la última. Establezca esta propiedad en **true** para reproducir los vídeos automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **autostart** | boolean | Marca que indica si se deben reproducir automáticamente los vídeos cuando se muestra la tarjeta. Establezca esta propiedad en **true** para reproducir los vídeos automáticamente; de lo contrario, establézcala en **false**. El valor predeterminado es **true**. |
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
+| **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
 | **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de vídeos para mostrar. |
 | **shareable** | boolean | Marca que indica si los vídeos pueden compartirse con otros usuarios. Establezca esta propiedad en **true** si los vídeos pueden compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
@@ -852,5 +868,15 @@ Define una tarjeta que puede reproducir vídeos.<br/><br/>
 | **text** | string | Descripción o mensaje para mostrar debajo del título o subtítulo de la tarjeta. |
 | **title** | string | Título de la tarjeta. |
 | **value** | objeto | Parámetro complementario de esta tarjeta.|
+
+<a href="#objects">Volver a la tabla de esquema</a>
+
+### <a name="semanticaction-object"></a>Objeto SemanticAction
+Define una referencia a una acción mediante programación.<br/><br/>
+
+| Propiedad | Escriba | DESCRIPCIÓN |
+|----|----|----|
+| **id** | string | Identificación de esta acción |
+| **entities** | [Entidad](#entity-object) | Entidades asociadas a esta acción |
 
 <a href="#objects">Volver a la tabla de esquema</a>

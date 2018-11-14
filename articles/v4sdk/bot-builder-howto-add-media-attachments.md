@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/10/2018
+ms.date: 10/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 35ec8968493eb024b2724d0729a8a2cd6e14ba82
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fcbe28110ec71da7263d125e79ca59d15efa9d5f
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000377"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916782"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -45,7 +45,7 @@ var attachment = new Attachment
         ContentType = "image/png",
         Name = "imageName",
     };
-    
+
 // Add the attachment to our reply.
 reply.Attachments = new List<Attachment>() { attachment };
 
@@ -354,5 +354,11 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ---
 
+<!-- TODO: Add a media card, such as video or audion. Revisit which examples we put here and link to the 06 through 08 samples. -->
+
 ## <a name="additional-resources"></a>Recursos adicionales
-El código de ejemplo se puede encontrar aquí para tarjetas: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code) tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js) y acciones sugeridas: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS). Consulte el repositorio de ejemplos de Bot Builder en [GitHub](https://github.com/Microsoft/BotBuilder-Samples) para obtener ejemplos adicionales.
+
+Para obtener información detallada sobre el esquema de tarjeta, consulte [Esquema de tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema).
+
+El código de ejemplo se puede encontrar aquí para tarjetas: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code) tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js) y acciones sugeridas: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
+Consulte el repositorio de ejemplos de Bot Builder en [GitHub](https://aka.ms/bot-samples-readme) para obtener ejemplos adicionales.

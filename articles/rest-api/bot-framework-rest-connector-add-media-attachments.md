@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 2a2cc13020c87616799ee768fbab6e72ab81cc8b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 10/25/2018
+ms.openlocfilehash: eb08ca3b560f5058526387c71eca4b790d033a1e
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997642"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916812"
 ---
 # <a name="add-media-attachments-to-messages"></a>Incorporación de datos adjuntos con elementos multimedia a mensajes
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Los bots y los canales suelen intercambiar cadenas de texto, pero algunos canale
 > [!TIP]
 > Para determinar el tipo y el número de datos adjuntos que admite un canal, y cómo el canal representa los datos adjuntos, consulte [Channel Inspector][ChannelInspector].
 
-## <a name="add-a-media-attachment"></a>Incorporación de datos adjuntos de elementos multimedia  
+## <a name="add-a-media-attachment"></a>Incorporación de datos adjuntos con elementos multimedia  
 
 Para agregar datos adjuntos de elementos multimedia a un mensaje, cree un objeto [Attachment][Attachment], establezca la propiedad `name`, establezca la propiedad `contentUrl` en la dirección URL del archivo multimedia y establezca la propiedad `contentType` en el tipo de elemento multimedia adecuado (por ejemplo, **imagen/png**, **audio/wav**, **vídeo/mp4**). A continuación, en el objeto [Activity][Activity] que representa el mensaje, especifique el objeto [Attachment][Attachment] dentro de la matriz `attachments`. 
 
@@ -126,6 +126,7 @@ Agregar datos adjuntos de [tarjeta de audio](bot-framework-rest-connector-api-re
         "title": "Allegro in C Major",
         "subtitle": "Allegro Duet",
         "text": "No Image, No Buttons, Autoloop, Autostart, Sharable",
+        "duration": "PT2M55S",
         "media": [
           {
             "url": "https://contoso.com/media/AllegrofromDuetinCMajor.mp3"
@@ -175,9 +176,7 @@ El nombre del evento multimedia **media/pause** aparecerá en el campo `activity
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de tarjetas enriquecidas a mensajes](bot-framework-rest-connector-add-rich-cards.md)
-- [Channel Inspector][ChannelInspector]
-
-[ChannelInspector]: ../bot-service-channel-inspector.md
+- [Esquema de tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object

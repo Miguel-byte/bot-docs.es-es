@@ -1,5 +1,5 @@
 ---
-title: Implementación de un bot en Azure | Microsoft Docs
+title: Implementación de un bot de C# en Azure | Microsoft Docs
 description: Implemente su bot en la nube de Azure.
 keywords: implementar bot, implementación de azure, registro de canal de bot, publicar visual studio
 author: ivorb
@@ -8,22 +8,24 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/19/2018
-ms.openlocfilehash: 5f3fc43bed16d50c347d4e07a9154dfd307f0dc0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 11/05/2018
+ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
+ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999372"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51028742"
 ---
-# <a name="deploy-your-bot-to-azure"></a>Implementación de un bot en Azure
+# <a name="deploy-your-c-bot-to-azure"></a>Implementación del bot de C# en Azure
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-Una vez que haya creado su bot y lo haya comprobado localmente, puede insertarlo en Azure para que sea accesible desde cualquier lugar. Para el bot de C#, puede usar Visual Studio o la CLI de Azure para publicar el bot en Azure. 
+Una vez que haya creado su bot y lo haya probado localmente, puede publicarlo en Azure para que sea accesible desde cualquier lugar.
 
 ## <a name="publish-from-visual-studio"></a>Publicación desde Visual Studio
 En primer lugar, va a implementar el bot en Azure desde Visual Studio en App Service. A continuación, configurará el bot con Azure Bot Service mediante el registro de canales de bots.
+
+**Nota: Si el nombre del proyecto de Visual Studio tiene espacios, los pasos de implementación que se describen a continuación no funcionarán.**
 
 En la ventana Explorador de soluciones, haga clic con el botón derecho en el nodo del proyecto y seleccione Publicar.
 

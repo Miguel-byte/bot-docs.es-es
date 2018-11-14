@@ -1,45 +1,25 @@
 ---
-title: Administración del bot mediante herramientas de Bot Builder
+title: Administración de bots mediante las herramientas de la CLI
 description: Las herramientas de Bot Builder le permiten administrar los recursos de bot directamente desde la línea de comandos
-keywords: plantillas de botbuilder, ludown, qna, luis, msbot
+keywords: botbuilder templates, ludown, qna, luis, msbot, manage, cli, .bot, bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: tools
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ef57cdf6a202679f9fc3a83e3e44640b43adb67f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 357f9fdc3da4c703dbcd5c1fa347176002006567
+ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998368"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51273112"
 ---
-# <a name="bot-builder-tools"></a>Herramientas de Bot Builder
+# <a name="manage-bots-using-cli-tools"></a>Administración de bots mediante las herramientas de la CLI
 
-Las [herramientas][cliTools] de Bot Builder abarcan el flujo de trabajo completo de desarrollo de bots que incluye las fases de planeación, compilación, prueba, publicación, conexión y evaluación. Veamos cómo estas herramientas pueden ayudarle con cada fase del ciclo de desarrollo.
-
-[Plan](#plan)
-- Comience por revisar las [directrices de diseño](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-design-principles) del bot para conocer los procedimientos recomendados
-- Cree conversaciones ficticias mediante la herramienta [Chatdown](#create-mock-conversations-using-chatdown)
-
-[Compilar](#build)
-- Arranque de Language Understanding con [Ludown](#bootstrap-language-understanding-with-ludown)
-- Realice un seguimiento de las referencias de servicio mediante [MSBot](#keep-track-of-service-references-using-bot-file)
-- Cree y administre aplicaciones de LUIS mediante la [CLI de LUIS](#create-and-manage-luis-applications-using-luis-cli)
-- Cree una base de conocimiento de QnA Maker mediante la [CLI de QnA Maker](#create-qna-maker-kb-using-qna-maker-cli)
-- Cree un modelo de distribución mediante la [CLI de Dispatch](#create-dipsatch-model-using-dispatch-cli)
-
-[Prueba](#test)
-- Pruebe el bot mediante [Bot Framework Emulator V4](https://aka.ms/bot-framework-emulator-v4-overview)
-
-[Publicar](#publish)
-- Cree, descargue y publique los bots en Azure Bot Service mediante la [CLI de Azure][azureCli]
-
-[Conexión](#configure-channels)
-- Conecte el bot a los canales de Azure Bot Service mediante la [CLI de Azure][azureCli]
+Las herramientas de Bot Builder abarcan el flujo de trabajo completo de desarrollo de bots que incluye las fases de planeación, compilación, prueba, publicación, conexión y evaluación. Veamos cómo estas herramientas pueden ayudarle con cada fase del ciclo de desarrollo.
 
 ## <a name="plan"></a>Plan
 
@@ -165,10 +145,9 @@ De forma similar, para crear una base de conocimiento de QnA, solo hay que cambi
 ludown parse ToQna --in <luFile> 
 ```
 
-LUIS y QnA pueden usar los archivos JSON resultantes a través de sus portales correspondientes, o bien a través de las nuevas herramientas de la CLI.
+LUIS y QnA pueden usar los archivos JSON resultantes a través de sus portales correspondientes, o bien a través de las nuevas herramientas de la CLI. Consulte el repositorio de la [CLI de LUdown][ludown] de GitHub para más información.
 
-Consulte el repositorio de la [CLI de LUdown][ludown] de GitHub para más información.
-## <a name="track-service-references-using-bot-file"></a>Realización de un seguimiento de las referencias de servicio mediante un archivo .bot
+### <a name="track-service-references-using-bot-file"></a>Realización de un seguimiento de las referencias de servicio mediante un archivo .bot
 
 La nueva herramienta [MSBot][msbotCli] permite crear un archivo **.bot**, en el que se almacenan metadatos sobre otros servicios que consume el bot, todo en una sola ubicación. Este archivo también permite que el bot se conecte a estos servicios desde la CLI. La herramienta está disponible como un módulo npm; para instalarlo, ejecute lo siguiente:
 
@@ -189,7 +168,7 @@ msbot connect [Service]
 
 Para obtener la lista de servicios admitidos, consulte el archivo [Léame][msbotCli].
 
-## <a name="create-and-manage-luis-applications-using-luis-cli"></a>Creación y administración de aplicaciones de LUIS mediante la CLI de LUIS
+### <a name="create-and-manage-luis-applications-using-luis-cli"></a>Creación y administración de aplicaciones de LUIS mediante la CLI de LUIS
 
 En el nuevo conjunto de herramientas se incluye una [extensión de LUIS][luisCli] que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar de la siguiente manera:
 
@@ -215,7 +194,7 @@ luis import application --in luis-app.json | msbot connect luis --stdin
 ```
 Consulte el repositorio de la [CLI de LUIS][luisCli] de GitHub para más información.
 
-## <a name="create-qna-maker-kb-using-qna-maker-cli"></a>Creación de una base de conocimiento de QnA Maker mediante la CLI de QnA Maker
+### <a name="create-qna-maker-kb-using-qna-maker-cli"></a>Creación de una base de conocimiento de QnA Maker mediante la CLI de QnA Maker
 
 En el nuevo conjunto de herramientas se incluye una [extensión de QnA][qnaCli] que permite administrar de forma independiente los recursos de LUIS. Está disponible como módulo npm que se puede descargar.
 
@@ -230,7 +209,7 @@ qnamaker create --in qnaKB.json --msbot | msbot connect qna --stdin
 
 Consulte el repositorio de la [CLI de QnA Maker][qnaCli] de GitHub para más información.
 
-## <a name="create-dispatch-model-using-dispatch-cli"></a>Creación de un modelo de distribución mediante la CLI de Dispatch
+### <a name="create-dispatch-model-using-dispatch-cli"></a>Creación de un modelo de distribución mediante la CLI de Dispatch
 
 Dispatch es una herramienta para crear y evaluar modelos de LUIS que se usan para distribuir intenciones en varios módulos de bot como, por ejemplo, modelos de LUIS, bases de conocimiento de QnA, etc (que se agregan para su distribución como un tipo de archivo).
 
@@ -253,12 +232,14 @@ Consulte la [CLI de Dispatch][dispatchCli] para más información.
 
 ## <a name="publish"></a>Publicar
 
-Puede usar la [CLI de Azure][azureCli] para [crear](#create-azure-bot-service-bot), [descargar](#download-azure-bot-service-bot) y [publicar](#publish-azure-bot-service-bot) su bot en Azure Bot Service. Instale la extensión del bot mediante: 
+Puede usar la CLI de Azure para crear, descargar y publicar su bot en Azure Bot Service. Instale la extensión del bot mediante: 
 ```shell
 az extension add -n botservice
 ```
 
-## <a name="create-azure-bot-service-bot"></a>Creación de un bot en Azure Bot Service
+### <a name="create-azure-bot-service-bot"></a>Creación de un bot en Azure Bot Service
+
+Nota: Debe usar la versión más reciente de `az cli`. Actualícelo para que la CLI de Azure pueda funcionar con la herramienta MSBot. 
 
 Inicie sesión en su cuenta de Azure mediante 
 ```shell
@@ -322,7 +303,7 @@ Group
 ```
 
 ## <a name="additional-information"></a>Información adicional
-- [Herramientas de Bot Builder][cliTools]
+- [Herramientas de Bot Builder en GitHub][cliTools]
 
 <!-- Footnote links -->
 

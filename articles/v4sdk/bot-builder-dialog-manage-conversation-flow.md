@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 9/25/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 07035c8f0dfc7473192d8c51667ed1f5cefbc555
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0225b6d81b8eb9899a5dda8dc032dcbfb573afc1
+ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999402"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50965713"
 ---
 # <a name="manage-simple-conversation-flow-with-dialogs"></a>Administración de un flujo de conversación simple con diálogos
 
@@ -39,7 +39,10 @@ Para usar diálogos en general, necesita el paquete NuGet `Microsoft.Bot.Builder
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Para usar diálogos en general, necesita la biblioteca `botbuilder-dialogs`, que puede descargarse de NPM.
+Por lo general, para usar los diálogos, necesita la biblioteca `botbuilder-dialogs`. Para instalar la biblioteca, ejecute el siguiente comando de NPM:
+```cmd
+npm install --save botbuilder-dialogs
+```
 
 ---
 

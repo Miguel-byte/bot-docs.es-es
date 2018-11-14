@@ -2,19 +2,19 @@
 title: Incorporación de autenticación al bot mediante Azure Bot Service | Microsoft Docs
 description: Obtenga información sobre cómo usar las características de autenticación de Azure Bot Service para agregar el inicio de sesión único al bot.
 author: JonathanFingold
-ms.author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 09/27/2018
+ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 93d32d5d0ac35dead8e9f1c48b526058449fabad
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 14a56749c68cfe89ed4a0da3c046a39a8e0783fe
+ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998792"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50916792"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Incorporación de autenticación al bot mediante Azure Bot Service
 
@@ -296,7 +296,7 @@ El siguiente par de fragmentos de código se toman del elemento `OAuthPrompt` qu
 
 ### <a name="check-for-a-cached-token"></a>Buscar un token en caché
 
-En este código, en primer lugar el bot realiza una comprobación rápida para determinar si Azure Bot Service ya tiene un token para el usuario (que se identifica mediante el remitente de la actividad actual) y el nombre de la conexión dado (que es el nombre de conexión que se usa en la configuración). Azure Bot Service tendrá ya un token en caché o no. La llamada a GetUserTokenAsync realiza esta �comprobación rápida". Si Azure Bot Service tiene un token y lo devuelve, el token se puede usar inmediatamente. Si Azure Bot Service no tiene un token, este método devolverá NULL. En este caso, el bot puede enviar una OAuthCard personalizada para que el usuario inicie sesión.
+En este código, en primer lugar el bot realiza una comprobación rápida para determinar si Azure Bot Service ya tiene un token para el usuario (que se identifica mediante el remitente de la actividad actual) y el nombre de la conexión dado (que es el nombre de conexión que se usa en la configuración). Azure Bot Service tendrá ya un token en caché o no. La llamada a GetUserTokenAsync realiza esta comprobación rápida. Si Azure Bot Service tiene un token y lo devuelve, el token se puede usar inmediatamente. Si Azure Bot Service no tiene un token, este método devolverá NULL. En este caso, el bot puede enviar una OAuthCard personalizada para que el usuario inicie sesión.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -363,7 +363,7 @@ private async Task SendOAuthCardAsync(ITurnContext turnContext, IMessageActivity
             },
         },
     });
-    
+
     await turnContext.SendActivityAsync(message, cancellationToken).ConfigureAwait(false);
 }
 ```
@@ -386,7 +386,7 @@ private async sendOAuthCardAsync(context: TurnContext, prompt?: string|Partial<A
             this.settings.text
         ));
     }
-    
+
     // Send prompt
     await context.sendActivity(msg);
 }
@@ -481,7 +481,6 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 ```
 
 ---
-
 
 ### <a name="message-controller"></a>Controlador de mensajes
 
