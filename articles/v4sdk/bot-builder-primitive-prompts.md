@@ -1,18 +1,22 @@
 ---
-redirect_url: /bot-framework/bot-builder-howto-v4-state
-ms.openlocfilehash: 081c7c1f3e354d4352baea029840c8175152116e
-ms.sourcegitcommit: a54a70106b9fdf278fd7270b25dd51c9bd454ab1
+title: Creación de mensajes propios para recopilar datos de entrada del usuario | Microsoft Docs
+description: Aprenda a administrar un flujo de conversación con avisos primitivos en el SDK de Bot Builder.
+keywords: flujo de conversación, avisos
+author: v-ducvo
+ms.author: v-ducvo
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.subservice: sdk
+ms.date: 11/12/2018
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: bc223008778f0396b9bc7ff0c2ef48eb3773a105
+ms.sourcegitcommit: 0702305523f8c816b2eb95dce2ea9effb9e5ee5a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51273122"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51562098"
 ---
-<a name="--"></a><!--
----
-title: Creación de mensajes propios para recopilar datos de entrada del usuario | Microsoft Docs description: Aprenda a administrar un flujo de conversación con avisos primitivos en SDK Bot Builder.
-keywords: conversation flow, prompts author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 10/31/2018 monikerRange: 'azure-bot-service-4.0'
----
-
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Creación de mensajes propios para recopilar datos de entrada del usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -694,4 +698,3 @@ Ahora que conoce cómo administrar los estados del aviso, echemos un vistazo a c
 > [!div class="nextstepaction"]
 > [Petición de datos de entrada a los usuarios mediante el uso de Dialogs](bot-builder-prompts.md)
 
--->

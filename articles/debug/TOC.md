@@ -1,4 +1,4 @@
-# [Depuración de un servicio de bots](../bot-service-debug-bot.md)
+# [Depuración de un bot](../bot-service-debug-bot.md)
 # [Directrices de prueba y depuración](../v4sdk/bot-builder-testing-debugging.md)
 # [Depuración con Bot Framework Emulator](../bot-service-debug-emulator.md)
 # [Prueba y depuración con el archivo de transcripción](../v4sdk/bot-builder-debug-transcript.md)

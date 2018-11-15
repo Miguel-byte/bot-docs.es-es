@@ -41,8 +41,8 @@
 ### [Incorporación de comprensión lingüística natural al bot](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Respuesta a las preguntas del usuario con QnA Maker](v4sdk/bot-builder-howto-qna.md)
 ### Administración de conversaciones mediante la biblioteca de diálogos 
-#### [Recopilación de entradas del usuario](v4sdk/bot-builder-prompts.md)
 #### [Implementación de flujo de conversación secuencial](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
+#### [Recopilación de datos de entrada del usuario mediante una solicitud de diálogo](v4sdk/bot-builder-prompts.md)
 #### [Creación de un flujo de conversación avanzado con bifurcaciones y bucles](v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md)
 #### [Control de las interrupciones del usuario](v4sdk/bot-builder-howto-handle-user-interrupt.md)
 #### [Conservación de datos de usuario](v4sdk/bot-builder-tutorial-persist-user-inputs.md)

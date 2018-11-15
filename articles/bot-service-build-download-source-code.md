@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/26/2018
-ms.openlocfilehash: afb1c4a0e766df7ac2d122b3c7ca4e7959871dbb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 19dd474c16224cc811a214acea6e9cb51da95b3f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997282"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332769"
 ---
 # <a name="download-and-redeploy-bot-code"></a>Descarga y reimplementación del código de bot
 Azure Bot Service le permite descargar el proyecto de código fuente completo del bot, de forma que pueda trabajar localmente con el IDE que prefiera. Cuando haya terminado de actualizar el código, puede volver a publicar los cambios en Azure Portal. Se mostrará cómo descargar el código mediante Azure Portal y `az` cli. También se describirá cómo volver a implementar el código de bot actualizado mediante Visual Studio y `az` cli. Puede elegir el método que más le convenga.
@@ -39,14 +39,14 @@ Si tiene un bot de C#, actualice el archivo `appsettings.json` para que incluya 
   "botFileSecret": "ukxxxxxxxxxxxs="
 }
 ```
-`botFilePath` hace referencia al nombre del bot, solo tiene que reemplazar "yourbasicBot.bot" por su propio nombre de bot. Para obtener la clave `botFileSecret`, consulte el artículo [Bot File Encryption](https://aka.ms/bot-file-encryption) (Cifrado de archivos .bot) sobre la generación de una clave para el bot.
-
 
 Si tiene un bot de Node.js, agregue un archivo `.env` con las siguientes entradas:
 ```
 botFilePath=yourbasicBot.bot
 botFileSecret=ukxxxxxxxxxxxxs=
 ```
+
+`botFilePath` hace referencia al nombre del bot, solo tiene que reemplazar "yourbasicBot.bot" por su propio nombre de bot. Para obtener la clave `botFileSecret`, consulte el artículo [Bot File Encryption](https://aka.ms/bot-file-encryption) (Cifrado de archivos .bot) sobre la generación de una clave para el bot.
 
 A continuación, realice cambios en los orígenes: puede editar los archivos de origen existentes o agregar otros nuevos al proyecto. Pruebe el código con el emulador. Cuando esté listo para volver a implementar el código modificado en Azure Portal, siga las instrucciones siguientes.
 

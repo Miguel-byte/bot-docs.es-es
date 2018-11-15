@@ -8,28 +8,28 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/23/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 32743e895f2390fe018dc3801ed5b8a67b32a8cc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 77e24d58fb377ec2390671517204526bf076f78e
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999382"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645545"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-net"></a>Creación de un bot con Bot Builder SDK para .NET
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Esta guía de inicio rápido le orienta en el desarrollo de un bot con la plantilla de C# y, a continuación, con la prueba con Bot Framework Emulator. 
+Esta guía de inicio rápido le orienta en el desarrollo de un bot con la plantilla de C# y, a continuación, con la prueba con Bot Framework Emulator.
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Visual Studio [2017](https://www.visualstudio.com/downloads)
 - Plantilla de Bot Builder SDK v4 para [C#](https://botbuilder.myget.org/feed/aitemplates/package/vsix/BotBuilderV4.fbe0fc50-a6f1-4500-82a2-189314b7bea2)
-- Bot Framework [Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
+- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
 - Conocimientos sobre [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) y la programación asincrónica en [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
 
 ## <a name="create-a-bot"></a>Creación de un bot
-Instale la plantilla BotBuilderVSIX.vsix que descargó en la sección de requisitos previos. 
+Instale la plantilla BotBuilderVSIX.vsix que descargó en la sección de requisitos previos.
 
 En Visual Studio, cree un nuevo proyecto de bot con la plantilla Echo Bot V4 de Bot Builder.
 
