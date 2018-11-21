@@ -1,5 +1,5 @@
 ---
-title: Incorporación de acciones sugeridas a mensajes | Microsoft Docs
+title: Uso del botón para la entrada de datos | Microsoft Docs
 description: Aprenda a enviar acciones sugeridas dentro de mensajes mediante Bot Builder SDK para JavaScript.
 keywords: acciones sugeridas, botones, entrada adicional
 author: Kaiqb
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/13/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88186d3c6c925220fba099a5983c86b305f2dcae
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5e97bc4a991a9c9b27e9c14eb44f5fd1e230985f
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997106"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332795"
 ---
-# <a name="add-suggested-actions-to-messages"></a>Incorporación de acciones sugeridas a mensajes
+# <a name="use-button-for-input"></a>Uso del botón para la entrada de datos
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-[!include[Introduction to suggested actions](../includes/snippet-suggested-actions-intro.md)] 
+Puede habilitar el bot para que presente botones en los que el usuario puede pulsar para proporcionar una entrada. Los botones mejoran la experiencia del usuario al permitir que este responda una pregunta o haga una selección simplemente pulsando un botón, en lugar de tener que escribir una respuesta con un teclado. A diferencia de los botones que aparecen en las tarjetas enriquecidas (que permanecen visibles y accesibles para el usuario incluso después de que se pulsen), los botones que aparecen en el panel de acciones sugeridas desaparecerán una vez que el usuario haya hecho una selección. Esto evita que el usuario pulse botones obsoletos dentro de una conversación y simplifica el desarrollo de bots (ya que no necesitará tener en cuenta ese escenario). 
 
-## <a name="send-suggested-actions"></a>Envío de acciones sugeridas
+## <a name="suggest-action-using-button"></a>Acción sugerida con un botón
 
-Puede crear una lista de acciones sugeridas (también conocidas como "respuestas rápidas") que se mostrarán al usuario para un único turno de la conversación: 
+Las *acciones sugeridas* permiten al bot presentar botones. Puede crear una lista de acciones sugeridas (también conocidas como "respuestas rápidas") que se mostrarán al usuario para un único turno de la conversación: 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

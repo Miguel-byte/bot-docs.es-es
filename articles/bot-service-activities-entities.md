@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d2f4692580843f530641827707d250fa726830e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000402"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332969"
 ---
 # <a name="entities-and-activity-types"></a>Entidades y tipos de actividad
 
@@ -177,13 +177,19 @@ Las actividades pueden ser de otros tipos además de **message** (el más común
 ## <a name="message"></a>Mensaje
 
 <!-- Only the last link is different. -->
+
 ::: moniker range="azure-bot-service-3.0"
+
 El bot enviará actividades de mensaje para comunicar información a los usuarios y recibir actividades de mensaje de ellos.
-Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden incluir contenido más enriquecido, como [texto que se va a decir](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), [acciones sugeridas](v4sdk/bot-builder-howto-add-suggested-actions.md), [datos adjuntos multimedia](v4sdk/bot-builder-howto-add-media-attachments.md), [tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) y [datos específicos del canal](~/dotnet/bot-builder-dotnet-channeldata.md).
+Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden incluir contenido más enriquecido, como texto hablado, [acciones sugeridas](v4sdk/bot-builder-howto-add-suggested-actions.md), [datos adjuntos multimedia](v4sdk/bot-builder-howto-add-media-attachments.md), [tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) y [datos específicos del canal](~/dotnet/bot-builder-dotnet-channeldata.md).
+
 ::: moniker-end
+
 ::: moniker range="azure-bot-service-4.0"
+
 El bot enviará actividades de mensaje para comunicar información a los usuarios y recibir actividades de mensaje de ellos.
-Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden incluir contenido más enriquecido, como [texto que se va a decir](v4sdk/bot-builder-howto-send-messages.md#send-a-spoken-message), [acciones sugeridas](v4sdk/bot-builder-howto-add-suggested-actions.md), [datos adjuntos multimedia](v4sdk/bot-builder-howto-add-media-attachments.md), [tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) y [datos específicos del canal](~/v4sdk/bot-builder-channeldata.md).
+Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden incluir contenido más enriquecido, como texto hablado, [acciones sugeridas](v4sdk/bot-builder-howto-add-suggested-actions.md), [datos adjuntos multimedia](v4sdk/bot-builder-howto-add-media-attachments.md), [tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md#send-a-hero-card) y [datos específicos del canal](~/v4sdk/bot-builder-channeldata.md).
+
 ::: moniker-end
 
 ## <a name="contactrelationupdate"></a>contactRelationUpdate
@@ -237,6 +243,7 @@ Un bot recibe una actividad de escritura para indicar que el usuario está escri
 Un bot puede enviar una actividad de escritura para indicar al usuario que está trabajando para satisfacer una solicitud o compilar una respuesta.
 
 ::: moniker range="azure-bot-service-3.0"
+
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>

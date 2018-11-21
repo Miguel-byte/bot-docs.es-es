@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06e91d4b7d320078e83c3523e1326b82ee3fe759
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134705"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645595"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Plantilla de bot de empresa: Implementación del bot
 
@@ -76,7 +76,7 @@ El archivo README.md del proyecto creado contiene una línea de comandos de serv
 msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
 ```
 
-> Hay un problema conocido con algunos usuarios por el cual puede experimentar el siguiente error al ejecutar la implementación `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. En esta situación, vaya a https://apps.dev.microsoft.com y cree manualmente una nueva aplicación mediante la recuperación del identificador de la aplicación y la contraseña o secreto. Ejecute el comando msbot clone services anterior pero proporcione dos nuevos argumentos `appId` y `appSecret` pasando los valores que acaba de recuperar.
+> Hay un problema conocido con algunos usuarios por el cual puede experimentar el siguiente error al ejecutar la implementación `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. En esta situación, vaya a https://apps.dev.microsoft.com y cree manualmente una nueva aplicación mediante la recuperación del identificador de la aplicación y la contraseña o secreto. Ejecute el comando msbot clone services anterior pero proporcione dos nuevos argumentos `appId` y `appSecret` pasando los valores que acaba de recuperar. Asegúrese de poner el secreto entre comillas para evitar problemas de análisis, p. ej.: `-appSecret "YOUR_SECRET"`
 
 La herramienta msbot resumirá el plan de implementación incluyendo la ubicación y la SKU. Asegúrese de revisarlo antes de continuar.
 
@@ -87,7 +87,7 @@ La herramienta msbot resumirá el plan de implementación incluyendo la ubicaci�
 - Actualice el archivo `appsettings.json` con el nombre y el secreto del archivo .bot recién creado.
 - Ejecute el siguiente comando y recupere la clave InstrumentationKey de la instancia de Application Insights y actualícela en el archivo `appsettings.json`.
 
-`msbot list --bot YOURBOTFILE.bot --secret YOUR_BOT_SECRET`
+`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
           "botFilePath": ".\\YOURBOTFILE.bot",

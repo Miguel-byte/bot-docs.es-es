@@ -1,37 +1,31 @@
 ---
-title: Administración de un flujo de conversación simple con diálogos | Microsoft Docs
+title: Implementación de un flujo de conversación secuencial | Microsoft Docs
 description: Aprenda a administrar un flujo de conversación simple con diálogos en Bot Builder SDK para Node.js.
-keywords: flujo de conversación simple, diálogos, avisos, cascadas, conjunto de diálogos
-author: v-ducvo
-ms.author: v-ducvo
+keywords: flujo de conversación simple, flujo de conversación secuencial, diálogos, avisos, cascadas, conjunto de diálogos
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/25/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0225b6d81b8eb9899a5dda8dc032dcbfb573afc1
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: 06eb7d80ca8baa91c619b31dc61c7f78856a3b7c
+ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965713"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51611052"
 ---
-# <a name="manage-simple-conversation-flow-with-dialogs"></a>Administración de un flujo de conversación simple con diálogos
+# <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos. En un flujo de conversación simple, el usuario comienza por el primer paso de una *cascada*, continúa hasta el último y la conversación finaliza. Los [flujos de conversación complejos](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) incluyen ramas y bucles.
+Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos.
 
-<!-- TODO: This paragraph belongs in a conceptual topic. -->
-
-Los diálogos son estructuras del bot que actúan como funciones en el programa del bot. Los diálogos crean los mensajes que envía el bot y llevan a cabo las tareas de cálculo necesarias. Están diseñados para realizar operaciones específicas, en un orden concreto. Se pueden invocar de varias formas, unas veces en respuesta a un usuario y otras en respuesta a algún estímulo exterior, o por otros diálogos.
-
-El uso de diálogos permite al desarrollador de bots guiar el flujo de la conversación. Puede crear varios diálogos y vincularlos para crear cualquier flujo de conversación que desee que administre el bot. La biblioteca **Dialogs** del SDK Bot Builder incluye características integradas como _mensajes_, _diálogos en cascada_ y _diálogos de componentes_ que le ayudan a administrar el flujo de la conversación. Puede utilizar avisos para pedir a los usuarios distintos tipos de información. Puede usar una cascada para combinar varios pasos en una secuencia. Y puede usar los diálogos de componentes para crear sistemas de diálogo modulares que contienen varios diálogos secundarios.
-
-En este artículo, se usan _conjuntos de diálogos_ para crear un flujo de conversación que contiene tanto mensajes como cascadas. Vamos a recurrir al código del **ejemplo de mensaje de varios turnos**  [[C#](https://aka.ms/cs-multi-prompts-sample)|[JS](https://aka.ms/js-multi-prompts-sample)].
-
-Para obtener información general acerca de los diálogos, vea [biblioteca Dialogs](bot-builder-concept-dialog.md) y [estado de diálogos](bot-builder-dialog-state.md).
+En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza.
+En este artículo, usamos un _diálogo de cascada_, algunos _avisos_ y un _conjunto de diálogos_ para crear una interacción simple que pregunta al usuario una serie de preguntas.
+Vamos a recurrir al código del ejemplo de **aviso de varios turnos**  [[C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample)].
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -39,57 +33,249 @@ Para usar diálogos en general, necesita el paquete NuGet `Microsoft.Bot.Builder
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Por lo general, para usar los diálogos, necesita la biblioteca `botbuilder-dialogs`. Para instalar la biblioteca, ejecute el siguiente comando de NPM:
-```cmd
-npm install --save botbuilder-dialogs
+Para usar diálogos en general, necesita la biblioteca `botbuilder-dialogs`, que se puede descargar mediante npm.
+
+Para instalar este paquete y guardarlo como una dependencia, vaya al directorio del proyecto y use este comando.
+
+```shell
+npm install botbuilder-dialogs --save
+```
+
+---
+Las secciones siguientes reflejan los pasos a seguir para implementar diálogos simples para la mayoría de los bots:
+
+## <a name="configure-your-bot"></a>Configuración del bot
+
+Necesitamos asignar un descriptor de acceso de propiedad de estado al conjunto de diálogos que el bot puede usar para administrar el [estado del diálogo](bot-builder-dialog-state.md).
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Vamos a inicializar el descriptor de acceso de propiedad de estado para el estado del diálogo del bot en el código de configuración del archivo **Startup.cs**.
+
+Definimos una clase `MultiTurnPromptsBotAccessors` para contener los objetos de administración de estado y los descriptores de acceso de propiedad de estado del bot.
+En este caso, llamamos solo a partes del código.
+
+```csharp
+public class MultiTurnPromptsBotAccessors
+{
+    // Initializes a new instance of the class.
+    public MultiTurnPromptsBotAccessors(ConversationState conversationState, UserState userState)
+    {
+        ConversationState = conversationState ?? throw new ArgumentNullException(nameof(conversationState));
+        UserState = userState ?? throw new ArgumentNullException(nameof(userState));
+    }
+
+    public IStatePropertyAccessor<DialogState> ConversationDialogState { get; set; }
+    public IStatePropertyAccessor<UserProfile> UserProfile { get; set; }
+
+    public ConversationState ConversationState { get; }
+    public UserState UserState { get; }
+}
+```
+
+La clase de descriptores de acceso se registra en el método `ConfigureServices` de la clase `Statup`.
+De nuevo, llamamos solo a partes del código.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // ...
+
+    // Create and register state accessors.
+    // Accessors created here are passed into the IBot-derived class on every turn.
+    services.AddSingleton<MultiTurnPromptsBotAccessors>(sp =>
+    {
+        // We need to grab the conversationState we added on the options in the previous step
+        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
+        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
+        var userState = options.State.OfType<UserState>().FirstOrDefault();
+
+        // Create the custom state accessor.
+        // State accessors enable other components to read and write individual properties of state.
+        var accessors = new MultiTurnPromptsBotAccessors(conversationState, userState)
+        {
+            ConversationDialogState = conversationState.CreateProperty<DialogState>("DialogState"),
+            UserProfile = userState.CreateProperty<UserProfile>("UserProfile"),
+        };
+
+        return accessors;
+    });
+}
+```
+
+Mediante la inserción de dependencias, los descriptores de acceso estarán disponibles para el código del constructor del bot.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+En el archivo **index.js** se definen los objetos de administración de estado.
+En este caso, llamamos solo a partes del código.
+
+```javascript
+// Import required bot services. See https://aka.ms/bot-services to learn more about the different part of a bot.
+const { BotFrameworkAdapter, ConversationState, MemoryStorage, UserState } = require('botbuilder');
+
+// Define the state store for your bot. See https://aka.ms/about-bot-state to learn more about using MemoryStorage.
+// A bot requires a state storage system to persist the dialog and user state between messages.
+const memoryStorage = new MemoryStorage();
+
+// Create conversation state with in-memory storage provider.
+const conversationState = new ConversationState(memoryStorage);
+const userState = new UserState(memoryStorage);
+
+// Create the main dialog, which serves as the bot's main handler.
+const bot = new MultiTurnBot(conversationState, userState);
+```
+
+El constructor del bot creará los descriptores de acceso de propiedad de estado del bot: `this.dialogState` y `this.userProfile`.
+
+---
+
+## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Actualización del controlador de turnos del bot para llamar al diálogo
+
+Para ejecutar el diálogo, el controlador de turnos del bot debe crear un contexto de diálogo para el conjunto de diálogos que contiene los diálogos del bot. (Un bot podría definir varios conjuntos de diálogos, aunque como norma general debe definir solo uno para el bot. La [biblioteca Dialogs](bot-builder-concept-dialog.md) describe los aspectos fundamentales de los diálogos).
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+El controlador de turnos del bot ejecuta el diálogo. El controlador crea primero un elemento `DialogContext` y continúa el diálogo activo o inicia un nuevo diálogo, según corresponda. El controlador, a continuación, guarda el estado de la conversación y del usuario al final del turno.
+
+En la clase `MultiTurnPromptsBot` hemos definido una propiedad `_dialogs` que contiene el conjunto de diálogos, desde la que se genera un contexto de diálogo. Nuevamente, solo se muestra una parte del código del controlador de turnos.
+
+```csharp
+public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+{
+    // ...
+    if (turnContext.Activity.Type == ActivityTypes.Message)
+    {
+        // Run the DialogSet - let the framework identify the current state of the dialog from
+        // the dialog stack and figure out what (if any) is the active dialog.
+        var dialogContext = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
+        var results = await dialogContext.ContinueDialogAsync(cancellationToken);
+
+        // If the DialogTurnStatus is Empty we should start a new dialog.
+        if (results.Status == DialogTurnStatus.Empty)
+        {
+            await dialogContext.BeginDialogAsync("details", null, cancellationToken);
+        }
+    }
+
+    // ...
+    // Save the dialog state into the conversation state.
+    await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
+
+    // Save the user profile updates into the user state.
+    await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+El código del bot usa algunas de las clases de la biblioteca Dialogs.
+
+```javascript
+const { ChoicePrompt, DialogSet, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
+```
+
+El controlador de turnos del bot ejecuta el diálogo. El controlador crea primero un elemento `DialogContext` (`dc`) y continúa el diálogo activo o inicia un nuevo diálogo, según corresponda. El controlador, a continuación, guarda el estado de la conversación y del usuario al final del turno.
+
+La clase `MultiTurnBot` se define en el archivo **bot.js**. El constructor de esta clase agrega una propiedad `dialogs` al conjunto de diálogos, desde el que se genera un contexto de diálogo. Este bot recopila los datos del usuario una vez, con el diálogo `WHO_ARE_YOU`. Una vez que se rellena el perfil de usuario, el bot usa el diálogo `HELLO_USER` para responder. Nuevamente, solo se muestra una parte del código del controlador de turnos.
+
+```javascript
+async onTurn(turnContext) {
+    if (turnContext.activity.type === ActivityTypes.Message) {
+        // Create a dialog context object.
+        const dc = await this.dialogs.createContext(turnContext);
+
+        const utterance = (turnContext.activity.text || '').trim().toLowerCase();
+
+        // ...
+        // If the bot has not yet responded, continue processing the current dialog.
+        await dc.continueDialog();
+
+        // Start the sample dialog in response to any other input.
+        if (!turnContext.responded) {
+            const user = await this.userProfile.get(dc.context, {});
+            if (user.name) {
+                await dc.beginDialog(HELLO_USER);
+            } else {
+                await dc.beginDialog(WHO_ARE_YOU);
+            }
+        }
+    }
+
+    // ...
+    // Save changes to the user state.
+    await this.userState.saveChanges(turnContext);
+
+    // End this turn by saving changes to the conversation state.
+    await this.conversationState.saveChanges(turnContext);
+}
 ```
 
 ---
 
-## <a name="using-dialogs-to-guide-the-user-through-steps"></a>Uso de diálogos para guiar al usuario paso a paso
+En el controlador de turnos del bot creamos un contexto de diálogo para el conjunto de diálogos. El contexto de diálogo accede a la memoria caché de estado del bot, para recordar en qué parte quedó la conversación en el último turno.
 
-En este ejemplo, se crea un diálogo de varios pasos para solicitar información al usuario mediante un conjunto de diálogos.
+Si hay un diálogo activo, el método _continue dialog_ del contexto de diálogo lo avanza mediante la entrada del usuario que desencadenó este turno; de lo contrario, el bot llama al método _begin dialog_ del contexto de diálogo para iniciar un diálogo.
 
-### <a name="create-a-dialog-with-waterfall-steps"></a>Creación de un diálogo con pasos de cascada
+Por último, se llama al método _save changes_ de los objetos de administración de estado para conservar los cambios que se han producido en este turno.
 
-**WaterfallDialog** es una implementación concreta de un diálogo que se usa normalmente para recopilar información del usuario o guiarlo en una serie de tareas. Cada uno de los pasos de la conversación se implementa como una función. En cada paso, el bot [pide al usuario que intervenga](bot-builder-prompts.md), espera una respuesta y, a continuación, pasa el resultado al paso siguiente. El resultado de la primera función se pasa como argumento a la función siguiente y así sucesivamente.
+### <a name="about-dialog-and-bot-state"></a>Acerca del estado del diálogo y el bot
 
-Por ejemplo, el siguiente ejemplo de código define una matriz de delegados que representan los pasos de una **cascada**. Después de cada pregunta, el bot confirma que ha recibido la información del usuario. Hay muchas maneras de guardar la información que se recopila en un diálogo. Para ver algunas de las opciones, consulte [Conservación de datos de usuario](bot-builder-tutorial-persist-user-inputs.md).
+En este bot, definimos dos descriptores de acceso de propiedad de estado:
 
-En este ejemplo se escribe la información directamente en el perfil del usuario tal como se recopila en el diálogo.
+* Uno se crea en el estado de la conversación de la propiedad de estado del diálogo. El estado del diálogo realiza un seguimiento de dónde está el usuario dentro de los diálogos de un conjunto de diálogos y el contexto de diálogo lo actualiza, del mismo modo que cuando se llama a los métodos begin dialog o continue dialog.
+* Uno creado en el estado de usuario de la propiedad de perfil de usuario. El bot lo utiliza para realizar el seguimiento de la información que tiene sobre el usuario y este estado se administra explícitamente en el código del bot.
+
+Los métodos _get_ y _set_ del descriptor de acceso de propiedad de estado obtienen y establecen el valor de la propiedad en la memoria caché del objeto de administración de estado. La memoria caché se rellena la primera vez que se solicita el valor de una propiedad de estado en un turno, pero se debe guardar explícitamente. Para conservar los cambios en ambas propiedades de estado, llamamos al método _save changes_ del objeto de administración de estado correspondiente.
+
+Para más información, consulte el [estado del diálogo](bot-builder-dialog-state.md).
+
+## <a name="initialize-your-bot-and-define-your-dialog"></a>Inicialización del bot y definición del diálogo
+
+Nuestra conversación simple se modela como una serie de preguntas que se hacen al usuario. Las versiones de C# y JavaScript tienen pasos ligeramente diferentes:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-En este ejemplo, el diálogo en cascada se define en el archivo del bot.
+1. Preguntar su nombre.
+1. Preguntar si quieren indicar su edad.
+1. Si es así, solicitar su edad; en caso contrario, omitir este paso.
+1. Preguntar si la información recopilada es correcta.
+1. Enviar un mensaje de estado y finalizar.
 
-Haga referencia a los espacios de nombres que se utilizan en este archivo.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-```csharp
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-```
+Para el diálogo `who_are_you`:
+
+1. Preguntar su nombre.
+1. Preguntar si quieren indicar su edad.
+1. Si es así, solicitar su edad; en caso contrario, omitir este paso.
+1. Enviar un mensaje de estado y finalizar.
+
+Para el diálogo `hello_user`:
+
+1. Mostrar la información de usuario que ha reunido el bot.
+
+---
+
+Hay un par de cosas que recordar al definir sus propios pasos de cascada.
+
+* Cada turno del bot refleja la entrada del usuario, seguida de una respuesta del bot. Por lo tanto, se le pide entrada al usuario al final de un paso de cascada y se recibe su respuesta en el siguiente paso de cascada.
+* Cada aviso es realmente un diálogo en dos pasos que presenta su aviso y se repite hasta que recibe una entrada "válida". (Puede basarse en la validación integrada de cada tipo de aviso o puede agregar su propia validación personalizada al aviso. Para más información, consulte [Obtención de la entrada del usuario](bot-builder-prompts.md)).
+
+En este ejemplo, el diálogo se define en el archivo del bot y se inicializa en el constructor del bot.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Definir una propiedad de instancia para el conjunto de diálogos.
 
 ```csharp
-/// <summary>
-/// The <see cref="DialogSet"/> that contains all the Dialogs that can be used at runtime.
-/// </summary>
+// The DialogSet that contains all the Dialogs that can be used at runtime.
 private DialogSet _dialogs;
 ```
 
 Cree el conjunto de diálogos dentro del constructor del bot y agregue tanto los mensajes como el diálogo en cascada al conjunto.
 
 ```csharp
-/// <summary>
-/// Initializes a new instance of the <see cref="MultiTurnPromptsBot"/> class.
-/// </summary>
-/// <param name="accessors">A class containing <see cref="IStatePropertyAccessor{T}"/> used to manage state.</param>
 public MultiTurnPromptsBot(MultiTurnPromptsBotAccessors accessors)
 {
     _accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
@@ -115,15 +301,9 @@ public MultiTurnPromptsBot(MultiTurnPromptsBotAccessors accessors)
 }
 ```
 
-Y, por último, defina cada paso como un método independiente. También puede definir los pasos en línea mediante expresiones lambda.
+En este ejemplo se define cada paso como un método independiente. También puede definir los pasos en línea en el constructor mediante expresiones lambda.
 
 ```csharp
-/// <summary>
-/// One of the functions that make up the <see cref="WaterfallDialog"/>.
-/// </summary>
-/// <param name="stepContext">The <see cref="WaterfallStepContext"/> gives access to the executing dialog runtime.</param>
-/// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-/// <returns>A <see cref="DialogTurnResult"/> to communicate some flow control back to the containing WaterfallDialog.</returns>
 private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
     // WaterfallStep always finishes with the end of the Waterfall or with another dialog; here it is a Prompt Dialog.
@@ -131,12 +311,6 @@ private static async Task<DialogTurnResult> NameStepAsync(WaterfallStepContext s
     return await stepContext.PromptAsync("name", new PromptOptions { Prompt = MessageFactory.Text("Please enter your name.") }, cancellationToken);
 }
 
-/// <summary>
-/// One of the functions that make up the <see cref="WaterfallDialog"/>.
-/// </summary>
-/// <param name="stepContext">The <see cref="WaterfallStepContext"/> gives access to the executing dialog runtime.</param>
-/// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-/// <returns>A <see cref="DialogTurnResult"/> to communicate some flow control back to the containing WaterfallDialog.</returns>
 private async Task<DialogTurnResult> NameConfirmStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
     // Get the current profile object from user state.
@@ -152,12 +326,6 @@ private async Task<DialogTurnResult> NameConfirmStepAsync(WaterfallStepContext s
     return await stepContext.PromptAsync("confirm", new PromptOptions { Prompt = MessageFactory.Text("Would you like to give your age?") }, cancellationToken);
 }
 
-/// <summary>
-/// One of the functions that make up the <see cref="WaterfallDialog"/>.
-/// </summary>
-/// <param name="stepContext">The <see cref="WaterfallStepContext"/> gives access to the executing dialog runtime.</param>
-/// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-/// <returns>A <see cref="DialogTurnResult"/> to communicate some flow control back to the containing WaterfallDialog.</returns>
 private async Task<DialogTurnResult> AgeStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
     if ((bool)stepContext.Result)
@@ -177,12 +345,7 @@ private async Task<DialogTurnResult> AgeStepAsync(WaterfallStepContext stepConte
     }
 }
 
-/// <summary>
-/// One of the functions that make up the <see cref="WaterfallDialog"/>.
-/// </summary>
-/// <param name="stepContext">The <see cref="WaterfallStepContext"/> gives access to the executing dialog runtime.</param>
-/// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-/// <returns>A <see cref="DialogTurnResult"/> to communicate some flow control back to the containing WaterfallDialog.</returns>
+
 private async Task<DialogTurnResult> ConfirmStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
     // Get the current profile object from user state.
@@ -206,12 +369,6 @@ private async Task<DialogTurnResult> ConfirmStepAsync(WaterfallStepContext stepC
     return await stepContext.PromptAsync("confirm", new PromptOptions { Prompt = MessageFactory.Text("Is this ok?") }, cancellationToken);
 }
 
-/// <summary>
-/// One of the functions that make up the <see cref="WaterfallDialog"/>.
-/// </summary>
-/// <param name="stepContext">The <see cref="WaterfallStepContext"/> gives access to the executing dialog runtime.</param>
-/// <param name="cancellationToken">A <see cref="CancellationToken"/>.</param>
-/// <returns>A <see cref="DialogTurnResult"/> to communicate some flow control back to the containing WaterfallDialog.</returns>
 private async Task<DialogTurnResult> SummaryStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
 {
     if ((bool)stepContext.Result)
@@ -240,48 +397,28 @@ private async Task<DialogTurnResult> SummaryStepAsync(WaterfallStepContext stepC
 }
 ```
 
-El diálogo se ejecuta desde el bot en el controlador de turnos, que primero crea un contexto de diálogo y continúa o comienza el diálogo, según corresponda, y, después, guarda la conversación y el estado de usuario al final del turno.
-
-```csharp
-// Run the DialogSet - let the framework identify the current state of the dialog from
-// the dialog stack and figure out what (if any) is the active dialog.
-var dialogContext = await _dialogs.CreateContextAsync(turnContext, cancellationToken);
-var results = await dialogContext.ContinueDialogAsync(cancellationToken);
-
-// If the DialogTurnStatus is Empty we should start a new dialog.
-if (results.Status == DialogTurnStatus.Empty)
-{
-    await dialogContext.BeginDialogAsync("details", null, cancellationToken);
-}
-```
-
-```csharp
-// Save the dialog state into the conversation state.
-await _accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
-
-// Save the user profile updates into the user state.
-await _accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-```
-
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 En este ejemplo, el diálogo en cascada se define en el archivo **bot.js**.
 
-Importe los objetos que necesita para el código.
+Se definen los identificadores que se usarán para los descriptores de acceso de propiedad de estado, los avisos y los diálogos.
 
 ```javascript
-const { ActivityTypes } = require('botbuilder');
-const { ChoicePrompt, DialogSet, NumberPrompt, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
+const DIALOG_STATE_PROPERTY = 'dialogState';
+const USER_PROFILE_PROPERTY = 'user';
+
+const WHO_ARE_YOU = 'who_are_you';
+const HELLO_USER = 'hello_user';
+
+const NAME_PROMPT = 'name_prompt';
+const CONFIRM_PROMPT = 'confirm_prompt';
+const AGE_PROMPT = 'age_prompt';
 ```
 
-Defina y cree el conjunto de diálogos en el constructor del bot y agregue tanto los mensajes como el diálogo en cascada al conjunto.
+Se define y se crea el conjunto de diálogos en el constructor del bot y se agregan los avisos y el diálogo en cascada al conjunto.
+`NumberPrompt` incluye la validación personalizada para asegurarse de que el usuario escribe una edad mayor que 0.
 
 ```javascript
-/**
-*
-* @param {ConversationState} conversationState A ConversationState object used to store the dialog state.
-* @param {UserState} userState A UserState object used to store values specific to the user.
-*/
 constructor(conversationState, userState) {
     // Create a new state accessor property. See https://aka.ms/about-bot-state-accessors to learn more about bot state and state accessors.
     this.conversationState = conversationState;
@@ -305,7 +442,6 @@ constructor(conversationState, userState) {
                 return true;
             }
         }
-
         return false;
     }));
 
@@ -324,7 +460,9 @@ constructor(conversationState, userState) {
 }
 ```
 
-Y, por último, defina cada paso como un método independiente. También puede definir los pasos en línea mediante expresiones lambda.
+Puesto que los métodos del paso de diálogo hacen referencia a las propiedades de instancia, es necesario usar el método `bind`, por lo que el objeto `this` se resuelve correctamente dentro de cada método del paso.
+
+En este ejemplo se define cada paso como un método independiente. También puede definir los pasos en línea en el constructor mediante expresiones lambda.
 
 ```javascript
 // This step in the dialog prompts the user for their name.
@@ -379,68 +517,42 @@ async displayProfile(step) {
 }
 ```
 
-El diálogo se ejecuta desde el bot en el controlador de turnos, que primero crea un contexto de diálogo y continúa o comienza el diálogo, según corresponda, y, después, guarda la conversación y el estado de usuario al final del turno.
+---
 
-```javascript
-// Create a dialog context object.
-const dc = await this.dialogs.createContext(turnContext);
-```
+En este ejemplo se actualiza el estado del perfil de usuario desde el diálogo. Esta práctica puede funcionar para un bot simple, pero no funcionará si desea reutilizar un diálogo en varios bots.
 
-```javascript
-// If the bot has not yet responded, continue processing the current dialog.
-await dc.continueDialog();
-```
+Hay varias opciones para mantener independientes los pasos del diálogo y el estado del bot. Por ejemplo, una vez que el diálogo recopila toda la información, puede:
 
-```javascript
-// Start the sample dialog in response to any other input.
-if (!turnContext.responded) {
-    const user = await this.userProfile.get(dc.context, {});
-    if (user.name) {
-        await dc.beginDialog(HELLO_USER);
-    } else {
-        await dc.beginDialog(WHO_ARE_YOU);
-    }
-}
-```
+* Usar el método _end dialog_ para proporcionar los datos recopilados como valor devuelto al contexto primario. Este puede ser el controlador de turnos del bot o un diálogo activo anterior en la pila de diálogos. Así se han diseñado las clases del aviso.
+* Generar una solicitud a un servicio adecuado. Esto podría funcionar bien si el bot actúa como un front-end de un servicio de mayor tamaño.
 
-```javascript
-// Save changes to the user state.
-await this.userState.saveChanges(turnContext);
+## <a name="test-your-dialog"></a>Prueba del diálogo
 
-// End this turn by saving changes to the conversation state.
-await this.conversationState.saveChanges(turnContext);
-```
+Compile y ejecute el bot localmente y, a continuación, interactúe con el bot mediante el [emulador](../bot-service-debug-emulator.md).
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+1. El bot envía un mensaje de saludo inicial en respuesta a la actividad de actualización de conversación en la que el usuario se agrega a la conversación.
+1. Escriba `hi` u otra entrada. Dado que aún no hay un diálogo activo en este turno, el bot inicia el diálogo `details`.
+   * El bot envía el primer aviso del diálogo y espera más entradas.
+1. Responda las preguntas a medida que el bot las formula mientras avanza por el diálogo.
+1. El último paso del diálogo envía un mensaje `Thanks` en función de las entradas.
+   * Cuando el diálogo finaliza, se elimina de la pila de diálogos y el bot ya no tiene un diálogo activo.
+1. Escriba `hi` u otra entrada para iniciar el diálogo de nuevo.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+1. El bot envía un mensaje de saludo inicial en respuesta a la actividad de actualización de conversación en la que el usuario se agrega a la conversación.
+1. Escriba `hi` u otra entrada. Dado que aún no hay un diálogo activo en este turno ni perfil de usuario, el bot inicia el diálogo `who_are_you`.
+   * El bot envía el primer aviso del diálogo y espera más entradas.
+1. Responda las preguntas a medida que el bot las formula mientras avanza por el diálogo.
+1. El último paso del diálogo envía un breve mensaje de confirmación.
+1. Escriba `hi` u otra entrada.
+   * El bot inicia el diálogo de un paso `hello_user`, que muestra información de los datos recopilados y finaliza inmediatamente.
 
 ---
 
-## <a name="dialog-context-and-waterfall-step-context-objects"></a>Contexto de diálogo y contexto de ambiente de los pasos de la cascada
-
-Use el contexto de ambiente del diálogo para interactuar con un conjunto de diálogos desde el controlador de turnos del bot.
-Use el contexto de ambiente del paso de cascada para interactuar con un conjunto de diálogos desde un paso de cascada.
-
-## <a name="to-start-a-dialog"></a>Para iniciar un diálogo
-
-Para iniciar un diálogo, pase el valor de *dialogId* que desea iniciar en el método _beginDialog_, _prompt_ o _replaceDialog_ del contexto de diálogo. El método _beginDialog_ insertará el diálogo al principio de la pila, mientras que el método _replaceDialog_ sacará el diálogo actual de la pila e insertará el diálogo sustituto en ella.
-
-El método _prompt_ del contexto del diálogo es un método asistente que toma argumentos y construye las opciones adecuadas para el mensaje y, después, comienza el diálogo de mensajes. Para más información sobre los avisos, consulte [Petición de datos de entrada al usuario](bot-builder-prompts.md).
-
-## <a name="to-end-a-dialog"></a>Para finalizar un diálogo
-
-El método _end dialog_ finaliza un diálogo retirándolo de la pila y devuelve un resultado opcional al diálogo primario.
-
-Es aconsejable llamar explícitamente al método _endDialog_ al final del diálogo.
-
-## <a name="to-clear-the-dialog-stack"></a>Para borrar la pila de diálogos
-
-Si desea quitar todos los diálogos de la pila, puede borrar la pila de diálogos, para lo que debe llamar al método _cancel all dialogs_ del contexto del diálogo.
-
-## <a name="to-repeat-a-dialog"></a>Para repetir un diálogo
-
-Para repetir un diálogo, use el método _replace dialog_, que quitará el diálogo actual de la pila, insertará el diálogo sustituto al principio de la pila y comenzará dicho diálogo. Es una excelente manera de controlar [flujos de conversación complejos](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) y una buena técnica para administrar menús.
-
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha aprendido a administrar flujos de conversación simples, vamos a examinar cómo se puede sacar provecho del método _replace dialog_ para controlar flujos de conversación complejos.
-
 > [!div class="nextstepaction"]
-> [Administración de flujos de conversación complejos](bot-builder-dialog-manage-complex-conversation-flow.md)
+> [Creación de un flujo de conversación avanzado con bifurcaciones y bucles](bot-builder-dialog-manage-complex-conversation-flow.md)

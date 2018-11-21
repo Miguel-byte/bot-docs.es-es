@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b9c8a0bc04cfcf96f6c81b624464e9698eab1699
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ea507bbdf916ff1955aea0db17b765791432f430
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998968"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645585"
 ---
 # <a name="enterprise-bot-template---customize-your-bot"></a>Plantilla de bot de empresa: personalización del bot
 
@@ -108,7 +108,28 @@ En escenarios donde quiera agregar un nuevo modelo de LUIS al proyecto, deberá 
     dispatch refresh -bot "YOURBOT.bot" -secret YOURSECRET
 ```
 
-## <a name="adding-a-new-dialog"></a>Incorporación de un nuevo diálogo 
+### <a name="adding-an-additional-qnamaker-knowledgebase"></a>Adición de una base de conocimiento adicional de QnAMaker
+
+En algunos escenarios puede que desee agregar una base de conocimiento de QnAMaker adicional al bot; esto se puede realizar mediante los pasos siguientes.
+
+1. Cree una nueva base de conocimiento de QnAMaker desde un archivo JSON con la ejecución del siguiente comando en el directorio del asistente
+```shell
+qnamaker create kb --in <KB.json> --msbot | msbot connect qna --stdin --bot "YOURBOT.bot" --secret YOURSECRET
+```
+2. Ejecute el siguiente comando para actualizar el modelo de Dispatch de modo que refleje los cambios
+```shell
+dispatch refresh --bot "YOURBOT.bot" --secret YOURSECRET
+```
+3. Actualice la clase Dispatch fuertemente tipada para reflejar el nuevo origen de QnA
+```shell
+msbot get dispatch --bot "YOURBOT.bot" | luis export version --stdin > dispatch.json
+luisgen dispatch.json -cs Dispatch -o Dialogs\Shared
+```
+4.  Actualice el archivo `Dialogs\Main\MainDialog.cs` para incluir la intención de Dispatch correspondiente para el nuevo origen de QnA siguiendo el ejemplo proporcionado.
+
+Ahora podrá aprovechar varios orígenes de QnA como parte del bot.
+
+## <a name="adding-a-new-dialog"></a>Incorporación de un nuevo diálogo
 
 Para agregar un nuevo diálogo al bot, primero debe crear una nueva carpeta debajo de los diálogos y asegurarse de que esta clase se obtenga de `EnterpriseDialog`. A continuación, debe conectar la infraestructura del diálogo. El diálogo de incorporación muestra un ejemplo sencillo al que puede hacer referencia y, luego, se muestra un extracto junto con información general de los pasos.
 

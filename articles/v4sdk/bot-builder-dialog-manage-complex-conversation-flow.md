@@ -1,5 +1,5 @@
 ---
-title: Administración de un flujo de conversación complejo con diálogos | Microsoft Docs
+title: Creación de un flujo de conversación avanzado con bifurcaciones y bucles | Microsoft Docs
 description: Aprenda a administrar un flujo de conversación complejo con diálogos en el SDK de Bot Builder para Node.js.
 keywords: flujo de conversación complejo, repetir, bucle, menú, diálogos, avisos, cascadas, conjunto de diálogos
 author: v-ducvo
@@ -8,24 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/03/2018
+ms.date: 11/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bbb038554801f4585cbc1e3186d139232405b47d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9605a2f078be753023e6d178247a211ace107873
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999832"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333029"
 ---
-# <a name="manage-complex-conversation-flows-with-dialogs"></a>Administración de flujos de conversación complejos con diálogos
+# <a name="create-advance-conversation-flow-using-branches-and-loops"></a>Creación de un flujo de conversación avanzado con bifurcaciones y bucles
 
 [!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
 
-En el último artículo, se demostró el uso de la biblioteca de diálogos para administrar conversaciones sencillas. En [flujos de conversación simples](bot-builder-dialog-manage-conversation-flow.md), el usuario comienza desde el primer paso de una *cascada*, continúa hasta el último paso y el intercambio de conversación finaliza. En este artículo, usaremos diálogos para administrar conversaciones más complejas con partes que se pueden bifurcar y repetir en bucle. Para ello, se usarán varios métodos definidos en el contexto del diálogo y el contexto de pasos de cascada, y se pasarán argumentos entre las distintas partes del diálogo.
+En el último artículo, se demostró el uso de la biblioteca de diálogos para administrar conversaciones sencillas. En [flujos de conversación secuenciales](bot-builder-dialog-manage-conversation-flow.md), el usuario comienza desde el primer paso de una *cascada*, continúa hasta el último paso y el intercambio de conversación finaliza. En este artículo, usaremos diálogos para administrar conversaciones más complejas con partes que se pueden bifurcar y repetir en bucle. Para ello, se usarán varios métodos definidos en el contexto del diálogo y el contexto de pasos de cascada, y se pasarán argumentos entre las distintas partes del diálogo.
 
 Consulte [Biblioteca de diálogos](bot-builder-concept-dialog.md) para más información de contexto sobre los diálogos.
 
-Con el fin de proporcionarle más control sobre la *pila de diálogos*, la **biblioteca de diálogos** ofrece un método _replace dialogs_. Este método le permite intercambiar el diálogo activo en ese momento por otro y, al mismo tiempo, mantener el estado y el flujo de la conversación. Los métodos _begin dialog_ y _replace dialog_ le permiten crear bifurcaciones y bucles según sea necesario para crear interacciones más complejas. Si la complejidad de la conversación aumenta hasta tal punto que los diálogos en cascada se vuelven difíciles de administrar, investigue el uso de [diálogos de componentes](bot-builder-compositcontrol.md) o la construcción de una clase de administración de diálogos personalizada basada en la clase base `Dialog`.
+Con el fin de proporcionarle más control sobre la *pila de diálogos*, la **biblioteca de diálogos** ofrece un método _replace dialogs_. Este método le permite intercambiar el diálogo activo en ese momento por otro y, al mismo tiempo, mantener el estado y el flujo de la conversación. Los métodos _begin dialog_ y _replace dialog_ le permiten crear bifurcaciones y bucles según sea necesario para crear interacciones más complejas. Si la complejidad de la conversación aumenta hasta tal punto que los diálogos en cascada se vuelven difíciles de administrar, investigue la [reutilización de diálogos](bot-builder-compositcontrol.md) o la construcción de una clase de administración de diálogos personalizada basada en la clase base `Dialog`.
 
 En este artículo se crearán diálogos de ejemplo para un bot de conserje de un hotel que podrían usar los huéspedes para acceder a servicios comunes: reservar una mesa en el restaurante del hotel y pedir una comida al servicio de habitaciones.  Cada una de estas características, junto con un menú que las conecta, se creará en forma de diálogos de un conjunto de diálogos.
 
@@ -78,7 +78,7 @@ La biblioteca `botbuilder-dialogs` se puede descargar desde NPM. Para instalar l
 npm install --save botbuilder-dialogs
 ```
 
-Para usar **dialogs** en el bot, inclúyalo en el código del bot. Por ejemplo, agregue esto a su archivo **index.js**:
+Para usar **diálogos** en el bot, inclúyalos en el código del bot. Por ejemplo, agregue esto a su archivo **index.js**:
 
 ```javascript
 const { DialogSet } = require('botbuilder-dialogs');

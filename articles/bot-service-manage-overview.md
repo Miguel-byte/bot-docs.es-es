@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: c1d8adef58c688b3678af7a80964021292d0b1d0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e68db6c1fe9d3d136a8643652df034fb6df2858f
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997612"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645605"
 ---
 # <a name="manage-a-bot"></a>Administración de un bot
 
@@ -50,7 +50,7 @@ La hoja **Configuración de la aplicación** contiene información detallada sob
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID y MicrosoftAppPassword
 
-Puede encontrar los valores **MicrosoftAppID** y **MicrosoftAppPassword** de su bot en la hoja **Configuración de la aplicación**.
+Puede encontrar el valor de **MicrosoftAppID** del bot en la hoja **Configuración**. El valor de **MicrosoftAppPassword** del bot se muestra solo cuando se crea el bot.
 
 ![Microsoft AppID y contraseña](~/media/azure-manage-a-bot/app-settings.png)
 

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 08/30/2018
+ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 17b46b717cbe433c9a44b351a95e9940db6475c9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3105a82d0b234caa17a89dd9ef21318673ee46ef
+ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998782"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51645525"
 ---
 # <a name="create-a-bot-with-the-bot-builder-sdk-for-java"></a>Creación de un bot con el SDK de Bot Builder para Java 
 > [!NOTE] 
@@ -25,7 +25,7 @@ ms.locfileid: "49998782"
 
 El SDK v4 para Java consta de una serie de [bibliotecas](https://github.com/Microsoft/botbuilder-java/tree/master/libraries). Para compilarlas localmente, consulte [Building the SDK](https://github.com/Microsoft/botbuilder-java/wiki/building-the-sdk) (Compilación del SDK).
 
-- Instale [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases)
+- Instalación de Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
 
 ## <a name="create-echobot"></a>Creación de EchoBot
 

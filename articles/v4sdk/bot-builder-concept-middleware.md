@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/24/2018
+ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 38d876e11d00a5471f2dcbfca44eb23290b7476c
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 713a53947a8ea6681f1793f9796a86c6d8014e29
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997982"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332929"
 ---
 # <a name="middleware"></a>Software intermedio
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-El software intermedio es simplemente una clase que se encuentra entre el adaptador y la lógica del bot, que se agrega a la colección de software intermedio del adaptador durante la inicialización. El SDK le permite escribir su propio software intermedio o agregar componentes reutilizables de software intermedio creado por otros usuarios. Todas las actividades que entran y salen de su bot pasan por el middleware.
+El software intermedio es simplemente una clase que se encuentra entre el adaptador y la lógica del bot, que se agrega a la colección de software intermedio del adaptador durante la inicialización. El SDK le permite escribir su propio middleware o agregar middleware creado por terceros. Todas las actividades que entran y salen de su bot pasan por el middleware.
 
 El adaptador procesa y dirige las actividades entrantes a través de la canalización de software intermedio del bot a la lógica del bot y, luego, otra vez de vuelta. Cuando las actividades entran y salen de los bots, cada fragmento de software intermedio puede inspeccionar o actuar sobre la actividad, tanto antes como después de que se ejecute la lógica del bot.
 
@@ -66,7 +66,7 @@ Los primeros elementos de la canalización de software intermedio probablemente 
 Los últimos elementos de la canalización de software intermedio deberían ser el software intermedio específico del bot, que es el que se implementa para realizar el procesamiento de cada mensaje que se envía al bot. Si el software intermedio usa información de estado u otra información definida en el contexto del bot, agréguela a la canalización de software intermedio después del software intermedio que modifica el estado o el contexto.
 
 ## <a name="short-circuiting"></a>Cortocircuitos
-Un concepto importante relacionado con el middleware (y los [controladores de respuestas](bot-builder-basics.md#response-event-handlers)) es el _cortocircuito_. Si la ejecución va a continuar por las capas siguientes, el middleware (o un controlador de respuestas) debe pasar la ejecución mediante una llamada al delegado _next_.  Si no se llama al delegado next en dicho middleware (o controlador de respuestas), se producirá un cortocircuito en la canalización asociada y las capas posteriores no se ejecutarán, lo que significa que se omiten no solo toda la lógica del bot, sino también el middleware posterior de la canalización. Hay una sutil diferencia entre que el middleware cortocircuite un turno y que lo haga el controlador de respuestas.
+Una idea importante relacionada con el middleware y los controladores de respuesta es el _cortocircuito_. Si la ejecución va a continuar por las capas siguientes, el middleware (o un controlador de respuestas) debe pasar la ejecución mediante una llamada al delegado _next_.  Si no se llama al delegado next en dicho middleware (o controlador de respuestas), se producirá un cortocircuito en la canalización asociada y las capas posteriores no se ejecutarán, lo que significa que se omiten no solo toda la lógica del bot, sino también el middleware posterior de la canalización. Hay una sutil diferencia entre que el middleware cortocircuite un turno y que lo haga el controlador de respuestas.
 
 Si el middleware cortocircuita un turno, no se llama al controlador de turnos del bot, pero todo el código del middleware que se haya ejecutado antes de ese momento en la canalización se seguirá ejecutando hasta su finalización. 
 
@@ -75,5 +75,14 @@ En el caso de los controladores de eventos, si no se llama a _next_ el evento se
 > [!TIP]
 > Si provoca un cortocircuito en un evento de respuestas, como `SendActivities`, asegúrese de que es el comportamiento que tenía previsto. De lo contrario, puede resultar muy difícil solucionar los errores.
 
+## <a name="response-event-handlers"></a>Controladores de eventos de respuesta
+Además de la lógica de la aplicación y del middleware, se pueden agregar controladores de respuesta (a veces llamados controladores de eventos o controladores de eventos de actividad) al objeto de contexto. Se llama a estos controladores cuando la respuesta asociada se produce en el objeto de contexto actual, antes de ejecutar la respuesta real. Estos controladores son útiles si sabe que querrá hacer algo, ya sea antes o después del evento real, para todas las actividades de ese tipo durante el resto de la respuesta actual.
+
+> [!WARNING] 
+> Tenga cuidado de no llamar a un método de respuesta de actividad desde su controlador de eventos de respuesta correspondiente, por ejemplo, mediante una llamada al método de actividad de envío desde un controlador de actividad de envío. Si lo hace, puede generar un bucle infinito.
+
+Recuerde que cada actividad nueva obtiene un nuevo subproceso en el que se ejecuta. Cuando se crea el subproceso para procesar la actividad, la lista de controladores de esa actividad se copia en ese subproceso nuevo. No se ejecutará para ese evento de actividad específico ningún controlador agregado después de ese punto.
+El adaptador administra los controladores registrados en un objeto de contexto de forma muy similar al modo en que administra la canalización de middleware. Es decir, se llama a los controladores en el orden en que se agregan y al llamar al delegado next se pasa el control al siguiente controlador de eventos registrado. Si un controlador no llama al delegado next, no se llama a ninguno de los controladores de eventos posteriores; se produce un cortocircuito en el evento y el adaptador no envía la respuesta al canal.
+
 ## <a name="additional-resources"></a>Recursos adicionales
-Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en el SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs)|[JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].
+Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en el SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

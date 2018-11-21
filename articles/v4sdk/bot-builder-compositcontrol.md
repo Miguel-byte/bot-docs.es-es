@@ -1,5 +1,5 @@
 ---
-title: Creación de un conjunto de diálogos integrado | Microsoft Docs
+title: Reutilización de diálogos | Microsoft Docs
 description: Aprenda a modularizar su lógica de bot mediante el contenedor de diálogos de Bot Builder SDK para Node.js y C#.
 keywords: control compuesto, lógica de bot modular
 author: v-ducvo
@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/08/2018
+ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0fdb80e45b343faa0eac50db045637e1ee61186e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5e1ddbef6181e265213ffa1fdcb65909e524be51
+ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999798"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51332999"
 ---
-# <a name="create-an-integrated-set-of-dialogs"></a>Creación de un conjunto de diálogos integrado
+# <a name="reuse-dialogs"></a>Reutilización de diálogos
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
