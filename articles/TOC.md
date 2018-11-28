@@ -10,7 +10,7 @@
 ## [Uso de varios modelos de LUIS y QnA](v4sdk/bot-builder-tutorial-dispatch.md)
 ## [Adición de autenticación al bot](bot-builder-tutorial-authentication.md)
 # Ejemplos
-## [Repositorio de ejemplos de GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/readme.md)
+## [Repositorio de ejemplos de GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
 # Conceptos
 ## [Funcionamiento de los bots](v4sdk/bot-builder-basics.md)
 ## [Administración de estados](v4sdk/bot-builder-concept-state.md)
