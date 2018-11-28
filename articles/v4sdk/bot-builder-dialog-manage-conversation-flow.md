@@ -8,45 +8,30 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 06eb7d80ca8baa91c619b31dc61c7f78856a3b7c
-ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
+ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611052"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288834"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos.
+Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos. En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza. En este artículo, usamos un _diálogo de cascada_, algunos _avisos_ y un _conjunto de diálogos_ para crear una interacción simple que pregunta al usuario una serie de preguntas.
 
-En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza.
-En este artículo, usamos un _diálogo de cascada_, algunos _avisos_ y un _conjunto de diálogos_ para crear una interacción simple que pregunta al usuario una serie de preguntas.
-Vamos a recurrir al código del ejemplo de **aviso de varios turnos**  [[C#](https://aka.ms/cs-multi-prompts-sample) | [JS](https://aka.ms/js-multi-prompts-sample)].
+## <a name="prerequisites"></a>Requisitos previos
+- [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/blob/master/README.md#download)
+- El código de este artículo se basa en el ejemplo de varios turnos de preguntas **multi-turn-prompt**. Necesitará una copia del ejemplo en [C# ](https://aka.ms/cs-multi-prompts-sample) o en [JS](https://aka.ms/js-multi-prompts-sample).
+- Conocimientos sobre los [conceptos básicos de bots](bot-builder-basics.md), la [biblioteca de diálogos](bot-builder-concept-dialog.md), el [estado del diálogo](bot-builder-dialog-state.md) y el archivo [.bot](bot-file-basics.md).
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Para usar diálogos en general, necesita el paquete NuGet `Microsoft.Bot.Builder.Dialogs` en su proyecto o solución.
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-Para usar diálogos en general, necesita la biblioteca `botbuilder-dialogs`, que se puede descargar mediante npm.
-
-Para instalar este paquete y guardarlo como una dependencia, vaya al directorio del proyecto y use este comando.
-
-```shell
-npm install botbuilder-dialogs --save
-```
-
----
 Las secciones siguientes reflejan los pasos a seguir para implementar diálogos simples para la mayoría de los bots:
 
 ## <a name="configure-your-bot"></a>Configuración del bot
-
-Necesitamos asignar un descriptor de acceso de propiedad de estado al conjunto de diálogos que el bot puede usar para administrar el [estado del diálogo](bot-builder-dialog-state.md).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -132,7 +117,7 @@ El constructor del bot creará los descriptores de acceso de propiedad de estado
 
 ## <a name="update-the-bot-turn-handler-to-call-the-dialog"></a>Actualización del controlador de turnos del bot para llamar al diálogo
 
-Para ejecutar el diálogo, el controlador de turnos del bot debe crear un contexto de diálogo para el conjunto de diálogos que contiene los diálogos del bot. (Un bot podría definir varios conjuntos de diálogos, aunque como norma general debe definir solo uno para el bot. La [biblioteca Dialogs](bot-builder-concept-dialog.md) describe los aspectos fundamentales de los diálogos).
+Para ejecutar el diálogo, el controlador de turnos del bot debe crear un contexto de diálogo para el conjunto de diálogos que contiene los diálogos del bot. Un bot podría definir varios conjuntos de diálogos, aunque como norma general debe definir solo uno para el bot. 
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -228,8 +213,6 @@ En este bot, definimos dos descriptores de acceso de propiedad de estado:
 
 Los métodos _get_ y _set_ del descriptor de acceso de propiedad de estado obtienen y establecen el valor de la propiedad en la memoria caché del objeto de administración de estado. La memoria caché se rellena la primera vez que se solicita el valor de una propiedad de estado en un turno, pero se debe guardar explícitamente. Para conservar los cambios en ambas propiedades de estado, llamamos al método _save changes_ del objeto de administración de estado correspondiente.
 
-Para más información, consulte el [estado del diálogo](bot-builder-dialog-state.md).
-
 ## <a name="initialize-your-bot-and-define-your-dialog"></a>Inicialización del bot y definición del diálogo
 
 Nuestra conversación simple se modela como una serie de preguntas que se hacen al usuario. Las versiones de C# y JavaScript tienen pasos ligeramente diferentes:
@@ -260,7 +243,7 @@ Para el diálogo `hello_user`:
 Hay un par de cosas que recordar al definir sus propios pasos de cascada.
 
 * Cada turno del bot refleja la entrada del usuario, seguida de una respuesta del bot. Por lo tanto, se le pide entrada al usuario al final de un paso de cascada y se recibe su respuesta en el siguiente paso de cascada.
-* Cada aviso es realmente un diálogo en dos pasos que presenta su aviso y se repite hasta que recibe una entrada "válida". (Puede basarse en la validación integrada de cada tipo de aviso o puede agregar su propia validación personalizada al aviso. Para más información, consulte [Obtención de la entrada del usuario](bot-builder-prompts.md)).
+* Cada aviso es realmente un diálogo en dos pasos que presenta su aviso y se repite hasta que recibe una entrada "válida". 
 
 En este ejemplo, el diálogo se define en el archivo del bot y se inicializa en el constructor del bot.
 
@@ -528,7 +511,7 @@ Hay varias opciones para mantener independientes los pasos del diálogo y el est
 
 ## <a name="test-your-dialog"></a>Prueba del diálogo
 
-Compile y ejecute el bot localmente y, a continuación, interactúe con el bot mediante el [emulador](../bot-service-debug-emulator.md).
+Cree y ejecute el bot localmente y, después, interactúe con el bot mediante el emulador.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -551,6 +534,9 @@ Compile y ejecute el bot localmente y, a continuación, interactúe con el bot m
    * El bot inicia el diálogo de un paso `hello_user`, que muestra información de los datos recopilados y finaliza inmediatamente.
 
 ---
+
+## <a name="additional-resources"></a>Recursos adicionales
+Puede basarse en la validación integrada de cada tipo de aviso, tal como se muestra aquí, o puede agregar su propia validación personalizada al aviso. Para más información, consulte [Recopilación de datos de entrada del usuario mediante un aviso de diálogo](bot-builder-prompts.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

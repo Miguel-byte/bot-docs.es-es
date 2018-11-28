@@ -1,22 +1,18 @@
 ---
-title: Formulación de preguntas al usuario | Microsoft Docs
-description: Aprenda a usar el modelo en cascada para preguntar al usuario varias entradas en Bot Builder SDK.
-keywords: cascadas, diálogos, formular una pregunta, avisos
-author: v-ducvo
-ms.author: v-ducvo
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 5/10/2018
-monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 84c86e9cc295cd2a1dce0857fa7ab629c219dab1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: /bot-framework/bot-builder-prompts
+ms.openlocfilehash: e7cfbad19290b3ef61d40dc90493db8f530a9a4e
+ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997482"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51826942"
 ---
+<a name="--"></a><!--
+---
+title: Formulación de preguntas al usuario | Microsoft Docs description: Aprenda a usar el modelo de cascada para solicitar al usuario varias entradas en Bot Builder SDK.
+keywords: waterfalls, dialogs, asking a question, prompts author: v-ducvo ms.author: v-ducvo manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 5/10/2018 monikerRange: 'azure-bot-service-4.0'
+---
+
 # <a name="ask-the-user-questions"></a>Formulación de preguntas al usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -500,3 +496,5 @@ En este tutorial, el bot guarda las entradas del usuario en variables dentro de 
 
 > [!div class="nextstepaction"]
 > [Conservación de datos de usuario](bot-builder-tutorial-persist-user-inputs.md)
+
+-->

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 713a53947a8ea6681f1793f9796a86c6d8014e29
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: bd431da58d13f3024617900bbeabd8007a2e3bb8
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332929"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288805"
 ---
 # <a name="middleware"></a>Software intermedio
 
@@ -83,6 +83,16 @@ Además de la lógica de la aplicación y del middleware, se pueden agregar cont
 
 Recuerde que cada actividad nueva obtiene un nuevo subproceso en el que se ejecuta. Cuando se crea el subproceso para procesar la actividad, la lista de controladores de esa actividad se copia en ese subproceso nuevo. No se ejecutará para ese evento de actividad específico ningún controlador agregado después de ese punto.
 El adaptador administra los controladores registrados en un objeto de contexto de forma muy similar al modo en que administra la canalización de middleware. Es decir, se llama a los controladores en el orden en que se agregan y al llamar al delegado next se pasa el control al siguiente controlador de eventos registrado. Si un controlador no llama al delegado next, no se llama a ninguno de los controladores de eventos posteriores; se produce un cortocircuito en el evento y el adaptador no envía la respuesta al canal.
+
+## <a name="handling-state-in-middleware"></a>Control del estado en el middleware
+
+Un método común para guardar el estado es llamar al método para guardar cambios al final del controlador de turnos. Aquí hay un diagrama con una especial atención a la llamada.
+
+![problemas de estado de middleware](media/bot-builder-dialog-state-problem.png)
+
+El problema con este enfoque es que las actualizaciones de estado realizadas por parte de algún middleware personalizado que tienen lugar una vez que vuelve el controlador de turnos del bot, no se guardarán en un almacenamiento duradero. La solución es mover la llamada al método para guardar cambios a después de que el middleware personalizado se haya completado mediante la adición de AutoSaveChangesMiddleware al principio de la pila de middleware, o al menos antes de que cualquiera del estado del middleware se actualice. A continuación se muestra la ejecución.
+
+![solución de estados de middleware](media/bot-builder-dialog-state-solution.png)
 
 ## <a name="additional-resources"></a>Recursos adicionales
 Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en el SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

@@ -8,20 +8,24 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 25745d380e53173c4dc67d280c120ced5845078b
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: eb62df9bd1f74ab6de9b67fe352b1af4620a6bc6
+ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332919"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51715109"
 ---
 # <a name="send-welcome-message-to-users"></a>Envío de mensajes de bienvenida a los usuarios
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 El objetivo principal al crear cualquier bot es que el usuario participe en una conversación que tenga sentido. Una de las mejores formas de lograr este objetivo es asegurarse de que desde el momento en que un usuario se conecta por primera vez, comprende la finalidad principal del bot y sus funcionalidades, es decir, el motivo de que se haya creado el bot. Este artículo proporciona ejemplos de código que le ayudarán a dar la bienvenida a los usuarios del bot.
+
+## <a name="prerequisites"></a>Requisitos previos
+- Comprender los [conceptos básicos de bot](bot-builder-basics.md). 
+- Una copia del **ejemplo de bienvenida al usuario** en [C#](https://aka.ms/proactive-sample-cs) o en [JS](https://aka.ms/proactive-sample-js). El código del ejemplo se utiliza para explicar cómo enviar mensajes de bienvenida.
 
 ## <a name="same-welcome-for-different-channels"></a>Misma bienvenida para diferentes canales
 Cada vez que los usuarios interactúan por primera vez con el bot, se debe generar un mensaje de bienvenida. Para lograr esto, puede supervisar los tipos de actividad del bot y esperar nuevas conexiones. Según el canal, cada nueva conexión puede generar hasta dos actividades de actualización de la conversación.
@@ -39,25 +43,13 @@ Este mensaje duplicado se puede evitar mediante la generación de un mensaje de 
 - Se ha producido un evento de actualización de la conversación.
 - Se ha agregado un nuevo miembro (usuario) a la conversación.
 
-El siguiente ejemplo espera una *actividad de actualización de la conversación* nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de aviso para ignorar las entradas iniciales del usuario en la conversación. Puede descargar el código fuente completo en [[C#](https://aka.ms/bot-welcome-sample-cs) o [JS](https://aka.ms/bot-welcome-sample-js)] de GitHub.
+El siguiente ejemplo espera una *actividad de actualización de la conversación* nueva, envía solo un mensaje de bienvenida cuando el usuario se une a la conversación y establece una marca de estado de aviso para ignorar las entradas iniciales del usuario en la conversación. 
 
 [!INCLUDE [alert-await-send-activity](../includes/alert-await-send-activity.md)]
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Este conjunto de bibliotecas se utiliza para admitir el siguiente ejemplo de código de C#
-
-```csharp
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Schema;
-```
-
-Ahora es necesario crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.
+Es  necesario crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.
@@ -428,6 +420,8 @@ switch (text)
 }
 ```
 ---
+## <a name="test-the-bot"></a>Probar el bot
+Consulte las instrucciones del archivo [Léame](https://github.com/Microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/03.welcome-user/readme.md) para saber cómo ejecutar y probar el bot. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]

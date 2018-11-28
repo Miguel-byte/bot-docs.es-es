@@ -1,689 +1,128 @@
 ---
 title: Creación de mensajes propios para recopilar datos de entrada del usuario | Microsoft Docs
 description: Aprenda a administrar un flujo de conversación con avisos primitivos en el SDK de Bot Builder.
-keywords: flujo de conversación, avisos
-author: v-ducvo
-ms.author: v-ducvo
+keywords: flujo de la conversación, avisos, estado de conversación, estado de usuario, avisos personalizados
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/12/2018
+ms.date: 11/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bc223008778f0396b9bc7ff0c2ef48eb3773a105
-ms.sourcegitcommit: 0702305523f8c816b2eb95dce2ea9effb9e5ee5a
+ms.openlocfilehash: e308457e9fb228dd141ec081ac3c5daa5fd54cac
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51562098"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288824"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Creación de mensajes propios para recopilar datos de entrada del usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-A menudo, una conversación entre un usuario y un bot implica mostrar preguntas (avisos) al usuario para obtener información, analizar la respuesta del usuario y, a continuación, actuar en dicha información. En el tema sobre cómo [preguntar a los usuarios mediante la biblioteca Dialogs](bot-builder-prompts.md), se detalla cómo pedir datos de entrada a los usuarios mediante la biblioteca **Dialogs**. Entre otras cosas, la biblioteca **Dialogs** se encarga del seguimiento de la conversación actual y de la pregunta que se está planteando en cada momento. También proporciona métodos para solicitar y validar diferentes tipos de información como texto, números, fecha y hora, etc.
+A menudo, una conversación entre un usuario y un bot implica mostrar preguntas (avisos) al usuario para obtener información, analizar la respuesta del usuario y, a continuación, actuar en dicha información.
 
-En determinadas situaciones, puede que la biblioteca integrada **Dialogs** no sea ser la solución adecuada para su bot; **Dialogs** podría agregar demasiada sobrecarga para bots simples, ser demasiado rígida o, por el contrario, no conseguir lo que su bot necesita hacer. En esos casos, puede omitir la biblioteca e implementar su propia lógica de preguntas. En este tema se mostrará cómo configurar un *bot Echo* básico para que pueda administrar la conversación con sus propios avisos.
+El bot debe hacer un seguimiento del contexto de una conversación, para que pueda controlar su comportamiento y recordar las respuestas a las preguntas anteriores. El *estado* de un bot es la información que sigue con el fin de responder de forma adecuada a los mensajes entrantes.
 
-## <a name="track-prompt-states"></a>Seguimiento del estado de los avisos
+## <a name="prerequisites"></a>Requisitos previos
 
-En una conversación controlada por avisos, necesita controlar dónde está en la conversación y qué pregunta se está haciendo en cada momento. En el código, esto se traduce en administrar un par de marcas.
+- El código de este artículo se basa en el ejemplo para **solicitar una entrada a los usuarios**. Necesitará una copia del ejemplo en [C# ](https://aka.ms/cs-primitive-prompt-sample) o en [JS](https://aka.ms/js-primitive-prompt-sample).
+- Conocimientos sobre la [administración del estado](bot-builder-concept-state.md) y cómo [guardar los datos de usuario y conversación](bot-builder-howto-v4-state.md).
+- [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started), para probar el bot localmente.
 
-Por ejemplo, puede crear un par de propiedades que desea controlar.
+## <a name="about-the-sample-code"></a>Acerca del código de ejemplo
 
-Estos estados realizan un seguimiento de qué tema y qué aviso están actualmente activados. Para asegurarse de que estas marcas funcionarán según lo esperado cuando se implementen en la nube, vamos a almacenarlas en el [estado de la conversación](bot-builder-howto-v4-state.md). 
+En este artículo, le formulamos al usuario una serie de preguntas, validamos algunas de sus respuestas y guardamos sus comentarios.
+Usamos el controlador de turnos del bot y las propiedades de estado de usuario y de conversación para administrar el flujo de la conversación y la colección de entradas.
+
+1. Definición y configuración de estados
+1. Uso de las propiedades de estado para dirigir la conversación
+   1. Actualice el controlador de turnos del bot.
+   1. Implemente un método auxiliar para administrar la colección de datos de usuario.
+   1. Implemente los métodos de validación para la entrada del usuario.
+
+## <a name="define-and-configure-state"></a>Definición y configuración de estados
+
+Necesitamos configurar el bot para que realice el seguimiento de la siguiente información:
+
+- El nombre del usuario, la edad y la fecha elegida, que se definirá en el estado de usuario.
+- Lo que acabamos de preguntar al usuario, que se definirá en el estado de conversación.
+
+Como no tenemos previsto implementar este bot, vamos a configurar tanto el estado de usuario como el de conversación para que utilicen el _almacenamiento en memoria_. A continuación, se describen algunos aspectos claves del código de configuración.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Vamos a crear dos clases para realizar el seguimiento del estado. **TopicState** para realizar un seguimiento del progreso de los avisos de la conversación y **UserProfile** para realizar el seguimiento de la información que proporciona el usuario. Esta información se va a almacenar en el [estado](bot-builder-howto-v4-state.md) del bot en un paso posterior.
+Se definen las siguientes variables.
 
-```csharp
-/// <summary>
-/// Contains conversation state information about the conversation in progress.
-/// </summary>
-public class TopicState
-{
-    /// <summary>
-    /// Identifies the current "topic" of conversation.
-    /// </summary>
-    public string Topic { get; set; }
+- Una clase `UserProfile` para la información de usuario que recopilará el bot.
+- Una clase `ConversationFlow` para agregar información sobre dónde estamos en la conversación.
+- Una enumeración `ConversationFlow.Question` interna para el seguimiento de dónde nos encontramos en la conversación.
+- Una clase `CustomPromptBotAccessors` en la que se agrupa la información de la administración de estado.
 
-    /// <summary>
-    /// Indicates whether we asked the user a question last turn, and
-    /// if so, what it was.
-    /// </summary>
-    public string Prompt { get; set; }
-}
-```
-
-```csharp
-/// <summary>
-/// Contains user state information for the user's profile.
-/// </summary>
-public class UserProfile
-{
-    public string UserName { get; set; }
-
-    public int? Age { get; set; }
-
-    public string WorkPlace { get; set; }
-}
-```
+La clase de descriptores de acceso del bot contiene nuestros objetos de administración de estado y del descriptor de acceso de la propiedad de estado, y se pasa al bot mediante la inyección de dependencias en ASP.NET Core. En el bot, se registra la información del descriptor de acceso de propiedad de estado que aparece cuando el bot crea cada turno.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-En **index.js**, actualice la instrucción necesaria para que incluya `UserState`.
-
-```javascript
-const { BotFrameworkAdapter, MemoryStorage, ConversationState, UserState } = require('botbuilder');
-```
-
-A continuación, cree un objeto de administración de estados de usuario y páselo al crear su bot.
-
-```javascript
-// Create conversation and user state with in-memory storage provider.
-const conversationState = new ConversationState(memoryStorage);
-const userState = new UserState(memoryStorage);
-
-// Create the bot.
-const myBot = new MyBot(conversationState, userState);
-```
-
-En **bot.js**, defina los identificadores de los descriptores de acceso de propiedad de estado que se utilizarán para administrar el [estado](bot-builder-howto-v4-state.md) del bot. Defina también los mensajes que se usarán para recopilar la información que deseamos obtener del usuario.
-
-Agregue este código fuera de la clase `MyBot`.
-
-```javascript
-// Define identifiers for our state property accessors.
-const TOPIC_STATE_PROPERTY = 'topicStateProperty';
-const USER_PROFILE_PROPERTY = 'userProfileProperty';
-
-// Define the prompts to use to ask for user profile information.
-const fields = {
-    userName: "What is your name?",
-    age: "How old are you?",
-    workPlace: "Where do you work?"
-}
-```
+Se crean los objetos de administración de estado y se pasan cuando se crea el bot.
+En el bot, se definen los identificadores para las propiedades de estado y para realizar el seguimiento de dónde se está en la conversación, y después se registran los objetos de administración de estado y se crean los descriptores de acceso de propiedad de estado en el constructor del bot.
 
 ---
 
-## <a name="manage-a-topic-of-conversation"></a>Administración de un tema de conversación
+## <a name="use-state-properties-to-direct-the-conversation"></a>Uso de las propiedades de estado para dirigir la conversación
 
-En una conversación secuencial, como aquellas en las que se reúne información del usuario, necesita saber cuándo ha escrito el usuario la conversación y en qué parte de ella está. Puede realizar un seguimiento de esto en el controlador principal de turnos del bot. Para ello, puede establecer y comprobar las marcas del aviso definidas anteriormente y, a continuación, actuar en consecuencia. El ejemplo siguiente muestra cómo puede usar estas marcas para recopilar información del perfil del usuario a través de la conversación.
+Cuando se tienen configuradas las propiedades de estado, se pueden usar en el bot.
 
-El código del bot se presenta aquí y se describe en la sección siguiente.
+- Defina el [controlador de turnos](#the-bots-turn-handler) para acceder al estado y llamar al método auxiliar.
+- Implemente un [método auxiliar](#filling-out-the-user-profile) para administrar la colección del perfil de usuario.
+- Implemente los [métodos de validación](#parse-and-validate-input) para analizar y validar la entrada del usuario.
+
+### <a name="the-bots-turn-handler"></a>Controlador de turnos del bot
+
+Se utilizan los descriptores de acceso de propiedad de estado para obtener las propiedades de estado del contexto de turnos.
+Si es necesario rellenar el perfil de usuario, se llama al método auxiliar y, después, guarde los cambios de estado.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Para ASP.NET Core, debemos configurar el bot y la inyección de dependencias en primer lugar.
-
-Cambie el nombre del archivo **EchoWithCounterBot.cs** a **PrimitivePromptsBot.cs** y actualice también el nombre de la clase. Esta clase contiene la lógica del bot y volveremos para actualizarla en breve.
-
-Cambie el nombre del archivo **EchoBotAccessors.cs** a **BotAccessors.cs** y actualice también el nombre de la clase. Esta clase contiene los objetos de administración de estado y los descriptores de acceso de la propiedad de estado del bot. Actualice la definición según lo siguiente.
-
-```csharp
-using Microsoft.Bot.Builder;
-using System;
-
-/// <summary>
-/// Contains the state and state property accessors for the primitive prompts bot.
-/// </summary>
-public class BotAccessors
-{
-    public const string TopicStateName = "PrimitivePrompts.TopicStateAccessor";
-
-    public const string UserProfileName = "PrimitivePrompts.UserProfileAccessor";
-
-    public ConversationState ConversationState { get; }
-
-    public UserState UserState { get; }
-
-    public IStatePropertyAccessor<TopicState> TopicStateAccessor { get; set; }
-
-    public IStatePropertyAccessor<UserProfile> UserProfileAccessor { get; set; }
-
-    public BotAccessors(ConversationState conversationState, UserState userState)
-    {
-        if (conversationState is null)
-        {
-            throw new ArgumentNullException(nameof(conversationState));
-        }
-
-        if (userState is null)
-        {
-            throw new ArgumentNullException(nameof(userState));
-        }
-
-        this.ConversationState = conversationState;
-        this.UserState = userState;
-    }
-}
-```
-
-En el archivo **Startup.cs**, actualice el método `ConfigureServices` a partir de donde se configura el objeto `IStorage`.
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddBot<PrimitivePromptsBot>(options =>
-    {
-        // ...
-
-        // The Memory Storage used here is for local bot debugging only. When the bot
-        // is restarted, everything stored in memory will be gone.
-        IStorage dataStore = new MemoryStorage();
-
-        var conversationState = new ConversationState(dataStore);
-        options.State.Add(conversationState);
-
-        var userState = new UserState(dataStore);
-        options.State.Add(userState);
-    });
-
-    // Create and register state accessors.
-    // Accessors created here are passed into the IBot-derived class on every turn.
-    services.AddSingleton<BotAccessors>(sp =>
-    {
-        var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-        var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-        var userState = options.State.OfType<UserState>().FirstOrDefault();
-
-        // Create the custom state accessor.
-        // State accessors enable other components to read and write individual properties of state.
-        var accessors = new BotAccessors(conversationState, userState)
-        {
-            TopicStateAccessor = conversationState.CreateProperty<TopicState>(BotAccessors.TopicStateName),
-            UserProfileAccessor = userState.CreateProperty<UserProfile>(BotAccessors.UserProfileName),
-        };
-
-        return accessors;
-    });
-}
-```
-
-Por último, actualice la lógica del bot en el archivo **PrimitivePromptsBot.cs**.
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Schema;
-
-public class PrimitivePromptsBot : IBot
-{
-    public const string ProfileTopic = "profile";
-
-    /// <summary>
-    /// Describes a field in the user profile.
-    /// </summary>
-    private class UserFieldInfo
-    {
-        /// <summary>
-        /// The ID to use for this field.
-        /// </summary>
-        public string Key { get; set; }
-
-        /// <summary>
-        /// The prompt to use to ask for a value for this field.
-        /// </summary>
-        public string Prompt { get; set; }
-
-        /// <summary>
-        /// Gets the value of the corresponding field.
-        /// </summary>
-        public Func<UserProfile, string> GetValue { get; set; }
-
-        /// <summary>
-        /// Sets the value of the corresponding field.
-        /// </summary>
-        public Action<UserProfile, string> SetValue { get; set; }
-    }
-
-    /// <summary>
-    /// The prompts for the user profile, indexed by field name.
-    /// </summary>
-    private static List<UserFieldInfo> UserFields { get; } = new List<UserFieldInfo>
-    {
-        new UserFieldInfo {
-            Key = nameof(UserProfile.UserName),
-            Prompt = "What is your name?",
-            GetValue = (profile) => profile.UserName,
-            SetValue = (profile, value) => profile.UserName = value,
-        },
-        new UserFieldInfo {
-            Key = nameof(UserProfile.Age),
-            Prompt = "How old are you?",
-            GetValue = (profile) => profile.Age.HasValue? profile.Age.Value.ToString() : null,
-            SetValue = (profile, value) =>
-            {
-                if (int.TryParse(value, out int age))
-                {
-                    profile.Age = age;
-                }
-            },
-        },
-        new UserFieldInfo {
-            Key = nameof(UserProfile.WorkPlace),
-            Prompt = "Where do you work?",
-            GetValue = (profile) => profile.WorkPlace,
-            SetValue = (profile, value) => profile.WorkPlace = value,
-        },
-    };
-
-    /// <summary>
-    /// The state and state accessors for the bot.
-    /// </summary>
-    private BotAccessors Accessors { get; }
-
-    public PrimitivePromptsBot(BotAccessors accessors)
-    {
-        Accessors = accessors ?? throw new ArgumentNullException(nameof(accessors));
-    }
-
-    public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
-    {
-        if (turnContext.Activity.Type is ActivityTypes.Message)
-        {
-            // Use the state property accessors to get the topic state and user profile.
-            TopicState topicState = await Accessors.TopicStateAccessor.GetAsync(
-                turnContext,
-                () => new TopicState { Topic = ProfileTopic, Prompt = null },
-                cancellationToken);
-            UserProfile userProfile = await Accessors.UserProfileAccessor.GetAsync(
-                turnContext,
-                () => new UserProfile(),
-                cancellationToken);
-
-            // Check whether we need more information.
-            if (topicState.Topic is ProfileTopic)
-            {
-                // If we're expecting input, record it in the user's profile.
-                if (topicState.Prompt != null)
-                {
-                    UserFieldInfo field = UserFields.First(f => f.Key.Equals(topicState.Prompt));
-                    field.SetValue(userProfile, turnContext.Activity.Text.Trim());
-                }
-
-                // Determine which fields are not yet set.
-                List<UserFieldInfo> emptyFields = UserFields.Where(f => f.GetValue(userProfile) is null).ToList();
-
-                if (emptyFields.Any())
-                {
-                    // If all the fields are empty, send a welcome message.
-                    if (emptyFields.Count == UserFields.Count)
-                    {
-                        await turnContext.SendActivityAsync("Welcome new user, please fill out your profile information.");
-                    }
-
-                    // We have at least one empty field. Prompt for the next empty field,
-                    // and update the prompt flag to indicate which prompt we just sent,
-                    // so that the response can be captured at the beginning of the next turn.
-                    UserFieldInfo field = emptyFields.First();
-                    await turnContext.SendActivityAsync(field.Prompt);
-                    topicState.Prompt = field.Key;
-                }
-                else
-                {
-                    // Our user profile is complete!
-                    await turnContext.SendActivityAsync($"Thank you, {userProfile.UserName}. Your profile is complete.");
-                    topicState.Prompt = null;
-                    topicState.Topic = null;
-                }
-            }
-            else if (turnContext.Activity.Text.Trim().Equals("hi", StringComparison.InvariantCultureIgnoreCase))
-            {
-                await turnContext.SendActivityAsync($"Hi. {userProfile.UserName}.");
-            }
-            else
-            {
-                await turnContext.SendActivityAsync("Hi. I'm the Contoso cafe bot.");
-            }
-
-            // Use the state property accessors to update the topic state and user profile.
-            await Accessors.TopicStateAccessor.SetAsync(turnContext, topicState, cancellationToken);
-            await Accessors.UserProfileAccessor.SetAsync(turnContext, userProfile, cancellationToken);
-
-            // Save any state changes to storage.
-            await Accessors.ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
-            await Accessors.UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-        }
-    }
-}
-```
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-
-En **bot.js**, actualice la definición de clase `MyBot`.
-
-Vamos a configurar los descriptores de acceso de propiedad de estado en el constructor del bot: `topicStateAccessor` y `userProfileAccessor`. El estado del tema realiza el seguimiento del tema de conversación y el perfil de usuario realiza el seguimiento de la información que hemos recopilado para el usuario.
-
-```javascript
-constructor(conversationState, userState) {
-    // Create state property accessors.
-    this.topicStateAccessor = conversationState.createProperty(TOPIC_STATE_PROPERTY);
-    this.userProfileAccessor = userState.createProperty(USER_PROFILE_PROPERTY);
-
-    // Track the conversation and user state management objects.
-    this.conversationState = conversationState;
-    this.userState = userState;
-}
-```
-
-A continuación, se actualiza el controlador de turnos para que use el estado del bot para controlar el flujo de conversación y guardar la información de usuario recopilada.
-
-```javascript
-async onTurn(turnContext) {
-    // Handle only message activities from the user.
-    if (turnContext.activity.type === ActivityTypes.Message) {
-        // Get state properties using their accessors, providing default values.
-        const topicState = await this.topicStateAccessor.get(turnContext, {
-            prompt: undefined,
-            topic: 'profile'
-        });
-        const userProfile = await this.userProfileAccessor.get(turnContext, {
-            "userName": undefined,
-            "age": undefined,
-            "workPlace": undefined
-        });
-
-        if (topicState.topic === 'profile') {
-            // If a prompt flag is set in the conversation state, use it to capture the incoming value
-            // into the appropriate field of the user profile.
-            if (topicState.prompt) {
-                userProfile[topicState.prompt] = turnContext.activity.text;
-            }
-
-            // Determine which fields are not yet set.
-            const empty_fields = [];
-            Object.keys(fields).forEach(function (key) {
-                if (!userProfile[key]) {
-                    empty_fields.push({
-                        key: key,
-                        prompt: fields[key]
-                    });
-                }
-            });
-
-            if (empty_fields.length) {
-
-                // If all the fields are empty, send a welcome message.
-                if (empty_fields.length == Object.keys(fields).length) {
-                    await turnContext.sendActivity('Welcome new user, please fill out your profile information.');
-                }
-
-                // We have at least one empty field. Prompt for the next empty field.
-                await turnContext.sendActivity(empty_fields[0].prompt);
-
-                // update the flag to indicate which prompt we just sent
-                // so that the response can be captured at the beginning of the next turn.
-                topicState.prompt = empty_fields[0].key;
-
-            } else {
-                // Our user profile is complete!
-                await turnContext.sendActivity('Thank you. Your profile is complete.');
-                topicState.prompt = null;
-                topicState.topic = null;
-
-            }
-        } else if (turnContext.activity.text && turnContext.activity.text.match(/hi/ig)) {
-            // Check to see if the user said "hi" and respond with a greeting
-            await turnContext.sendActivity(`Hi ${userProfile.userName}.`);
-        } else {
-            // Default message
-            await turnContext.sendActivity("Hi. I'm the Contoso bot.");
-        }
-
-        // Save state changes
-        await this.conversationState.saveChanges(turnContext);
-        await this.userState.saveChanges(turnContext);
-    }
-}
-```
-
----
-
-El ejemplo de código anterior inicializa la marca _topic_ como `profile` con el fin de iniciar la conversación de recopilación de perfil. Para avanzar en la conversación, el bot actualiza la marca _prompt_ a un valor que representa la pregunta actual. Cuando esta marca está establecida en el valor apropiado, el bot sabrá qué hacer con el siguiente mensaje recibido del usuario y procesarlo en consecuencia.
-
-Por último, las marcas se restablecen cuando el bot termina de pedir información. En caso contrario, el bot quedaría en un bucle, sin moverse después de la última pregunta.
-
-Puede extender este patrón para administrar flujos de conversación más complejos mediante la definición de otras marcas o la bifurcación de la conversación en función de la entrada del usuario.
-
-## <a name="manage-multiple-topics-of-conversations"></a>Administración de varios temas de conversación
-
-Una vez que es capaz de controlar un tema de conversación, puede ampliar la lógica del bot para controlar varios temas de conversación. Se pueden controlar varios temas comprobando condiciones adicionales para, después, tomar la ruta adecuada.
-
-Puede ampliar el ejemplo anterior para permitir otras características y temas de conversación, como reservar una mesa o realizar un pedido. Agregue marcas adicionales al estado del tema según sea necesario para realizar un seguimiento de la conversación.
-
-También resultará útil dividir el código en funciones o métodos independientes, lo que facilita seguir el flujo de la conversación. Un patrón común es hacer que el bot evalúe el mensaje y el estado y, a continuación, delegar el control a las funciones que implementan los detalles de la característica.
-
-Para ayudar a los usuarios a moverse mejor entre varios temas de conversación, considere proporcionar un menú principal. Por ejemplo, mediante el uso de [acciones sugeridas](bot-builder-howto-add-suggested-actions.md) puede dar al usuario la opción de qué tema elegir en lugar de tener que averiguar lo que puede hacer el bot.
-
-## <a name="validate-user-input"></a>Validación de entradas de usuario
-
-La biblioteca **Dialogs** proporciona formas integradas para validar la entrada del usuario, pero también podemos hacerlo con nuestros propios avisos. Por ejemplo, si se solicita la edad del usuario, deseamos asegurarnos de que se obtiene un número y no algo como "Bob" como respuesta.
-
-El análisis de un número o de una fecha y hora es una tarea compleja que queda fuera del ámbito de este tema. Afortunadamente, hay una biblioteca que podemos aprovechar. Para analizar esta información, usamos la biblioteca [Text Recognizer de Microsoft](https://github.com/Microsoft/Recognizers-Text). Este paquete está disponible a través de NuGet y npm. También puede descargarlo directamente desde el repositorio. (Se incluye en la biblioteca **Dialogs**, que vale la pena mencionar, aunque no la vamos a usar aquí).
-
-Esta biblioteca es especialmente útil para analizar entradas complejas, como fechas, horas o números de teléfono. En este ejemplo, se valida un número para el tamaño de la reserva de una cena, pero la misma idea se puede extender para validaciones mucho más complejas.
-
-En el ejemplo siguiente solo se muestra el uso de `RecognizeNumber`. Encontrará detalles sobre cómo usar otros métodos de Recognizer de la biblioteca en la [documentación del repositorio](https://github.com/Microsoft/Recognizers-Text/blob/master/README.md).
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Para usar la biblioteca **Microsoft.Recognizers.Text.Number**, incluya el paquete NuGet y agregue estas instrucciones using al archivo del bot.
-
-```csharp
-using System.Linq;
-using Microsoft.Recognizers.Text;
-using Microsoft.Recognizers.Text.Number;
-```
-
-Hay muchas maneras de controlar la validación. En este caso, actualizaremos nuestra clase de aplicación auxiliar para que incluya la validación.
-
-Agregue los siguientes miembros a la clase `UserFieldInfo` interna del bot.
-
-```csharp
-/// <summary>Delegate for validating input.</summary>
-/// <param name="turnContext">The current turn context. turnContext.Activity.Text contains the input to validate.</param>
-/// <returns><code>true</code> if the input is valid; otherwise, <code>false</code>.</returns>
-public delegate Task<bool> ValidatorDelegate(
-    ITurnContext turnContext,
-    CancellationToken cancellationToken = default(CancellationToken));
-
-/// <summary>By default, evaluate all input as valid.</summary>
-private static readonly ValidatorDelegate NoValidator =
-    async (ITurnContext turnContext, CancellationToken cancellationToken) => true;
-
-/// <summary>Gets or sets the validation function to use.</summary>
-public ValidatorDelegate ValidateInput { get; set; } = NoValidator;
-```
-
-A continuación, actualice la entrada _age_ entrada en los campos `UserFields` del bot para definir la validación que se va a usar.
-Puesto que se validará la entrada antes de establecer el valor de age, podemos simplificar algo la función `SetValue` y aprovechar las ventajas de la biblioteca de reconocedores de texto.
-
-```csharp
-private static List<UserFieldInfo> UserFields { get; } = new List<UserFieldInfo>
-{
-    // ...
-    new UserFieldInfo {
-        Key = nameof(UserProfile.Age),
-        Prompt = "How old are you?",
-        GetValue = (profile) => profile.Age.HasValue? profile.Age.Value.ToString() : null,
-        SetValue = (profile, value) =>
-        {
-            // As long as the input validates, this should work.
-            List<ModelResult> result = NumberRecognizer.RecognizeNumber(value, Culture.English);
-            profile.Age = int.Parse(result.First().Text);
-        },
-        ValidateInput = async (turnContext, cancellationToken) =>
-        {
-            try
-            {
-                // Recognize the input as a number. This works for responses such as
-                // "twelve" as well as "12".
-                List<ModelResult> result = NumberRecognizer.RecognizeNumber(
-                    turnContext.Activity.Text, Culture.English);
-
-                // Attempt to convert the Recognizer result to an integer
-                int.TryParse(result.First().Text, out int age);
-
-                if (age < 18)
-                {
-                    await turnContext.SendActivityAsync(
-                        "You must be 18 or older.",
-                        cancellationToken: cancellationToken);
-                    return false;
-                }
-                else if (age > 120)
-                {
-                    await turnContext.SendActivityAsync(
-                        "You must be 120 or younger.",
-                        cancellationToken: cancellationToken);
-                    return false;
-                }
-            }
-            catch
-            {
-                await turnContext.SendActivityAsync(
-                    "I couldn't understand your input. Please enter your age in years.",
-                    cancellationToken: cancellationToken);
-                return false;
-            }
-
-            // If we got through this, the number is valid.
-            return true;
-        },
-    },
-    // ...
-};
-```
-
-Por último, se actualizará el controlador de turnos para que valide todas las entradas antes de guardar un valor en la propiedad.
-El valor predeterminado de la validación es la función NoValidator que acepta todas las entradas. Por tanto, el comportamiento para el mensaje de age es el único que cambiará. Si no se puede validar la entrada, no se definirá el campo y el bot volverá a solicitar de nuevo datos de entrada para este campo en el siguiente turno.
-
-En este caso solo vamos a mirar la parte del controlador de turnos que necesitamos actualizar.
 
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
-    if (turnContext.Activity.Type is ActivityTypes.Message)
+   if (turnContext.Activity.Type == ActivityTypes.Message)
     {
-        // ...
-        // Check whether we need more information.
-        if (topicState.Topic is ProfileTopic)
-        {
-            // If we're expecting input, record it in the user's profile.
-            if (topicState.Prompt != null)
-            {
-                UserFieldInfo field = UserFields.First(f => f.Key.Equals(topicState.Prompt));
-                if (await field.ValidateInput(turnContext, cancellationToken))
-                {
-                    field.SetValue(userProfile, turnContext.Activity.Text.Trim());
-                }
-            }
+        // Get the state properties from the turn context.
+        ConversationFlow flow = await _accessors.ConversationFlowAccessor.GetAsync(turnContext, () => new ConversationFlow());
+        UserProfile profile = await _accessors.UserProfileAccessor.GetAsync(turnContext, () => new UserProfile());
 
-            // ...
-        }
-        //...
+        await FillOutUserProfileAsync(flow, profile, turnContext);
+
+        // Update state and save changes.
+        await _accessors.ConversationFlowAccessor.SetAsync(turnContext, flow);
+        await _accessors.ConversationState.SaveChangesAsync(turnContext);
+
+        await _accessors.UserProfileAccessor.SetAsync(turnContext, profile);
+        await _accessors.UserState.SaveChangesAsync(turnContext);
     }
 }
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Para usar la biblioteca **Recognizers**, agregue el paquete y haga que se solicite mediante el código del bot (en **bot.js**):
-
-```bash
-npm i @microsoft/recognizers-text-suite --save
-```
-
 ```javascript
-// Required packages for this bot.
-const Recognizers = require('@microsoft/recognizers-text-suite');
-```
-
-Después, actualice los metadatos de `fields` para que incluya reconocimiento de texto y código de validación:
-
-```javascript
-// Define the prompts to use to ask for user profile information.
-const fields = {
-    userName: { prompt: "What is your name?" },
-    age: {
-        prompt: "How old are you?",
-        recognize: (turnContext) => {
-            var result = Recognizers.recognizeNumber(
-                turnContext.activity.text, Recognizers.Culture.English);
-            return parseInt(result[0].resolution.value);
-        },
-        validate: async (turnContext) => {
-            try {
-                // Recognize the input as a number. This works for responses such as
-                // "twelve" as well as "12".
-                var result = Recognizers.recognizeNumber(
-                    turnContext.activity.text, Recognizers.Culture.English);
-                var age = parseInt(result[0].resolution.value);
-                if (age < 18) {
-                    await turnContext.sendActivity("You must be 18 or older.");
-                    return false;
-                }
-                if (age > 120 ) {
-                    await turnContext.sendActivity("You must be 120 or younger.");
-                    return false;
-                }
-            } catch (_) {
-                await turnContext.sendActivity(
-                    "I couldn't understand your input. Please enter your age in years.");
-                return false;
-            }
-            return true;
-        }
-    },
-    workPlace: { prompt: "Where do you work?" }
-}
-```
-
-En el controlador de turnos del bot, actualice los siguientes bloques, en los que se registra la entrada del usuario y en los que se pregunta al usuario. Es necesario actualizar estas secciones para que se reconozcan los cambios realizados en los metadatos del campo.
-
-```javascript
+// The bot's turn handler.
 async onTurn(turnContext) {
-    // Handle only message activities from the user.
+    // This bot listens for message activities.
     if (turnContext.activity.type === ActivityTypes.Message) {
-        // ...
+        // Get the state properties from the turn context.
+        const flow = await this.conversationFlow.get(turnContext, { lastQuestionAsked: question.none });
+        const profile = await this.userProfile.get(turnContext, {});
 
-        if (topicState.topic === 'profile') {
-            // If a prompt flag is set in the conversation state, use it to capture the incoming value
-            // into the appropriate field of the user profile.
-            if (topicState.prompt) {
-                const field = fields[topicState.prompt];
-                // If the prompt has validation, check whether the input validates.
-                if (!field.validate || await field.validate(turnContext)) {
-                    // Set the field, using a recognizer if one is defined.
-                    userProfile[topicState.prompt] = (field.recognize)
-                        ? field.recognize(turnContext)
-                        : turnContext.activity.text;
-                }
-            }
+        await MyBot.fillOutUserProfile(flow, profile, turnContext);
 
-            // ...
-
-            if (empty_fields.length) {
-
-                // ...
-
-                // We have at least one empty field. Prompt for the next empty field.
-                await turnContext.sendActivity(empty_fields[0].prompt.prompt);
-
-                // ...
-
-            } // ...
-        } // ...
-
-        // Save state changes
+        // Update state and save changes.
+        await this.conversationFlow.set(turnContext, flow);
         await this.conversationState.saveChanges(turnContext);
+
+        await this.userProfile.set(turnContext, profile);
         await this.userState.saveChanges(turnContext);
     }
 }
@@ -691,10 +130,364 @@ async onTurn(turnContext) {
 
 ---
 
+### <a name="filling-out-the-user-profile"></a>Rellenado del perfil de usuario
+
+Comenzaremos por recopilar la información. Cada uno proporcionará una interfaz similar.
+
+- El valor devuelto indica si la entrada es una respuesta válida para esta pregunta.
+- Si la validación es correcta, se genera un valor normalizado y analizado para guardarlo.
+- Si se produce un error de validación, se genera un mensaje con el que el bot puede volver a pedir la información.
+
+ En la [sección siguiente](#parse-and-validate-input), se van a definir los métodos auxiliares para analizar y validar la entrada del usuario.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+```csharp
+private static async Task FillOutUserProfileAsync(ConversationFlow flow, UserProfile profile, ITurnContext turnContext)
+{
+    string input = turnContext.Activity.Text?.Trim();
+    string message;
+    switch (flow.LastQuestionAsked)
+    {
+        case ConversationFlow.Question.None:
+            await turnContext.SendActivityAsync("Let's get started. What is your name?");
+            flow.LastQuestionAsked = ConversationFlow.Question.Name;
+            break;
+        case ConversationFlow.Question.Name:
+            if (ValidateName(input, out string name, out message))
+            {
+                profile.Name = name;
+                await turnContext.SendActivityAsync($"Hi {profile.Name}.");
+                await turnContext.SendActivityAsync("How old are you?");
+                flow.LastQuestionAsked = ConversationFlow.Question.Age;
+                break;
+            }
+            else
+            {
+                await turnContext.SendActivityAsync(message ?? "I'm sorry, I didn't understand that.");
+                break;
+            }
+        case ConversationFlow.Question.Age:
+            if (ValidateAge(input, out int age, out message))
+            {
+                profile.Age = age;
+                await turnContext.SendActivityAsync($"I have your age as {profile.Age}.");
+                await turnContext.SendActivityAsync("When is your flight?");
+                flow.LastQuestionAsked = ConversationFlow.Question.Date;
+                break;
+            }
+            else
+            {
+                await turnContext.SendActivityAsync(message ?? "I'm sorry, I didn't understand that.");
+                break;
+            }
+        case ConversationFlow.Question.Date:
+            if (ValidateDate(input, out string date, out message))
+            {
+                profile.Date = date;
+                await turnContext.SendActivityAsync($"Your cab ride to the airport is scheduled for {profile.Date}.");
+                await turnContext.SendActivityAsync($"Thanks for completing the booking {profile.Name}.");
+                await turnContext.SendActivityAsync($"Type anything to run the bot again.");
+                flow.LastQuestionAsked = ConversationFlow.Question.None;
+                profile = new UserProfile();
+                break;
+            }
+            else
+            {
+                await turnContext.SendActivityAsync(message ?? "I'm sorry, I didn't understand that.");
+                break;
+            }
+    }
+}
+
+
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+// Manages the conversation flow for filling out the user's profile.
+static async fillOutUserProfile(flow, profile, turnContext) {
+    const input = turnContext.activity.text;
+    let result;
+    switch (flow.lastQuestionAsked) {
+        // If we're just starting off, we haven't asked the user for any information yet.
+        // Ask the user for their name and update the conversation flag.
+        case question.none:
+            await turnContext.sendActivity("Let's get started. What is your name?");
+            flow.lastQuestionAsked = question.name;
+            break;
+
+        // If we last asked for their name, record their response, confirm that we got it.
+        // Ask them for their age and update the conversation flag.
+        case question.name:
+            result = this.validateName(input);
+            if (result.success) {
+                profile.name = result.name;
+                await turnContext.sendActivity(`I have your name as ${profile.name}.`);
+                await turnContext.sendActivity('How old are you?');
+                flow.lastQuestionAsked = question.age;
+                break;
+            } else {
+                // If we couldn't interpret their input, ask them for it again.
+                // Don't update the conversation flag, so that we repeat this step.
+                await turnContext.sendActivity(
+                    result.message || "I'm sorry, I didn't understand that.");
+                break;
+            }
+
+        // If we last asked for their age, record their response, confirm that we got it.
+        // Ask them for their date preference and update the conversation flag.
+        case question.age:
+            result = this.validateAge(input);
+            if (result.success) {
+                profile.age = result.age;
+                await turnContext.sendActivity(`I have your age as ${profile.age}.`);
+                await turnContext.sendActivity('When is your flight?');
+                flow.lastQuestionAsked = question.date;
+                break;
+            } else {
+                // If we couldn't interpret their input, ask them for it again.
+                // Don't update the conversation flag, so that we repeat this step.
+                await turnContext.sendActivity(
+                    result.message || "I'm sorry, I didn't understand that.");
+                break;
+            }
+
+        // If we last asked for a date, record their response, confirm that we got it,
+        // let them know the process is complete, and update the conversation flag.
+        case question.date:
+            result = this.validateDate(input);
+            if (result.success) {
+                profile.date = result.date;
+                await turnContext.sendActivity(`Your cab ride to the airport is scheduled for ${profile.date}.`);
+                await turnContext.sendActivity(`Thanks for completing the booking ${profile.name}.`);
+                await turnContext.sendActivity('Type anything to run the bot again.');
+                flow.lastQuestionAsked = question.none;
+                profile = {};
+                break;
+            } else {
+                // If we couldn't interpret their input, ask them for it again.
+                // Don't update the conversation flag, so that we repeat this step.
+                await turnContext.sendActivity(
+                    result.message || "I'm sorry, I didn't understand that.");
+                break;
+            }
+    }
+}
+```
+
+---
+
+### <a name="parse-and-validate-input"></a>Análisis y validación de la entrada
+
+Vamos a usar los siguientes criterios para validar la entrada.
+
+- El **nombre** debe ser una cadena que no esté vacía. Lo normalizaremos al recortar los espacios en blanco.
+- La **edad** debe estar entre 18 y 120. Lo normalizaremos al devolver un entero.
+- La **fecha** debe ser cualquier fecha u hora al menos una hora en el futuro.
+  La normalizaremos al devolver solo la parte de fecha de la entrada analizada.
+
+> [!NOTE]
+> Para la entrada de edad y fecha, utilizamos las bibliotecas [Microsoft/Recognizers-Text](https://github.com/Microsoft/Recognizers-Text/) para realizar el análisis inicial.
+> Aunque proporcionamos código de ejemplo, no explicamos cómo funcionan las bibliotecas de los reconocedores de texto, y esta es solo una forma de analizar la entrada.
+> Para más información acerca de estas bibliotecas, consulte el archivo **Léame** del repositorio.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Agregue los siguientes métodos de validación al bot.
+
+```csharp
+private static bool ValidateName(string input, out string name, out string message)
+{
+    name = null;
+    message = null;
+
+    if (string.IsNullOrWhiteSpace(input))
+    {
+        message = "Please enter a name that contains at least one character.";
+    }
+    else
+    {
+        name = input.Trim();
+    }
+
+    return message is null;
+}
+
+private static bool ValidateAge(string input, out int age, out string message)
+{
+    age = 0;
+    message = null;
+
+    // Try to recognize the input as a number. This works for responses such as "twelve" as well as "12".
+    try
+    {
+        // Attempt to convert the Recognizer result to an integer. This works for "a dozen", "twelve", "12", and so on.
+        // The recognizer returns a list of potential recognition results, if any.
+        List<ModelResult> results = NumberRecognizer.RecognizeNumber(input, Culture.English);
+        foreach (var result in results)
+        {
+            // result.Resolution is a dictionary, where the "value" entry contains the processed string.
+            if (result.Resolution.TryGetValue("value", out object value))
+            {
+                age = Convert.ToInt32(value);
+                if (age >= 18 && age <= 120)
+                {
+                    return true;
+                }
+            }
+        }
+
+        message = "Please enter an age between 18 and 120.";
+    }
+    catch
+    {
+        message = "I'm sorry, I could not interpret that as an age. Please enter an age between 18 and 120.";
+    }
+
+    return message is null;
+}
+
+private static bool ValidateDate(string input, out string date, out string message)
+{
+    date = null;
+    message = null;
+
+    // Try to recognize the input as a date-time. This works for responses such as "11/14/2018", "9pm", "tomorrow", "Sunday at 5pm", and so on.
+    // The recognizer returns a list of potential recognition results, if any.
+    try
+    {
+        List<ModelResult> results = DateTimeRecognizer.RecognizeDateTime(input, Culture.English);
+
+        // Check whether any of the recognized date-times are appropriate,
+        // and if so, return the first appropriate date-time. We're checking for a value at least an hour in the future.
+        DateTime earliest = DateTime.Now.AddHours(1.0);
+        foreach (ModelResult result in results)
+        {
+            // result.Resolution is a dictionary, where the "values" entry contains the processed input.
+            var resolutions = result.Resolution["values"] as List<Dictionary<string, string>>;
+            foreach (var resolution in resolutions)
+            {
+                // The processed input contains a "value" entry if it is a date-time value, or "start" and
+                // "end" entries if it is a date-time range.
+                if (resolution.TryGetValue("value", out string dateString)
+                    || resolution.TryGetValue("start", out dateString))
+                {
+                    if (DateTime.TryParse(dateString, out var candidate)
+                        && earliest < candidate)
+                    {
+                        date = candidate.ToShortDateString();
+                        return true;
+                    }
+                }
+            }
+        }
+
+        message = "I'm sorry, please enter a date at least an hour out.";
+    }
+    catch
+    {
+        message = "I'm sorry, I could not interpret that as an appropriate date. Please enter a date at least an hour out.";
+    }
+
+    return false;
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Agregue los siguientes métodos de validación al bot.
+
+```javascript
+// Validates name input. Returns whether validation succeeded and either the parsed and normalized
+// value or a message the bot can use to ask the user again.
+static validateName(input) {
+    const name = input && input.trim();
+    return name != undefined
+        ? { success: true, name: name }
+        : { success: false, message: 'Please enter a name that contains at least one character.' };
+};
+
+// Validates age input. Returns whether validation succeeded and either the parsed and normalized
+// value or a message the bot can use to ask the user again.
+static validateAge(input) {
+
+    // Try to recognize the input as a number. This works for responses such as "twelve" as well as "12".
+    try {
+        // Attempt to convert the Recognizer result to an integer. This works for "a dozen", "twelve", "12", and so on.
+        // The recognizer returns a list of potential recognition results, if any.
+        const results = Recognizers.recognizeNumber(input, Recognizers.Culture.English);
+        let output;
+        results.forEach(function (result) {
+            // result.resolution is a dictionary, where the "value" entry contains the processed string.
+            const value = result.resolution['value'];
+            if (value) {
+                const age = parseInt(value);
+                if (!isNaN(age) && age >= 18 && age <= 120) {
+                    output = { success: true, age: age };
+                    return;
+                }
+            }
+        });
+        return output || { success: false, message: 'Please enter an age between 18 and 120.' };
+    } catch (error) {
+        return {
+            success: false,
+            message: "I'm sorry, I could not interpret that as an age. Please enter an age between 18 and 120."
+        };
+    }
+}
+
+// Validates date input. Returns whether validation succeeded and either the parsed and normalized
+// value or a message the bot can use to ask the user again.
+static validateDate(input) {
+    // Try to recognize the input as a date-time. This works for responses such as "11/14/2018", "today at 9pm", "tomorrow", "Sunday at 5pm", and so on.
+    // The recognizer returns a list of potential recognition results, if any.
+    try {
+        const results = Recognizers.recognizeDateTime(input, Recognizers.Culture.English);
+        const now = new Date();
+        const earliest = now.getTime() + (60 * 60 * 1000);
+        let output;
+        results.forEach(function (result) {
+            // result.resolution is a dictionary, where the "values" entry contains the processed input.
+            result.resolution['values'].forEach(function (resolution) {
+                // The processed input contains a "value" entry if it is a date-time value, or "start" and
+                // "end" entries if it is a date-time range.
+                const datevalue = resolution['value'] || resolution['start'];
+                // If only time is given, assume it's for today.
+                const datetime = resolution['type'] === 'time'
+                    ? new Date(`${now.toLocaleDateString()} ${datevalue}`)
+                    : new Date(datevalue);
+                if (datetime && earliest < datetime.getTime()) {
+                    output = { success: true, date: datetime.toLocaleDateString() };
+                    return;
+                }
+            });
+        });
+        return output || { success: false, message: "I'm sorry, please enter a date at least an hour out." };
+    } catch (error) {
+        return {
+            success: false,
+            message: "I'm sorry, I could not interpret that as an appropriate date. Please enter a date at least an hour out."
+        };
+    }
+}
+```
+
+---
+
+## <a name="test-the-bot-locally"></a>Prueba local del bot
+1. Ejecute el ejemplo localmente en la máquina. Si necesita instrucciones, consulte el archivo Léame en el ejemplo de [C#](https://aka.ms/cs-primitive-prompt-sample) o [JS](https://aka.ms/js-primitive-prompt-sample).
+1. Pruébelo con el emulador, tal como se muestra a continuación.
+
+![primitive-prompts](media/primitive-prompts.png)
+
+## <a name="additional-resources"></a>Recursos adicionales
+
+La [biblioteca de diálogos](bot-builder-concept-dialog.md) proporciona clases que automatizan muchos aspectos de la administración de las conversaciones. 
+
 ## <a name="next-step"></a>Paso siguiente
 
-Ahora que conoce cómo administrar los estados del aviso, echemos un vistazo a cómo aprovechar la biblioteca **Dialogs** para pedir datos de entrada a los usuarios.
-
 > [!div class="nextstepaction"]
-> [Petición de datos de entrada a los usuarios mediante el uso de Dialogs](bot-builder-prompts.md)
-
+> [Implementación de flujo de conversación secuencial](bot-builder-dialog-manage-conversation-flow.md)

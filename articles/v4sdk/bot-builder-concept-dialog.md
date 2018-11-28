@@ -1,21 +1,21 @@
 ---
 title: Diálogos en el SDK Bot Builder | Microsoft Docs
 description: Se describe qué es un diálogo y cómo funciona en el SDK Bot Builder.
-keywords: flujo de conversación, intención de reconocimiento, turno único, varios turnos, conversación de bot, diálogos, avisos, cascadas, conjunto de diálogos
+keywords: flujo de conversación, aviso, estado de diálogo, intención de reconocimiento, turno único, varios turnos, conversación de bot, diálogos, avisos, cascadas, conjunto de diálogos
 author: johnataylor
 ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 9/22/2018
+ms.date: 11/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 88022c387d5f9ef7f645be74010aba3c676efadc
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 52a2867f4d62be4969ed77d8d83e1e752edd7f92
+ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332939"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52288844"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -40,7 +40,7 @@ Tenga en cuenta que una **función BeginDialog del diálogo** es código de inic
 
 Para permitir el anidamiento de diálogos (donde un diálogo tiene diálogos secundarios), hay un tipo adicional de continuación, que se conoce como reanudación. DialogContext llamará al método ResumeDialog en un diálogo principal cuando finalice un diálogo secundario.
 
-Los avisos y las cascadas son ambos ejemplos concretos de diálogos que proporciona el SDK. Son muchos los escenarios que se crean mediante la composición de estas abstracciones; pero, en segundo plano, la lógica ejecutada es siempre el mismo comienzo, es decir, el patrón de continuación y reanudación aquí descrito. La implementación de una clase de diálogo desde el principio es un tema relativamente avanzado, pero se incluye una muestra en los [ejemplos](https://github.com/Microsoft/BotBuilder-samples).
+Los avisos y las cascadas son ambos ejemplos concretos de diálogos que proporciona el SDK. Son muchos los escenarios que se crean mediante la composición de estas abstracciones; pero, en segundo plano, la lógica ejecutada es siempre el mismo comienzo, es decir, el patrón de continuación y reanudación aquí descrito. 
 
 La biblioteca **Dialog** del SDK Bot Builder incluye características integradas como _avisos_, _diálogos de cascada_ y _diálogos de componentes_ para ayudarle a administrar la conversación del bot. Puede usar avisos para pedir a los usuarios diferentes tipos de información, una cascada para combinar varios pasos en una secuencia y diálogos de componentes para empaquetar la lógica de diálogo en clases independientes que luego se pueden integrar en otros bots.
 ## <a name="waterfall-dialogs-and-prompts"></a>Diálogos y avisos de cascada
@@ -63,6 +63,18 @@ Puede controlar un valor devuelto por un diálogo, bien dentro de un paso de la 
 Dentro de un paso de la cascada, el diálogo proporciona el valor devuelto en la propiedad _result_ del contexto del paso.
 Por lo general, solo será necesario comprobar el estado del resultado de turnos del diálogo desde la lógica de turnos del bot.
 
+## <a name="dialog-state"></a>Estado del diálogo
+
+Los diálogos son un método de implementación de una conversación con varios turnos y, como tal, son un ejemplo de una característica del SDK que se basa en un estado persistente en varios turnos. Sin el estado en los diálogos, el bot no sabría en qué parte del conjunto de diálogos se encuentra ni la información que ya ha recopilado.
+
+Un bot basado en diálogos contiene normalmente una colección de conjuntos de diálogos como una variable de miembro en su implementación. Ese conjunto de diálogos se crea con un controlador para un objeto llamado descriptor de acceso que proporciona acceso a un estado persistente. Para más información sobre el estado dentro de los bots, consulte [Administración del estado](bot-builder-concept-state.md). 
+
+![estado del diálogo](media/bot-builder-dialog-state.png)
+
+Cuando se llama al controlador de turnos del bot, este inicializará el subsistema de diálogos al llamar a *create context* en el conjunto de diálogos, que devuelve el *contexto del diálogo*. La creación de un contexto de diálogo requiere un estado, al que se accede con el descriptor de acceso proporcionado al crear el conjunto de diálogos. Con ese descriptor de acceso, el conjunto de diálogos puede obtener el JSON del estado de diálogo apropiado. Ese contexto de diálogo contiene la información necesaria que necesita el diálogo.
+
+Los detalles sobre los descriptores de acceso de estado se encuentran en [Guardado de los datos de usuario y la conversación](bot-builder-howto-v4-state.md).
+
 ## <a name="repeating-a-dialog"></a>Repetición de un diálogo
 
 Para repetir un diálogo, use el método *replace dialog*. El método *replace dialog* del contexto de diálogo retira el diálogo actual de la pila, inserta el diálogo sustituto en la parte superior de la pila y comienza dicho diálogo. Puede usar este método para crear un bucle al reemplazar un diálogo por sí mismo. Tenga en cuenta que si tiene que conservar el estado interno del diálogo actual, deberá pasar información a la nueva instancia del diálogo en la llamada al método _replace dialog_ y, luego, inicializar el diálogo de la manera adecuada. Para acceder a las opciones pasadas al nuevo diálogo se puede usar la propiedad _options_ del contexto en cualquier paso del diálogo. Esta es una excelente manera de controlar un flujo de conversación complejo o de administrar los menús.
@@ -78,7 +90,7 @@ Por lo tanto, puede crear una bifurcación dentro del flujo de conversación med
 ## <a name="component-dialog"></a>Diálogo de componente
 En ocasiones, querrá escribir un diálogo reutilizable para usar en distintos escenarios. Un ejemplo podría ser un diálogo de dirección que pide al usuario que proporcione valores para calle, ciudad y código postal. 
 
-ComponentDialog proporciona un nivel de aislamiento porque tiene una clase DialogSet independiente. Al tener una clase DialogSet independiente, se evitan colisiones de nombres con el elemento principal que contiene el diálogo y se crea un entorno propio de ejecución de diálogos interno independiente (al crearse su propio DialogContext), al que se distribuye la actividad. Esta distribución secundaria significa que ha tenido la oportunidad de interceptar la actividad. Esto puede ser muy útil si quiere implementar características como "ayuda" y "cancelar".  Consulte el ejemplo de plantilla de bot de empresa. 
+ComponentDialog proporciona un nivel de aislamiento porque tiene una clase DialogSet independiente. Al tener una clase DialogSet independiente, se evitan colisiones de nombres con el elemento principal que contiene el diálogo y se crea un entorno propio de ejecución de diálogos interno independiente (al crearse su propio DialogContext), al que se distribuye la actividad. Esta distribución secundaria significa que ha tenido la oportunidad de interceptar la actividad. Esto puede ser muy útil si quiere implementar características como "ayuda" y "cancelar".  Consulte el ejemplo de [plantilla de bot de empresa](https://aka.ms/abs/templates/cabot). 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
