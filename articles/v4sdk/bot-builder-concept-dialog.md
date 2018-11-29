@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/22/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 52a2867f4d62be4969ed77d8d83e1e752edd7f92
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 964d4a0344df595630f5b38fa32b3cc3a526ed5c
+ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288844"
+ms.lasthandoff: 11/23/2018
+ms.locfileid: "52293597"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -62,6 +62,25 @@ Un diálogo de cascada se compone de una secuencia de pasos de cascada. Cada pas
 Puede controlar un valor devuelto por un diálogo, bien dentro de un paso de la cascada de un diálogo o desde el controlador de turnos del bot.
 Dentro de un paso de la cascada, el diálogo proporciona el valor devuelto en la propiedad _result_ del contexto del paso.
 Por lo general, solo será necesario comprobar el estado del resultado de turnos del diálogo desde la lógica de turnos del bot.
+
+## <a name="about-prompt-types"></a>Acerca de los tipos de preguntas
+
+En un segundo plano, las preguntas consisten en un diálogo de dos pasos. En el primero, la pregunta solicita información. En el segundo, devuelve el valor válido, o se reinicia desde el principio con una nueva pregunta. La biblioteca de diálogos ofrece varios tipos de preguntas básicas, y cada uno de ellos se usa para recopilar un tipo de respuesta diferente. Las preguntas básicas pueden interpretar entradas en lenguaje natural como, por ejemplo, "diez" o "una docena" para un número, o "mañana" o "el viernes a las 10 am" para una fecha y hora.
+
+| Prompt | DESCRIPCIÓN | Devuelve |
+|:----|:----|:----|
+| _Solicitud de archivos adjuntos_ | Pide uno o varios archivos adjuntos como, por ejemplo, documentos o imágenes. | Una colección de objetos _adjuntos_. |
+| _Solicitud de elección_ | Pide que se realice una elección entre las diversas opciones de un conjunto. | Un objeto de _opción seleccionada_. |
+| _Solicitud de confirmación_ | Solicita una confirmación. | Valor booleano. |
+| _Solicitud de fecha y hora_ | Pregunta una fecha y una hora. | Una colección de objetos de _resolución de fecha y hora_. |
+| _Solicitud de número_ | Solicita un número. | Un valor numérico. |
+| _Solicitud de texto_ | Solicita la entrada de texto general. | Una cadena. |
+
+Para solicitar una entrada al usuario, defina una pregunta mediante una de las clases integradas, como la _pregunta de texto_, y agréguela al conjunto de diálogos. Las preguntas tienen identificadores fijos que deben ser únicos dentro de un conjunto de diálogos. Puede tener un validador personalizado para cada pregunta y, para algunas preguntas, puede especificar una _configuración regional predeterminada_. 
+
+### <a name="prompt-locale"></a>Configuración regional de la pregunta
+
+La configuración regional se usa para determinar el comportamiento específico del idioma de las solicitudes de **elección**, **confirmación**, **fecha y hora** y **número**. Para cualquier entrada del usuario, si el canal ha proporcionado una propiedad de _configuración regional_ en el mensaje del usuario, se usará esa. En caso contrario, si se establece la _configuración regional predeterminada_ de la pregunta, ya sea proporcionándola al llamar al constructor de la misma o estableciéndola posteriormente, esa será la que se use. Si no se proporciona ninguna de las dos, se utiliza el inglés ("en-us") como configuración regional. Nota: La configuración regional consiste en un código ISO 639 de 2, 3 o 4 caracteres que representa un idioma o familia de idiomas.
 
 ## <a name="dialog-state"></a>Estado del diálogo
 
