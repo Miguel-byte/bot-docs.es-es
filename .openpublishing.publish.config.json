@@ -12,7 +12,7 @@
         ">= skypebotsmedia-1.5.0.1177-alpha",
         ">= botconnector-3.11.1"
       ],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "build_entry_point": "docs",
       "template_folder": "_themes"
     },
@@ -59,7 +59,7 @@
     "live",
     "master-sxs"
   ],
-  "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/bot-framework-docs",
+  "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/bot-docs.es-es",
   "git_repository_branch_open_to_public_contributors": "live",
   "continue_with_document_error": true,
   "skip_source_output_uploading": false,
