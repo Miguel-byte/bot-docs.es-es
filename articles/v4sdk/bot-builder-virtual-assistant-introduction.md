@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e93f7d24396b4e35fc81960d42148dd8942362d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a3074ff9e8de36d7a7cf7b86fef62979bc53fa8
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998972"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500649"
 ---
 # <a name="virtual-assistant-solution-overview"></a>Introducción a la solución Virtual Assistant
 
@@ -24,7 +24,7 @@ Creemos firmemente que nuestros clientes deberían tener y enriquecer sus propio
 
 Normalmente, Virtual Assistant ofrece a los usuarios finales una amplia gama de funcionalidades. Para aumentar la productividad de los desarrolladores y habilitar un ecosistema dinámico de experiencias de conversación reutilizables, les proporcionamos ejemplos iniciales de aptitudes de conversación reutilizables. Estas aptitudes se pueden agregar a una aplicación de conversación para aclarar una experiencia de conversación específica, como la búsqueda de un punto de interés, la interacción con el calendario, las tareas, el correo electrónico y muchos otros escenarios. Las aptitudes son totalmente personalizables y consisten en modelos de lenguaje para varios idiomas, diálogos y código.
 
-En este momento estamos ejecutando una versión preliminar inicial y colaboramos estrechamente con los asociados y clientes iniciales en un repositorio de código abierto para lanzar las primeras experiencias y ponerla a disposición de los usuarios de forma más amplia en los próximos meses.
+En este momento estamos trabajando estrechamente con los clientes y asociados iniciales en un repositorio de código abierto para dar vida a las primeras experiencias.
 
 ![Diagrama de Virtual Assistant](./media/enterprise-template/customassistantdiagram.jpg)
 
@@ -97,5 +97,5 @@ Todos los aspectos de cada aptitud (modelo de lenguaje, diálogos, código de in
 
 ## <a name="getting-started"></a>Introducción
 
-En este momento estamos ejecutando una versión preliminar inicial y colaboramos estrechamente con los asociados y clientes iniciales en un repositorio de código abierto para lanzar las primeras experiencias y ponerla a disposición de los usuarios de forma más amplia en los próximos meses. Para registrar su interés y empezar a usarlo, rellene [este formulario](https://aka.ms/customassistantpreviewform) y nos pondremos en contacto con usted.
+La solución de asistente virtual está disponible en [este repositorio GitHub](https://github.com/Microsoft/AI/tree/master/solutions/Virtual-Assistant) que se actualiza regularmente por el equipo del asistente virtual. Está disponible una documentación más detallada en el mismo repositorio y los problemas y se pueden proporcionar comentarios directamente mediante los mecanismos de comentarios de GitHub. Si tiene un escenario clave que le gustaría discutir con nosotros, rellene [este formulario](https://aka.ms/customassistantpreviewform) y nos pondremos en contacto con usted.
 

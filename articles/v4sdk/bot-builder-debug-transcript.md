@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservices: sdk
 ms.date: 10/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a7a8b7088e65d015f22438ee2050f97823b72e49
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 2c493a27d7829e7c7be21b6ce70cb6f046dad616
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134828"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452097"
 ---
 # <a name="debug-your-bot-using-transcript-files"></a>Depuración del bot mediante archivos de transcripción
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
@@ -51,7 +51,7 @@ Para recuperar un archivo de transcripción de bot usando Bot Framework Emulator
 
 ## <a name="debug-using-transcript-file"></a>Depuración con el archivo de transcripción
 Con el archivo de transcripción cargado, ahora está listo para depurar las interacciones que ha capturado entre el usuario y el bot. Para ello, simplemente haga clic en cualquier evento o actividad registrado en la sección _LOG_ (Registro) que se muestra en el área inferior derecha del emulador. En el ejemplo que se muestra a continuación, seleccionamos la primera interacción del usuario cuando este ha enviado el mensaje "Hello". Al hacer esto, toda la información del archivo de transcripción referente a esta interacción específica se muestra en la ventana _INSPECTOR_ del emulador en formato JSON. Si vemos algunos de estos valores de abajo hacia arriba, vemos lo siguiente:
-* El tipo de interacción era _message_ (mensaje).
+* El tipo de interacción era _mensaje_.
 * El tiempo que se envió el mensaje.
 * El texto sin formato enviado contiene "Hello".
 * El mensaje se envió a nuestro bot.

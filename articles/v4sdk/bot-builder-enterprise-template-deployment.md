@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a286d9d77869899854cebde38483026475c5e622
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: c7977400a53af916217e595dda8e9c9a0ff85496
+ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645595"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52500668"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Plantilla de bot de empresa: Implementación del bot
 
@@ -29,7 +29,7 @@ ms.locfileid: "51645595"
 - Instale las herramientas de la línea de comandos (CLI) de Azure Bot Service. Es importante que lo haga incluso si ya ha utilizado las herramientas anteriormente para asegurarse de que tiene las versiones más recientes.
 
 ```shell
-npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
+npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 ```
 
 - Instale las herramientas de la línea de comandos (CLI) de Azure desde [aquí](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Si ya tiene la herramienta de la línea de comandos (CLI) de Azure Bot Service instalada, asegúrese de que está actualizada a la versión más reciente mediante la desinstalación de la versión actual y, a continuación, la instalación de la nueva.
@@ -37,6 +37,12 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot luisgen chatdown
 - Instale la extensión de AZ para Bot Service.
 ```shell
 az extension add -n botservice
+```
+
+- Instale la herramienta LUISGen
+
+```shell
+dotnet tool install -g luisgen
 ```
 
 ## <a name="configuration"></a>Configuración
@@ -48,7 +54,7 @@ az extension add -n botservice
 
 ## <a name="deployment"></a>Implementación
 
->Si tiene varias suscripciones de Azure y desea asegurarse de que la implementación selecciona la correcta, ejecute los comandos siguientes antes de continuar.
+> Si tiene varias suscripciones de Azure y desea asegurarse de que la implementación selecciona la correcta, ejecute los comandos siguientes antes de continuar.
 
  Siga el proceso de inicio de sesión del explorador en su cuenta de Azure.
 ```shell
@@ -63,17 +69,17 @@ Los bots de plantilla de empresa requieren las siguientes dependencias para una 
 - Azure Application Insights (datos de telemetría)
 - Azure Cosmos Database (estado)
 - Azure Cognitive Services: Language Understanding
-- Azure Cognitive Services: QnAMaker (incluido Azure Search, Azure Web App)
+- Azure Cognitive Services: QnA Maker (incluido Azure Search, Azure Web App)
 - Azure Cognitive Services: Content Moderator (paso opcional manual)
 
-El nuevo proyecto de bot tiene un método de implementación que permite que el comando `msbot clone services` automatice la implementación de todos los servicios mencionados anteriormente en la suscripción de Azure y garantiza que el archivo .bot del proyecto se actualiza con todos los servicios, incluyendo las claves que permiten el funcionamiento ininterrumpido del bot.
+El nuevo proyecto de bot tiene un método de implementación que permite que el comando `msbot clone services` automatice la implementación de todos los servicios mencionados anteriormente en la suscripción de Azure y garantiza que el archivo .bot del proyecto se actualiza con todos los servicios, incluyendo las claves que permiten el funcionamiento ininterrumpido del bot. También tiene varias opciones de configuración para los siguientes idiomas: chino, inglés, francés, alemán, italiano y español.
 
 > Una vez implementado, revise los planes de tarifas de los servicios creados y adáptelos a su escenario.
 
-El archivo README.md del proyecto creado contiene una línea de comandos de servicios de clonación de msbot de ejemplo que se ha actualizado con el nombre del bot creado y una versión genérica como se muestra a continuación. Asegúrese de que actualiza la clave de creación del paso anterior y elija la ubicación del centro de datos de Azure que desee usar (por ejemplo, westus o westeurope). Asegúrese de que la clave de creación de LUIS que se recuperó en el paso anterior es para la región que va a especificar a continuación (por ejemplo, westus para luis.ai o westeurope para eu.luis.ai).
+El archivo README.md del proyecto creado contiene una línea de comandos `msbot clone services` de ejemplo que se ha actualizado con el nombre del bot creado y una versión genérica como se muestra a continuación. Asegúrese de que actualiza la clave de creación del paso anterior y elija la ubicación del centro de datos de Azure que desee usar (por ejemplo, westus o westeurope). Asegúrese de que la clave de creación de LUIS que se recuperó en el paso anterior es para la región que va a especificar a continuación (por ejemplo, westus para luis.ai o westeurope para eu.luis.ai). Por último, haga referencia a la carpeta del idioma que desea usar (por ejemplo, `DeploymentScripts\en`).
 
 ```shell
-msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\msbotClone" --location "YOUR_REGION"
+msbot clone services --name "YOUR_BOT_NAME" --luisAuthoringKey "YOUR_AUTHORING_KEY" --folder "DeploymentScripts\LOCALE_FOLDER" --location "REGION"
 ```
 
 > Hay un problema conocido con algunos usuarios por el cual puede experimentar el siguiente error al ejecutar la implementación `ERROR: Unable to provision MSA id automatically. Please pass them in as parameters and try again`. En esta situación, vaya a https://apps.dev.microsoft.com y cree manualmente una nueva aplicación mediante la recuperación del identificador de la aplicación y la contraseña o secreto. Ejecute el comando msbot clone services anterior pero proporcione dos nuevos argumentos `appId` y `appSecret` pasando los valores que acaba de recuperar. Asegúrese de poner el secreto entre comillas para evitar problemas de análisis, p. ej.: `-appSecret "YOUR_SECRET"`
@@ -82,15 +88,15 @@ La herramienta msbot resumirá el plan de implementación incluyendo la ubicaci�
 
 ![Confirmación de implementación](./media/enterprise-template/EnterpriseBot-ConfirmDeployment.png)
 
->Una vez completada la implementación, es **obligatorio** tomar nota del secreto del archivo .bot proporcionado ya que lo necesitará en pasos posteriores.
+>Una vez completada la implementación, es **obligatorio** tomar nota del secreto del archivo .bot proporcionado ya que lo necesitará en pasos posteriores. También puede ejecutar `msbot secret --clear --secret YOUR_BOT_SECRET` para quitar el secreto del archivo del bot y simplificar el desarrollo hasta que esté listo para liberar el bot a producción. Ejecute `msbot secret --new` para generar un secreto nuevo.
 
 - Actualice el archivo `appsettings.json` con el nombre y el secreto del archivo .bot recién creado.
 - Ejecute el siguiente comando y recupere la clave InstrumentationKey de la instancia de Application Insights y actualícela en el archivo `appsettings.json`.
 
-`msbot list --bot YOURBOTFILE.bot --secret "YOUR_BOT_SECRET"`
+`msbot list --bot YOUR_BOT_FILE.bot --secret "YOUR_BOT_SECRET"`
 
         {
-          "botFilePath": ".\\YOURBOTFILE.bot",
+          "botFilePath": ".\\YOUR_BOT_FILE.bot",
           "botFileSecret": "YOUR_BOT_SECRET",
           "ApplicationInsights": {
             "InstrumentationKey": "YOUR_INSTRUMENTATION_KEY"
@@ -119,15 +125,15 @@ El proyecto de bot proporciona funcionalidad adicional que se puede habilitar me
 
 ### <a name="authentication"></a>Autenticación
 
-Para habilitar la autenticación siga estos pasos después de configurar un nombre de conexión de autenticación dentro de la configuración del bot en Azure Portal. Se puede encontrar más información en la [documentación](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-authentication?view=azure-bot-service-3.0).
+Para habilitar la autenticación siga estos pasos después de configurar un nombre de conexión de autenticación dentro de la configuración del bot en Azure Portal. Se puede encontrar más información en la [documentación](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-authentication?view=azure-bot-service-4.0&tabs=csharp).
 
-Registre `SignInDialog` en el constructor MainDialog:
+Registre `AuthenticationDialog` en el constructor MainDialog:
     
-`AddDialog(new SignInDialog(_services.AuthConnectionName));`
+`AddDialog(new AuthenticationDialog(_services.AuthConnectionName));`
 
 Agregue lo siguiente al código en la ubicación que desee para probar un flujo sencillo de inicio de sesión:
     
-`var signInResult = await dc.BeginDialogAsync(nameof(SignInDialog));`
+`var authResult = await dc.BeginDialogAsync(nameof(AuthenticationDialog));`
 
 ### <a name="content-moderation"></a>Moderación de contenido
 

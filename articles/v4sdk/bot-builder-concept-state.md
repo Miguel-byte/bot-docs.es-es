@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 366a985e839c8a79fcd8794c139e2e8130a05335
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 940dba389205ff339b80f741b8a8aec87ff54f1d
+ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288881"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52338568"
 ---
 # <a name="managing-state"></a>Administración de estados
 
@@ -33,7 +33,13 @@ En lo que respecta a los bots, hay algunas capas de uso del estado que se verán
 
 Comenzando por el back-end, donde se almacena la información de estado, se encuentra la *capa de almacenamiento*. Se puede considerar como el almacenamiento físico, como el almacenamiento en memoria, en Azure, o en un servidor de terceros.
 
-Bot Framework SDK proporciona implementaciones de la capa de almacenamiento, como el almacenamiento en memoria, para pruebas locales, y Azure Storage o CosmosDB, para pruebas e implementaciones en la nube.
+Bot Framework SDK incluye algunas implementaciones de la capa de almacenamiento:
+
+- **Almacenamiento en memoria** implementa el almacenamiento en memoria con fines de prueba. El almacenamiento de datos en memoria está destinado únicamente a pruebas locales, ya que este almacenamiento es volátil y temporal. Los datos se borran cada vez que se reinicia el bot.
+- **Azure Blob Storage** se conecta a una base de datos de objetos Azure Blob Storage.
+- **El almacenamiento de Azure Cosmos DB**  se conecta a una base de datos Cosmos DB NoSQL.
+
+Para obtener instrucciones sobre cómo conectarse a otras opciones de almacenamiento, consulte [Escritura directa en el almacenamiento](bot-builder-howto-v4-storage.md).
 
 ## <a name="state-management"></a>Administración de estados
 
@@ -45,7 +51,7 @@ Estas propiedades de estado se agrupan en el ámbito de "cubos", que son solo co
 - Estado de conversación
 - Estado de conversación privada
 
-Todos estos cubos son subclases de la clase *estado de bot*, que se puede derivar para definir otros tipos de cubos.
+Todos estos cubos son subclases de la clase *estado de bot*, que se puede derivar para definir otros tipos de cubos con ámbitos diferentes.
 
 Estos cubos predefinidos tienen una cierta visibilidad, dependiendo del cubo:
 
@@ -53,13 +59,40 @@ Estos cubos predefinidos tienen una cierta visibilidad, dependiendo del cubo:
 - El estado de conversación está disponible en cualquier momento de una conversación específica, independientemente del usuario (es decir, conversaciones de grupo).
 - El estado de conversación privada se extiende tanto a la conversación específica como a ese usuario específico.
 
+> [!TIP]
+> Tanto el estado del usuario como el de la conversación están delimitados por canal.
+> La misma persona que utiliza diferentes canales para acceder al bot aparece como usuarios diferentes, uno para cada canal y cada uno con un estado de usuario distinto.
+
 Las claves utilizadas para cada uno de estos cubos predefinidos son específicas para el usuario y la conversación, o para ambos. Al establecer el valor de su propiedad de estado, la clave se define internamente con información contenida en el contexto del turno para asegurar que cada usuario o conversación se coloca en el cubo y la propiedad correctos. En concreto, las claves se definen de la manera siguiente:
 
 - El estado de usuario crea una clave con el *identificador de canal* y el *identificador de procedencia*. Por ejemplo, _{Activity.ChannelId}/users/{Activity.From.Id}#YourPropertyName_
 - El estado de conversación crea una clave con el *identificador de canal* y el *identificador de conversación*. Por ejemplo, _{Activity.ChannelId}/conversations/{Activity.Conversation.Id}#YourPropertyName_
 - El estado de conversación privada crea una clave con el *identificador de canal*, el *identificador de procedencia* y el *identificador de conversación*. Por ejemplo, _{Activity.ChannelId}/conversations/{Activity.Conversation.Id}/users/{Activity.From.Id}#YourPropertyName_
 
+### <a name="when-to-use-each-type-of-state"></a>Cuándo usar cada tipo de estado
+
+El estado de conversación es bueno para realizar el seguimiento del contexto de la conversación, como por ejemplo:
+
+- Si el bot le formula una pregunta al usuario, y cuál fue la pregunta
+- Cuál es el tema actual de conversación o cuál fue el último
+
+El estado de usuario es bueno para realizar el seguimiento de la información sobre el usuario, como por ejemplo:
+
+- Información de usuario no crítica, como el nombre y las preferencias, una configuración de alarma o una preferencia de alerta
+- Información sobre la última conversación que tuvieron con el bot
+  - Por ejemplo, un bot de soporte técnico de productos puede realizar el seguimiento de los productos sobre los que el usuario ha preguntado.
+
+El estado de conversación privada es bueno para los canales que admiten conversaciones de grupo, pero en los que se desea realizar un seguimiento de la información específica del usuario y de la conversación. Por ejemplo, si tiene un bot de sistema de respuesta en el aula:
+
+- El bot puede agregar y mostrar las respuestas de los alumnos para una pregunta dada.
+- El bot puede agregar el rendimiento de cada alumno y transmitirlo en privado al final de la sesión.
+
 Para más información sobre el uso de estos cubos predefinidos, consulte el [artículo de procedimientos de estado](bot-builder-howto-v4-state.md).
+
+### <a name="connecting-to-multiple-databases"></a>Conexión a varias bases de datos
+
+Si el bot necesita conectarse a varias bases de datos, cree una capa de almacenamiento para cada base de datos.
+Para cada capa de almacenamiento, cree los objetos de administración de estado que necesita para admitir las propiedades de estado.
 
 ## <a name="state-property-accessors"></a>Descriptores de acceso de propiedad de estado
 
@@ -78,15 +111,14 @@ Para conservar los cambios que realice en la propiedad de estado que obtiene del
 
 Los métodos de descriptor de acceso son la manera principal para el bot interactúe con el estado. La forma como trabajan y cómo interactúan las capas subyacentes son las siguientes:
 
-- Método para *obtener* el descriptor de acceso
-    - El descriptor de acceso solicita la propiedad desde la caché de estado
-    - Si la propiedad está en la caché, la devuelve. De lo contrario, obténgalo del objeto de administración de estados.
-        - Si todavía no está en el estado, utilice el método de generador proporcionado en la llamada para *obtener* los descriptores de acceso.
-- Método para *establecer* el descriptor de acceso
-    - Actualice la caché de estado con el nuevo valor de propiedad.
-- Método para *guardar cambios* del objeto de administración de estados
-    - Compruebe los cambios de la propiedad en la caché de estado.
-    - Escriba esa propiedad en el almacenamiento.
+- Método para *obtener* el descriptor de acceso:
+  - El descriptor de acceso solicita la propiedad desde la caché de estado.
+  - Si la propiedad está en la caché, la devuelve. De lo contrario, obténgalo del objeto de administración de estados.
+    (Si todavía no está en el estado, utilice el método del generador proporcionado en la llamada para *obtener* los descriptores de acceso). Método para *establecer* el descriptor de acceso:
+  - Actualice la caché de estado con el nuevo valor de propiedad.
+- Método para *guardar cambios* del objeto de administración de estados:
+  - Compruebe los cambios de la propiedad en la caché de estado.
+  - Escriba esa propiedad en el almacenamiento.
 
 ## <a name="saving-state"></a>Almacenamiento del estado
 

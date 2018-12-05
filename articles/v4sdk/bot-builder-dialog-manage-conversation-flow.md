@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e774d6360968e5059588dbdb476cfd1f35fb464e
-ms.sourcegitcommit: 6cb37f43947273a58b2b7624579852b72b0e13ea
+ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52288834"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452087"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
@@ -240,7 +240,7 @@ Para el diálogo `hello_user`:
 
 ---
 
-Hay un par de cosas que recordar al definir sus propios pasos de cascada.
+Hay un par de cosas que recordar al definir los propios pasos en cascada.
 
 * Cada turno del bot refleja la entrada del usuario, seguida de una respuesta del bot. Por lo tanto, se le pide entrada al usuario al final de un paso de cascada y se recibe su respuesta en el siguiente paso de cascada.
 * Cada aviso es realmente un diálogo en dos pasos que presenta su aviso y se repite hasta que recibe una entrada "válida". 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b85b0e2d3c1ae8c30ea9d5d9fa62783c2968744
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: bb2f8abccc75fcc1c63589bc41289443cf1fc211
+ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645493"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52452007"
 ---
 # <a name="enterprise-bot-template---creating-a-new-project"></a>Plantilla del bot de empresa: Creación de un nuevo proyecto
 
@@ -49,7 +49,8 @@ Para crear un nuevo proyecto de bot con la plantilla, simplemente abra Visual St
 
 Ahora que ha creado el proyecto, el siguiente paso consiste en crear la infraestructura de Azure auxiliar y realizar la configuración e implementación que permita al bot funcionar desde el principio. Continúe en [Implementación del bot](bot-builder-enterprise-template-deployment.md).
 
-> Debe ejecutar este paso ya que, de lo contrario, la inicialización del bot (AppInsights) y las dependencias de LUIS no estarán disponibles.
+> Debe ejecutar este paso, de lo contrario, las dependencias del bot (Azure Bot Service, Application Insights o LUIS, entre otras) no estarán disponibles.
+
 ## <a name="customize-your-bot"></a>Personalización del bot
 
 Después de comprobar que ha implementado correctamente el bot desde el principio, puede personalizarlo para adaptarlo a sus necesidades y al escenario. Continúe con [Personalización del bot](bot-builder-enterprise-template-customize.md).
