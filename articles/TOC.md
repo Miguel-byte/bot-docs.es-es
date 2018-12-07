@@ -55,9 +55,9 @@
 ### [Node.js](nodejs/TOC.md)
 ## [Depuración](debug/TOC.md)
 ## Implementación
-### [Descarga y reimplementación del código de un bot](bot-service-build-download-source-code.md)
+### [Implementación de un bot en Azure](bot-builder-howto-deploy-azure.md)
+<!-- ### [Download and redeploy bot code](bot-service-build-download-source-code.md) -->
 ### [Configuración de la implementación continua](bot-service-build-continuous-deployment.md)
-### [Implementación del bot de C# en Azure](bot-builder-howto-deploy-azure.md)
 ## [Administración](manage/TOC.md)
 # Referencia
 ## [.NET SDK v4](https://aka.ms/dotnetsdk4)
