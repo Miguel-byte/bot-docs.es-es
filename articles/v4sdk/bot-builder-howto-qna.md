@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 11/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2c25ce4ed815e33a7bdc10c1cc2c1c59dad7fda3
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0708244b9f9e4859ba069ed463cef83a0ecdf20d
+ms.sourcegitcommit: b9482670285295a2af0dfbb8f4b7e543c1c10542
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451967"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53327161"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Uso de QnA Maker para responder preguntas
 
@@ -41,7 +41,7 @@ En este tema se creará una base de conocimiento y usarla en un bot.
 1. Desplácese hacia abajo hasta encontrar **Detalles de implementación** y anote los siguientes valores:
    - POST /knowledgebases/<id_de_su_base_de_conocimiento>/generateAnswer
    - Host: https://<su_nombre_de_host>.azurewebsites.net/qnamaker
-   - Authorization: EndpointKey <su_clave_de_punto_de_conexión>
+   - Autorización: EndpointKey <su_clave_de_punto_de_conexión>
 
 ## <a name="update-the-bot-file"></a>Actualización del archivo .bot
 En primer lugar, agregue la información necesaria para acceder a la base de conocimiento, incluido el nombre de host, la clave del punto de conexión y el identificador de la base de conocimiento (KbId) en `qnamaker.bot`. Estos son los valores que guardó en **Configuración** en la base de conocimiento de QnA Maker.
@@ -63,8 +63,9 @@ En primer lugar, agregue la información necesaria para acceder a la base de con
       "type": "qna",
       "name": "QnABot",
       "KbId": "<YOUR_KNOWLEDGE_BASE_ID>",
-      "Hostname": "https://<YOUR_HOSTNAME>.azurewebsites.net/qnamaker",
-      "EndpointKey": "<YOUR_ENDPOINT_KEY>"
+      "subscriptionKey": "<Your_Azure_Subscription_Key>", // Used when creating your QnA service.
+      "endpointKey": "<Your_Recorded_Endpoint_Key>",
+      "hostname": "<Your_Recorded_Hostname>",
       "id": "117"
     }
   ],

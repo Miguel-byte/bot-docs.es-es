@@ -1,28 +1,35 @@
 ---
-title: Implementación de un bot de C# en Azure | Microsoft Docs
+title: Implementación de un bot de C# mediante Visual Studio | Microsoft Docs
 description: Implemente su bot en la nube de Azure.
-keywords: implementar bot, implementación de azure, registro de canal de bot, publicar visual studio
+keywords: implementar bot, implementación de azure, publicar bot, bot de implementación de az, bot de implementación de visual studio, publicación de msbot, clonado de msbot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 11/05/2018
-ms.openlocfilehash: f30a038c6bc5e435ade421e24b05d0b31a143538
-ms.sourcegitcommit: 9acac75f85d36c81b8bf4edec916dd0b52a4a5c7
+ms.date: 12/08/2018
+ms.openlocfilehash: ac4e5f2ea385cb8318ad59e04c8ca8787480f5c8
+ms.sourcegitcommit: 77664484e1b0780a15f686ef08bd23716b049b4a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51028742"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53121791"
 ---
-# <a name="deploy-your-c-bot-to-azure"></a>Implementación del bot de C# en Azure
+# <a name="deploy-your-c-bot-using-visual-studio"></a>Implementación de un bot de C# mediante Visual Studio
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
-Una vez que haya creado su bot y lo haya probado localmente, puede publicarlo en Azure para que sea accesible desde cualquier lugar.
+Después de que haya creado el bot y lo haya probado localmente, puede implementarlo en Azure para que sea posible acceder a él desde cualquier lugar. La implementación de un bot en Azure conllevará el pago de los servicios que se usen. El artículo acerca de la [facturación y administración de costos](https://docs.microsoft.com/en-us/azure/billing/) sirve de ayuda para conocer la facturación de Azure, para supervisar el uso y los costos, y para administrar cuentas y suscripciones.
 
-## <a name="publish-from-visual-studio"></a>Publicación desde Visual Studio
+En este artículo, le mostraremos cómo implementar un bot de C# mediante Visual Studio y Azure Portal. Es conveniente leerlo antes de seguir los pasos, con el fin de tener un conocimiento completo de lo que implica la implementación de un bot.
+
+## <a name="prerequisites"></a>Requisitos previos
+- Instale [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
+- Instale y configure [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29).
+- Conocimientos del archivo [.bot](v4sdk/bot-file-basics.md).
+
+## <a name="deploy-your-bot-in-app-service"></a>Implementación del bot en App Service
 En primer lugar, va a implementar el bot en Azure desde Visual Studio en App Service. A continuación, configurará el bot con Azure Bot Service mediante el registro de canales de bots.
 
 **Nota: Si el nombre del proyecto de Visual Studio tiene espacios, los pasos de implementación que se describen a continuación no funcionarán.**
@@ -138,6 +145,22 @@ En este momento, puede probar el bot desde Azure mediante el cliente de Chat en 
 ![probar en Chat en web](media/azure-bot-quickstarts/getting-started-test-webchat.png)
 
 4. Escriba un mensaje como `Hi` y presione ENTRAR. El bot devolverá `Turn 1: You sent Hi`.
+
+---
+
+## <a name="additional-resources"></a>Recursos adicionales
+
+Cuando se implementa un bot, estos recursos normalmente se crean en Azure Portal:
+
+| Recursos      | DESCRIPCIÓN |
+|----------------|-------------|
+| Bot de aplicación web | Bot de Azure Bot Service que se implementa en Azure App Service.|
+| [App Service](https://docs.microsoft.com/en-us/azure/app-service/)| Permite crear y hospedar aplicaciones web.|
+| [plan de App Service](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)| Define un conjunto de recursos de proceso para que una aplicación web se ejecute.|
+| [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)| Proporciona las herramientas necesarias para recopilar y analizar datos de telemetría.|
+| [Cuenta de almacenamiento](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction)| Proporciona almacenamiento en la nube altamente disponible, seguro, duradero, escalable y redundante.|
+
+Si no está familiarizado con el grupo de recursos de Azure, consulte este tema de [terminología](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#terminology).
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]

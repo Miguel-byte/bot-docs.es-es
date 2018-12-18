@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: d329fcbe5b4a34cb3e9c1fbf0160c5248020a508
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 818017a81b497b13ee181dbb6b87c03a0182736d
+ms.sourcegitcommit: 75f32b3325dd0fc4d8128dee6c22ebf91e5785b3
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332969"
+ms.lasthandoff: 12/09/2018
+ms.locfileid: "53120682"
 ---
 # <a name="entities-and-activity-types"></a>Entidades y tipos de actividad
 
@@ -173,6 +173,11 @@ Las actividades pueden ser de otros tipos además de **message** (el más común
 | [invoke](#invoke) | IInvokeActivity (C#) <br> Activity (JS) | Representa una comunicación enviada a un bot para solicitarle que realice una operación específica. Este tipo de actividad está reservado para uso interno de Microsoft Bot Framework. |
 | [messageReaction](#messagereaction) | IMessageReactionActivity (C#) <br> Activity (JS) | Indica que un usuario ha reaccionado a una actividad existente. Por ejemplo, un usuario hace clic en el botón "Me gusta" de un mensaje. |
 | [typing](#typing) | ITypingActivity (C#) <br> Activity (JS) | Indica que el usuario o el bot en el otro extremo de la conversación está redactando una respuesta. |
+| messageUpdate | IMessageUpdateActivity (C#) <br> Activity (JS) | Indica una solicitud para actualizar la actividad de un mensaje anterior en una conversación. |
+| messageDelete | IMessageDeleteActivity (C#) <br> Activity (JS) | Indica una solicitud para eliminar la actividad de un mensaje anterior en una conversación. |
+| suggestion | ISuggestionActivity (C#) <br> Activity (JS) | Indica una sugerencia privada al destinatario acerca de otra actividad concreta. |
+| trace | ITraceActivity (C#) <br> Activity (JS) | Actividad mediante la que un bot puede registrar la información interna en la transcripción de una conversación registrada. |
+| handoff | IHandoffActivity (C#) <br> Activity (JS) | Se ha transferido el control de la conversación o se ha realizado una solicitud para transferir el control de la conversación. |
 
 ## <a name="message"></a>Mensaje
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8f979aed3bc1c4bb4c74629bcffb258e139ce77d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: 8c3aad54a9e80e8a046a6e31a5109a1de8c61a8b
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338558"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010510"
 ---
 # <a name="save-user-and-conversation-data"></a>Guardado de los datos del usuario y la conversación
 
@@ -118,7 +118,7 @@ El bot usa el descriptor de acceso para obtener la propiedad de estado del conte
 Primero se definen las clases para que contenga toda la información que queremos a administrar en cada tipo de estado.
 
 - Una clase `UserProfile` para la información de usuario que recopilará el bot.
-- Una clase `ConversationData` para agregar información acerca de cuándo ha llegado un mensaje y quién lo envió.
+- Una clase `ConversationData` para hacer un seguimiento de la información acerca de cuándo ha llegado un mensaje y quién lo envió.
 
 ```csharp
 // Defines a state property used to track information about the user.
@@ -382,13 +382,13 @@ async onTurn(turnContext) {
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-**Privacidad:** si tiene intención de almacenar datos personales del usuario, debe garantizar el cumplimiento de [Reglamento General de Protección de Datos](https://blog.botframework.com/2018/04/23/general-data-protection-regulation-gdpr).
+**Privacidad:** Si tiene intención de almacenar datos personales del usuario, debe garantizar el cumplimiento del [Reglamento general de protección de datos](https://blog.botframework.com/2018/04/23/general-data-protection-regulation-gdpr).
 
-**Administración de estado:** todas las llamadas de administración de estado son asincrónicas y prevalece el último en escribir de forma predeterminada. En la práctica, debe obtener, establecer y guardar el estado lo más próximos en el bot como sea posible.
+**Administración de estados:** Todas las llamadas de administración de estado son asincrónicas y prevalece el último en escribir de forma predeterminada. En la práctica, debe obtener, establecer y guardar el estado lo más próximos en el bot como sea posible.
 
-**Datos críticos para el negocio:** utilice el estado del bot para almacenar las preferencias, el nombre de usuario o lo último que haya pedido, pero no lo utilice para almacenar datos empresariales críticos. Para los datos críticos, [cree sus propios componentes de almacenamiento](bot-builder-custom-storage.md) o escríbalos directamente en el [almacenamiento](bot-builder-howto-v4-storage.md).
+**Datos empresariales críticos:** Utilice el estado del bot para almacenar las preferencias, el nombre de usuario o lo último que haya solicitado, pero no lo utilice para almacenar datos empresariales críticos. Para los datos críticos, [cree sus propios componentes de almacenamiento](bot-builder-custom-storage.md) o escríbalos directamente en el [almacenamiento](bot-builder-howto-v4-storage.md).
 
-**Recognizer-Text:** el ejemplo usa las bibliotecas Microsoft/Recognizer-Text para analizar y validar la entrada del usuario. Para más información, consulte la página [Información general](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview).
+**Recognizer-Text:** El ejemplo usa las bibliotecas Microsoft/Recognizers-Text para analizar y validar la entrada del usuario. Para más información, consulte la página [Información general](https://github.com/Microsoft/Recognizers-Text#microsoft-recognizers-text-overview).
 
 ## <a name="next-step"></a>Paso siguiente
 

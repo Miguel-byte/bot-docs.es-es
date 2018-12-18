@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 940dba389205ff339b80f741b8a8aec87ff54f1d
-ms.sourcegitcommit: bcde20bd4ab830d749cb835c2edb35659324d926
+ms.openlocfilehash: bf7d6a574cc4e63d22e3f34462a1ec00dbdac75e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52338568"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010550"
 ---
 # <a name="managing-state"></a>Administración de estados
 
@@ -27,7 +27,11 @@ Al igual que con las aplicaciones web, un bot intrínsecamente carece de estado;
 
 Mantener el estado permite que el bot mantenga conversaciones más significativas al recordar ciertas cosas sobre un usuario o una conversación. Por ejemplo, si ha hablado con un usuario anteriormente, puede guardar información previa sobre él, para no tener que volver a pedirla. El estado también mantiene los datos durante más tiempo que el turno actual, de modo que el bot conserva la información en el transcurso de una conversación de varios turnos.
 
-En lo que respecta a los bots, hay algunas capas de uso del estado que se verán aquí: la capa de almacenamiento, la administración de estados y los descriptores de acceso de propiedad de estado.
+En lo que respecta a los bots, hay algunas capas de uso del estado que se verán aquí: la capa de almacenamiento, la administración de estados (se encuentra en el estado del bot del diagrama siguiente) y los descriptores de acceso de la propiedad de estado. Este diagrama muestra las partes de la secuencia de interacción entre estas capas. Las flechas de línea continua representan una llamada al método, mientras que las flechas de línea discontinua representan la respuesta (con o sin un valor devuelto).
+
+![estado del bot](media/bot-builder-state.png)
+
+El flujo de este diagrama se explica en las siguientes secciones y se incluyen detalles de cada capa.
 
 ## <a name="storage-layer"></a>Capa de almacenamiento
 

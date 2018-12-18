@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dacf952e6554eb76e0a41418791fb954e82d4f38
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 1bfa180967c55aac6012e02887ac2893947263f9
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452067"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010590"
 ---
 # <a name="middleware"></a>Software intermedio
 
@@ -78,7 +78,7 @@ En el caso de los controladores de eventos, si no se llama a _next_ el evento se
 ## <a name="response-event-handlers"></a>Controladores de eventos de respuesta
 Además de la lógica de la aplicación y del middleware, se pueden agregar controladores de respuesta (a veces llamados controladores de eventos o controladores de eventos de actividad) al objeto de contexto. Se llama a estos controladores cuando la respuesta asociada se produce en el objeto de contexto actual, antes de ejecutar la respuesta real. Estos controladores son útiles si sabe que querrá hacer algo, ya sea antes o después del evento real, para todas las actividades de ese tipo durante el resto de la respuesta actual.
 
-> [!WARNING] 
+> [!WARNING]
 > Tenga cuidado de no llamar a un método de respuesta de actividad desde su controlador de eventos de respuesta correspondiente, por ejemplo, mediante una llamada al método de actividad de envío desde un controlador de actividad de envío. Si lo hace, puede generar un bucle infinito.
 
 Recuerde que cada actividad nueva obtiene un nuevo subproceso en el que se ejecuta. Cuando se crea el subproceso para procesar la actividad, la lista de controladores de esa actividad se copia en ese subproceso nuevo. No se ejecutará para ese evento de actividad específico ningún controlador agregado después de ese punto.
@@ -90,9 +90,11 @@ Un método común para guardar el estado es llamar al método para guardar cambi
 
 ![problemas de estado de middleware](media/bot-builder-dialog-state-problem.png)
 
-El problema con este enfoque es que las actualizaciones de estado realizadas por parte de algún middleware personalizado que tienen lugar una vez que vuelve el controlador de turnos del bot, no se guardarán en un almacenamiento duradero. La solución es mover la llamada al método para guardar cambios a después de que el middleware personalizado se haya completado mediante la adición de AutoSaveChangesMiddleware al principio de la pila de middleware, o al menos antes de que cualquiera del estado del middleware se actualice. A continuación se muestra la ejecución.
+El problema con este enfoque es que las actualizaciones de estado realizadas por parte de algún middleware personalizado que tienen lugar una vez que vuelve el controlador de turnos del bot, no se guardarán en un almacenamiento duradero. La solución es mover la llamada al método para guardar cambios a después de que el middleware personalizado se haya completado mediante la adición de una instancia del middleware para _guardar cambios automáticamente_ al principio de la pila de middleware, o al menos antes de que cualquiera del estado del middleware se actualice. A continuación se muestra la ejecución.
 
 ![solución de estados de middleware](media/bot-builder-dialog-state-solution.png)
+
+Agregue los objetos de administración de estado que será necesario actualizar a un objeto _conjunto de estados del bot_ y, después, úselos al crear el middleware para guardar cambios automáticamente.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en el SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

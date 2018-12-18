@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: 1658a5cd8ba3fc4e9c34849e1550f64461ced292
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 12/04/2018
+ms.openlocfilehash: 6c3cc52514988172e5c2cc85168aef401fbc1f22
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000152"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010500"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Conexión de un bot a un Chat en web
 
-[!INCLUDE pre-release-label]
+[!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
 
 Cuando se [crea un bot](bot-service-quickstart.md) con Bot Service, el canal Chat en web se configura automáticamente. El canal Chat en web incluye el control Chat en web, que proporciona la capacidad para que los usuarios interactúen con el bot directamente en una página web.
 
@@ -61,7 +61,7 @@ Para intercambiar el secreto por un token y generar la inserción, siga los sigu
 
 ##### <a name="example-request"></a>Solicitud de ejemplo
 
-```requestGET https://webchat.botframework.com/api/tokens Autorización: BotConnector YOUR_SECRET_HERE
+```requestGET https://webchat.botframework.com/api/tokens Authorization: BotConnector YOUR_SECRET_HERE
 ```
 
 ##### Example response 

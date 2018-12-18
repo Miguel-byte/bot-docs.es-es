@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9d8caf19a98fb595e4b1e27b0635d2a752b88390
-ms.sourcegitcommit: bbfb171f515c50a3c8bba5ca898daf25cf764378
+ms.openlocfilehash: a8a0976e6f553e52e13ae13bbb719dd7bdead8f6
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/23/2018
-ms.locfileid: "52293607"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010549"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Recopilación de datos de entrada del usuario mediante un aviso de diálogo
 
@@ -168,7 +168,7 @@ public DialogPromptBot(DialogPromptBotAccessors accessors, ILoggerFactory logger
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-En el constructor, cree propiedades del descriptor de acceso de estado. 
+En el constructor, cree propiedades del descriptor de acceso de estado.
 
 ```javascript
 constructor(conversationState) {
@@ -192,6 +192,7 @@ A continuación, cree el conjunto de diálogos y agregue los avisos, incluida la
 ```
 
 A continuación, defina los pasos del diálogo de cascada y agréguelo al conjunto.
+
 ```javascript
     // ...
     this.dialogSet.add(new WaterfallDialog(RESERVATION_DIALOG, [
@@ -207,7 +208,7 @@ A continuación, defina los pasos del diálogo de cascada y agréguelo al conjun
 
 ### <a name="implement-dialog-steps"></a>Implementación de los pasos del diálogo
 
-En el archivo principal del bot, implementamos cada uno de los pasos del diálogo de cascada. Después de agregar una pregunta, llámela desde un paso de un diálogo en cascada y obtenga el resultado de la pregunta en el siguiente paso del diálogo. Para llamar a una pregunta desde un paso de la cascada, llame al _contexto del paso de cascada_ en el método _prompt_ del objeto. El primer parámetro es el identificador de la pregunta que se va a usar y el segundo parámetro contiene las opciones de la pregunta como, por ejemplo, el texto usado para pedir al usuario los datos de entrada.     
+En el archivo principal del bot, implementamos cada uno de los pasos del diálogo de cascada. Después de agregar una pregunta, llámela desde un paso de un diálogo en cascada y obtenga el resultado de la pregunta en el siguiente paso del diálogo. Para llamar a una pregunta desde un paso de la cascada, llame al _contexto del paso de cascada_ en el método _prompt_ del objeto. El primer parámetro es el identificador de la pregunta que se va a usar y el segundo parámetro contiene las opciones de la pregunta como, por ejemplo, el texto usado para pedir al usuario los datos de entrada.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -250,6 +251,7 @@ private async Task<DialogTurnResult> PromptForLocationAsync(WaterfallStepContext
         cancellationToken);
 }
 ```
+
 En el ejemplo anterior se muestra cómo usar una pregunta de elección que ofrece las tres propiedades. El método `PromptForLocationAsync` se usa como un paso de un diálogo en cascada y nuestro conjunto de diálogos contiene el diálogo en cascada y una solicitud de elección con el identificador `locationPrompt`.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -291,8 +293,6 @@ Siempre debe especificar la actividad de solicitud inicial para enviar al usuari
 Especificar una pregunta de reintento es útil cuando la entrada del usuario no se puede validar, ya sea porque está en un formato que no se puede analizar, como "mañana" para una pregunta de número, o bien porque la entrada no cumpla un criterio de validación. En este caso, si no se ha proporcionado ninguna solicitud de reintento, la pregunta usará la actividad de solicitud inicial para volver a preguntar al usuario la entrada.
 
 Para una solicitud de elección, siempre debe proporcionar la lista de opciones disponibles.
-
-
 
 ## <a name="custom-validation"></a>Validación personalizada
 
@@ -470,14 +470,13 @@ Actualice el controlador de turnos del bot para iniciar el diálogo y aceptar un
    1. El control pasa al siguiente paso del diálogo activo que, en este caso, es el segundo turno de la pregunta.
    1. La pregunta valida la entrada del usuario.
 
-      
 **Control de los resultados de las solicitudes**
 
 Lo que haga con el resultado de la solicitud dependerá de por qué solicitó la información al usuario. Las opciones incluyen:
 
-* Usar la información para controlar el flujo del diálogo como, por ejemplo, cuando el usuario responde a una solicitud de confirmación o de elección.
-* Almacenar en caché la información de estado del diálogo como, por ejemplo, el establecimiento de un valor en la propiedad _values_ del contexto del paso de cascada y, a continuación, la devolución de la información recopilada cuando finaliza el diálogo.
-* Guardar la información en el estado del bot. Esto requeriría que diseñara el diálogo para que accediera a los descriptores de acceso de la propiedad de estado del bot. 
+- Usar la información para controlar el flujo del diálogo como, por ejemplo, cuando el usuario responde a una solicitud de confirmación o de elección.
+- Almacenar en caché la información de estado del diálogo como, por ejemplo, el establecimiento de un valor en la propiedad _values_ del contexto del paso de cascada y, a continuación, la devolución de la información recopilada cuando finaliza el diálogo.
+- Guardar la información en el estado del bot. Esto requeriría que diseñara el diálogo para que accediera a los descriptores de acceso de la propiedad de estado del bot.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -600,17 +599,17 @@ async onTurn(turnContext) {
 
 ---
 
-
-
 Se pueden usar técnicas similares para validar las respuestas para cualquiera de los tipos de pregunta.
 
 ## <a name="test-your-bot"></a>Prueba del bot
+
 1. Ejecute el ejemplo localmente en la máquina. Si necesita instrucciones, consulte el archivo Léame en el ejemplo de [C#](https://aka.ms/dialog-prompt-cs) o [JS](https://aka.ms/dialog-prompt-js).
 2. Inicie el emulador y envíe mensajes como se muestra a continuación para probar el bot.
 
 ![ejemplo de aviso de diálogo de prueba](~/media/emulator-v4/test-dialog-prompt.png)
 
 ## <a name="additional-resources"></a>Recursos adicionales
+
 Para llamar a un aviso directamente desde el controlador de turnos, consulte el ejemplo _prompt-validations_ en [C#](https://aka.ms/cs-prompt-validation-sample) o [JS](https://aka.ms/js-prompt-validation-sample).
 
 La biblioteca de diálogos también incluye una _solicitud de OAuth_ para obtener un _token de OAuth_ con el que acceder a otra aplicación en nombre del usuario. Para más información acerca de la autenticación, consulte cómo [agregar autenticación](bot-builder-authentication.md) al bot.

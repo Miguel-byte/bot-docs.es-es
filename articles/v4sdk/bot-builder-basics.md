@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 15cd6c998abf37b1c7b9a9e2659b7390370f7f10
-ms.sourcegitcommit: d92fd6233295856052305e0d9e3cba29c9ef496e
+ms.openlocfilehash: c4d4879f7ad127838de9d2563dee8f8d7320d61e
+ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51715129"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010580"
 ---
 # <a name="how-bots-work"></a>Funcionamiento de los bots
 
@@ -424,9 +424,6 @@ El archivo **.bot** contiene información, incluidos el punto de conexión, el i
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-Para comprender qué rol desempeña un archivo de bot en la administración de recursos, consulte el [archivo bot](bot-file-basics.md).
-
-## <a name="next-steps"></a>Pasos siguientes
-
-> [!div class="nextstepaction"]
-> [Creación de un bot](~/bot-service-quickstart.md)
+- Para conocer el rol del estado en los bots, consulte el artículo acerca de la [administración de estados](bot-builder-concept-state.md).
+- Para conocer qué rol desempeña un archivo .bot en la administración de recursos, consulte el artículo acerca de la [administración de recursos con un archivo .bot](bot-file-basics.md).
+- Para crear el primer bot, consulte uno de las guías de inicio rápido: [mediante Azure Bot Service](../bot-service-quickstart.md), [mediante C# ](../dotnet/bot-builder-dotnet-sdk-quickstart.md) o [mediante JavaScript](../javascript/bot-builder-javascript-quickstart.md)
