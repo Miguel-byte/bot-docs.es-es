@@ -11,12 +11,12 @@ ms.subservice: sdk
 ms.date: 09/20/2018
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 74d4bb07274643d61da332d6ee1cdfb1a14372dc
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: af659dd1c2a75af03cfa45df54a815d2dd2306fc
+ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998432"
+ms.lasthandoff: 12/26/2018
+ms.locfileid: "53785428"
 ---
 # <a name="handle-user-interruptions"></a>Control de las interrupciones del usuario
 
@@ -36,7 +36,7 @@ Un flujo de conversación de procedimientos cuenta con un conjunto básico de pa
 
 * `cancel`: para salir del proceso.
 * `help`: para proporcionar más instrucciones acerca de este proceso.
-* `more info`: para dar consejos y sugerencias o proporcionar maneras alternativas para reservar una mesa (p. ej.: un número de teléfono o una dirección de correo electrónico de contacto).
+* `more info`: para dar consejos y sugerencias o proporcionar maneras alternativas de reservar una mesa (por ejemplo, un número de teléfono o una dirección de correo electrónico de contacto).
 * `show list of available tables`: si es una opción; muestra una lista de mesas disponibles para la fecha y hora indicada por el usuario.
 
 **Pedir comida a domicilio**: en un bot de pedida de comida a domicilio, los pasos principales serían proporcionar una lista de los platos del menú y permitir que el usuario agregue dichos platos a al carro. En este proceso, se pueden anticipar algunas interrupciones esperadas, como por ejemplo:
@@ -463,7 +463,7 @@ Puede cambiar los temas en el flujo para pedir una cena o hacer que sea un probl
 
 Para las interrupciones que no están en el ámbito, puede intentar adivinar la intención del usuario. Para hacerlo puede usar servicios de IA, como QnA Maker, LUIS o su lógica personalizada, y, luego, ofrecer sugerencias de lo que el bot considera que desea el usuario.
 
-Por ejemplo, en medio del flujo para reservar una mesa, el usuario dice: "Quiero pedir una hamburguesa". En este flujo de conversación, el bot no sabe cómo lidiar con esa entrada. Como el flujo actual no tiene nada que ver con el pedido y el otro comando de conversación del bot es "pedir una cena", el bot no sabe qué hacer con esta entrada. Si aplica LUIS, por ejemplo, podría entrenar el modelo para que reconozca que quiere pedir comida (p. ej.: LUIS puede devolver una intención "orderFood"). Por lo tanto, el bot podría responder: "Parece que quiere pedir una comida. ¿Le gustaría cambiar a nuestro proceso de pedido de cena?" Para más información sobre el aprendizaje de LUIS y cómo detectar las intenciones del usuario, consulte [Uso de LUIS para reconocimiento del lenguaje](bot-builder-howto-v4-luis.md).
+Por ejemplo, en medio del flujo para reservar una mesa, el usuario dice: "Quiero pedir una hamburguesa". En este flujo de conversación, el bot no sabe cómo lidiar con esa entrada. Como el flujo actual no tiene nada que ver con el pedido y el otro comando de conversación del bot es "pedir una cena", el bot no sabe qué hacer con esta entrada. Si aplica LUIS, por ejemplo, podría entrenar el modelo para que reconozca que quiere pedir comida (por ejemplo: LUIS puede devolver una intención "orderFood"). Por lo tanto, el bot podría responder: "Parece que quiere pedir una comida. ¿Le gustaría cambiar a nuestro proceso de pedido de cena?" Para más información sobre el aprendizaje de LUIS y cómo detectar las intenciones del usuario, consulte [Uso de LUIS para reconocimiento del lenguaje](bot-builder-howto-v4-luis.md).
 
 ### <a name="default-response"></a>Respuesta predeterminada
 
@@ -471,7 +471,7 @@ Si todo lo demás falla, debe enviar una respuesta predeterminada, en lugar de n
 
 Puede comprobar nuevamente la marca de contexto **responded** en la parte final de la lógica del bot para ver si el bot envió algo al usuario durante el turno. Si el bot procesa la entrada del usuario, pero no responde, lo más probable es que el bot no sepa qué hacer con la entrada. En ese caso, puede detectarlo y enviar un mensaje predeterminado al usuario.
 
-Si el valor predeterminado del bot es proporcionar al usuario un diálogo `mainMenu`. Depende de usted decidir qué experiencia tendrá el usuario en esta situación con el bot.
+Si el valor predeterminado del bot es ofrecer al usuario un diálogo `mainMenu`, debe decidir qué experiencia de bot tendrá el usuario en esta situación.
 
 # <a name="ctabcsharptab"></a>[C#](#tab/csharptab)
 

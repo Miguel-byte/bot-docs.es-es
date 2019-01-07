@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/8/2018
-ms.openlocfilehash: 82503407c527bee4d56edc0cb58fa507239350e3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 12/19/2018
+ms.openlocfilehash: 79c37a48f9312d60b61124e15780fe46236aa0c7
+ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998458"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53735985"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -81,22 +81,23 @@ En el [siguiente artículo](./bot-service-design-navigation.md) se revisan algun
 ::: moniker-end
 
 ::: moniker range="azure-bot-service-4.0"
+
 # <a name="design-and-control-conversation-flow"></a>Diseño y control del flujo de conversación
 
-En una aplicación tradicional, la interfaz de usuario (UI) consta de una serie de pantallas y una sola aplicación o sitio web puede usar una o varias pantallas según sea necesario para intercambiar información con el usuario. 
+En una aplicación tradicional, la interfaz de usuario (UI) consta de una serie de pantallas y una sola aplicación o sitio web puede usar una o varias pantallas según sea necesario para intercambiar información con el usuario.
 La mayoría de las aplicaciones se inician con una pantalla principal a la que los usuarios llegan inicialmente y esa pantalla proporciona características de navegación que conducen a otras pantallas para realizar distintas funciones, como el inicio de un nuevo pedido, la exploración de productos o la búsqueda de ayuda.
 
-Al igual que las aplicaciones y sitios web, los bots tienen una interfaz de usuario, pero esta consta de **mensajes**, en lugar de pantallas. Los mensajes pueden contener botones, texto y otros elementos o estar completamente basados en voz. 
+Al igual que las aplicaciones y sitios web, los bots tienen una interfaz de usuario, pero esta consta de **mensajes**, en lugar de pantallas. Los mensajes pueden contener botones, texto y otros elementos o estar completamente basados en voz.
 
-Mientras que una aplicación tradicional o un sitio web puede solicitar varios fragmentos de información en una pantalla a la vez, un bot recopilará la misma cantidad de información mediante varios mensajes. De este modo, el proceso de recopilación de información del usuario es una experiencia activa, donde el usuario tiene una conversación activa con el bot. 
+Mientras que una aplicación tradicional o un sitio web puede solicitar varios fragmentos de información en una pantalla a la vez, un bot recopilará la misma cantidad de información mediante varios mensajes. De este modo, el proceso de recopilación de información del usuario es una experiencia activa, donde el usuario tiene una conversación activa con el bot.
 
-Un bot bien diseñado tendrá un flujo de conversación que parece natural. El bot debería ser capaz de controlar la conversación principal sin problemas, así como las interrupciones o cambios de temas de las conversaciones correctamente. 
+Un bot bien diseñado tendrá un flujo de conversación que parece natural. El bot debería ser capaz de controlar la conversación principal sin problemas, así como las interrupciones o cambios de temas de las conversaciones correctamente.
 
 ## <a name="procedural-conversation-flow"></a>Flujo de conversación de procedimientos
 
 Por lo general, la conversación con un bot se centra en torno a la tarea que el bot intenta conseguir, lo cual se denomina flujo de procedimientos. Aquí es donde el bot hace una serie de preguntas al usuario para recopilar toda la información que necesita para poder procesar la tarea.
 
-En un flujo de conversación de procedimientos, usted define el orden de las preguntas y el bot las formulará en el orden definido. Puede organizar las preguntas en *módulos* lógicos para mantener el código centralizado mientras se centra en guiar la conversación. Por ejemplo, puede diseñar un módulo que contenga la lógica que ayuda al usuario a examinar productos y un módulo independiente que contenga la lógica que ayuda al usuario a crear un nuevo pedido. 
+En un flujo de conversación de procedimientos, usted define el orden de las preguntas y el bot las formulará en el orden definido. Puede organizar las preguntas en *módulos* lógicos para mantener el código centralizado mientras se centra en guiar la conversación. Por ejemplo, puede diseñar un módulo que contenga la lógica que ayuda al usuario a examinar productos y un módulo independiente que contenga la lógica que ayuda al usuario a crear un nuevo pedido.
 
 Puede estructurar estos módulos para que fluyan como quiera, desde una forma libre a una secuencial. El SDK de Bot Builder ofrece varias bibliotecas que le permiten generar cualquier flujo de conversación que el bot necesite. Por ejemplo, la biblioteca `prompts` le permite solicitar entradas a los usuarios, la biblioteca `waterfall` le permite definir una secuencia de pares de preguntas y respuestas, la biblioteca `dialog control` le permite modular la lógica del flujo de conversación, etc. Todas estas bibliotecas están vinculadas entre sí a través de un objeto `dialogs`. Echemos un vistazo a cómo se implementan los módulos como `dialogs` para diseñar y administrar flujos de conversación y ver cómo ese flujo es similar al flujo de aplicación tradicional.
 
@@ -104,40 +105,40 @@ Puede estructurar estos módulos para que fluyan como quiera, desde una forma li
 
 En una aplicación tradicional, todo comienza con la **pantalla principal**.
 La **pantalla principal** invoca la **pantalla de nuevo pedido**.
-La **pantalla de nuevo pedido** permanece en control hasta que se cierra o invoca otras pantallas, como la **pantalla de búsqueda de productos**. 
+La **pantalla de nuevo pedido** permanece en control hasta que se cierra o invoca otras pantallas, como la **pantalla de búsqueda de productos**.
 Si la **pantalla de nuevo pedido** se cierra, se devuelve al usuario a la **pantalla principal**.
 
-En un bot, todo comienza con el **diálogo raíz**. 
-El **diálogo raíz** invoca el **diálogo de nuevo pedido**. 
-En ese momento, el **diálogo de nuevo pedido** toma el control de la conversación y permanece en control hasta que se cierra o invoca otros diálogos, como el **diálogo de búsqueda de productos**. 
+En un bot, todo comienza con el **diálogo raíz**.
+El **diálogo raíz** invoca el **diálogo de nuevo pedido**.
+En ese momento, el **diálogo de nuevo pedido** toma el control de la conversación y permanece en control hasta que se cierra o invoca otros diálogos, como el **diálogo de búsqueda de productos**.
 Si el **diálogo de nuevo pedido** se cierra, se devuelve el control de la conversación al **diálogo raíz**.
 
-Consulte el tema conceptual sobre [flujo de conversación](v4sdk/bot-builder-conversations.md) para obtener más información sobre los tipos de conversación.
+Para obtener ejemplos de cómo implementar el flujo de conversación, consulte [Creación de mensajes propios para recopilar datos de entrada del usuario](./v4sdk/bot-builder-primitive-prompts.md) y use los cuadros de diálogo para [implementar un flujo de conversación secuencial](./v4sdk/bot-builder-dialog-manage-conversation-flow.md).
 
 ## <a name="handle-interruptions"></a>Control de las interrupciones
 
-Puede resultar tentador suponer que los usuarios realizarán tareas de procedimientos una por una de forma clara y ordenada. 
-Por ejemplo, en un flujo de conversación de procedimientos mediante `dialogs`, el usuario inicia en el diálogo raíz, invoca el diálogo de nuevo pedido desde allí y, a continuación, invoca el diálogo de búsqueda de productos. A continuación, el usuario selecciona un producto y lo confirma, saliendo del diálogo de búsqueda de productos, completa el pedido, saliendo del diálogo de nuevo pedido, y vuelve al diálogo raíz. 
+Puede resultar tentador suponer que los usuarios realizarán tareas de procedimientos una por una de forma clara y ordenada.
+Por ejemplo, en un flujo de conversación de procedimientos mediante `dialogs`, el usuario inicia en el diálogo raíz, invoca el diálogo de nuevo pedido desde allí y, a continuación, invoca el diálogo de búsqueda de productos. A continuación, el usuario selecciona un producto y lo confirma, saliendo del diálogo de búsqueda de productos, completa el pedido, saliendo del diálogo de nuevo pedido, y vuelve al diálogo raíz.
 
-Aunque sería estupendo si los usuarios siempre recorriesen dicha ruta lógica y lineal, esto se produce raras veces. 
-Los humanos no se comunican en `dialogs` secuenciales. Tienden a cambiar de opinión con frecuencia. 
-Considere el siguiente ejemplo: 
+Aunque sería estupendo si los usuarios siempre recorriesen dicha ruta lógica y lineal, esto se produce raras veces.
+Los humanos no se comunican en `dialogs` secuenciales. Tienden a cambiar de opinión con frecuencia.
+Considere el siguiente ejemplo:
 
 ![bot](./media/bot-service-design-conversation-flow/stack-issue.png)
 
-Mientras que el bot podría estar centrado en procedimientos, el usuario podría decidir hacer algo completamente diferente o formular una pregunta que no tenga ninguna relación con el tema actual. 
-En el ejemplo anterior, el usuario hace una pregunta en lugar de facilitar la respuesta afirmativa o negativa que el bot espera. 
+Aunque que el bot puede estar centrado en procedimientos, el usuario puede decidir hacer algo completamente diferente o formular una pregunta que no tenga ninguna relación con el tema actual.
+En el ejemplo anterior, el usuario hace una pregunta en lugar de facilitar la respuesta afirmativa o negativa que el bot espera.
 ¿Cómo debe responder el bot?
 
-- Insistir en que el usuario responda primero a la pregunta. 
-- Pasar por alto todo lo que el usuario ha hecho hasta el momento, restablecer la pila de diálogos al completo y empezar desde cero intentando responder a la pregunta del usuario. 
-- Intentar responder a la pregunta del usuario y, después, regresar a la pregunta con respuesta afirmativa o negativa para intentar reanudar la conversación desde ahí. 
+- Insistir en que el usuario responda primero a la pregunta.
+- Pasar por alto todo lo que el usuario ha hecho hasta el momento, restablecer la pila de diálogos al completo y empezar desde cero intentando responder a la pregunta del usuario.
+- Intentar responder a la pregunta del usuario y, después, regresar a la pregunta con respuesta afirmativa o negativa para intentar reanudar la conversación desde ahí.
 
 No hay ninguna respuesta *correcta* a esta pregunta, ya que la mejor solución dependerá de los aspectos concretos del escenario y de cómo espera el usuario que responda el bot. Para más información, consulte [Handle user interrupt](v4sdk/bot-builder-howto-handle-user-interrupt.md) (Control de las interrupciones del usuario).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-La administración de la navegación del usuario en los diálogos y el diseño del flujo de conversación de forma que permita a los usuarios lograr sus objetivos (incluso de forma no lineal) son un desafío fundamental del diseño del bot. 
-En el [siguiente artículo](~/bot-service-design-navigation.md) se revisan algunas dificultades habituales de una navegación mal diseñada y se describen las estrategias para evitar estos problemas. 
+La administración de la navegación del usuario en los diálogos y el diseño del flujo de conversación de forma que permita a los usuarios lograr sus objetivos (incluso de forma no lineal) son un desafío fundamental del diseño del bot.
+En el [siguiente artículo](~/bot-service-design-navigation.md) se revisan algunas dificultades habituales de una navegación mal diseñada y se describen las estrategias para evitar estos problemas.
 
 ::: moniker-end
