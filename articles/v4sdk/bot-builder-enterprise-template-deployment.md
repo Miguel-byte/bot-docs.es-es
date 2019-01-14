@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c7977400a53af916217e595dda8e9c9a0ff85496
-ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
+ms.openlocfilehash: 622d5b4924a4739900659d6be8eebd1888191eab
+ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500668"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54114889"
 ---
 # <a name="enterprise-bot-template---deploying-your-bot"></a>Plantilla de bot de empresa: Implementación del bot
 
@@ -34,10 +34,7 @@ npm install -g ludown luis-apis qnamaker botdispatch msbot chatdown
 
 - Instale las herramientas de la línea de comandos (CLI) de Azure desde [aquí](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Si ya tiene la herramienta de la línea de comandos (CLI) de Azure Bot Service instalada, asegúrese de que está actualizada a la versión más reciente mediante la desinstalación de la versión actual y, a continuación, la instalación de la nueva.
 
-- Instale la extensión de AZ para Bot Service.
-```shell
-az extension add -n botservice
-```
+> Con msbot 4.3.2, y las versiones posteriores, el único requisito previo de la CLI de AZ es tener una versión de la CLI de AZ > = 2.0.53. Si la extensión está instalada también, elimínela con "az extension remove --name botservice".
 
 - Instale la herramienta LUISGen
 
@@ -72,7 +69,7 @@ Los bots de plantilla de empresa requieren las siguientes dependencias para una 
 - Azure Cognitive Services: QnA Maker (incluido Azure Search, Azure Web App)
 - Azure Cognitive Services: Content Moderator (paso opcional manual)
 
-El nuevo proyecto de bot tiene un método de implementación que permite que el comando `msbot clone services` automatice la implementación de todos los servicios mencionados anteriormente en la suscripción de Azure y garantiza que el archivo .bot del proyecto se actualiza con todos los servicios, incluyendo las claves que permiten el funcionamiento ininterrumpido del bot. También tiene varias opciones de configuración para los siguientes idiomas: chino, inglés, francés, alemán, italiano y español.
+El nuevo proyecto de bot tiene un método de implementación que permite que el comando `msbot clone services` automatice la implementación de todos los servicios mencionados anteriormente en la suscripción de Azure y garantiza que el archivo .bot del proyecto se actualiza con todos los servicios, incluyendo las claves que permiten el funcionamiento ininterrumpido del bot. También tiene varias opciones de configuración para los idiomas siguientes: chino, inglés, francés, alemán, italiano y español.
 
 > Una vez implementado, revise los planes de tarifas de los servicios creados y adáptelos a su escenario.
 

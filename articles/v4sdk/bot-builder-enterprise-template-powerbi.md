@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 73e19047ea64839f52bb20ea1eceee93803210bc
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: 88208a2f5b0eb88d3b2964e63a21585484166d73
+ms.sourcegitcommit: 2d84d5d290359ac3cfb8c8f977164f799666f1ab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645495"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54152178"
 ---
 # <a name="enterprise-bot-template---conversational-analytics-using-powerbi-dashboard-and-application-insights"></a>Plantillas del bot empresarial: análisis conversacional con el panel de PowerBI y Application Insights
 
@@ -24,19 +24,10 @@ El bot implementado empieza a procesar mensajes y se ve el flujo de datos de tel
 
 Estos datos de telemetría se ven en la hoja de Application Insights de Azure Portal y con Log Analytics. Además, PowerBI puede usarlos para proporcionar conclusiones empresariales más generales sobre el uso del bot.
 
-En la carpeta de PowerBI del proyecto que ha creado se proporciona un ejemplo de panel de PowerBI. Esto es a modo de ejemplo y muestra cómo se pueden empezar a crear conclusiones propias. Con el tiempo, mejoraremos estas presentaciones. 
+En [Telemetría de Application Insights Conversational](https://aka.ms/botPowerBiTemplate) encontrará un ejemplo de panel de PowerBI. 
 
-## <a name="getting-started"></a>Introducción
+Esto es a modo de ejemplo y muestra cómo se pueden empezar a crear conclusiones propias. Con el tiempo, mejoraremos estas presentaciones. 
 
-- Descargue Power BI Desktop de [aquí](https://powerbi.microsoft.com/en-us/desktop/).
- 
-- Recupere el valor de ```Application Id``` para el recurso de Application Insights que usa el bot. Para ello, vaya a la página de acceso a la API en la sección de configuración de la hoja de Application Insights en Azure.
-
-Haga doble clic en el archivo de la plantilla de Power BI proporcionado ubicado en la carpeta de PowerBI de la solución. Se le pedirá para el ```Application Id``` que recuperó en el paso anterior. Complete la autenticación si se le solicita con sus credenciales de suscripción de Azure, quizá deba hacer clic en la opción de configuración de la cuenta profesional para iniciar sesión.
-
-El panel resultante está ahora vinculado a su instancia de Application Insights y debería ver información inicial detallada en él si se han enviado y recibido mensajes.
-
->Tenga en cuenta que la presentación de opiniones no mostrará datos porque el script de implementación actual no permite opiniones al publicar el modelo de LUIS. [Volver a publicar](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-publish-app) el modelo de LUIS y habilitar las opiniones funcionará.
 
 ## <a name="middleware-processing"></a>Procesamiento de middleware
 
@@ -55,11 +46,13 @@ Cada intención de LUIS que use el proyecto llevará el prefijo LuisIntent para 
     - ActivityId
     - Channel
     - FromId
-    - Conversationid
+    - FromName
+    - ConversationId
     - ConversationName
     - Locale
-    - UserName
     - Text
+    - RecipientId
+    - RecipientName
 ```
   
 ```
@@ -67,10 +60,12 @@ Cada intención de LUIS que use el proyecto llevará el prefijo LuisIntent para 
     - ActivityId,
     - Channel
     - RecipientId
-    - Conversationid
+    - ConversationId
     - ConversationName
     - Locale
-    - ReceipientName
+    - RecipientId
+    - RecipientName
+    - ReplyToId
     - Text
 ```
 
@@ -83,6 +78,7 @@ Cada intención de LUIS que use el proyecto llevará el prefijo LuisIntent para 
     - SentimentScore
     - ConversationId
     - Question
+    - DialogId
 ```
 
 ```
@@ -90,8 +86,8 @@ Cada intención de LUIS que use el proyecto llevará el prefijo LuisIntent para 
     - ActivityId
     - ConversationId
     - OriginalQuestion
-    - UserName
-    - QnAItemFound
+    - FromName
+    - ArticleFound
     - Question
     - Answer
     - Score
