@@ -8,13 +8,13 @@ ms.topic: landing-page
 layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/27/2018
-ms.openlocfilehash: 905b8592ebbc3fb4344af60b6bcbb219d0a2ee70
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 01/16/2019
+ms.openlocfilehash: 5c7851bdc05180605d20698f3e94e07c9bcace2b
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224320"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360775"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -101,8 +101,8 @@ ms.locfileid: "54224320"
 </div>
 
 <h2 style="margin-top: 36px">Tutoriales detallados</h2>
-<p><a href="/bot-framework/bot-builder-tutorial-dispatch">Integración de aplicaciones de LUIS y servicios QnA con la herramienta de distribución</a></p>
-
+<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">Creación e implementación de un bot básico</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-add-qna">Agregar QnA Maker y volver a implementar un bot</a></p>
 <h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsD">
     <li>

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 73149f8137144ee34c1ab1e8fc6a645d1405b694
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360765"
+---
 # [Documentación sobre Azure Bot Service](index.md)
 # Información general
 ## [Acerca de Azure Bot Service](bot-service-overview-introduction.md)
@@ -7,7 +15,8 @@
 ### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
 ### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
 # Tutoriales
-## [Uso de varios modelos de LUIS y QnA](v4sdk/bot-builder-tutorial-dispatch.md)
+## [Creación e implementación de un bot básico](v4sdk/bot-builder-tutorial-basic-deploy.md)
+## [Agregar QnA Maker y volver a implementar un bot](v4sdk/bot-builder-tutorial-add-qna.md)
 ## [Adición de autenticación al bot](bot-builder-tutorial-authentication.md)
 # Ejemplos
 ## [Repositorio botbuilder-samples de GitHub](https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md)
@@ -41,6 +50,7 @@
 ### [Obtención de notificaciones de bots](v4sdk/bot-builder-howto-proactive-message.md)
 ### [Incorporación de comprensión lingüística natural al bot](v4sdk/bot-builder-howto-v4-luis.md)
 ### [Respuesta a las preguntas del usuario con QnA Maker](v4sdk/bot-builder-howto-qna.md)
+### [Uso de varios modelos de LUIS y QnA](v4sdk/bot-builder-tutorial-dispatch.md)
 ### Administración de conversaciones mediante la biblioteca de diálogos 
 #### [Implementación de flujo de conversación secuencial](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 #### [Recopilación de datos de entrada del usuario mediante una solicitud de diálogo](v4sdk/bot-builder-prompts.md)
