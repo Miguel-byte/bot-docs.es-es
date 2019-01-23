@@ -1,6 +1,6 @@
 ---
-title: Bots de ejemplo para el SDK de Bot Builder para Java | Microsoft Docs
-description: Explore los bots de ejemplo que pueden ayudarle a comenzar a desarrollar bots con el SDK de Bot Builder para Java.
+title: Ejemplo de bots de Bot Framework SDK para Java | Microsoft Docs
+description: Explore los bots de ejemplo para comenzar el desarrollo de bots con Bot Framework SDK para Java.
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/03/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14f9620e37f47dd68a63ce50bb7c8aa6ecb1b060
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0f6db4fe60a19060ffefcf6e5509b3abb95c14b4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997192"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224470"
 ---
-# <a name="bot-builder-sdk-v4-java-samples"></a>Ejemplos del SDK v4 de Bot Builder para Java
+# <a name="bot-framework-sdk-v4-java-samples"></a>Ejemplos de Bot Framework SDK v4 para Java
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Puede usar los ejemplos que le ayudarán a compilar bots mediante el SDK v4 de Java; tenga en cuenta que actualmente se encuentra en versión preliminar.
@@ -28,4 +28,4 @@ Para obtener los ejemplos, clone el repositorio [botbuilder-java](https://github
 git clone https://github.com/Microsoft/botbuilder-java.git
 cd samples
 ```
-Los bots de ejemplo creados con el SDK de Bot Builder para Java se organizan en el directorio de **muestras**.
+Los bots de ejemplo creados con Bot Framework SDK para Java están organizados en el directorio **samples**.

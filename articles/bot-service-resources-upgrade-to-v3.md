@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3e99828e7c26b10c39bef4c8db79f92ff5f2b30c
-ms.sourcegitcommit: 49a76dd34d4c93c683cce6c2b8b156ce3f53280e
+ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50134715"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225950"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Actualización de un bot a Bot Framework API v3
 
@@ -67,7 +67,7 @@ If the **App ID** field is empty, complete these steps:
    ![Save changes](~/media/upgrade/save-changes.png)
 -->
 
-## <a id="update-code"></a> Paso 2: Actualización del código de bot a la versión 4.0
+## <a id="update-code"></a> Paso 2: Actualización del código del bot a la versión 4.0
 
 Los bots de la versión 1 ya no son compatibles. Para actualizar el bot, deberá crear uno nuevo en la versión 3 en su lugar. Si desea conservar alguno de sus códigos antiguos, tendrá que migrar el código manualmente.
 
@@ -84,7 +84,7 @@ Si desea conservar el código anterior, siga estos pasos:
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
 
-1. Update to the latest version of the [Bot Builder SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
+1. Update to the latest version of the [Bot Framework SDK](https://github.com/Microsoft/BotBuilder) for your bot's language.
 2. Update your code to apply the necessary changes, according the guidance below.
 3. Use the [Bot Framework Emulator](~/bot-service-debug-emulator.md) to test your bot locally and then in the cloud.
 
@@ -93,10 +93,10 @@ The following sections describe the key differences between API v1 and API v3. A
 
 ### <a name="botbuilder-and-connector-are-now-one-sdk"></a>BotBuilder y Connector son ahora un SDK
 
-En lugar de tener que instalar distintos SDK para Builder y Connector mediante varios paquetes NuGet (o módulos NPM), ahora puede obtener ambas bibliotecas en un único SDK de Bot Builder:
+En lugar de tener que instalar distintos SDK para Builder y Connector mediante varios paquetes NuGet (o módulos NPM), ahora puede obtener ambas bibliotecas en un único Bot Framework SDK:
 
-- SDK de Bot Builder para. NET: paquete NuGet `Microsoft.Bot.Builder`
-- SDK de Bot Builder para Node.js: módulo de NPM `botbuilder`
+- Bot Framework SDK para .NET: Paquete NuGet `Microsoft.Bot.Builder`
+- Bot Framework SDK para Node.js: Módulo NPM `botbuilder`
 
 El SDK independiente `Microsoft.Bot.Connector` está ahora obsoleto y ya no es objeto de mantenimiento.
 
@@ -163,7 +163,7 @@ Bot Framework API v3 almacena las propiedades de autenticación con estas claves
 - `MicrosoftAppID`
 - `MicrosoftAppPassword`
 
-## <a id="step-3"></a> Paso 3: Implementación del bot de actualización en Azure.
+## <a id="step-3"></a> Paso 3: Implementación del bot actualizado en Azure.
 
 Después de haber actualizado el código del bot a API v3, basta con implementar el bot en Azure mediante estas [instrucciones](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Como la versión 1 ya no es compatible, todos los bots utilizarán automáticamente la API de la versión 3 cuando se implemente en los servicios Azure.
 

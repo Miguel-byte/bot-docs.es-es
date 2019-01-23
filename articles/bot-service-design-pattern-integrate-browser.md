@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: e3833595003edda46a6ffd1d508237262aad94e1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 20ca2864b6498b0d80bea13ce97ffffc4cf1f22d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999232"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225930"
 ---
 # <a name="integrate-your-bot-with-a-web-browser"></a>Integración del bot con un explorador web
 
@@ -73,7 +73,7 @@ El número mágico debe ser un número aleatorio generado mediante una bibliotec
 
 ### <a id="website-signal-to-bot"></a> ¿Cómo hace el sitio web para "indicar" al bot?
 
-Cuando el bot [genera el hipervínculo](#generate-hyperlink) donde el usuario hará clic para iniciar el flujo del sitio web, incluye información a través de los parámetros de cadena de consulta en la dirección URL de destino sobre el contexto de la conversación actual, por ejemplo, el id. de la conversación, el id. del canal y el id. del usuario en el canal. Posteriormente, el sitio web puede usar esta información para leer y escribir variables de estado para ese usuario o esa conversación con el Bot Builder SDK o la API de REST. Consulte el [paso 6](#signal-to-bot) anterior para obtener un ejemplo de cómo el sitio web "indica" al bot que el flujo del sitio web está completo.
+Cuando el bot [genera el hipervínculo](#generate-hyperlink) donde el usuario hará clic para iniciar el flujo del sitio web, incluye información a través de los parámetros de cadena de consulta en la dirección URL de destino sobre el contexto de la conversación actual, por ejemplo, el id. de la conversación, el id. del canal y el id. del usuario en el canal. Posteriormente, el sitio web puede usar esta información para leer y escribir variables de estado para ese usuario o esa conversación con Bot Framework SDK o las API REST. Consulte el [paso 6](#signal-to-bot) anterior para obtener un ejemplo de cómo el sitio web "indica" al bot que el flujo del sitio web está completo.
 
 ## <a name="sample-code"></a>Código de ejemplo
 

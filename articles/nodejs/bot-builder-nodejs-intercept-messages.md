@@ -1,6 +1,6 @@
 ---
 title: Interceptación de mensajes | Microsoft Docs
-description: Aprenda a crear registros mediante la interceptación y el procesamiento de intercambios de información con el SDK de Bot Builder para Node.js.
+description: Aprenda a crear registros mediante la interceptación y el procesamiento de intercambios de información con Bot Framework SDK para Node.js.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 31380961f117a2b4a3ffaae3c82d682a63001c0c
-ms.sourcegitcommit: 984705927561cc8d6a84f811ff24c8c71b71c76b
+ms.openlocfilehash: b262e936cd48bb73d7b5aa3fa4f7b6318ea7c2a0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50965683"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225630"
 ---
 # <a name="intercept-messages"></a>Interceptación de mensajes
 
@@ -28,7 +28,7 @@ ms.locfileid: "50965683"
 
 ## <a name="example"></a>Ejemplo
 
-En el ejemplo de código siguiente se muestra cómo interceptar los mensajes intercambiados entre un usuario y un bot por medio del concepto de **middleware** en el SDK de Bot Builder para Node.js. 
+En el ejemplo de código siguiente se muestra cómo interceptar los mensajes intercambiados entre un usuario y un bot por medio del concepto de **middleware** en Bot Framework SDK para Node.js. 
 
 En primer lugar, configure el controlador de mensajes entrantes (`botbuilder`) y mensajes salientes (`send`).
 
@@ -65,4 +65,4 @@ En este ejemplo, el bot simplemente imprime información sobre cada mensaje, per
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para ver un ejemplo completo que muestra cómo interceptar y registrar mensajes mediante el SDK de Bot Builder para Node.js, consulte el <a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">ejemplo de middleware y registro</a> en GitHub.
+Para ver un ejemplo completo que muestra cómo interceptar y registrar mensajes mediante Bot Framework SDK para Node.js, consulte <a href="https://aka.ms/v3-js-capability-middlewareLogging" target="_blank">Ejemplo de middleware y registro</a> en GitHub.

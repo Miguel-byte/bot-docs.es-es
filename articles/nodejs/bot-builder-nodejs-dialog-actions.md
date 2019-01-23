@@ -1,6 +1,6 @@
 ---
 title: Controlar las acciones del usuario | Microsoft Docs
-description: Obtenga información sobre cómo controlar las acciones del usuario al permitir que el bot escuche y controle la entrada de usuario que contenga ciertas palabras clave mediante el Bot Builder SDK para Node.js.
+description: Obtenga información sobre cómo controlar las acciones del usuario al permitir que el bot escuche y controle la entrada de usuario que contenga ciertas palabras clave mediante Bot Framework SDK para Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26f6e9520fe5d2ebb83ceb4e6a497a35e9d2611f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7ca595b1c24769addfbdf7975c48d3a052c4a2de
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999262"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54226010"
 ---
 # <a name="handle-user-actions"></a>Controlar acciones del usuario
 
@@ -236,7 +236,7 @@ bot.dialog('orderDinner', [
 
 ### <a name="bind-an-endconversationaction"></a>Enlazar endConversationAction
 
-Enlazar `endConversationAction` lo registrará en el cuadro de diálogo. Una vez desencadenada, esta acción finaliza la conversación con el usuario. Desencadenar esta acción es similar a llamar al método [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). Una vez que finaliza una conversación, el Bot Builder SDK para Node.js borrará la pila del cuadro de diálogo y los datos de estado persistente. Para obtener más información sobre los datos de estado persistente, consulte [Manage state data](bot-builder-nodejs-state.md) (Administrar datos de estado).
+Enlazar `endConversationAction` lo registrará en el cuadro de diálogo. Una vez desencadenada, esta acción finaliza la conversación con el usuario. Desencadenar esta acción es similar a llamar al método [endConversation](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html#endconversation). Una vez que finaliza una conversación, Bot Framework SDK para Node.js borrará la pila de diálogos y los datos de estado persistentes. Para obtener más información sobre los datos de estado persistente, consulte [Manage state data](bot-builder-nodejs-state.md) (Administrar datos de estado).
 
 El fragmento de código siguiente muestra cómo enlazar [endConversationAction][endConversationAction] a un cuadro de diálogo.
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a59c0a8b7ee664cdb38ab9d0cb186114938d73f
-ms.sourcegitcommit: 782b3a2e788c25effd7d150a070bd2819ea92dad
+ms.openlocfilehash: 4b09ca152f99faa66d2da55ebeb93fb9cce090db
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743669"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317695"
 ---
 # <a name="create-bots-with-azure-cli"></a>Creación de bots con la CLI de Azure
 
@@ -35,7 +35,7 @@ Para usar estas herramientas desde la línea de comandos, necesita Node.js insta
 
 ## <a name="1-install-tools"></a>1. Instalación de herramientas
 1. [Instale](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) la versión más reciente de la CLI de Azure.
-2. [Instale](https://aka.ms/botbuilder-tools-readme) las herramientas de Bot Builder.
+2. [Instale](https://aka.ms/botbuilder-tools-readme) Bot Framework Tools.
 
 Ahora puede administrar los bots mediante la CLI de Azure como cualquier otro recurso de Azure.
 
@@ -64,12 +64,12 @@ az bot [command]
 ```
 |Comandos:|  |
 |----|----|
-| create      |Agregar un recurso|
-| delete     |Clonar un recurso|
-| descargar   | Descargar el código fuente del bot|
-| Publicar   |Publicar en un servicio de bot existente|
-| show |Mostrar los recursos de bot existentes.|
-| update| Actualizar un servicio de bot existente|
+| create      |Crear un nuevo bot|
+| delete     |Eliminar un bot existente|
+| descargar   |Descargar un bot existente|
+| Publicar   |Publicar en la instancia de App Service asociada al bot|
+| show |Obtener un bot existente|
+| update|Actualizar un bot existente|
 
 Para crear un bot desde la CLI, debe seleccionar un [grupo de recursos](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) existente, o bien crear uno. 
 
@@ -140,7 +140,7 @@ msbot connect service-type
 | Tipo de servicio | DESCRIPCIÓN |
 | ------ | ----------- |
 | azure  |Conecta el bot a un registro de Azure Bot Service.|
-|endpoint| Conectar el bot a un punto de conexión como localhost|
+|punto de conexión| Conectar el bot a un punto de conexión como localhost|
 |luis     | Conecta el bot a una aplicación de LUIS. |
 | qna     |Conecta el bot a una base de conocimiento de QnA.|
 |help [cmd]  |Muestra la ayuda para [cmd].|
@@ -160,10 +160,10 @@ Esta operación tomará el punto de conexión, Id. de la aplicación y contrase�
 
 ## <a name="5-manage-update-or-create-luis-and-qna-services-with--new-botbuilder-tools"></a>5. Administración, actualización o creación de servicios de LUIS y QnA con las nuevas herramientas de Bot Builder
 
-Las [herramientas de Bot Builder](https://aka.ms/botbuilder-tools) son un conjunto de herramientas nuevo que permite administrar los recursos de bot e interactuar con ellos directamente desde la línea de comandos.
+[Bot Framework Tools](https://aka.ms/botbuilder-tools) es un conjunto de herramientas nuevo que permite administrar los recursos del bot e interactuar con ellos directamente desde la línea de comandos.
 
 >[!TIP]
-> Cada herramienta del generador de bots incluye un comando de ayuda global, accesible desde la línea de comandos si se escribe **-h** o **--help**. Este comando está disponible en cualquier momento desde cualquier acción, lo que proporcionará una representación útil de las opciones disponibles junto con sus descripciones.
+> Bot Framework Tool incluye un comando de ayuda global al que se puede acceder desde la línea de comandos si se escribe **-h** o **--help**. Este comando está disponible en cualquier momento desde cualquier acción, lo que proporcionará una representación útil de las opciones disponibles junto con sus descripciones.
 
 ### <a name="ludown"></a>LUDown
 
@@ -333,5 +333,5 @@ az bot publish --name "my-bot-name" --resource-group "my-resource-group"
 ```
 
 ## <a name="references"></a>Referencias
-- [Herramientas de Bot Builder](https://aka.ms/botbuilder-tools-readme)
+- [Bot Framework Tools](https://aka.ms/botbuilder-tools-readme)
 - [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)

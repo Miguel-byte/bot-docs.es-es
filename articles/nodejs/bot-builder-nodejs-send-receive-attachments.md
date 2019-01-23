@@ -1,6 +1,6 @@
 ---
 title: Envío y recepción de datos adjuntos | Microsoft Docs
-description: Obtenga información sobre cómo enviar y recibir mensajes que contengan datos adjuntos con el Bot Builder SDK para Node.js.
+description: Obtenga información sobre cómo enviar y recibir mensajes que contengan datos adjuntos con Bot Framework SDK para Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 41e1e9e6fe59f00b8b8c873c2dd5fd2d698dabcb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 1911a5b0f8e8f8b53de6f661c0a939767df1efbb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998192"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224700"
 ---
 # <a name="send-and-receive-attachments"></a>Envío y recepción de datos adjuntos
 
@@ -27,7 +27,7 @@ ms.locfileid: "49998192"
 
 Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Los tipos de datos adjuntos que se pueden enviar varía según el canal, pero estos son los tipos básicos:
 
-* **Multimedia y archivos**: puede enviar archivos, como imágenes, audio y vídeos, estableciendo **contentType** en el tipo MIME del [objeto IAttachment][IAttachment] y, a continuación, pasando un vínculo al archivo en **contentUrl**.
+* **Elementos multimedia y archivos**: puede enviar archivos, como imágenes, audio y vídeos, estableciendo **contentType** en el tipo MIME del [objeto IAttachment][IAttachment] y, a continuación, pasando un vínculo al archivo en **contentUrl**.
 * **Tarjetas**: puede enviar un amplio conjunto de tarjetas visuales <!-- and custom keyboards --> estableciendo **contentType** en el tipo de tarjeta deseado y, a continuación, pasando el código JSON de la tarjeta. Si usa una de las clases de generador de tarjetas enriquecidas, como **HeroCard**, los adjuntos se rellenan automáticamente. Consulte [envío de una tarjeta enriquecida](bot-builder-nodejs-send-rich-cards.md) para obtener un ejemplo de esto.
 
 ## <a name="add-a-media-attachment"></a>Incorporación de adjuntos multimedia

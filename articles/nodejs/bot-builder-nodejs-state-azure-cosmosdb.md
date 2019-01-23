@@ -1,6 +1,6 @@
 ---
 title: Administración de datos de estado personalizado con Azure Cosmos DB | Microsoft Docs
-description: Aprenda a guardar y a recuperar datos de estado mediante Azure Cosmos DB con Bot Builder SDK para Node.js.
+description: Aprenda a guardar y a recuperar datos de estado mediante Azure Cosmos DB con Bot Framework SDK para Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0c0d91a7ec9fd1d72c7c51c042b0f52e28798778
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 92672e9d9ca9949da1ce4741bdc71bc809d982f7
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998122"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224520"
 ---
 # <a name="manage-custom-state-data-with-azure-cosmos-db-for-nodejs"></a>Administración de datos de estado personalizado con Azure Cosmos DB para Node.js
 
@@ -24,7 +24,7 @@ En este artículo, implementará el almacenamiento de Cosmos DB para almacenar y
 
 - mayor rendimiento de la API de estado (más control sobre el rendimiento)
 - latencia más baja para la distribución geográfica
-- control sobre dónde se almacenan los datos (p. ej.: oeste de Estados Unidos frente a este de Estados Unidos)
+- control sobre dónde se almacenan los datos (p. ej.: Oeste de EE. UU. frente a Este de EE. UU.)
 - acceso a los datos de estado reales
 - base de datos de estado no compartida con otros bots
 - almacenamiento de más de 32 kb

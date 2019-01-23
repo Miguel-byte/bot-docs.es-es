@@ -1,6 +1,6 @@
 ---
-title: Bot Builder SDK para Node.js | Microsoft Docs
-description: Explore el Bot Builder SDK para Node.js, un marco de creación de bots eficaz y fácil de usar.
+title: Bot Framework SDK para Node.js | Microsoft Docs
+description: Explore Bot Framework SDK para Node.js, un marco de creación de bots eficaz y fácil de usar.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 67acd4d8b24b88ac705f997357166a3fdb9f26c0
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2e25237b616810f5ef10442fec41834568afcb59
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997182"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224748"
 ---
-# <a name="bot-builder-sdk-for-nodejs"></a>Bot Builder SDK para Node.js
+# <a name="bot-framework-sdk-for-nodejs"></a>Bot Framework SDK para Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -25,10 +25,10 @@ ms.locfileid: "49997182"
 > - [Node.js](../nodejs/bot-builder-nodejs-overview.md)
 > - [REST](../rest-api/bot-framework-rest-overview.md)
 
-Bot Builder SDK para Node.js es un marco eficaz y fácil de usar que proporciona una manera conocida para que los desarrolladores de Node.js escriban bots.
+Bot Framework SDK para Node.js es un marco eficaz y fácil de usar que proporciona una manera conocida para que los desarrolladores de Node.js escriban bots.
 Puede usarlo para crear una amplia variedad de interfaces de usuario conversacionales, desde avisos sencillos hasta conversaciones de forma libre.
 
-La lógica conversacional para el bot se aloja como servicio web. El Bot Builder SDK usa <a href="http://restify.com">restify</a>, un marco conocido para la creación de servicios web, para crear el servidor web del bot. El SDK también es compatible con <a href="http://expressjs.com/">Express</a>, y el uso de otros marcos de aplicación web es posible con algunas adaptaciones. 
+La lógica conversacional para el bot se aloja como servicio web. Bot Framework SDK usa <a href="http://restify.com">restify</a>, un marco conocido para la creación de servicios web, para crear el servidor web del bot. El SDK también es compatible con <a href="http://expressjs.com/">Express</a>, y el uso de otros marcos de aplicación web es posible con algunas adaptaciones. 
 
 Mediante el SDK, puede sacar provecho de las características siguientes: 
 
@@ -41,13 +41,13 @@ Mediante el SDK, puede sacar provecho de las características siguientes:
 
 Si no está familiarizado con la escritura de bots, [cree su primer bot con Node.js](bot-builder-nodejs-quickstart.md) con instrucciones paso a paso que le ayudarán a configurar el proyecto, instalar el SDK y ejecutar su primer bot. 
 
-Si no está familiarizado con el Bot Builder SDK para Node.js, puede comenzar con los conceptos clave que le ayudarán a comprender los componentes principales del Bot Builder SDK, consulte [Conceptos clave](bot-builder-nodejs-concepts.md).
+Si no está familiarizado con Bot Framework SDK para Node.js, puede comenzar con los conceptos clave que le ayudarán a comprender los componentes principales de Bot Framework SDK, consulte [Conceptos clave](bot-builder-nodejs-concepts.md).
 
 Para asegurarse de que el bot aborde los escenarios de usuario principales, revise los [principios de diseño](../bot-service-design-principles.md) y [explore los patrones](../bot-service-design-pattern-task-automation.md) para obtener instrucciones.
 
 ## <a name="get-samples"></a>Obtención de ejemplos
 
-En los [ejemplos del Bot Builder SDK para Node.js](bot-builder-nodejs-samples.md) se describen bots basados en tareas en los que se muestra cómo aprovechar las características del Bot Builder SDK para Node.js. Puede usar los ejemplos para empezar a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas.
+En [Ejemplos de Bot Framework SDK para Node.js](bot-builder-nodejs-samples.md) se describen bots basados en tareas en los que se muestra cómo aprovechar las características de Bot Framework SDK para Node.js. Puede usar los ejemplos para empezar a trabajar rápidamente en la compilación de bots excelentes con funcionalidades enriquecidas.
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]
@@ -55,7 +55,7 @@ En los [ejemplos del Bot Builder SDK para Node.js](bot-builder-nodejs-samples.md
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-Las siguientes guías de procedimientos enfocada en tareas demuestran diversas características del Bot Builder SDK para Node.js.
+Las siguientes guías de procedimientos enfocadas en tareas demuestran diversas características de Bot Framework SDK para Node.js.
 
 * [Responder a mensajes](bot-builder-nodejs-use-default-message-handler.md)
 * [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md)
@@ -65,7 +65,7 @@ Las siguientes guías de procedimientos enfocada en tareas demuestran diversas c
 * [Guardado de datos de usuario](bot-builder-nodejs-save-user-data.md)
 
 
-Si tiene problemas o sugerencias sobre el Bot Builder SDK para Node.js, consulte el [soporte técnico](../bot-service-resources-links-help.md) para obtener una lista de los recursos disponibles. 
+Si tiene problemas o sugerencias sobre Bot Framework SDK para Node.js, consulte [Soporte técnico](../bot-service-resources-links-help.md) para obtener una lista de los recursos disponibles. 
 
 
 [DesignGuide]: ../bot-service-design-principles.md 

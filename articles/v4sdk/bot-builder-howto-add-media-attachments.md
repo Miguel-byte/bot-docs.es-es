@@ -1,6 +1,6 @@
 ---
 title: Incorporación de elementos multimedia a los mensajes | Microsoft Docs
-description: Obtenga información sobre cómo agregar elementos multimedia a los mensajes mediante el SDK de Bot Builder.
+description: Obtenga información sobre cómo agregar elementos multimedia a los mensajes mediante Bot Framework SDK.
 keywords: multimedia, mensajes, imágenes, audio, vídeo, archivos, MessageFactory, tarjetas enriquecidas, mensajes, tarjetas adaptables, tarjeta de imagen prominente, acciones sugeridas
 author: ivorb
 ms.author: v-ivorb
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/17/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fd908335c69aab7c8b68925b8ecdece79e89ab4b
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735965"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317605"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. El SDK de Bot Builder es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones. Consulte el [diseño de la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles. 
+Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones. Consulte el [diseño de la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles. 
 
 ## <a name="send-attachments"></a>Envío de datos adjuntos
 
@@ -29,7 +29,8 @@ Para enviar el contenido de usuario como una imagen o un vídeo, puede agregar d
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-La propiedad `Attachments` del objeto `Activity` contiene una matriz de objetos `Attachment` que representan los datos adjuntos con elementos multimedia y las tarjetas enriquecidas adjuntas al mensaje. Para agregar datos adjuntos con elementos multimedia a un mensaje, cree un objeto `Attachment` para la actividad `message` y establezca las propiedades `ContentType`, `ContentUrl` y `Name`. La propiedad `Attachments` del objeto `Activity` contiene una matriz de objetos `Attachment` que representan los datos adjuntos con elementos multimedia y las tarjetas enriquecidas adjuntas al mensaje. Para agregar datos adjuntos con elementos multimedia a un mensaje, use el método `Attachment` para crear un objeto `Attachment` para la actividad `message` y establezca las propiedades `ContentType`, `ContentUrl` y `Name`. El código fuente que se muestra a continuación se basa en el ejemplo [Handling Attachments](https://aka.ms/bot-attachments-sample-code) (sobre control de datos adjuntos). 
+La propiedad `Attachments` del objeto `Activity` contiene una matriz de objetos `Attachment` que representan los datos adjuntos con elementos multimedia y las tarjetas enriquecidas adjuntas al mensaje. Para agregar datos adjuntos con elementos multimedia a un mensaje, cree un objeto `Attachment` para la actividad `message` y establezca las propiedades `ContentType`, `ContentUrl` y `Name`.
+El código fuente que se muestra a continuación se basa en el ejemplo [Handling Attachments](https://aka.ms/bot-attachments-sample-code) (sobre control de datos adjuntos). 
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -219,7 +220,7 @@ await context.sendActivity(hero);
 ## <a name="send-an-adaptive-card"></a>Envío de una tarjeta adaptable
 Las tarjetas adaptables y MessageFactory se utilizan para enviar mensajes enriquecidos, incluidos textos, imágenes, vídeo, audio y archivos para comunicarse con los usuarios. Sin embargo, hay algunas diferencias entre ellos. 
 
-En primer lugar, solo algunos canales admiten tarjetas adaptables y aquellos canales que las admiten, podrían hacerlo de un modo parcial. Por ejemplo, si envía una tarjeta adaptable en Facebook, los botones no funcionarán, pero los textos y las imágenes funcionan bien. MessageFactory es simplemente una clase auxiliar en Bot Builder SDK para automatizar los pasos de creación y es compatible con la mayoría de los canales. 
+En primer lugar, solo algunos canales admiten tarjetas adaptables y aquellos canales que las admiten, podrían hacerlo de un modo parcial. Por ejemplo, si envía una tarjeta adaptable en Facebook, los botones no funcionarán, pero los textos y las imágenes funcionan bien. MessageFactory es simplemente una clase asistente en Bot Framework SDK para automatizar los pasos de creación y es compatible con la mayoría de los canales. 
 
 En segundo lugar, una tarjeta adaptable entrega los mensajes en formato de tarjeta y el canal determina el diseño de la tarjeta. El formato de los mensajes que entrega MessageFactory depende del canal y no es necesariamente en formato de tarjeta, a menos que la tarjeta adaptable sea parte de los datos adjuntos. 
 

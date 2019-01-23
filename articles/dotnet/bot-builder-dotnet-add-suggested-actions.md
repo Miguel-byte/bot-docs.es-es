@@ -1,6 +1,6 @@
 ---
 title: Incorporación de acciones sugeridas a mensajes | Microsoft Docs
-description: Obtenga información sobre cómo agregar acciones sugeridas a mensajes mediante el SDK de Bot Builder para .NET.
+description: Obtenga información sobre cómo agregar acciones sugeridas a los mensajes mediante Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b03003d4822c657f9b606de36087ddf4d5cbee7a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ad9b791cf74c4a67515fdf8d60eab29c51f93bc2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997653"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224756"
 ---
 # <a name="add-suggested-actions-to-messages"></a>Incorporación de acciones sugeridas a mensajes
 

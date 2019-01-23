@@ -1,6 +1,6 @@
 ---
 title: Guardado de los datos del usuario y la conversación | Microsoft Docs
-description: Obtenga información sobre cómo guardar y recuperar datos de estado con el SDK Bot Builder.
+description: Obtenga información sobre cómo guardar y recuperar datos de estado con Bot Framework SDK.
 keywords: estado de la conversación, estado de usuario, conversación, guardar el estado, administrar estado del bot
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/26/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8c3aad54a9e80e8a046a6e31a5109a1de8c61a8b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 8c3696d0642e1b1ce9c3d3e23118a7bd9ab0023b
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010510"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224590"
 ---
 # <a name="save-user-and-conversation-data"></a>Guardado de los datos del usuario y la conversación
 

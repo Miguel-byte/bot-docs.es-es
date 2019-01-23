@@ -1,6 +1,6 @@
 ---
 title: Incorporación de voz a los mensajes | Microsoft Docs
-description: Obtenga información sobre cómo agregar voz a los mensajes mediante Bot Builder SDK para Node.js.
+description: Obtenga información sobre cómo agregar voz a los mensajes mediante Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3c17097197ba4b6ed0523d84a81974d9cc9fe3b5
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f7e68b9ab6ef1fca189108ed4117c0ab17f4d9f2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999138"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224300"
 ---
 # <a name="add-speech-to-messages"></a>Incorporación de voz a los mensajes
 
@@ -29,7 +29,7 @@ Si está creando un bot para un canal habilitado para voz, como Cortana, puede c
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Especificación del texto que dirá el bot
 
-Mediante Bot Builder SDK para Node.js, hay varias maneras de especificar el texto que dirá el bot en un canal habilitado para voz. Puede establecer la propiedad `IMessage.speak` y enviar el mensaje con el método `session.send()`, enviar el mensaje con el método `session.say()` (pasando los parámetros que especifican el texto para mostrar, el texto para hablar y las opciones) o enviar uno de los avisos integrados (especificando las opciones `speak` y `retrySpeak`).
+Con Bot Framework SDK para Node.js, hay varias maneras de especificar el texto que dirá el bot en un canal habilitado para voz. Puede establecer la propiedad `IMessage.speak` y enviar el mensaje con el método `session.send()`, enviar el mensaje con el método `session.say()` (pasando los parámetros que especifican el texto para mostrar, el texto para hablar y las opciones) o enviar uno de los avisos integrados (especificando las opciones `speak` y `retrySpeak`).
 
 ### <a id="message-speak"></a> IMessage.speak 
 
@@ -72,13 +72,13 @@ Cuando envía un mensaje en un canal habilitado para voz, puede intentar influir
 
 ## <a name="sample-code"></a>Código de ejemplo 
 
-Para un ejemplo completo en el que se muestra cómo crear un bot habilitado para voz mediante Bot Builder SDK para. NET, consulte el ejemplo <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller</a> en GitHub.
+Para un ejemplo completo en el que se muestra cómo crear un bot habilitado para voz mediante Bot Framework SDK para. NET, consulte el ejemplo <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Roller</a> en GitHub.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Lenguaje de marcado de síntesis de voz (SSML)</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill" target="_blank">Ejemplo Roller (GitHub)</a>
-- [Referencia de Bot Builder SDK para Node.js][SDKReference]
+- [Referencia de Bot Framework SDK para Node.js][SDKReference]
 
 [SDKReference]: https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html
 

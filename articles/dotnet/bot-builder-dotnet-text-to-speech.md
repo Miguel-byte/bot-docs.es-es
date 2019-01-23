@@ -1,6 +1,6 @@
 ---
 title: Incorporación de voz a los mensajes | Microsoft Docs
-description: Aprenda a agregar voz a los mensajes mediante Bot Builder SDK para .NET.
+description: Obtenga información sobre cómo agregar voz a los mensajes mediante Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: dc542c7e85b3a79e1071edebea65d93c99742beb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000364"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225600"
 ---
 # <a name="add-speech-to-messages"></a>Incorporación de voz a los mensajes
 
@@ -29,7 +29,7 @@ Si está creando un bot para un canal habilitado para voz, como Cortana, puede c
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Especificación del texto que dirá el bot
 
-Con Bot Builder SDK para. NET, hay varias maneras de especificar el texto que dirá el bot en un canal habilitado para voz. Puede establecer la propiedad `Speak` del [mensaje][IMessageActivity], llamar al método `IDialogContext.SayAsync()` o especificar las opciones de aviso `speak` y `retrySpeak` al enviar un mensaje con un aviso integrado.
+Con Bot Framework SDK para .NET, hay varias maneras de especificar el texto que dirá el bot en un canal habilitado para voz. Puede establecer la propiedad `Speak` del [mensaje][IMessageActivity], llamar al método `IDialogContext.SayAsync()` o especificar las opciones de aviso `speak` y `retrySpeak` al enviar un mensaje con un aviso integrado.
 
 ### <a id="message-speak"></a> IMessageActivity.Speak
 
@@ -59,7 +59,7 @@ Cuando envía un mensaje en un canal habilitado para voz, puede intentar influir
 
 ## <a name="sample-code"></a>Código de ejemplo 
 
-Para ver un ejemplo completo en el que se muestra cómo crear un bot habilitado para voz mediante Bot Builder SDK para. NET, consulte el ejemplo <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">Roller Skill</a> en GitHub.
+Para un ejemplo completo en el que se muestra cómo crear un bot habilitado para voz mediante Bot Framework SDK para. NET, consulte el ejemplo <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp" target="_blank">Roller Skill</a> en GitHub.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

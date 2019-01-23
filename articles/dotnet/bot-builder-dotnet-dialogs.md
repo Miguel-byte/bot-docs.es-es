@@ -1,6 +1,6 @@
 ---
 title: Introducción a los diálogos | Microsoft Docs
-description: Aprenda a usar diálogos en el SDK de Bot Builder para Node.js para modelar conversaciones y administrar el flujo de conversación.
+description: Aprenda a usar diálogos en Bot Framework SDK para .NET para modelar conversaciones y administrar el flujo de conversación.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 943b206e4991c52f22928d2113977249ff9d9e04
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997582"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225000"
 ---
-# <a name="dialogs-in-the-bot-builder-sdk-for-net"></a>Diálogos en el SDK de Bot Builder para .NET
+# <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Diálogos en Bot Framework SDK para .NET
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997582"
 > - [.NET](../dotnet/bot-builder-dotnet-dialogs.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-overview.md)
 
-Al crear un bot mediante el SDK de Bot Builder para .NET, puede usar diálogos para modelar una conversación y administrar el [flujo de conversación](../bot-service-design-conversation-flow.md). Cada cuadro de diálogo es una abstracción que encapsula su propio estado en una clase de C# que implementa `IDialog`. Un diálogo puede estar formado por otros diálogos para maximizar la reutilización, y un contexto de diálogo mantiene la [pila de diálogos](../bot-service-design-conversation-flow.md#dialog-stack) que están activos en la conversación en cualquier momento dado. 
+Al crear un bot con Bot Framework SDK para .NET, puede usar diálogos para modelar una conversación y administrar el [flujo de conversación](../bot-service-design-conversation-flow.md). Cada cuadro de diálogo es una abstracción que encapsula su propio estado en una clase de C# que implementa `IDialog`. Un diálogo puede estar formado por otros diálogos para maximizar la reutilización, y un contexto de diálogo mantiene la [pila de diálogos](../bot-service-design-conversation-flow.md#dialog-stack) que están activos en la conversación en cualquier momento dado. 
 
-Una conversación que consta de diálogos se puede transferir entre varios equipos, lo que permite escalar la implementación del bot. Cuando usa diálogos en el SDK de Bot Builder para. NET, el estado de la conversación (la pila de diálogos y el estado de cada diálogo de la pila) se almacena automáticamente en el almacenamiento de [datos de estado](bot-builder-dotnet-state.md) de su elección. Esto permite que el código de servicio del bot sea sin estado, de forma muy parecida a una aplicación web que no necesita almacenar el estado de sesión en la memoria del servidor web. 
+Una conversación que consta de diálogos se puede transferir entre varios equipos, lo que permite escalar la implementación del bot. Cuando usa diálogos en Bot Framework SDK para. NET, el estado de la conversación (la pila de diálogos y el estado de cada diálogo de la pila) se almacena automáticamente en el almacenamiento de [datos de estado](bot-builder-dotnet-state.md) de su elección. Esto permite que el código de servicio del bot sea sin estado, de forma muy parecida a una aplicación web que no necesita almacenar el estado de sesión en la memoria del servidor web. 
 
 ## <a name="echo-bot-example"></a>Ejemplo de repetición de bot
 
@@ -37,7 +37,7 @@ Considere este ejemplo de repetición de bot, que describe cómo cambiar el bot 
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
-En el SDK de Bot Builder para .NET, la biblioteca de [Builder][builderLibrary] le permite implementar diálogos. Para acceder a las clases pertinentes, importe el espacio de nombres `Dialogs`.
+En Bot Framework SDK para .NET, la biblioteca [Builder][builderLibrary] le permite implementar diálogos. Para acceder a las clases pertinentes, importe el espacio de nombres `Dialogs`.
 
 [!code-csharp[Using statement](../includes/code/dotnet-dialogs.cs#usingStatement)]
 
@@ -53,7 +53,7 @@ Luego, escriba la clase `EchoDialog` en el método `Post` mediante una llamada a
 
 El método `Post` está marcado como `async` porque Bot Builder usa las funciones de C# para controlar la comunicación asincrónica. Devuelve un objeto `Task`, que representa la tarea que es responsable de enviar las respuestas al mensaje pasado. Si se produce una excepción, el objeto `Task` que devuelve el método contendrá la información de la excepción. 
 
-El método `Conversation.SendAsync` es clave para implementar diálogos con el SDK de Bot Builder para. NET. Sigue el <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">principio de inversión de dependencia</a> y lleva a cabo estos pasos:
+El método `Conversation.SendAsync` es clave para implementar diálogos con Bot Framework SDK para. NET. Sigue el <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle" target="_blank">principio de inversión de dependencia</a> y lleva a cabo estos pasos:
 
 1. Crea una instancia de los componentes necesarios.  
 2. Deserializa el estado de conversación (la pila de diálogos y el estado de cada diálogo de la pila) `IBotDataStore`.

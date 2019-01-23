@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bdc86e5e64971e503157fe69a8b962e1d9b88542
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 85ef0fde39980bab1b891518e338fddbd56b275a
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998872"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224460"
 ---
 # <a name="how-bot-service-works"></a>Cómo funciona Bot Service
 
-Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Builder SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js.
+Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Framework SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js.
 
 > [!IMPORTANT]
 > Para usar Bot Service debe tener una suscripción a Microsoft Azure. Si aún no tiene una suscripción, puede registrarse para obtener una <a href="https://azure.microsoft.com/en-us/free/" target="_blank">cuenta gratuita</a>.
@@ -32,7 +32,7 @@ Un bot que usa un plan de App Service es una aplicación web de Azure estándar 
 * Editar código fuente de bot en línea con un editor de código en el explorador avanzado.
 * Descargar, depurar y volver a publicar el bot de C# con Visual Studio.
 * Configurar la implementación continua de forma fácil para Visual Studio Online y Github.
-* Usar código de ejemplo preparado para Bot Builder SDK.
+* Use el código de ejemplo preparado para Bot Framework SDK.
 
 ### <a name="consumption-plan"></a>Plan de consumo
 Un bot que usa un plan de consumo es un bot sin servidor que se ejecuta en <a href="http://go.microsoft.com/fwlink/?linkID=747839" target="_blank">Azure Functions</a>, y usa los precios de pago por ejecución de Azure Functions. Un bot que usa este plan de hospedaje puede escalarse para administrar picos enormes de tráfico. Puede editar el código fuente de bot en línea con un editor de código en el explorador básico. Para más información sobre el entorno de ejecución de un bot de plan de consumo, consulte <a target='_blank' href='/azure/azure-functions/functions-scale'>Planes de consumo y de App Service de Azure Functions</a>.
@@ -49,7 +49,7 @@ Bot Service le permite crear rápida y fácilmente un bot en C# o Node.js median
 
 De forma predeterminada, Bot Service le permite desarrollar su bot directamente en el explorador con el editor de código en línea, sin necesidad de una cadena de herramientas. 
 
-Puede desarrollar y depurar el bot localmente con Bot Builder SDK y un IDE como Visual Studio 2017. Puede publicar su bot directamente en Azure con Visual Studio 2017 o la CLI de Azure. También puede [configurar la implementación continua](bot-service-continuous-deployment.md) con el sistema de control de código fuente de su elección, como VSTS o GitHub. Con la implementación continua configurada, puede desarrollar y depurar en un IDE en el equipo local, y todos los cambios en el código que se confirmen en el control de código fuente se implementarán automáticamente en Azure.  
+Puede desarrollar y depurar el bot localmente con Bot Framework SDK y un IDE como Visual Studio 2017. Puede publicar su bot directamente en Azure con Visual Studio 2017 o la CLI de Azure. También puede [configurar la implementación continua](bot-service-continuous-deployment.md) con el sistema de control de código fuente de su elección, como VSTS o GitHub. Con la implementación continua configurada, puede desarrollar y depurar en un IDE en el equipo local, y todos los cambios en el código que se confirmen en el control de código fuente se implementarán automáticamente en Azure.  
 
 > [!TIP]
 > Para evitar conflictos, después de habilitar la implementación continua asegúrese de modificar el código únicamente mediante esta implementación y no por medio de otros mecanismos.

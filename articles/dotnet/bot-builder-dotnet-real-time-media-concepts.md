@@ -1,6 +1,6 @@
 ---
 title: Llamada multimedia en tiempo real con Skype | Microsoft Docs
-description: Comprenda los conceptos clave en la creación de un bot que puede llevar a llamadas de audio y vídeo en tiempo real con Skype, mediante el SDK de Bot Builder para. NET.
+description: Comprenda los conceptos clave de la creación de un bot que puede realizar llamadas de audio y vídeo en tiempo real con Skype mediante Bot Framework SDK para. NET.
 author: ssulzer
 ms.author: ssulzer
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cf11a68c7ccc404506fdfe01dcf12c7c421f4e2b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 893458a484c0e26545c23016ccbf3049adc61960
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998349"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225260"
 ---
 # <a name="real-time-media-calling-with-skype"></a>Llamada multimedia en tiempo real con Skype
 
@@ -58,7 +58,7 @@ En una llamada con un único autor de llamada de Skype, el bot recibe automátic
 
 Para desarrollar un bot multimedia en tiempo real, debe instalar estos paquetes NuGet dentro de su proyecto de Visual Studio:
 
-- [Bot Builder SDK para .NET](bot-builder-dotnet-overview.md)
+- [SDK de Bot Framework para .NET](bot-builder-dotnet-overview.md)
 - [Bot Builder Real-Time Media Calling for .NET](https://www.nuget.org/packages?q=Bot.Builder.RealTimeMediaCalling)
 - [Biblioteca .NET Microsoft.Skype.Bots.Media](https://www.nuget.org/packages?q=Microsoft.Skype.Bots.Media)
 

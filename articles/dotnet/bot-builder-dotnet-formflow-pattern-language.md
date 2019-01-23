@@ -1,6 +1,6 @@
 ---
 title: Personalización de la experiencia de usuario con lenguaje de patrones | Microsoft Docs
-description: Aprenda a personalizar los avisos FormFlow y a invalidar las plantillas FormFlow mediante un lenguaje de patrones con el SDK de Bot Builder para .NET.
+description: Aprenda a personalizar los avisos de FormFlow y a invalidar las plantillas de FormFlow mediante un lenguaje de patrones con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: bc0a2819f3adea63b53e464808f3bbaf5b93814a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f3d46431191638cc41026f6c020a5f04de21ff0d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998052"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225640"
 ---
 # <a name="customize-user-experience-with-pattern-language"></a>Personalización de la experiencia de usuario con lenguaje de patrones
 
@@ -144,7 +144,7 @@ What kind of sandwich would you like?
 - [Personalización de un formulario mediante FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Localización del contenido del formulario](bot-builder-dotnet-formflow-localize.md)
 - [Definición de un formulario mediante esquemas JSON](bot-builder-dotnet-formflow-json-schema.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [promptAttribute]: /dotnet/api/microsoft.bot.builder.formflow.promptattribute
 

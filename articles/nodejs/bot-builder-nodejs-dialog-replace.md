@@ -1,6 +1,6 @@
 ---
 title: Reemplazar los cuadros de diálogo | Microsoft Docs
-description: Aprenda a reemplazar los cuadros de diálogo para volver a solicitar la entrada y administrar el flujo de la conversación con el SDK de Bot Builder para Node.js.
+description: Aprenda a reemplazar los diálogos para volver a solicitar la entrada y administrar el flujo de la conversación con Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,22 +9,22 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 30ac28f5ce700829b8c382c49905883ffa45da29
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000062"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224990"
 ---
 # <a name="replace-dialogs"></a>Reemplazar cuadros de diálogo
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-La capacidad de reemplazar un cuadro de diálogo puede ser útil cuando necesita validar la entrada del usuario o repetir una acción durante el transcurso de una conversación. Con el SDK de Bot Builder para Node.js, puede reemplazar un diálogo usando el método [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Este método le permite finalizar el diálogo actual y reemplazarlo con un nuevo cuadro de diálogo sin tener que volver a la persona que llama. 
+La capacidad de reemplazar un cuadro de diálogo puede ser útil cuando necesita validar la entrada del usuario o repetir una acción durante el transcurso de una conversación. Con Bot Framework SDK para Node.js, puede reemplazar un diálogo usando el método [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Este método le permite finalizar el diálogo actual y reemplazarlo con un nuevo cuadro de diálogo sin tener que volver a la persona que llama. 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>Crear mensajes personalizados para validar la entrada
 
-El SDK de Bot Builder para Node.js incluye la validación de entradas para algunos tipos de [solicitudes](bot-builder-nodejs-dialog-prompt.md) como `Prompts.time` y `Prompts.choice`. Para validar la entrada de texto que recibe en respuesta a `Prompts.text`, debe crear su propia lógica de validación y solicitudes personalizadas. 
+Bot Framework SDK para Node.js incluye la validación de entradas para algunos tipos de [avisos](bot-builder-nodejs-dialog-prompt.md) como `Prompts.time` y `Prompts.choice`. Para validar la entrada de texto que recibe en respuesta a `Prompts.text`, debe crear su propia lógica de validación y solicitudes personalizadas. 
 
 Es posible que quiera validar una entrada si esta debe cumplir con un determinado valor, patrón, rango o criterio que usted mismo haya definido. Si una entrada no puede hacer la validación, el bot puede solicitar al usuario esa información nuevamente mediante el método `session.replaceDialog`.
 

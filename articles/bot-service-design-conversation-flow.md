@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/19/2018
-ms.openlocfilehash: 79c37a48f9312d60b61124e15780fe46236aa0c7
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: ae019f7da32969821db0c59a4710e32b57623b14
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735985"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224496"
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -36,9 +36,9 @@ Los diálogos pueden tener o no interfaces gráficas. Pueden contener botones, t
 
 [!INCLUDE [Dialog flow example](./includes/snippet-dotnet-manage-conversation-flow-intro.md)]
 
-Para obtener un tutorial detallado de la administración del flujo de conversación mediante diálogos y el SDK de Bot Builder, consulte:
+Para obtener un tutorial detallado de la administración del flujo de conversación mediante diálogos y Bot Framework SDK, consulte:
 
-- [Manage conversation flow with dialogs (.NET)](./dotnet/bot-builder-dotnet-manage-conversation-flow.md) [Administración del flujo de conversación con diálogos (.NET)]
+- [Administración del flujo de conversación con diálogos (.NET)](./dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Manage conversation flow with dialogs (Node.js)](./nodejs/bot-builder-nodejs-manage-conversation-flow.md) [Administración del flujo de conversación con diálogos (Node.js)]
 
 ## <a name="dialog-stack"></a>Pila de diálogos
@@ -99,7 +99,7 @@ Por lo general, la conversación con un bot se centra en torno a la tarea que el
 
 En un flujo de conversación de procedimientos, usted define el orden de las preguntas y el bot las formulará en el orden definido. Puede organizar las preguntas en *módulos* lógicos para mantener el código centralizado mientras se centra en guiar la conversación. Por ejemplo, puede diseñar un módulo que contenga la lógica que ayuda al usuario a examinar productos y un módulo independiente que contenga la lógica que ayuda al usuario a crear un nuevo pedido.
 
-Puede estructurar estos módulos para que fluyan como quiera, desde una forma libre a una secuencial. El SDK de Bot Builder ofrece varias bibliotecas que le permiten generar cualquier flujo de conversación que el bot necesite. Por ejemplo, la biblioteca `prompts` le permite solicitar entradas a los usuarios, la biblioteca `waterfall` le permite definir una secuencia de pares de preguntas y respuestas, la biblioteca `dialog control` le permite modular la lógica del flujo de conversación, etc. Todas estas bibliotecas están vinculadas entre sí a través de un objeto `dialogs`. Echemos un vistazo a cómo se implementan los módulos como `dialogs` para diseñar y administrar flujos de conversación y ver cómo ese flujo es similar al flujo de aplicación tradicional.
+Puede estructurar estos módulos para que fluyan como quiera, desde una forma libre a una secuencial. Bot Framework SDK ofrece varias bibliotecas que le permiten generar cualquier flujo de conversación que el bot necesite. Por ejemplo, la biblioteca `prompts` le permite solicitar entradas a los usuarios, la biblioteca `waterfall` le permite definir una secuencia de pares de preguntas y respuestas, la biblioteca `dialog control` le permite modular la lógica del flujo de conversación, etc. Todas estas bibliotecas están vinculadas entre sí a través de un objeto `dialogs`. Echemos un vistazo a cómo se implementan los módulos como `dialogs` para diseñar y administrar flujos de conversación y ver cómo ese flujo es similar al flujo de aplicación tradicional.
 
 ![bot](./media/designing-bots/core/dialogs-screens.png)
 

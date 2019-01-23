@@ -1,6 +1,6 @@
 ---
 title: Interceptación de mensajes | Microsoft Docs
-description: Obtenga información sobre cómo interceptar mensajes entre el usuario y un bot con Bot Builder SDK para .NET.
+description: Obtenga información sobre cómo interceptar mensajes entre el usuario y un bot con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 21607dae5c2a8d08ed4b7bf1b6e6983cd9bf1196
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 54ab447fac81ba17f1fa277347cf7a5aaaab8850
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999732"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223780"
 ---
 # <a name="intercept-messages"></a>Interceptación de mensajes
 
@@ -28,7 +28,7 @@ ms.locfileid: "49999732"
 
 ## <a name="intercept-and-log-messages"></a>Interceptación y registro de mensajes
 
-En el ejemplo de código siguiente se muestra cómo interceptar los mensajes que se intercambian entre el usuario y el bot utilizando el concepto de **software intermedio** de Bot Builder SDK para .NET. 
+En el ejemplo de código siguiente se muestra cómo interceptar los mensajes que se intercambian entre el usuario y el bot utilizando el concepto de **middleware** en Bot Framework SDK para .NET. 
 
 Primero, cree una clase `DebugActivityLogger` y defina un método `LogAsync` para especificar qué operación se realiza para cada mensaje interceptado. Este ejemplo imprime solo alguna información sobre cada mensaje.
 
@@ -62,9 +62,9 @@ Aunque este ejemplo solo imprime alguna información sobre cada mensaje, puede a
 
 ## <a name="sample-code"></a>Código de ejemplo 
 
-Para obtener un ejemplo completo en el que se muestre cómo interceptar y registrar mensajes con Bot Builder SDK para .NET, consulte el <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">ejemplo de software intermedio</a> en GitHub. 
+Para obtener un ejemplo completo en el que se muestre cómo interceptar y registrar mensajes con Bot Framework SDK para .NET, consulte <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">Ejemplo de middleware</a> en GitHub. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-Middleware" target="_blank">Ejemplo de software intermedio (GitHub)</a>

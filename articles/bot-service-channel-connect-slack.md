@@ -2,19 +2,19 @@
 title: Conexión de un bot a Slack | Microsoft Docs
 description: Obtenga información sobre cómo configurar la conexión de un bot a Slack.
 keywords: conectar un bot, canal de bot, bot de Slack, aplicación de mensajería Slack
-author: RobStand
-ms.author: kamrani
+author: JonathanFingold
+ms.author: v-jofing
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: f69cfa4c67a1f628d835f0d96903065b8b033d32
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/09/2019
+ms.openlocfilehash: 3573103e1d1c55e3ad648ad68d84674a98b397f7
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000132"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202569"
 ---
 # <a name="connect-a-bot-to-slack"></a>Conexión de un bot a Slack
 
@@ -68,9 +68,11 @@ Siga estos pasos para suscribirse a seis eventos determinados de bot. Si se susc
 
 1. Seleccione la pestaña **Suscripciones a eventos**.
 2. Haga clic en **Habilitar eventos** para **activar**.
-3. En **Dirección URL de la solicitud**, escriba esta dirección URL, pero reemplace `{YourBotHandle}` con el identificador del bot. El identificador de bot que se usa en este tutorial es testChannels.
-        `https://slack.botframework.com/api/Events/{YourBotHandle}`
-4. En **Subscribe to Workspace Events** (Suscribirse a eventos del área de trabajo), haga clic en **Add Workspace Event** (Agregar evento del área de trabajo).
+3. En **URL de solicitud**, escriba `https://slack.botframework.com/api/Events/{YourBotHandle}`, donde `{YourBotHandle}` es el identificador del bot, sin las llaves. El identificador de bot utilizado en este ejemplo es **ContosoBot**.
+
+   ![Suscripción a eventos: superior](~/media/channels/slack-SubscribeEvents-a.png)
+
+4. En **Subscribe to Bot Events** (suscribirse a eventos de Bot), haga clic en **Add Bot User Event** (Agregar evento de usuario de bot).
 5. En la lista de eventos, seleccione estos seis tipos de evento:
     * `member_joined_channel`
     * `member_left_channel`
@@ -79,8 +81,11 @@ Siga estos pasos para suscribirse a seis eventos determinados de bot. Si se susc
     * `message.im`
     * `message.mpim`
 
-![Suscripción a eventos](~/media/channels/slack-SubscribeEvents.png)
+   ![Suscripción a eventos: intermedio](~/media/channels/slack-SubscribeEvents-b.png)
+
 6. Haga clic en **Guardar cambios**.
+
+   ![Suscripción a eventos: inferior](~/media/channels/slack-SubscribeEvents-c.png)
 
 ## <a name="add-and-configure-interactive-messages-optional"></a>Adición y configuración de mensajes interactivos (opcional)
 

@@ -1,6 +1,6 @@
 ---
 title: Petición de datos de entrada al usuario | Microsoft Docs
-description: Aprenda a usar avisos para recopilar información del usuario con Bot Builder SDK para Node.js.
+description: Aprenda a usar avisos para recopilar información del usuario con Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0926c15d2c62bfa74ddb465d8c816dee7c8fb576
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 0ee70c1e775780bf884c4237e47cff4edb8934a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52451977"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224790"
 ---
 # <a name="prompt-for-user-input"></a>Petición de datos de entrada al usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Bot Builder SDK para Node.js proporciona un conjunto de avisos integrados para simplificar la recopilación de información de un usuario. 
+Bot Framework SDK para Node.js proporciona un conjunto de avisos integrados para simplificar la recopilación de información de un usuario. 
 
 Cada vez que un bot necesita que intervenga el usuario, se usa un *aviso*. Para pedir al usuario una serie de datos de entrada, se pueden encadenar avisos en una cascada. Puede usar avisos junto con la [cascada](bot-builder-nodejs-dialog-waterfall.md) como ayuda para [administrar el flujo de conversación](bot-builder-nodejs-manage-conversation-flow.md) del bot. 
 
@@ -74,7 +74,7 @@ bot.dialog('askName', [
 ```
 
 ## <a name="prompt-types"></a>Tipos de avisos
-Bot Builder SDK para Node.js incluye varios tipos diferentes de avisos integrados. 
+Bot Framework SDK para Node.js incluye varios tipos diferentes de avisos integrados. 
 
 |**Tipo de aviso**     | **Descripción** |     
 | ------------------ | --------------- |

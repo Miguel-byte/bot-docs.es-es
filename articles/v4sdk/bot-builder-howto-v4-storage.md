@@ -1,6 +1,6 @@
 ---
 title: Escritura directa en el almacenamiento | Microsoft Docs
-description: Obtenga información sobre cómo escribir directamente en el almacenamiento con el SDK Bot Builder para .NET.
+description: Obtenga información sobre cómo escribir directamente en el almacenamiento con Bot Framework SDK para .NET.
 keywords: almacenamiento, lectura y escritura, almacenamiento en memoria, eTag
 author: DeniseMak
 ms.author: v-demak
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/18
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 803574e5d224b0556162fd677145d29cafa2cab1
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: cd1f8270acf426c84d64efef796b7a007c49c2c1
+ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645685"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360795"
 ---
 # <a name="write-directly-to-storage"></a>Escritura directa en el almacenamiento
 
@@ -217,12 +217,12 @@ Para utilizar Cosmos DB en el bot, es necesario configurar algunas cosas antes d
 La cuenta tarda unos minutos en crearse. Espere a que el portal muestre la página "Enhorabuena. Se ha creado su cuenta de Azure Cosmos DB".
 
 ##### <a name="add-a-collection"></a>Agregar una colección
-1. Haga clic en **Configuración > Nueva colección**. El área **Agregar colección** se muestra en el extremo derecho, pero es posible que haya que desplazarse hacia la derecha para verlo.
+1. Haga clic en **Configuración > Nueva colección**. El área **Agregar colección** se muestra en el extremo derecho, pero es posible que haya que desplazarse hacia la derecha para verlo. Debido a actualizaciones recientes de Cosmos DB, asegúrese de agregar una clave de partición única: _/id_. Esta clave evita errores de consultas entre particiones.
 
 ![Adición de una colección de Cosmos DB](./media/add_database_collection.png)
 
 2. La nueva colección de base de datos, "bot-cosmos-sql-db" con el identificador de colección "bot-storage". Usaremos estos valores en el ejemplo de código siguiente.
-
+ -
 ![Cosmos DB](./media/cosmos-db-sql-database.png)
 
 3. El identificador URI del punto de conexión y la clave están disponibles en la pestaña **Claves** de la configuración de la base de datos. Necesitará estos valores para configurar el código más adelante en este artículo. 
@@ -597,7 +597,7 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
            var count = 0;
            do
            {
-               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id);
+               var pagedTranscript = await _transcriptStore.GetTranscriptActivitiesAsync(activity.ChannelId, activity.Conversation.Id, continuationToken);
                var activities = pagedTranscript.Items
                   .Where(a => a.Type == ActivityTypes.Message)
                   .Select(ia => (Activity)ia)

@@ -1,7 +1,7 @@
 ---
-title: Creación de un bot con el SDK de Bot Builder para JavaScript | Microsoft Docs
-description: Cree un bot de forma rápida con el SDK de Bot Builder para JavaScript.
-keywords: inicio rápido, sdk de bot builder, introducción
+title: Creación de un bot con Bot Framework SDK para JavaScript | Microsoft Docs
+description: Cree un bot de forma rápida con Bot Framework SDK para JavaScript.
+keywords: inicio rápido, bot framework sdk, introducción
 author: jonathanfingold
 ms.author: jonathanfingold
 manager: kamrani
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/23/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 62451f8581d7a629f9e7ba628e70cdad7b531845
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 689c67817487a5cbd8193cb505ac131a55b0d053
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998982"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224630"
 ---
 ```
 {

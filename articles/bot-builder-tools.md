@@ -1,6 +1,6 @@
 ---
 title: Administración de bots mediante las herramientas de la CLI
-description: Las herramientas de Bot Builder le permiten administrar los recursos de bot directamente desde la línea de comandos
+description: Bot Framework Tools le permite administrar los recursos del bot directamente desde la línea de comandos
 keywords: botbuilder templates, ludown, qna, luis, msbot, manage, cli, .bot, bot
 author: ivorb
 ms.author: v-ivorb
@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: tools
 ms.date: 11/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5ffaf9a946e1a540b82819b7f745200f47384819
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: f9eafa708be2ce597ec2679fb6975d7da71951ea
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645665"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225880"
 ---
 # <a name="manage-bots-using-cli-tools"></a>Administración de bots mediante las herramientas de la CLI
 
-Las herramientas de Bot Builder abarcan el flujo de trabajo completo de desarrollo de bots que incluye las fases de planeación, compilación, prueba, publicación, conexión y evaluación. Veamos cómo estas herramientas pueden ayudarle con cada fase del ciclo de desarrollo.
+Bot Framework Tools abarca el flujo de trabajo completo de desarrollo de bots que incluye las fases de planeación, compilación, prueba, publicación, conexión y evaluación. Veamos cómo estas herramientas pueden ayudarle con cada fase del ciclo de desarrollo.
 
 ## <a name="plan"></a>Plan
 
@@ -60,7 +60,6 @@ user: thanks
 bot:
 Here's a form for you
 [Attachment=card.json adaptivecard]
-
 ```
 
 ### <a name="create-a-transcript-file-from-chat-file"></a>Creación de un archivo de transcripción a partir de un archivo .chat
@@ -98,30 +97,33 @@ Por ejemplo, puede crear varias intenciones LUIS en un único archivo .lu de est
 
 El formato de archivo .lu también admite pares de QnA mediante la notación siguiente: 
 
-```LUDown
+~~~LUDown
 > comment
 ### ? question ?
   ```markdown
     answer
   ```
+~~~
 
 La herramienta LUDown separará automáticamente la pregunta y las respuestas en un archivo JSON de QnA Maker que, después, se puede usar para crear una nueva base de conocimiento [QnaMaker.ai](http://qnamaker.ai).
 
-```LUDown
+~~~LUDown
 ### ? How do I change the default message for QnA Maker?
   ```markdown
   You can change the default message if you use the QnAMakerDialog. 
-  See [this link](https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle) for details. 
+  See [this link](https://docs.botframework.com/en-us/azure-bot-service/templates/qnamaker/#navtitle) for details.
   ```
+~~~
 
 También se pueden agregar varias preguntas a la misma respuesta si se agregan nuevas líneas de variaciones de preguntas para una sola respuesta.
 
-```LUDown
+~~~LUDown
 ### ? What is your name?
 - What should I call you?
   ```markdown
     I'm the echoBot! Nice to meet you.
   ```
+~~~
 
 ### <a name="generate-json-models-with-ludown"></a>Generación de modelos .json con LUDown
 
@@ -232,21 +234,37 @@ Bot Framework [Emulator](bot-service-debug-emulator.md) es una aplicación de es
 
 ## <a name="publish"></a>Publicar
 
-Puede usar la CLI de Azure para crear, descargar y publicar su bot en Azure Bot Service. Instale la extensión del bot mediante: 
+Puede usar la CLI de Azure para crear, descargar y publicar su bot en Azure Bot Service.
+
+Con msbot 4.3.2 y posteriores, necesita la versión 2.0.53 de la CLI de Azure o posterior. Si ha instalado la extensión botservice, elimínela con este comando.
+
 ```shell
-az extension add -n botservice
+az extension remove --name botservice
 ```
 
 ### <a name="create-azure-bot-service-bot"></a>Creación de un bot en Azure Bot Service
 
-Nota: Debe usar la versión más reciente de `az cli`. Actualícelo para que la CLI de Azure pueda funcionar con la herramienta MSBot. 
+Nota: Debe usar la versión más reciente de `az cli`. Actualícelo para que la CLI de Azure pueda funcionar con la herramienta MSBot.
 
-Inicie sesión en su cuenta de Azure mediante 
+Inicie sesión en su cuenta de Azure mediante
+
 ```shell
 az login
 ```
 
-Una vez que haya iniciado sesión, puede crear un nuevo bot mediante Azure Bot Service: 
+Si no dispone de un grupo de recursos para publicar el bot, cree uno:
+
+```shell
+az group create --name <resource-group-name> --location <geographic-location> --verbose
+```
+
+| Opción | DESCRIPCIÓN |
+|:---|:---|
+| --name | Nombre único para el grupo de recursos. NO incluya espacios ni guiones bajos en el nombre. |
+| --location | Ubicación geográfica utilizada para crear el grupo de recursos. Por ejemplo, `eastus`, `westus`, `westus2`, etc. Use `az account list-locations` para obtener una lista de ubicaciones. |
+
+A continuación, cree el recurso de bot en el cual publicará el bot.
+
 ```shell
 az bot create [options]
 ```
@@ -303,7 +321,7 @@ Group
 ```
 
 ## <a name="additional-information"></a>Información adicional
-- [Herramientas de Bot Builder en GitHub][cliTools]
+- [Bot Framework Tools en GitHub][cliTools]
 
 <!-- Footnote links -->
 

@@ -1,6 +1,6 @@
 ---
 title: Realización de llamadas de audio con Skype | Microsoft Docs
-description: Obtenga información sobre cómo realizar llamadas de audio con Skype con Bot Builder SDK para .NET.
+description: Obtenga información sobre cómo realizar llamadas de audio con Skype con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0d0489c23cd24a7323ba0160d5e8e5e914be3011
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 72b2c42acb4743c67c63f158fa37c2bdd0e09ab9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998859"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224425"
 ---
 # <a name="conduct-audio-calls-with-skype"></a>Realización de llamadas de audio con Skype
 
@@ -22,7 +22,7 @@ ms.locfileid: "49998859"
 
 [!INCLUDE [Introduction to conducting audio calls](../includes/snippet-audio-call-intro.md)]
 
-La arquitectura de un bot que admita llamadas de audio es muy similar a la de un bot típico. Los ejemplos de código siguientes muestran cómo habilitar la compatibilidad con llamadas de audio mediante Skype con Bot Builder SDK para .NET. 
+La arquitectura de un bot que admita llamadas de audio es muy similar a la de un bot típico. Los ejemplos de código siguientes muestran cómo habilitar la compatibilidad con llamadas de audio mediante Skype con Bot Framework SDK para .NET. 
 
 ## <a name="enable-support-for-audio-calls"></a>Habilitación de la compatibilidad con llamadas de audio
 
@@ -169,9 +169,9 @@ private async Task OnRecordCompleted(RecordOutcomeEvent recordOutcomeEvent)
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para obtener un ejemplo completo que muestra cómo se admiten llamadas de audio con Skype mediante Bot Builder SDK para .NET, consulte el <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">ejemplo Skype Calling Bot</a> en GitHub.
+Para obtener un ejemplo completo que muestra cómo se admiten llamadas de audio con Skype mediante Bot Framework SDK para .NET, consulte <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Ejemplo Skype Calling Bot</a> en GitHub.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/skype-CallingBot" target="_blank">Ejemplo Skype Calling Bot (GitHub)</a>

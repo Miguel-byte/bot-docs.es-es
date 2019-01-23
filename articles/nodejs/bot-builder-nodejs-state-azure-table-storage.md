@@ -1,6 +1,6 @@
 ---
 title: Administración de datos de estado personalizado con Azure Table Storage | Microsoft Docs
-description: Aprenda a guardar y a recuperar datos de estado mediante Azure Table Storage con el SDK de Bot Builder para Node.js.
+description: Aprenda a guardar y a recuperar datos de estado mediante Azure Table Storage con Bot Framework SDK para Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bf308c440e08cb3c9d4730212fbba3053de459d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5c2b8832401ccc9260c9aa872c0848b3a3e8445b
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998345"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225720"
 ---
 # <a name="manage-custom-state-data-with-azure-table-storage-for-nodejs"></a>Administración de datos de estado personalizado con Azure Table Storage para Node.js
 
@@ -24,7 +24,7 @@ En este artículo, implementará Azure Table Storage para almacenar y administra
 
 - mayor rendimiento de la API de estado (más control sobre el rendimiento)
 - latencia más baja para la distribución geográfica
-- control sobre dónde se almacenan los datos (p. ej.: oeste de Estados Unidos frente a este de Estados Unidos)
+- control sobre dónde se almacenan los datos (p. ej.: Oeste de EE. UU. frente a Este de EE. UU.)
 - acceso a los datos de estado reales
 - base de datos de estado no compartida con otros bots
 - almacenamiento de más de 32 kb

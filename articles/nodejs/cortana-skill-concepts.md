@@ -1,6 +1,6 @@
 ---
 title: Creación de una habilidad de Cortana mediante Node.js | Microsoft Docs
-description: Obtenga información sobre los conceptos básicos para la creación de una habilidad de Cortana en Bot Builder SDK para Node.js.
+description: Obtenga información sobre los conceptos básicos para la creación de una habilidad de Cortana en Bot Framework SDK para Node.js.
 keywords: Bot Framework, habilidad de Cortana, voz, Node.js, Bot Builder, SDK, conceptos clave, conceptos básicos
 author: DeniseMak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 99254c5f2de8b524212d8f6a268dbc37c128ab5e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 909294243abe00ac95e8f5d89d6babc2edc4f994
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996481"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225690"
 ---
 # <a name="key-concepts-for-building-a-bot-for-cortana-skills-using-nodejs"></a>Conceptos básicos para crear un bot para habilidades de Cortana con Node.js
  
@@ -23,7 +23,7 @@ ms.locfileid: "49996481"
 > [!NOTE]
 > Este artículo es contenido y se actualizará.
 
-En este artículo se describen los conceptos clave para crear una habilidad de Cortana en Bot Builder SDK para Node.js. 
+En este artículo se describen los conceptos clave para crear una habilidad de Cortana en Bot Framework SDK para Node.js. 
 
 ## <a name="what-is-a-cortana-skill"></a>¿Qué es una habilidad de Cortana?
 Una habilidad de Cortana es un bot que se puede invocar con el uso de un cliente de Cortana, como el que está integrado en Windows 10. El usuario lanza el bot diciendo algunas palabras clave o frases asociadas con el bot. En el portal de Framework Bot puede configurar qué palabras clave se usan para lanzar el bot. 
@@ -62,20 +62,20 @@ Agent: **Okay**, what's next?
 Grados de fundamentación, desde el más débil al más sólido:
 1. Atención continuada
 2. Próxima contribución pertinente
-3. Reconocimiento: Respuesta mínima o continuador: "sí", "ajá", "de acuerdo" o "genial"
-4. Demostración: Indicar que se ha comprendido mediante reformulación o conclusión.
-5. Mostrar: Repetir todo o solo una parte.
+3. Confirmación: Respuesta mínima o continuador: "sí", "ajá", "de acuerdo" o "genial"
+4. Demostración: indicar que se ha comprendido mediante reformulación o conclusión.
+5. Mostrar: repetir todo o solo una parte.
 
 #### <a name="acknowledgement-and-next-relevant-contribution"></a>Reconocimiento y próxima contribución pertinente
 Usuario: ... Tengo que viajar en mayo.
 Agente: **Y**, ¿qué día de mayo quiere viajar?
-Usuario: Pues bien, tengo que estar allí del 12 al 15.
+User: Tengo que estar allí del 12 al 15.
 Agente: **Y**, ¿a qué ciudad va a viajar?
 
 #### <a name="grounding-by-demonstration"></a>Fundamentación mediante demostración
 Usuario: ... Tengo que viajar en mayo.
-Agente: Y, ¿**quía día** de mayo quiere viajar?
-Usuario: Pues bien, tengo que estar allí del 12 al 15.
+Agente: **Y**, ¿qué día de mayo quiere viajar?
+User: Tengo que estar allí del 12 al 15.
 Agente: **Y**, ¿a qué ciudad va a viajar?
 
 
@@ -83,7 +83,7 @@ Agente: **Y**, ¿a qué ciudad va a viajar?
 
 El bot que realiza una acción debe presentar pruebas de su correcta ejecución.
 También es importante que indique si ha producido algún error o si se ha entendido bien o no. 
-* Cierre sin voz: Si inserta un botón elevador, su luz se enciende.
+* Cierre sin voz: si presiona un botón elevador, su luz se enciende.
 Proceso de dos pasos:
 * Presentación 
 * Aceptación

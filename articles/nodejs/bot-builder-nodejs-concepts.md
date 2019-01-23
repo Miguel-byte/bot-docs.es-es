@@ -1,6 +1,6 @@
 ---
-title: Conceptos clave del SDK de Bot Builder para Node.js | Microsoft Docs
-description: Comprenda los conceptos clave y las herramientas para la compilación e implementación de los bots de conversación disponibles en el SDK de Bot Builder para Node.js.
+title: Conceptos clave de Bot Framework SDK para Node.js | Microsoft Docs
+description: Descripción de los conceptos clave y las herramientas para la creación e implementación de bots de conversación disponibles en Bot Framework SDK para Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,14 +9,14 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 43b6f669cdbc91b78094d3d0d9e7a54f97f9884f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: efd47cb1ae48c34d58d673eaea04feeb1869b640
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998032"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225450"
 ---
-# <a name="key-concepts-in-the-bot-builder-sdk-for-nodejs"></a>Conceptos clave del SDK de Bot Builder para Node.js
+# <a name="key-concepts-in-the-bot-framework-sdk-for-nodejs"></a>Conceptos clave de Bot Framework SDK para Node.js
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
@@ -24,14 +24,14 @@ ms.locfileid: "49998032"
 > - [.NET](../dotnet/bot-builder-dotnet-concepts.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-concepts.md)
 
-En este artículo se presentan los conceptos clave del SDK de Bot Builder para Node.js. Consulte la [información general sobre Bot Framework](../overview-introduction-bot-framework.md) para una introducción a Bot Framework.
+En este artículo se presentan los conceptos clave de Bot Framework SDK para Node.js. Consulte la [información general sobre Bot Framework](../overview-introduction-bot-framework.md) para una introducción a Bot Framework.
 
 ## <a name="connector"></a>Conector
 
 Bot Framework Connector es un servicio que conecta el bot a varios *canales*, que son clientes como Skype, Facebook, Slack y SMS. Connector facilita la comunicación entre el bot y el usuario mediante la retransmisión de mensajes del bot al canal y viceversa. La lógica del bot está hospedada como un servicio web que recibe mensajes de los usuarios a través del servicio Connector y las respuestas del bot se envían a Connector mediante HTTPS POST. 
 
-El SDK de Bot Builder para Node.js proporciona las clases [UniversalBot][UniversalBot] y [ChatConnector][ChatConnector] para configurar el bot para que envíe y reciba mensajes a través de Bot Framework Connector. La clase `UniversalBot` conforma los cerebros del bot. Es responsable de administrar todas las conversaciones que el bot tiene con un usuario. La clase `ChatConnector` conecta el bot al servicio de Bot Framework Connector.
-Si quiere ver un ejemplo que muestra cómo usar estas clases, consulte [Creación de un bot con el SDK de Bot Builder para Node.js](bot-builder-nodejs-quickstart.md).
+Bot Framework SDK para Node.js proporciona las clases [UniversalBot][UniversalBot] y [ChatConnector][ChatConnector] para configurar el bot para que envíe y reciba mensajes con Bot Framework Connector. La clase `UniversalBot` conforma los cerebros del bot. Es responsable de administrar todas las conversaciones que el bot tiene con un usuario. La clase `ChatConnector` conecta el bot al servicio de Bot Framework Connector.
+Si quiere ver un ejemplo que muestra cómo usar estas clases, consulte [Creación de un bot con Bot Framework SDK para Node.js](bot-builder-nodejs-quickstart.md).
 
 El conector también normaliza los mensajes que envía el bot a canales de modo que pueda desarrollar el bot independientemente de la plataforma. Normalizar un mensaje implica convertirlo del esquema de Bot Framework al esquema del canal. En casos donde el canal no admite todos los aspectos del esquema de Framework, el conector intentará convertir el mensaje a un formato compatible con el canal. Por ejemplo, si el bot envía al canal SMS un mensaje que contiene una tarjeta con los botones de acción, el conector puede presentar la tarjeta como imagen e incluir las acciones como vínculos en el texto del mensaje. El [Inspector de canales][ChannelInspector] es una herramienta web que muestra cómo el conector presenta los mensajes en distintos canales.
 
@@ -47,19 +47,19 @@ Para ver un ejemplo que muestra cómo enviar una tarjeta gráfica enriquecida co
 Los diálogos ayudan a organizar la lógica de la conversación en el bot y son fundamentales para [diseñar el flujo de la conversación](../bot-service-design-conversation-flow.md). Para ver una introducción a los diálogos, consulte [Manage a conversation with dialogs](bot-builder-nodejs-dialog-manage-conversation.md) (Administración de una conversación con diálogos).
 
 ## <a name="actions"></a>Acciones
-Querrá diseñar el bot de manera que pueda controlar interrupciones como solicitudes de cancelación o ayuda en cualquier momento durante el flujo de la conversación. El SDK de Bot Builder para Node.js proporciona controladores de mensajes globales que desencadenan acciones como la cancelación o la invocación de otros diálogos. Consulte [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md) para ver ejemplos de cómo usar los controladores [triggerAction][triggerAction].
+Querrá diseñar el bot de manera que pueda controlar interrupciones como solicitudes de cancelación o ayuda en cualquier momento durante el flujo de la conversación. Bot Framework SDK para Node.js proporciona controladores de mensajes globales que desencadenan acciones como la cancelación o la invocación de otros diálogos. Consulte [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md) para ver ejemplos de cómo usar los controladores [triggerAction][triggerAction].
 <!--[Handling cancel](bot-builder-nodejs-manage-conversation-flow.md#handling-cancel), [Confirming interruptions](bot-builder-nodejs-manage-conversation-flow.md#confirming-interruptions) and-->
 
 
 ## <a name="recognizers"></a>Reconocedores
 Cuando los usuarios piden algo al bot, como "ayuda" o "buscar noticias", el bot debe entender qué es lo que pide el usuario y luego realizar la acción correspondiente. Puede diseñar el bot de manera que reconozca las intenciones en función de la información del usuario y que asocie esa intención con acciones. 
 
-Puede usar el reconocedor integrado de expresiones regulares que el SDK de Bot Builder proporciona, llamar a un servicio externo (como la API de LUIS) o implementar un reconocedor personalizado para determinar la intención del usuario. Consulte [Recognize user intent](bot-builder-nodejs-recognize-intent-messages.md) (Reconocimiento de intenciones del usuario) para ver ejemplos que muestran cómo agregar reconocedores al bot y usarlos para desencadenar acciones.
+Puede usar el reconocedor integrado de expresiones regulares que proporciona Bot Framework SDK, llamar a un servicio externo (como la API de LUIS) o implementar un reconocedor personalizado para determinar la intención del usuario. Consulte [Recognize user intent](bot-builder-nodejs-recognize-intent-messages.md) (Reconocimiento de intenciones del usuario) para ver ejemplos que muestran cómo agregar reconocedores al bot y usarlos para desencadenar acciones.
 
 
 ## <a name="saving-state"></a>Almacenamiento del estado
 
-Una clave del diseño correcto de bots consiste en realizar el seguimiento del contexto de una conversación, para que el bot recuerde cosas como la última pregunta que hizo el usuario. Los bots creados con el SDK de Bot Builder están diseñados para no tener estado, con el fin de que se puedan escalar fácilmente para ejecutarse en varios nodos de ejecución. Bot Framework proporciona un sistema de almacenamiento que almacena datos de bot de manera que el servicio web del bot se puede escalar. Debido a esto, generalmente debe evitar guardar el estado con un cierre de función o una variable global. Si lo hace, generará problemas cuando intente escalar horizontalmente el bot. En su lugar, use las propiedades siguientes del objeto [session][Session] del bot para guardar los datos relativos a un usuario o una conversación:
+Una clave del diseño correcto de bots consiste en realizar el seguimiento del contexto de una conversación, para que el bot recuerde cosas como la última pregunta que hizo el usuario. Los bots creados con Bot Framework SDK están diseñados para no tener estado, con el fin de que se puedan escalar fácilmente para ejecutarse en varios nodos de proceso. Bot Framework proporciona un sistema de almacenamiento que almacena datos de bot de manera que el servicio web del bot se puede escalar. Debido a esto, generalmente debe evitar guardar el estado con un cierre de función o una variable global. Si lo hace, generará problemas cuando intente escalar horizontalmente el bot. En su lugar, use las propiedades siguientes del objeto [session][Session] del bot para guardar los datos relativos a un usuario o una conversación:
 
 * **userData** almacena información globalmente para el usuario a través de todas las conversaciones.
 * **conversationData** almacena información globalmente para una sola conversación. Estos datos son visibles para todos los participantes de la conversación, por lo que debe tener cuidado al almacenar datos en esta propiedad. Esta opción está habilitada de manera predeterminada y puede deshabilitarla con la configuración [persistConversationData][PersistConversationData] del bot.

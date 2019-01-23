@@ -1,6 +1,6 @@
 ---
 title: Envío de mensajes automáticos | Microsoft Docs
-description: Aprenda a enviar mensajes automáticos con Bot Builder SDK para .NET.
+description: Aprenda a enviar mensajes automáticos con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 201f1aa1aca0d75190335fa114ef8a26caed2a03
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d86ee290ebf33dbfd13017c3fe882ecfdd9102e4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998354"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225730"
 ---
 # <a name="send-proactive-messages"></a>Envío de mensajes automáticos
 
@@ -32,7 +32,7 @@ ms.locfileid: "49998354"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Envío de un mensaje automático ad hoc
 
-Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Builder SDK para .NET.
+Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Framework SDK para .NET.
 
 Para poder enviar un mensaje ad hoc a un usuario, el bot en primer lugar debe recopilar y almacenar información sobre el usuario de la conversación actual. 
 
@@ -97,7 +97,7 @@ await connector.Conversations.SendToConversationAsync((Activity)message);
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Envío de un mensaje automático basado en diálogos
 
-Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Builder SDK para .NET.
+Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Framework SDK para .NET.
 
 Para poder enviar un mensaje automático basado en diálogos a un usuario, el bot en primer lugar debe recopilar y guardar información de la conversación actual. 
 
@@ -177,11 +177,11 @@ public class SurveyDialog : IDialog<object>
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para .NET, consulte el <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos. 
+Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Framework SDK para .NET, consulte <a href="https://aka.ms/proactive-messaging-cs-v3 " target="_blank">Ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://aka.ms/proactive-sendmessage-cs-v3 " target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://aka.ms/proactive-newdialog-cs-v3 " target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Diseño y control del flujo de conversación](../bot-service-design-conversation-flow.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencias de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 - <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/core-proactiveMessages" target="_blank">Ejemplo de mensajes automáticos (GitHub)</a>
 

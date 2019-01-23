@@ -1,6 +1,6 @@
 ---
 title: Creación de un bot habilitado por voz con habilidades de Cortana | Microsoft Docs
-description: Obtenga información sobre cómo crear un bot habilitado por voz con habilidades de Cortana y Bot Builder SDK para Node.js.
+description: Obtenga información sobre cómo crear un bot habilitado para voz con habilidades de Cortana y Bot Framework SDK para Node.js.
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e728a3999c484d19a78f03bd8eb7b8bd8833c39f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998042"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225309"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -23,7 +23,7 @@ ms.locfileid: "49998042"
 > - [.NET](../dotnet/bot-builder-dotnet-cortana-skill.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
-El SDK de Bot Builder para Node.js le permite crear un bot habilitado por voz al conectarlo al canal de Cortana como una habilidad de Cortana. Las habilidades de Cortana permiten proporcionar funcionalidades mediante Cortana como respuesta a entradas de voz de un usuario.
+Bot Framework SDK para Node.js le permite crear un bot habilitado para voz al conectarlo al canal de Cortana como una habilidad de Cortana. Las habilidades de Cortana permiten proporcionar funcionalidades mediante Cortana como respuesta a entradas de voz de un usuario.
 
 > [!TIP]
 > Para más información sobre qué es una habilidad y qué puede hacer, vea [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana).
@@ -35,7 +35,7 @@ La creación de una habilidad de Cortana con Bot Framework requiere muy poco con
 
 ## <a name="adding-speech-to-your-bot"></a>Adición de voz al bot
 
-Los mensajes de voz de su bot se representan en el lenguaje de marcado de síntesis de voz (SSML). Bot Builder SDK permite incluir SSML en las respuestas del bot para controlar lo que dice el bot y lo que muestra.
+Los mensajes de voz de su bot se representan en el lenguaje de marcado de síntesis de voz (SSML). Bot Framework SDK permite incluir SSML en las respuestas del bot para controlar lo que dice y lo que muestra.
 
 ### <a name="sessionsay"></a>session.say
 
@@ -186,7 +186,7 @@ module.exports.speak = function (template, params, options) {
 }
 
 ```
-## <a name="sample-rollerskill"></a>Ejemplo: RollerSkill
+## <a name="sample-rollerskill"></a>Sample: RollerSkill
 El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de Bot Builder](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
 La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.

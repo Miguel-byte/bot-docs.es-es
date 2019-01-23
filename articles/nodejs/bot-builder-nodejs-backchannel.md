@@ -1,6 +1,6 @@
 ---
 title: Intercambio de información mediante el control web | Microsoft Docs
-description: Obtenga información sobre cómo intercambiar información entre el bot y una página web mediante el SDK de Bot Builder para Node.js.
+description: Obtenga información sobre cómo intercambiar información entre el bot y una página web mediante Bot Framework SDK para Node.js.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d2a66955a8691210901ad5f15c9f0419eb88ab77
-ms.sourcegitcommit: 873361802bd1802f745544ba903aecf658cce639
+ms.openlocfilehash: 06fcdd26980b719e7f7db76bc585650176c1d84f
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611002"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225685"
 ---
 # <a name="use-the-backchannel-mechanism"></a>Use el mecanismo Backchannel
 

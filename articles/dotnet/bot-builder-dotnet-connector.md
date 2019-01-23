@@ -1,6 +1,6 @@
 ---
 title: Envío y recepción de actividades | Microsoft Docs
-description: Obtenga información sobre cómo intercambiar información con un usuario a través de diversos canales con el servicio Connector a través del SDK de Bot Builder para. NET.
+description: Obtenga información sobre cómo intercambiar información con un usuario a través de diversos canales con el servicio Connector mediante Bot Framework SDK para. NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 393490fd97ce0d09b4087ad7598ee30b0fdc8c0e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997792"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225230"
 ---
 # <a name="send-and-receive-activities"></a>Envío y recepción de actividades
 
@@ -22,10 +22,10 @@ ms.locfileid: "49997792"
 
 Bot Framework Connector proporciona una única API de REST que permite que un bot se comunique a través de varios canales, como Skype, correo electrónico, Slack y mucho más. Facilita la comunicación entre el bot y el usuario mediante la retransmisión de mensajes del bot al canal y viceversa. 
 
-En este artículo se describe cómo usar el conector a través del SDK de Bot Builder para .NET con el fin de intercambiar información entre el bot y el usuario en un canal. 
+En este artículo se describe cómo usar el conector con Bot Framework SDK para .NET con el fin de intercambiar información entre el bot y el usuario en un canal. 
 
 > [!NOTE]
-> Si bien es posible construir un bot mediante solo con las técnicas que se describen en este artículo, el SDK de Bot Builder proporciona características adicionales como [diálogos](bot-builder-dotnet-dialogs.md) y [FormFlow](bot-builder-dotnet-formflow.md) que pueden optimizar el proceso de administrar el estado y el flujo de una conversación para simplificar la incorporación de Cognitive Services, como Language Understanding.
+> Si bien es posible construir un bot solo con las técnicas que se describen en este artículo, Bot Framework SDK proporciona características adicionales como [diálogos](bot-builder-dotnet-dialogs.md) y [FormFlow](bot-builder-dotnet-formflow.md) que pueden optimizar el proceso de administrar el estado y el flujo de una conversación para simplificar la incorporación de Cognitive Services, como Language Understanding.
 
 ## <a name="create-a-connector-client"></a>Creación de un cliente de conector
 
@@ -87,7 +87,7 @@ Este ejemplo de código utiliza el método `CreateConversation` para crear una c
 
 - [Activities overview](bot-builder-dotnet-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-builder-dotnet-create-messages.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia del SDK de Bot Builder para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">Clase ConnectorClient</a>
 

@@ -1,6 +1,6 @@
 ---
 title: Reconocimiento de intenciones y entidades con LUIS | Microsoft Docs
-description: Aprenda a habilitar el bot para entender el lenguaje natural con el uso de diálogos LUIS en Bot Builder SDK para .NET.
+description: Aprenda a habilitar el bot para entender el lenguaje natural con el uso de diálogos de LUIS en Bot Framework SDK para .NET.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ec3c93bfca1ec8554655934d9165e436d88b9466
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997732"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225380"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconocimiento de intenciones y entidades con LUIS 
 
@@ -59,7 +59,7 @@ El bot responde "You have reached Greeting. You said: hello" ("Se ha puesto en c
 
 Inicie sesión en [https://www.luis.ai](https://www.luis.ai) con la misma cuenta que usa para iniciar sesión en Azure. Haga clic en **Mis aplicaciones**. En la lista de aplicaciones, busque la aplicación que comienza con el nombre especificado en **Nombre de la aplicación** en la hoja **Servicio de bots** cuando creó el servicio de bots. 
 
-Se inicia la aplicación de LUIS con cuatro intenciones: Cancelar, Saludo, Ayuda y Ninguno. <!-- picture -->
+La aplicación de LUIS se inicia con 4 intenciones: Cancelar: Greeting, Help y None. <!-- picture -->
 
 Los siguientes pasos agregan las intenciones Note.Create, Note.ReadAloud y Note.Delete: 
 
@@ -388,7 +388,7 @@ Al probar el bot, puede observar como una intención de LUIS invoca las tareas. 
 - [Diálogos](bot-builder-dotnet-dialogs.md)
 - [Administración del flujo de conversación con diálogos](bot-builder-dotnet-manage-conversation-flow.md)
 - <a href="https://www.luis.ai" target="_blank">LUIS</a>
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [LUIS]: https://www.luis.ai/
 [NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/CSharp/Simple-LUIS-Notes-Sample

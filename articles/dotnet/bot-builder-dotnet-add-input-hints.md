@@ -1,6 +1,6 @@
 ---
 title: Incorporación de sugerencias de entrada a los mensajes | Microsoft Docs
-description: Aprenda a agregar sugerencias de entrada a los mensajes mediante Bot Builder SDK para .NET.
+description: Aprenda a agregar sugerencias de entrada a los mensajes mediante Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a88461e8a03ac941671cc78080e38efecc26aa30
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b9b210ad215e091801456750237978babd029696
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998402"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224650"
 ---
 # <a name="add-input-hints-to-messages"></a>Incorporación de sugerencias de entrada a los mensajes
 
@@ -62,7 +62,7 @@ await connector.Conversations.ReplyToActivityAsync(reply);
 
 ## <a name="default-values-for-input-hint"></a>Valores predeterminados para las sugerencias de entrada
 
-Si no establece la sugerencia de entrada para un mensaje, Bot Builder SDK la establecerá automáticamente mediante esta lógica:
+Si no establece la sugerencia de entrada para un mensaje, Bot Framework SDK la establecerá automáticamente mediante esta lógica:
 
 - Si el bot envía un aviso, en la sugerencia de datos de entrada del mensaje se especificará que el bot **espera datos de entrada**.</li>
 - Si el bot envía un solo mensaje, en la sugerencia de entrada del mensaje se especificará que el bot **acepta entradas**.</li>

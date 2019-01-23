@@ -1,6 +1,6 @@
 ---
 title: Características avanzadas de FormFlow | Microsoft Docs
-description: Obtenga información sobre cómo personalizar la experiencia del usuario mediante FormFlow y el SDK de Bot Builder para .NET.
+description: Obtenga información sobre cómo personalizar la experiencia del usuario mediante FormFlow y Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fbdaa845c86150a572772c4aae8239880f42dd9e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997782"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225960"
 ---
 # <a name="advanced-features-of-formflow"></a>Características avanzadas de FormFlow
 
@@ -277,7 +277,7 @@ En este artículo se describe cómo ofrecer una experiencia de usuario personali
 - [Localización del contenido del formulario](bot-builder-dotnet-formflow-localize.md)
 - [Definición de un formulario mediante esquemas JSON](bot-builder-dotnet-formflow-json-schema.md)
 - [Personalización de la experiencia de usuario con lenguaje de patrones](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [formDialog]: /dotnet/api/microsoft.bot.builder.formflow.formdialog
 

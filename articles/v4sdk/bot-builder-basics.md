@@ -1,6 +1,6 @@
 ---
 title: Funcionamiento de los bots | Microsoft Docs
-description: Describe cómo funcionan las actividades y HTTP en Bot Builder SDK.
+description: Describe cómo funcionan las actividades y HTTP en Bot Framework SDK.
 keywords: flujo de conversación, turno, conversación del bot, diálogos, avisos, cascadas, conjunto de diálogos
 author: johnataylor
 ms.author: johtaylo
@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c4d4879f7ad127838de9d2563dee8f8d7320d61e
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: a1b155db3ec717a1084ae0e098e8f22997a80b0e
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010580"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225940"
 ---
 # <a name="how-bots-work"></a>Funcionamiento de los bots
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Un bot es una aplicación con la que los usuarios interactúan de forma conversacional mediante texto, gráficos (tarjetas o imágenes) o voz. Cada interacción entre el usuario y el bot genera una *actividad*. Bot Service envía información entre la aplicación del usuario conectada al bot (como Facebook, Skype o Slack, a lo que llamamos el *canal*) y el bot. Cada canal puede incluir información adicional en las actividades que envían. Antes de crear bots, es importante entender cómo utiliza el bot los objetos de actividad para comunicarse con los usuarios. En primer lugar, echemos un vistazo a las actividades que se intercambian cuando ejecutamos un bot de eco sencillo.
+Un bot es una aplicación con la que los usuarios interactúan de forma conversacional mediante texto, gráficos (tarjetas o imágenes) o voz. Cada interacción entre el usuario y el bot genera una *actividad*. Bot Framework Service, que es un componente de Azure Bot Service, envía información entre la aplicación del usuario conectada al bot (como Facebook, Skype o Slack, a lo que llamamos el *canal*) y el bot. Cada canal puede incluir información adicional en las actividades que envían. Antes de crear bots, es importante entender cómo utiliza el bot los objetos de actividad para comunicarse con los usuarios. En primer lugar, echemos un vistazo a las actividades que se intercambian cuando ejecutamos un bot de eco sencillo. 
 
 ![Diagrama de actividades](media/bot-builder-activity.png)
 
@@ -41,7 +41,7 @@ El protocolo no especifica el orden en el que se realizan estas solicitudes POST
 
 ### <a name="defining-a-turn"></a>Definir un turno
 
-En una conversación, la gente a menudo habla de uno en uno, haciendo turnos para hablar. Con un bot, por lo general reacciona a las entradas del usuario. En Bot Builder SDK, un _turno_ consiste en la actividad de la entrada del usuario en el bot y en cualquier actividad que el bot devuelve al usuario como respuesta inmediata. Se puede pensar en un turno como el procesamiento asociado con la llegada de una actividad determinada.
+En una conversación, la gente a menudo habla de uno en uno, haciendo turnos para hablar. Con un bot, por lo general reacciona a las entradas del usuario. En Bot Framework SDK, un _turno_ consiste en la actividad de la entrada del usuario en el bot y en cualquier actividad que el bot devuelve al usuario como respuesta inmediata. Se puede pensar en un turno como el procesamiento asociado con la llegada de una actividad determinada.
 
 El objeto de *contexto de turno* proporciona información acerca de la actividad, como el remitente y receptor, el canal y otros datos necesarios para procesar la actividad. También permite la adición de información durante el turno en las distintas capas del bot.
 

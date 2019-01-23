@@ -1,6 +1,6 @@
 ---
 title: Implementación de un flujo de conversación secuencial | Microsoft Docs
-description: Aprenda a administrar un flujo de conversación simple con diálogos en Bot Builder SDK para Node.js.
+description: Aprenda a administrar un flujo de conversación simple con diálogos en Bot Framework SDK para Node.js.
 keywords: flujo de conversación simple, flujo de conversación secuencial, diálogos, avisos, cascadas, conjunto de diálogos
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2264b6927ccb863f153f2feb829cc0fb99c711f7
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: 554d040dd4c9d126fa70c24f1af5a1ac97a39204
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452087"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317625"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
@@ -58,7 +58,7 @@ public class MultiTurnPromptsBotAccessors
 }
 ```
 
-La clase de descriptores de acceso se registra en el método `ConfigureServices` de la clase `Statup`.
+La clase de descriptores de acceso se registra en el método `ConfigureServices` de la clase `Startup`.
 De nuevo, llamamos solo a partes del código.
 
 ```csharp

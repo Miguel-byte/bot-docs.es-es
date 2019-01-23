@@ -1,6 +1,6 @@
 ---
 title: Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes | Microsoft Docs
-description: Obtenga información sobre cómo agregar tarjetas enriquecidas a los mensajes mediante el SDK de Bot Builder para. NET.
+description: Obtenga información sobre cómo agregar tarjetas enriquecidas a los mensajes mediante Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f5687cc7faf4201485ced9535f2e98b0b4c2225a
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998182"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317680"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
 
@@ -112,7 +112,7 @@ Este ejemplo de código muestra cómo crear un mensaje de respuesta que contiene
 
 Una tarjeta adaptable puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada. Las tarjetas adaptables se crean con el formato JSON especificado en <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Tarjetas adaptables), que proporciona control total sobre el contenido y el formato de la tarjeta. 
 
-Para crear una tarjeta adaptable con. NET, instale el paquete `Microsoft.AdaptiveCards` de NuGet. Luego, use la información del sitio <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Tarjetas adaptables) a fin de comprender el esquema de la tarjeta adaptable, explorar los elementos de la tarjeta adaptable y ver ejemplos de JSON que puede usar para crear tarjetas de diferente composición y complejidad. Además, puede usar el visualizador interactivo para diseñar cargas útiles de la tarjeta adaptable y obtener una vista previa del resultado de la tarjeta.
+Para crear una tarjeta adaptable con. NET, instale el paquete `AdaptiveCards` de NuGet. Luego, use la información del sitio <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Tarjetas adaptables) a fin de comprender el esquema de la tarjeta adaptable, explorar los elementos de la tarjeta adaptable y ver ejemplos de JSON que puede usar para crear tarjetas de diferente composición y complejidad. Además, puede usar el visualizador interactivo para diseñar cargas útiles de la tarjeta adaptable y obtener una vista previa del resultado de la tarjeta.
 
 En este ejemplo de código se muestra cómo crear un mensaje que contiene una tarjeta adaptable para un recordatorio del calendario: 
 

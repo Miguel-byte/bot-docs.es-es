@@ -1,6 +1,6 @@
 ---
 title: Solicitud de pago | Microsoft Docs
-description: Obtenga información sobre cómo enviar una solicitud de pago mediante el Bot Builder SDK para Node.js.
+description: Aprenda a enviar una solicitud de pago mediante Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5bdb699e242784883f7c1a5dda895a31ff80efb1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999172"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225750"
 ---
 # <a name="request-payment"></a>Solicitud de pago
 
@@ -24,11 +24,11 @@ ms.locfileid: "49999172"
 > - [.NET](../dotnet/bot-builder-dotnet-request-payment.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-request-payment.md)
 
-Si su bot permite a los usuarios comprar artículos, puede solicitar el pago mediante la inclusión de un tipo especial de botón dentro de una [tarjeta enriquecida](bot-builder-nodejs-send-rich-cards.md). En este artículo se describe cómo enviar una solicitud de pago mediante el Bot Builder SDK para Node.js.
+Si su bot permite a los usuarios comprar artículos, puede solicitar el pago mediante la inclusión de un tipo especial de botón dentro de una [tarjeta enriquecida](bot-builder-nodejs-send-rich-cards.md). En este artículo se describe cómo enviar una solicitud de pago mediante Bot Framework SDK para Node.js.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para poder enviar una solicitud de pago mediante el Bot Builder SDK para Node.js, debe completar estas tareas previas.
+Para poder enviar una solicitud de pago mediante Bot Framework SDK para Node.js, debe completar estas tareas previas.
 
 ### <a name="register-and-configure-your-bot"></a>Registrar y configurar el bot
 

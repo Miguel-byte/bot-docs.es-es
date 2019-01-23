@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/22/2018
-ms.openlocfilehash: f5ca01b592266d005c8f000e2351ddcf812acb6d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a00e1d0d70e48b1af9cf10fd4e47ea86ae4908e9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997390"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224260"
 ---
 # <a name="connect-a-bot-to-channels"></a>Conexión de un bot a canales
 
 Un canal es una conexión entre el bot y las aplicaciones de comunicación. Un bot se configura para conectarse a los canales en los que quiere que esté disponible. El servicio Bot Framework, que se configura a través de Azure Portal, conecta su bot a estos canales y facilita la comunicación entre el bot y el usuario. Puede conectarse a muchos servicios muy utilizados, como [Cortana](bot-service-channel-connect-cortana.md), [Facebook Messenger](bot-service-channel-connect-facebook.md), [Kik](bot-service-channel-connect-kik.md) y [Slack](bot-service-channel-connect-slack.md), entre otros. [Skype](https://dev.skype.com/bots) y Chat en web están preconfigurados de forma automática. Además de los canales estándar que proporciona el servicio Bot Connector, también puede conectar el bot a su propia aplicación cliente que usa DirectLine como canal.
 
-El servicio Bot Framework le permite desarrollar un bot independientemente del canal mediante la normalización de los mensajes que el bot envía a un canal. Esto implica convertirlo del esquema del generador de bots al esquema del canal. Sin embargo, si el canal no es compatible con todos los aspectos del esquema del generador de bots, el servicio intentará convertir el mensaje a un formato que sea compatible con el canal. Por ejemplo, si el bot envía al canal SMS un mensaje que contiene una tarjeta con los botones de acción, el conector puede enviar la tarjeta como imagen e incluir las acciones como vínculos en el texto del mensaje.
+El servicio Bot Framework le permite desarrollar un bot independientemente del canal mediante la normalización de los mensajes que el bot envía a un canal. Esto implica convertirlo del esquema de Bot Framework al esquema del canal. Sin embargo, si el canal no es compatible con todos los aspectos del esquema de Bot Framework, el servicio intentará convertir el mensaje a un formato que sea compatible con el canal. Por ejemplo, si el bot envía al canal SMS un mensaje que contiene una tarjeta con los botones de acción, el conector puede enviar la tarjeta como imagen e incluir las acciones como vínculos en el texto del mensaje.
 
 
 

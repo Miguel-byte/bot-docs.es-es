@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 10/30/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 27e0b54b4e790e76c55deb858e50d8c81507443a
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 3bfbcb27aa6e38792f96e0d3fe042f02f6e11083
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010600"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298322"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Incorporación de autenticación al bot mediante Azure Bot Service
 
@@ -34,12 +34,12 @@ Las características incluyen:
 - Mejoras en los canales para admitir características de autenticación nuevas, como las bibliotecas WebChat y DirectLineJS nuevas para eliminar la necesidad de la comprobación de código mágico de seis dígitos.
 - Mejoras en Azure Portal para agregar, eliminar y configurar opciones de conexión a distintos proveedores de identidades de OAuth.
 - Compatibilidad con una variedad de proveedores de identidades estándar como Azure AD (los puntos de conexión v1 y v2), GitHub y otros.
-- Actualizaciones en los SDK de Bot Builder para C# y Node.js con el fin de poder recuperar los tokens, crear OAuthCards y controlar eventos de TokenResponse.
+- Actualizaciones en Bot Framework SDK para C# y Node.js con el fin de poder recuperar los tokens, crear OAuthCards y controlar eventos de TokenResponse.
 - Ejemplos de cómo crear un bot que se autentique en Azure AD.
 
 Puede extrapolar a partir de los pasos descritos en este artículo para agregar estas características a un bot existente. Estos son los bots de ejemplo que muestran las nuevas características de autenticación
 
-| Muestra | Versión de BotBuilder | Descripción |
+| Muestra | Versión de BotBuilder | DESCRIPCIÓN |
 |:---|:---:|:---|
 | **Autenticación de bot** ([C#](https://aka.ms/v4cs-bot-auth-sample) / [JS](https://aka.ms/v4js-bot-auth-sample)) | v4 | Muestra la compatibilidad con OAuthCard. |
 | **Autenticación de bot MSGraph** ([C#](https://aka.ms/v4cs-auth-msgraph-sample) / [JS](https://aka.ms/v4js-auth-msgraph-sample)) | v4 |  Muestra la compatibilidad de Microsoft Graph API con OAuth 2. |
@@ -256,7 +256,8 @@ Deberá instalar el [Emulador de bot](https://github.com/Microsoft/BotFramework-
 1. Inicie el bot (con o sin depuración).
 1. Anote el número de puerto de host local de la página. Necesitará esta información para interactuar con el bot.
 1. Inicie el emulador.
-1. Conéctese al bot.
+1. Conéctese al bot. Asegúrese de que la configuración del bot usa el **Identificador de aplicación de Microsoft** y la **contraseña de aplicación de Microsoft** al utilizar la autenticación
+1. Asegúrese de que en la configuración del emulador **Usar un código de verificación de inicio de sesión para OAuthCards** está activada y **ngrok** está habilitado para que Azure Bot Service pueda devolver el token al emulador cuando esté disponible.
 
    Si todavía no ha configurado la conexión, proporcione la dirección y el id. de aplicación y la contraseña de Microsoft del bot. Agregue `/api/messages` a la dirección URL del bot. La dirección URL se parecerá a esta `http://localhost:portNumber/api/messages`.
 
@@ -486,4 +487,4 @@ private isTeamsVerificationInvoke(context: TurnContext): boolean {
 En las llamadas posteriores al bot, tenga en cuenta que este bot de ejemplo nunca almacena el token en caché. Se debe a que el bot siempre puede pedir el token a Azure Bot Service. Esto evita que el bot tenga que administrar el ciclo de vida del token, actualizar el token, etc., ya Azure Bot Service se encarga de todo esto de forma automática.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-[SDK de Bot Builder](https://github.com/microsoft/botbuilder)
+[Bot Framework SDK](https://github.com/microsoft/botbuilder)

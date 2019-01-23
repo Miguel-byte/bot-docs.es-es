@@ -1,6 +1,6 @@
 ---
-title: Administrar datos de estado | Microsoft Docs
-description: Obtenga información sobre cómo guardar y recuperar datos con el SDK de Bot Builder para .NET.
+title: Administración de datos de estado | Microsoft Docs
+description: Obtenga información sobre cómo guardar y recuperar datos de estado con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/17
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: deb8361a5cca2f37840abb1180c2de571ee08143
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3ee3af72d1c03faf485a64adb8d9fa2548f5d99d
+ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999762"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54323671"
 ---
 # <a name="manage-state-data"></a>Administración de datos de estado
 
@@ -103,53 +103,6 @@ Cada objeto [Activity][Activity] contiene propiedades que usará para administra
 > [!NOTE]
 > Puede usar estos valores de propiedad como claves, incluso si decide almacenar los datos de estado en su propia base de datos, en lugar de usar el almacén de datos de estado de Bot Framework.
 
-## <a id="state-client"></a> Crear un cliente de estado
-
-El objeto `StateClient` le permite administrar datos de estado mediante el SDK de Bot Builder para .NET. Si tiene acceso a un mensaje que pertenece al mismo contexto en el que quiere administrar los datos de estado, puede crear un cliente de estado llamando al método `GetStateClient` en el objeto `Activity`.
-
-[!code-csharp[Get State client](../includes/code/dotnet-state.cs#getStateClient1)]
-
-Si no tiene acceso a un mensaje que pertenece al mismo contexto en el que desea administrar los datos de estado, puede crear un cliente de estado creando una nueva instancia de la clase `StateClient`. En este ejemplo, `microsoftAppId` y `microsoftAppPassword` son las credenciales de autenticación de Bot Framework que adquiere para su bot durante el proceso de [creación del bot](../bot-service-quickstart.md).
-
-> [!NOTE]
-> Para buscar los valores **AppID** y **AppPassword** del bot, consulte [MicrosoftAppID y MicrosoftAppPassword](~/bot-service-manage-overview.md#microsoftappid-and-microsoftapppassword).
-
-[!code-csharp[Get State client](../includes/code/dotnet-state.cs#getStateClient2)]
-
-> [!NOTE]
-> El cliente de estado predeterminado se almacena en un servicio central. Para algunos canales, es posible que quiera utilizar una API de estado alojada en el canal, de modo que los datos de estado se puedan almacenar en un almacén compatible que suministre el canal.
-
-## <a name="get-state-data"></a>Obtener los datos de estado
-
-Cada uno de los métodos "**Get...Data**" devuelve un objeto `BotData` que contiene los datos de estado del usuario o la conversación especificados. Para obtener un valor de propiedad específico de un objeto `BotData`, llame al método `GetProperty`. 
-
-En el siguiente ejemplo de código se muestra cómo obtener una propiedad escrita a partir de los datos del usuario. 
-
-[!code-csharp[Get state property](../includes/code/dotnet-state.cs#getProperty1)]
-
-En el siguiente ejemplo de código se muestra cómo obtener una propiedad de un tipo complejo a partir de los datos del usuario.
-
-[!code-csharp[Get state property](../includes/code/dotnet-state.cs#getProperty2)]
-
-Si no existen datos de estado para el usuario o la conversación que se especifica en una llamada del método "**Get...Data**", el objeto `BotData` que se devuelve contendrá estos valores de propiedad: 
-- `BotData.Data` = null
-- `BotData.ETag` = "*"
-
-## <a name="save-state-data"></a>Guardar los datos
-
-Para guardar datos de estado, primero obtenga el objeto `BotData` llamando al método apropiado "**Get...Data**"; a continuación, actualícelo llamando al método `SetProperty` para cada propiedad que quiera actualizar, y guárdelo llamando al método apropiado "**Set...Data**". 
-
-> [!NOTE]
-> Puede almacenar hasta 32 KB de datos para cada usuario en un canal, cada conversación en un canal y cada usuario en el contexto de una conversación en un canal. 
-
-En el siguiente ejemplo de código se muestra cómo guardar una propiedad escrita a partir de los datos del usuario.
-
-[!code-csharp[Set state property](../includes/code/dotnet-state.cs#setProperty1)]
-
-En el siguiente ejemplo de código se muestra cómo guardar una propiedad de un tipo complejo a partir de los datos del usuario. 
-
-[!code-csharp[Set state property](../includes/code/dotnet-state.cs#setProperty2)]
-
 ## <a name="handle-concurrency-issues"></a>Administrar los problemas de simultaneidad
 
 El bot puede recibir una respuesta de error con el código de estado HTTP **412 Error de condición previa** cuando intenta guardar datos de estado, si es que otra instancia del bot ha cambiado los datos. Puede diseñar su bot para que tenga en cuenta este escenario, tal como se muestra en el siguiente ejemplo de código.
@@ -159,6 +112,6 @@ El bot puede recibir una respuesta de error con el código de estado HTTP **412 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Bot Framework troubleshooting guide](../bot-service-troubleshoot-general-problems.md) (Guía de solución de problemas de Bot Framework)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Referencias del SDK de Bot Builder para .NET)
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [Activity]: https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html

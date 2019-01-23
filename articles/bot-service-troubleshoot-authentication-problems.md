@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/17
-ms.openlocfilehash: 0fdd196716c0fffb36583c0df894481b032dd83e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 2335ac34292e224f44a09820574f3bd9de00eda4
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999414"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224660"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Solución de problemas de autenticación de Bot Framework
 
@@ -43,7 +43,7 @@ Para deshabilitar la seguridad para el bot, edite sus valores de configuración 
 
 ::: moniker range="azure-bot-service-3.0"
 
-Si usa el SDK de Bot Builder para. NET, edite estos valores en el archivo Web.config: 
+Si usa Bot Framework SDK para. NET, edite estos valores en el archivo Web.config: 
 
 ```xml
 <appSettings>
@@ -52,7 +52,7 @@ Si usa el SDK de Bot Builder para. NET, edite estos valores en el archivo Web.co
 </appSettings>
 ```
 
-Si usa Bot Builder SDK para Node.js, edite estos valores (o actualice las variables de entorno correspondientes):
+Si usa Bot Framework SDK para Node.js, edite estos valores (o actualice las variables de entorno correspondientes):
 
 ```javascript
 var connector = new builder.ChatConnector({
@@ -65,16 +65,18 @@ var connector = new builder.ChatConnector({
 
 ::: moniker range="azure-bot-service-4.0"
 
-Si usa el SDK de Bot Builder para. NET, edite los valores del archivo `appsettings.config`:
+Si usa Bot Framework SDK para. NET, edite los valores del archivo `.bot`:
 
-```xml
-<appSettings>
-  <add key="MicrosoftAppId" value="" />
-  <add key="MicrosoftAppPassword" value="" />
-</appSettings>
+```json
+"services": [
+  {
+    "appId": "<your app ID>",
+    "appPassword": "<your app password>",
+  }
+]
 ```
 
-Si usa Bot Builder SDK para Node.js, edite estos valores (o actualice las variables de entorno correspondientes):
+Si usa Bot Framework SDK para Node.js, edite estos valores (o actualice las variables de entorno correspondientes):
 
 ```javascript
 const adapter = new BotFrameworkAdapter({
@@ -121,6 +123,9 @@ Estas instrucciones describen cómo usar [cURL](https://curl.haxx.se/download.ht
 
 Para comprobar que el identificador de aplicación y la contraseña del bot son válidos, emita la siguiente solicitud con **cURL**, reemplazando `APP_ID` y `APP_PASSWORD` con el identificador de aplicación y la contraseña de su bot.
 
+> [!TIP]
+> La contraseña puede contener caracteres especiales que hagan que la siguiente llamada no sea válida. Si es así, pruebe a convertir la contraseña a codificación URL.
+
 ```cmd
 curl -k -X POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token -d "grant_type=client_credentials&client_id=APP_ID&client_secret=APP_PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default"
 ```
@@ -141,9 +146,9 @@ En este momento, ha comprobado que su bot es accesible y funcional en el host lo
 
 ### <a id="enable-security-localhost"></a> Habilitar la seguridad
 
-La seguridad del bot se basa en los servicios de Microsoft, incluso cuando se ejecuta en el host local. Para habilitar la seguridad para el bot, edite sus valores de configuración para rellenar el identificador de aplicación y la contraseña con los valores que comprobó en el [Paso 2](#step-2).
+La seguridad del bot se basa en los servicios de Microsoft, incluso cuando se ejecuta en el host local. Para habilitar la seguridad para el bot, edite sus valores de configuración para rellenar el identificador de aplicación y la contraseña con los valores que comprobó en el [Paso 2](#step-2).  Además, asegúrese de que los paquetes están actualizados, específicamente `System.IdentityModel.Tokens.Jwt` y `Microsoft.IdentityModel.Tokens`.
 
-Si usa el SDK de Bot Builder para. NET, rellene estos valores en el archivo `.bot` o `appsettings.config`:
+Si usa Bot Framework SDK para. NET, rellene estos valores en el archivo `appsettings.config` o los valores correspondientes en el archivo `.bot`:
 
 ```xml
 <appSettings>
@@ -152,7 +157,7 @@ Si usa el SDK de Bot Builder para. NET, rellene estos valores en el archivo `.bo
 </appSettings>
 ```
 
-Si usa Bot Builder SDK para Node.js, rellene estos valores (o actualice las variables de entorno correspondientes):
+Si usa Bot Framework SDK para Node.js, rellene estos valores (o actualice las variables de entorno correspondientes):
 
 ```javascript
 var connector = new builder.ChatConnector({

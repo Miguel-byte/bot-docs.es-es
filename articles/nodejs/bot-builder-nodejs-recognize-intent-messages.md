@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 82541c4ac0848c3e995ab3ad1ed874436072fe63
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 211800211b422bb9c90c00705585be89737c77a9
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998094"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225560"
 ---
 # <a name="recognize-user-intent-from-message-content"></a>Reconocimiento de intenciones del usuario a partir del contenido del mensaje
 
@@ -57,11 +57,11 @@ Una vez que haya registrado un reconocedor, puede asociarlo con una acción medi
 
 ## <a name="disambiguate-between-multiple-intents"></a>Eliminación de ambigüedad entre varias intenciones
 
-El bot puede registrar más de un reconocedor. Tenga en cuenta que el ejemplo del reconocedor personalizado incluye la asignación de una puntuación numérica a cada intención. Esto se hace porque el bot puede tener más de un reconocedor y Bot Builder SDK proporciona una lógica integrada para eliminar la ambigüedad entre las intenciones que devuelven los diversos reconocedores. La puntuación asignada a una intención suele estar comprendida entre 0.0 y 1.0, pero un reconocedor personalizado puede definir una intención superior a 1.1 para asegurarse de que la lógica de eliminación de ambigüedades de Bot Builder SDK la elija siempre. 
+El bot puede registrar más de un reconocedor. Tenga en cuenta que el ejemplo del reconocedor personalizado incluye la asignación de una puntuación numérica a cada intención. Esto se hace porque el bot puede tener más de un reconocedor y Bot Framework SDK proporciona una lógica integrada para eliminar la ambigüedad entre las intenciones que devuelven los diversos reconocedores. La puntuación asignada a una intención suele estar comprendida entre 0.0 y 1.0, pero un reconocedor personalizado puede definir una intención superior a 1.1 para asegurarse de que la lógica de eliminación de ambigüedades de Bot Framework SDK la elija siempre. 
 
 De forma predeterminada, los reconocedores se ejecutan en paralelo, pero puede establecer recognizeOrder [IIntentRecognizerSetOptions][IntentRecognizerSetOptions] para que el proceso se cierre en cuanto el bot encuentre uno con una puntuación de 1.0.
 
-Bot Builder SDK incluye un [ejemplo][DisambiguationSample] que muestra cómo proporcionar una lógica personalizada de eliminación de ambigüedades en su bot implementando [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
+Bot Framework SDK incluye un [ejemplo][DisambiguationSample] que muestra cómo proporcionar una lógica personalizada de eliminación de ambigüedades en el bot mediante la implementación de [IDisambiguateRouteHandler][IDisambiguateRouteHandler].
 
 ## <a name="next-steps"></a>Pasos siguientes
 La lógica para usar expresiones regulares e inspeccionar contenidos de mensajes puede ser compleja, especialmente si el flujo de conversación del bot es de final abierto. Para ayudar a su bot a controlar una amplia variedad de entradas de texto y voz de los usuarios, puede usar un servicio de reconocimiento de intenciones como [LUIS][LUIS] para agregar el reconocimiento del lenguaje natural al bot.

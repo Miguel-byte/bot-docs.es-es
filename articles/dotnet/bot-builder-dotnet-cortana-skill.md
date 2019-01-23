@@ -1,7 +1,7 @@
 ---
 title: Creación de una habilidad de Cortana mediante .NET | Microsoft Docs
-description: Obtenga información sobre los conceptos básicos para la creación de una habilidad de Cortana en el SDK de Bot Builder para. NET.
-keywords: Bot Framework, habilidad de Cortana, voz,. NET, Bot Builder, SDK, conceptos clave, conceptos básicos
+description: Obtenga información sobre los conceptos básicos para la creación de una habilidad de Cortana en Bot Framework SDK para .NET.
+keywords: Bot Framework, habilidad de Cortana, voz,. NET, SDK, conceptos clave, conceptos básicos
 author: DeniseMak
 manager: kamrani
 ms.topic: article
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 030d17fa25a436ee8e8a1d093924e61f12e14e18
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 98fc10a806a4c8d1a4d6563934d92b0e0cdbb771
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998322"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224780"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -25,11 +25,11 @@ ms.locfileid: "49998322"
 > - [Node.js](../nodejs/bot-builder-nodejs-cortana-skill.md)
 
 
-El SDK de Bot Builder para .NET le permite crear un bot habilitado para la voz al conectarlo al canal de Cortana como una habilidad de Cortana. 
+Bot Framework SDK para .NET le permite crear un bot habilitado para voz al conectarlo al canal de Cortana como una habilidad de Cortana. 
 
 
 > [!TIP]
-> Para obtener más información sobre qué es una habilidad y qué puede hacer, consulte [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana).
+> Para más información sobre qué es una habilidad y qué puede hacer, vea [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana).
 
 La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y consiste básicamente en compilar un bot. Una de las posibles diferencias principales respecto a otros bots que ha creado en el pasado es que Cortana tiene un componente visual y uno de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, proporcione texto o SSML en los mensajes del bot para que Cortana los lea al usuario, dándole una voz. 
 
@@ -38,7 +38,7 @@ La creación de una habilidad de Cortana con Bot Framework requiere muy poco con
 
 ## <a name="adding-speech-to-your-bot"></a>Adición de voz al bot
 
-Los mensajes de voz de su bot se representan en el lenguaje de marcado de síntesis de voz (SSML). El SDK de Bot Builder permite incluir SSML en las respuestas del bot para controlar lo que dice y lo que muestra.  También puede controlar el estado del micrófono de Cortana al especificar que el bot acepta, espera o ignora la interacción del usuario.
+Los mensajes de voz de su bot se representan en el lenguaje de marcado de síntesis de voz (SSML). Bot Framework SDK permite incluir SSML en las respuestas del bot para controlar lo que dice y lo que muestra.  También puede controlar el estado del micrófono de Cortana al especificar que el bot acepta, espera o ignora la interacción del usuario.
 
 Establezca la propiedad `Speak` del objeto `IMessageActivity` para especificar el mensaje que Cortana dirá. Si se especifica texto sin formato, Cortana determinará cómo se pronuncian las palabras. 
 
@@ -96,7 +96,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 -->
 
 
-## <a name="sample-rollerskill"></a>Ejemplo: RollerSkill
+## <a name="sample-rollerskill"></a>Sample: RollerSkill
 El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de Bot Builder](https://github.com/Microsoft/BotBuilder-Samples/).
 
 La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
@@ -334,8 +334,8 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 * [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
 * [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]
 * [Centro de desarrollo de Cortana][CortanaDevCenter]
-* [Prácticas recomendadas para probar y depurar a Cortana][Cortana-TestBestPractice]
-* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Bot Builder SDK for .NET Reference</a> (Referencias del SDK de Bot Builder para .NET)
+* [Procedimientos recomendados para probar y depurar a Cortana][Cortana-TestBestPractice]
+* <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [CortanaGetStarted]: /cortana/getstarted
 [BFPortal]: https://dev.botframework.com/

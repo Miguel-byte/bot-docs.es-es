@@ -3,18 +3,18 @@ title: Depuración de un bot | Microsoft Docs
 description: Obtenga información sobre cómo depurar un bot creado con Bot Service.
 author: v-ducvo
 ms.author: v-ducvo
-keywords: SDK Bot Builder, depurar bot, probar bot, emulador de bot, emulador
+keywords: Bot Framework SDK, depurar bot, probar bot, emulador de bot, emulador
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/13/2018
-ms.openlocfilehash: fcda5c57a96b6f93aad965e868c824577616f630
-ms.sourcegitcommit: 6c719b51c9e4e84f5642100a33fe346b21360e8a
+ms.openlocfilehash: b445ce7796c3f7f3180b15fd6dfac1ef82b808ae
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52452047"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298302"
 ---
 # <a name="debug-a-bot"></a>Depuración de un bot
 
@@ -32,6 +32,7 @@ Para ejecutar un bot de JavaScript mediante la línea de comandos y probarlo con
 1. Inicie el emulador y conéctese al punto de conexión del bot (por ejemplo: **http://localhost:3978/api/messages**). Si es la primera vez que se ejecuta el bot, haga clic en **Archivo > Nuevo bot** y siga las instrucciones en pantalla. En caso contrario, haga clic en **Archivo > Abrir bot** para abrir un bot existente. Como este bot se ejecuta localmente en el equipo, puede dejar en blanco los campos **MSA app ID** (Id. de aplicación de MSA) y **MSA app password** (Contraseña de aplicación de MSA). Para obtener más información, vea [Depuración con el emulador](bot-service-debug-emulator.md).
 1. Desde el emulador, envíe un mensaje al bot (por ejemplo, envíe el mensaje "¡Hi" [¡Hola!]). 
 1. Use los paneles **Inspector** y **Registro** del lado derecho de la ventana del emulador para depurar el bot. Por ejemplo, al hacer clic en cualquiera de las burbujas de mensaje (como la burbuja de mensaje "Hi" (Hola) en la captura de pantalla siguiente), se mostrarán los detalles de ese mensaje en el panel **Inspector**. Puede usarlo para ver las solicitudes y respuestas como mensajes que se intercambian entre el emulador y el bot. Como alternativa, puede hacer clic en cualquier parte del texto vinculado en el panel **Registro** para ver los detalles en el panel **Inspector**.
+
 
    ![Panel Inspector en el emulador](~/media/bot-service-debug-bot/emulator_inspector.png)
 

@@ -9,21 +9,20 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/08/2019
-ms.openlocfilehash: fd852a75b911f57743b40d252b24c6ef33b0420d
-ms.sourcegitcommit: ddc8c116887ada67642d49ee5166e7f1ae287263
+ms.openlocfilehash: da809023338847374715f7576481fc8d17a21ded
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54114899"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225400"
 ---
 ::: moniker range="azure-bot-service-3.0"
-
 
 # <a name="create-a-bot-with-azure-bot-service"></a>Creación de un bot con Azure Bot Service
 
 [!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
 
-Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Builder SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js. En este tema, aprenda a usar Bot Service para crear un nuevo bot que usa el SDK de Bot Builder.
+Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Framework SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js. En este tema, aprenda a usar Bot Service para crear un nuevo bot que usa Bot Framework SDK.
 
 ## <a name="log-in-to-azure"></a>Inicio de sesión en Azure
 Inicie sesión en [Azure Portal](http://portal.azure.com).
@@ -84,7 +83,7 @@ En este tema, ha aprendido a crear un bot de Functions o un bot de aplicación w
 
 [!INCLUDE [pre-release-label](includes/pre-release-label.md)]
 
-Azure Bot Service ofrece los componentes principales para la creación de bots, incluido el SDK de Bot Builder para desarrollar bots y el servicio de bots para conectar los bots con canales. En el tema, podrá elegir una plantilla .NET o Node.js para crear un bot con el SDK Bot Builder v4.
+Azure Bot Service proporciona los componentes principales para crear bots, incluido Bot Framework SDK para desarrollar bots y Bot Service para conectar los bots con los canales. En el tema, podrá elegir entre plantilla .NET o Node.js para crear un bot mediante Bot Framework SDK v4.
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Cuenta de [Azure](http://portal.azure.com)

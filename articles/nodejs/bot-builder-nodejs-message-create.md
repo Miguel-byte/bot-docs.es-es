@@ -1,6 +1,6 @@
 ---
 title: Creación de mensajes | Microsoft Docs
-description: Obtenga información sobre cómo crear mensajes con el SDK de Bot Builder para Node.js.
+description: Obtenga información sobre cómo crear mensajes con Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8011611aa11e81cf322ba841f616fa2797038e84
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998172"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225220"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -26,7 +26,7 @@ En este artículo se describen algunos de los métodos de mensaje usados con fre
 
 ## <a name="default-message-handler"></a>Controlador de mensajes predeterminado
 
-El SDK de Bot Builder para Node.js incluye un controlador de mensajes predeterminado integrado en el objeto [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Este controlador de mensajes permite enviar y recibir mensajes de texto entre el bot y el usuario.
+Bot Framework SDK para Node.js incluye un controlador de mensajes predeterminado integrado en el objeto [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Este controlador de mensajes permite enviar y recibir mensajes de texto entre el bot y el usuario.
 
 ### <a name="send-a-text-message"></a>Enviar un mensaje de texto
 
@@ -88,7 +88,7 @@ Las propiedades de mensaje se establecen y recuperan a través de los métodos d
 | [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Crea una respuesta compleja y aleatoria para el usuario. |
 | [`entities(list:Object[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Objetos estructurados que se pasan al bot o al usuario. |
 | [`inputHint(hint:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Sugerencia enviada al usuario para informarle de si el bot está esperando una entrada adicional o no. Las solicitudes integradas rellenarán automáticamente este valor para los mensajes salientes. |
-| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Hora local del envío del mensaje (establecida por el cliente o el bot, por ejemplo: 2016-09-23T13:07:49.4714686-07:00). |
+| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Hora local del envío del mensaje (establecida por el cliente o el bot, por ejemplo: 2016-09-23T13:07:49.4714686-07:00.) |
 | [`originalEvent(event:any)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Mensaje en formato original o nativo del canal para los mensajes entrantes. |
 | [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Para los mensajes salientes se puede usar para pasar datos de eventos específicos de origen como datos adjuntos personalizados. |
 | [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Establece el campo de voz del mensaje como *Lenguaje de marcado de síntesis de voz (SSML)*. Esto se proporcionará de forma hablada al usuario en los dispositivos compatibles. |

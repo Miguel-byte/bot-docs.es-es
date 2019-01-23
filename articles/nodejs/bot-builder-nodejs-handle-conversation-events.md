@@ -1,6 +1,6 @@
 ---
 title: Control de eventos de usuario y conversación | Microsoft Docs
-description: Aprenda a controlar eventos como la unión de un usuario a una conversación mediante el SDK de Bot Builder para Node.js.
+description: Aprenda a controlar eventos como la unión de un usuario a una conversación mediante Bot Framework SDK para Node.js.
 author: DucVo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2e8cb9661079eafa988af4a7639e3e7dc1580bfa
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 91fd349173dfe469c7b71bc84b8adf9c19e07277
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998142"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54223610"
 ---
 # <a name="handle-user-and-conversation-events"></a>Control de eventos de usuario y conversación
 

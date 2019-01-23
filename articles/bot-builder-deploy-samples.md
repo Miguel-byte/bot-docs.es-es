@@ -8,13 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/17/2018
-ms.openlocfilehash: 831268b1ddc711963c20ca9c99b333f070a6100c
-ms.sourcegitcommit: 8c10aa7372754596a3aa7303a3a893dd4939f7e9
+ms.date: 01/15/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
+ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654330"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54317622"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>Implementación de bots del repositorio botbuilder-samples
 
@@ -35,14 +36,18 @@ Es conveniente leerlo antes de seguir los pasos, con el fin de tener un conocimi
 - Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/) antes de empezar.
 - Instale el [SDK de .NET Core](https://dotnet.microsoft.com/download) (como mínimo la versión 2.2). (Utilice `dotnet --version` para ver qué versión tiene).
 - Instale de la versión más reciente de la [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). (Utilice `az --version` para ver qué versión tiene).
-- Instale la extensión `botservice` más reciente para la herramienta `az`.
-  - En primer lugar, quite la versión anterior, para lo que debe usar el comando `az extension remove -n botservice`. Después, use el comando `az extension add -n botservice` para instalar la versión más reciente.
 - Instale la versión más reciente de la herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot).
   - Si la operación de clonación incluye recursos de LUIS o de Dispatch, necesitará la [CLI de LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#installation).
   - Si la operación de clonación incluye recursos de QnA Maker, necesitará la [CLI de QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#as-a-cli).
 - Instale [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Instale y configure [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29).
 - Conocimientos de archivos [.bot](v4sdk/bot-file-basics.md).
+
+Con msbot 4.3.2 y posteriores, necesita la versión 2.0.54 de la CLI de Azure o posterior. Si ha instalado la extensión botservice, elimínela con este comando.
+
+```cmd
+az extension remove --name botservice
+```
 
 ### <a name="c"></a>C\#
 
@@ -152,13 +157,13 @@ En el emulador, utilice el punto de conexión de producción para probar la apli
 NO use el comando `msbot clone services` para actualizar el código del bot en Azure. Debe usar el comando `az bot publish`, tal como se muestra a continuación:
 
 ```cmd
-az bot publish --name "<your-azure-bot-name>" --proj-file "<your-proj-file>" --resource-group "<azure-resource-group>" --code-dir "<folder>" --verbose --version v4
+az bot publish --name "<your-azure-bot-name>" --proj-name "<your-proj-name>" --resource-group "<azure-resource-group>" --code-dir "<folder>" --verbose --version v4
 ```
 
 | Argumentos        | DESCRIPCIÓN |
 |----------------  |-------------|
 | `name`      | El nombre que utilizó la primera vez que implementó el bot en Azure.|
-| `proj-file` | En el caso del bot de C#, es el archivo .csproj. En el caso del bot de JS/TS, es el nombre de archivo del proyecto de startup (por ejemplo, index.js o index.ts) de su bot local.|
+| `proj-name` | Para C#, use el nombre de archivo del proyecto de inicio (sin .csproj) que se tiene que publicar. Por ejemplo: `EnterpriseBot`. Para Node.js, use el punto de entrada principal del bot. Por ejemplo, `index.js`. |
 | `resource-group` | El grupo de recursos de Azure que ha usado el comando `msbot clone services`.|
 | `code-dir`  | Apunta a la carpeta del bot local.|
 

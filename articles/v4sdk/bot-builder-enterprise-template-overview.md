@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/18/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3abfb82f555f458bc9cdd5125fafa1cfa70921cb
-ms.sourcegitcommit: 66769e697d94f7bf5e0441dfacf2c0e3768845ea
+ms.openlocfilehash: a0b56b77990c095d1cf8bb28235d06444837d164
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654966"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224602"
 ---
 # <a name="enterprise-bot-template"></a>Plantilla del bot de empresa 
 
@@ -22,7 +22,7 @@ ms.locfileid: "53654966"
 
 La creación de una experiencia conversacional de alta calidad requiere un conjunto de funcionalidades fundamentales. Para ayudarle a crear satisfactoriamente excelentes experiencias de conversación, hemos creado una plantilla de bot de empresa. Esta plantilla reúne todos los procedimientos recomendados y los componentes auxiliares que hemos identificado mediante la creación de experiencias de conversación. 
 
-Esta plantilla simplifica enormemente la creación de un nuevo proyecto de bot. La plantilla proporcionará las siguientes funcionalidades desde el principio, aprovechando el [SDK Bot Builder v4](https://github.com/Microsoft/botbuilder) y las [herramientas de Bot Builder](https://github.com/Microsoft/botbuilder-tools).
+Esta plantilla simplifica enormemente la creación de un nuevo proyecto de bot. La plantilla proporcionará las siguientes funcionalidades listas para usar, aprovechando [Bot Framework SDK v4](https://github.com/Microsoft/botbuilder) y [Bot Framework Tools](https://github.com/Microsoft/botbuilder-tools).
 
 Característica | DESCRIPCIÓN |
 ------------ | -------------

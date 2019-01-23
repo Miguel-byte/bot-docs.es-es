@@ -1,6 +1,6 @@
 ---
 title: Compatibilidad con la localización | Microsoft Docs
-description: Aprenda a determinar dónde se encuentra el usuario y a habilitar la funcionalidad de localización mediante Bot Builder SDK para Node.js.
+description: Obtenga información sobre cómo determinar dónde está el usuario y habilitar la funcionalidad de localización mediante Bot Framework SDK para Node.js.
 author: DeniseMak
 ms.author: v-demak
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5ac9fabcb0c6626e1b0133b7718b135a88d4c846
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d592aa8b37e1d73e3cf9003209b985b8ca0f03f8
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998069"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224400"
 ---
 # <a name="support-localization"></a>Compatibilidad con la localización
 
@@ -98,7 +98,7 @@ bot.use({
 Una vez que agregue el fragmento de código anterior al bot, la llamada a [session.preferredLocale()][preferredLocal] devolverá automáticamente el idioma detectado. El orden de búsqueda de `preferredLocale()` es así:
 1. Configuración regional guardada mediante la llamada a `session.preferredLocale()`. Este valor se almacena en `session.userData['BotBuilder.Data.PreferredLocale']`.
 2. Configuración regional detectada asignada a `session.message.textLocale`.
-3. La configuración regional predeterminada configurada para el bot (p. ej.: inglés ["en"]).
+3. La configuración regional predeterminada configurada para el bot (p. ej.: Inglés ('en')).
 
 Puede configurar la configuración regional predeterminada del bot mediante su constructor:
 
@@ -111,9 +111,9 @@ var bot = new builder.UniversalBot(connector, {
 ```
 
 ## <a name="localize-prompts"></a>Localización de los avisos
-El sistema de localización predeterminado de Bot Builder SDK está basado en archivos y permite que un bot admita varios idiomas por medio de archivos JSON almacenados en discos. De forma predeterminada, el sistema de localización buscará los avisos del bot en el archivo **./locale/<IETF TAG>/index.json** donde <IETF TAG> es una [etiqueta de idioma IETF][IEFT] válida que representa la configuración regional preferida para la que se buscarán los avisos. 
+El sistema de localización predeterminado para Bot Framework SDK está basado en archivo y permite que un bot admita varios idiomas con archivos JSON almacenados en disco. De forma predeterminada, el sistema de localización buscará los avisos del bot en el archivo **./locale/<IETF TAG>/index.json** donde <IETF TAG> es una [etiqueta de idioma IETF][IEFT] válida que representa la configuración regional preferida para la que se buscarán los avisos. 
 
-En la captura de pantalla siguiente se muestra la estructura de directorio de un bot que admite tres idiomas: inglés, italiano y español.
+La captura de pantalla siguiente muestra la estructura de directorios de un bot que admite tres lenguajes: Inglés, italiano y español.
 
 ![Estructura de directorio de tres configuraciones regionales](../media/locale-dir.png)
 

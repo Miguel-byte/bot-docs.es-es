@@ -1,6 +1,6 @@
 ---
 title: Implementación de almacenamiento personalizado en un bot | Microsoft Docs
-description: Creación de almacenamiento personalizado en SDK Bot Builder v4.0
+description: Creación de almacenamiento personalizado en Bot Framework SDK v4.0
 keywords: custom, storage, state, dialog
 author: johnataylor
 ms.author: johtaylo
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/31/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b005b9f024c5813ba22cd8663c196a8c3a5bb716
-ms.sourcegitcommit: 15f7fa40b7e0a05507cdc66adf75bcfc9533e781
+ms.openlocfilehash: 4503e2953543d2ec9c06e8cd60484a5c87d95987
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50919020"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224010"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Implementación de almacenamiento personalizado en un bot
 
@@ -25,7 +25,7 @@ Las interacciones de un bot se dividen en tres áreas: en primer lugar, el inter
 
 En este artículo, vamos a analizar la semántica en torno a las interacciones del bot con Azure Bot Service y con Store.
 
-La plataforma de Bot Builder incluye una implementación predeterminada. Muy probablemente, esta implementación se adaptará a las necesidades de muchas aplicaciones y todo lo que tendrá que hacer para usarla es conectar todas las piezas con unas pocas líneas de código de inicialización. Muchos de los ejemplos muestran exactamente eso.
+Bot Framework incluye una implementación predeterminada. Muy probablemente, esta implementación se adaptará a las necesidades de muchas aplicaciones y todo lo que tendrá que hacer para usarla es conectar todas las piezas con unas pocas líneas de código de inicialización. Muchos de los ejemplos muestran exactamente eso.
 
 El objetivo en este caso, sin embargo, es describir lo que puede hacer cuando la semántica de la implementación predeterminada no funciona como le gustaría en la aplicación. Lo principal es que esta es una plataforma y no una aplicación rígida con un comportamiento fijo. En otras palabras, la implementación de muchos de los mecanismos de la plataforma es solo la implementación predeterminada, pero no la única implementación posible.
 

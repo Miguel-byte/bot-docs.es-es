@@ -1,6 +1,6 @@
 ---
-title: Conversaciones en Bot Builder SDK | Microsoft Docs
-description: Describe qué es una conversación en Bot Builder SDK.
+title: Conversaciones en Bot Framework SDK | Microsoft Docs
+description: Describe qué es una conversación en Bot Framework SDK.
 keywords: flujo de conversación, reconocimiento de intenciones, un solo turno, varios turnos, conversación de bot
 author: jonathanfingold
 ms.author: jonathanfingold
@@ -10,19 +10,19 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/01/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 19f0b67454a8c0a4bf171579f8e481e630db83ac
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998922"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225089"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
 Para diseñar del flujo de conversación de un bot es necesario decidir cómo responde el bot cuando el usuario le dice algo. Un bot reconoce en primer lugar la tarea o el tema de conversación basándose en un mensaje del usuario. Para determinar la tarea o el tema (lo que se denomina *intención*) asociados al mensaje de un usuario, el bot puede buscar palabras o patrones en el texto del mensaje o bien puede aprovechar servicios como [Language Understanding](bot-builder-concept-luis.md) y [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
 
-Una vez que ha reconocido la intención del usuario, en función del escenario, el bot podría satisfacer la solicitud del usuario con una sola respuesta, con lo que completaría la conversación en un solo turno, o podría requerir una serie de turnos. Para los flujos de conversación de varios turnos, Bot Builder SDK proporciona [administración de estados](./bot-builder-howto-v4-state.md) para llevar un seguimiento de una conversación, [avisos](bot-builder-prompts.md) para pedir información y [cuadros de diálogo](bot-builder-dialog-manage-conversation-flow.md) para encapsular los flujos de conversación.
+Una vez que ha reconocido la intención del usuario, en función del escenario, el bot podría satisfacer la solicitud del usuario con una sola respuesta, con lo que completaría la conversación en un solo turno, o podría requerir una serie de turnos. Para los flujos de conversación de varios turnos, Bot Framework SDK proporciona [administración de estados](./bot-builder-howto-v4-state.md) para llevar un seguimiento de una conversación, [avisos](bot-builder-prompts.md) para pedir información y [diálogos](bot-builder-dialog-manage-conversation-flow.md) para encapsular los flujos de conversación.
 
 En un bot complejo con varios subsistemas, usted podría usar varios servicios para reconocer la intención, uno para cada subcomponente del bot. La [herramienta de distribución](bot-builder-tutorial-dispatch.md) coloca en un mismo lugar los resultados de varios servicios cuando se combinan subsistemas de conversación en un bot.
 
@@ -73,7 +73,7 @@ Tal vez diseñe su bot para que controle más de un tipo de tareas. Por ejemplo,
 
 ### <a name="recognize-intent"></a>Reconocimiento de intenciones
 
-El SDK Bot Builder proporciona _reconocedores_ que procesan un mensaje para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Llame al método asincrónico _recognize_ del reconocedor para determinar la intención del usuario a partir del contenido del mensaje. A continuación, puede llamar al método _get top scoring intent_ en el resultado para obtener la predicción más alta del reconocedor.
+Bot Framework SDK proporciona _reconocedores_ que procesan un mensaje para determinar la intención, de modo que el bot pueda iniciar el flujo de conversación correspondiente. Llame al método asincrónico _recognize_ del reconocedor para determinar la intención del usuario a partir del contenido del mensaje. A continuación, puede llamar al método _get top scoring intent_ en el resultado para obtener la predicción más alta del reconocedor.
 
 Un reconocedor podría utilizar expresiones regulares, reconocimiento del lenguaje u otra lógica que desarrolle. Los siguientes son ejemplos de reconocedores posibles:
 
@@ -111,7 +111,7 @@ Si va a almacenar información sobre la conversación, puede que le interese bor
 <!--  Types of conversations -->
 
 El bot puede admitir interacciones de varios turnos en las que pide a los usuarios varias partes de información. Se puede centrar en una tarea muy específica o admitir varios tipos de tareas.
-El SDK Bot Builder tiene compatibilidad integrada con Language Understanding (LUIS) y QnA Maker para agregar al bot características de lenguaje natural del tipo "preguntas y respuestas".
+Bot Framework SDK tiene compatibilidad integrada con Language Understanding (LUIS) y QnA Maker para agregar al bot características de lenguaje natural del tipo "preguntas y respuestas".
 
 ## <a name="conversations-channels-and-users"></a>Conversaciones, canales y usuarios
 

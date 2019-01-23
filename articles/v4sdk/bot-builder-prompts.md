@@ -1,6 +1,6 @@
 ---
 title: Recopilación de datos de entrada del usuario mediante un aviso de diálogo | Microsoft Docs
-description: Obtenga información sobre cómo solicitar datos de entrada con la biblioteca de diálogos en Bot Builder SDK.
+description: Obtenga información sobre cómo solicitar datos de entrada con la biblioteca de diálogos en Bot Framework SDK.
 keywords: avisos, aviso, entrada de usuario, diálogos, AttachmentPrompt, ChoicePrompt, ConfirmPrompt, DatetimePrompt, NumberPrompt, TextPrompt, volver a solicitar, validación
 author: JonathanFingold
 ms.author: v-jofing
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/21/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4acb12a5e06032db898a651c6c8bf1dae06765ef
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 57e43e6f0ad8673634bd8faafac79636a672eefd
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735975"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225850"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Recopilación de datos de entrada del usuario mediante un aviso de diálogo
 

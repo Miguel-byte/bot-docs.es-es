@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 20ae641a23399f5ee10aed9b31c4521f355903cf
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a3d6bd957b835a0b8d86e47595ce28506c32d636
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998964"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224560"
 ---
 # <a name="key-concepts"></a>Conceptos clave
 
@@ -44,10 +44,10 @@ Los servicios Bot Connector y Bot State habilitan la autenticación con tokens d
 
 Bot Framework proporciona bibliotecas cliente que se pueden usar para crear bots en C# o Node.js. 
 
-- Para crear un bot con C#, use [Bot Builder SDK para C#](../dotnet/bot-builder-dotnet-overview.md). 
-- Para crear un bot mediante Node.js, use [Bot Builder SDK para Node.js](../nodejs/index.md). 
+- Para crear un bot con C#, use [Bot Framework SDK para C#](../dotnet/bot-builder-dotnet-overview.md). 
+- Para crear un bot con Node.js, use [Bot Framework SDK para Node.js](../nodejs/index.md). 
 
-Además de modelar los servicios Bot Connector y Bot State, cada Bot Builder SDK también proporciona un sistema eficaz para crear diálogos que contienen lógica de conversación, mensajes integrados para respuestas tan sencillas como Sí/No, cadenas, números y enumeraciones, compatibilidad integrada para marcos eficaces de inteligencia artificial, como <a href="https://www.luis.ai/" target="_blank">LUIS</a>, y mucho más. 
+Además de modelar los servicios Bot Connector y Bot State, cada Bot Framework SDK también proporciona un sistema eficaz para crear diálogos que contienen lógica de conversación, mensajes integrados para respuestas tan sencillas como Sí/No, cadenas, números y enumeraciones, compatibilidad integrada para marcos eficaces de inteligencia artificial, como <a href="https://www.luis.ai/" target="_blank">LUIS</a> y mucho más. 
 
 > [!NOTE]
 > Como alternativa al uso de los SDK para C# o Node.js, puede generar sus propia biblioteca cliente en el lenguaje que quiera mediante el <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/ConnectorAPI.json" target="_blank">archivo Swagger de Bot Connector</a> y el <a href="https://raw.githubusercontent.com/Microsoft/BotBuilder/master/CSharp/Library/Microsoft.Bot.Connector.Shared/Swagger/StateAPI.json" target="_blank">archivo Swagger de Bot State</a>.

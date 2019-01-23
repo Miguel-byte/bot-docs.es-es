@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
-ms.openlocfilehash: 18350c7ea6fb7390796567b1754cd88be6b9be61
-ms.sourcegitcommit: 561185b9c83f3e082e8b7aba1122b1706e431540
+ms.openlocfilehash: 8a3ff4a30e3041937ba831efc237343c9aa27e62
+ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/26/2018
-ms.locfileid: "53785418"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54202551"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Solución de problemas de configuración del bot
 
@@ -28,7 +28,7 @@ El primer paso para solucionar problemas de un bot es probarlo en Chat en web. E
 
 ![Probar en Chat en web](./media/test-in-webchat.png)
 
-Si el bot responde con la salida esperada, vaya a la sección [El bot no funciona en Chat en web](#bot-does-not-work-in-web-chat). De lo contrario, vaya al apartado [El bot funciona en Chat en web pero no en otros canales](#bot-works-in-web-chat-but-not-in-other-channels).
+Si el bot no responde con la salida esperada, vaya a la sección [El bot no funciona en Chat en web](#bot-does-not-work-in-web-chat). De lo contrario, vaya al apartado [El bot funciona en Chat en web pero no en otros canales](#bot-works-in-web-chat-but-not-in-other-channels).
 
 ## <a name="bot-does-not-work-in-web-chat"></a>El bot no funciona en Chat en web
 

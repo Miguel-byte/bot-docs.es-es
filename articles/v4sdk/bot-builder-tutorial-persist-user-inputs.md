@@ -1,6 +1,6 @@
 ---
 title: Conservación de datos de usuario | Microsoft Docs
-description: Obtenga información sobre cómo guardar los datos de estado de los usuario en el almacenamiento del Bot Builder SDK.
+description: Obtenga información sobre cómo guardar los datos de estado de los usuario en el almacenamiento en Bot Framework SDK.
 keywords: conversación de datos de usuario, almacenamiento, datos de conversación
 author: v-ducvo
 ms.author: v-ducvo
@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/19/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36e8efefb276e5b9fb45ba6243b1b472476d5046
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 97a89744282ca1e31a99aa0e45345656e43f5cd0
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997952"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225320"
 ---
 # <a name="persist-user-data"></a>Conservación de datos de usuario
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. El SDK Bot Builder permite almacenar las entradas de los usuarios mediante *almacenamiento en memoria* o almacenamiento en una base de datos como *CosmosDB*. Los tipos de almacenamiento local se usan principalmente durante la realización de pruebas o la creación de prototipos del bot. Sin embargo, los tipos de almacenamiento persistente, como el almacenamiento de base de datos, son los mejores para los bots de producción.
+Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. Bot Framework SDK permite almacenar las entradas de los usuarios mediante *almacenamiento en memoria* o almacenamiento en una base de datos como *CosmosDB*. Los tipos de almacenamiento local se usan principalmente durante la realización de pruebas o la creación de prototipos del bot. Sin embargo, los tipos de almacenamiento persistente, como el almacenamiento de base de datos, son los mejores para los bots de producción.
 
 En este tema se muestra cómo definir un objeto de almacenamiento y guardar las entradas de usuario en dicho objeto para que se pueda conservar. Usaremos un diálogo para pedir al usuario su nombre, en caso de que no lo tengamos aún. Independientemente del tipo de almacenamiento que decida usar, el proceso de enlazar y conservar los datos es el mismo. El código de este tema usa `CosmosDB` como espacio de almacenamiento para conservar los datos.
 

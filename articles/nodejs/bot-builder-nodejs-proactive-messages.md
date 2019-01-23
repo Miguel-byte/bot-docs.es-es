@@ -1,6 +1,6 @@
 ---
 title: Envío de mensajes automáticos | Microsoft Docs
-description: Aprenda a interrumpir el flujo de la conversación actual con un mensaje automático mediante Bot Builder SDK para Node.js
+description: Aprenda a interrumpir el flujo de la conversación actual con un mensaje automático mediante Bot Framework SDK para Node.js
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 4ca33d59c967bc4eebc2f88fa4ddd67a9a6af6d7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 8ca8043c5680a993fa27e2febb9740206691884c
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997162"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225580"
 ---
 # <a name="send-proactive-messages"></a>Envío de mensajes automáticos
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "49997162"
 
 ## <a name="send-an-ad-hoc-proactive-message"></a>Envío de un mensaje automático ad hoc
 
-Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Builder SDK para Node.js.
+Los ejemplos de código siguientes muestran cómo enviar un mensaje automático ad hoc con Bot Framework SDK para Node.js.
 
 Para poder enviar un mensaje ad hoc a un usuario, en primer lugar, el bot debe recopilar y almacenar información sobre el usuario de la conversación actual. La propiedad **dirección** del mensaje incluye toda la información que el bot necesitará para enviar un mensaje ad hoc al usuario más adelante. 
 
@@ -71,7 +71,7 @@ function sendProactiveMessage(address) {
 
 ## <a name="send-a-dialog-based-proactive-message"></a>Envío de un mensaje automático basado en diálogos
 
-Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Builder SDK para Node.js. Puede encontrar el ejemplo completo en la carpeta [Microsoft/BotBuilder-Samples/nodo/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
+Los ejemplos de código siguientes muestran cómo enviar un mensaje automático basado en diálogos con Bot Framework SDK para Node.js. Puede encontrar el ejemplo completo en la carpeta [Microsoft/BotBuilder-Samples/nodo/core-proactiveMessages/startNewDialog](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog).
 
 Para poder enviar un mensaje basado en diálogos a un usuario, en primer lugar el bot debe recopilar y guardar información de la conversación actual. El objeto `session.message.address` incluye toda la información que el bot necesitará para enviar un mensaje automático basado en diálogos al usuario. 
 
@@ -122,7 +122,7 @@ bot.dialog('survey', function (session, args, next) {
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Builder SDK para Node.js, consulte el <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos.
+Para obtener un ejemplo completo en el que se muestre cómo enviar mensajes automáticos con Bot Framework SDK para Node.js, consulte <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages" target="_blank">Ejemplo de mensajes automáticos</a> en GitHub. En el ejemplo de mensajes automáticos, <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/simpleSendMessage" target="_blank">simpleSendMessage</a> muestra cómo enviar un mensaje automático ad hoc y <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/core-proactiveMessages/startNewDialog" target="_blank">startNewDialog</a> muestra cómo enviar un mensaje automático basado en diálogos.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

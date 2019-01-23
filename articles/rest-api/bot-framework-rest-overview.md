@@ -1,5 +1,5 @@
 ---
-title: Las API REST de Bot Builder | Microsoft Docs
+title: API REST de Bot Framework | Microsoft Docs
 description: Introducción a las API REST de Bot Framework que se pueden usar para crear bots y los clientes que se conectan a ellos.
 author: RobStand
 ms.author: kamrani
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 632d0b1e603445954eb4894fcfc256d5ac738539
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: eace4852feaadcc180f7329261990fc8eaf7f522
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998442"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224270"
 ---
 # <a name="bot-framework-rest-apis"></a>Las API REST de Bot Framework
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Las API REST de Bot Framework le permiten crear bots que intercambian mensajes c
 Puede crear un bot con cualquier lenguaje de programación mediante el servicio Bot Connector para intercambiar mensajes con canales configurados en el portal de Bot Framework. 
 
 > [!TIP]
-> Bot Framework proporciona bibliotecas de cliente que se pueden usar para crear bots en C# o Node.js. Para crear un bot con C#, use [Bot Builder SDK para C#](../dotnet/bot-builder-dotnet-overview.md). Para crear un bot mediante Node.js, use el [SDK de Bot Builder para Node.js](../nodejs/index.md). 
+> Bot Framework proporciona bibliotecas cliente que se pueden usar para crear bots en C# o Node.js. Para crear un bot con C#, use [Bot Framework SDK para C#](../dotnet/bot-builder-dotnet-overview.md). Para crear un bot con Node.js, use [Bot Framework SDK para Node.js](../nodejs/index.md). 
 
 Para más información sobre la creación de bots con el servicio Bot Connector, consulte [Conceptos clave](bot-framework-rest-connector-concepts.md).
 

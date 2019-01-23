@@ -1,6 +1,6 @@
 ---
 title: Definición de los pasos de conversación con cascadas | Microsoft Docs
-description: Aprenda a usar cascadas para definir los pasos de una conversación con el SDK de Bot Builder para Node.js.
+description: Obtenga información sobre cómo usar cascadas para definir los pasos de una conversación con Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 2fa857e57d5be4751476874b8c193c7053a1bf39
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000282"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225330"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Definición de los pasos de la conversación con cascadas
 
@@ -45,7 +45,7 @@ bot.dialog('greetings', [
 ]);
 ```
 
-Esto es posible gracias al uso de mensajes. El SDK de Bot Builder para Node.js proporciona varios tipos diferentes de [mensajes](bot-builder-nodejs-dialog-prompt.md) integrados que puede usar para pedir al usuario diversos tipos de información.
+Esto es posible gracias al uso de mensajes. Bot Framework SDK para Node.js proporciona varios tipos diferentes de [avisos](bot-builder-nodejs-dialog-prompt.md) integrados que puede usar para pedir al usuario diversos tipos de información.
 
 El ejemplo de código siguiente muestra un diálogo que usa mensajes para recopilar diversos fragmentos de información del usuario mediante una cascada de 4 pasos.
 
@@ -164,16 +164,16 @@ bot.dialog('ensureProfile', [
 
 Un diálogo que se crea con una cascada se debe terminar explícitamente, de lo contrario, el bot repetirá la cascada indefinidamente. Puede finalizar una cascada mediante uno de los métodos siguientes:
 
-* `session.endDialog`: use este método para finalizar la cascada si no hay ningún dato para devolver al diálogo de llamada.
+* `session.endDialog`: Utilice este método para finalizar la cascada si no hay ningún dato para devolver al diálogo que realiza la llamada.
 
-* `session.endDialogWithResult`: use este método para finalizar la cascada si hay datos para devolver al diálogo de llamada. El argumento `response` que se devuelve puede ser un objeto JSON o cualquier tipo de datos primitivo de JavaScript. Por ejemplo: 
+* `session.endDialogWithResult`: Utilice este método para finalizar la cascada si hay datos para devolver al diálogo que realiza la llamada. El argumento `response` que se devuelve puede ser un objeto JSON o cualquier tipo de datos primitivo de JavaScript. Por ejemplo: 
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
   });
   ```
 
-* `session.endConversation`: use este método para finalizar la cascada si el final de esta representa el final de la conversación.
+* `session.endConversation`: Utilice este método para finalizar la cascada si el fin de la cascada representa el fin de la conversación.
 
 Como alternativa al uso de uno de estos tres métodos para finalizar una cascada, puede asociar el desencadenador `endConversationAction` al diálogo. Por ejemplo: 
 

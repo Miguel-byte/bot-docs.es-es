@@ -1,6 +1,6 @@
 ---
 title: Definición de un formulario mediante esquemas JSON y FormFlow | Microsoft Docs
-description: Aprenda a definir un formulario mediante esquemas JSON y FormFlow con Bot Builder SDK para. NET.
+description: Aprenda a definir un formulario mediante esquemas JSON y FormFlow con Bot Framework SDK para .NET.
 author: RobStand
 ms.author: kamrani
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8bcc957dbe2d69790cdfa7c2d7c377ed28b5fa12
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000332"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225860"
 ---
 # <a name="define-a-form-using-json-schema"></a>Definición de un formulario mediante esquemas JSON
 
@@ -317,7 +317,7 @@ Para implementar FormFlow con un esquema JSON, use `FormBuilderJson`, que es com
 - [Personalización de un formulario mediante FormBuilder](bot-builder-dotnet-formflow-formbuilder.md)
 - [Localización del contenido del formulario](bot-builder-dotnet-formflow-localize.md)
 - [Personalización de la experiencia de usuario con lenguaje de patrones](bot-builder-dotnet-formflow-pattern-language.md)
-- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Builder SDK para .NET</a>
+- <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
 
 [numericAttribute]: /dotnet/api/microsoft.bot.builder.formflow.numericattribute
 

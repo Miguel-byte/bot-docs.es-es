@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 6b50df60c3a8165198e8f9a55964f2f596d62406
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f18b375a1e4ebcf06d00d045e383db8b05fb5111
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998732"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225740"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversaciones de transición de bot a humano
 
@@ -74,7 +74,7 @@ Después de que el agente se conecta al bot, el bot empieza a enrutar los mensaj
 
 ## <a name="sample-code"></a>Código de ejemplo
 
-Para ver un ejemplo completo que muestra cómo pasar las conversaciones de bot a humano mediante el SDK de Bot Builder para Node.js, consulte el <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">ejemplo Bot-HandOff</a> en GitHub.
+Para ver un ejemplo completo que muestra cómo pasar las conversaciones de bot a humano mediante Bot Framework SDK para Node.js, consulte <a href="https://github.com/palindromed/Bot-HandOff" target="_blank">Ejemplo Bot-HandOff</a> en GitHub.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

@@ -1,6 +1,6 @@
 ---
 title: Administración de estados | Microsoft Docs
-description: Describe cómo funciona el estado en el SDK de Bot Builder.
+description: Describe cómo funciona el estado en Bot Framework SDK.
 keywords: estado, estado del bot, estado de la conversación, estado de usuario
 author: ivorb
 ms.author: v-ivorb
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bf7d6a574cc4e63d22e3f34462a1ec00dbdac75e
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: dfbc9f4ed0f08c7349d758147460b8268c49e372
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010550"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225870"
 ---
 # <a name="managing-state"></a>Administración de estados
 

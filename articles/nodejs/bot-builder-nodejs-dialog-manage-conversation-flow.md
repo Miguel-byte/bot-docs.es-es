@@ -1,6 +1,6 @@
 ---
 title: Administración de un flujo de conversación con diálogos | Microsoft Docs
-description: Aprenda a administrar una conversación con diálogos entre un bot y un usuario en Bot Builder SDK para Node.js.
+description: Aprenda a administrar una conversación con diálogos entre un bot y un usuario en Bot Framework SDK para Node.js.
 author: v-ducvo
 ms.author: v-ducvo
 manager: kamrani
@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 133f085a857d1bb8bf7622e7adab19374902327d
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 96c28101c3ea72c70c6ad53b06306f4ea00b2929
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997772"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225610"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Administración del flujo de conversación con diálogos
 
@@ -24,9 +24,9 @@ ms.locfileid: "49997772"
 > - [.NET](../dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-dialog-manage-conversation-flow.md)
 
-La administración del flujo de conversación es una tarea esencial en la compilación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Builder SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
+La administración del flujo de conversación es una tarea esencial en la compilación de bots. Un bot debe ser capaz de realizar tareas importantes con elegancia y de controlar las interrupciones correctamente. Gracias a Bot Framework SDK para Node.js, puede administrar el flujo de conversación mediante diálogos.
 
-Un diálogo es como una función de un programa. Por lo general está diseñado para realizar una operación específica y se puede invocar con la frecuencia que sea necesaria. Puede encadenar varios diálogos para controlar casi cualquier flujo de conversación que desee que su bot controle. Bot Builder SDK para Node.js incluye características integradas como [avisos](bot-builder-nodejs-dialog-prompt.md) y [cascadas](bot-builder-nodejs-dialog-waterfall.md), que le ayudarán a administrar el flujo de conversación.
+Un diálogo es similar a una función de un programa. Por lo general está diseñado para realizar una operación específica y se puede invocar con la frecuencia que sea necesaria. Puede encadenar varios diálogos juntos para así controlar casi cualquier flujo de conversación que quiera que administre el bot. Bot Framework SDK para Node.js incluye características integradas como [avisos](bot-builder-nodejs-dialog-prompt.md) y [cascadas](bot-builder-nodejs-dialog-waterfall.md), que le ayudarán a administrar el flujo de conversación.
 
 En este artículo se proporciona una serie de ejemplos para explicar cómo administrar flujos de conversación sencillos y complejos en los que el bot puede controlar las interrupciones y reanudar el flujo correctamente mediante diálogos. Los ejemplos se basan en los siguientes escenarios: 
 
@@ -95,7 +95,7 @@ En la siguiente captura de pantalla se muestran los resultados de este bot que s
 
 Cada paso de este ejemplo usa un aviso para solicitar datos de entrada al usuario. Un aviso es un tipo especial de diálogo que solicita datos de entrada al usuario, espera una respuesta y devuelve la respuesta al paso siguiente de la cascada. Consulte [Petición de datos de entrada al usuario](bot-builder-nodejs-dialog-prompt.md) para más información acerca de los diferentes tipos de avisos que puede usar en su bot.
 
-En este ejemplo, el bot usa `Prompts.text()` para solicitar una respuesta libre al usuario en formato de texto. El usuario puede responder con cualquier texto y el bot debe decidir cómo controlar la respuesta. `Prompts.time()` usa la biblioteca [Chrono](https://github.com/wanasit/chrono) para analizar una cadena en busca de información sobre la fecha y hora. Esto permite que su bot comprenda más lenguaje natural para especificar la fecha y la hora. Por ejemplo: "6 de junio de 2017 a las 9 pm", "hoy a las 7:30 pm", "el próximo lunes a las 6 pm", etc.
+En este ejemplo, el bot usa `Prompts.text()` para solicitar una respuesta libre al usuario en formato de texto. El usuario puede responder con cualquier texto y el bot debe decidir cómo controlar la respuesta. `Prompts.time()` usa la biblioteca [Chrono](https://github.com/wanasit/chrono) para analizar una cadena en busca de información sobre la fecha y hora. Esto permite que su bot comprenda más lenguaje natural para especificar la fecha y la hora. Por ejemplo:  "6 de junio de 2017 a las 9 pm", "hoy a las 7:30 pm", "el próximo lunes a las 6 pm", etc.
 
 > [!TIP] 
 > La hora que especifica el usuario se convierte a la hora UTC en función de la zona horaria del servidor que hospeda el bot. Como el servidor puede estar ubicado en una zona horaria diferente a la del usuario, asegúrese de tener en cuenta las zonas horarias. Para convertir la fecha y hora a la hora local del usuario, considere la posibilidad de pedir al usuario que indique en qué zona horaria se encuentra.
@@ -174,7 +174,7 @@ Con esta técnica, puede separar el flujo de conversación de la lógica de la t
 
 En el proceso de guiar al usuario por una serie de tareas, si el usuario tiene preguntas o si desea solicitar información adicional antes de responder, ¿cómo se podrían controlar esas solicitudes? Por ejemplo, independientemente de donde esté el usuario de la conversación, ¿cómo debería responder el bot si el usuario escribe "Ayuda", "Asistencia" o "Cancelar"? ¿Qué ocurre si el usuario desea información adicional sobre un paso? ¿Qué ocurre si el usuario cambia de opinión y desea abandonar la tarea actual para iniciar una tarea completamente diferente?
 
-Bot Builder SDK para Node.js permite que un bot escuche determinadas entradas en un contexto global o en uno local en el ámbito del diálogo actual. Estas entradas se denominan [acciones](bot-builder-nodejs-dialog-actions.md), y permiten que el bot escuche las entradas del usuario según una cláusula `matches`. Depende del bot decidir cómo responder a entradas específicas del usuario.
+Bot Framework SDK para Node.js permite que un bot escuche determinadas entradas en un contexto global o en uno local en el ámbito del diálogo actual. Estas entradas se denominan [acciones](bot-builder-nodejs-dialog-actions.md), y permiten que el bot escuche las entradas del usuario según una cláusula `matches`. Depende del bot decidir cómo responder a entradas específicas del usuario.
 
 ### <a name="handle-global-action"></a>Control de acciones globales
 

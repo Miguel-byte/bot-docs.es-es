@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1bfa180967c55aac6012e02887ac2893947263f9
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 231ed330faf9ce777a5acc5f4e6272b747a6f7fc
+ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010590"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54298282"
 ---
 # <a name="middleware"></a>Software intermedio
 
@@ -96,5 +96,6 @@ El problema con este enfoque es que las actualizaciones de estado realizadas por
 
 Agregue los objetos de administración de estado que será necesario actualizar a un objeto _conjunto de estados del bot_ y, después, úselos al crear el middleware para guardar cambios automáticamente.
 
+
 ## <a name="additional-resources"></a>Recursos adicionales
-Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en el SDK Bot Builder [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].
+Puede echar un vistazo al middleware del registrador de transcripciones, tal como está implementado en Bot Framework SDK [[C#](https://github.com/Microsoft/botbuilder-dotnet/blob/master/libraries/Microsoft.Bot.Builder/TranscriptLoggerMiddleware.cs) | [JS](https://github.com/Microsoft/botbuilder-js/blob/master/libraries/botbuilder-core/src/transcriptLogger.ts)].

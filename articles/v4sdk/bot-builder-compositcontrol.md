@@ -1,6 +1,6 @@
 ---
 title: Reutilización de diálogos | Microsoft Docs
-description: Aprenda a modularizar su lógica de bot mediante el contenedor de diálogos de Bot Builder SDK para Node.js y C#.
+description: Aprenda a modularizar la lógica del bot mediante el contenedor de diálogos de Bot Framework SDK para Node.js y C#.
 keywords: control compuesto, lógica de bot modular
 author: v-ducvo
 ms.author: v-ducvo
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/08/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5e1ddbef6181e265213ffa1fdcb65909e524be51
-ms.sourcegitcommit: cb0b70d7cf1081b08eaf1fddb69f7db3b95b1b09
+ms.openlocfilehash: 3f4b2dd49b738132affd19fea8fd5dbfbd6ff99e
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51332999"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54224570"
 ---
 # <a name="reuse-dialogs"></a>Reutilización de diálogos
 
