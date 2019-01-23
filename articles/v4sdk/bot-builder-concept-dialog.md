@@ -1,6 +1,6 @@
 ---
-title: Diálogos en el SDK Bot Builder | Microsoft Docs
-description: Se describe qué es un diálogo y cómo funciona en el SDK Bot Builder.
+title: Diálogos en Bot Framework SDK | Microsoft Docs
+description: Se describe qué es un diálogo y cómo funciona en Bot Framework SDK.
 keywords: flujo de conversación, aviso, estado de diálogo, intención de reconocimiento, turno único, varios turnos, conversación de bot, diálogos, avisos, cascadas, conjunto de diálogos
 author: johnataylor
 ms.author: johtaylo
@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: a1187efd3280d9ec2d74af29d1c013e916b79e5b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: fc44701d7739ecfca662d27cad4f521caa7f4d6d
+ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010610"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54225490"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
