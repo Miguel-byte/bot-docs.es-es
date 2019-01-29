@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f4b2dd49b738132affd19fea8fd5dbfbd6ff99e
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 0a931ad73ed4d7a71978555df0e77d6b2bd2dbbc
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224570"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453929"
 ---
 # <a name="reuse-dialogs"></a>Reutilización de diálogos
 
@@ -230,6 +230,14 @@ const myBot = new MyBot(conversationState, userState);
 ```
 
 ---
+
+## <a name="about-component-dialogs"></a>Acerca de los diálogos de componentes
+
+Un diálogo de componente permite crear diálogos independientes para tratar escenarios determinados, y divide un conjunto de diálogos grande en elementos más manejables. Cada una de estas piezas tiene su propio conjunto de diálogos y evita los conflictos de nombres con el conjunto de diálogos que lo contiene.
+
+Use el método _add dialog_ para agregar cuadros de diálogo y avisos al diálogo de componente.
+El primer elemento que agregue con este método se establece como el diálogo inicial; se puede cambiar si se establece explícitamente la propiedad _initial dialog_ en el constructor del diálogo de componente.
+Al iniciar un diálogo de componente, se iniciará su _initial dialog_.
 
 ## <a name="define-the-check-in-component-dialog"></a>Definición del diálogo del componente de registro
 
@@ -604,9 +612,9 @@ class SetAlarmDialog extends ComponentDialog {
         this.initialDialogId = dialogId;
 
         // Define the prompts used in this conversation flow.
-        this.dialogs.add(new DateTimePrompt('datePrompt'));
+        this.addDialog(new DateTimePrompt('datePrompt'));
 
-        this.dialogs.add(new WaterfallDialog(dialogId, [
+        this.addDialog(new WaterfallDialog(dialogId, [
             async function (step) {
                 step.values.wakeUp = {};
                 if (step.options && step.options.roomNumber) {

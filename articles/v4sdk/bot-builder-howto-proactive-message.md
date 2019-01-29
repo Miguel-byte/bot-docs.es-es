@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/15/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82811d202e0e20169ae2ebb348949366009d2421
-ms.sourcegitcommit: 4661b9bb31d74731dbbb16e625be088b44ba5899
+ms.openlocfilehash: 7a9a2e4f30d1e9b293e51a921afce57d243376d7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826932"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453969"
 ---
 # <a name="get-notification-from-bots"></a>Obtención de notificaciones de los bots
 
@@ -38,7 +38,8 @@ Un mensaje proactivo ad hoc es el tipo más simple de mensaje proactivo. El bot 
 Para controlar las notificaciones más fácilmente, considere otras formas de integrar la notificación en el flujo de conversación, como establecer una marca en el estado de la conversación o agregar la notificación a una cola.
 
 ## <a name="prerequisites"></a>Requisitos previos
-- Comprender los [conceptos básicos de bot](bot-builder-basics.md). 
+
+- Descripción de los [conceptos básicos de bot](bot-builder-basics.md) e información sobre la [administración del estado](bot-builder-concept-state.md).
 - Una copia del **ejemplo de mensajes proactivos** en [C#](https://aka.ms/proactive-sample-cs) o [JS](https://aka.ms/proactive-sample-js). Este ejemplo se utiliza para explicar la mensajería proactiva de este artículo. 
 
 ## <a name="about-the-sample-code"></a>Acerca del código de ejemplo
@@ -48,9 +49,12 @@ El ejemplo de mensajes proactivos modela tareas de usuario que pueden tardar una
 ## <a name="define-job-data-and-state"></a>Definición del estado y los datos de trabajo
 
 En este escenario, se va a realizar un seguimiento de los trabajos arbitrarios que diferentes usuarios pueden crear en distintas conversaciones. Necesitaremos almacenar información de cada trabajo, incluyendo una referencia de conversación y un identificador de trabajo. Necesitaremos:
+
 - La referencia de la conversación para poder enviar el mensaje proactivo a la conversación correcta.
 - Una forma de identificar los trabajos. En este ejemplo, se usa una marca de tiempo simple.
 - Necesitaremos almacenar el estado del trabajo de forma independiente a la del estado de la conversación o del usuario.
+
+Ampliaremos el _estado del bot_ para definir nuestro propio objeto de administración de estado para todo el bot. Bot Framework usa la _clave de almacenamiento_ y el contexto del turno para conservar y recuperar el estado. Consulte [Administración del estado](bot-builder-concept-state.md) para más información.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -77,9 +81,9 @@ public class JobLog : Dictionary<long, JobLog.JobData>
 }
 ```
 
-### <a name="define-a-state-middleware-class"></a>Definición de una clase de estados de middleware
+### <a name="define-a-state-management-class"></a>Definición de una clase de administración del estado
 
-La clase `JobState` administra el estado del trabajo de forma independiente con respecto al estado de la conversación o del usuario.
+La clase `JobState` administra el estado del trabajo independientemente del estado de la conversación o el usuario.
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -129,11 +133,10 @@ public void ConfigureServices(IServiceCollection services)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Un bot necesita un sistema de almacenamiento de estado para mantener el diálogo y el estado de usuario entre los mensajes, que en este caso se define con el proveedor de almacenamiento en memoria. 
+Un bot necesita un sistema de almacenamiento de estado para mantener el diálogo y el estado de usuario entre los mensajes, que en este caso se define con el proveedor de almacenamiento en memoria.
 
 ```javascript
-// index.js 
-
+// index.js
 
 const memoryStorage = new MemoryStorage();
 const botState = new BotState(memoryStorage, () => 'proactiveBot.botState');
@@ -173,8 +176,6 @@ El bot incluye varios aspectos:
 - métodos para crear y completar los trabajos
 
 ### <a name="declare-the-class"></a>Declaración de la clase
-
-Cada interacción del usuario crea una instancia de la clase `ProactiveBot`. El proceso de crear un servicio cada vez que se necesita se conoce como servicio de duración transitoria. Los objetos que son costosos de construir o que tienen una duración más allá de un turno único deben administrarse con cuidado.
 
 Cada interacción del usuario crea una instancia de la clase `ProactiveBot`. El proceso de crear un servicio cada vez que se necesita se conoce como servicio de duración transitoria. Los objetos que son costosos de construir o que tienen una duración más allá de un turno único deben administrarse con cuidado.
 

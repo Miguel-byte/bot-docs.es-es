@@ -8,20 +8,20 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/17/2018
+ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1ea9daeb35033e49232d64bfe98a223807dabf75
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 4805e1a3c86ce28833054ce374a57c5c40b717e1
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317605"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453869"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones. Consulte el [diseño de la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles. 
+Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones. Consulte el [diseño de la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
 
 ## <a name="send-attachments"></a>Envío de datos adjuntos
 
@@ -84,11 +84,11 @@ Si los datos adjuntos son una imagen, un audio o un vídeo, el servicio del cone
 
 ## <a name="send-a-hero-card"></a>Envío de una tarjeta de imagen prominente
 
-Además de los datos adjuntos de imagen o vídeo sencillos, puede adjuntar una **tarjeta de imagen prominente** que le permite combinar las imágenes y los botones en un objeto y los envían al usuario.
+Además de los datos adjuntos de imagen o vídeo sencillos, puede adjuntar una **tarjeta de imagen prominente** que le permite combinar las imágenes y los botones en un objeto y los envían al usuario. Markdown es compatible con la mayoría de los campos de texto, pero la compatibilidad puede variar según el canal.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Para redactar un mensaje con un botón y una tarjeta de imagen prominente, puede adjuntar `HeroCard` a un mensaje. El código fuente que se muestra a continuación se basa en el ejemplo [Handling Attachments](https://aka.ms/bot-attachments-sample-code) (sobre control de datos adjuntos). 
+Para redactar un mensaje con un botón y una tarjeta de imagen prominente, puede adjuntar `HeroCard` a un mensaje. El código fuente que se muestra a continuación se basa en el ejemplo [Handling Attachments](https://aka.ms/bot-attachments-sample-code) (sobre control de datos adjuntos).
 
 ```csharp
 using Microsoft.Bot.Builder;
@@ -363,7 +363,7 @@ await context.sendActivity(messageWithCarouselOfCards);
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-Para obtener información detallada sobre el esquema de tarjeta, consulte [Esquema de tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema).
+Para más información sobre el esquema, consulte el [esquema de la tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema) y la [sección sobre la actividad de mensajes](https://aka.ms/botSpecs-activitySchema#message-activity) del esquema de actividad de Bot Framework.
 
 El ejemplo de código se puede encontrar aquí para las tarjetas: [C#](https://aka.ms/bot-cards-sample-code)/[JS](https://aka.ms/bot-cards-js-sample-code), tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-sample-code-js), y acciones sugeridas: [C#](https://aka.ms/SuggestedActionsCSharp)/[JS](https://aka.ms/SuggestedActionsJS).
 Consulte el repositorio de ejemplos de Bot Builder en [GitHub](https://aka.ms/bot-samples-readme) para obtener ejemplos adicionales.

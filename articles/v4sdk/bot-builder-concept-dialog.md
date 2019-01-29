@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fc44701d7739ecfca662d27cad4f521caa7f4d6d
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 31a0497f1422cee8c4966e59d94a89ae359a5cb7
+ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225490"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453939"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -131,11 +131,22 @@ El conjunto de diálogos requiere el uso de un *descriptor de acceso de la propi
 
 ### <a name="to-start-a-dialog"></a>Para iniciar un diálogo
 
-Para iniciar un diálogo, use el *identificador del diálogo* que desea iniciar en los métodos de *comienzo de diálogo*, *aviso* o *sustitución de diálogo* del contexto del diálogo. El primero de estos métodos insertará el diálogo al principio de la pila, mientras que el último lo quitará de la pila e insertará en ella el que lo reemplaza.
+Para iniciar un diálogo, use el *identificador del diálogo* que desea iniciar en los métodos de *comienzo de diálogo*, *aviso* o *sustitución de diálogo* del contexto del diálogo.
+
+* El método begin dialog insertará el diálogo en la parte superior de la pila.
+* El método replace dialog retira el diálogo actual de la pila e inserta el diálogo de reemplazo en la pila. Se cancela el cuadro de diálogo reemplazado y se elimina toda la información que esa instancia contenga.
+
+Use el parámetro _options_ para pasar información a la nueva instancia del diálogo.
+Para acceder a las opciones pasadas al nuevo diálogo se puede usar la propiedad *options* del contexto en cualquier paso del diálogo.
+Para ver un ejemplo de código, consulte [Creación de un flujo de conversación avanzado con ramas y bucles](bot-builder-dialog-manage-complex-conversation-flow.md).
 
 ### <a name="to-continue-a-dialog"></a>Para continuar un diálogo
 
 Para continuar un diálogo, llame al método para *continuar diálogo*. Dicho método continuará siempre el primer diálogo de la pila (el cuadro de diálogo activo), en caso de que haya alguno. Si el diálogo que se ha continuado finaliza, el control se pasa al contexto del primario que continúa en el mismo turno.
+
+Use la propiedad *values* del contexto del paso para conservar el estado de un turno a otro.
+Todos los valores agregados a esta colección en un turno anterior estará disponible en los turnos posteriores.
+Para ver un ejemplo de código, consulte [Creación de un flujo de conversación avanzado con ramas y bucles](bot-builder-dialog-manage-complex-conversation-flow.md).
 
 ### <a name="to-end-a-dialog"></a>Para finalizar un diálogo
 
@@ -152,14 +163,15 @@ Si desea quitar todos los diálogos de la pila, puede borrar la pila de diálogo
 
 ### <a name="repeating-a-dialog"></a>Repetición de un diálogo
 
-Para repetir un diálogo, use el método *replace dialog*. El método de *sustitución de diálogo* del contexto de diálogo retirará el diálogo activo actual de la pila (sin que termine de la forma normal), insertará el diálogo sustituto al principio de la pila y comenzará dicho diálogo. Esta es una excelente manera de controlar [iteraciones complejas](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) y una buena técnica para administrar menús. Puede usar este método para crear un bucle al reemplazar un diálogo por sí mismo.
+Puede reemplazar un diálogo por sí mismo y crear un bucle.
+Esta es una excelente manera de tratar las [iteraciones complejas](~/v4sdk/bot-builder-dialog-manage-complex-conversation-flow.md) y una buena técnica para administrar menús.
 
 > [!NOTE]
-> Si necesita conservar el estado interno del diálogo actual, deberá pasar información a la nueva instancia del mismo en la llamada al método de *sustitución de diálogo* y, luego, inicializar el diálogo en consecuencia. Para acceder a las opciones pasadas al nuevo diálogo se puede usar la propiedad *options* del contexto en cualquier paso del diálogo.
+> Si necesita conservar el estado interno del diálogo actual, deberá pasar información a la nueva instancia del mismo en la llamada al método de *sustitución de diálogo* y, luego, inicializar el diálogo en consecuencia.
 
 ### <a name="branch-a-conversation"></a>Bifurcación de una conversación
 
-El contexto del diálogo mantiene la pila del mismo y, en todos los diálogo de la pila, realiza un seguimiento de cuál es el paso siguiente. Su método de *comienzo de diálogo* crea un diálogo secundario y lo inserta al principio de la pila, mientras que su método de *finalización de diálogo* retira el diálogo de la pila. A este último método normalmente se le llama desde dentro del diálogo que finaliza.
+El contexto del diálogo mantiene la pila del mismo y, en todos los diálogo de la pila, realiza un seguimiento de cuál es el paso siguiente. Su método de *comienzo de diálogo* crea un diálogo secundario y lo inserta al principio de la pila, mientras que su método de *finalización de diálogo* retira el diálogo de la pila. A este último método normalmente se le llama desde dentro del *diálogo que finaliza*.
 
 Para iniciar un nuevo diálogo dentro del mismo conjunto de diálogos, un diálogo puede llamar al método *begin dialog* del contexto del diálogo o proporcionar el identificador del nuevo diálogo, lo que convierte a este en el diálogo actualmente activo. El diálogo original está todavía en la pila, pero las llamadas al método *continue* del contexto del diálogo solo se envían al diálogo que está arriba de la pila, el *diálogo activo*. Cuando un diálogo se retira de la pila, el contexto del diálogo se reanuda con el siguiente paso de la cascada en la pila donde se dejó el diálogo original.
 
