@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/16/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4805e1a3c86ce28833054ce374a57c5c40b717e1
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: 4999f08c62d2926be37b5730a2d1025749fc280e
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453869"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711989"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -148,7 +148,7 @@ Para procesar eventos dentro de tarjetas enriquecidas, use los objetos de _acci�
 
 Para que el funcionamiento sea correcto, asigne un tipo de acción a cada elemento en el que se puede hacer clic en la tarjeta. Esta tabla enumera y describe los tipos de acciones disponibles y lo que debería estar en la propiedad de valor asociada.
 
-| Escriba | DESCRIPCIÓN | Valor |
+| Type | DESCRIPCIÓN | Valor |
 | :---- | :---- | :---- |
 | openUrl | Se abre una dirección URL en el explorador integrado. | Dirección URL que se va a abrir. |
 | imBack | Envía un mensaje al bot y publica una respuesta visible en el chat. | Texto del mensaje para enviar. |
@@ -241,6 +241,7 @@ using AdaptiveCards;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
+using Newtonsoft.Json;
 
 // Creates an attachment that contains an adaptive card
 // filePath is the path to JSON file

@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/28/2018
-ms.openlocfilehash: 8c63893704f513a420220a47528bada5c4f845d3
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 01/06/2019
+ms.openlocfilehash: 94ef9cc221e67f4f3762eb7a1a006a915e3c5307
+ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999712"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55764103"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Conceptos clave de Direct Line API 3.0
 
@@ -44,8 +44,6 @@ Bot Framework proporciona bibliotecas cliente que facilitan el acceso a Direct L
 - Para usar la biblioteca cliente dentro de un proyecto de Visual Studio, instale el <a href="https://www.nuget.org/packages/Microsoft.Bot.Connector.DirectLine" target="_blank">paquete NuGet</a> `Microsoft.Bot.Connector.DirectLine`. 
 
 - Para usar la biblioteca cliente de Node.js, instale la biblioteca `botframework-directlinejs` mediante <a href="https://www.npmjs.com/package/botframework-directlinejs" target="_blank">NPM</a> (o <a href="https://github.com/Microsoft/BotFramework-DirectLineJS" target="_blank">descargue</a> el origen).
-
-Como alternativa al uso de las bibliotecas cliente de C# o Node.js, puede generar su propia biblioteca cliente en el lenguaje que quiera mediante el <a href="https://docs.botframework.com/en-us/restapi/directline3/swagger.json" target="_blank">archivo Swagger de Direct Line API 3.0</a>.
 
 ::: moniker range="azure-bot-service-3.0"
 

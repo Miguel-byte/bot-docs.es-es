@@ -7,14 +7,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ef2cb33e8d2ab7d8db291e3c6e051630d6af0394
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 6169ed28fb765e84aaf31cf9e7d2ca404294bcad
+ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224550"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55783364"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Creación de experiencias controladas por datos con Azure Search 
 
@@ -173,11 +173,10 @@ Los resultados de la búsqueda se muestran al usuario, y Azure Search se habrá 
 
 ## <a name="samples"></a>Ejemplos
 
-Para obtener dos ejemplos completos que muestran cómo admitir Azure Search con bots que utilizan Bot Framework SDK para. NET, consulte [Ejemplo de bot de bienes inmuebles](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/RealEstateBot) o [Ejemplo de bot de listas de trabajos](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-Search/JobListingBot) en GitHub. 
+Para obtener dos ejemplos completos que muestran cómo admitir Azure Search con bots que utilizan Bot Framework SDK para. NET, consulte [Ejemplo de bot de bienes inmuebles](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/RealEstateBot) o [Ejemplo de bot de listas de trabajos](https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-Search/JobListingBot) en GitHub. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Azure Search][search]
 * [Introducción a los diálogos](bot-builder-dotnet-dialogs.md)
-* [Ejemplos de bot de Azure Search](https://github.com/Microsoft/botBuilder-Samples/tree/master/CSharp/demo-Search)
 
 [search]: /azure/search/search-what-is-azure-search
