@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 78e960357d6c4dc1c9751a9921a2338f552738b0
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 3ca8ac4bfe14ed20f11a0ab26d8102ac21e60e2b
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317622"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711959"
 ---
 # <a name="deploy-bots-from-botbuilder-samples-repo"></a>Implementación de bots del repositorio botbuilder-samples
 
@@ -101,6 +101,7 @@ cd <local-bot-folder>
 Si usa una cuenta de correo electrónico [MSA](https://en.wikipedia.org/wiki/Microsoft_account), deberá crear el appId y appSecret que se van a usar con el comando `msbot clone services`.
 
 - Vaya a [Portal de registro de aplicaciones](https://apps.dev.microsoft.com/). Haga clic en **Agregar una aplicación** para registrar la aplicación, cree el **Id. de la aplicación** y **genere una nueva contraseña**.
+> NOTA: Si la contraseña generada contiene el carácter "|", Azure rechazará la contraseña. Para resolver este problema, genere otra contraseña nueva.
 - Guarde tanto el identificador de la aplicación como la contraseña que acaba de generar, con el fin de que pueda usarlos con el comando `msbot clone services`.
 - Para realizar la implementación, use el comando aplicable a su bot.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 03c7e1316e463caf84b8dfd503e1502bb66469e6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f9fa2bee156752f1545d201768040b6106558e01
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224850"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711839"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Insertar un bot en un sitio web
 
@@ -25,7 +25,7 @@ Microsoft proporciona dos formas diferentes de integrar un bot en un sitio web: 
 
 ## <a name="skype-web-control"></a>Control web de Skype
 
-El control web de Skype es esencialmente un cliente de Skype en un control habilitado para la web. La autenticación integrada de Skype permite que el robot autentique y reconozca a los usuarios, sin que el desarrollador tenga que escribir ningún código personalizado. Skype reconocerá automáticamente las cuentas de Microsoft utilizadas en su cliente web. 
+El [control web de Skype](https://aka.ms/bot-skype-web-control) es esencialmente un cliente de Skype en un control habilitado para la web. La autenticación integrada de Skype permite que el robot autentique y reconozca a los usuarios, sin que el desarrollador tenga que escribir ningún código personalizado. Skype reconocerá automáticamente las cuentas de Microsoft utilizadas en su cliente web. 
 
 Debido a que el control web de Skype simplemente actúa como interfaz para Skype, el cliente de Skype del usuario tiene acceso  automático al contexto completo de cualquier conversación que facilite el control web. Incluso después de que se cierre el navegador web, el usuario puede continuar interactuando con el bot mediante el cliente de Skype. 
 

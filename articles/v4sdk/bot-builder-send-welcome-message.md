@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/20/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7e6ea963ce018833b362be3f413f15da4d4bf658
-ms.sourcegitcommit: f7a8f05fc05ff4a7212a437d540485bf68831604
+ms.openlocfilehash: 8198e5d23975780b313dc49bb78d44374a1fd106
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53735945"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55711969"
 ---
 # <a name="send-welcome-message-to-users"></a>Envío de mensajes de bienvenida a los usuarios
 
@@ -49,7 +49,7 @@ El siguiente ejemplo espera una *actividad de actualización de la conversación
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Es  necesario crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.
+Dentro del código de ejemplo de C#, Startup.cs ha definido "WelcomeUserStateAccessors" como un singleton o servicio, y ha agregado "UserState" al estado de la aplicación. Ahora, los usaremos para crear un objeto de estado para un usuario determinado de una conversación y su descriptor de acceso.
 
 ```csharp
 /// The state object is used to keep track of various state related to a user in a conversation.

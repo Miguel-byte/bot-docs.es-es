@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c798c26f108458e1caeb16aa22c02c6e7c70fb61
-ms.sourcegitcommit: 3cc768a8e676246d774a2b62fb9c688bbd677700
+ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
+ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54323661"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55712009"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -183,7 +183,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 
 ```
-El siguiente código inicializa las referencias del bot a servicios externos. Por ejemplo, aquí se crean los servicios LUIS y QnaMaker. Estos servicios externos se configuran mediante la clase `BotConfiguration` (basado en el contenido del archivo ".bot").
+El siguiente código inicializa las referencias del bot a servicios externos. Por ejemplo, aquí se crean los servicios LUIS y QnaMaker. Estos servicios externos se configuran mediante la clase `BotConfiguration` (en función del contenido del archivo `.bot`).
 
 ```csharp
 private static BotServices InitBotServices(BotConfiguration config)
@@ -237,7 +237,8 @@ private static BotServices InitBotServices(BotConfiguration config)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-El código de ejemplo usa constantes predefinidas de nomenclatura para identificar las distintas secciones del archivo .bot. Si ha modificado cualquier nombre de sección en los nombres de ejemplo originales del archivo _nlp-with-dispatch.bot_, asegúrese de que encuentra la declaración de constantes asociada en los archivos **bot.js**, **homeAutomation.js**, **qna.js** o **weather.js** y cambie esa entrada por el nombre modificado.  
+El código de ejemplo usa constantes predefinidas de nomenclatura para identificar las distintas secciones del archivo `.bot`. Si ha modificado cualquier nombre de sección en los nombres de ejemplo originales del archivo _nlp-with-dispatch.bot_, asegúrese de que encuentra la declaración de constantes asociada en los archivos **bot.js**, **homeAutomation.js**, **qna.js** o **weather.js** y cambie esa entrada por el nombre modificado.  
+
 ```javascript
 // In file bot.js
 // this is the LUIS service type entry in the .bot file.
@@ -432,8 +433,11 @@ switch (dispatchTopIntent) {
        await turnContext.sendActivity(`I do not understand that.`);
        await turnContext.sendActivity(`I can help with weather forecast, turning devices on and off and answer general questions like 'hi', 'who are you' etc.`);
  }
+ ```
+
+ En `homeAutomation.js`
  
- // In homeAutomation.js
+ ```javascript
  async onTurn(turnContext) {
     // make call to LUIS recognizer to get home automation intent + entities
     const homeAutoResults = await this.luisRecognizer.recognize(turnContext);
@@ -448,8 +452,11 @@ switch (dispatchTopIntent) {
          await turnContext.sendActivity(`HomeAutomation dialog cannot fulfill this request.`);
     }
 }
-    
-// In weather.js
+```
+
+En `weather.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call weather LUIS model.
    const weatherResults = await this.luisRecognizer.recognize(turnContext);
@@ -470,8 +477,11 @@ async onTurn(turnContext) {
          wait turnContext.sendActivity(`Weather dialog cannot fulfill this request.`);
    }
 }
-    
-// In qna.js
+```
+
+En `qna.js`
+
+```javascript
 async onTurn(turnContext) {
    // Call QnA Maker and get results.
    const qnaResult = await this.qnaRecognizer.generateAnswer(turnContext.activity.text, QNA_TOP_N, QNA_CONFIDENCE_THRESHOLD);

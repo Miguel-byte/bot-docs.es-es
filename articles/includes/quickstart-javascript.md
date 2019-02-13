@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 04b015963b8ea991b87f085dd5d6aa0110c50a18
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
-ms.translationtype: HT
-ms.contentlocale: es-ES
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360815"
----
 ## <a name="prerequisites"></a>Requisitos previos
 
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
@@ -16,8 +8,9 @@ ms.locfileid: "54360815"
 - Conocimientos sobre [restify](http://restify.com/) y programación asincrónica en JavaScript.
 
 > [!NOTE]
-> En algunas instalaciones, el paso de instalación de restify genera un error relacionado con node-gyp.
-> Si este es el caso, intente ejecutar este comando con permisos elevados:
+> La instalación de las herramientas de compilación de Windows que se indican a continuación solo se necesitan si se usa Windows como sistema operativo de desarrollo. En algunas instalaciones, el paso de instalación de restify genera un error relacionado con node-gyp.
+> Si este es el caso, intente ejecutar este comando con permisos elevados.
+> Esta llamada también puede bloquearse si Python ya está instalado en el sistema:
 > ```bash
 > npm install -g windows-build-tools
 > ```
