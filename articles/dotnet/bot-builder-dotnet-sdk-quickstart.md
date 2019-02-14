@@ -8,15 +8,15 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 monikerRange: azure-bot-service-4.0
 templateName: Echo Bot
-ms.openlocfilehash: 265b1a1c779952cc099f426ddff1bb59846667cc
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: d6987cbfc5a0cd7f885b511a883b45afc3deb49d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453959"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971385"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk-for-net"></a>Creación de un bot con Bot Framework SDK para .NET
 
@@ -35,4 +35,5 @@ Consulte [Tunelización (ngrok)](https://github.com/Microsoft/BotFramework-Emula
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Funcionamiento de los bots](../v4sdk/bot-builder-basics.md) 
+> [Implementación de un bot en Azure](../bot-builder-deploy-az-cli.md)
+
