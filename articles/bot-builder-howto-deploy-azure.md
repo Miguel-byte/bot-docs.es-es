@@ -1,21 +1,18 @@
 ---
-title: Implementación de un bot de C# mediante Visual Studio | Microsoft Docs
-description: Implemente su bot en la nube de Azure.
-keywords: implementar bot, implementación de azure, publicar bot, bot de implementación de az, bot de implementación de visual studio, publicación de msbot, clonado de msbot
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: get-started-article
-ms.service: bot-service
-ms.subservice: abs
-ms.date: 12/08/2018
-ms.openlocfilehash: eb559418bc2925ec6fb64902086dede50e485414
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: a300d6602a59c5e7d7cebdf14bb4f720a30ecbf8
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712019"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971475"
 ---
+<a name="--"></a><!--
+---
+título: Implementación de un bot de C# mediante Visual Studio | Microsoft Docs description: Implemente su bot en la nube de Azure.
+keywords: deploy bot, azure deploy, publish bot, az deploy bot, visual studio deploy bot, msbot publish, msbot clone author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: get-started-article ms.service: bot-service ms.subservice: abs ms.date: 07/02/2019
+---
+
 # <a name="deploy-your-c-bot-using-visual-studio"></a>Implementación de un bot de C# mediante Visual Studio
 
 [!INCLUDE [pre-release-label](./includes/pre-release-label.md)]
@@ -28,7 +25,16 @@ En este artículo, le mostraremos cómo implementar un bot de C# mediante Visual
 - Instale [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Conocimientos del archivo [.bot](v4sdk/bot-file-basics.md).
 
+
+## <a name="update-bot-file-properties"></a>Actualización de las propiedades del archivo .bot
+
+Antes de comenzar el proceso de implementación, actualice las siguientes propiedades del archivo .bot en Visual Studio:
+- **Acción de compilación: Contenido**
+- **Copiar en el directorio de salida: Copiar siempre**
+
+
 ## <a name="deploy-your-bot-in-app-service"></a>Implementación del bot en App Service
+
 En primer lugar, va a implementar el bot en Azure desde Visual Studio en App Service. A continuación, configurará el bot con Azure Bot Service mediante el registro de canales de bots.
 
 **Nota: Si el nombre del proyecto de Visual Studio tiene espacios, los pasos de implementación que se describen a continuación no funcionarán.**
@@ -164,3 +170,4 @@ Si no está familiarizado con el grupo de recursos de Azure, consulte este tema 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]
 > [Configuración de la implementación continua](bot-service-build-continuous-deployment.md)
+-->

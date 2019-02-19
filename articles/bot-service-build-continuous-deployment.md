@@ -1,20 +1,17 @@
 ---
-title: Configuración de implementación continua para Bot Service | Microsoft Docs
-description: Obtenga información sobre cómo configurar una implementación continua desde el control de código fuente para una instancia de Bot Service.
-keywords: implementación continua, publicar, implementar, azure portal
-author: ivorb
-ms.author: v-ivorb
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.date: 12/06/2018
-ms.openlocfilehash: ffbc3ef83c8fe1cd6f04697a3fff9e229df9956f
-ms.sourcegitcommit: 080b9633925ffe381f2c3cf11c8f8ca4b37e2046
+redirect_url: /bot-framework/bot-builder-deploy-az-cli
+ms.openlocfilehash: 8149471553658df6778e2983bae114e80c846c9b
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53068718"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971435"
 ---
+<a name="--"></a><!--
+---
+título: Configuración de implementación continua para Bot Service | Microsoft Docs description: Obtenga información sobre cómo configurar una implementación continua desde el control de código fuente para una instancia de Bot Service. keywords: continuous deployment, publish, deploy, azure portal author: ivorb ms.author: v-ivorb manager: kamrani ms.topic: article ms.service: bot-service ms.date: 06/12/2018
+---
+
 # <a name="set-up-continuous-deployment"></a>Configurar la implementación continua
 Si el código está insertado en **GitHub** o **Azure DevOps (anteriormente Visual Studio Team Services)**, use la implementación continua para implementar automáticamente los cambios de código desde el repositorio de origen en Azure. En este tema, hablaremos sobre cómo configurar la implementación continua para **GitHub** y **Azure DevOps**.
 
@@ -71,3 +68,6 @@ Para deshabilitar la implementación continua, haga lo siguiente:
 
 ## <a name="additional-information"></a>Información adicional
 - Visual Studio Team Services es ahora [Azure DevOps Services](https://docs.microsoft.com/en-us/azure/devops/?view=vsts)
+
+
+-->

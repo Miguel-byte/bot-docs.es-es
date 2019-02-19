@@ -8,30 +8,35 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8bcb2e545cea640f74a37cac20f16b288c690956
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
+ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764196"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56240181"
 ---
-# <a name="migrate-a-bot-within-the-same-net-framework-project"></a>Migración de un bot dentro del mismo proyecto de .NET Framework
+# <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migración de un bot de la versión v3 a la versión v4 del SDK para .NET
 
-Bot Framework SDK v4 se basa en las mismas API REST subyacentes que el SDK v3. Sin embargo, el SDK v4 es una refactorización de la versión anterior que ofrece a los desarrolladores más flexibilidad y control sobre sus bots. Algunos cambios importantes en el SDK son: <!--TODO: Replace with a snippet summary of changes that includes a link to the concept topic.-->
+En este artículo, convertiremos el bot de la versión v3 [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) en un bot de la versión v4 _sin convertir el tipo de proyecto_. Seguirá siendo un proyecto de .NET Framework.
+Esta conversión se divide en estos pasos:
+
+1. Actualización e instalación de los paquetes NuGet
+1. Actualización del archivo Global.asax.cs
+1. Actualización de la clase MessagesController
+1. Conversión de los cuadros de diálogo
+
+<!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).-->
+
+Bot Framework SDK v4 se basa en las mismas API REST subyacentes que el SDK v3. Sin embargo, el SDK v4 es una refactorización de la versión anterior que ofrece a los desarrolladores más flexibilidad y control sobre sus bots. Algunos cambios importantes en el SDK son:
 
 - El estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedad.
 - Ha cambiado el controlador de turnos y la forma de pasarle actividades.
 - Ya no existen componentes puntuables. Puede buscar comandos "globales" en el controlador de turnos, antes de pasar el control a los diálogos.
 - Una nueva biblioteca de diálogos muy diferente de la existente en la versión anterior. Deberá convertir los diálogos antiguos al nuevo sistema de diálogos con los diálogos de componente y en cascada, y la implementación de la comunidad de los diálogos Formflow para la versión v4.
 
-En este artículo, nos centraremos en el bot de la versión v3 [ContosoHelpdeskChatBot](https://github.com/Microsoft/intelligent-apps/tree/master/ContosoHelpdeskChatBot/ContosoHelpdeskChatBot) y lo convertiremos en un bot de la versión v4. <!--TODO: Link to the converted bot...[ContosoHelpdeskChatBot](https://github.com/EricDahlvang/intelligent-apps/tree/v4netframework/ContosoHelpdeskChatBot).--> Vamos a convertir el bot sin convertir el tipo de proyecto, por lo que seguirá siendo un proyecto de .NET Framework. Esta conversión se divide en estos pasos:
-
-1. Actualización e instalación de los paquetes NuGet
-1. Actualización del archivo Global.asax.cs
-1. Actualización de la clase MessagesController
-1. Conversión de los cuadros de diálogo
+Para más información sobre los cambios específicos, consulte las [diferencias entre las versiones v3 y v4 del SDK para .NET](migration-about.md).
 
 ## <a name="update-and-install-nuget-packages"></a>Actualización e instalación de los paquetes NuGet
 
@@ -343,7 +348,6 @@ Notas sobre el código de la versión v4:
 - Los pasos de la cascada tienen un parámetro `WaterfallStepContext`, que deriva de `DialogContext`.
 - Todas las clases específicas de los diálogos y los avisos derivan de la clase abstracta `Dialog`.
 - Se asigna un identificador cuando se crea un diálogo de componente. En un conjunto de diálogos, se debe establecer un identificador único para cada diálogo del conjunto.
-- Implementaremos los métodos de extensión `PostAsync` y `Done` para que los diálogos convertidos sean más parecidos a los de la versión v3. Puede agregar métodos de extensión adicionales para mitigar más el proceso de conversión o podría omitir este paso que el código migrado sea más similar a la versión v4.
 
 ### <a name="update-the-root-dialog"></a>Actualización del diálogo raíz
 

@@ -7,13 +7,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: 812ad04232629e889b0ab5472af07ff986ca787b
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 2/09/2019
+ms.openlocfilehash: 45675e612553e79f51edde60eaee6bf14df0e44d
+ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000312"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55971405"
 ---
 # <a name="reconnect-to-a-conversation"></a>Volver a conectarse a una conversación
 
@@ -59,6 +59,8 @@ HTTP/1.1 200 OK
 ## <a name="reconnect-to-the-conversation"></a>Volver a conectarse a una conversación
 
 El cliente debe usar la nueva dirección URL de secuencia de WebSocket para [volver a conectarse a la conversación](bot-framework-rest-direct-line-3-0-receive-activities.md#connect-via-websocket) en 60 segundos. Si no se puede establecer la conexión durante este tiempo, el cliente debe emitir otra solicitud de reconexión para generar una nueva dirección URL de secuencia.
+
+Si tiene "Opción de autenticación mejorada" habilitada en la configuración de Direct Line, podría recibir un error 400 "MissingProperty" que indica que no se especificó ningún identificador de usuario.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
