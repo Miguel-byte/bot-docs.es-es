@@ -25,8 +25,6 @@ La integración de aplicaciones y sus metadatos asociados:
 
 - Si la integración de la aplicación trata información personal del usuario (por información personal se entienden todos los datos o la información que identifican o pueden usarse para identificar a una persona, o bien que están asociados con dichos datos o información; los ejemplos de información personal incluyen: nombre y dirección, número de teléfono, identificadores biométricos, ubicación, contactos, fotos, grabaciones de audio y vídeo, documentos, SMS, correo electrónico u otras comunicaciones de texto, capturas de pantalla y, en algunos casos, el historial de navegación combinado), debe proporcionar un vínculo destacado de la integración de la aplicación a una directiva de privacidad correspondiente, y dicha directiva de privacidad debe cumplir todas las leyes, los reglamentos y las disposiciones de la directiva que sean de aplicación. Esta directiva debe cubrir qué datos recopila o transmite, qué va a realizar con esos datos y, si procede, con quién los va a compartir. Si no tiene una declaración de privacidad, aquí le indicamos algunos recursos de terceros* que pueden resultarle útiles:
 
-OCDE: [generador de declaración de privacidad](http://www.oecd.org/internet/ieconomy/oecdprivacystatementgenerator.htm)
-
 Foro sobre el futuro de la privacidad: [generador de directiva de privacidad para aplicaciones](http://www.applicationprivacy.org/do-tools/privacy-policy-generator/)
 
 Iubenda: [generador de directiva de privacidad](http://www.iubenda.com/en)
