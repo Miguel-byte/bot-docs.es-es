@@ -9,6 +9,7 @@
 ## [Información general](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 # [P+F](../bot-service-resources-bot-framework-faq.md)
 # [Obtención de soporte técnico](../bot-service-resources-links-help.md)
+# [Referencia de canal](../bot-service-channels-reference.md)
 # [Guía para identificadores](../bot-service-resources-identifiers-guide.md)
 # [Claves de App Insights](../bot-service-resources-app-insights-keys.md)
 # [Solicitudes usuario-agente](../bot-service-resources-user-agent.md)
