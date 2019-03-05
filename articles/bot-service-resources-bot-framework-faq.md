@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/28/2018
-ms.openlocfilehash: 9b77f05b77017b17ba63e83fa2a8b58e483f9bf8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/21/2019
+ms.openlocfilehash: 54be82eb263c2189fd6bb7a0dc4018b9ecf5c2f2
+ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225810"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56893505"
 ---
 # <a name="bot-framework-frequently-asked-questions"></a>Preguntas frecuentes de Bot Framework
 
@@ -49,9 +49,11 @@ Los bots de SDK V3 se seguirán ejecutando y serán compatibles con Azure Bot Se
 - El SDK V4 de Bot Framework ofrece una experiencia de desarrollo centrada en la conversación con una arquitectura de SDK modular y extensible que permite a los desarrolladores crear aplicaciones sólidas y sofisticadas. El diseño ampliable de la versión V4 se basó en los comentarios de los clientes, que sugerían que los modelos de diálogo y los elementos primitivos del SDK versión V3 eran complejos y limitaban la extensibilidad.  
 
 ### <a name="what-is-the-general-migration-strategy-i-have-a-v3-bot-how-can-i-migrate-it-to-v4-can-i-migrate-my-v3-bot-to-v4"></a>¿Qué es la estrategia general de migración? Tengo un bot de la versión V3, ¿cómo puedo migrarlo a la versión V4? ¿Es posible?
-- En esta etapa, la ayuda de migración para los bots que se crearon con la versión V3 a V4 vendrá en forma de documentación y ejemplos. En estos momentos, no está previsto incluir en la versión 4 de SDK ninguna de las capas de compatibilidad de la versión 3 que permita a los bots de compilación trabajar con los bots de la versión 4. 
-- Si ya tiene bots con el SDK versión V3 de Bot Framework en producción, no se preocupe, seguirán funcionando de la misma manera en un futuro inmediato. 
-- El SDK V4 de Bot Framework es una evolución del exitoso SDK V3. La versión V4 es una versión principal que incluye cambios importantes que impiden a los bots de la versión V3 ejecutarse en la versión V4 que es más reciente. 
+
+- Consulte las [diferencias entre las versiones v3 y v4 del SDK para .NET](v4sdk/migration/migration-about.md) para más información sobre la migración de bots de v3 a v4.
+- En este momento, la ayuda para migrar los bots que se crearon con la versión v3 a v4 vendrá en forma de documentación y ejemplos. En estos momentos, no está previsto incluir en la versión 4 de SDK ninguna de las capas de compatibilidad de la versión 3 que permita a los bots de compilación trabajar con los bots de la versión 4.
+- Si ya tiene bots con el SDK versión V3 de Bot Framework en producción, no se preocupe, seguirán funcionando de la misma manera en un futuro inmediato.
+- El SDK V4 de Bot Framework es una evolución del exitoso SDK V3. La versión V4 es una versión principal que incluye cambios importantes que impiden a los bots de la versión V3 ejecutarse en la versión V4 que es más reciente.
 
 ### <a name="should-i-build-new-a-bot-using-v3-or-v4"></a>¿Debo compilar un nuevo bot con la versión V3 o la V4?
 - Para nuevas experiencias de conversación, se recomienda que inicie un nuevo bot con el SDK versión V4 de Bot Framework.
