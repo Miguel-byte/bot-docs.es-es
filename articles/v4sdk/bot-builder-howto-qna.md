@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6722a9c49961857ab53a2d80fca926775e712aae
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: 5a5aec71092503dad83827225f7c0adaf22c4d17
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240171"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56590980"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Uso de QnA Maker para responder preguntas
 
@@ -47,7 +47,7 @@ En este tema se creará una base de conocimiento y usarla en un bot.
 Estos tres valores proporcionan la información necesaria para que su aplicación pueda conectarse a la base de conocimiento de QnA Maker mediante el servicio Azure QnA.  
 
 ## <a name="update-the-bot-file"></a>Actualización del archivo .bot
-En primer lugar, agregue la información necesaria para acceder a la base de conocimiento, incluido el nombre de host, la clave del punto de conexión y el identificador de la base de conocimiento (KbId) en `qnamaker.bot`. Estos son los valores que guardó en **Configuración** en la base de conocimiento de QnA Maker. 
+En primer lugar, agregue la información necesaria para acceder a la base de conocimiento, incluido el nombre de host, la clave del punto de conexión y el identificador de la base de conocimiento (kbId) en `qnamaker.bot`. Estos son los valores que guardó en **Configuración** en la base de conocimiento de QnA Maker. 
 > Nota. Si va a agregar acceso a una base de conocimiento de QnA Maker a una aplicación de bot existente, no olvide agregar una sección "type": "qna" como la siguiente al archivo .bot. En esta sección, el valor "name" proporciona la clave necesaria para acceder a esta información desde la aplicación.
 
 ```json
@@ -65,7 +65,7 @@ En primer lugar, agregue la información necesaria para acceder a la base de con
     {
       "type": "qna",
       "name": "QnABot",
-      "KbId": "<Your_Knowledge_Base_Id>",
+      "kbId": "<Your_Knowledge_Base_Id>",
       "subscriptionKey": "",
       "endpointKey": "<Your_Endpoint_Key>",
       "hostname": "<Your_Hostname>",
@@ -98,7 +98,7 @@ private static BotServices InitBotServices(BotConfiguration config)
                     throw new InvalidOperationException("The QnA service is not configured correctly in your '.bot' file.");
                 }
 
-                if (string.IsNullOrWhiteSpace(qna.KbId))
+                if (string.IsNullOrWhiteSpace(qna.kbId))
                 {
                     throw new InvalidOperationException("The QnA KnowledgeBaseId ('kbId') is required to run this sample. Please update your '.bot' file.");
                 }
@@ -115,7 +115,7 @@ private static BotServices InitBotServices(BotConfiguration config)
 
                 var qnaEndpoint = new QnAMakerEndpoint()
                 {
-                    KnowledgeBaseId = qna.KbId,
+                    KnowledgeBaseId = qna.kbId,
                     EndpointKey = qna.EndpointKey,
                     Host = qna.Hostname,
                 };

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/20/2018
+ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2e591f19f7df8fa6281573c0ac7f1330d95f4c53
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4b18cc5d32d04b69fa349d22058b51fcec0e12d7
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225440"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591076"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Creación de mensajes propios para recopilar datos de entrada del usuario
 
@@ -56,7 +56,7 @@ Como no tenemos previsto implementar este bot, vamos a configurar tanto el estad
 Se definen las siguientes variables.
 
 - Una clase `UserProfile` para la información de usuario que recopilará el bot.
-- Una clase `ConversationFlow` para agregar información sobre dónde estamos en la conversación.
+- Una clase `ConversationFlow` para rastrear la información sobre dónde estamos en la conversación.
 - Una enumeración `ConversationFlow.Question` interna para el seguimiento de dónde nos encontramos en la conversación.
 - Una clase `CustomPromptBotAccessors` en la que se agrupa la información de la administración de estado.
 
@@ -84,6 +84,8 @@ Si es necesario rellenar el perfil de usuario, se llama al método auxiliar y, d
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
+En **CustomPromptBot.cs**, obtenga la propiedad de estado y llame al método auxiliar. (Tenga en cuenta que la propiedad de instancia `_accessors` se establece en el constructor del bot).
+
 ```csharp
 public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
 {
@@ -106,6 +108,8 @@ public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancel
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+En **bot.js**, obtenga la propiedad de estado y llame al método auxiliar. (Tenga en cuenta que la propiedad de instancia `conversationFlow` se establece en el constructor del bot).
 
 ```javascript
 // The bot's turn handler.

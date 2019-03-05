@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 10/10/2018
-ms.openlocfilehash: bd18edb87cdff502ed66177f92f88a8488135431
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/08/2019
+ms.openlocfilehash: e77f6cddac07cdcc06d6d35cda98544f33dd1d43
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225710"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591186"
 ---
 # <a name="connect-a-bot-to-office-365-email"></a>Conexión de un bot al correo electrónico de Office 365
 
@@ -70,6 +70,10 @@ Para más información sobre el uso de `channelData`, consulte el ejemplo de [No
 ::: moniker range="azure-bot-service-4.0"
 Para más información acerca del uso de `channelData`, consulte [implementación de la funcionalidad específica de un canal](~/v4sdk/bot-builder-channeldata.md).
 ::: moniker-end
+
+## <a name="other-considerations"></a>Otras consideraciones
+
+Si el bot no devuelve un código de estado 200 OK HTTP en de 15 segundos en respuesta a un mensaje de correo electrónico entrante, el canal de correo electrónico intentará reenviar el mensaje y el bot podría recibir la misma actividad de mensaje de correo electrónico varias veces. Para más información, consulte la sección [Detalles HTTP](v4sdk/bot-builder-basics.md#http-details) en **Funcionamiento de los bots** y en el artículo [Solución de problemas de tiempo de espera](https://github.com/daveta/analytics/blob/master/troubleshooting_timeout.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

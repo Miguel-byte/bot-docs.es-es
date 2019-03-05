@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: e68db6c1fe9d3d136a8643652df034fb6df2858f
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
+ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645605"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591166"
 ---
 # <a name="manage-a-bot"></a>Administración de un bot
 
@@ -46,13 +46,17 @@ En la hoja **Información general**, puede encontrar información general sobre 
 
 ![Configuración de App Service](~/media/azure-manage-a-bot/app-service-settings.png)
 
-La hoja **Configuración de la aplicación** contiene información detallada sobre su bot, como el entorno del bot, el identificador, la clave de Application Insights, el identificador de aplicación de Microsoft y la contraseña de aplicación de Microsoft.
+La hoja **Configuración de la aplicación** contiene información detallada sobre su bot, como el entorno del bot y las claves de configuración de depuración y clave de configuración de la aplicación como botFilePath y botFileSecret.
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID y MicrosoftAppPassword
 
-Puede encontrar el valor de **MicrosoftAppID** del bot en la hoja **Configuración**. El valor de **MicrosoftAppPassword** del bot se muestra solo cuando se crea el bot.
+**MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo `.bot` del bot. Para recuperarlos, descargue el archivo del bot y descífrelo, porque puede ser necesario para probar localmente el identificador y la contraseña.
 
-![Microsoft AppID y contraseña](~/media/azure-manage-a-bot/app-settings.png)
+### <a name="bot-file-path-and-secret"></a>Secreto y la ruta de acceso del archivo de bot
+
+Encontrará los valorse de **botFilePath** y **botFileSecret** del bot en la hoja **Configuración de la aplicación**.
+
+![Secreto y la ruta de acceso del archivo de bot de Microsoft](~/media/azure-manage-a-bot/app-settings.png)
 
 > [!NOTE]
 > El servicio de bots **Registro de canales de bots** incluye un valor *MicrosoftAppID*, pero como no hay un servicio de aplicaciones asociado con este tipo de servicio, no hay una hoja **Configuración de la aplicación** para que consulte el valor *MicrosoftAppPassword*. Para obtener la contraseña, debe generar una. Para generar la contraseña para un **registro de canales de Bot**, consulte [Bot Channels Registration password](bot-service-quickstart-registration.md#bot-channels-registration-password) (Contraseña de registro de canales de bots).

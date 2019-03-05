@@ -1,5 +1,3 @@
-# <a name="implement-channel-specific-functionality"></a>Implementar una funcionalidad específica de canal
-
 Algunos canales proporcionan características que no se pueden implementar usando únicamente el texto y los datos adjuntos del mensaje. Para implementar una funcionalidad específica de canal, puede pasar los metadatos nativos a un canal en la propiedad _channel data_ del objeto activity. Por ejemplo, el bot puede usar la propiedad channel data para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
 
 En este artículo se describe cómo usar la propiedad channel data de la actividad de un mensaje para implementar esta funcionalidad específica de canal:
@@ -370,6 +368,72 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
                 }
         }
     ]
+}
+```
+
+## <a name="create-a-line-message"></a>Creación de un mensaje de LINE
+
+Para crear un mensaje que implementa los tipos de mensajes específicos de LINE (por ejemplo, adhesivo o plantillas, o tipos de acciones específicos de LINE como la apertura de la cámara del teléfono), establezca la propiedad de datos de canal del objeto de actividad en un objeto JSON que especifique los tipos de acciones y mensajes de LINE. 
+
+| Propiedad | DESCRIPCIÓN |
+|----|----|
+| Tipo | Nombre del tipo de acción o mensaje de LINE |
+
+Se admiten estos tipos de mensajes de LINE:
+* Sticker
+* Imagemap 
+* Template (Button, confirm, carousel) 
+* Flex 
+
+Estas acciones de LINE se pueden especificar en el campo de acción del objeto JSON de tipo de mensaje: 
+* Postback 
+* Message 
+* URI 
+* Datetimerpicker 
+* Cámara 
+* Camera roll 
+* Ubicación 
+
+Para más información sobre estos métodos de LINE y sus parámetros, consulte la [documentación Bot API para LINE](https://developers.line.biz/en/docs/messaging-api/). 
+
+Este fragmento de código muestra un ejemplo de una propiedad `channelData` que especifica un tipo de mensaje de canal `ButtonTemplate` y tres tipos de acciones: camera, cameraRoll, Datetimepicker. 
+
+```json
+"channelData": { 
+    "type": "ButtonsTemplate", 
+    "altText": "This is a buttons template", 
+    "template": { 
+        "type": "buttons", 
+        "thumbnailImageUrl": "https://example.com/bot/images/image.jpg", 
+        "imageAspectRatio": "rectangle", 
+        "imageSize": "cover", 
+        "imageBackgroundColor": "#FFFFFF", 
+        "title": "Menu", 
+        "text": "Please select", 
+        "defaultAction": { 
+            "type": "uri", 
+            "label": "View detail", 
+            "uri": "http://example.com/page/123" 
+        }, 
+        "actions": [{ 
+                "type": "cameraRoll", 
+                "label": "Camera roll" 
+            }, 
+            { 
+                "type": "camera", 
+                "label": "Camera" 
+            }, 
+            { 
+                "type": "datetimepicker", 
+                "label": "Select date", 
+                "data": "storeId=12345", 
+                "mode": "datetime", 
+                "initial": "2017-12-25t00:00", 
+                "max": "2018-01-24t23:59", 
+                "min": "2017-12-25t00:00" 
+            } 
+        ] 
+    } 
 }
 ```
 
