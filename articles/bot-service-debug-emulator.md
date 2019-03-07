@@ -7,13 +7,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 11/13/2018
-ms.openlocfilehash: f3a6a57a5fd01061493e5c216875f0c4210483f6
-ms.sourcegitcommit: 8b7bdbcbb01054f6aeb80d4a65b29177b30e1c20
+ms.date: 2/26/2019
+ms.openlocfilehash: 2266dcb936205a20e1d19d97983a3b802fbe2736
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51645615"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224873"
 ---
 # <a name="debug-with-the-emulator"></a>Depuración con el emulador
 
@@ -81,7 +81,9 @@ Abra **Configuración del emulador**, escriba la ruta de acceso a ngrok, selecci
 
 Bot Framework Emulator es de código abierto. También puede [colaborar][EmulatorGithubContribute] en el desarrollo y [enviar errores y sugerencias][EmulatorGithubBugs].
 
+Para solucionar el problema, consulte cómo [solucionar problemas generales](bot-service-troubleshoot-bot-configuration.md) y otros artículos de solución de problemas en esa sección.
 
+<!-- Footnote-style URLs -->
 
 [EmulatorGithubContribute]: https://github.com/Microsoft/BotFramework-Emulator/wiki/How-to-Contribute
 [EmulatorGithubBugs]: https://github.com/Microsoft/BotFramework-Emulator/wiki/Submitting-Bugs-%26-Suggestions

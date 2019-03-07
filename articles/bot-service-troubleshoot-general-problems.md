@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 09/26/2018
-ms.openlocfilehash: 34a23910c76a22fe39d1ce5457bb74dd285ca939
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.date: 02/26/2019
+ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225526"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224953"
 ---
 # <a name="troubleshooting-general-problems"></a>Solución de problemas generales
 Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes de desarrollo de bots o problemas de funcionamiento.
@@ -20,11 +20,12 @@ Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes d
 ## <a name="how-can-i-troubleshoot-issues-with-my-bot"></a>¿Cómo puedo solucionar problemas con mi bot?
 
 1. Depure el código de fuente del bot con [Visual Studio Code](debug-bots-locally-vscode.md) o [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
-2. Pruebe el bot con el [emulador](bot-service-debug-emulator.md) antes de implementarlo en la nube.
-3. Implemente el bot en una plataforma de hospedaje en la nube como Azure y, a continuación, pruebe la conectividad con el bot mediante el control de chat web integrado en el panel del bot en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a>. Si tiene problemas con el bot después de implementarlo en Azure, puede consultar este artículo de blog: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Descripción de la solución de problemas y el soporte técnico de Azure).
-4. Descarte la [autenticación][TroubleshootingAuth] como un posible problema.
-5. Pruebe el bot en Skype. Esto le ayudará a validar la experiencia del usuario de un extremo a otro.
-6. Considere la posibilidad de probar el bot en canales que tienen requisitos de autenticación adicionales, como Direct Line o Web Chat.
+1. Pruebe el bot con el [emulador](bot-service-debug-emulator.md) antes de implementarlo en la nube.
+1. Implemente el bot en una plataforma de hospedaje en la nube como Azure y, a continuación, pruebe la conectividad con el bot mediante el control de chat web integrado en el panel del bot en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a>. Si tiene problemas con el bot después de implementarlo en Azure, puede consultar este artículo de blog: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Descripción de la solución de problemas y el soporte técnico de Azure).
+1. Descarte la [autenticación][TroubleshootingAuth] como un posible problema.
+1. Pruebe el bot en Skype. Esto le ayudará a validar la experiencia del usuario de un extremo a otro.
+1. Considere la posibilidad de probar el bot en canales que tienen requisitos de autenticación adicionales, como Direct Line o Web Chat.
+1. Consulte el tema de procedimientos para [depurar un bot](bot-service-debug-bot.md) y los otros artículos de depuración de esa sección.
 
 ## <a name="how-can-i-troubleshoot-authentication-issues"></a>¿Cómo puedo solucionar los problemas de autenticación?
 

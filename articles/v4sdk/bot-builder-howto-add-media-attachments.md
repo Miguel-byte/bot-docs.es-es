@@ -8,24 +8,28 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4999f08c62d2926be37b5730a2d1025749fc280e
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711989"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224883"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
 
-Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones. Consulte el [diseño de la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
+Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones.
+
+Consulte cómo [diseñar la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
 
 ## <a name="send-attachments"></a>Envío de datos adjuntos
 
 Para enviar el contenido de usuario como una imagen o un vídeo, puede agregar datos adjuntos o una lista de datos adjuntos a un mensaje.
+
+Consulte cómo [diseñar la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -34,7 +38,6 @@ El código fuente que se muestra a continuación se basa en el ejemplo [Handling
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -51,7 +54,7 @@ var attachment = new Attachment
 reply.Attachments = new List<Attachment>() { attachment };
 
 // Send the activity to the user.
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -92,7 +95,6 @@ Para redactar un mensaje con un botón y una tarjeta de imagen prominente, puede
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -112,7 +114,7 @@ var card = new HeroCard
 // Add the card to our reply.
 reply.Attachments = new List<Attachment>() { card.ToAttachment() };
 
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -168,7 +170,6 @@ El código siguiente muestra ejemplos que usan varios eventos de tarjeta enrique
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 var reply = turnContext.Activity.CreateReply();
@@ -239,7 +240,6 @@ El código fuente que se muestra a continuación se basa en el ejemplo [Using Ad
 ```csharp
 using AdaptiveCards;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 
@@ -261,7 +261,7 @@ var cardAttachment = CreateAdaptiveCardAttachment(adaptiveCardJsonFilePath);
 var reply = turnContext.Activity.CreateReply();
 reply.Attachments = new List<Attachment>() { cardAttachment };
 
-await turnContext.SendActivityAsync(reply, cancellationToken);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -305,7 +305,6 @@ Los mensajes también pueden incluir varios datos adjuntos en un diseño de carr
 
 ```csharp
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Core.Extensions;
 using Microsoft.Bot.Schema;
 
 // Create the activity and attach a set of Hero cards.
@@ -339,7 +338,7 @@ var activity = MessageFactory.Carousel(
     });
 
 // Send the activity as a reply to the user.
-await context.SendActivity(activity);
+await turnContext.SendActivityAsync(reply, cancellationToken: cancellationToken);
 ```
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
@@ -363,6 +362,8 @@ await context.sendActivity(messageWithCarouselOfCards);
 <!-- TODO: Add a media card, such as video or audion. Revisit which examples we put here and link to the 06 through 08 samples. -->
 
 ## <a name="additional-resources"></a>Recursos adicionales
+
+Consulte cómo [diseñar la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
 
 Para más información sobre el esquema, consulte el [esquema de la tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema) y la [sección sobre la actividad de mensajes](https://aka.ms/botSpecs-activitySchema#message-activity) del esquema de actividad de Bot Framework.
 

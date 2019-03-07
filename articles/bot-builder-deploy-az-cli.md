@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/13/2019
-ms.openlocfilehash: 53889703d58983a87a7a2d16622f1298d56c87db
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 2ee66ac335ab9e34d7a73996d44da939e74d5b87
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591033"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224923"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -64,12 +64,11 @@ El código fuente que descargó desde Azure Portal incluye un archivo .bot cifra
 1. Abra la **configuración de la aplicación** del bot.
 1. En la ventana **Configuración de la aplicación**, vaya a **Configuración de la aplicación**.
 1. Busque **botFileSecret** y copie su valor.
+1. Use `msbot cli` para descifrar el archivo.
 
-Use `msbot cli` para descifrar el archivo.
-
-```cmd
-msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
-```
+    ```cmd
+    msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear
+    ```
 
 ### <a name="update-your-local-bot-file"></a>Actualización del archivo .bot local
 
@@ -128,18 +127,24 @@ Abra el archivo .bot que ha descifrado. Copie **todas** las entradas indicadas e
 
 Guarde el archivo.
 
+Puede usar la herramienta msbot para generar un secreto nuevo y cifrar el archivo .bot antes de publicarlo. Si vuelve a cifrar el archivo .bot, actualice el valor de **botFileSecret** del bot en Azure Portal para que contenga el nuevo secreto.
+
+```cmd
+msbot secret --bot <name-of-bot-file> --new
+```
+
 ### <a name="setup-a-repository"></a>Configuración de un repositorio
 
-Para permitir la implementación continua, cree un repositorio git con el proveedor de control de código fuente de git que prefiera. Confirme el código en el repositorio. 
+Para permitir la implementación continua, cree un repositorio git con el proveedor de control de código fuente de git que prefiera. Confirme el código en el repositorio.
 
 Asegúrese de que la raíz del repositorio tenga los archivos correctos, tal y como se explica en [Preparación del repositorio](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment#prepare-your-repository).
 
 ### <a name="update-app-settings-in-azure"></a>Actualización de la configuración de la aplicación en Azure
-El bot local no utiliza un archivo .bot cifrado, pero Azure Portal tiene un secreto que su implementación no tiene. 
+El bot local no utiliza un archivo .bot cifrado, pero Azure Portal sí está configurado para usarlo. Para resolver este problema, puede quitar el valor de **botFileSecret** almacenado en la configuración del bot de Azure.
 1. En Azure Portal, abra el recurso **Bot de aplicación web** de su bot.
 1. Abra la **configuración de la aplicación** del bot.
 1. En la ventana **Configuración de la aplicación**, vaya a **Configuración de la aplicación**.
-1. Busque **botFileSecret** y elimínelo.
+1. Busque **botFileSecret** y elimínelo. (Si vuelve a cifrar el archivo .bot, asegúrese de que el valor de **botFileSecret** contiene el nuevo secreto y de **no** eliminar la configuración).
 1. Actualice el nombre del archivo bot para que coincida con el archivo que ha insertado en el repositorio.
 1. Guarde los cambios.
 

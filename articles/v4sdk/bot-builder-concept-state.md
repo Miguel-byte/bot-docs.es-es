@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 02/25/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dfbc9f4ed0f08c7349d758147460b8268c49e372
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 06982f1790bd573e7300cee249042e6e3d60e912
+ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225870"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57224913"
 ---
 # <a name="managing-state"></a>Administración de estados
 
@@ -118,7 +118,8 @@ Los métodos de descriptor de acceso son la manera principal para el bot interac
 - Método para *obtener* el descriptor de acceso:
   - El descriptor de acceso solicita la propiedad desde la caché de estado.
   - Si la propiedad está en la caché, la devuelve. De lo contrario, obténgalo del objeto de administración de estados.
-    (Si todavía no está en el estado, utilice el método del generador proporcionado en la llamada para *obtener* los descriptores de acceso). Método para *establecer* el descriptor de acceso:
+    (Si todavía no está en el estado, utilice patrón de diseño Factory Method proporcionado en la llamada para *obtener* los descriptores de acceso).
+- Método para *establecer* el descriptor de acceso:
   - Actualice la caché de estado con el nuevo valor de propiedad.
 - Método para *guardar cambios* del objeto de administración de estados:
   - Compruebe los cambios de la propiedad en la caché de estado.
