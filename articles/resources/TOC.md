@@ -1,10 +1,7 @@
 # Plantilla de empresa
-## [Introducción](../v4sdk/bot-builder-enterprise-template-overview.md)
-## [Información general](../v4sdk/bot-builder-enterprise-template-overview-detail.md)
-## [Creación de un proyecto](../v4sdk/bot-builder-enterprise-template-create-project.md)
+## [Información general](../v4sdk/bot-builder-enterprise-template-overview.md)
+## [Primeros pasos](../v4sdk/bot-builder-enterprise-template-getting-started.md)
 ## [Personalización de una plantilla](../v4sdk/bot-builder-enterprise-template-customize.md)
-## [Implementación de la plantilla](../v4sdk/bot-builder-enterprise-template-deployment.md)
-## [Analytics](../v4sdk/bot-builder-enterprise-template-powerbi.md)
 # Asistente virtual 
 ## [Información general](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 # [P+F](../bot-service-resources-bot-framework-faq.md)
