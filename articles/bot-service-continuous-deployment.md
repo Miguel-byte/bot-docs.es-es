@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 38b26ed5a50409de64518562faabf532f45c857e
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 65de0e4e4be129c9fa467cd8610cf0f0b13e5965
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999152"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568182"
 ---
 # <a name="publish-a-bot-to-bot-service"></a>Publicación de un bot de Bot Service
 
@@ -34,6 +34,7 @@ Si no ha configurado la implementación continua, puede modificar los archivos d
 Para configurar la publicación desde Visual Studio usando el archivo `.PublishSettings`, siga los pasos a continuación:
 
 1. En Azure Portal, haga clic en el Bot Service, y luego en la pestaña **COMPILACIÓN** y haga clic en **Descargar archivo zip**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 3. Extraiga en una carpeta local el contenido del archivo zip descargado.
 4. En el Explorador busque el archivo de solución de Visual Studio (.sln) para el bot, y haga doble clic en él.
 4. En Visual Studio, haga clic en **Ver** y después en **Explorador de soluciones**.
@@ -66,6 +67,7 @@ En esta sección se describe cómo habilitar la implementación continua para un
 Siga estos pasos si desea usar un servicio de control de código fuente *distinto* de Visual Studio Online o Github. Visual Studio Online y Github extraerán el código fuente para el bot de Azure, por lo que los usuarios de esos dos servicios pueden omitir estos pasos.
 
 3. Para un bot en un plan de App Service, busque la página del bot en Azure, haga clic en la pestaña **COMPILACIÓN**, busque la sección **Descargar el código fuente** y haga clic en **Descargar archivo zip**.
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 1. Cree un repositorio vacío dentro de uno de los sistemas de control de código fuente que admite Azure.
 
     ![Sistema de control de código fuente](~/media/continuous-integration-sourcecontrolsystem.png)

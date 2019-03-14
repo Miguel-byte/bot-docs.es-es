@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/9/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dbde6eba946e27aaa6b883f1e9205adc63cb22f8
-ms.sourcegitcommit: bdb981c0b11ee99d128e30ae0462705b2dae8572
+ms.openlocfilehash: 7927ab97dc88657a198c8f1d8e56bcb1ddf0fabe
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360967"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568242"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutorial: Creación e implementación de un bot básico
 
@@ -80,6 +80,8 @@ Si va a usar una cuenta de correo electrónico [MSA](https://en.wikipedia.org/wi
 
 A continuación, descargue el bot que acaba de crear. 
 [!INCLUDE [download bot snippet](~/includes/deploy/snippet-download-bot.md)]
+
+[!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ### <a name="decrypt-the-downloaded-bot-file-and-use-in-your-project"></a>Descifrado del archivo .bot descargado y su uso en el proyecto
 
