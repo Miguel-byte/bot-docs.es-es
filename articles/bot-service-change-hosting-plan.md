@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: aafbfb2a38e2d5370cb2db5721dd7bc130497d74
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: e463b272385b97e630d4087908aa82e23a70fea9
+ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999222"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568192"
 ---
 # <a name="change-the-hosting-plan-for-your-bot-service"></a>Cambio del plan de hospedaje para el servicio de bots
 
@@ -33,8 +33,9 @@ Siga estos pasos para descargar el código fuente de su bot existente:
 
 1. Dentro del bot de Azure, haga clic en la pestaña **Configuración** y expanda la sección **Implementación continua**.  
 2. Haga clic en el botón azul para descargar el archivo ZIP que contiene el código fuente del bot.  
-    ![Descarga del archivo ZIP del bot](~/media/continuous-deployment-consumption-download.png)
-3. Extraiga en una carpeta local el contenido del archivo ZIP descargado. 
+    1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
+    ![Descargar el archivo ZIP del bot](~/media/continuous-deployment-consumption-download.png)
+3. Extraiga en una carpeta local el contenido del archivo zip descargado. 
 
 
 ## <a name="create-a-bot-template"></a>Creación de una plantilla de bot
