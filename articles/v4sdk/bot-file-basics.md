@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/23/2018
+ms.date: 03/11/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fdf0b16cc89b322ffa9d36b5516b09b0338ce9dc
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: db7957c611df4a3010469f86f51184b52d49addb
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317575"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073861"
 ---
 # <a name="manage-resources-with-a-bot-file"></a>Administración de recursos con un archivo .bot
 
@@ -29,7 +29,7 @@ Con un archivo .bot, puede registrar servicios como:
 * [**Azure Bot Service**](https://azure.microsoft.com/en-us/services/bot-service/): registros de Azure Bot Service.
 * [**LUIS.AI**](https://www.luis.ai/): LUIS permite al bot comunicarse con las personas con lenguaje natural... 
 * [**QnA Maker**](https://qnamaker.ai/): crear, entrenar y publicar un bot de preguntas y respuestas simple basado en direcciones URL de preguntas más frecuentes, documentos estructurados o contenido editorial en cuestión de minutos.
-* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch): modelos para el envío mediante varios servicios.
+* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch): modelos para el envío mediante varios servicios.
 * [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/): para las conclusiones y el análisis del bot.
 * [**Azure Blob Storage**](https://azure.microsoft.com/en-us/services/storage/blobs/): para la persistencia del estado del bot. 
 * [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/): servicio de base de datos multimodelo distribuido globalmente para conservar el estado del bot.
