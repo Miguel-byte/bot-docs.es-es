@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/13/2019
-ms.openlocfilehash: 9cd2ed67110aa1611c41c33c31874f103e24b14d
-ms.sourcegitcommit: b2245df2f0a18c5a66a836ab24a573fd70c7d272
+ms.openlocfilehash: 8db2f0629b0d95dda0cb5d10dea5c9225e5d8d83
+ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568202"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58073791"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -133,6 +133,9 @@ Puede usar la herramienta msbot para generar un secreto nuevo y cifrar el archiv
 ```cmd
 msbot secret --bot <name-of-bot-file> --new
 ```
+
+> [!TIP]
+> En las propiedades del archivo .bot, en Visual Studio, asegúrese de que la opción **Copiar en el directorio de salida** está establecida en *Copiar siempre*.
 
 ### <a name="setup-a-repository"></a>Configuración de un repositorio
 
