@@ -8,7 +8,7 @@ ms.topic: landing-page
 layout: LandingPage
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 01/16/2019
+ms.date: 03/28/2019
 ---
 ::: moniker range="azure-bot-service-3.0"
 
@@ -21,7 +21,7 @@ ms.date: 01/16/2019
     <div class="intro" style="min-width: 200px">
         <p>Bot Service proporciona un entorno integrado, creado para el desarrollo de bots, que le permite compilar, conectar, probar, implementar y administrar bots inteligentes, todo desde un solo sitio. Azure Bot Service utiliza el SDK de Bot Framework compatible con .NET y Node.js. Aprenda a usar Bot Service con nuestras guías de inicio rápido y ejemplos.</p>
     </div>
-<h2 style="margin-top: 18px; margin-bottom: 0px;">Inicios rápidos en 5 minutos</h2>
+<h2 style="margin-top: 18px; margin-bottom: 0px;">Inicio rápido en 5 minutos</h2>
 <div class="ico48Case">
     <div class="ico48Link">
         <a href="/bot-framework/bot-service-quickstart">
@@ -46,7 +46,7 @@ ms.date: 01/16/2019
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Lenguajes</h3>
+                        <h3>Languages</h3>
                         <p><a href="/dotnet/api/?view=botbuilder-3.12.2.4">.NET</a></p>
                         <p><a href="https://docs.botframework.com/en-us/node/builder/chat-reference/modules/_botbuilder_d_.html">Node.js</a></p>
                     </div>
@@ -73,7 +73,7 @@ ms.date: 01/16/2019
 </p>
 </div>
 
-<h2 style="margin-top: 18px; margin-bottom: 0px;">Inicios rápidos en 5 minutos</h2>
+<h2 style="margin-top: 18px; margin-bottom: 0px;">Inicio rápido en 5 minutos</h2>
 <p style="margin-top: 6px; margin-bottom: 6px;"></p>
 <div class="ico48Case">
     <div class="ico48Link">
@@ -97,8 +97,8 @@ ms.date: 01/16/2019
 </div>
 
 <h2 style="margin-top: 36px">Tutoriales detallados</h2>
-<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">Creación e implementación de un bot básico</a></p>
-<p><a href="/bot-framework/bot-builder-tutorial-add-qna">Agregar QnA Maker y volver a implementar un bot</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-basic-deploy">1. Creación e implementación de un bot básico</a></p>
+<p><a href="/bot-framework/bot-builder-tutorial-add-qna">2. Agregar QnA Maker y volver a implementar un bot</a></p>
 <h2 style="margin-top: 36px">Referencia</h2>
 <ul class="panelContent cardsD">
     <li>
