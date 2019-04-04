@@ -9,14 +9,14 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 33c6f22696038ed5e9d2ae09ad2ec99d401f6a60
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 62b5608de20bb89a31106c7e652b20f32b099d15
+ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317715"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58655505"
 ---
-[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]
+[!INCLUDE [pre-release-label](includes/pre-release-label-v3.md)]  
 
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Incorporación de autenticación al bot mediante Azure Bot Service
 En este tutorial se usan las nuevas funciones de autenticación de bot de Azure Bot Service, que proporciona características para facilitar el desarrollo de un bot que autentica a los usuarios en varios proveedores de identidades como Azure AD (Azure Active Directory), GitHub, Uber y así sucesivamente. Estas actualizaciones también adoptan pasos hacia una mejor experiencia del usuario mediante la eliminación de la _comprobación del código mágico_ para algunos clientes.
@@ -52,7 +52,7 @@ Para obtener más información y soporte técnico, vea [Bot Framework additional
 
 ## <a name="overview"></a>Información general
 
-En este tutorial se crea un bot de ejemplo que se conecta a Microsoft Graph mediante un token v1 o v2 de Azure AD. <!--verify this info and fix wording--> Como parte de este proceso, se usará código de un repositorio de GitHub y en este tutorial se describe cómo configurarlo, incluida la aplicación de bot.
+En este tutorial se crea un bot de ejemplo que se conecta a Microsoft Graph mediante un token v1 o v2 de Azure AD. <!--verify this info and fix wording--> Como parte de este proceso, usará código de un repositorio de GitHub; en este tutorial se describe cómo configurarlo, incluida la aplicación de bot.
 
 - [Crear el bot y una aplicación de autenticación](#create-your-bot-and-an-authentication-application)
 - [Preparar el código de ejemplo del bot](#prepare-the-bot-sample-code)
