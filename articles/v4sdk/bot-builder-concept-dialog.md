@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/28/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 31a0497f1422cee8c4966e59d94a89ae359a5cb7
-ms.sourcegitcommit: c6ce4c42fc56ce1e12b45358d2c747fb77eb74e2
+ms.openlocfilehash: 997399997770db9a810db54c6dcb0cb943a99da9
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453939"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616951"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -121,7 +121,7 @@ El contexto del diálogo se puede usar para empezar un diálogo, continuarlo, re
 
 Los diálogo pueden considerarse una pila mediante programación, lo que llamamos la *pila de diálogos*, con el controlador de turnos como lo que le ordena y que actúa como la reserva si la pila está vacía. El elemento superior de dicha pila se considera el *diálogo activo* y el contexto del diálogo dirige todas las entradas al cuadro de diálogo activo.
 
-Cuando se inicia un diálogo, se inserta en la pila y pasa a ser el diálogo activo. Y no deja de serlo hasta que termina, se elimina mediante el método de [sustitución de diálogo](#repeating-a-dialog) u otro diálogo se inserta en la pila (mediante el controlador de turnos o el propio diálogo activo) y se convierte en el diálogo activo. Cuando termina el diálogo nuevo, desaparece de la pila y el siguiente se convierte en el diálogo activo. Esto permite la creación de [ramas y bucles](#looping-and-branching), que se describen a continuación.
+Cuando se inicia un diálogo, se inserta en la pila y pasa a ser el diálogo activo. Y no deja de serlo hasta que termina, se elimina mediante el método de [sustitución de diálogo](#repeating-a-dialog) u otro diálogo se inserta en la pila (mediante el controlador de turnos o el propio diálogo activo) y se convierte en el diálogo activo. Cuando termina el diálogo nuevo, desaparece de la pila y el siguiente se convierte en el diálogo activo. Esto permite la creación de ramas y bucles tal y como se describe a continuación.
 
 ### <a name="create-the-dialog-context"></a>Creación del contexto del diálogo
 

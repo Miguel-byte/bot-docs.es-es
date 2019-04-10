@@ -7,18 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 6/22/2017
+ms.date: 3/22/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 6a1ae4d0966928a1b95e45ea7bcc62e9c1d14666
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: c6e91ebfe54857f11772bd4a926e3b5b2776c8cc
+ms.sourcegitcommit: 54a4382add4756346098b286695a9b4791db7139
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000072"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58616941"
 ---
 # <a name="migrate-your-bot-to-azure"></a>Migración de un bot a Azure
-
-
 
 Todos los bots de **Azure Bot Service (versión preliminar)** creados en el [Portal de Bot Framework](http://dev.botframework.com) se deben migrar al nuevo Bot Service en Azure. El servicio se ofreció con disponibilidad general (GA) en diciembre de 2017. 
 
@@ -52,14 +50,14 @@ Los bots de Functions creados con Node.js deben empaquetarse con [Funcpack](http
 6.  Pruebe el bot localmente mediante la ejecución del bot de Functions con el emulador de Bot Framework. Más información sobre cómo ejecutar el bot de *funcpack* [aquí](https://github.com/Azure/azure-functions-pack#how-to-run). 
 7.  Cargue el código a Azure. Asegúrese de que se carga el directorio `.funcpack`. No es necesario cargar el directorio **node_modules**.
 8. Pruebe el bot en remoto para asegurarse de que responde según lo previsto.
-9. [Realice la migración del bot](#migrate-your-bot-to-azure) siguiendo los pasos anteriores.
+9. Realice la migración del bot siguiendo los pasos anteriores.
 
 ## <a name="migration-under-the-hood"></a>Funcionamiento interno de la migración
 
 En función del tipo de bot que vaya a migrar, la lista siguiente puede ayudarle a entender mejor lo que sucede en segundo plano.
 
-* **Bot de aplicación web** o **Bot de Functions**: para estos tipos de bots, el código fuente del proyecto se copia desde el bot antiguo al nuevo bot. Otros recursos, como el almacenamiento del bot, Application Insights, LUIS, etc. se dejan como están. En esos casos, el bot nuevo contiene una copia de los identificadores, las claves y las contraseñas de esos recursos existentes. 
-* **Bot de registro de canales**: para este tipo de bots, el proceso de migración simplemente crear un nuevo **Bot de registro de canales** y copia el punto de conexión del bot antiguo. 
+* **Bot de Web App** o de **Functions**: para estos tipos de bots, el código fuente del proyecto se copia desde el bot antiguo al nuevo bot. Otros recursos, como el almacenamiento del bot, Application Insights, LUIS, etc. se dejan como están. En esos casos, el bot nuevo contiene una copia de los identificadores, las claves y las contraseñas de esos recursos existentes. 
+* **Registro de canales de bot**: para este tipo de bots, el proceso de migración simplemente crea un nuevo **registro de canales de bot** y copia el punto de conexión del bot antiguo. 
 * Independientemente de los tipos de los bots que se van a migrar, el proceso de migración no modifica el estado del bot existente de ningún modo. Esto le permitirá revertir de forma segura si necesita hacerlo.
 * Si tiene configurada la [implementación continua](bot-service-build-continuous-deployment.md), deberá configurarla de nuevo para que el control de código fuente se conecte con el nuevo bot.
 

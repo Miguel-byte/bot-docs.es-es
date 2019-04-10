@@ -9,20 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a8619a8de7b3b73d67c297a8abb4234d520fa425
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: 6bd918416c4eee9fc74809b0d5837012021556e0
+ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298242"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58655485"
 ---
 # <a name="connect-a-bot-to-skype-for-business"></a>Conexión de un bot a Skype Empresarial
 
 Skype Empresarial Online le mantiene conectado con los compañeros de trabajo y asociados de negocio por medio de mensajería instantánea, teléfono y videollamadas. Para ampliar esta funcionalidad, cree bots que los usuarios puedan detectar y con los que puedan interactuar mediante la interfaz de Skype Empresarial.
 
-> [!NOTE]
-> El canal Skype Empresarial de Bot Framework está actualmente en versión preliminar para desarrolladores.
-> Está disponible para configuraciones híbridas y en línea de Skype Empresarial. Skype Empresarial Server 2015 no se admite. 
+> [!IMPORTANT]
+> **El canal de Skype Empresarial en Bot Framework quedará en desuso a partir del 30 de junio de 2019.**
+> 
+> Ningún bot nuevo podrá agregar el canal de Skype Empresarial después de esa fecha.  Los bots existentes continuarán funcionando hasta el 31 de octubre de 2019. Microsoft Teams es la herramienta de comunicación preferida de Microsoft.  Aprenda a [conectar el bot a Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots).
 
 ## <a name="enable-the-channel"></a>Habilitación del canal
 

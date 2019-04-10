@@ -1,64 +1,204 @@
 ---
 title: Administración de los recursos con un archivo .bot | Microsoft Docs
 description: Describe el propósito y el uso del archivo de bot.
-keywords: archivo de bot, .bot, archivo .bot, msbot, recursos del bot, administrar recursos del bot
+keywords: archivo de bot, .bot, archivo .bot, recursos del bot, administrar recursos de bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 03/11/2018
+ms.date: 03/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: db7957c611df4a3010469f86f51184b52d49addb
-ms.sourcegitcommit: 4139ef7ebd8bb0648b8af2406f348b147817d4c7
+ms.openlocfilehash: 14552c55da4b1f9b581b81917496de179e92762b
+ms.sourcegitcommit: 8d8b197c3f30593c4a5e4a6395ba5eff60dbd740
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58073861"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58811507"
 ---
-# <a name="manage-resources-with-a-bot-file"></a>Administración de recursos con un archivo .bot
+# <a name="manage-bot-resources"></a>Administración de recursos de bot
 
-Los bots suelen consumir muchos servicios diferentes, como [LUIS.ai](https://luis.ai) o [QnaMaker.ai](https://qnamaker.ai). Cuando está desarrollando un bot, no hay ningún lugar uniforme para almacenar los metadatos acerca de los servicios que están en uso.  Esto impide la creación de herramientas que entiendan un bot como un todo.
+Los bots suelen usar servicios diferentes, como [LUIS.ai](https://luis.ai) o [QnaMaker.ai](https://qnamaker.ai). Cuando está desarrollando un bot, es preciso que pueda realizar un seguimiento de todos ellos. Puede usar diversos métodos como appsettings.json, web.config o .env. 
 
-Para solucionar este problema, hemos creado un **archivo .bot** para que actúe como el lugar para reunir todas las referencias de servicio en un solo lugar y habilitar las herramientas.  Por ejemplo, Bot Framework Emulator ([V4](https://aka.ms/Emulator-wiki-getting-started)) usa un archivo .bot para crear una vista unificada de los servicios conectados que consume el bot.  
+> [!IMPORTANT]
+> Antes de la versión Bot Framework SDK 4.3, se ofrecía el archivo .bot como un mecanismo para administrar los recursos. Sin embargo, en adelante, se recomienda usar el archivo appsettings.json o .env para administrar estos recursos. Los bots que utilicen el archivo .bot seguirán funcionando por ahora, aunque este archivo está **_en desuso_**. Si ha estado usando un archivo .bot para administrar recursos, siga los pasos aplicables para migrar la configuración. 
 
-Con un archivo .bot, puede registrar servicios como:
+## <a name="migrating-settings-from-bot-file"></a>Migración de la configuración a partir de un archivo .bot
+Las siguientes secciones explican cómo migrar la configuración a partir del archivo .bot. Siga las instrucciones del escenario que sea aplicable en su caso.
 
-* **Localhost**: puntos de conexión del depurador local
-* [**Azure Bot Service**](https://azure.microsoft.com/en-us/services/bot-service/): registros de Azure Bot Service.
-* [**LUIS.AI**](https://www.luis.ai/): LUIS permite al bot comunicarse con las personas con lenguaje natural... 
-* [**QnA Maker**](https://qnamaker.ai/): crear, entrenar y publicar un bot de preguntas y respuestas simple basado en direcciones URL de preguntas más frecuentes, documentos estructurados o contenido editorial en cuestión de minutos.
-* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch): modelos para el envío mediante varios servicios.
-* [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/): para las conclusiones y el análisis del bot.
-* [**Azure Blob Storage**](https://azure.microsoft.com/en-us/services/storage/blobs/): para la persistencia del estado del bot. 
-* [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/): servicio de base de datos multimodelo distribuido globalmente para conservar el estado del bot.
+**Escenario 1: bot local que tiene un archivo .bot**
 
-Aparte de estos, el bot podría depender de otros servicios personalizados. Puede aprovechar la funcionalidad de [servicio genérico](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/add-services.md) para conectar una configuración de servicio genérico.
+En este escenario tiene un bot local que usa un archivo .bot, pero _este no se ha migrado_ a Azure Portal. Siga los pasos siguientes para migrar la configuración del archivo .bot al archivo appsettings.json o .env.
 
-## <a name="when-is-a-bot-file-created"></a>¿Cuando se crea un archivo .bot? 
-- Si crea un bot con [Azure Bot Service](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryResultsListBlade/selectedSubMenuItemId/%7B%22menuItemId%22%3A%22gallery%2FCognitiveServices_MP%2FBotService%22%2C%22resourceGroupId%22%3A%22%22%2C%22resourceGroupLocation%22%3A%22%22%2C%22dontDiscardJourney%22%3Afalse%2C%22launchingContext%22%3A%7B%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%5D%2C%22menuItemId%22%3A%22CognitiveServices_MP%22%2C%22subMenuItemId%22%3A%22BotService%22%7D%7D), se crea automáticamente un archivo .bot con la lista de servicios conectados aprovisionados. El archivo .bot se cifra de forma predeterminada.
-- Si crea un bot mediante una [plantilla](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) de Bot Framework SDK V4 para Visual Studio o mediante el [generador Yeoman](https://www.npmjs.com/package/generator-botbuilder) de Bot Builder, se crea un archivo .bot automáticamente. No se aprovisionan servicios conectados en este flujo y no se cifra el archivo de bot.
-- Si está empezando con [BotBuilder-samples](https://github.com/Microsoft/botbuilder-samples), cada ejemplo de Bot Framework SDK V4 incluye un archivo .bot y el archivo .bot no está cifrado. 
-- También puede crear un archivo de bot mediante la herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/README.md).
+- Si el archivo .bot está cifrado, deberá descifrarlo mediante el comando siguiente:
 
-## <a name="what-does-a-bot-file-look-like"></a>¿Qué aspecto tiene un archivo de bot? 
-Eche un vistazo a un archivo [.bot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json) de ejemplo.
-Para obtener información sobre cómo cifrar y descifrar el archivo .bot, consulte [Secretos del bot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/bot-file-encryption.md).
+```cli
+msbot secret --bot <name-of-bot-file> --secret "<bot-file-secret>" --clear` command.
+```
 
-## <a name="why-do-i-need-a-bot-file"></a>¿Por qué necesito un archivo .bot?
+- Abra el archivo .bot descifrado, copie los valores y agréguelos al archivo appsettings.json o .env.
+- Actualice el código para que lea la configuración del archivo appsettings.json o .env.
 
-Un archivo .bot **no** es un requisito para crear bots con Bot Framework SDK. También puede usar appsettings.json, web.config, env, un almacén de claves o cualquier mecanismo que le convenga para realizar un seguimiento de las referencias de servicio y las claves de las que depende el bot. Sin embargo, para probar el bot con el emulador, necesitará un archivo .bot. La buena noticia es que el emulador puede crear un archivo .bot para las pruebas. Para ello, inicie el emulador y haga clic en el vínculo **Crear una nueva configuración de bot** en la página de bienvenida. En el cuadro de diálogo que aparece, escriba un **nombre de bot** y una **dirección URL del punto de conexión**. A continuación, conéctese.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Las ventajas del uso de un archivo .bot son:
-- Proporciona una manera estándar para el almacenamiento de recursos, independientemente del lenguaje o plataforma que use.   
-- Bot Framework Emulator y las herramientas de la CLI se basan en ellos y funcionan correctamente para el seguimiento de los servicios conectados en un formato coherente (en un archivo .bot) 
-- Las soluciones de herramientas elegantes en torno a la creación y la administración de servicios son más difíciles sin un esquema bien definido (archivo .bot).  
+En el método `ConfigureServices`, use el objeto de configuración que proporciona ASP.NET Core, por ejemplo: 
+
+**Startup.cs**
+```csharp
+var appId = Configuration.GetSection("MicrosoftAppId").Value;
+var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
+options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
+```
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+
+En JavaScript, haga referencia a las variables .env fuera del objeto `process.env`, por ejemplo:
+   
+**index.js**
+
+```js
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+```
+---
+
+Si es necesario, aprovisione recursos y conéctelos al bot mediante el archivo appsettings.json o .env.
+
+**Escenario 2: Bot implementado en Azure con un archivo .bot**
+
+En este escenario ya ha implementado un bot en Azure Portal mediante el archivo .bot y ahora desea migrar la configuración del archivo .bot al archivo appsettings.json o .env.
+
+- Descargue el código del bot de Azure Portal. Al descargar el código, se le pedirá que incluya el archivo appsettings.json o .env que contiene los valores de MicrosoftAppId y MicrosoftAppPassword y el resto de configuraciones adicionales. 
+- Abra el archivo appsettings.json o .env _descargado_ y copie la configuración en el archivo appsettings.json o .env _local_. No olvide quitar las entradas botSecret y botFilePath del archivo appsettings.json o .env local.
+- Actualice el código para que lea la configuración del archivo appsettings.json o .env.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+En el método `ConfigureServices`, use el objeto de configuración que proporciona ASP.NET Core, por ejemplo: 
+
+**Startup.cs**
+```csharp
+var appId = Configuration.GetSection("MicrosoftAppId").Value;
+var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
+options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
+```
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+En JavaScript, haga referencia a las variables .env fuera del objeto `process.env`, por ejemplo:
+   
+**index.js**
+
+```js
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+```
+---
+
+También tendrá que quitar `botFilePath` y `botFileSecret` de la sección **Configuración de la aplicación** en **Azure Portal**.
+
+_Si es necesario_, aprovisione recursos y conéctelos al bot mediante el archivo appsettings.json o .env.
+
+**Escenario 3: bots que utilizan el archivo appsettings.json o .env**
+
+En este escenario se aborda un caso en el que está empezando a desarrollar bots mediante SDK 4.3 desde cero y no dispone de ningún archivo .bot ya existente para migrar. Todas las configuraciones que desea usar en su bot están en el archivo appsettings.json o .env como se muestra a continuación:
+
+```JSON
+{
+  "MicrosoftAppId": "<your-AppId>",
+  "MicrosoftAppPassword": "<your-AppPwd>"
+}
+```
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Para leer la configuración anterior en el código C#, usará el objeto de configuración que proporciona ASP .NET Core, por ejemplo: **Startup.cs**
+```csharp
+var appId = Configuration.GetSection("MicrosoftAppId").Value;
+var appPassword = Configuration.GetSection("MicrosoftAppPassword").Value;
+options.CredentialProvider = new SimpleCredentialProvider(appId, appPassword);
+```
+
+# <a name="javascripttabjs"></a>[JavaScript](#tab/js)
+En JavaScript, haga referencia a las variables .env fuera del objeto `process.env`, por ejemplo: **index.js**.
+```js
+const adapter = new BotFrameworkAdapter({
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword
+});
+```
+
+---
+
+Si es necesario, aprovisione recursos y conéctelos al bot mediante el archivo appsettings.json o .env.
 
 
-## <a name="using-bot-file-in-your-bot-framework-sdk-bot"></a>Uso del archivo .bot en el bot de Bot Framework SDK
+## <a name="faq"></a>Preguntas más frecuentes
+**P:** Quiero crear un bot V4 en Azure Portal. ¿Cómo ha cambiado la experiencia de Azure Portal con la eliminación del archivo .bot?
 
-Puede usar el archivo .bot para obtener información de configuración del servicio en el código del bot. La biblioteca de configuración de Bot Framework disponible para [C#](https://www.nuget.org/packages/Microsoft.Bot.Configuration) y [JS](https://www.npmjs.com/package/botframework-config) le permite cargar un archivo de bot y admite varios métodos para consultar y obtener la información de configuración del servicio adecuada.
+**R:** Cuando cree un bot en Azure Portal, no se creará el archivo .bot. Puede usar la sección **Configuración de la aplicación** de **Azure Portal** para buscar los identificadores y las claves. Cuando descarga el código, estos valores se almacenan en el archivo appsettings.json o .env. En el bot, puede actualizar el código para que lea la configuración antes de realizar la llamada al servicio individual. Una vez actualizado el código del bot, puede usar az bot publish para implementarlo.
+
+**P:** ¿Qué sucede con los bots V3?
+
+**R:** El escenario para los bots de la versión V3 es similar al de los de la versión V4 sin un archivo de bot. El proceso de implementación seguirá funcionando. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
-Consulte el archivo Léame de [MSBot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/README.md) para más información sobre el uso de un archivo de bot.
+- Para ver los pasos para implementar el bot, consulte el tema sobre [implementación](../bot-builder-deploy-az-cli.md).
+- Para proteger las claves y secretos, es recomendable usar Azure Key Vault. Azure Key Vault es una herramienta para almacenar secretos y acceder a ellos de forma segura. Secretos como, por ejemplo, el punto de conexión y las claves de creación del bot. Proporciona una solución de [administración de claves](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) y facilita la creación y control de las claves de cifrado para tener un control estricto sobre los secretos.
+
+
+<!--
+
+# Manage resources with a .bot file
+
+Bots usually consume lots of different services, such as [LUIS.ai](https://luis.ai) or [QnaMaker.ai](https://qnamaker.ai). When you are developing a bot, there is no uniform place to store the metadata about the services that are in use.  This prevents us from building tooling that looks at a bot as a whole.
+
+To address this problem, we have created a **.bot file** to act as the place to bring all service references together in one place to 
+enable tooling.  For example, the Bot Framework Emulator ([V4](https://aka.ms/Emulator-wiki-getting-started)) uses a  .bot file to create a unified view over the connected services your bot consumes.  
+
+With a .bot file, you can register services like:
+
+* **Localhost** local debugger endpoints
+* [**Azure Bot Service**](https://azure.microsoft.com/en-us/services/bot-service/) Azure Bot Service registrations.
+* [**LUIS.AI**](https://www.luis.ai/) LUIS gives your bot the ability to communicate with people using natural language.. 
+* [**QnA Maker**](https://qnamaker.ai/) Build, train and publish a simple question and answer bot based on FAQ URLs, structured documents or editorial content in minutes.
+* [**Dispatch**](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) models for dispatching across multiple services.
+* [**Azure Application Insights**](https://azure.microsoft.com/en-us/services/application-insights/) for insights and bot analytics.
+* [**Azure Blob Storage**](https://azure.microsoft.com/en-us/services/storage/blobs/) for bot state persistence. 
+* [**Azure Cosmos DB**](https://azure.microsoft.com/en-us/services/cosmos-db/) - globally distributed, multi-model database service to persist bot state.
+
+Apart from these, your bot might rely on other custom services. You can leverage the [generic service](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/add-services.md) capability to connect a generic service configuration.
+
+## When is a .bot file created? 
+- If you create a bot using [Azure Bot Service](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryResultsListBlade/selectedSubMenuItemId/%7B%22menuItemId%22%3A%22gallery%2FCognitiveServices_MP%2FBotService%22%2C%22resourceGroupId%22%3A%22%22%2C%22resourceGroupLocation%22%3A%22%22%2C%22dontDiscardJourney%22%3Afalse%2C%22launchingContext%22%3A%7B%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%5D%2C%22menuItemId%22%3A%22CognitiveServices_MP%22%2C%22subMenuItemId%22%3A%22BotService%22%7D%7D), a .bot file is automatically created for you with list of connected services provisioned. The .bot is encrypted by default.
+- If you create a bot using Bot Framework V4 SDK [Template](https://marketplace.visualstudio.com/items?itemName=BotBuilder.botbuilderv4) for Visual Studio or using Bot Builder [Yeoman Generator](https://www.npmjs.com/package/generator-botbuilder), a .bot file is automatically created. No connected services are provisioned in this flow and the bot file is not encrypted.
+- If you are starting with [BotBuilder-samples](https://github.com/Microsoft/botbuilder-samples), every sample for Bot Framework V4 SDK includes a .bot file and the .bot file is not encrypted. 
+- You can also create a bot file using the [MSBot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/README.md) tool.
+
+## What does a bot file look like? 
+Take a look at a sample [.bot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/sample-bot-file.json) file.
+To learn about encrypting and decrypting the .bot file, see [Bot Secrets](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/docs/bot-file-encryption.md).
+
+## Why do I need a .bot file?
+
+A .bot file is **not** a requirement to build bots with Bot Framework SDK. You can continue to use appsettings.json, web.config, env, 
+keyvault or any mechanism you see fit to keep track of service references and keys that your bot depends on. However, to test
+the bot using the Emulator, you'll need a .bot file. The good news is that Emulator can create a .bot file for testing. To do that, 
+start the Emulator, click on the **create a new bot configuration** link on the Welcome page. In the dialog box that appears, type a **Bot name** and an **Endpoint URL**. Then connect.
+
+The advantages of using .bot file are:
+- Provides a standard way of storing resources regardless of the language/platform you use.   
+- Bot Framework Emulator and CLI tools rely on and work great with tracking connected services in a consistent format (in a .bot file) 
+- Elegant tooling solutions around services creation and management is harder without a well defined schema (.bot file).  
+
+
+## Using .bot file in your Bot Framework SDK bot
+
+You can use the .bot file to get service configuration information in your bot's code. The BotFramework-Configuration library available 
+for [C#](https://www.nuget.org/packages/Microsoft.Bot.Configuration) and [JS](https://www.npmjs.com/package/botframework-config) helps you load a bot file and supports several methods to query and get the appropriate service configuration information.
+
+## Additional resources
+Refer to [MSBot](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/MSBot/README.md) readme file for more information on using a bot file.
+
+-->
+
