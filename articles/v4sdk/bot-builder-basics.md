@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/10/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 70f333cdce15f1d1e908b73d21e706f1af33454b
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: a7f6c22f35719eacf66598e79df5fe52ff19dd43
+ms.sourcegitcommit: 103aa3316f9ff658cf2b0d341c5e76c3efc581ee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55783384"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59540369"
 ---
 # <a name="how-bots-work"></a>Funcionamiento de los bots
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Un bot es una aplicación con la que los usuarios interactúan de forma conversacional mediante texto, gráficos (tarjetas o imágenes) o voz. Cada interacción entre el usuario y el bot genera una *actividad*. Bot Framework Service, que es un componente de Azure Bot Service, envía información entre la aplicación del usuario conectada al bot (como Facebook, Skype o Slack, a lo que llamamos el *canal*) y el bot. Cada canal puede incluir información adicional en las actividades que envían. Antes de crear bots, es importante entender cómo utiliza el bot los objetos de actividad para comunicarse con los usuarios. En primer lugar, echemos un vistazo a las actividades que se intercambian cuando ejecutamos un bot de eco sencillo. 
 
