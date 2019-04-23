@@ -9,10 +9,10 @@ ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
-ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59508162"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
@@ -417,7 +417,7 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Kit de habilidades de Cortana][CortanaGetStarted]
-* [Incorporación de voz a los mensajes](bot-builder-nodejs-text-to-speech.md)
+* [Incorporación de voz a mensajes](bot-builder-nodejs-text-to-speech.md)
 * [Referencias de SSML][SSMLRef]
 * [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
 * [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]
