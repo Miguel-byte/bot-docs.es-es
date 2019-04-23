@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/27/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed723e2caebd7fc085c6f9f2887e277195ee3516
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aea34c068afa6fef3a701bc1179341ff4861e32a
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224883"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59541101"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -225,9 +225,9 @@ En primer lugar, solo algunos canales admiten tarjetas adaptables y aquellos can
 
 En segundo lugar, una tarjeta adaptable entrega los mensajes en formato de tarjeta y el canal determina el diseño de la tarjeta. El formato de los mensajes que entrega MessageFactory depende del canal y no es necesariamente en formato de tarjeta, a menos que la tarjeta adaptable sea parte de los datos adjuntos. 
 
-Para encontrar la información más reciente sobre la compatibilidad de canales de tarjetas adaptables, consulte <a href="http://adaptivecards.io/visualizer/">Visualizador de tarjetas adaptables</a>.
+Para encontrar la información más reciente sobre la compatibilidad de canales de tarjetas adaptables, consulte <a href="http://adaptivecards.io/designer/">Diseñador de tarjetas adaptables</a>.
 
-Para usar las tarjetas adaptables, no olvide agregar el paquete `Microsoft.AdaptiveCards` de NuGet. 
+Para usar las tarjetas adaptables, no olvide agregar el paquete `AdaptiveCards` de NuGet. 
 
 
 > [!NOTE]

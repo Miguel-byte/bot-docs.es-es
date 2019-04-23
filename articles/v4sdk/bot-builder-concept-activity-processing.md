@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/13/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6ba140324fb6b50c2d6696aae6e4bd3e8824fd96
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997572"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508232"
 ---
 # <a name="activity-processing"></a>Procesamiento de actividades
 
@@ -29,7 +29,7 @@ Las actividades, especialmente las [enviadas desde un bot](#generating-responses
 
 El adaptador de bot encapsula los procesos de autenticación, envía actividades a Bot Connector Service y recibe actividades de este. Cuando el bot recibe una actividad, el adaptador encapsula todo lo relativo a esa actividad, crea un [objeto de contexto](#turn-context) para el turno, lo pasa a la lógica de aplicación del bot y envía las respuestas que genera el bot al canal del usuario.
 
-## <a name="authentication"></a>Autenticación
+## <a name="authentication"></a>Authentication
 
 El adaptador autentica todas las actividades entrantes que recibe la aplicación mediante la información de la actividad y el encabezado `Authentication` de la solicitud de REST. El adaptador usa un objeto de conector y las credenciales de la aplicación para autenticar las actividades de salida con destino al usuario.
 
@@ -46,7 +46,7 @@ Cuando un adaptador recibe una actividad, genera un objeto de **contexto de turn
 * Actividad: las solicitudes y las respuestas de una conversación son los tipos de actividades. Este contexto proporciona información sobre la actividad entrante, incluida la información de enrutamiento, la información sobre el canal, la conversación, el remitente y el receptor.
 * Información personalizada: si extiende el bot mediante la implementación de software intermedio o dentro de la lógica del bot, puede hacer que haya información adicional disponible en cada turno.
 
-El objeto de contexto también se puede usar para enviar una respuesta al usuario y obtener una referencia al adaptador <!-- to create a new conversation or continue an existing one-->.
+El objeto de contexto también se puede usar para enviar una respuesta al usuario y obtener una referencia al adaptador.<!-- to create a new conversation or continue an existing one-->.
 
 > [!NOTE]
 > La aplicación y el adaptador controlarán las solicitudes de forma asincrónica, pero no es necesario que la lógica de negocios esté controlada por la solicitud-respuesta.

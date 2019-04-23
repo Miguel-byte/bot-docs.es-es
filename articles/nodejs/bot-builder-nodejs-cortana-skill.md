@@ -6,14 +6,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
+ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e00128ca82ec8b97502d8f2fbf42be10cc91ade6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 690c456a1baa94eab1f0efbed6ce2c2e1f5cb280
+ms.sourcegitcommit: cacd381d185b2b8b7fb99082baf83d9f65dde341
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225309"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59508162"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -58,42 +58,46 @@ La propiedad **InputHint** ayuda a indicar a Cortana si su bot está esperando u
 |------|------|
 | **acceptingInput** | El bot está listo para recibir información de forma pasiva, pero no está esperando una respuesta. Cortana acepta la entrada del usuario si el usuario mantiene presionado el botón del micrófono.|
 | **expectingInput** | Indica que el bot está esperando una respuesta del usuario de forma activa. Cortana escucha hasta que el usuario habla por el micrófono.  |
-| **ignoringInput** | Cortana está ignorando las entradas. Su bot puede enviar esta sugerencia si se está procesando activamente una solicitud e ignorará la entrada de los usuarios hasta que se complete la solicitud.  |
-
+||NOTA:  _No_ use **expectingInput** en dispositivos sin interfaz de usuario (dispositivos sin pantalla). Consulte las [pregungas más frecuentes sobre el kit de habilidades de Cortana](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
+| **ignoringInput** | Cortana está ignorando las entradas. El bot puede enviar esta sugerencia si se está procesando activamente una solicitud e ignorará la entrada de los usuarios hasta que se complete la solicitud.  |
 
 El ejemplo siguiente muestra cómo Cortana lee texto sin formato o SSML:
 
 ```javascript
+
 // Have Cortana read plain text
 session.say('This is the text that Cortana displays', 'This is the text that is spoken by Cortana.');
 
 // Have Cortana read SSML
 session.say('This is the text that Cortana displays', '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">This is the text that is spoken by Cortana.</speak>');
+
 ```
 
 Este ejemplo muestra cómo informar a Cortana que se espera la intervención del usuario. El micrófono quedará encendido.
+
 ```javascript
+
 // Add an InputHint to let Cortana know to expect user input
 session.say('Hi there', 'Hi, what’s your name?', {
     inputHint: builder.InputHint.expectingInput
 });
+
 ```
 <!-- TODO: tip about time limit and batching -->
-
 
 ### <a name="prompts"></a>Mensajes
 
 Además de usar el método **session.say()**, también puede pasar texto o SSML a mensajes integrados con las opciones **speak** y **retrySpeak**.  
 
 ```javascript
+
 builder.Prompts.text(session, 'text based prompt', {                                    
     speak: 'Cortana reads this out initially',                                               
     retrySpeak: 'This message is repeated by Cortana after waiting a while for user input',  
     inputHint: builder.InputHint.expectingInput                                              
 });
+
 ```
-
-
 
 <!-- TODO: Link to SSML library -->
 
@@ -102,6 +106,7 @@ Para presentar al usuario una lista de opciones, utilice **Prompts.choice**. La 
 **Prompts.choice** admite opciones ordinales. Esto significa que el usuario puede decir "el primero", "el segundo" o "el tercero" para elegir un elemento de una lista. Por ejemplo, dado el siguiente mensaje, si el usuario pide a Cortana "la segunda opción", el mensaje devolverá el valor 8.
 
 ```javascript
+
         var choices = [
             { value: '4', action: { title: '4 Sides' }, synonyms: 'four|for|4 sided|4 sides' },
             { value: '8', action: { title: '8 Sides' }, synonyms: 'eight|ate|8 sided|8 sides' },
@@ -111,11 +116,13 @@ Para presentar al usuario una lista de opciones, utilice **Prompts.choice**. La 
         builder.Prompts.choice(session, 'choose_sides', choices, { 
             speak: speak(session, 'choose_sides_ssml') // use helper function to format SSML
         });
+
 ```
 
 En el ejemplo anterior, el SSML de la propiedad **speak** del mensaje adopta el formato con el uso de cadenas almacenadas en un archivo de mensajes localizados con el formato siguiente. 
 
 ```json
+
 {
     "choose_sides": "__Number of Sides__",
     "choose_sides_ssml": [
@@ -124,8 +131,8 @@ En el ejemplo anterior, el SSML de la propiedad **speak** del mensaje adopta el 
         "All the standard sizes are supported."
     ]
 }
-```
 
+```
 
 Una función de la aplicación auxiliar compila después el elemento raíz necesario del documento de lenguaje de marcado de síntesis de voz (SSML). 
 
@@ -157,7 +164,7 @@ Consulte los [procedimientos recomendados para el diseño de tarjetas][CardDesig
 
 El código siguiente muestra cómo agregar las propiedades **speak** y **inputHint** a un mensaje que contiene una tarjeta Hero.
 
-```javascript 
+```javascript
 
 bot.dialog('HelpDialog', function (session) {
     var card = new builder.HeroCard(session)
@@ -172,7 +179,6 @@ bot.dialog('HelpDialog', function (session) {
         .inputHint(builder.InputHint.acceptingInput); // Tell Cortana to accept input
     session.send(msg).endDialog();
 }).triggerAction({ matches: /help/i });
-
 
 /** This helper function builds the required root element of a Speech Synthesis Markup Language (SSML) document. */
 module.exports.speak = function (template, params, options) {
@@ -196,6 +202,7 @@ La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuideli
 El ejemplo RollerSkill empieza con la apertura de una tarjeta mediante algunos botones para decir al usuario qué opciones tiene a su disposición.
 
 ```javascript
+
 /**
  *   Create your bot with a default message handler that receive messages from the user.
  * - This function is be called anytime the user's utterance isn't
@@ -231,8 +238,6 @@ Para iniciar el diálogo, el controlador **triggerAction()** de este diálogo pe
 
 
 ```javascript
-
-
 bot.dialog('CreateGameDialog', [
     function (session) {
         // Initialize game structure.
@@ -293,6 +298,7 @@ bot.dialog('CreateGameDialog', [
     /(roll|role|throw|shoot).*(dice|die|dye|bones)/i,
     /new game/i
  ]});
+
 ```
 
 ### <a name="render-results"></a>Representación de resultados
@@ -402,6 +408,7 @@ bot.dialog('PlayGameDialog', function (session, args) {
         session.replaceDialog('CreateGameDialog');
     }
 }).triggerAction({ matches: /(roll|role|throw|shoot) again/i });
+
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
@@ -410,7 +417,7 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Kit de habilidades de Cortana][CortanaGetStarted]
-* [Incorporación de voz a mensajes](bot-builder-nodejs-text-to-speech.md)
+* [Incorporación de voz a los mensajes](bot-builder-nodejs-text-to-speech.md)
 * [Referencias de SSML][SSMLRef]
 * [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
 * [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]

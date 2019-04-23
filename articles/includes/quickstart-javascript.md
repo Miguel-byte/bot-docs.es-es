@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: b3f9a0d2c24809c0814baa9bfb8f993a4ba55ef7
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59551542"
+---
 ## <a name="prerequisites"></a>Requisitos previos
 
 - [Visual Studio Code](https://www.visualstudio.com/downloads)
@@ -11,6 +19,7 @@
 > La instalación de las herramientas de compilación de Windows que se indican a continuación solo se necesitan si se usa Windows como sistema operativo de desarrollo. En algunas instalaciones, el paso de instalación de restify genera un error relacionado con node-gyp.
 > Si este es el caso, intente ejecutar este comando con permisos elevados.
 > Esta llamada también puede bloquearse si Python ya está instalado en el sistema:
+
 > ```bash
 > npm install -g windows-build-tools
 > ```

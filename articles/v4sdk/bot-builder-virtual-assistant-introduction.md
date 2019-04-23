@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 13/12/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3a3074ff9e8de36d7a7cf7b86fef62979bc53fa8
-ms.sourcegitcommit: 958a28bbab7dd29b384bb2e2d58d866e88f53316
+ms.openlocfilehash: 1d231672284e20e3f215cbba16d881ae0ecab7ec
+ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500649"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59540991"
 ---
 # <a name="virtual-assistant-solution-overview"></a>Introducción a la solución Virtual Assistant
 
@@ -44,7 +44,7 @@ Aptitud de correo electrónico | La versión preliminar de la aptitud de correo 
 Aptitud de tareas pendientes | La versión preliminar de la aptitud de tareas pendientes proporciona un modelo de lenguaje completo para las actividades habituales relacionadas. La aptitud está integrada actualmente en OneNote con compatibilidad para Microsoft Graph (OutlookTask) próximamente.
 Integración de dispositivos | Nuestros SDK de Azure Bot Service (DirectLine) junto con las tarjetas adaptables y los SDK de Voz permiten una fácil integración entre plataformas para los dispositivos. Están previstos ejemplos de integración de dispositivos y plataformas, entre las que se incluye, Edge.
 Herramientas de ejecución de pruebas | Además del emulador de Bot Framework, se proporciona una herramienta de ejecución de pruebas basada en WebChat que permite la comprobación de escenarios de autenticación más complejos. Una sencilla herramienta de ejecución de pruebas basada en una consola muestra el enfoque para intercambiar mensajes para ayudar a la plataforma a facilitar la integración del dispositivo.
-Implementación automatizada | Se implementan automáticamente todos los recursos de Azure necesarios para el asistente: registro de bots, Azure App Service, LUIS, QnAMaker, Content Moderator, CosmosDB, Azure Storage y Application Insights. Además, se crean modelos de LUIS para todas las aptitudes, y modelos de QnAMaker y de Dispatch, y se entrenan y publican para permitir la realización inmediata de pruebas.
+Implementación automatizada | Todos los recursos de Azure necesarios para el asistente se implementan automáticamente: registro de bots, Azure App Service, LUIS, QnA Maker, Content Moderator, CosmosDB, Azure Storage y Application Insights. Además, se crean modelos de LUIS para todas las aptitudes, y modelos de QnAMaker y de Dispatch, y se entrenan y publican para permitir la realización inmediata de pruebas.
 Modelo de lenguaje de automoción | Un modelo de lenguaje de automoción que abarca dominios fundamentales como telefonía, navegación y control de características del vehículo estará disponible próximamente.
 
 ## <a name="example-scenarios"></a>Escenarios de ejemplo
