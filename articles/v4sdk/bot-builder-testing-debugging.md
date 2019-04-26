@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e0fbf2fe505866ec28385b2be3b9fcd7988be890
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 618d438a384fa6a91ba919265519397cac555fda
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224933"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904858"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Directrices de prueba y depuración
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Los bots son aplicaciones complejas con una gran cantidad de elementos diferentes que funcionan conjuntamente. Como cualquier otra aplicación compleja, esto puede provocar algunos errores interesantes o que el bot se comporte de forma diferente a la esperada.
 

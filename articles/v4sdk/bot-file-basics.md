@@ -7,16 +7,18 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 03/30/2019
+ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 14552c55da4b1f9b581b81917496de179e92762b
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 65ad712a4d3cfeebb5c85375e023e301f0e101ca
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58811507"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904528"
 ---
 # <a name="manage-bot-resources"></a>Administración de recursos de bot
+
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 Los bots suelen usar servicios diferentes, como [LUIS.ai](https://luis.ai) o [QnaMaker.ai](https://qnamaker.ai). Cuando está desarrollando un bot, es preciso que pueda realizar un seguimiento de todos ellos. Puede usar diversos métodos como appsettings.json, web.config o .env. 
 

@@ -10,14 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4c268bc40b7dc3315232d8f695bdb79343b15e21
-ms.sourcegitcommit: c7d2e939ec71f46f48383c750fddaf6627b6489d
+ms.openlocfilehash: 75e12ab44915783c33c3b2ee10775cc6f00487bb
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55795594"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905038"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Adición de telemetría al bot
+
+[!INCLUDE[applies-to](../includes/applies-to.md)]
+
 En la versión 4.2 de Bot Framework SDK, se agregó el registro de datos de telemetría al producto.  Esto permite que las aplicaciones de bot envíen datos de eventos a servicios tales como Application Insights.
 
 En este documento se indica cómo integrar su bot con las nuevas características de telemetría.  
@@ -184,7 +187,7 @@ Registra los pasos individuales de un diálogo en cascada.
 - `customDimensions.activityType` ([Desde el inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - `customDimensions.channelId` ([Desde el inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - `customDimensions.DialogId` (Este es el identificador de diálogo (cadena) que se pasa a la cascada.  Se puede considerar el "tipo de cascada")
-- `customDimensions.StepName` (nombre del método o `StepXofY` si es lambda)
+- `customDimensions.StepName` (nombre del método o `StepXofY` si es una expresión lambda)
 - `customDimensions.InstanceID` (único para cada instancia del diálogo)
 
 ### <a name="customevent-waterfalldialogcomplete"></a>CustomEvent: "WaterfallDialogComplete"
@@ -244,7 +247,7 @@ Registra cuando el bot recibe un mensaje nuevo.
 - RecipientName
 - ConversationId
 - ConversationName
-- Locale
+- Configuración regional
 
 ### <a name="customevent-botmessagesend"></a>CustomEvent: BotMessageSend 
 **Registrado de:** TelemetryLoggerMiddleware (**ejemplo de Enterprise**)
@@ -260,7 +263,7 @@ Registra cuando el bot envía un mensaje.
 - Channel (canal de origen; por ejemplo, Skype, Cortana, Teams)
 - RecipientId
 - ConversationName
-- Locale
+- Configuración regional
 - Text (opcional para información de identificación personal)
 - RecipientName (opcional para información de identificación personal)
 
@@ -280,9 +283,9 @@ Registra los resultados del servicio LUIS.
 - ActivityID ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - Channel ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - ActivityType ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
-- Intent
+- Intención
 - IntentScore
-- Question
+- Pregunta
 - ConversationId
 - SentimentLabel
 - SentimentScore
@@ -299,11 +302,11 @@ Registra los resultados del servicio QnA Maker.
 - ActivityID ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - Channel ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
 - ActivityType ([del inicializador de datos de telemetría](https://aka.ms/telemetry-initializer))
-- Username
+- Nombre de usuario
 - ConversationId
 - OriginalQuestion
-- Question
-- Answer
+- Pregunta
+- Respuesta
 - Score (*opcional*: si encontramos conocimientos)
 
 ## <a name="querying-the-data"></a>Consultas de datos

@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/08/2018
+ms.date: 4/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 927d206c44d5809611871cfec7369e03e07837aa
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: bf0c5c0bba335c41a268d43014e925f6a9289d75
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224793"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904978"
 ---
 # <a name="use-button-for-input"></a>Uso del botón para la entrada de datos
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Puede habilitar el bot para que presente botones en los que el usuario puede pulsar para proporcionar una entrada. Los botones mejoran la experiencia del usuario al permitir que este responda una pregunta o haga una selección simplemente pulsando un botón, en lugar de tener que escribir una respuesta con un teclado. A diferencia de los botones que aparecen en las tarjetas enriquecidas (que permanecen visibles y accesibles para el usuario incluso después de que se pulsen), los botones que aparecen en el panel de acciones sugeridas desaparecerán una vez que el usuario haya hecho una selección. Esto evita que el usuario pulse botones obsoletos dentro de una conversación y simplifica el desarrollo de bots (ya que no necesitará tener en cuenta ese escenario). 
 

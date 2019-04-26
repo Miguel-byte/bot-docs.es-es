@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 68c01b0f12790393fe0ee7ae0bd28addf2d26ae7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.openlocfilehash: 811921cdeccc8c870b5b9dfc9daaab57e449c0cd
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591126"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905048"
 ---
 # <a name="gather-user-input-using-a-dialog-prompt"></a>Recopilación de datos de entrada del usuario mediante un aviso de diálogo
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 La recopilación de información mediante la publicación de preguntas es una de las principales formas de interacción de un bot con los usuarios. La biblioteca de *diálogos* facilita la formulación de preguntas, así como la validación de la respuesta para asegurarse de que coincide con un tipo de datos específico o cumple con las reglas de validación personalizadas. En este tema se explica cómo crear y llamar avisos desde un diálogo de cascada.
 

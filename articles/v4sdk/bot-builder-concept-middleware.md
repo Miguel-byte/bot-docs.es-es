@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 11/8/2018
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 231ed330faf9ce777a5acc5f4e6272b747a6f7fc
-ms.sourcegitcommit: d385ec5fe61c469ab17e6f21b4a0d50e5110d0fd
+ms.openlocfilehash: fddaced5693242e1debed6135122ace5a3cd316b
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54298282"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904998"
 ---
 # <a name="middleware"></a>Software intermedio
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
 El software intermedio es simplemente una clase que se encuentra entre el adaptador y la lógica del bot, que se agrega a la colección de software intermedio del adaptador durante la inicialización. El SDK le permite escribir su propio middleware o agregar middleware creado por terceros. Todas las actividades que entran y salen de su bot pasan por el middleware.
 

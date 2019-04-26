@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/13/18
+ms.date: 4/13/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 314a8a55906ec150d001b56c67ffbfe0ae2049f8
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: 1f74e34c0eaf303e612f94605104482cd5f1f080
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541131"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904504"
 ---
 # <a name="write-directly-to-storage"></a>Escritura directa en el almacenamiento
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Puede leer y escribir directamente en el objeto de almacenamiento sin usar middleware ni un objeto de contexto. Esto puede ser adecuado para los datos que usa el bot, que provienen de un origen externo al flujo de conversación del bot. Por ejemplo, suponga que el bot permite al usuario solicitar el informe meteorológico y el bot lo recupera para una fecha concreta, leyéndolo de una base de datos externa. El contenido de la base de datos meteorológicos no depende de la información del usuario ni del contexto de la conversación, por lo que se podría leer directamente desde el almacenamiento en lugar de usar el administrador de estado. En los ejemplos de código de este artículo, se muestra cómo leer y escribir datos en el almacenamiento con **almacenamiento en memoria**, **Cosmos DB**, **Blob Storage** y el **almacén de transcripciones de blobs de Azure**. 
 

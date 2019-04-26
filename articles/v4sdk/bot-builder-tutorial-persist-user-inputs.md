@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/19/2018
+ms.date: 04/19/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 97a89744282ca1e31a99aa0e45345656e43f5cd0
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: bb1e909de69a7690e844701e182dddcebf91cc87
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225320"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904928"
 ---
 # <a name="persist-user-data"></a>Conservación de datos de usuario
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Cuando el bot pide una entrada a los usuarios, lo más probable es que quiera conservar parte de la información en el almacenamiento de alguna forma. Bot Framework SDK permite almacenar las entradas de los usuarios mediante *almacenamiento en memoria* o almacenamiento en una base de datos como *CosmosDB*. Los tipos de almacenamiento local se usan principalmente durante la realización de pruebas o la creación de prototipos del bot. Sin embargo, los tipos de almacenamiento persistente, como el almacenamiento de base de datos, son los mejores para los bots de producción.
 

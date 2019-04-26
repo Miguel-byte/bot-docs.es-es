@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/15/2018
+ms.date: 4/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 207dfaf71e8af7af3a36e496deb506ff9d0c13c8
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 65d811babcdaf775d4e3a9889a1440c8f2b1ece6
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224893"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59905138"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envío de notificaciones activas a los usuarios
 
-[!INCLUDE [pre-release-label](~/includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Normalmente, cada mensaje que envía un bot al usuario se relaciona directamente con la anterior entrada del usuario.
 En algunos casos, puede que un bot tenga que enviar al usuario un mensaje que no está relacionado directamente con el tema actual de la conversación o con el último mensaje que envió el usuario. Este tipo de mensajes se llaman _mensajes proactivos_.

@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/13/2018
+ms.date: 04/13/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: fa243d8cc00fd6fadf7c51668c9e7ba74d0c06e2
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.openlocfilehash: d72c374978f509bec0a17ba99c585578757ded61
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59508232"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904478"
 ---
 # <a name="activity-processing"></a>Procesamiento de actividades
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 El bot y el usuario interactúan e intercambian información mediante actividades. Cada una de las actividades que recibe la aplicación de bot se pasa a un adaptador de bot, que a su vez pasa la información de la actividad a la lógica del bot y, por último, envía las respuestas al usuario. La recepción de una actividad y su posterior procesamiento por el bot se denomina turno; representa un ciclo completo del bot. Un turno finaliza cuando se termina toda la ejecución, la actividad se ha procesado por completo y se han completado todas las capas del bot.
 

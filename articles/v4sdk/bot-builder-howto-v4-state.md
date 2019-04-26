@@ -8,18 +8,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 11/26/18
+ms.date: 4/16/19
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4cafa3516395fb8e44d2755d0fa09e7a5bd6203c
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: a79fd768f7c132301ba28bace03b5b86599fb4dd
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711949"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904762"
 ---
 # <a name="save-user-and-conversation-data"></a>Guardado de los datos del usuario y la conversación
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Inherentemente, un bot no tiene estado. Una vez implementado el bot, no se puede ejecutar en el mismo proceso o en el mismo equipo de turno a otro. Sin embargo, el bot debe poder hacer un seguimiento del contexto de una conversación, para que pueda controlar su comportamiento y recordar las respuestas a las preguntas anteriores. Las características de almacenamiento y estado del SDK permiten agregar un estado al bot.
 

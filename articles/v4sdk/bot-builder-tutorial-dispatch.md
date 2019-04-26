@@ -10,16 +10,16 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 01/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bec6f44db929eab43cfcbbd6b2920b79924b7576
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.openlocfilehash: 373470b000b168e6e434ed5ed08b35c18ab09a99
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55712009"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904968"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 En este tutorial, demostramos cómo utilizar el servicio de distribución para enrutar las expresiones cuando hay varios modelos de LUIS y servicios de QnA Maker para diferentes escenarios que admite el bot. En este caso, configuramos la distribución con varios modelos de LUIS para conversaciones sobre automatización de dispositivos del hogar e información meteorológica; también vamos a configurar el servicio QnA Maker para responder a preguntas basadas en un archivo de texto de preguntas frecuentes como entrada. Este ejemplo combina los servicios siguientes.
 
