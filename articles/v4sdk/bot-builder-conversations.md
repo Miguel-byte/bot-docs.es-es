@@ -8,17 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 09/01/2018
+ms.date: 04/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b94150e168942370a38d39742157e57d0118f0eb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7f35b8a135cdde6ffaf11798a5c0e4a3688d5b4f
+ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225089"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59904828"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
-[!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
+[!INCLUDE[applies-to](../includes/applies-to.md)]
 
 Para diseñar del flujo de conversación de un bot es necesario decidir cómo responde el bot cuando el usuario le dice algo. Un bot reconoce en primer lugar la tarea o el tema de conversación basándose en un mensaje del usuario. Para determinar la tarea o el tema (lo que se denomina *intención*) asociados al mensaje de un usuario, el bot puede buscar palabras o patrones en el texto del mensaje o bien puede aprovechar servicios como [Language Understanding](bot-builder-concept-luis.md) y [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
 
@@ -102,7 +102,8 @@ No hay una respuesta correcta a esta pregunta, ya que la mejor solución depende
 
 ## <a name="conversation-lifetime"></a>Duración de la conversación
 
-<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links --> Un bot recibe una actividad de _actualización de la conversación_ cada vez que se ha agregado a una conversación, se han agregado otros miembros a la conversación (o se han eliminado de ella) o han cambiado los metadatos de la conversación.
+<!-- Note: these activities are dependent on whether the channel actually sends them. Also, we should add links -->
+Un bot recibe una actividad de _actualización de la conversación_ cada vez que se ha agregado a una conversación, se han agregado otros miembros a la conversación (o se han eliminado de ella) o bien han cambiado los metadatos de la conversación.
 Puede que le interese que el bot reaccione a las actividades de actualización de la conversación saludando a los usuarios o presentándose.
 
 Un bot recibe una actividad de _finalización de la conversación_ para indicar que el usuario ha puesto fin a la conversación. Un bot podría enviar una actividad de _finalización de la conversación_ para indicar que la conversación está llegando a su fin.
