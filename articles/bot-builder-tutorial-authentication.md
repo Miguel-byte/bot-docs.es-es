@@ -9,12 +9,12 @@ ms.service: bot-service
 ROBOTS: NOINDEX
 ms.date: 10/04/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: b79aaaa2f85ea3d7d6c4388ebc7051890350e9a8
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 8e2cb944e56271be9ff925e05c48236e94998f1d
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904508"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033012"
 ---
 # <a name="add-authentication-to-your-bot-via-azure-bot-service"></a>Incorporación de autenticación al bot mediante Azure Bot Service
 
@@ -122,7 +122,7 @@ Ahora tiene una aplicación v1 de Azure AD configurada.
 
 #### <a name="to-create-an-azure-ad-v2-application"></a>Para crear una aplicación v2 de Azure AD
 
-1. Vaya al [Portal de registro de aplicaciones de Microsoft](https://apps.dev.microsoft.com).
+1. Vaya al [Portal de registro de aplicaciones de Microsoft](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 1. Haga clic en **Agregar una aplicación**.
 1. Asigne un nombre a la aplicación de Azure AD y haga clic en **Crear**.
 

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 8eb45791cfcb578a8dc2fa6a14799c0637daed23
+ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "64563864"
+---
 |        Plantilla        |                                                                                                         DESCRIPCIÓN                                                                                                         |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |         Básica          |                                                                                  Crea un bot que usa diálogos para responder a la entrada del usuario.                                                                                  |

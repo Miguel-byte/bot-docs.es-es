@@ -8,12 +8,13 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/13/2018
-ms.openlocfilehash: c14814dc7e2c83f740202db90b7e41efcdfb66a5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+monikerRange: azure-bot-service-3.0
+ms.openlocfilehash: 21324f68332be6a60f55e6ab55545fc6102bedb9
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224410"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033021"
 ---
 # <a name="create-task-automation-bots"></a>Creación de bots para automatizar tareas
 
@@ -28,8 +29,6 @@ Para comprender mejor la naturaleza de un bot de tareas, considere el siguiente 
 La empresa Contoso recibe varias llamadas al departamento de soporte técnico cada día de empleados que necesitan restablecer sus contraseñas. Contoso quiere automatizar la tarea simple y repetitiva del restablecimiento de contraseña de un empleado para que los empleados del departamento de soporte técnico puedan dedicar su tiempo a abordar los problemas más complejos. 
 
 José, un desarrollador experimentado de Contoso, decide crear un bot para automatizar la tarea de restablecimiento de contraseña. Comienza escribiendo una especificación de diseño para el bot, de la misma forma que lo haría si estuviera creando una nueva aplicación o sitio web. 
-
-::: moniker range="azure-bot-service-3.0"
 
 ### <a name="navigation-model"></a>Modelo de navegación
 
@@ -63,10 +62,7 @@ La especificación describe el cuadro de diálogo raíz, como se muestra en la s
 
 #### <a name="resetpassword-dialog"></a>Cuadro de diálogo ResetPassword
 
-Cuando el usuario elige **Restablecer contraseña** desde el cuadro de diálogo raíz, se invoca el cuadro de diálogo `ResetPassword`. 
-A continuación, el cuadro de diálogo `ResetPassword` invoca otros dos cuadros de diálogo. 
-Primero, invoca el cuadro de diálogo `PromptStringRegex` para recopilar el número de teléfono del usuario. 
-Luego, invoca el cuadro de diálogo `PromptDate` para recopilar la fecha de nacimiento del usuario. 
+Cuando el usuario elige **Restablecer contraseña** desde el cuadro de diálogo raíz, se invoca el cuadro de diálogo `ResetPassword`. A continuación, el cuadro de diálogo `ResetPassword` invoca otros dos cuadros de diálogo. Primero, invoca el cuadro de diálogo `PromptStringRegex` para recopilar el número de teléfono del usuario. Luego, invoca el cuadro de diálogo `PromptDate` para recopilar la fecha de nacimiento del usuario. 
 
 > [!NOTE]
 > En este ejemplo, José decide implementar la lógica para recopilar el número de teléfono y la fecha de nacimiento del usuario mediante dos cuadros de diálogo independientes. El enfoque no solo simplifica el código necesario para cada cuadro de diálogo, sino que también aumenta las probabilidades de que estos cuadros de diálogo se puedan utilizar en otros escenarios en el futuro. 
@@ -77,9 +73,7 @@ La especificación describe el cuadro de diálogo `ResetPassword`.
 
 #### <a name="promptstringregex-dialog"></a>Cuadro de diálogo PromptStringRegex
 
-El cuadro de diálogo `PromptStringRegex` pide al usuario que escriba su número de teléfono y verifique que coincida con el formato esperado. 
-También tiene en cuenta el escenario en el cual el usuario proporciona varias veces una entrada no válida. 
-La especificación describe el cuadro de diálogo `PromptStringRegex`.
+El cuadro de diálogo `PromptStringRegex` pide al usuario que escriba su número de teléfono y verifique que coincida con el formato esperado. También tiene en cuenta el escenario en el cual el usuario proporciona varias veces una entrada no válida. La especificación describe el cuadro de diálogo `PromptStringRegex`.
 
 ![Estructura del diálogo](~/media/bot-service-design-pattern-task-automation/simple-task4.png)
 
@@ -89,8 +83,6 @@ Por último, la especificación proporciona un ejemplo de un usuario que se comu
 
 ![Estructura del diálogo](~/media/bot-service-design-pattern-task-automation/simple-task5.png)
 
-::: moniker-end 
-
 ## <a name="bot-app-or-website"></a>¿Bot, aplicación o sitio web?
 
 Quizás se pregunte, si un bot de automatización de tareas se parece a una aplicación o sitio web, ¿por qué no simplemente crear una aplicación o un sitio web en su lugar? En función del escenario concreto, la creación de una aplicación o un sitio web en lugar de un bot puede ser una opción completamente razonable. Incluso puede insertar el bot en una aplicación, mediante el uso de la [API Direct Line de Bot Framework][directLineAPI] o el <a href="https://aka.ms/BotFramework-WebChat" target="_blank">control Chat en web</a>. La implementación del bot en el contexto de una aplicación ofrece lo mejor de ambos mundos: una experiencia de aplicación avanzada y una experiencia de conversación, todo en un solo lugar. 
@@ -99,7 +91,6 @@ Sin embargo, en muchos casos la creación de una aplicación o sitio web puede s
 
 Además, los bots ofrecen la libertad de ampliarse y extenderse fácilmente. Por ejemplo, un desarrollador puede optar por agregar funcionalidades de lenguaje natural y de voz al bot para el restablecimiento de contraseña, de modo que se pueda acceder a él a través de llamadas de audio, o bien puede agregar compatibilidad con mensajes de texto. La empresa puede configurar quioscos multimedia en toda la compilación y puede insertar el bot de restablecimiento de contraseña en esa experiencia.
 
-::: moniker range="azure-bot-service-3.0"
 <!-- TODO: SimpleTaskAutomation no longer exists
 ## Sample code
 
@@ -114,6 +105,5 @@ For a complete sample that shows how to implement simple task automation using t
 - [Administración del flujo de conversación con diálogos (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Manage conversation flow with dialogs (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md) (Administración del flujo de conversación con cuadros de diálogo [Node.js])
 
-::: moniker-end
 
 [directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle

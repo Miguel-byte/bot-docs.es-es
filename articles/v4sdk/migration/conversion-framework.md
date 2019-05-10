@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/11/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1904bb09d8bd387cc5cec0d85f82df24d1f6ec9d
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: ea6b859761a3bc8c1424d50d8bad0b7f1f50e86d
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240181"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033463"
 ---
 # <a name="migrate-a-net-sdk-v3-bot-to-v4"></a>Migración de un bot de la versión v3 a la versión v4 del SDK para .NET
 
@@ -111,7 +111,7 @@ namespace ContosoHelpdeskChatBot
 
 ## <a name="update-your-globalasaxcs-file"></a>Actualización del archivo Global.asax.cs
 
-Algunas de las técnicas de scaffolding han cambiado y, en la versión v4, tenemos que configurar partes de la [administración del estado](/articles/v4sdk/bot-builder-concept-state.md) nosotros mismos. Por ejemplo, en la versión v4 se utiliza un adaptador de bot para controlar la autenticación y las actividades de reenvío al código del bot, y tenemos que declarar nuestras propiedades de estado por adelantado.
+Algunas de las técnicas de scaffolding han cambiado y, en la versión v4, tenemos que configurar partes de la [administración del estado](../bot-builder-concept-state.md) nosotros mismos. Por ejemplo, en la versión v4 se utiliza un adaptador de bot para controlar la autenticación y las actividades de reenvío al código del bot, y tenemos que declarar nuestras propiedades de estado por adelantado.
 
 Vamos a crear una propiedad de estado para `DialogState`, que ahora es necesario para admitir los diálogos en la versión v4. Vamos a usar la inserción de dependencias para obtener la información necesaria para el controlador y el código del bot.
 
@@ -246,7 +246,7 @@ Aquí es donde se produce el controlador de turnos en la versión v4, por lo que
         }
     }
     ```
-1. Agregue un método **OnTurnAsync** que contiene el código del [controlador de turnos](/articles/v4sdk/bot-builder-basics.md#the-activity-processing-stack) del bot.
+1. Agregue un método **OnTurnAsync** que contiene el código del [controlador de turnos](../bot-builder-basics.md#the-activity-processing-stack) del bot.
     > [!NOTE]
     > Ya no existen componentes puntuables como tal en la versión v4. Buscamos un mensaje `cancel` del usuario en el controlador de turnos del bot antes de continuar con uno de los diálogos activos.
     ```csharp
@@ -353,8 +353,8 @@ Notas sobre el código de la versión v4:
 
 En este bot, de diálogo raíz pide al usuario que elija una opción de un conjunto de opciones y, a continuación, inicia un diálogo secundario en función de la opción elegida. Esto se repite en bucle durante la vigencia de la conversación.
 
-- Podemos configurar el flujo principal como un diálogo en cascada, que es un concepto nuevo del SDK v4. Se ejecutará siguiendo unos pasos con un orden fijo. Para más información, consulte [Implementación de flujo de conversación secuencial](/articles/v4sdk/bot-builder-dialog-manage-conversation-flow).
-- Ahora, los avisos se controlan mediante clases de aviso, que son diálogos secundarios cortos que piden datos de entrada, realizan algún procesamiento mínimo y la validación, y devuelven un valor. Para más información, consulte [Recopilación de datos de entrada del usuario mediante un aviso de diálogo](/articles/v4sdk/bot-builder-prompts.md).
+- Podemos configurar el flujo principal como un diálogo en cascada, que es un concepto nuevo del SDK v4. Se ejecutará siguiendo unos pasos con un orden fijo. Para más información, consulte [Implementación de flujo de conversación secuencial](~/v4sdk/bot-builder-dialog-manage-conversation-flow.md).
+- Ahora, los avisos se controlan mediante clases de aviso, que son diálogos secundarios cortos que piden datos de entrada, realizan algún procesamiento mínimo y la validación, y devuelven un valor. Para más información, consulte [Recopilación de datos de entrada del usuario mediante un aviso de diálogo](~/v4sdk/bot-builder-prompts.md).
 
 En el archivo **Dialogs/RootDialog.cs**:
 
@@ -425,7 +425,7 @@ En el archivo **Dialogs/RootDialog.cs**:
     }
     ```
 1. Podemos reemplazar **OnOptionSelected** por el segundo paso de nuestra cascada. Seguiremos iniciando un diálogo secundario en función de la entrada del usuario.
-   - El aviso de opciones devuelve un valor `FoundChoice`. Esto se muestra en la propiedad `Result` del contexto del paso. La pila del diálogo trata todos los valores devueltos como objetos. Si el valor devuelto es uno de los diálogos, ya sabe de qué tipo de valor es el objeto. Consulte los [tipos de avisos](/articles/v4sdk/bot-builder-concept-dialog.md#prompt-types) para obtener una lista de lo que devuelve cada tipo de aviso.
+   - El aviso de opciones devuelve un valor `FoundChoice`. Esto se muestra en la propiedad `Result` del contexto del paso. La pila del diálogo trata todos los valores devueltos como objetos. Si el valor devuelto es uno de los diálogos, ya sabe de qué tipo de valor es el objeto. Consulte los [tipos de avisos](../bot-builder-concept-dialog.md#prompt-types) para obtener una lista de lo que devuelve cada tipo de aviso.
    - Como el aviso de opciones no iniciará una excepción, puede quitar el bloque try-catch.
    - Necesitamos agregar una salida explícita para que este método siempre devuelva un valor adecuado. No se debería llegar nunca a este código pero, si se llega, permitirá que el diálogo "finalice correctamente".
     ```csharp

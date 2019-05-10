@@ -28,11 +28,13 @@
 ## [Implementación de una funcionalidad específica de canal](bot-builder-dotnet-channeldata.md)
 ## [Compilación de una habilidad de Cortana](bot-builder-dotnet-cortana-skill.md)
 ## [Realización de llamadas de audio con Skype](bot-builder-dotnet-audio-calls.md)
-## Realización de llamadas de audio en tiempo real con Skype
-### [Conceptos de llamada de elementos multimedia en tiempo real](bot-builder-dotnet-real-time-media-concepts.md)
-### [Requisitos de los bots de elementos multimedia en tiempo real](bot-builder-dotnet-real-time-media-requirements.md)
-### [Compilación de un bot de elementos multimedia en tiempo real](bot-builder-dotnet-real-time-audio-video-call-overview.md)
-### [Implementación de un bot de elementos multimedia en tiempo real](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+<!--
+## Conduct real-time media calls with Skype
+### [Real-time media calling concepts](bot-builder-dotnet-real-time-media-concepts.md)
+### [Requirements for real-time media bots](bot-builder-dotnet-real-time-media-requirements.md)
+### [Build a real-time media bot](bot-builder-dotnet-real-time-audio-video-call-overview.md)
+### [Deploy a real-time media bot](bot-builder-dotnet-real-time-deploy-visual-studio.md)
+-->
 # Datos de estado
 ## [Administración de datos de estado](bot-builder-dotnet-state.md)
 ## [Administración de datos de estado con Cosmos DB](bot-builder-dotnet-state-azure-cosmosdb.md)

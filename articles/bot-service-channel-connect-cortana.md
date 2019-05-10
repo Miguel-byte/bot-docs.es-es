@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: 9e3f2f19c480a9d2fe6df0baea74d449bb584b4f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 6bb4945801ee127cfa954289792987a57eae7fd5
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999094"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032991"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Conectar un bot a Cortana
 
@@ -105,11 +105,10 @@ En este momento su bot está implementado como una habilidad de Cortana en su cu
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Cortana Skills Kit](https://aka.ms/CortanaSkillsDocs) (Kit de habilidades de Cortana)
+* [Cortana Skills Kit](https://aka.ms/CortanaSkillsKitOverview) (Kit de habilidades de Cortana)
 * [Habilitar depuración](bot-service-debug-cortana-skill.md)
 * [Publicar una habilidad de Cortana][publish]
 
 [invocation]: https://docs.microsoft.com/en-us/cortana/skills/cortana-invocation-guidelines
 [publish]: https://docs.microsoft.com/en-us/cortana/skills/publish-skill
-[connected]: https://aka.ms/CortanaSkillsBotConnectedAccount
 [CortanaEntity]: https://aka.ms/lgvcto

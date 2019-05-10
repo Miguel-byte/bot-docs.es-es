@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 98fc10a806a4c8d1a4d6563934d92b0e0cdbb771
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: fd7d20b71c8f6c3013e7af5c7c80623089f0dce0
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224780"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032896"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -353,7 +353,6 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 [Cortana-Publish]: https://aka.ms/cortana-publish
 
 
-[CortanaTry]: https://aka.ms/try-cortana-bot
 [CortanaChannel]: https://aka.ms/bot-cortana-channel
 [Cortana-TestBestPractice]: https://aka.ms/cortana-test-best-practice
 
