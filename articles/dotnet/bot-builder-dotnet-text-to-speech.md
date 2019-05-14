@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3eef1ec583764449554a223ec9dc339ff505ace6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f93ab91281cf0f19be10898436dc41a6a1583c9a
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225600"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032979"
 ---
 # <a name="add-speech-to-messages"></a>Incorporación de voz a los mensajes
 
@@ -51,7 +51,9 @@ Con cualquiera de los avisos integrados, puede establecer las opciones `speak` y
 
 ## <a id="ssml"></a>Lenguaje de marcado de síntesis de voz (SSML)
 
-Para especificar el texto que dirá el bot, puede usar una cadena de texto sin formato o en una cadena con formato de lenguaje de marcado de síntesis de voz (SSML), un lenguaje de marcado basado en XML que le permite controlar diversas características de la voz del bot, como la voz, la velocidad, el volumen, la pronunciación, el tono y mucho más. Para más información sobre SSML, consulte <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Referencia del lenguaje de marcado de síntesis de voz</a>.
+Para especificar un texto para que lo hable el bot, puede asignarle una cadena con formato de lenguaje de marcado de síntesis de voz (SSML). SSML es un lenguaje de marcado basado en XML (y, por tanto, debe ser un XML válido) que le permite controlar diversas características de voz del bot como voz, velocidad, volumen, pronunciación, tono, etc. Para más información sobre SSML, consulte <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Referencia del lenguaje de marcado de síntesis de voz</a>.
+
+Al proporcionar la cadena con formato SSML, se puede omitir el elemento de contenedor exterior de SSML.
 
 ## <a name="input-hints"></a>Sugerencias de entrada
 
@@ -66,7 +68,7 @@ Para un ejemplo completo en el que se muestra cómo crear un bot habilitado para
 - [Creación de mensajes](bot-builder-dotnet-create-messages.md)
 - [Incorporación de sugerencias de entrada a los mensajes](bot-builder-dotnet-add-input-hints.md)
 - <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">Lenguaje de marcado de síntesis de voz (SSML)</a>
-- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/demo-RollerSkill" target="_blank">Ejemplo de Roller Skill (GitHub)</a>
+- <a href="https://github.com/Microsoft/BotBuilder-Samples/tree/v3-sdk-samples/CSharp/demo-RollerSkill" target="_blank">Ejemplo de Roller Skill (GitHub)</a>
 - <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">Interfaz IMessageActivity interface</a>
 - <a href="/dotnet/api/microsoft.bot.builder.dialogs.internals.dialogcontext" target="_blank">Clase DialogContext</a>

@@ -1,21 +1,18 @@
 ---
-title: Requisitos y consideraciones para bots de elementos multimedia en tiempo real | Microsoft Docs
-description: Información acerca de los requisitos y las consideraciones importantes relacionadas con la creación de bots de elementos multimedia en tiempo real para Skype con Bot Framework SDK para .NET.
-author: ssulzer
-ms.author: ssulzer
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d8cd326a3027fe5fcb440d9b205ba7d32a8b1640
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 8868ee0d72aa0de6480a392368469b6adf18b561
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224940"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032913"
 ---
+<a name="--"></a><!--
+---
+título: Requisitos y consideraciones para bots de elementos multimedia en tiempo real | Microsoft Docs descripción: Información acerca de los requisitos y las consideraciones importantes relacionadas con la creación de bots de elementos multimedia en tiempo real para Skype con Bot Framework SDK para .NET.
+author: ssulzer ms.author: ssulzer manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="requirements-and-considerations-for-real-time-media-bots"></a>Requisitos y consideraciones para bots de elementos multimedia en tiempo real
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -54,3 +51,4 @@ No todas las instrucciones aplicables al desarrollo de bots de mensajería y lla
   2. La plataforma de elementos multimedia en tiempo real no aprovecha en la actualidad ninguna unidad de procesamiento gráfico (GPU) que esté disponible en la máquina virtual para descargar H.264 para codificación y descodificación de vídeo. En su lugar, la codificación y descodificación de vídeo se realiza en software en la CPU. Si una GPU está disponible, el bot puede aprovecharla para su propia representación gráfica (por ejemplo, si el bot usa un motor de gráficos 3D).
 
 - La instancia de máquina virtual que hospeda el bot de elementos multimedia en tiempo real tiene que tener al menos 2 núcleos de CPU. Para Azure, se recomienda una máquina virtual de serie Dv2. La información detallada sobre los tipos de máquina virtual de Azure está disponible en la <a href="/azure/virtual-machines/windows/sizes-general" target="_blank">documentación de Azure</a>. 
+-->

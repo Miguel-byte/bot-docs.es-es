@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 2266dcb936205a20e1d19d97983a3b802fbe2736
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 307a6bf697e274391336a0d216c64da85232616d
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224873"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033271"
 ---
 # <a name="debug-with-the-emulator"></a>Depuración con el emulador
 
@@ -21,25 +21,26 @@ Bot Framework Emulator es una aplicación de escritorio que permite que los desa
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Instale el [emulador](https://aka.ms/Emulator-wiki-getting-started).
-- Instale el software de tunelización [ngrok][ngrokDownload].
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Una conexión a un bot que se ejecuta en un host local.
 
-Para conectarse a un bot que se ejecuta localmente, haga clic en **Abrir bot** y seleccione el archivo .bot. 
-
 ![UI del emulador](media/emulator-v4/emulator-welcome.png)
+
+Para conectarse a un bot que se ejecuta localmente, haga clic en **Open bot** (Abrir bot) o seleccione el archivo de configuración preconfigurado (un archivo .bot). No es necesario un archivo de configuración para conectarse al bot, pero el emulador seguirá funcionando con uno si el bot lo tiene. Si el bot se está ejecutando con credenciales de una cuenta Microsoft (MSA), escriba también estas credenciales.
+
+![UI del emulador](media/emulator-v4/emulator-open-bot.png)
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>Vista detallada de la actividad de mensaje con el inspector
 
 Envíe un mensaje al bot y este debería responder. Puede hacer clic en una burbuja de mensaje dentro de la ventana de la conversación e inspeccionar la actividad JSON sin formato con la característica **INSPECTOR** que se encuentra a la derecha de la ventana. Cuando se selecciona, la burbuja de mensaje cambia a color amarillo y el objeto JSON de la actividad se mostrará a la izquierda de la ventana del chat. Esta información de JSON incluye metadatos de clave que incluyen el identificador de canal, el tipo de actividad, el identificador de la conversación, el mensaje de texto, la dirección URL del punto de conexión, etc. Puede inspeccionar las actividades de inspección enviadas desde el usuario, así como también las actividades con las que responde el bot. 
 
-![Actividad de mensaje del emulador](media/emulator-v4/emulator-view-message-activity-02.png)
+![Actividad de mensaje del emulador](media/emulator-v4/emulator-view-message-activity-03.png)
 
 ## <a name="save-and-load-conversations-with-bot-transcripts"></a>Guardado y carga de conversaciones con transcripciones de bots
 
 Las actividades del emulador se pueden guardar como transcripciones. En una ventana de chat en directo abierta, seleccione **Save Transcript As** (Guardar transcripción como) en el archivo de transcripción. El botón **Start Over** (Volver a empezar) se puede usar en cualquier momento para borrar una conversación y reiniciar una conexión con el bot.  
 
-![Guardar las transcripciones en el emulador](media/emulator-v4/emulator-live-chat.png)
+![Guardar las transcripciones en el emulador](media/emulator-v4/emulator-save-transcript.png)
 
 Para cargar las transcripciones, simplemente seleccione **Archivo > Open Transcript File** (Abrir archivo de transcripción) y seleccione la transcripción. Se abrirá una ventana de transcripción nueva que presentará la actividad de mensaje en la ventana de salida. 
 
@@ -47,9 +48,14 @@ Para cargar las transcripciones, simplemente seleccione **Archivo > Open Transcr
 
 ## <a name="add-services"></a>Agregar servicios 
 
-Puede agregar fácilmente una aplicación de LUIS o una base de conocimientos de QnA o un modelo de envío en el archivo .bot directamente desde el emulador. Cuando el archivo .bot se cargue, seleccione el botón de servicios en el extremo izquierdo de la ventana del emulador. En el menú **Servicios** verá opciones para agregar LUIS, QnA Maker y Dispatch. 
+Puede agregar fácilmente una aplicación de LUIS o una base de conocimientos de QnA o un modelo de envío en el bot directamente desde el emulador. Cuando el bot se cargue, seleccione el botón de servicios en el extremo izquierdo de la ventana del emulador. En el menú **Servicios** verá opciones para agregar LUIS, QnA Maker y Dispatch. 
 
 Para agregar una aplicación de servicio, solo tiene que hacer clic en el botón **+** y seleccionar el servicio que desea agregar. Se le pedirá que inicie sesión en Azure Portal para agregar el servicio al archivo de bot y conectar el servicio a la aplicación bot. 
+
+> [!IMPORTANT]
+> La adición de servicios solo funciona si usa un archivo de configuración `.bot`. Se deben agregar los servicios de manera independiente. Para más información sobre esto, consulte [Administración de recursos de bot](v4sdk/bot-file-basics.md) o los artículos de procedimientos específicos del servicio que está intentando agregar.
+>
+> Si no usa un archivo `.bot`, el panel izquierdo no mostrará los servicios (incluso aunque el bot los use) y aparecerá un mensaje que indica que los *servicios no están disponibles*.
 
 ![Conexión de LUIS](media/emulator-v4/emulator-connect-luis-btn.png)
 
@@ -69,19 +75,59 @@ Con un servicio de LUIS conectado, verá que el vínculo de seguimiento especifi
 
 Con un servicio de QnA conectado, el registro mostrará el **seguimiento de QnA** y cuando esté seleccionado, podrá obtener una vista previa del par de pregunta y respuesta asociado con esa actividad, junto con una puntuación de confianza. Desde aquí, puede agregar frases de preguntas alternativas para una respuesta.
 
-## <a name="configure-ngrok"></a>Configuración de ngrok
+<!--## Configure ngrok
 
-Si usa Windows y ejecuta Bot Framework Emulator detrás de un firewall o de otro límite de red y quiere conectarse a un bot hospedado remotamente, debe instalar y configurar el software de tunelización **ngrok**. Bot Framework Emulator se integra estrechamente con el software de tunelización ngrok (desarrollado por [inconshreveable][inconshreveable]) y puede iniciarlo automáticamente cuando sea necesario.
+If you are using Windows and you are running the Bot Framework Emulator behind a firewall or other network boundary and want to connect to a bot that is hosted remotely, you must install and configure **ngrok** tunneling software. The Bot Framework Emulator integrates tightly with ngrok tunnelling software (developed by [inconshreveable][inconshreveable]), and can launch it automatically when it is needed.
 
-Abra **Configuración del emulador**, escriba la ruta de acceso a ngrok, seleccione si omitir o no ngrok para las direcciones locales y haga clic en **Guardar**.
+Open the **Emulator Settings**, enter the path to ngrok, select whether or not to bypass ngrok for local addresses, and click **Save**.
 
-![ruta de acceso a ngrok](media/emulator-v4/emulator-ngrok-path.png)
+![ngrok path](media/emulator-v4/emulator-ngrok-path.png)
+-->
+
+## <a name="login-to-azure"></a>Inicio de sesión en Azure
+
+Puede usar Emulator para iniciar sesión en la cuenta de Azure. Esto es especialmente útil para agregar y administrar los servicios de los que depende el bot. Consulte la información [anterior](#add-services) para más información acerca de los servicios que puede administrar mediante Emulator.
+
+### <a name="to-login"></a>Para iniciar sesión
+
+![Inicio de sesión de Azure](media/emulator-v4/emulator-azure-login.png)
+
+Para iniciar sesión
+- Puede hacer clic en Archivo -> Iniciar sesión con Azure
+- En la pantalla de inicio de sesión haga clic en Iniciar sesión con su cuenta de Azure. Opcionalmente, puede hacer que Emulator conserve su sesión iniciada entre varios reinicios de esta aplicación.
+
+![Inicio de sesión de Azure](media/emulator-v4/emulator-azure-login-success.png)
+
+## <a name="disabling-data-collection"></a>Deshabilitación de la recopilación de datos
+
+Si decide que ya no desea permitir que Emulator recopile datos de uso, puede deshabilitar fácilmente la recopilación de datos siguiendo estos pasos:
+
+1. Vaya a la página de configuración de Emulator. Para ello, haga clic en el botón de configuración (icono de engranaje) en la barra de navegación del lado izquierdo.
+
+    ![deshabilitar la recopilación de datos](media/emulator-v4/emulator-disable-data-1.png)
+
+2. Desactive la casilla denominada *Help improve the Emulator by allowing us to collect usage data* (Ayúdenos a mejorar Emulator permitiéndonos recopilar datos de uso) en la sección **Recopilación de datos**.
+
+    ![deshabilitar la recopilación de datos](media/emulator-v4/emulator-disable-data-2.png)
+
+3. Haga clic en el botón “Save” (Guardar).
+
+    ![deshabilitar la recopilación de datos](media/emulator-v4/emulator-disable-data-3.png)
+    
+Si cambia de opinión, puede habilitar esta opción siempre que quiera volviendo a activar la casilla.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 Bot Framework Emulator es de código abierto. También puede [colaborar][EmulatorGithubContribute] en el desarrollo y [enviar errores y sugerencias][EmulatorGithubBugs].
 
 Para solucionar el problema, consulte cómo [solucionar problemas generales](bot-service-troubleshoot-bot-configuration.md) y otros artículos de solución de problemas en esa sección.
+
+## <a name="next-steps"></a>Pasos siguientes
+
+Guardar una conversación en un archivo de transcripción le permite crear rápidamente un borrador y reproducir un determinado conjunto de interacciones para la depuración.
+
+> [!div class="nextstepaction"]
+> [Depuración del bot mediante archivos de transcripción](~/v4sdk/bot-builder-debug-transcript.md)
 
 <!-- Footnote-style URLs -->
 

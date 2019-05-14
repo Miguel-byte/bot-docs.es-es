@@ -1,13 +1,21 @@
+---
+ms.openlocfilehash: 04f9101d0cf29618fb7d50e126c008190064a831
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199446"
+---
 ## <a name="prerequisites"></a>Requisitos previos
-- Visual Studio [2017](https://www.visualstudio.com/downloads)
+- Visual Studio [2017 o cualquier versión posterior](https://www.visualstudio.com/downloads)
 - Plantilla de Bot Framework SDK v4 para [C#](https://aka.ms/bot-vsix)
-- Bot Framework [Emulator](https://aka.ms/Emulator-wiki-getting-started)
-- Conocimientos sobre [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) y la programación asincrónica en [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
+- [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
+- Conocimientos de [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) y [programación asincrónica en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
 
 ## <a name="create-a-bot"></a>Creación de un bot
 Instale la plantilla BotBuilderVSIX.vsix que descargó en la sección de requisitos previos.
 
-En Visual Studio, cree un nuevo proyecto de bot con la plantilla **Echo Bot V4 de Bot Framework**.
+En Visual Studio, cree un proyecto de bot mediante la plantilla **Echo Bot (Bot Framework v4)**.
 
 ![Proyecto de Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
@@ -24,8 +32,8 @@ Al hacer clic en el botón de ejecución, Visual Studio compila la aplicación, 
 
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
-1. Haga clic en el vínculo **Open bot** (Abrir bot) de la pestaña de bienvenida del emulador. 
-2. Seleccione el archivo .bot ubicado en el directorio donde se creó la solución de Visual Studio.
+1. Haga clic en el vínculo **Create a new bot configuration** (Crear configuración de bot) en la pestaña de bienvenida del emulador. 
+2. Rellene los campos del bot y haga clic en **Save and connect** (Guardar y conectar).
 
 ## <a name="interact-with-your-bot"></a>Interacción con el bot
 

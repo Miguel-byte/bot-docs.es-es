@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 02/11/2019
+ms.date: 03/28/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7e5440e7d47d88b7ff6827359e7eb621bce53e3c
-ms.sourcegitcommit: 7f418bed4d0d8d398f824e951ac464c7c82b8c3e
+ms.openlocfilehash: 55b5a4073340bb29074af5b2ee74dd952ea40f0c
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56240497"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032240"
 ---
 # <a name="differences-between-the-v3-and-v4-net-sdk"></a>Diferencias entre las versiones v3 y v4 del SDK para .NET
 
@@ -25,15 +25,15 @@ La versión v4 de Framework Bot SDK admite el mismo servicio Framework Bot subya
   - El adaptador controla la autenticación de Bot Framework.
   - El adaptador administra el tráfico entrante y saliente entre un canal y el controlador de turnos del bot, que encapsula las llamadas a Bot Framework Connector.
   - El adaptador inicializa el contexto para cada turno.
-  - Para más información, consulte [cómo funcionan los bots](../bot-builder-basics.md).
+  - Para más información, consulte [cómo funcionan los bots][about-bots].
 - Administración de estados refactorizada.
   - Los datos de estado ya no están disponibles automáticamente dentro de un bot.
   - Ahora, el estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedad.
-  - Para más información, consulte la [administración del estado](../bot-builder-concept-state.md).
+  - Para más información, consulte la [administración del estado][about-state].
 - Nueva biblioteca de diálogos.
   - Los diálogos de la versión v3 tendrá que volver a escribirse para la nueva biblioteca de diálogos.
-  - Ya no existen componentes puntuables. Puede buscar comandos "globales" en el controlador de turnos, antes de pasar el control a los diálogos.
-  - Para más información, consulte la [biblioteca de diálogos](../bot-builder-concept-dialog.md).
+  - Ya no existen componentes puntuables. Puede buscar comandos "globales", antes de pasar el control a los diálogos. En función de cómo haya diseñado su bot v4, podría estar en el controlador de mensajes o en un diálogo primario. Para obtener un ejemplo, consulte cómo [controlar las interrupciones de usuario][interruptions].
+  - Para más información, consulte la [biblioteca de diálogos][about-dialogs].
 - Compatibilidad con ASP.NET Core
   - Las plantillas para crear nuevos bots de C# tienen como destino la plataforma ASP.NET Core.
   - Puede seguir usando ASP.NET para sus bots, pero nuestro objetivo en la versión v4 es dar soporte a la plataforma ASP.NET Core.
@@ -41,39 +41,33 @@ La versión v4 de Framework Bot SDK admite el mismo servicio Framework Bot subya
 
 ## <a name="activity-processing"></a>Procesamiento de actividades
 
-Al crear el adaptador para su bot, también proporciona un delegado de controlador de turnos que recibirá las actividades entrantes de los canales y los usuarios. El adaptador crea un objeto de contexto de turno para cada actividad recibida. Pasa el objeto de contexto de turno al controlador de turnos y luego elimina el objeto cuando el turno se completa.
+Al crear el adaptador para el bot, también proporciona un delegado de controlador de mensajes que recibirá las actividades entrantes de los canales y los usuarios. El adaptador crea un objeto de contexto de turno para cada actividad recibida. Pasa el objeto de contexto de turno al controlador de turnos del bot y luego elimina el objeto cuando el turno se completa.
 
-El controlador de turnos puede recibir muchos tipos de actividades. En general, querrá reenviar solo las actividades de _mensaje_ a todos los diálogos que su bot contiene. Para más información acerca de los tipos de actividad, consulte el [esquema de actividades](https://aka.ms/botSpecs-activitySchema).
+El controlador de turnos puede recibir muchos tipos de actividades. En general, querrá reenviar solo las actividades de _mensaje_ a todos los diálogos que su bot contiene. Si deriva el bot desde `ActivityHandler`, el controlador de turnos del bot reenviará todas las actividades de mensajes a `OnMessageActivityAsync`. Reemplace este método para agregar la lógica de control de mensajes. Para más información acerca de los tipos de actividad, consulte el [esquema de actividades][].
 
 ### <a name="handling-turns"></a>Control de turnos
 
-El controlador de turnos debe coincidir con la firma de `BotCallbackHandler`:
-
-```csharp
-public delegate Task BotCallbackHandler(
-    ITurnContext turnContext,
-    CancellationToken cancellationToken);
-```
-
-Al controlar un turno, use el contexto de turno para obtener más información acerca de la actividad entrante y para enviar actividades al usuario:
+En el control de un mensaje, use el contexto de turno para obtener información acerca de la actividad entrante y para enviar actividades al usuario:
 
 | | |
 |-|-|
 | Para obtener la actividad entrante | Obtenga la propiedad `Activity` del contexto de turno. |
-| Para crear y enviar una actividad al usuario | Llame al método `SendActivityAsync` del contexto de turno.<br/>Para más información, consulte cómo [enviar y recibir un mensaje de texto](../bot-builder-howto-send-messages.md) y [agregar multimedia a los mensajes](../bot-builder-howto-add-media-attachments.md). |
+| Para crear y enviar una actividad al usuario | Llame al método `SendActivityAsync` del contexto de turno.<br/>Para más información, consulte cómo [enviar y recibir un mensaje de texto][send-messages] y cómo [agregar elementos multimedia a los mensajes][send-media]. |
 
 La clase `MessageFactory` proporciona algunos métodos auxiliares para las actividades de creación y formato.
 
 ### <a name="scorables-is-gone"></a>Los componentes puntuables han desaparecido
 
-Se administran en el bucle de mensajes del bot. Para obtener una descripción de cómo hacer esto con los diálogos de la versión v4, consulte cómo [controlar las interrupciones de usuario](../bot-builder-howto-handle-user-interrupt.md).
+Se administran en el bucle de mensajes del bot. Para obtener una descripción de cómo hacer esto con los diálogos de la versión v4, consulte cómo [controlar las interrupciones de usuario][interruptions].
 
 Los árboles de envío de componentes puntuables que admiten composición y los diálogos en cadena que admiten composición, como la _excepción predeterminada_, también han desaparecido. Una manera de reproducir esta funcionalidad es implementarla dentro de controlador de turnos del bot.
 
 ## <a name="state-management"></a>Administración de estados
 
+En la versión v3, podría almacenar los datos de la conversación en el servicio Bot State, parte de la serie de servicios proporcionados por Bot Framework. Sin embargo, el servicio se ha retirado desde el 31 de marzo de 2018. A partir de la versión v4, las consideraciones de diseño sobre la administración de estado es igual que en cualquier aplicación web y hay una serie de opciones disponibles. El almacenamiento en caché en memoria y en el mismo proceso normalmente es la más sencilla; sin embargo, para aplicaciones de producción debería almacenar el estado de manera más permanente, como en una base de datos SQL o no SQL o como blobs.
+
 La versión v4 no utiliza las propiedades `UserData`, `ConversationData` y `PrivateConversationData` ni contenedores de datos para administrar el estado.
-Ahora, el estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedad, tal y como se describe en [Administración del estado](../bot-builder-concept-state.md).
+Ahora, el estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedades, tal y como se describe en [Administración del estado][about-state].
 
 La versión v4 define las clases `UserState`, `ConversationState` y `PrivateConversationState` que administran el estado del bot. Deberá crear un descriptor de acceso de propiedad de estado para cada propiedad que desee conservar, en lugar de solo leer y escribir en un contenedor de datos predefinido.
 
@@ -101,8 +95,6 @@ Puede usar la inserción de dependencias para acceder a ellas cuando el bot se c
 | Para actualizar el valor actual de una propiedad almacenado en la memoria caché | Llame a `IStatePropertyAccessor<T>.SetAsync`.<br/>Esto solo actualiza la memoria caché y no la capa de almacenamiento de respaldo. |
 | Para conservar los cambios de estado en el almacenamiento | Llame a `BotState.SaveChangesAsync` para cualquiera de los objetos de administración de estado en el que el estado haya cambiado antes de salir del controlador de turnos. |
 
-Consulte cómo [guardar el estado](../bot-builder-concept-state.md#saving-state) para más información.
-
 ### <a name="managing-concurrency"></a>Administrar la simultaneidad
 
 Puede que el bot tenga que administrar la simultaneidad de estados. Para más información, consulte la sección [Guardar el estado](../bot-builder-concept-state.md#saving-state) de **Administración del estado** y la sección [Administración de la simultaneidad mediante eTags](../bot-builder-howto-v4-storage.md#manage-concurrency-using-etags) de **Escritura directa en el almacenamiento**.
@@ -120,25 +112,21 @@ Estos son algunos de los cambios principales en los diálogos:
 
 ### <a name="defining-dialogs"></a>Definición de diálogos
 
+Aunque la versión v3 proporcionaba una manera flexible para implementar diálogos mediante la interfaz `IDialog`, esto significaba que debía implementar su propio código para características como la validación. En la versión v4, ahora hay clases de avisos que validan la entrada del usuario de modo automático, la restringen a un tipo específico (por ejemplo, un número entero) y preguntan al usuario de nuevo automáticamente hasta que proporcione una entrada válida. En general, esto significa menos código a escribir como desarrollador.
+
 Ahora hay varias opciones para definir los diálogos:
 
-- Un cuadro en cascada, una instancia de la clase `WaterfallDialog`.
+| | |
+|:--|:--|
+| Un diálogo de componente, derivado de la clase `ComponentDialog`. | Permite encapsular el código del diálogo sin conflictos de nombres con los contextos externos. Consulte cómo [reutilizar los diálogos][reuse-dialogs]. |
+| Un diálogo en cascada, una instancia de la clase `WaterfallDialog`. | Diseñado para trabajar con los diálogos de aviso, que solicitarán y validarán diversos tipos de datos de entrada del usuario. Una cascada automatiza la mayor parte del proceso, pero impone una cierta forma en el código del diálogo; consulte el [flujo de conversación secuencial][sequential-flow]. |
+| Un diálogo personalizado, derivado de la clase abstracta `Dialog`. | Esto ofrece la máxima flexibilidad en cuanto a cómo se comportan los diálogos, pero también necesita conocer mejor cómo se implementa la pila de diálogos. |
 
-  Esto funciona bien con los diálogos de aviso, que solicitarán y validarán diversos tipos de datos de entrada del usuario. Consulte cómo [pedir datos de entrada](../bot-builder-prompts.md).
+En la versión v3, se usaba `FormFlow` para realizar un número determinado de pasos para una tarea. En la versión v4, el diálogo en cascada reemplaza a FormFlow. Cuando se crea un diálogo en cascada, se definen los pasos del diálogo en el constructor. El orden de los pasos ejecutados se sigue exactamente cómo se ha declarado y se mueve hacia delante automáticamente uno tras otro.
 
-  Esto automatiza la mayor parte del proceso, pero impone que el código se haga de una determinada manera; consulte el [flujo secuencial de conversación](../bot-builder-dialog-manage-conversation-flow.md). Sin embargo, puede crear otros flujos de control incorporando de varios diálogos a un conjunto de diálogos; consulte el [flujo de conversación avanzada](../bot-builder-dialog-manage-complex-conversation-flow.md).
+También puede crear flujos de control complejos mediante el uso de varios diálogos; consulte el [flujo de conversación avanzada][complex-flow].
 
-- Un componente de diálogo, derivado de la clase `ComponentDialog`.
-
-  Esto le permite encapsular el código del diálogo sin conflictos de nombres con los contextos externos. Consulte cómo [reutilizar los diálogos](../bot-builder-compositcontrol.md).
-
-- Un diálogo personalizado, derivado de la clase abstracta `Dialog`.
-
-  Esto ofrece la máxima flexibilidad en cuanto a cómo se comportan los diálogos, pero también necesita conocer mejor cómo se implementa la pila de diálogos.
-
-Para acceder a un diálogo, deberá poner una instancia de él en un _conjunto de diálogos_ y, después, generar un _contexto de diálogo_ para ese conjunto.
-
-Debe proporcionar un descriptor de acceso de propiedad de estado de diálogo al crear el conjunto de diálogos. Esto permite al marco conservar el estado del diálogo de un turno al siguiente. En [Administración del estado](../bot-builder-concept-state.md) se describe cómo administrar el estado en la versióon v4.
+Para acceder a un diálogo, deberá poner una instancia de él en un _conjunto de diálogos_ y, después, generar un _contexto de diálogo_ para ese conjunto. Debe proporcionar un descriptor de acceso de propiedad de estado de diálogo al crear el conjunto de diálogos. Esto permite al marco conservar el estado del diálogo de un turno al siguiente. En [Administración del estado][about-state] se describe cómo administrar el estado en la versión v4.
 
 ### <a name="using-dialogs"></a>Uso de diálogos
 
@@ -158,7 +146,7 @@ Presentamos una lista de operaciones comunes en la versión v3 y cómo realizarl
 
 Otras notas sobre el código de la versión v4:
 
-- En la versión v4, las distintas clases derivadas `Prompt` implementan los avisos al usuario como diálogos independientes en dos pasos. Consulte cómo [recopilar datos de entrada del usuario mediante un aviso de diálogo](../bot-builder-prompts.md).
+- En la versión v4, las distintas clases derivadas `Prompt` implementan los avisos al usuario como diálogos independientes en dos pasos. Consulte el procedimiento de [Implementación de flujo de conversación secuencial][sequential-flow].
 - Use `DialogSet.CreateContextAsync` para crear un contexto de diálogo para el turno actual.
 - Dentro de un diálogo, use la propiedad `DialogContext.Context` para obtener el contexto del turno actual.
 - Los pasos de la cascada tienen un parámetro `WaterfallStepContext`, que deriva de `DialogContext`.
@@ -190,3 +178,19 @@ En la versión v3, Formflow formaba parte del SDK para C#, pero no del SDK para 
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Migración de un bot de la versión v3 a la versión v4 del SDK para .NET](conversion-framework.md)
+
+<!-- -->
+
+[about-bots]: ../bot-builder-basics.md
+[about-state]: ../bot-builder-concept-state.md
+[about-dialogs]: ../bot-builder-concept-dialog.md
+
+[send-messages]: ../bot-builder-howto-send-messages.md
+[send-media]: ../bot-builder-howto-add-media-attachments.md
+
+[sequential-flow]: ../bot-builder-dialog-manage-conversation-flow.md
+[complex-flow]: ../bot-builder-dialog-manage-complex-conversation-flow.md
+[reuse-dialogs]: ../bot-builder-compositcontrol.md
+[interruptions]: ../bot-builder-howto-handle-user-interrupt.md
+
+[esquema de actividades]: https://aka.ms/botSpecs-activitySchema

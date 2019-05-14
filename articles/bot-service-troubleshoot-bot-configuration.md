@@ -8,13 +8,13 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 2/26/2019
-ms.openlocfilehash: 53cb392dea5ee0e355451e7455a16512f22ebbaa
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 4/30/2019
+ms.openlocfilehash: c208cef52d1850a00b62828ae0ea622a2606ec5b
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224853"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033423"
 ---
 # <a name="troubleshoot-bot-configuration-issues"></a>Solución de problemas de configuración del bot
 
@@ -72,7 +72,7 @@ Los vínculos siguientes proporcionan instrucciones para configurar los canales 
 
 ### <a name="channel-specific-behavior"></a>Comportamiento específico del canal
 
-La implementación de algunas características puede ser diferente según el canal. Por ejemplo, no todos los canales admiten las tarjetas adaptables. La mayoría de los canales admiten botones, pero se representan de una forma específica en cada canal. Si ve diferencias en como funcionan algunos tipos de mensaje en diferentes canales, consulte [Channel Inspector](https://docs.botframework.com/channel-inspector/channels/Skype).
+La implementación de algunas características puede ser diferente según el canal. Por ejemplo, no todos los canales admiten las tarjetas adaptables. La mayoría de los canales admiten botones, pero se representan de una forma específica en cada canal. Si ve diferencias en como funcionan algunos tipos de mensaje en diferentes canales, consulte la [referencia del canal](bot-service-channels-reference.md).
 
 A continuación se muestran algunos vínculos adicionales que pueden ayudarle con determinados canales individuales:
 

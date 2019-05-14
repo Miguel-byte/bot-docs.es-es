@@ -1,21 +1,18 @@
 ---
-title: Implementación de un bot multimedia en tiempo real de Skype en Azure | Microsoft Docs
-description: Obtenga información sobre cómo implementar un bot de audio y vídeo en tiempo real de Skype en Azure mediante la característica de publicación integrada de Visual Studio.
-author: MalarGit
-ms.author: malarch
-manager: ssulzer
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 22cce8ad5bef3c1c6f08a8efc28118e0209dd3af
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 1df0192632cdb9b35259b8ce1ec5c8b3be46c750
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999442"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032944"
 ---
+<a name="--"></a><!--
+---
+título: Implementación de un bot multimedia en tiempo real de Skype en Azure | Microsoft Docs descripción: Obtenga información sobre cómo implementar un bot de audio y vídeo en tiempo real de Skype en Azure mediante la característica de publicación integrada de Visual Studio.
+Autor: MalarGit ms.author: malarch manager: ssulzer ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="deploy-a-real-time-media-bot-from-visual-studio-to-azure"></a>Implementación de un bot multimedia en tiempo real de Visual Studio en Azure
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -84,3 +81,4 @@ Como alternativa, puede elegir **Configuración avanzada** y especificar la cuen
 ![Haga clic en la pestaña Configuración avanzada](../media/real-time-media-bot-publish-advanced-settings.png)
 
 Compruebe la configuración en la pestaña **Resumen** y haga clic en **Publicar** para implementar el bot en Microsoft Azure.
+-->

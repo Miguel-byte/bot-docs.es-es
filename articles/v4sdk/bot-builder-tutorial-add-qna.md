@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/18/2019
+ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd29aa1ee56ebf64dc5db2edc47adc3ab250e7d5
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: deafe148310dd214ab857d60595edb1abef9e46d
+ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904948"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65039723"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Tutorial: Uso de QnA Maker en el bot para responder preguntas
 
@@ -27,20 +27,19 @@ En este tutorial, aprenderá a:
 
 > [!div class="checklist"]
 > * Creación de un servicio QnA Maker y una base de conocimiento
-> * Incorporación de información de la base de conocimiento al archivo .bot
+> * Incorporación de información de la base de conocimiento al archivo de configuración
 > * Actualización del bot para consultar la base de conocimiento
-> * Publicación de nuevo del bot
+> * Nueva publicación del bot
 
 Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) antes de empezar.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * El bot que creó en el [tutorial anterior](bot-builder-tutorial-basic-deploy.md). Se agregará una característica de preguntas y respuestas al bot.
-* Será útil cierta familiaridad con QnA Maker. Usaremos el portal de QnA Maker para crear, entrenar y publicar la base de conocimiento que se va a usar con el bot.
+* Es útil conocer algo [QnA Maker](https://qnamaker.ai/). Usaremos el portal de QnA Maker para crear, entrenar y publicar la base de conocimiento que se va a usar con el bot.
+* Familiaridad con la [creación de bots QnA](https://aka.ms/azure-create-qna) mediante Azure Bot Service.
 
-También debería disponer ya de estos requisitos previos para el tutorial anterior:
-
-[!INCLUDE [deployment prerequisites snippet](~/includes/deploy/snippet-prerequisite.md)]
+También debería disponer ya de los requisitos previos del tutorial anterior.
 
 ## <a name="sign-in-to-qna-maker-portal"></a>Inicio de sesión en el portal de QnA Maker
 
@@ -62,10 +61,10 @@ Se importará una definición de la base de conocimiento existente desde el ejem
 1. Haga clic en **Save and train** (Guardar y entrenar) la base de conocimiento.
 1. Haga clic en **Publish** (Publicar) la base de conocimiento.
 
-   La base de conocimiento ahora está lista para su uso con el bot. Registre el identificador de base de conocimiento, la clave del punto de conexión y el nombre de host. Los necesitará para el siguiente paso.
+La base de conocimiento ahora está lista para su uso con el bot. Registre el identificador de base de conocimiento, la clave del punto de conexión y el nombre de host. Los necesitará para el siguiente paso.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Incorporación de información de la base de conocimiento al bot
-A partir de bot framework 4.3, Azure ya no proporciona un archivo .bot como parte del código fuente del bot descargado. Utilice las siguientes instrucciones para conectar el bot CSharp o JavaScript a la base de conocimiento.
+A partir de Bot Framework 4.3, Azure deja de proporcionar un archivo .bot como parte del código fuente del bot descargado. Utilice las siguientes instrucciones para conectar el bot CSharp o JavaScript a la base de conocimiento.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -76,10 +75,10 @@ Agregue los valores siguientes al archivo appsetting.json:
    "MicrosoftAppId": "",
   "MicrosoftAppPassword": "",
   "ScmType": "None",
-
-  "kbId": "<your-knowledge-base-id>",
-  "endpointKey": "<your-knowledge-base-endpoint-key>",
-  "hostname": "<your-qna-service-hostname>" // This is a URL
+  
+  "QnAKnowledgebaseId": "<your-knowledge-base-id>",
+  "QnAAuthKey": "<your-knowledge-base-endpoint-key>",
+  "QnAEndpointHostName": "<your-qna-service-hostname>" // This is a URL
 }
 ```
 
@@ -87,24 +86,23 @@ Agregue los valores siguientes al archivo appsetting.json:
 
 Agregue los valores siguientes al archivo .env:
 
-```javascript
+```
 MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-kbId="<your-knowledge-base-id>"
-endpointKey="<your-knowledge-base-endpoint-key>"
-hostname="<your-qna-service-hostname>" // This is a URL
-
+QnAKnowledgebaseId="<your-knowledge-base-id>"
+QnAAuthKey="<your-knowledge-base-endpoint-key>"
+QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
 ```
 
 ---
 
-    | Campo | Valor |
-    |:----|:----|
-    | kbId | Identificador de base de conocimiento que el portal de QnA Maker genera automáticamente. |
-    | endpointKey | Clave del punto de conexión que el portal de QnA Maker genera automáticamente. |
-    | hostname | Dirección URL del host que generó el portal de QnA Maker. Use la dirección URL completa, empezando por `https://` y terminando con `/qnamaker`. |
+| Campo | Valor |
+|:----|:----|
+| kbId | Identificador de base de conocimiento que el portal de QnA Maker genera automáticamente. |
+| endpointKey | Clave del punto de conexión que el portal de QnA Maker genera automáticamente. |
+| hostname | Dirección URL del host que generó el portal de QnA Maker. Use la dirección URL completa, empezando por `https://` y terminando con `/qnamaker`. La cadena completa de la dirección URL será similar a esta: "https://< >.azure.net/qnamaker". |
 
 Ahora, guarde las modificaciones.
 
@@ -118,21 +116,21 @@ Actualice el código de inicialización para cargar la información de servicio 
 1. Agregar el paquete NuGet **Microsoft.Extensions.Configuration** al proyecto.
 1. En el archivo **Startup.cs**, agregue estas referencias de espacio de nombres.
 
-   **startup.cs**
+   **Startup.cs**
    ```csharp
-       using Microsoft.Bot.Builder.AI.QnA;
-       using Microsoft.Extensions.Configuration;
+   using Microsoft.Bot.Builder.AI.QnA;
+   using Microsoft.Extensions.Configuration;
    ```
-1. Y, modifique el método _ConfigureServices_ para crear un objeto QnAMkaerEndpoint que se conecte a la base de conocimiento definida en el archivo **appsettings.json**.
+1. Y, modifique el método _ConfigureServices_ para crear un objeto QnAMakerEndpoint que se conecte a la base de conocimiento definida en el archivo **appsettings.json**.
 
-   **startup.cs**
+   **Startup.cs**
    ```csharp
    // Create QnAMaker endpoint as a singleton
    services.AddSingleton(new QnAMakerEndpoint
    {
-      KnowledgeBaseId = Configuration.GetValue<string>($"kbId"),
-      EndpointKey = Configuration.GetValue<string>($"endpointKey"),
-      Host = Configuration.GetValue<string>($"hostname")
+      KnowledgeBaseId = Configuration.GetValue<string>($"QnAKnowledgebaseId"),
+      EndpointKey = Configuration.GetValue<string>($"QnAAuthKey"),
+      Host = Configuration.GetValue<string>($"QnAEndpointHostName")
     });
 
    ```
@@ -198,9 +196,9 @@ Actualice el código de inicialización para cargar la información de servicio 
    ```javascript
    // Map knowledgebase endpoint values from .env file into the required format for `QnAMaker`.
    const configuration = {
-      knowledgeBaseId: process.env.kbId,
-      endpointKey: process.env.endpointKey,
-      host: process.env.hostname
+      knowledgeBaseId: process.env.QnAKnowledgebaseId,
+      endpointKey: process.env.QnAAuthKey,
+      host: process.env.QnAEndpointHostName
    };
 
    ```
@@ -210,7 +208,7 @@ Actualice el código de inicialización para cargar la información de servicio 
    **index.js**
    ```javascript
    // Create the main dialog.
-   const myBot = new MyBot(configuration, {}, logger);
+   const myBot = new MyBot(configuration, {});
    ```
 
 1. En su archivo **bot.js**, agregue este requisito para QnAMaker
@@ -232,7 +230,7 @@ Actualice el código de inicialización para cargar la información de servicio 
             this.qnaMaker = new QnAMaker(configuration, qnaOptions);
    ```
 
-1. Finalmente, agregue el siguiente código a la llamada onMessage() que pasa cada entrada de usuario a la base de conocimiento de QnA Maker y devuelve la respuesta de QnA Maker al usuario.  para consultar sus bases de conocimiento y obtener una respuesta.
+1. Por último, agregue el siguiente código a la llamada onMessage() que pasa cada entrada de usuario a la base de conocimiento de QnA Maker y devuelve la respuesta de QnA Maker al usuario para que consulte sus bases de conocimiento, con el fin de encontrar una respuesta.
  
     **bot.js**
     ```javascript
@@ -258,13 +256,14 @@ En este momento el bot debe ser capaz de responder algunas preguntas. Ejecute el
 
 ![ejemplo de prueba de qna](./media/qna-test-bot.png)
 
-## <a name="re-publish-your-bot"></a>Publicación de nuevo del bot
+## <a name="republish-your-bot"></a>Nueva publicación del bot
 
 Ahora podemos volver a publicar el bot en Azure.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-[!INCLUDE [publish snippet](~/includes/deploy/snippet-publish.md)]
+```cmd
+az webapp deployment source config-zip --resource-group <resource-group-name> --name <bot-name-in-azure> --src "c:\bot\mybot.zip"
+```
 
 ## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -276,9 +275,8 @@ Ahora podemos volver a publicar el bot en Azure.
 
 Después de publicar el bot, Azure tarda un minuto o dos en actualizar e iniciar el bot.
 
-1. Use el emulador para probar el punto de conexión de producción del bot o utilice Azure Portal para probar el bot en el chat en web.
-
-   En cualquier caso, debería ver el mismo comportamiento que al probar localmente.
+Use el emulador para probar el punto de conexión de producción del bot o utilice Azure Portal para probar el bot en el chat en web.
+En cualquier caso, debería ver el mismo comportamiento que al probar localmente.
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
@@ -292,6 +290,6 @@ Si no va a seguir usando esta aplicación, puede eliminar los recursos asociados
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener información sobre cómo agregar características al bot, consulte los artículos de la sección de procedimientos de desarrollo.
+Para obtener información acerca de cómo agregar características a un bot, consulte el artículo **Envío y recepción de mensajes de texto**, así como los restantes mensajes de la sección de procedimientos de desarrollo.
 > [!div class="nextstepaction"]
-> [Botón de pasos siguientes](bot-builder-howto-send-messages.md)
+> [Envío y recepción de mensajes de texto](bot-builder-howto-send-messages.md)

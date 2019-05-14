@@ -8,15 +8,17 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 12/13/2017
-ms.openlocfilehash: fef82d27c6dd4fb61c9a0cf864e76a88128847d7
-ms.sourcegitcommit: 05ddade244874b7d6e2fc91745131b99cc58b0d6
+ms.date: 4/13/2019
+ms.openlocfilehash: 17d80fe4d4730ed294b770fd05bc5d7ea3d114af
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591166"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033041"
 ---
 # <a name="manage-a-bot"></a>Administración de un bot
+
+[!INCLUDE [applies-to-both](includes/applies-to-both.md)]
 
 En este tema se explica cómo administrar un bot mediante Azure Portal.
 
@@ -46,17 +48,11 @@ En la hoja **Información general**, puede encontrar información general sobre 
 
 ![Configuración de App Service](~/media/azure-manage-a-bot/app-service-settings.png)
 
-La hoja **Configuración de la aplicación** contiene información detallada sobre su bot, como el entorno del bot y las claves de configuración de depuración y clave de configuración de la aplicación como botFilePath y botFileSecret.
+La hoja **Configuración de la aplicación** contiene información detallada sobre su bot, como el entorno del bot, la configuración de depuración y las claves de configuración de la aplicación.
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID y MicrosoftAppPassword
 
-**MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo `.bot` del bot. Para recuperarlos, descargue el archivo del bot y descífrelo, porque puede ser necesario para probar localmente el identificador y la contraseña.
-
-### <a name="bot-file-path-and-secret"></a>Secreto y la ruta de acceso del archivo de bot
-
-Encontrará los valorse de **botFilePath** y **botFileSecret** del bot en la hoja **Configuración de la aplicación**.
-
-![Secreto y la ruta de acceso del archivo de bot de Microsoft](~/media/azure-manage-a-bot/app-settings.png)
+**MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo de configuración del bot o en Azure Key Vault. Para recuperarlos, descargue la configuración del bot o el archivo de configuración, o acceda a Azure Key Vault. Puede que sea necesario realizar pruebas localmente con el identificador y la contraseña.
 
 > [!NOTE]
 > El servicio de bots **Registro de canales de bots** incluye un valor *MicrosoftAppID*, pero como no hay un servicio de aplicaciones asociado con este tipo de servicio, no hay una hoja **Configuración de la aplicación** para que consulte el valor *MicrosoftAppPassword*. Para obtener la contraseña, debe generar una. Para generar la contraseña para un **registro de canales de Bot**, consulte [Bot Channels Registration password](bot-service-quickstart-registration.md#bot-channels-registration-password) (Contraseña de registro de canales de bots).

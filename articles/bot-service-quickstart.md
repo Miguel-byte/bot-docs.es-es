@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 02/07/2019
-ms.openlocfilehash: 6e0e4bb9e0cecccd10ee1baf14d68a90f02bfa49
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 882dc15bd900667d76eac41049ee88b51ec5c120
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904548"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033137"
 ---
 # <a name="create-a-bot-with-azure-bot-service"></a>Creación de un bot con Azure Bot Service
 
@@ -49,7 +49,6 @@ Inicie sesión en [Azure Portal](http://portal.azure.com).
    | **Nombre de la aplicación** | Un nombre único | Nombre único de la dirección URL del bot. Por ejemplo, si el nombre del bot es *myawesomebot*, la dirección URL del bot será `http://myawesomebot.azurewebsites.net`. El nombre solo debe usar caracteres alfanuméricos y de subrayado. Hay un límite de 35 caracteres para este campo. No se puede cambiar el nombre de la aplicación una vez creado el bot. |
    | **Plantilla de bot** | Básica | Elija **C#** o **Node.js** y seleccione la plantilla **básica** para este inicio rápido y, a continuación, haga clic en **Seleccionar**. La plantilla básica crea un bot de eco. [Obtenga más información](bot-service-concept-templates.md) sobre las plantillas. |
    | **Plan de App Service/Ubicación** | Su plan de App Service  | Seleccione una ubicación para el [plan de App Service](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/). Puede elegir cualquier ubicación de la lista, aunque a menudo es mejor elegir la más cercana al cliente. (No disponible para el bot de Functions). |
-   | **Azure Storage** | Su cuenta de almacenamiento de Azure | Puede crear una cuenta de almacenamiento de datos o usar una existente. De forma predeterminada, el bot usará [Table Storage](/azure/storage/common/storage-introduction#table-storage). |
    | **Application Insights** | Por | Decida si quiere **Activar** o **Desactivar** [Application Insights](/bot-framework/bot-service-manage-analytics). Si selecciona **Activar**, también debe especificar una ubicación regional. Su elección de ubicación puede ser cualquier ubicación de la lista, aunque con frecuencia es mejor elegir la misma ubicación que la del servicio de bot. |
    | **Id. y contraseña de aplicación de Microsoft** | Creación automática del id. y contraseña de la aplicación | Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. En caso contrario, se crearán automáticamente un id. y contraseña nuevos de aplicación de Microsoft en el proceso de creación del bot. |
 
@@ -81,6 +80,7 @@ En este tema, ha aprendido a crear un bot de Functions o un bot de aplicación w
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
+
 Azure Bot Service proporciona los componentes principales para crear bots, incluido Bot Framework SDK para desarrollar bots y Bot Service para conectar los bots con los canales. En el tema, podrá elegir entre plantilla .NET o Node.js para crear un bot mediante Bot Framework SDK v4.
 
 [!INCLUDE [Azure vs local development](~/includes/snippet-quickstart-paths.md)]
@@ -111,7 +111,6 @@ Azure Bot Service proporciona los componentes principales para crear bots, inclu
  | **Nombre de la aplicación** | Un nombre único | Nombre único de la dirección URL del bot. Por ejemplo, si el nombre del bot es *myawesomebot*, la dirección URL del bot será `http://myawesomebot.azurewebsites.net`. El nombre solo debe usar caracteres alfanuméricos y de subrayado. Hay un límite de 35 caracteres para este campo. No se puede cambiar el nombre de la aplicación una vez creado el bot. |
  | **Plantilla de bot** | Bot de eco | Elija **SDK v4**. Seleccione C# o Node.js para esta guía de inicio rápido y, a continuación, haga clic en **Seleccionar**.  
  | **Plan de App Service/Ubicación** | Su plan de App Service  | Seleccione una ubicación para el [plan de App Service](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/). Su elección de ubicación puede ser cualquier ubicación de la lista, aunque con frecuencia es mejor elegir la misma ubicación que la del servicio de bot. |
- | **Azure Storage** | Su cuenta de almacenamiento de Azure | Puede crear una cuenta de almacenamiento de datos o usar una existente. De forma predeterminada, el bot usará [Table Storage](/azure/storage/common/storage-introduction#table-storage). |
  | **Application Insights** | Por | Decida si quiere **Activar** o **Desactivar** [Application Insights](/bot-framework/bot-service-manage-analytics). Si selecciona **Activar**, también debe especificar una ubicación regional. Su elección de ubicación puede ser cualquier ubicación de la lista, aunque con frecuencia es mejor elegir la misma ubicación que la del servicio de bot. |
  | **Id. y contraseña de aplicación de Microsoft** | Creación automática del id. y contraseña de la aplicación | Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. En caso contrario, se crearán automáticamente un id. y contraseña nuevos de aplicación de Microsoft en el proceso de creación del bot. |
 
@@ -136,6 +135,6 @@ El código se puede descargar para trabajar en el localmente.
     1. [!INCLUDE [download keys snippet](~/includes/snippet-abs-key-download.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de descargar el código, puede continuar desarrollando el bot localmente en el equipo. Una vez que pruebe su bot y esté listo para cargar el código del bot en Azure Portal, siga las instrucciones de la sección [Configurar un repositorio](./bot-builder-deploy-az-cli.md#setup-a-repository) en el tema de implementación.
+Después de descargar el código, puede continuar desarrollando el bot localmente en el equipo. Una vez que pruebe su bot y esté listo para cargar el código del bot en Azure Portal, siga las instrucciones del tema [Configuración de la implementación continua](./bot-service-build-continuous-deployment.md) para actualizar automáticamente el código después de realizar cambios.
 
 ::: moniker-end

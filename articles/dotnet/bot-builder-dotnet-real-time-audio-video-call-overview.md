@@ -1,21 +1,18 @@
 ---
-title: Compilación de un bot de elementos multimedia en tiempo real para Skype | Microsoft Docs
-description: Obtenga información sobre cómo crear un bot que realiza las llamadas de audio y vídeo en tiempo real con Skype, mediante Bot Framework SDK para .NET y el SDK de RealTimeMediaCalling de Bot Builder para .NET.
-author: MalarGit
-ms.author: malarch
-manager: kamrani
-ms.topic: article
-ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/13/17
-monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: a539ca3258e8c9a8020bfa7c939f6eddbdd30feb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+redirect_url: https://aka.ms/realTimeMediaCalling-repo
+ms.openlocfilehash: 9251c3a8ea75376b0891fc173975470a66ccaec8
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225660"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032949"
 ---
+<a name="--"></a><!--
+---
+título: Compilación de un bot de elementos multimedia en tiempo real para Skype | Microsoft Docs descripción: Obtenga información sobre cómo crear un bot que realiza las llamadas de audio y vídeo en tiempo real con Skype, mediante Bot Framework SDK para .NET y el SDK de RealTimeMediaCalling de Bot Builder para .NET.
+Autor: MalarGit ms.author: malarch manager: kamrani ms.topic: article ms.service: bot-service ms.subservice: sdk ms.date: 12/13/17 monikerRange: 'azure-bot-service-3.0'
+---
+
 # <a name="build-a-real-time-media-bot-for-skype"></a>Compilar de un bot de elementos multimedia en tiempo real para Skype
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
@@ -375,3 +372,4 @@ El bot puede elegir finalizar la llamada si se llama a `EndCall` en `IRealTimeMe
 ### <a name="handle-call-clean-up-by-the-bot-framework"></a>Control de la limpieza de llamada por parte de Bot Framework
 En condiciones de error (por ejemplo, si `AnswerAppHostedMediaOutcomeEvent` no se recibe dentro de un plazo razonable), Bot Framework puede finalizar la llamada. El bot se debe registrar para el evento `OnCallCleanup` y eliminar los sockets multimedia.
 
+-->

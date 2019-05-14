@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/18/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36ccbb796c2cd014118d4ae1f426acd44aabed76
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: d896584b2048c8d2b330a1e6e63bc47122102532
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904898"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033397"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -121,7 +121,8 @@ El contexto del diálogo se puede usar para empezar un diálogo, continuarlo, re
 
 Los diálogo pueden considerarse una pila mediante programación, lo que llamamos la *pila de diálogos*, con el controlador de turnos como lo que le ordena y que actúa como la reserva si la pila está vacía. El elemento superior de dicha pila se considera el *diálogo activo* y el contexto del diálogo dirige todas las entradas al cuadro de diálogo activo.
 
-Cuando se inicia un diálogo, se inserta en la pila y pasa a ser el diálogo activo. Y no deja de serlo hasta que termina, se elimina mediante el método de [sustitución de diálogo](#repeating-a-dialog) u otro diálogo se inserta en la pila (mediante el controlador de turnos o el propio diálogo activo) y se convierte en el diálogo activo. Cuando termina el diálogo nuevo, desaparece de la pila y el siguiente se convierte en el diálogo activo. Esto permite la creación de ramas y bucles tal y como se describe a continuación.
+Cuando se inicia un diálogo, se inserta en la pila y pasa a ser el diálogo activo. Y no deja de serlo hasta que termina, se elimina mediante el método de [sustitución de diálogo](#repeating-a-dialog) u otro diálogo se inserta en la pila (mediante el controlador de turnos o el propio diálogo activo) y se convierte en el diálogo activo. Cuando termina el diálogo nuevo, desaparece de la pila y el siguiente se convierte en el diálogo activo. Esto permite [repetir un cuadro de diálogo](#repeating-a-dialog) o crear una [bifurcación en una conversación](#branch-a-conversation), como se indica a continuación.
+
 
 ### <a name="create-the-dialog-context"></a>Creación del contexto del diálogo
 

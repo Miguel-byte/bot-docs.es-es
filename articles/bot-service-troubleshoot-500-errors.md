@@ -8,19 +8,22 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/20/2018
-ms.openlocfilehash: f86cacce5b25f60010f646cf5989123e3abf3bf2
-ms.sourcegitcommit: 32615b88e4758004c8c99e9d564658a700c7d61f
+ms.date: 4/30/2019
+ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55711979"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033081"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Solución de errores de HTTP 500
 
 El primer paso para solucionar errores de HTTP 500 es habilitar Application Insights.
 
-Los ejemplos luis-with-appinsights ([C#](https://aka.ms/cs-luis-with-appinsights-sample) / [JS](https://aka.ms/js-luis-with-appinsights-sample)) y qna-with-appinsights ([C#](https://aka.ms/qna-with-appinsights) / [JS](https://aka.ms/js-qna-with-appinsights-sample)) muestran bots compatibles con Azure Application Insights. Consulte [conversation analytics tememetry](https://aka.ms/botPowerBiTemplate) (Datos de telemetría de análisis de conversaciones) para obtener información acerca de cómo agregar Application Insights a un bot existente.
+<!-- TODO: Add links back in once there's a fresh AppInsights sample.
+The luis-with-appinsights ([C# sample](https://aka.ms/cs-luis-with-appinsights-sample) / [JS sample](https://aka.ms/js-luis-with-appinsights-sample)) and qna-with-appinsights ([C# sample](https://aka.ms/qna-with-appinsights) / [JS sample](https://aka.ms/js-qna-with-appinsights-sample)) samples demonstrate bots that support Azure Application Insights.
+-->
+Consulte los [datos de telemetría de análisis de conversaciones](https://aka.ms/botframeworkanalytics) para más información acerca de cómo agregar Application Insights a un bot existente.
 
 ## <a name="enable-application-insights-on-aspnet"></a>Habilitación de Application Insights en ASP.Net
 
@@ -71,7 +74,7 @@ Primero, asegúrese de que el bot se ejecuta localmente con el emulador.
 
 ### <a name="ensure-configuration-files-are-being-copied-net-only"></a>Asegúrese de que se están copiando los archivos de configuración (solo para .NET)
 
-Asegúrese de que el archivo de configuración `.bot` y el archivo `appsettings.json` se han empaquetado correctamente durante el proceso de implementación.
+Asegúrese de que `appsettings.json` y cualquier otro archivo de configuración se empaquetan correctamente durante el proceso de implementación.
 
 #### <a name="application-assemblies"></a>Ensamblados de aplicación
 
@@ -86,7 +89,7 @@ Asegúrese de que los ensamblados de Application Insights se han empaquetado cor
 - Microsoft.AI.DependencyCollector
 - Microsoft.AI.Agent.Intercept
 
-Asegúrese de que el archivo de configuración `.bot` y el archivo `appsettings.json` se han empaquetado correctamente durante el proceso de implementación.
+Asegúrese de que `appsettings.json` y cualquier otro archivo de configuración se empaquetan correctamente durante el proceso de implementación.
 
 #### <a name="appsettingsjson"></a>appsettings.json
 
@@ -114,8 +117,6 @@ En el archivo `appsettings.json` asegúrese de que se ha establecido la clave de
 
 ```json
 {
-    "botFilePath": "mybot.bot",
-    "botFileSecret": "<my secret>",
     "ApplicationInsights": {
         "InstrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
@@ -124,12 +125,13 @@ En el archivo `appsettings.json` asegúrese de que se ha establecido la clave de
 
 ---
 
-### <a name="verify-bot-config-file"></a>Compruebe el archivo de configuración .bot
+### <a name="verify-config-file"></a>Comprobación del archivo de configuración
 
-Asegúrese de que hay una clave de Application Insights incluida en el archivo .bot.
+Asegúrese de que hay una clave de Application Insights incluida en el archivo de configuración.
 
 ```json
-    {
+{
+    "ApplicationInsights": {
         "type": "appInsights",
         "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -140,7 +142,8 @@ Asegúrese de que hay una clave de Application Insights incluida en el archivo .
         "applicationId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
         "apiKeys": {},
         "id": ""
-    },
+    }
+},
 ```
 
 ### <a name="check-logs"></a>Compruebe los registros

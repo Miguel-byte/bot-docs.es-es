@@ -6,13 +6,13 @@ ms.author: v-demak
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 02/26/2019
-ms.openlocfilehash: 48a0a42d193b0e561a484330222217c18a611e8d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.date: 04/30/2019
+ms.openlocfilehash: 1e0678d869b02d536eb5c3ce39461da94dbd9a57
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224953"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65033091"
 ---
 # <a name="troubleshooting-general-problems"></a>Solución de problemas generales
 Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes de desarrollo de bots o problemas de funcionamiento.
@@ -21,7 +21,7 @@ Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes d
 
 1. Depure el código de fuente del bot con [Visual Studio Code](debug-bots-locally-vscode.md) o [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/debugger/navigating-through-code-with-the-debugger?view=vs-2017).
 1. Pruebe el bot con el [emulador](bot-service-debug-emulator.md) antes de implementarlo en la nube.
-1. Implemente el bot en una plataforma de hospedaje en la nube como Azure y, a continuación, pruebe la conectividad con el bot mediante el control de chat web integrado en el panel del bot en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a>. Si tiene problemas con el bot después de implementarlo en Azure, puede consultar este artículo de blog: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Descripción de la solución de problemas y el soporte técnico de Azure).
+1. Implemente el bot en una plataforma de hospedaje en la nube como Azure y, a continuación, pruebe la conectividad con el bot mediante el control de chat web integrado en el panel del bot de <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Si tiene problemas con el bot después de implementarlo en Azure, puede consultar este artículo de blog: [Understanding Azure troubleshooting and support](https://azure.microsoft.com/en-us/blog/understanding-azure-troubleshooting-and-support/) (Descripción de la solución de problemas y el soporte técnico de Azure).
 1. Descarte la [autenticación][TroubleshootingAuth] como un posible problema.
 1. Pruebe el bot en Skype. Esto le ayudará a validar la experiencia del usuario de un extremo a otro.
 1. Considere la posibilidad de probar el bot en canales que tienen requisitos de autenticación adicionales, como Direct Line o Web Chat.
@@ -104,7 +104,7 @@ Los SMS y los mensajes de correo electrónico proporcionarán el identificador d
 
 ## <a name="why-are-my-facebook-user-names-not-showing-anymore"></a>¿Por qué ya no se muestran los nombres de usuario de Facebook?
 
-¿Ha cambiado la contraseña de Facebook? Si lo ha hecho, invalidará el token de acceso y deberá actualizar la configuración del bot para el canal de Facebook Messenger en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a>.
+¿Ha cambiado la contraseña de Facebook? Si lo ha hecho, invalidará el token de acceso y deberá actualizar la configuración del bot para el canal de Facebook Messenger en <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 ## <a name="why-is-my-kik-bot-replying-im-sorry-i-cant-talk-right-now"></a>¿Por qué mi bot de Kik responde "Lo siento, no puedo hablar en este momento"?
 
@@ -130,7 +130,7 @@ Si la conversación de Direct Line se inicia después de cada mensaje, probablem
 Para solucionar este problema, establezca la propiedad `from` en cada mensaje que envía el cliente de Direct Line en un valor estable que identifique de forma única al usuario que envía el mensaje. Por ejemplo, si un usuario ya ha iniciado sesión en una página web o aplicación, podría usar ese identificador de usuario existente como el valor de la propiedad `from` en los mensajes que envía el usuario. Como alternativa, puede generar un identificador de usuario aleatorio en la carga de la página o en la carga de la aplicación, almacenar ese identificador en una cookie o en un estado de dispositivo y usar este identificador como el valor de la propiedad `from` en los mensajes que envía el usuario.
 
 ## <a name="what-causes-the-direct-line-30-service-to-respond-with-http-status-code-502-bad-gateway"></a>¿Qué hace que el servicio de Direct Line 3.0 responda con código de estado HTTP 502 "Puerta de enlace incorrecta"?
-Direct Line 3.0 devuelve el código de estado HTTP 502 cuando intenta ponerse en contacto con el bot pero la solicitud no finaliza correctamente. Este error indica que el bot devolvió un error o que la solicitud ha agotado el tiempo de espera. Para más información sobre los errores que genera el bot, vaya al panel del bot en el <a href="https://dev.botframework.com" target="_blank">portal de Bot Framework</a> y haga clic en el vínculo "Problemas" del canal afectado. Si ha configurado Application Insights para el bot, también puede encontrar allí información detallada del error. 
+Direct Line 3.0 devuelve el código de estado HTTP 502 cuando intenta ponerse en contacto con el bot pero la solicitud no finaliza correctamente. Este error indica que el bot devolvió un error o que la solicitud ha agotado el tiempo de espera. Para más información sobre los errores que genera el bot, vaya al panel del bot en <a href="https://portal.azure.com" target="_blank">Azure Portal</a> y haga clic en el vínculo "Problemas" del canal afectado. Si ha configurado Application Insights para el bot, también puede encontrar allí información detallada del error. 
 
 ::: moniker range="azure-bot-service-3.0"
 
@@ -216,13 +216,6 @@ builder
     .InstancePerLifetimeScope();
 builder.Update(Conversation.Container);
 ```
-::: moniker-end
-
-## <a name="is-there-a-limit-on-the-amount-of-data-i-can-store-using-the-state-api"></a>¿Hay un límite en la cantidad de datos que puedo almacenar mediante State API?
-
-Sí, cada almacén de estado (es decir, las bolsas de datos de usuario, de conversación y de conversación privada del bot) puede contener hasta 64 KB de datos. Para más información, consulte [Administración de datos de estado][StateAPI].
-
-::: moniker range="azure-bot-service-3.0"
 
 ## <a name="how-do-i-version-the-bot-data-stored-through-the-state-api"></a>¿Cómo se determina la versión de los datos del bot almacenados mediante State API?
 

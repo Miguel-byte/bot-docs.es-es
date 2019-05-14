@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 2/26/2019
-ms.openlocfilehash: 1e806358ffdba90848f0c8124c8315fd4e2dec76
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: aa16bc839a96a49615ed127aaf56f686f50a5397
+ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224843"
+ms.lasthandoff: 05/03/2019
+ms.locfileid: "65032998"
 ---
 # <a name="debug-a-bot"></a>Depuración de un bot
 
-En este artículo se describe cómo depurar el bot mediante un entorno de desarrollo integrado (IDE), como Visual Studio o Visual Studio Code, y el emulador de Bot Framework. Aunque puede usar estos métodos para depurar cualquier bot localmente, este artículo se usa el bot en [C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) y [JS](~/javascript/bot-builder-javascript-quickstart.md) que creó en la guía de inicio rápido.
+En este artículo se describe cómo depurar el bot mediante un entorno de desarrollo integrado (IDE), como Visual Studio o Visual Studio Code, y el emulador de Bot Framework. Aunque puede usar estos métodos para depurar cualquier bot localmente, en este artículo se usa un [bot de C#](~/dotnet/bot-builder-dotnet-sdk-quickstart.md) o uno de [Javascript](~/javascript/bot-builder-javascript-quickstart.md) que se creó en el inicio rápido.
 
 ## <a name="prerequisites"></a>Requisitos previos 
 - Descargue e instale el [emulador de Bot Framework](https://aka.ms/Emulator-wiki-getting-started).
@@ -29,7 +29,7 @@ En este artículo se describe cómo depurar el bot mediante un entorno de desarr
 Para ejecutar un bot de JavaScript mediante la línea de comandos y probarlo con el emulador, siga estos pasos:
 1. Desde la línea de comandos, cambie el directorio al del proyecto del bot.
 1. Ejecute el comando **node app.js** para iniciar el bot.
-1. Inicie el emulador y conéctese al punto de conexión del bot (por ejemplo: **http://localhost:3978/api/messages**). Si es la primera vez que se ejecuta el bot, haga clic en **Archivo > Nuevo bot** y siga las instrucciones en pantalla. En caso contrario, haga clic en **Archivo > Abrir bot** para abrir un bot existente. Como este bot se ejecuta localmente en el equipo, puede dejar en blanco los campos **MSA app ID** (Id. de aplicación de MSA) y **MSA app password** (Contraseña de aplicación de MSA). Para obtener más información, vea [Depuración con el emulador](bot-service-debug-emulator.md).
+1. Inicie el emulador y conéctese al punto de conexión del bot (por ejemplo: **http://localhost:3978/api/messages**). Si es la primera vez que se ejecuta el bot, haga clic en **Archivo > Nuevo bot** y siga las instrucciones en pantalla. En caso contrario, haga clic en **Archivo > Abrir bot** para abrir un bot existente. Como este bot se ejecuta localmente en el equipo, puede dejar en blanco los campos **MicrosoftAppId** y **MicrosoftAppPassword**. Para obtener más información, vea [Depuración con el emulador](bot-service-debug-emulator.md).
 1. Desde el emulador, envíe un mensaje al bot (por ejemplo, envíe el mensaje "¡Hi" [¡Hola!]). 
 1. Use los paneles **Inspector** y **Registro** del lado derecho de la ventana del emulador para depurar el bot. Por ejemplo, al hacer clic en cualquiera de las burbujas de mensaje (como la burbuja de mensaje "Hi" (Hola) en la captura de pantalla siguiente), se mostrarán los detalles de ese mensaje en el panel **Inspector**. Puede usarlo para ver las solicitudes y respuestas como mensajes que se intercambian entre el emulador y el bot. Como alternativa, puede hacer clic en cualquier parte del texto vinculado en el panel **Registro** para ver los detalles en el panel **Inspector**.
 
@@ -132,7 +132,7 @@ Además, puede ver los detalles de registro en la ventana de consola.
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - Consulte [Solución de problemas generales](bot-service-troubleshoot-bot-configuration.md) y otros artículos de solución de problemas en esa sección.
-- Consulte la entrada de blog sobre cómo [depurar cualquier canal localmente con ngrok](https://blog.botframework.com/2017/10/19/debug-channel-locally-using-ngrok/).
+- Consulte la sección [Depuración con el emulador](bot-service-debug-emulator.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
