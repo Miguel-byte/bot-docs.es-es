@@ -1,8 +1,10 @@
 # Asistente virtual
 ## [Información general](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [Introducción a la plantilla](../v4sdk/bot-builder-virtual-assistant-template.md)
+## [Introducción](../v4sdk/bot-builder-virtual-assistant-gettingstarted.md)
 # Aptitudes 
 ## [Información general](../v4sdk/bot-builder-skills-overview.md)
+## [Introducción](../v4sdk/bot-builder-skills-gettingstarted.md)
 # [P+F](../bot-service-resources-bot-framework-faq.md)
 # [Obtención de soporte técnico](../bot-service-resources-links-help.md)
 # [Referencia de canal](../bot-service-channels-reference.md)
