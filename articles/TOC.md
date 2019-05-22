@@ -38,7 +38,6 @@
 ### [Guardar usuario y datos de conversación](v4sdk/bot-builder-howto-v4-state.md) 
 ### [Solicitud de entradas a los usuarios](v4sdk/bot-builder-primitive-prompts.md) 
 ### [Envío de mensajes de bienvenida a los usuarios](v4sdk/bot-builder-send-welcome-message.md)
-<!-- ## [Add input hints to messages](v4sdk/bot-builder-howto-add-input-hints.md) -->
 ### [Enviar notificaciones activas a los usuarios](v4sdk/bot-builder-howto-proactive-message.md)
 ### [Implementación de flujo de conversación secuencial](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
 ### [Incorporación de comprensión lingüística natural al bot](v4sdk/bot-builder-howto-v4-luis.md)
@@ -48,7 +47,6 @@
 ### [Volver a usar diálogos](v4sdk/bot-builder-compositcontrol.md)
 <!--#### [Implement a greeting dialog](v4sdk/bot-builder-dialogs-greeting.md)--TODO: Add once there's a sample.-->
 ### [Control de las interrupciones del usuario](v4sdk/bot-builder-howto-handle-user-interrupt.md)
-<!--#### [Persist user data](v4sdk/bot-builder-tutorial-persist-user-inputs.md)--TODO: redirect to write directly to storage.-->
 ### [Escritura directa en el almacenamiento](v4sdk/bot-builder-howto-v4-storage.md)
 ### [Adición de autenticación al bot](v4sdk/bot-builder-authentication.md)
 ### [Implementación de almacenamiento personalizado en un bot](v4sdk/bot-builder-custom-storage.md)
