@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: tutorial
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/30/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: deafe148310dd214ab857d60595edb1abef9e46d
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: e51683a5dbae29879d73ee322586272d49708b22
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039723"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973876"
 ---
 # <a name="tutorial-use-qna-maker-in-your-bot-to-answer-questions"></a>Tutorial: Uso de QnA Maker en el bot para responder preguntas
 
@@ -61,7 +61,19 @@ Se importará una definición de la base de conocimiento existente desde el ejem
 1. Haga clic en **Save and train** (Guardar y entrenar) la base de conocimiento.
 1. Haga clic en **Publish** (Publicar) la base de conocimiento.
 
-La base de conocimiento ahora está lista para su uso con el bot. Registre el identificador de base de conocimiento, la clave del punto de conexión y el nombre de host. Los necesitará para el siguiente paso.
+Una vez que se publique la aplicación de QnA Maker, seleccione la pestaña _SETTINGS_ (Configuración) y desplácese hacia abajo hasta "Deployment details" (Detalles de la implementación). Registre los valores siguientes en la solicitud HTTP de _Postman_ de ejemplo.
+
+```text
+POST /knowledgebases/<knowledge-base-id>/generateAnswer
+Host: <your-hostname>  // NOTE - this is a URL ending in /qnamaker.
+Authorization: EndpointKey <qna-maker-resource-key>
+```
+
+La cadena completa de la dirección URL del nombre de host se verá como "https://< >.azure.net/qnamaker".
+
+Estos valores se utilizarán en los archivos `appsettings.json` o `.env` en el paso siguiente.
+
+La base de conocimiento ahora está lista para su uso con el bot.
 
 ## <a name="add-knowledge-base-information-to-your-bot"></a>Incorporación de información de la base de conocimiento al bot
 A partir de Bot Framework 4.3, Azure deja de proporcionar un archivo .bot como parte del código fuente del bot descargado. Utilice las siguientes instrucciones para conectar el bot CSharp o JavaScript a la base de conocimiento.
@@ -76,9 +88,9 @@ Agregue los valores siguientes al archivo appsetting.json:
   "MicrosoftAppPassword": "",
   "ScmType": "None",
   
-  "QnAKnowledgebaseId": "<your-knowledge-base-id>",
-  "QnAAuthKey": "<your-knowledge-base-endpoint-key>",
-  "QnAEndpointHostName": "<your-qna-service-hostname>" // This is a URL
+  "QnAKnowledgebaseId": "<knowledge-base-id>",
+  "QnAAuthKey": "<qna-maker-resource-key>",
+  "QnAEndpointHostName": "<your-hostname>" // This is a URL ending in /qnamaker
 }
 ```
 
@@ -91,18 +103,18 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 ScmType=None
 
-QnAKnowledgebaseId="<your-knowledge-base-id>"
-QnAAuthKey="<your-knowledge-base-endpoint-key>"
-QnAEndpointHostName="<your-qna-service-hostname>" // This is a URL
+QnAKnowledgebaseId="<knowledge-base-id>"
+QnAAuthKey="<qna-maker-resource-key>"
+QnAEndpointHostName="<your-hostname>" // This is a URL ending in /qnamaker
 ```
 
 ---
 
 | Campo | Valor |
 |:----|:----|
-| kbId | Identificador de base de conocimiento que el portal de QnA Maker genera automáticamente. |
-| endpointKey | Clave del punto de conexión que el portal de QnA Maker genera automáticamente. |
-| hostname | Dirección URL del host que generó el portal de QnA Maker. Use la dirección URL completa, empezando por `https://` y terminando con `/qnamaker`. La cadena completa de la dirección URL será similar a esta: "https://< >.azure.net/qnamaker". |
+| QnAKnowledgebaseId | Identificador de base de conocimiento que el portal de QnA Maker genera automáticamente. |
+| QnAAuthKey | Clave del punto de conexión que el portal de QnA Maker genera automáticamente. |
+| QnAEndpointHostName | Dirección URL del host que generó el portal de QnA Maker. Use la dirección URL completa, empezando por `https://` y terminando con `/qnamaker`. La cadena completa de la dirección URL será similar a esta: "https://< >.azure.net/qnamaker". |
 
 Ahora, guarde las modificaciones.
 
@@ -259,6 +271,15 @@ En este momento el bot debe ser capaz de responder algunas preguntas. Ejecute el
 ## <a name="republish-your-bot"></a>Nueva publicación del bot
 
 Ahora podemos volver a publicar el bot en Azure.
+
+> [!IMPORTANT]
+> Antes de comprimir los archivos del proyecto, asegúrese de que está _en_ la carpeta correcta. 
+> - Para bots de C#, es la carpeta que contiene el archivo .csproj. 
+> - Para bots de JS, es la carpeta que contiene el archivo app.js o index.js. 
+>
+> Seleccione todos los archivos y comprímalos mientras está en esa carpeta y, a continuación, ejecute el comando también en esa carpeta.
+>
+> Si la ubicación de la carpeta raíz es incorrecta, el **bot no podrá ejecutarse en Azure Portal**.
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 ```cmd

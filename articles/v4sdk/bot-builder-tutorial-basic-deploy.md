@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7f2c31ab0a7f97917be83334c39bdc4750547614
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: bb6346d8364e0323c1e5f12329e8cdea97bad0ac
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033190"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733370"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutorial: Creación e implementación de un bot básico
 
@@ -117,7 +117,7 @@ En este caso, se usará un plan de App Service ya existente, pero creando una ap
 _Nota: El parámetro botId debe ser único globalmente y se utiliza como identificador inmutable del bot. También sirve para configurar el nombre para mostrar del bot, nombre que es mutable._
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation=<location>"
+az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
 **Opción 2: Nuevo plan de App Service** 
@@ -168,6 +168,8 @@ Por tanto, es importante incluir el código compilado con todas las dependencias
 > Antes de comprimir los archivos de proyecto, asegúrese de que está _en_ la carpeta correcta. 
 > - Para bots de C#, es la carpeta que contiene el archivo .csproj. 
 > - Para bots de JS, es la carpeta que contiene el archivo app.js o index.js. 
+>
+> Seleccione todos los archivos y comprímalos mientras está en esa carpeta y, a continuación, ejecute el comando también en esa carpeta.
 >
 > Si la ubicación de la carpeta raíz es incorrecta, el **bot no podrá ejecutarse en Azure Portal**.
 

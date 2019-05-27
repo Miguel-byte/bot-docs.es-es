@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 4/13/2019
-ms.openlocfilehash: 17d80fe4d4730ed294b770fd05bc5d7ea3d114af
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: f3e0ac52a3bfe5759202af6c704626acafef617b
+ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033041"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65733311"
 ---
 # <a name="manage-a-bot"></a>Administración de un bot
 
@@ -52,7 +52,7 @@ La hoja **Configuración de la aplicación** contiene información detallada sob
 
 ### <a name="microsoftappid-and-microsoftapppassword"></a>MicrosoftAppID y MicrosoftAppPassword
 
-**MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo de configuración del bot o en Azure Key Vault. Para recuperarlos, descargue la configuración del bot o el archivo de configuración, o acceda a Azure Key Vault. Puede que sea necesario realizar pruebas localmente con el identificador y la contraseña.
+**MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo de configuración del bot (`appsettings.json` o `.env`) o en Azure Key Vault. Para recuperarlos, descargue la configuración del bot o el archivo de configuración (para bots anteriores, si existe) o acceda a Azure Key Vault. Puede que sea necesario realizar pruebas localmente con el identificador y la contraseña.
 
 > [!NOTE]
 > El servicio de bots **Registro de canales de bots** incluye un valor *MicrosoftAppID*, pero como no hay un servicio de aplicaciones asociado con este tipo de servicio, no hay una hoja **Configuración de la aplicación** para que consulte el valor *MicrosoftAppPassword*. Para obtener la contraseña, debe generar una. Para generar la contraseña para un **registro de canales de Bot**, consulte [Bot Channels Registration password](bot-service-quickstart-registration.md#bot-channels-registration-password) (Contraseña de registro de canales de bots).

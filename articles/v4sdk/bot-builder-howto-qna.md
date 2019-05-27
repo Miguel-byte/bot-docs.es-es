@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 04/17/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f24fc4e0aa4ccb9d99275360df693c8465e5a4ad
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 10ae35f51a072a1af6cf7d4bdf2fd2f4cb3d66ee
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039764"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973854"
 ---
 # <a name="use-qna-maker-to-answer-questions"></a>Uso de QnA Maker para responder preguntas
 
@@ -58,10 +58,10 @@ A continuación, va a crear una base de conocimiento con el archivo `smartLightF
 ## <a name="obtain-values-to-connect-your-bot-to-the-knowledge-base"></a>Obtención de valores para conectar el bot a la base de conocimiento
 1. En el sitio de [QnA Maker](https://www.qnamaker.ai/), seleccione la base de conocimiento.
 1. Con la base de conocimiento abierta, seleccione **Configuración**. Anote el valor que se muestra en _nombre de servicio_. Este valor es útil para buscar la base de conocimiento apropiada en la interfaz del portal de QnA Maker. No se utiliza para conectar la aplicación de bot a esta base de conocimiento. 
-1. Baje hasta **Detalles de implementación** y anote los siguientes valores:
-   - POST /knowledgebases/<Id_de_su_base_de_conocimiento>/getAnswers
-   - Host: <su_nombre_de_host>/qnamaker
-   - Autorización: EndpointKey <clave_de_su_punto_de_conexión>
+1. Desplácese hacia abajo hasta encontrar **Detalles de implementación** y anote los siguientes valores de la solicitud HTTP de ejemplo de Postman:
+   - POST /knowledgebases/\<knowledge-base-id>/generateAnswer
+   - Host: \<nombre-de-host > // dirección URL completa que termina con /qnamaker
+   - Autorización: EndpointKey \<clave_de_su_punto_de_conexión>
    
 La cadena completa de la dirección URL del nombre de host se verá como "https://< >.azure.net/qnamaker". Estos tres valores proporcionarán la información necesaria para que su aplicación pueda conectarse a la base de conocimiento de QnA Maker mediante el servicio Azure QnA.  
 

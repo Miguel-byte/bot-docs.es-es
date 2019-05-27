@@ -1,0 +1,22 @@
+---
+title: Introducción a Virtual Assistant | Microsoft Docs
+description: Cómo empezar a trabajar con la plantilla Virtual Assistant
+author: darrenj
+ms.author: darrenj
+manager: kamrani
+ms.topic: article
+ms.service: bot-service
+ms.date: 05/06/2019
+monikerRange: azure-bot-service-4.0
+ms.openlocfilehash: dc6e7177ff06f868e96618f1edb6c31d98884e3e
+ms.sourcegitcommit: 178140eb060d71803f1c6357dd5afebd7f44fe1d
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65856654"
+---
+# <a name="virtual-assistant---getting-started"></a>Introducción a Virtual Assistant
+
+Con el fin de ayudarle a empezar a trabajar con la creación de su propio asistente virtual, tenemos un conjunto de [tutoriales](https://github.com/microsoft/AI/tree/master/docs#tutorials) disponible como parte del [repositorio de GitHub de soluciones de Bot Framework](https://github.com/Microsoft/botframework-solutions). Estos le permiten crear su propio asistente en unos 10 minutos y, a continuación, pasan a la personalización y la adición o creación de las aptitudes adicionales necesarias.
+
+Además, la documentación anterior contiene documentos de [procedimientos](https://github.com/microsoft/AI/tree/master/docs#how-to) y de [referencia](https://github.com/microsoft/AI/tree/master/docs#reference) que profundizan en más detalles.

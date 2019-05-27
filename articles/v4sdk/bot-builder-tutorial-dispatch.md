@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/15/2019
+ms.date: 05/20/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b3e488615f318529935d35dbebbed2dd3b734f62
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: c81e463c221c64250684827a4e0ed059e7f98a02
+ms.sourcegitcommit: 72cc9134bf50f335cbb33265b048bf6b76252ce4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039746"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65973882"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -38,7 +38,7 @@ Este ejemplo se basa en un conjunto predefinido de aplicaciones de LUIS y QnA Ma
 
 ![Flujo lógico del código de ejemplo](./media/tutorial-dispatch/dispatch-logic-flow.png)
 
-`OnMessageActivityAsync` se llama para cada entrada de usuario recibida. Este módulo busca la intención del usuario con mayor puntuación y pasa el resultado a `DispatchToTopIntentAsync`. DispatchToTopIntentAsync, a su vez, llama al controlador de la aplicación adecuada.
+Se llama a `OnMessageActivityAsync` para cada entrada del usuario recibida. Este módulo busca la intención del usuario con mayor puntuación y pasa el resultado a `DispatchToTopIntentAsync`. DispatchToTopIntentAsync, a su vez, llama al controlador de la aplicación adecuada.
 
 - `ProcessSampleQnAAsync` -para las preguntas más frecuentes sobre bot.
 - `ProcessWeatherAsync` -para las consultas sobre el tiempo.
@@ -90,9 +90,25 @@ Antes de que pueda crear el modelo de Dispatch, tendrá que crear y publicar las
 
 ### <a name="create-qna-maker-kb"></a>Creación de la base de conocimiento de QnA Maker
 
-El primer paso para configurar una base de conocimiento de QnA Maker es configurar un servicio QnA Maker en Azure. Para ello, siga las instrucciones detalladas que se indican [aquí](https://aka.ms/create-qna-maker). Ahora, inicie sesión en el [portal web de QnAMaker](https://qnamaker.ai). Vaya al paso 2
+El primer paso para configurar una base de conocimiento de QnA Maker es configurar un servicio QnA Maker en Azure. Para ello, siga las instrucciones detalladas que se indican [aquí](https://aka.ms/create-qna-maker).
 
-![Paso 2, crear QnA](./media/tutorial-dispatch/create-qna-step-2.png)
+Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ de Cognitive Services proporcionada para el servicio QnA Maker. Esto se usará como \<azure-qna-service-key1> al agregar QnA a la aplicación de envío. Los pasos siguientes le proporcionan esta clave:
+    
+![Selección de Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
+
+1. Desde Azure Portal, seleccione el servicio QnA Maker de Cognitive Services.
+
+![Selección de las claves de Cognitive Services](./media/tutorial-dispatch/select-cognitive-service-keys.png)
+
+2. Seleccione el icono de claves que se encuentra en la sección _Administración de recursos_ en el menú izquierdo.
+
+![Selección de Cognitive Service Key1](./media/tutorial-dispatch/select-cognitive-service-key1.png)
+
+3. Copie el valor de _Key 1_ en el Portapapeles y guárdelo en local. Esto se usará como el valor de clave (-k) \<azure-qna-service-key1> al agregar QnA a la aplicación de envío.
+
+Ahora, inicie sesión en el [portal web de QnAMaker](https://qnamaker.ai). Vaya al paso 2
+
+![Paso 2, crear QnA](./media/tutorial-dispatch/create-qna-step-2.png) 
 
 y seleccione
 1. La cuenta de Azure AD.
@@ -124,7 +140,7 @@ Una vez que se publique la aplicación de QnA Maker, seleccione la pestaña _SET
 ```text
 POST /knowledgebases/<knowledge-base-id>/generateAnswer
 Host: <your-hostname>  // NOTE - this is a URL.
-Authorization: EndpointKey <your-endpoint-key>
+Authorization: EndpointKey <qna-maker-resource-key>
 ```
 
 La cadena completa de la dirección URL del nombre de host se verá como "https://< >.azure.net/qnamaker".
@@ -156,7 +172,7 @@ La interfaz de la CLI para la herramienta Dispatch, crea el modelo para su distr
     ```cmd
     dispatch add -t luis -i "<app-id-for-weather-app>" -n "<name-of-weather-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_Weather
     dispatch add -t luis -i "<app-id-for-home-automation-app>" -n "<name-of-home-automation-app>" -v <app-version-number> -k "<your-luis-authoring-key>" --intentName l_HomeAutomation
-    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<your-cognitive-services-subscription-id>" --intentName q_sample-qna
+    dispatch add -t qna -i "<knowledge-base-id>" -n "<knowledge-base-name>" -k "<azure-qna-service-key1>" --intentName q_sample-qna
     ```
 
 1. Use `dispatch create` para generar un modelo de Dispatch desde el archivo .dispatch.
@@ -206,7 +222,7 @@ Para cada una de las entidades que se muestran a continuación, agregue los valo
 "MicrosoftAppPassword": "",
   
 "QnAKnowledgebaseId": "<knowledge-base-id>",
-"QnAAuthKey": "<your-endpoint-key>",
+"QnAAuthKey": "<qna-maker-resource-key>",
 "QnAEndpointHostName": "<your-hostname>",
 
 "LuisAppId": "<app-id-for-dispatch-app>",
@@ -245,7 +261,7 @@ MicrosoftAppId=""
 MicrosoftAppPassword=""
 
 QnAKnowledgebaseId="<knowledge-base-id>"
-QnAAuthKey="<your-endpoint-key>"
+QnAAuthKey="<qna-maker-resource-key>"
 QnAEndpointHostName="<your-hostname>"
 
 LuisAppId=<app-id-for-dispatch-app>
