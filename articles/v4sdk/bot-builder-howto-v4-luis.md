@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: cognitive-services
-ms.date: 4/18/19
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 58d1e83b67d0601a9783e175318a50f8c0646bb2
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033582"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215348"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Incorporación de reconocimiento de lenguaje natural al bot
 
@@ -25,7 +25,7 @@ La tarea de entender qué quiere decir el usuario conversacionalmente y contextu
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Una cuenta de [LUIS](https://www.luis.ai)
-- El código de este artículo se basa en el ejemplo de **Core Bot**. Necesitará una copia del ejemplo en **[CSharp](https://aka.ms/cs-core-sample) o [JavaScript](https://aka.ms/js-core-sample)**. 
+- El código de este artículo se basa en el ejemplo de **Core Bot**. Necesitará una copia del ejemplo en **[CSharp](https://aka.ms/cs-core-sample) o [JavaScript](https://aka.ms/js-core-sample)** . 
 - Conocimientos sobre los [conceptos básicos de los bots](bot-builder-basics.md), el [procesamiento de lenguaje natural](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) y la [administración de recursos de bots](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
@@ -128,7 +128,7 @@ LUIS ya está configurado y conectado para el bot.
 
 ## <a name="test-the-bot"></a>Probar el bot
 
-Descargue e instale la versión más reciente de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
+Descargue e instale la versión más reciente de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 
 1. Ejecute el ejemplo localmente en la máquina. Si necesita instrucciones, consulte el archivo Léame en los ejemplos de [C#](https://aka.ms/cs-core-sample) o [JS](https://aka.ms/js-core-sample).
 

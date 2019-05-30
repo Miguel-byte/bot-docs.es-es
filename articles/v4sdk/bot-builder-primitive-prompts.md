@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/08/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3470b1c8f3fbcfb7fecbb060a54b1a356ad41b61
-ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
+ms.openlocfilehash: bfd37b703a43e056142ad161eb3308fd2b754e25
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65733320"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215326"
 ---
 # <a name="create-your-own-prompts-to-gather-user-input"></a>Creación de mensajes propios para recopilar datos de entrada del usuario
 
@@ -28,7 +28,7 @@ A menudo, una conversación entre un usuario y un bot implica mostrar preguntas 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- El código de este artículo se basa en el ejemplo para solicitar una entrada a los usuarios. Necesitará una copia del **[ejemplo de C#](https://aka.ms/cs-primitive-prompt-sample) o del [ejemplo de JavaScript](https://aka.ms/js-primitive-prompt-sample)**.
+- El código de este artículo se basa en el ejemplo para solicitar una entrada a los usuarios. Necesitará una copia del **[ejemplo de C#](https://aka.ms/cs-primitive-prompt-sample) o del [ejemplo de JavaScript](https://aka.ms/js-primitive-prompt-sample)** .
 - Conocimientos sobre la [administración del estado](bot-builder-concept-state.md) y cómo [guardar los datos de usuario y conversación](bot-builder-howto-v4-state.md).
 
 ## <a name="about-the-sample-code"></a>Acerca del código de ejemplo
@@ -104,7 +104,7 @@ A continuación, se definirá un segundo controlador, `onDialog`, para que se ej
 
 ## <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Para controlar las actividades de los mensajes, se usa el método auxiliar _FillOutUserProfileAsync()_ antes de guardar el estado mediante _SaveChangesAsync()_. Aquí está todo el código.
+Para controlar las actividades de los mensajes, se usa el método auxiliar _FillOutUserProfileAsync()_ antes de guardar el estado mediante _SaveChangesAsync()_ . Aquí está todo el código.
 
 **Bots/CustomPromptBot.cs** [!code-csharp[custom prompt bot](~/../botbuilder-samples/samples/csharp_dotnetcore/44.prompt-users-for-input/Bots/CustomPromptBot.cs?range=30-44)]
 

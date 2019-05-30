@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/05/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ded465802ff3e16563dd56998e4114d6bd98ad5f
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: de497fa5ad694081258486dd5c6e9fd37b107879
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65047892"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215562"
 ---
 # <a name="whats-new-in-bot-framework"></a>Novedades de Bot Framework
 El SDK Bot Framework v4 es un [SDK de código abierto][1a] que permite a los desarrolladores modelar y crear conversaciones sofisticadas con su lenguaje de programación favorito.

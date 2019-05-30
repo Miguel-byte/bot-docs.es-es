@@ -7,14 +7,14 @@ ms.author: v-ivorb
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 2/26/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 618d438a384fa6a91ba919265519397cac555fda
-ms.sourcegitcommit: aea57820b8a137047d59491b45320cf268043861
+ms.openlocfilehash: 3e1ebc07c73dcd7033a6b9a22c94379593c5890e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59904858"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215262"
 ---
 # <a name="testing-and-debugging-guidelines"></a>Directrices de prueba y depuración
 
@@ -85,7 +85,7 @@ Además, cuando las interacciones de entrada del usuario se han almacenado, pued
 
 ![Examine_stored_transcript_text](./media/examine_transcript_text_in_azure.png)
 
-Abre la entrada de conversación de usuario almacenada en formato JSON. La entrada de usuario se conserva junto con la clave "_text:_".
+Abre la entrada de conversación de usuario almacenada en formato JSON. La entrada de usuario se conserva junto con la clave "_text:_ ".
 
 ### <a name="how-middleware-works"></a>Funcionamiento del software intermedio
 

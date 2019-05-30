@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/24/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ad1209481691e1c1ed4e00b42086b8996aeea6a5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 680d9148b463bbb5d10f4a6a06cc7b32b824b66e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032711"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215422"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
@@ -36,7 +36,7 @@ En el ejemplo de aviso de varios turnos, usamos un diálogo en cascada, algunos 
 
 | Pasos        | Tipo de aviso  |
 |:-------------|:-------------| 
-| Pedir al usuario su modo de transporte | Aviso de opción |
+| Pedir al usuario su modo de transporte | Aviso de elección |
 | Pedir al usuario su nombre | Aviso de texto |
 | Pedir al usuario si desea proporcionar su edad | Aviso de confirmación |
 | Si responde Sí, solicitar su edad  | Aviso numérico con validación para que solo acepte edades mayores que 0 y menores de 150. |
@@ -200,7 +200,7 @@ Registramos los servicios del bot en `index.js`.
 
 ## <a name="to-test-the-bot"></a>Prueba del bot
 
-1. Si aún no lo hizo, instale [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+1. Si aún no lo ha hecho, instale [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 1. Ejecute el ejemplo localmente en la máquina.
 1. Inicie el emulador, conéctese al bot y envíe mensajes como se muestra a continuación.
 

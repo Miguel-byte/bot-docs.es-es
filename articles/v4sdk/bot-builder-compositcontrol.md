@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 04/16/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6840305684eff7dc325a541a0b545396e6c30fa8
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 1f9070b0fd3b4e88eb7d752f5a73c4374bfe8415
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033471"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215523"
 ---
 # <a name="reuse-dialogs"></a>Reutilización de diálogos
 

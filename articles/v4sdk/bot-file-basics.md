@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/01/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 20b434c4fe5106ffe953c1a9ba9a282254511c9c
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: b4a5e3f0271d6b80a4245294e520ebc5abaede4e
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032324"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214134"
 ---
 # <a name="manage-bot-resources"></a>Administración de recursos de bot
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032324"
 Los bots suelen usar servicios diferentes, como [LUIS.ai](https://luis.ai) o [QnaMaker.ai](https://qnamaker.ai). Cuando está desarrollando un bot, es preciso que pueda realizar un seguimiento de todos ellos. Puede usar diversos métodos como appsettings.json, web.config o .env. 
 
 > [!IMPORTANT]
-> Antes de la versión Bot Framework SDK 4.3, se ofrecía el archivo .bot como un mecanismo para administrar los recursos. Sin embargo, en adelante, se recomienda usar el archivo appsettings.json o .env para administrar estos recursos. Los bots que utilicen el archivo .bot seguirán funcionando por ahora, aunque este archivo está **_en desuso_**. Si ha estado usando un archivo .bot para administrar recursos, siga los pasos aplicables para migrar la configuración. 
+> Antes de la versión Bot Framework SDK 4.3, se ofrecía el archivo .bot como un mecanismo para administrar los recursos. Sin embargo, en adelante, se recomienda usar el archivo appsettings.json o .env para administrar estos recursos. Los bots que utilicen el archivo .bot seguirán funcionando por ahora, aunque este archivo está **_en desuso_** . Si ha estado usando un archivo .bot para administrar recursos, siga los pasos aplicables para migrar la configuración. 
 
 ## <a name="migrating-settings-from-bot-file"></a>Migración de la configuración a partir de un archivo .bot
 Las siguientes secciones explican cómo migrar la configuración a partir del archivo .bot. Siga las instrucciones del escenario que sea aplicable en su caso.

@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 4/15/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e40a5c0e5cfa020f62c122e3aea134e0dd131372
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 9389f97cbba2e8766bf29b2502d36e9ec03077cf
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033437"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215381"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envío de notificaciones activas a los usuarios
 
@@ -35,7 +35,7 @@ Para controlar las notificaciones más fácilmente, considere otras formas de in
 ## <a name="prerequisites"></a>Requisitos previos
 
 - Comprender los [conceptos básicos de bot](bot-builder-basics.md).
-- Una copia del ejemplo de mensajes proactivos en **[CSharp](https://aka.ms/proactive-sample-cs) o [JavaScript](https://aka.ms/proactive-sample-js)**. Este ejemplo se utiliza para explicar la mensajería proactiva de este artículo.
+- Una copia del ejemplo de mensajes proactivos en **[CSharp](https://aka.ms/proactive-sample-cs) o [JavaScript](https://aka.ms/proactive-sample-js)** . Este ejemplo se utiliza para explicar la mensajería proactiva de este artículo.
 
 ## <a name="about-the-proactive-sample"></a>Acerca del ejemplo proactivo
 

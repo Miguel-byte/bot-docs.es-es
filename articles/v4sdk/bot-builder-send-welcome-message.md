@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 03/13/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0858cf73c1a744100c2f7106013fd963cff84454
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: f7709d6273739be6d2b3e9e3174f24ea2734f22d
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032524"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215311"
 ---
 # <a name="send-welcome-message-to-users"></a>Envío de mensajes de bienvenida a los usuarios
 
@@ -144,7 +144,7 @@ Como se mencionó anteriormente, algunas entradas de usuario generan una _tarjet
 
 ## <a name="test-the-bot"></a>Probar el bot
 
-Descargue e instale la versión más reciente de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
+Descargue e instale la versión más reciente de [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 
 1. Ejecute el ejemplo localmente en la máquina. Si necesita instrucciones, consulte el archivo Léame en el ejemplo de [C#](https://aka.ms/welcome-user-mvc) o [JS](https://aka.ms/bot-welcome-sample-js).
 1. Use el emulador para probar el bot tal y como se muestra a continuación.

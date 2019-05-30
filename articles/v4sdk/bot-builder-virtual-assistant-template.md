@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/06/2019
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 36a4b01dfc19cfab747de281c65d7166cb05f406
-ms.sourcegitcommit: 39d548b2d2fb050d72cf7b6c8fe389b47d0c9099
+ms.openlocfilehash: ce3ab86d5716250e24a44268f5e5fc39fbdd3398
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65168965"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66214171"
 ---
 # <a name="virtual-assistant---template-outline"></a>Virtual Assistant: esquema de la plantilla
 
