@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 13/12/2018
+ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: dcef01d8ba07d44aebaeeeecb5637af691caccb9
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
+ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997082"
+ms.lasthandoff: 05/24/2019
+ms.locfileid: "66215463"
 ---
 ## <a name="custom-assistant-overview"></a>Introducción a Custom Assistant
 
@@ -80,7 +80,7 @@ Custom Assistant abarca una amplia gama de escenarios de la industria. A continu
 
 - Sector de automoción: asistente personal con voz integrado en el automóvil para que el usuario final pueda utilizar funcionalidades tradicionales (como la navegación o la radio) y escenarios centrados en la productividad, como posponer reuniones al llegar tarde, incorporar elementos a la lista de tareas y experiencias proactivas en las que el automóvil sugiere completar tareas en función de eventos como el arranque del motor, ir a casa o activar el control de crucero. Las tarjetas adaptables se representan en la unidad principal y la integración de voz se realiza con interacciones de tipo presionar para hablar o con palabras de activación.
 
-- Hostelería: asistente personal con voz integrado en un dispositivo en la habitación del hotel que ofrece una amplia gama de funcionalidades para escenarios centrados en la hostelería (como la ampliación de la estancia, la solicitud de retrasar el registro de salida, el servicio de habitaciones) incluido el conserje y la posibilidad de buscar restaurantes y atracciones locales. La vinculación opcional a las cuentas de productividad abren la puerta a experiencias más personalizadas, como sugerencias de llamadas de alarma, advertencias sobre el tiempo y el aprendizaje de patrones con las estancias. Una evolución de la personalización de la televisión actual de las habitaciones de hoy en día.
+- Hostelería: asistente personal con voz integrado en un dispositivo de habitación de hotel que ofrece una amplia gama de funcionalidades para escenarios centrados en la hostelería (como la ampliación de la estancia, la solicitud de retrasar el registro de salida, el servicio de habitaciones) incluido el conserje y la posibilidad de buscar restaurantes y atracciones locales. La vinculación opcional a las cuentas de productividad abren la puerta a experiencias más personalizadas, como sugerencias de llamadas de alarma, advertencias sobre el tiempo y el aprendizaje de patrones con las estancias. Una evolución de la personalización de la televisión actual de las habitaciones de hoy en día.
 
 - Empresa: experiencias de asistentes de voz y texto con marca para empleados, integradas en dispositivos empresariales y lienzos conversacionales existentes (como Teams, WebChat, Slack) para que los empleados administren sus calendarios, encuentren las salas de reuniones disponibles, busquen personas con aptitudes específicas o realicen operaciones de recursos humanos. 
 
