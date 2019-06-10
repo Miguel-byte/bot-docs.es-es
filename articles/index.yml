@@ -31,12 +31,17 @@ sections:
         className: cardsM
         columns: 3
         items:
-          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction'
+          - href: 'https://docs.microsoft.com/azure/bot-service/what-is-new'
+            html: <p>Novedades de Azure Bot Service.</p>
+            image:
+              src: media/index/i_guidelines.png
+            title: Novedades
+          - href: 'https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction'
             html: <p>Más información sobre Azure Bot Service.</p>
             image:
               src: media/index/i_overview.png
             title: ¿Qué es Azure Bot Service?
-          - href: 'https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-basics'
+          - href: 'https://docs.microsoft.com/azure/bot-service/bot-builder-basics'
             html: <p>Comprenda cómo funcionan los bots.</p>
             image:
               src: media/index/i_guidelines.png
