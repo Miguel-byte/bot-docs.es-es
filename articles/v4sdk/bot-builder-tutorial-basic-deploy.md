@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7c9bdbbf0ad41bc678476237ef6b6d1d0f872426
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 305e89f5bef4b50e99b24780b0e31580e3b38fb9
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214234"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693700"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutorial: Creación e implementación de un bot básico
 
@@ -169,7 +169,7 @@ Por tanto, es importante incluir el código compilado con todas las dependencias
 > - Para bots de C#, es la carpeta que contiene el archivo .csproj. 
 > - Para bots de JS, es la carpeta que contiene el archivo app.js o index.js. 
 >
-> Seleccione todos los archivos y comprímalos mientras está en esa carpeta y, a continuación, ejecute el comando también en esa carpeta.
+> Seleccione todos los archivos y comprímalos **mientras está en esa carpeta** y, a continuación, ejecute el comando también en esa carpeta.
 >
 > Si la ubicación de la carpeta raíz es incorrecta, el **bot no podrá ejecutarse en Azure Portal**.
 

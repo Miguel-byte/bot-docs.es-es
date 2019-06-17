@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9109808c786e3992d8bae6cd68b4272201a9b4f8
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215449"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693728"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Implementación de almacenamiento personalizado en un bot
 
@@ -93,11 +93,13 @@ Como nos gustaría que el nivel inferior de este elemento de almacenamiento fuer
 
 Esta es la interfaz resultante:
 
-**IStore.cs** [!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
+**IStore.cs**  
+[!code-csharp[IStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/IStore.cs?range=14-19)]
 
 La implementación de esto en Azure Blob Storage es sencilla.
 
-**BlobStore.cs** [!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
+**BlobStore.cs**  
+[!code-csharp[BlobStore](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/BlobStore.cs?range=18-101)]
 
 Como puede verse aquí, Azure Blob Storage es el que realiza el trabajo aquí. Tenga en cuenta la captura de excepciones específicas y cómo que se traduce esto a la hora de cumplir con las expectativas del código que llama. Es decir, queremos que, en la carga, una excepción No encontrado devuelva un valor NULL y que la excepción de guardado Error de condición previa devuelva un valor booleano.
 

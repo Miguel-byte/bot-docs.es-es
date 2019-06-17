@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 7b06d99ae1265d2519b5c1aa8fe838a4e3e4d43a
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
+ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215348"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66693672"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Incorporación de reconocimiento de lenguaje natural al bot
 
@@ -76,6 +76,8 @@ Inicie sesión en el portal LUIS para crear su propia versión de la aplicación
 ### <a name="why-use-entities"></a>Por qué usar entidades
 Las entidades de LUIS permiten que el bot entienda inteligentemente ciertas cosas o eventos que son diferentes a las intenciones estándar. Esto le permite recopilar información adicional del usuario, lo que le permite al bot responder de forma más inteligente o, posiblemente, saltarse ciertas preguntas en las que se le pide al usuario esa información. Además de las definiciones de las tres intenciones de LUIS ("Book Flight", "Cancel" y "None") el archivo FlightBooking.json contiene un conjunto de entidades, como "From.Airport" y "To.Airport". Dichas entidades permiten a LUIS detectar y devolver información adicional que se encuentra dentro de la entrada original del usuario original cuando se solicita una nueva reserva de viaje.
 
+Para más información acerca de cómo aparece la información de entidad en un resultado de LUIS, consulte [Extract data from utterance text with intents and entities](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-data-extraction) (Extracción de datos a partir de texto hablado con intenciones y entidades).
+
 ## <a name="obtain-values-to-connect-to-your-luis-app"></a>Obtención de valores para conectarse a la aplicación de LUIS
 Una vez que la aplicación de LUIS se ha publicado, puede acceder a ella desde su bot. Para acceder a su aplicación de LUIS desde el bot, deberá registrar varios valores. Para recuperar esa información, puede usar el portal de LUIS.
 
@@ -93,7 +95,8 @@ El archivo de configuración (`appsettings.json` o `.env`) actúa como el lugar 
 
 Agregue la información necesaria para acceder a la aplicación de LUIS, lo que incluye el identificador de la aplicación, la clave de creación y la región al archivo `appsettings.json`. Estos son los valores que guardó anteriormente de la aplicación de LUIS publicada. Tenga en cuenta que el nombre de host de la API debe tener el formato `<your region>.api.cognitive.microsoft.com`.
 
-**appsetting.json** [!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
+**appsetting.json**  
+[!code-json[appsettings](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/appsettings.json?range=1-7)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -112,7 +115,8 @@ Asegúrese de que el paquete NuGet **Microsoft.Bot.Builder.AI.Luis** está insta
 
 Para conectar con el servicio LUIS, el bot extrae la información que agregó antes del archivo appsetting.json. La clase `LuisHelper` contiene código que importa la configuración del archivo appsetting.json y consulta el servicio de LUIS mediante una llamada al método `RecognizeAsync`. Si la intención superior devuelta es "Book_Flight" a continuación comprueba las entidades que contiene la información de destino, origen y TravelDate de la reserva.
 
-**LuisHelper.cs** [!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
+**LuisHelper.cs**  
+[!code-csharp[luis helper](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/LuisHelper.cs?range=15-54)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
