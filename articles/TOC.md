@@ -18,7 +18,7 @@
 ## [Administración de estados](v4sdk/bot-builder-concept-state.md)
 ## [Biblioteca de cuadros de diálogo](v4sdk/bot-builder-concept-dialog.md)
 ## [Software intermedio](v4sdk/bot-builder-concept-middleware.md)
-## [Autenticación de usuario](v4sdk/bot-builder-concept-authentication.md)
+## [Autenticación de usuarios](v4sdk/bot-builder-concept-authentication.md)
 ## [Administración de recursos de bot](v4sdk/bot-file-basics.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Plantillas de Bot Service](bot-service-concept-templates.md)
