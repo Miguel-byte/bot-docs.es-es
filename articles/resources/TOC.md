@@ -5,6 +5,9 @@
 # Aptitudes 
 ## [Información general](../v4sdk/bot-builder-skills-overview.md)
 ## [Introducción](../v4sdk/bot-builder-skills-gettingstarted.md)
+# WebChat
+## [Información general](../v4sdk/bot-builder-webchat-overview.md)
+## [Personalización](../v4sdk/bot-builder-webchat-customization.md)
 # [P+F](../bot-service-resources-bot-framework-faq.md)
 # [Obtención de soporte técnico](../bot-service-resources-links-help.md)
 # [Referencia de canal](../bot-service-channels-reference.md)
