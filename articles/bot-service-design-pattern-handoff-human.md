@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 5/2/2019
-ms.openlocfilehash: a5bb8d8dce1fdb45ab9ab42b247e2697713e51ac
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: d1fed33682349948d1b33d9b4fecdf718a20a248
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033054"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405842"
 ---
 # <a name="transition-conversations-from-bot-to-human"></a>Conversaciones de transición de bot a humano
 
@@ -42,7 +42,7 @@ El bot puede decidir si transferir o no el control en función de si determina o
 
 La comprensión del lenguaje natural y el análisis de opiniones ayudan al bot a decidir cuándo se debe transferir el control de la conversación a un agente humano. Esto resulta especialmente útil al intentar determinar cuándo el usuario se siente frustrado o quiere hablar con un agente humano. 
  
-El bot analiza el contenido de los mensajes del usuario mediante <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a> para deducir los sentimientos o por medio de <a href="https://www.luis.ai" target="_blank">LUIS API</a>. 
+El bot analiza el contenido de los mensajes del usuario mediante <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a> para deducir los sentimientos o por medio de <a href="https://www.luis.ai" target="_blank">LUIS API</a>. 
 
 
 > [!TIP]
@@ -77,7 +77,7 @@ Después de que el agente se conecta al bot, el bot empieza a enrutar los mensaj
 ::: moniker range="azure-bot-service-4.0"
 
 - [Diálogos](v4sdk/bot-builder-dialog-manage-conversation-flow.md)
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a>
 
 ::: moniker-end
 
@@ -85,7 +85,7 @@ Después de que el agente se conecta al bot, el bot empieza a enrutar los mensaj
 
 - [Administración del flujo de conversación con diálogos (.NET)](~/dotnet/bot-builder-dotnet-manage-conversation-flow.md)
 - [Manage conversation flow with dialogs (Node.js)](~/nodejs/bot-builder-nodejs-manage-conversation-flow.md) (Administración del flujo de conversación con cuadros de diálogo [Node.js])
-- <a href="https://www.microsoft.com/cognitive-services/en-us/text-analytics-api" target="blank">Text Analytics API</a>
+- <a href="https://www.microsoft.com/cognitive-services/text-analytics-api" target="blank">Text Analytics API</a>
 
 
 ::: moniker-end

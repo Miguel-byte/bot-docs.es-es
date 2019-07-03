@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 03/01/2018
-ms.openlocfilehash: 9fa9a23f4d14667aeb97d304498b415f2c8041d1
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: e38d9887e50455e66ac7fdcd5c4e7bb309a3e3e9
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033056"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405940"
 ---
 # <a name="entities-and-activity-types"></a>Entidades y tipos de actividad
 
@@ -34,7 +34,7 @@ El objeto mention contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
-| Type | Tipo de la entidad ("mention") |
+| type | Tipo de la entidad ("mention") |
 | Mentioned | Objeto de cuenta de canal que indica a qué usuario se ha mencionado | 
 | Texto | Texto de la propiedad *activity.text* que representa la mención en sí misma (puede estar vacío o ser NULL) |
 
@@ -72,7 +72,7 @@ El objeto place contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
-| Type | Tipo de la entidad ("Place") |
+| type | Tipo de la entidad ("Place") |
 | Dirección | Descripción u objeto de dirección postal (en un futuro) |
 | Geoárea | GeoCoordinates |
 | HasMap | Dirección URL de un mapa u objeto de mapa (en un futuro) |
@@ -82,7 +82,7 @@ El objeto geoCoordinates contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
-| Type | Tipo de la entidad ("GeoCoordinates") |
+| type | Tipo de la entidad ("GeoCoordinates") |
 | NOMBRE | Nombre del lugar |
 | Longitud | Longitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
 | Longitud | Latitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) |
@@ -165,5 +165,5 @@ Hay varios tipos de actividades y estas pueden ser de otros tipos además de **m
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
 ::: moniker-end

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/7/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3a4f9e1dc3c5598c3aa79996b01f11e8b1339fe2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 36df5898f4a5c02253aae04b3b85dbe70fc21ada
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225220"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404871"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -26,7 +26,7 @@ En este artículo se describen algunos de los métodos de mensaje usados con fre
 
 ## <a name="default-message-handler"></a>Controlador de mensajes predeterminado
 
-Bot Framework SDK para Node.js incluye un controlador de mensajes predeterminado integrado en el objeto [`session`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Este controlador de mensajes permite enviar y recibir mensajes de texto entre el bot y el usuario.
+Bot Framework SDK para Node.js incluye un controlador de mensajes predeterminado integrado en el objeto [`session`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html). Este controlador de mensajes permite enviar y recibir mensajes de texto entre el bot y el usuario.
 
 ### <a name="send-a-text-message"></a>Enviar un mensaje de texto
 
@@ -54,7 +54,7 @@ var userMessage = session.message.text;
 
 ## <a name="customizing-a-message"></a>Personalización de un mensaje
 
-Para tener más control sobre el formato del texto de los mensajes, puede crear un objeto [`message`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html) personalizado y establecer las propiedades necesarias antes de enviarlo al usuario.
+Para tener más control sobre el formato del texto de los mensajes, puede crear un objeto [`message`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html) personalizado y establecer las propiedades necesarias antes de enviarlo al usuario.
 
 En este ejemplo se muestra cómo crear un objeto `message` personalizado y establecer las propiedades `text`, `textFormat` y `textLocale`.
 
@@ -72,7 +72,7 @@ La propiedad `textFormat` de un mensaje se puede usar para especificar el format
 
 ## <a name="message-property"></a>Propiedad de mensajes
 
-El objeto [`Message`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html) tiene una propiedad **data** interna que usa para administrar el mensaje que se envía. El resto de propiedades se establecen a través de los distintos métodos que expone este objeto. 
+El objeto [`Message`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html) tiene una propiedad **data** interna que usa para administrar el mensaje que se envía. El resto de propiedades se establecen a través de los distintos métodos que expone este objeto. 
 
 ## <a name="message-methods"></a>Métodos de mensaje
 
@@ -80,26 +80,26 @@ Las propiedades de mensaje se establecen y recuperan a través de los métodos d
 
 | Método | DESCRIPCIÓN |
 | ---- | ---- | 
-| [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | Agrega datos adjuntos a un mensaje|
-| [`addEntity(obj:Object)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | Agrega una entidad al mensaje. |
-| [`address(adr:IAddress)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#address) | Información de enrutamiento de direcciones para el mensaje. Para enviar un mensaje automático al usuario, guarde la dirección del mensaje en el contenedor userData. |
-| [`attachmentLayout(style:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachmentlayout) | Sugerencia sobre cómo deben diseñar los clientes varios datos adjuntos. El valor predeterminado es "list". |
-| [`attachments(list:AttachmentType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachments) | Una lista de tarjetas o imágenes para enviar al usuario. |
-| [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Crea una respuesta compleja y aleatoria para el usuario. |
-| [`entities(list:Object[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Objetos estructurados que se pasan al bot o al usuario. |
-| [`inputHint(hint:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Sugerencia enviada al usuario para informarle de si el bot está esperando una entrada adicional o no. Las solicitudes integradas rellenarán automáticamente este valor para los mensajes salientes. |
-| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Hora local del envío del mensaje (establecida por el cliente o el bot, por ejemplo: 2016-09-23T13:07:49.4714686-07:00.) |
-| [`originalEvent(event:any)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Mensaje en formato original o nativo del canal para los mensajes entrantes. |
-| [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Para los mensajes salientes se puede usar para pasar datos de eventos específicos de origen como datos adjuntos personalizados. |
-| [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Establece el campo de voz del mensaje como *Lenguaje de marcado de síntesis de voz (SSML)*. Esto se proporcionará de forma hablada al usuario en los dispositivos compatibles. |
-| [`suggestedActions(suggestions:ISuggestedActions `&#124;` IIsSuggestedActions)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#suggestedactions) | Acciones sugeridas opcionales para enviar al usuario. Las acciones sugeridas solo se mostrarán en los canales que admiten acciones sugeridas. |
-| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | El texto se mostrará como reserva y como una descripción breve del contenido del mensaje (por ejemplo: lista de conversaciones recientes). |
-| [`text(text:TextType, ...args:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#text) | Establece el texto del mensaje. |
-| [`textFormat(style:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textformat) | Establece el formato de texto. El formato predeterminado es **markdown**. |
-| [`textLocale(locale:string)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textlocale) | Establece el idioma de destino del mensaje. |
-| [`toMessage()`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#tomessage) | Obtiene el código JSON para el mensaje. |
-| [`composePrompt(session:Session, prompts:string[], args?:any[])`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#composeprompt-1) | Combina una matriz de mensajes en un único mensaje localizado y, después, rellena las ranuras de plantilla de mensajes de forma opcional con los argumentos que se pasan. |
-| [`randomPrompt(prompts:TextType)`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message.html#randomprompt) | Obtiene un mensaje aleatorio de la matriz de **prompts* que se pasa. |
+| [`addAttachment(attachment:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addattachment) | Agrega datos adjuntos a un mensaje|
+| [`addEntity(obj:Object)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#addentity) | Agrega una entidad al mensaje. |
+| [`address(adr:IAddress)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#address) | Información de enrutamiento de direcciones para el mensaje. Para enviar un mensaje automático al usuario, guarde la dirección del mensaje en el contenedor userData. |
+| [`attachmentLayout(style:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachmentlayout) | Sugerencia sobre cómo deben diseñar los clientes varios datos adjuntos. El valor predeterminado es "list". |
+| [`attachments(list:AttachmentType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#attachments) | Una lista de tarjetas o imágenes para enviar al usuario. |
+| [`compose(prompts:string[], ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#compose) | Crea una respuesta compleja y aleatoria para el usuario. |
+| [`entities(list:Object[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#entities) | Objetos estructurados que se pasan al bot o al usuario. |
+| [`inputHint(hint:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#inputhint) | Sugerencia enviada al usuario para informarle de si el bot está esperando una entrada adicional o no. Las solicitudes integradas rellenarán automáticamente este valor para los mensajes salientes. |
+| [`localTimeStamp((optional)time:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#localtimestamp) | Hora local del envío del mensaje (establecida por el cliente o el bot, por ejemplo: 2016-09-23T13:07:49.4714686-07:00.) |
+| [`originalEvent(event:any)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#originalevent) | Mensaje en formato original o nativo del canal para los mensajes entrantes. |
+| [`sourceEvent(map:ISourceEventMap)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#sourceevent) | Para los mensajes salientes se puede usar para pasar datos de eventos específicos de origen como datos adjuntos personalizados. |
+| [`speak(ssml:TextType, ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#speak) | Establece el campo de voz del mensaje como *Lenguaje de marcado de síntesis de voz (SSML)* . Esto se proporcionará de forma hablada al usuario en los dispositivos compatibles. |
+| [`suggestedActions(suggestions:ISuggestedActions `&#124;` IIsSuggestedActions)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#suggestedactions) | Acciones sugeridas opcionales para enviar al usuario. Las acciones sugeridas solo se mostrarán en los canales que admiten acciones sugeridas. |
+| [`summary(text:TextType, ...argus:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#summary) | El texto se mostrará como reserva y como una descripción breve del contenido del mensaje (por ejemplo: lista de conversaciones recientes). |
+| [`text(text:TextType, ...args:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#text) | Establece el texto del mensaje. |
+| [`textFormat(style:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textformat) | Establece el formato de texto. El formato predeterminado es **markdown**. |
+| [`textLocale(locale:string)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#textlocale) | Establece el idioma de destino del mensaje. |
+| [`toMessage()`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#tomessage) | Obtiene el código JSON para el mensaje. |
+| [`composePrompt(session:Session, prompts:string[], args?:any[])`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#composeprompt-1) | Combina una matriz de mensajes en un único mensaje localizado y, después, rellena las ranuras de plantilla de mensajes de forma opcional con los argumentos que se pasan. |
+| [`randomPrompt(prompts:TextType)`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message.html#randomprompt) | Obtiene un mensaje aleatorio de la matriz de **prompts* que se pasa. |
 
 ## <a name="next-step"></a>Paso siguiente
 

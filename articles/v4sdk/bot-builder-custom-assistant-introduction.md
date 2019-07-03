@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: f4b8243580ee678390177881b136a9016be4a786
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: eba4ad9ba2fae85fbc2488e5fef8d5a7dac593ee
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215463"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464761"
 ---
 ## <a name="custom-assistant-overview"></a>Introducción a Custom Assistant
 
@@ -35,17 +35,17 @@ Podrá controlar todos los aspectos de la experiencia del usuario final, que le 
 
 ## <a name="complete-ownership-and-control-of-data"></a>Propiedad total y control de los datos
 
-Custom Assistant se implementará en la suscripción de Azure. Por lo tanto, todos los datos generados por el asistente (preguntas, comportamiento de los usuarios, etc.) están incluidos por completo en la suscripción de Azure. Consulte [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) y la [sección de Azure del Centro de confianza](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure) en concreto para más información.
+Custom Assistant se implementará en la suscripción de Azure. Por lo tanto, todos los datos generados por el asistente (preguntas, comportamiento de los usuarios, etc.) están incluidos por completo en la suscripción de Azure. Consulte [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) y la [sección de Azure del Centro de confianza](https://www.microsoft.com/TrustCenter/CloudServices/Azure) en concreto para más información.
 
 ## <a name="your-assistant-anywhere"></a>El asistente, donde sea...
 
-Custom Assistant aprovecha la plataforma de inteligencia artificial conversacional de Microsoft y, por lo tanto, se puede utilizar con cualquier [canal](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) de Bot Framework, por ejemplo, WebChat, FaceBook Messenger, Skype, etc. Además, mediante la [línea directa](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) se pueden insertar experiencias en aplicaciones de escritorio y móviles, incluidos dispositivos como los automóviles, los altavoces, los relojes con alarma, etc.
+Custom Assistant aprovecha la plataforma de inteligencia artificial conversacional de Microsoft y, por lo tanto, se puede utilizar con cualquier [canal](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) de Bot Framework, por ejemplo, WebChat, FaceBook Messenger, Skype, etc. Además, mediante la [línea directa](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) se pueden insertar experiencias en aplicaciones de escritorio y móviles, incluidos dispositivos como los automóviles, los altavoces, los relojes con alarma, etc.
 
 ## <a name="built-on-enterprise-grade-technology"></a>Compilación con tecnología empresarial
 
-La solución Custom Assistant se basa en Azure Bot Service, Language Understanding Cognitive Service y Unified Speech, y cuenta con un amplio conjunto de componentes de Azure auxiliares, para que pueda disfrutar de todas las ventajas de la [infraestructura global de Azure](https://azure.microsoft.com/en-gb/global-infrastructure/).
+La solución Custom Assistant se basa en Azure Bot Service, Language Understanding Cognitive Service y Unified Speech, y cuenta con un amplio conjunto de componentes de Azure auxiliares, para que pueda disfrutar de todas las ventajas de la [infraestructura global de Azure](https://azure.microsoft.com/global-infrastructure/).
 
-Además, LUIS Cognitive Service ofrece compatibilidad con Language Understanding para admitir un amplio conjunto de idiomas, que se [enumeran aquí](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages). Para ampliar el alcance de Custom Assistant, [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) ofrece funcionalidades de traducción automática adicionales.
+Además, LUIS Cognitive Service ofrece compatibilidad con Language Understanding para admitir un amplio conjunto de idiomas, que se [enumeran aquí](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). Para ampliar el alcance de Custom Assistant, [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) ofrece funcionalidades de traducción automática adicionales.
 
 ## <a name="integrated-and-context-aware"></a>Integración y reconocimiento contextual
 
@@ -61,7 +61,7 @@ La arquitectura de Custom Assistant es flexible y se integra con las inversiones
 
 ## <a name="adaptive-cards"></a>Tarjetas adaptables
 
-Las [tarjetas adaptables](https://adaptivecards.io/) permiten a Custom Assistant devolver elementos de la experiencia del usuario (como tarjetas, imágenes, botones) junto a las respuestas de texto base. Si el lienzo de conversación o el dispositivo tienen pantalla, las tarjetas adaptables se pueden representar en una amplia gama de dispositivos y plataformas y proporcionar compatibilidad con la experiencia del usuario cuando proceda. [Aquí](https://adaptivecards.io/samples/) encontrará ejemplos de tarjetas adaptables e información sobre las opciones de representación en [esta](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started) documentación.
+Las [tarjetas adaptables](https://adaptivecards.io/) permiten a Custom Assistant devolver elementos de la experiencia del usuario (como tarjetas, imágenes, botones) junto a las respuestas de texto base. Si el lienzo de conversación o el dispositivo tienen pantalla, las tarjetas adaptables se pueden representar en una amplia gama de dispositivos y plataformas y proporcionar compatibilidad con la experiencia del usuario cuando proceda. [Aquí](https://adaptivecards.io/samples/) encontrará ejemplos de tarjetas adaptables e información sobre las opciones de representación en [esta](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started) documentación.
 
 
 ## <a name="skills"></a>Aptitudes

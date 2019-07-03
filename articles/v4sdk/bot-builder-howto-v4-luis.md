@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4fc8ebd1eff03c2b6ac994ff80cb85b341bb7231
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e019d2d04d843cc0efd5a39135d65fe4cfc022f3
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693672"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404498"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Incorporación de reconocimiento de lenguaje natural al bot
 
@@ -26,7 +26,7 @@ La tarea de entender qué quiere decir el usuario conversacionalmente y contextu
 ## <a name="prerequisites"></a>Requisitos previos
 - Una cuenta de [LUIS](https://www.luis.ai)
 - El código de este artículo se basa en el ejemplo de **Core Bot**. Necesitará una copia del ejemplo en **[CSharp](https://aka.ms/cs-core-sample) o [JavaScript](https://aka.ms/js-core-sample)** . 
-- Conocimientos sobre los [conceptos básicos de los bots](bot-builder-basics.md), el [procesamiento de lenguaje natural](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/what-is-luis) y la [administración de recursos de bots](bot-file-basics.md).
+- Conocimientos sobre los [conceptos básicos de los bots](bot-builder-basics.md), el [procesamiento de lenguaje natural](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) y la [administración de recursos de bots](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
 
@@ -70,8 +70,8 @@ Inicie sesión en el portal LUIS para crear su propia versión de la aplicación
 1. Seleccione **Import new app** (Importar aplicación nueva). 
 1. Haga clic en **Choose App file (JSON format)...** (Elegir archivo de aplicación [formato JSON]). 
 1. Seleccione el archivo `FlightBooking.json` que se encuentra en la carpeta `CognitiveModels` del ejemplo. En el campo de **Optional Name** (Nombre opcional), escriba **FlightBooking**. Este archivo contiene tres intenciones: "Book Flight", "Cancel" y "None". Usaremos estas intenciones para entender qué quiso decir el usuario cuando envió un mensaje al bot.
-1. [Entrene](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/luis-how-to-train) la aplicación.
-1. [Publique](https://docs.microsoft.com/en-us/azure/cognitive-services/LUIS/publishapp) la aplicación en el entorno de *producción*.
+1. [Entrene](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-train) la aplicación.
+1. [Publique](https://docs.microsoft.com/azure/cognitive-services/LUIS/publishapp) la aplicación en el entorno de *producción*.
 
 ### <a name="why-use-entities"></a>Por qué usar entidades
 Las entidades de LUIS permiten que el bot entienda inteligentemente ciertas cosas o eventos que son diferentes a las intenciones estándar. Esto le permite recopilar información adicional del usuario, lo que le permite al bot responder de forma más inteligente o, posiblemente, saltarse ciertas preguntas en las que se le pide al usuario esa información. Además de las definiciones de las tres intenciones de LUIS ("Book Flight", "Cancel" y "None") el archivo FlightBooking.json contiene un conjunto de entidades, como "From.Airport" y "To.Airport". Dichas entidades permiten a LUIS detectar y devolver información adicional que se encuentra dentro de la entrada original del usuario original cuando se solicita una nueva reserva de viaje.
@@ -102,7 +102,7 @@ Agregue la información necesaria para acceder a la aplicación de LUIS, lo que 
 
 Agregue la información necesaria para acceder a la aplicación de LUIS, lo que incluye el identificador de la aplicación, la clave de creación y la región al archivo `.env`. Estos son los valores que guardó anteriormente de la aplicación de LUIS publicada. Tenga en cuenta que el nombre de host de la API debe tener el formato `<your region>.api.cognitive.microsoft.com`.
 
-**.env**
+**.env**  
 [!code[env](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/.env?range=1-5)]
 
 ---

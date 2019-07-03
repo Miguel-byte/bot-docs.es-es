@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 69ce362f35054c5ee42035d8bffefb17c6fa7f71
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0e0fe51e33e99bbb35ef1d731b611ff9ca12a138
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215503"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404310"
 ---
 # <a name="activity-processing"></a>Procesamiento de actividades
 
@@ -23,7 +23,7 @@ ms.locfileid: "66215503"
 
 El bot y el usuario interactúan e intercambian información mediante actividades. Cada una de las actividades que recibe la aplicación de bot se pasa a un adaptador de bot, que a su vez pasa la información de la actividad a la lógica del bot y, por último, envía las respuestas al usuario. La recepción de una actividad y su posterior procesamiento por el bot se denomina turno; representa un ciclo completo del bot. Un turno finaliza cuando se termina toda la ejecución, la actividad se ha procesado por completo y se han completado todas las capas del bot.
 
-Las actividades, especialmente las [enviadas desde un bot](#generating-responses) durante un turno del bot, se controlan de forma asincrónica. Se trata de una parte necesaria de la creación de un bot; si necesita repasar cómo funciona todo esto, vea [Programación asincrónica para .NET](https://docs.microsoft.com/en-us/dotnet/csharp/async) o [async para JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), según el lenguaje que haya elegido.
+Las actividades, especialmente las [enviadas desde un bot](#generating-responses) durante un turno del bot, se controlan de forma asincrónica. Se trata de una parte necesaria de la creación de un bot; si necesita repasar cómo funciona todo esto, vea [Programación asincrónica para .NET](https://docs.microsoft.com/dotnet/csharp/async) o [async para JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function), según el lenguaje que haya elegido.
 
 ## <a name="the-bot-adapter"></a>El adaptador de bot
 

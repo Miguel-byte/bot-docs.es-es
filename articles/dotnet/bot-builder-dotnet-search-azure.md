@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 1/28/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e0ffb9c24b5e85b0eb1afdd885654e4864e65939
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: ee1e8c660eae27efae5c18b1392ff68d716f73da
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032920"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405638"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Creación de experiencias controladas por datos con Azure Search 
 
@@ -24,7 +24,7 @@ ms.locfileid: "65032920"
 > - [.NET](../dotnet/bot-builder-dotnet-search-azure.md)
 > - [Node.js](../nodejs/bot-builder-nodejs-search-azure.md)
 
-Puede agregar [Azure Search](https://azure.microsoft.com/en-us/services/search/) a un bot para ayudar a los usuarios a navegar por grandes cantidades de contenido y crear una experiencia de exploración controlada por datos.
+Puede agregar [Azure Search](https://azure.microsoft.com/services/search/) a un bot para ayudar a los usuarios a navegar por grandes cantidades de contenido y crear una experiencia de exploración controlada por datos.
 
 Azure Search es un servicio de Azure que ofrece búsqueda de palabras clave, lingüística integrada, puntuación personalizada, navegación por facetas y mucho más. Azure Search también puede indexar el contenido desde diversos orígenes, incluidos Azure SQL DB, DocumentDB, Blob Storage y Table Storage. Es compatible con la indexación "push" para otros orígenes de datos y puede abrir archivos PDF, documentos de Office y otros formatos que contengan datos no estructurados. Una vez recopilado, el contenido se coloca en un índice de Azure Search, al que luego el bot puede consultar.
 

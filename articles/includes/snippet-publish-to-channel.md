@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 88fe2e3dca0559c101c55edb4353f3b57096a8d4
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 8484df6b140447d175805b396a81832c059c3b76
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563733"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405202"
 ---
 ### <a name="cortana"></a>Cortana
 Los bots se publican en Cortana desde el [panel](https://aka.ms/cortana-publish) y se utilizan para potenciar las aptitudes de Cortana. Al publicar un bot, se envía para su revisión. Las aptitudes de Cortana se pueden implementar para su propio uso, implementarse en un grupo pequeño, o publicarse para todo el mundo.
@@ -13,7 +13,7 @@ Los bots se publican en Cortana desde el [panel](https://aka.ms/cortana-publish)
 Los bots se publican en Skype desde la [página de configuración](~/bot-service-channel-connect-skype.md). Al publicar un bot, se envía para su revisión. Antes de la revisión, el bot está limitado a 100 contactos. Los bots aprobados no tienen contactos limitados y puede optar por incluir el bot en el directorio de bots de Skype.
 
 ### <a name="skype-for-business"></a>Skype Empresarial
-Un administrador de inquilinos registra los bots de Skype Empresarial con un [inquilino de Skype Empresarial Online](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview).
+Un administrador de inquilinos registra los bots de Skype Empresarial con un [inquilino de Skype Empresarial Online](https://msdn.microsoft.com/skype/Skype-For-Business-Bot-Framework/docs/overview).
 
 > [!TIP]
 > Para ver el estado de una revisión, abra el bot en el [portal de Bot Framework](https://dev.botframework.com/) y haga clic en **Channels** (Canales).

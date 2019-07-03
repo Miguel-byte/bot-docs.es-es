@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ce3ab86d5716250e24a44268f5e5fc39fbdd3398
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214171"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464661"
 ---
 # <a name="virtual-assistant---template-outline"></a>Virtual Assistant: esquema de la plantilla
 
@@ -30,11 +30,11 @@ Modelo base de LUIS  | Admite intenciones comunes como **Cancel**, **Help**, **E
 Diálogos base | Flujos de diálogo para capturar información básica del usuario, así como la lógica de interrupción de las intenciones Cancel y Help
 Respuestas base  | Respuestas de texto y de voz de las intenciones y los diálogos base
 Preguntas más frecuentes | Integración con [QnA Maker](https://www.qnamaker.ai) para responder preguntas generales desde una base de conocimiento 
-Charla | Un modelo de charla profesional para proporcionar respuestas estándar a consultas comunes ([más información](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
-Distribuidor | Un modelo integrado de [distribución](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) para identificar si una determinada expresión deben procesarla LUIS o QnA Maker.
+Charla | Un modelo de charla profesional para proporcionar respuestas estándar a consultas comunes ([más información](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base))
+Distribuidor | Un modelo integrado de [distribución](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) para identificar si una determinada expresión deben procesarla LUIS o QnA Maker.
 Compatibilidad con idiomas | Disponible en inglés, francés, italiano, alemán, español y chino
 Transcripciones | Transcripciones de todas las conversaciones almacenadas en Azure Storage
-Telemetría  | Integración con [Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) para recopilar datos de telemetría de todas las conversaciones
+Telemetría  | Integración con [Application Insights](https://azure.microsoft.com/services/application-insights/) para recopilar datos de telemetría de todas las conversaciones
 Análisis | Un panel de Power BI de ejemplo para empezar a usar información detallada en las conversaciones.
 Implementación automatizada | Sencilla implementación de los servicios mencionados mediante las plantillas de Azure Resource Manager.
 
@@ -95,7 +95,7 @@ Si bien este modelo funcionó bien, dos escenarios clave pueden suponer problema
 - Si las grabaciones de voz del modelo LUIS y QnA Maker se solapan ligeramente (en ocasiones ocurre), esto provocaría un comportamiento extraño en el que LUIS intentaría procesar una pregunta que debería haberse dirigido a QnA Maker.
 - Con dos o más modelos LUIS, el bot tendría que invocarlos a todos y realizar una especie de comparación de evaluación de las intenciones para determinar dónde enviar la grabación de voz concreta. Como no existe comparación eficaz de puntuación de referencia común entre modelos, la experiencia del usuario empeora.
 
-El [distribuidor](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) es una solución elegante en este caso, ya que extrae las grabaciones de voz de los modelos LUIS configurados y las preguntas de QnA Maker y crea un modelo LUIS de distribución central.
+El [distribuidor](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) es una solución elegante en este caso, ya que extrae las grabaciones de voz de los modelos LUIS configurados y las preguntas de QnA Maker y crea un modelo LUIS de distribución central.
 
 Así, el bot puede identificar rápidamente el modelo LUIS o el componente que debe administrar una grabación determinada y garantiza que los datos de QnA Maker se consideran en el máximo nivel de intención, sin procesarlos únicamente como con intención None como antes.
 

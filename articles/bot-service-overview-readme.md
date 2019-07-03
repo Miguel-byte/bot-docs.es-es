@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 85ef0fde39980bab1b891518e338fddbd56b275a
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 74c48c779a41a6a2cbdf4f1c559c7136e7a94ca1
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563879"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405812"
 ---
 # <a name="how-bot-service-works"></a>Cómo funciona Bot Service
 
 Bot Service ofrece los componentes principales para la creación de bots, incluido Bot Framework SDK para desarrollar bots y Bot Framework para conectar bots a canales. Bot Service ofrece cinco plantillas entre las que puede elegir al crear sus bots con compatibilidad con .NET y Node.js.
 
 > [!IMPORTANT]
-> Para usar Bot Service debe tener una suscripción a Microsoft Azure. Si aún no tiene una suscripción, puede registrarse para obtener una <a href="https://azure.microsoft.com/en-us/free/" target="_blank">cuenta gratuita</a>.
+> Para usar Bot Service debe tener una suscripción a Microsoft Azure. Si aún no tiene una suscripción, puede registrarse para obtener una <a href="https://azure.microsoft.com/free/" target="_blank">cuenta gratuita</a>.
 
 ## <a name="hosting-plans"></a>Planes de hospedaje
 Bot Service ofrece dos planes de hospedaje para los bots. Puede elegir el que se ajuste a sus necesidades.

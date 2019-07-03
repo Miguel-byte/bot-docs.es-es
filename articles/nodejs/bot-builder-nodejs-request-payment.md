@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 296004c654cfd59de6c245bf9702a80024526140
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 88fd1ee1eb46fa056ecadae1f0cc1b19eb7c908f
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563774"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404842"
 ---
 # <a name="request-payment"></a>Solicitud de pago
 
@@ -41,7 +41,7 @@ Actualice las variables de entorno del bot para `MicrosoftAppId` y `MicrosoftApp
 
 1. <a href="https://dashboard.stripe.com/register" target="_blank">Cree y active una cuenta de Stripe si todavía no tiene una.</a>
 
-2. <a href="https://seller.microsoft.com/en-us/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Inicie sesión en el Centro de vendedores con su cuenta Microsoft.</a>
+2. <a href="https://seller.microsoft.com/dashboard/registration/seller/?accountprogram=botframework" target="_blank">Inicie sesión en el Centro de vendedores con su cuenta Microsoft.</a>
 
 3. En el Centro de vendedores, conecte su cuenta con Stripe.
 

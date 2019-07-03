@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/9/2018
-ms.openlocfilehash: 817623dd04612cd07d8877c8e9a199c05a2fd9e8
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 4de93d821c6b652021a9f695536350610776f5b4
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693622"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405902"
 ---
 # <a name="connect-a-bot-to-twilio"></a>Conexión de un bot a Twilio
 
@@ -26,7 +26,7 @@ Si no tiene cuenta de Twilio, <a href="https://www.twilio.com/try-twilio" target
 
 ## <a name="create-a-twiml-application"></a>Crear una aplicación de TwiML
 
-<a href="https://support.twilio.com/hc/en-us/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Cree una aplicación de TwiML</a> siguiendo las instrucciones.
+<a href="https://support.twilio.com/hc/articles/223180928-How-Do-I-Create-a-TwiML-App-" target="_blank">Cree una aplicación de TwiML</a> siguiendo las instrucciones.
 
 ![Creación de una aplicación](~/media/channels/twi-StepTwiml.png)
 
@@ -34,7 +34,7 @@ En **Properties** (Propiedades), escriba un **NOMBRE DESCRIPTIVO**. En este tuto
 
 ## <a name="select-or-add-a-phone-number"></a>Seleccionar o agregar un número de teléfono
 
-Siga <a href = "https://support.twilio.com/hc/en-us/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">estas</a> instrucciones para agregar un identificador de llamada verificado mediante el sitio de la consola. Cuando termine, verá el número verificado en **Active Numbers** (Números activos) en **Manage Numbers** (Administrar números).
+Siga <a href = "https://support.twilio.com/hc/articles/223180048-Adding-a-Verified-Phone-Number-or-Caller-ID-with-Twilio" target="_blank">estas</a> instrucciones para agregar un identificador de llamada verificado mediante el sitio de la consola. Cuando termine, verá el número verificado en **Active Numbers** (Números activos) en **Manage Numbers** (Administrar números).
 
 ![Establecer el número de teléfono](~/media/channels/twi-StepPhone.png)
 

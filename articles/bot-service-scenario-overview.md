@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e195f83eefd5f162b74f8891f3b174efc8934700
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997972"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405764"
 ---
 # <a name="bot-scenarios"></a>Escenarios de bot
 
@@ -44,7 +44,7 @@ A menudo, la información se encuentra enterrada en almacenes de datos estructur
 ## <a name="iot-bot-scenario"></a>Escenario de bot de IoT
 Este [bot de Internet de las cosas (IoT)](bot-service-scenario-internet-things.md) le hace más fácil la tarea de controlar los dispositivos de su casa, por ejemplo, una luz Philips Hue mediante comandos de chat interactivo.
 
-Mediante este sencillo bot, puede controlar las luces Philips Hue junto con el servicio gratuito IFTTT (si esto, entonces aquello). Como dispositivo de IoT, Philips Hue se puede controlar localmente a través de su API expuesta. Sin embargo, esta API no se expone para el acceso general desde fuera de la red local. Sin embargo, IFTTT es miembro de "[Friends of Hue](http://www2.meethue.com/en-us/friends-of-hue/ifttt/)", por tanto, tiene expuesta una serie de comandos de control que se pueden emitir, como encender y apagar luces, cambiar el color o la intensidad de la luz.
+Mediante este sencillo bot, puede controlar las luces Philips Hue junto con el servicio gratuito IFTTT (si esto, entonces aquello). Como dispositivo de IoT, Philips Hue se puede controlar localmente a través de su API expuesta. Sin embargo, esta API no se expone para el acceso general desde fuera de la red local. Sin embargo, IFTTT es miembro de "[Friends of Hue](http://www2.meethue.com/friends-of-hue/ifttt/)", por tanto, tiene expuesta una serie de comandos de control que se pueden emitir, como encender y apagar luces, cambiar el color o la intensidad de la luz.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Ahora que tiene una visión general de los escenarios, profundice en cada uno.

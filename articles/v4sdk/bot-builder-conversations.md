@@ -10,17 +10,17 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 167e496fa510cdf755be13f71cf3a596b0183ec1
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215475"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404145"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-Para diseñar del flujo de conversación de un bot es necesario decidir cómo responde el bot cuando el usuario le dice algo. Un bot reconoce en primer lugar la tarea o el tema de conversación basándose en un mensaje del usuario. Para determinar la tarea o el tema (lo que se denomina *intención*) asociados al mensaje de un usuario, el bot puede buscar palabras o patrones en el texto del mensaje o bien puede aprovechar servicios como [Language Understanding](bot-builder-concept-luis.md) y [QnA Maker](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/overview/overview).
+Para diseñar del flujo de conversación de un bot es necesario decidir cómo responde el bot cuando el usuario le dice algo. Un bot reconoce en primer lugar la tarea o el tema de conversación basándose en un mensaje del usuario. Para determinar la tarea o el tema (lo que se denomina *intención*) asociados al mensaje de un usuario, el bot puede buscar palabras o patrones en el texto del mensaje o bien puede aprovechar servicios como [Language Understanding](bot-builder-concept-luis.md) y [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/overview).
 
 Una vez que ha reconocido la intención del usuario, en función del escenario, el bot podría satisfacer la solicitud del usuario con una sola respuesta, con lo que completaría la conversación en un solo turno, o podría requerir una serie de turnos. Para los flujos de conversación de varios turnos, Bot Framework SDK proporciona [administración de estados](./bot-builder-howto-v4-state.md) para llevar un seguimiento de una conversación, [avisos](bot-builder-prompts.md) para pedir información y [diálogos](bot-builder-dialog-manage-conversation-flow.md) para encapsular los flujos de conversación.
 

@@ -1,13 +1,13 @@
 ---
-ms.openlocfilehash: 7b065c8adf97b83454ee3dedf25a4bc3623c1db4
-ms.sourcegitcommit: 4ff7a8772124a567f43e2c3e13aded368c4002e3
+ms.openlocfilehash: 2f970239f7df015bf38d163dd6442a9920b21115
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035677"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405583"
 ---
 - Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/) antes de empezar.
-- Instale de la versión más reciente de la [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Instale de la versión más reciente de la [CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Instale la versión más reciente de la herramienta [MSBot](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/MSBot).
 - Instale la versión más reciente de [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started).
 - Instale y configure [ngrok](https://github.com/Microsoft/BotFramework-Emulator/wiki/Tunneling-%28ngrok%29). 

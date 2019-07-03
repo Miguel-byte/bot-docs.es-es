@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 96a0c63575b1e77418262a22050013413f39141f
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: eaebb40e7b0e57966f0eb06c6d0108f6db1b62ff
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225920"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405673"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -26,7 +26,7 @@ En este artículo se describen algunas propiedades de mensaje usadas habitualmen
 
 ## <a name="customizing-a-message"></a>Personalización de un mensaje
 
-Para tener más control sobre el formato del texto de los mensajes, puede crear un mensaje personalizado mediante el objeto [Activity](https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) y establecer las propiedades necesarias antes de enviarlo al usuario.
+Para tener más control sobre el formato del texto de los mensajes, puede crear un mensaje personalizado mediante el objeto [Activity](https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html) y establecer las propiedades necesarias antes de enviarlo al usuario.
 
 En este ejemplo se muestra cómo crear un objeto `message` personalizado y establecer las propiedades `Text`, `TextFormat` y `Local`.
 
@@ -48,7 +48,7 @@ Muchos canales ofrecen la posibilidad de que un bot o usuario "mencione" a algui
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de la entidad ("mention") | 
+| type | Tipo de la entidad ("mention") | 
 | Mentioned | Objeto `ChannelAccount` que indica a qué usuario se ha mencionado | 
 | Texto | Texto de la propiedad `Activity.Text` que representa la mención en sí misma (puede estar vacío o ser nulo) |
 
@@ -67,7 +67,7 @@ El objeto `Place` contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de la entidad ("Place") |
+| type | Tipo de la entidad ("Place") |
 | Dirección | Descripción u objeto `PostalAddress` (en un futuro) | 
 | Geoárea | GeoCoordinates | 
 | HasMap | Dirección URL de un mapa u objeto `Map` (en un futuro) |
@@ -77,7 +77,7 @@ El objeto `GeoCoordinates` contiene estas propiedades:
 
 | Propiedad | DESCRIPCIÓN | 
 |----|----|
-| Escriba | Tipo de la entidad ("GeoCoordinates") |
+| type | Tipo de la entidad ("GeoCoordinates") |
 | NOMBRE | Nombre del lugar |
 | Longitud | Longitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
 | Latitud | Latitud de la ubicación (<a href="https://en.wikipedia.org/wiki/World_Geodetic_System" target="_blank">WGS 84</a>) | 
@@ -127,6 +127,6 @@ Un bot y un usuario pueden enviarse mensajes entre sí. Cuando el mensaje es má
 - [Incorporación de voz a mensajes](bot-builder-dotnet-text-to-speech.md)
 - [Incorporación de acciones sugeridas a mensajes](bot-builder-dotnet-add-suggested-actions.md)
 - [Implementación de una funcionalidad específica de canal](bot-builder-dotnet-channeldata.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.imessageactivity" target="_blank">Interfaz IMessageActivity</a>
 

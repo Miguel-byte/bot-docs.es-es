@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 8d9b2ea2e2133c86428b537427433f9dd15216ee
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: dbd7d437b7a1cdffd446337192e77a8c3d93e4a0
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225950"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405770"
 ---
 # <a name="upgrade-your-bot-to-bot-framework-api-v3"></a>Actualización de un bot a Bot Framework API v3
 
@@ -71,15 +71,15 @@ If the **App ID** field is empty, complete these steps:
 
 Los bots de la versión 1 ya no son compatibles. Para actualizar el bot, deberá crear uno nuevo en la versión 3 en su lugar. Si desea conservar alguno de sus códigos antiguos, tendrá que migrar el código manualmente.
 
-La solución más sencilla consiste en volver a crear el bot con el nuevo [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0) e implementarlo. 
+La solución más sencilla consiste en volver a crear el bot con el nuevo [SDK](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) e implementarlo. 
 
 Si desea conservar el código anterior, siga estos pasos:
 
 1. Cree una aplicación de bot.
 2. Copie el código antiguo en la nueva aplicación de bot.
 3. Actualice el SDK a la versión más reciente mediante el administrador de paquetes Nuget.
-4. Corrija los errores que aparecen y haga referencia al nuevo [SDK](https://docs.microsoft.com/en-us/azure/bot-service/?view=azure-bot-service-4.0).
-5. Implemente el bot en Azure siguiendo estas [instrucciones](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0).
+4. Corrija los errores que aparecen y haga referencia al nuevo [SDK](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0).
+5. Implemente el bot en Azure siguiendo estas [instrucciones](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0).
 
 <!-- TODO: Remove outdated code 
 To update your bot code to version 3.0, complete these steps:
@@ -165,7 +165,7 @@ Bot Framework API v3 almacena las propiedades de autenticación con estas claves
 
 ## <a id="step-3"></a> Paso 3: Implementación del bot actualizado en Azure.
 
-Después de haber actualizado el código del bot a API v3, basta con implementar el bot en Azure mediante estas [instrucciones](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Como la versión 1 ya no es compatible, todos los bots utilizarán automáticamente la API de la versión 3 cuando se implemente en los servicios Azure.
+Después de haber actualizado el código del bot a API v3, basta con implementar el bot en Azure mediante estas [instrucciones](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-deploy-azure?view=azure-bot-service-4.0). Como la versión 1 ya no es compatible, todos los bots utilizarán automáticamente la API de la versión 3 cuando se implemente en los servicios Azure.
 
 <!-- TODO: Documentation set for removal 
 1. Sign in to the [Bot Framework Portal](https://dev.botframework.com/).

@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 58d2c3fc4a1fb266b74402541fc937f0b52fa189
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 7417e105ab20c3aca2c2a4e525248728ac49bf18
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224990"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404924"
 ---
 # <a name="replace-dialogs"></a>Reemplazar cuadros de diálogo
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-La capacidad de reemplazar un cuadro de diálogo puede ser útil cuando necesita validar la entrada del usuario o repetir una acción durante el transcurso de una conversación. Con Bot Framework SDK para Node.js, puede reemplazar un diálogo usando el método [`session.replaceDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Este método le permite finalizar el diálogo actual y reemplazarlo con un nuevo cuadro de diálogo sin tener que volver a la persona que llama. 
+La capacidad de reemplazar un cuadro de diálogo puede ser útil cuando necesita validar la entrada del usuario o repetir una acción durante el transcurso de una conversación. Con Bot Framework SDK para Node.js, puede reemplazar un diálogo usando el método [`session.replaceDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog). Este método le permite finalizar el diálogo actual y reemplazarlo con un nuevo cuadro de diálogo sin tener que volver a la persona que llama. 
 
 ## <a name="create-custom-prompts-to-validate-input"></a>Crear mensajes personalizados para validar la entrada
 
@@ -61,7 +61,7 @@ Cuando llame al método `session.replaceDialog`, especifique el nombre del cuadr
 
 ## <a name="repeat-an-action"></a>Repetir una acción
 
-Puede haber ocasiones en el curso de una conversación en las que desee repetir un diálogo para permitir al usuario completar una determinada acción varias veces. Por ejemplo, si el bot ofrece una variedad de servicios, inicialmente puede mostrar el menú de servicios, guiar al usuario a través del proceso de solicitud de un servicio y, a continuación, volver a mostrar el menú de servicios, lo que permite al usuario solicitar otro servicio. Para lograr esto, puede usar el método [`session.replaceDialog`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) para volver a mostrar el menú de servicios, en lugar de finalizar la conversación con el método ['session.endConversation`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation). 
+Puede haber ocasiones en el curso de una conversación en las que desee repetir un diálogo para permitir al usuario completar una determinada acción varias veces. Por ejemplo, si el bot ofrece una variedad de servicios, inicialmente puede mostrar el menú de servicios, guiar al usuario a través del proceso de solicitud de un servicio y, a continuación, volver a mostrar el menú de servicios, lo que permite al usuario solicitar otro servicio. Para lograr esto, puede usar el método [`session.replaceDialog`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#replacedialog) para volver a mostrar el menú de servicios, en lugar de finalizar la conversación con el método ['session.endConversation`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#endconversation). 
 
 En el siguiente ejemplo se muestra cómo usar el método `session.replaceDialog` para implementar este tipo de escenario. En primer lugar, se define el menú de servicios:
 
@@ -83,7 +83,7 @@ var menuItems = {
 }
 ```
 
-El diálogo predeterminado invoca al diálogo `mainMenu`, por lo que el menú se presentará al usuario al comienzo de la conversación. Además, se adjunta un [`triggerAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) al diálogo `mainMenu` para que el menú también se muestre siempre que la entrada del usuario sea "menú principal". Cuando se muestra el menú al usuario y este selecciona una opción, se invoca el diálogo que corresponde a la selección del usuario mediante el método `session.beginDialog`.
+El diálogo predeterminado invoca al diálogo `mainMenu`, por lo que el menú se presentará al usuario al comienzo de la conversación. Además, se adjunta un [`triggerAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction) al diálogo `mainMenu` para que el menú también se muestre siempre que la entrada del usuario sea "menú principal". Cuando se muestra el menú al usuario y este selecciona una opción, se invoca el diálogo que corresponde a la selección del usuario mediante el método `session.beginDialog`.
 
 ```javascript
 var inMemoryStorage = new builder.MemoryBotStorage();
@@ -160,11 +160,11 @@ bot.dialog('orderDinner', [
 
 Dos desencadenadores se adjuntan al cuadro de diálogo `orderDinner` para permitir al usuario "comenzar de nuevo" o "cancelar" el pedido en cualquier momento durante el proceso. 
 
-El primer desencadenador es [`reloadAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction), el cual permite al usuario comenzar nuevamente el proceso de pedido enviando la entrada "Comenzar de nuevo". Cuando el desencadenador coincide con el enunciado "empezar de nuevo", `reloadAction` reinicia el diálogo desde el principio. 
+El primer desencadenador es [`reloadAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#reloadaction), el cual permite al usuario comenzar nuevamente el proceso de pedido enviando la entrada "Comenzar de nuevo". Cuando el desencadenador coincide con el enunciado "empezar de nuevo", `reloadAction` reinicia el diálogo desde el principio. 
 
-El segundo desencadenador es [`cancelAction`](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction), el cual permite al usuario anular el proceso de pedido por completo al enviar la entrada "cancelar". Este desencadenador no muestra de nuevo el menú principal automáticamente, sino que envía un mensaje que le indica al usuario qué hacer; por ejemplo, mostrando el mensaje "Escriba" 'Menú principal' para continuar".
+El segundo desencadenador es [`cancelAction`](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#cancelaction), el cual permite al usuario anular el proceso de pedido por completo al enviar la entrada "cancelar". Este desencadenador no muestra de nuevo el menú principal automáticamente, sino que envía un mensaje que le indica al usuario qué hacer; por ejemplo, mostrando el mensaje "Escriba" 'Menú principal' para continuar".
 
-### <a name="dialog-loops"></a>Bucles del cuadro de diálogo 
+### <a name="dialog-loops"></a>Bucles del cuadro de diálogo
 
 En el ejemplo anterior, el usuario solo puede seleccionar un elemento en función del pedido. Es decir, si el usuario desea pedir dos elementos del menú, deberá completar todo el proceso de pedido para el primer artículo y, a continuación, repetir todo el proceso nuevamente para pedir el segundo artículo. 
 
@@ -269,7 +269,7 @@ bot.dialog('orderDinner', [
 
 ## <a name="cancel-a-dialog"></a>Cancelar un cuadro de diálogo
 
-Si bien el método `session.replaceDialog` se puede usar para reemplazar el cuadro de diálogo *actual* con uno nuevo, no se puede usar para reemplazar un cuadro de diálogo ubicado más abajo en la pila de diálogos. Para reemplazar un diálogo dentro de la pila de diálogos que no sea el diálogo *actual*, use el método [`session.cancelDialog`](http://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) en su lugar. 
+Si bien el método `session.replaceDialog` se puede usar para reemplazar el cuadro de diálogo *actual* con uno nuevo, no se puede usar para reemplazar un cuadro de diálogo ubicado más abajo en la pila de diálogos. Para reemplazar un diálogo dentro de la pila de diálogos que no sea el diálogo *actual*, use el método [`session.cancelDialog`](http://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#canceldialog) en su lugar. 
 
 El método `session.cancelDialog` se puede usar para finalizar un diálogo independientemente de dónde esté en la pila de diálogos y, opcionalmente, se puede invocar un nuevo diálogo en su lugar. Para llamar al método `session.cancelDialog`, especifique el id. del diálogo para cancelarlo y, opcionalmente, especifique el id. del diálogo que se invocará en su lugar. Por ejemplo, este fragmento de código cancela el diálogo `orderDinner` y lo reemplaza con el cuadro de diálogo `mainMenu`:
 
@@ -277,7 +277,7 @@ El método `session.cancelDialog` se puede usar para finalizar un diálogo indep
 session.cancelDialog('orderDinner', 'mainMenu'); 
 ```
 
-Cuando se llama al método `session.cancelDialog`, la pila de diálogos se examinará hacia atrás y se cancelará el primer resultado que coincida con ese diálogo; gracias a esto, ese diálogo y sus diálogos secundarios (si los hay) se eliminarán de la pila de diálogos. El control será devuelto al diálogo de llamadas, el cual puede comprobar si hay un código [`results.resumed`](http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed) igual a [`ResumeReason.notCompleted`](http://docs.botframework.com/en-us/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted) para detectar la cancelación.
+Cuando se llama al método `session.cancelDialog`, la pila de diálogos se examinará hacia atrás y se cancelará el primer resultado que coincida con ese diálogo; gracias a esto, ese diálogo y sus diálogos secundarios (si los hay) se eliminarán de la pila de diálogos. El control será devuelto al diálogo de llamadas, el cual puede comprobar si hay un código [`results.resumed`](http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.ipromptresult.html#resumed) igual a [`ResumeReason.notCompleted`](http://docs.botframework.com/node/builder/chat-reference/enums/_botbuilder_d_.resumereason.html#notcompleted) para detectar la cancelación.
 
 Como alternativa a la opción de especificar el id. del diálogo para cancelarlo cuando se llame al método `session.cancelDialog`, puede especificar en su lugar el índice basado en cero del diálogo que se va a cancelar, donde el índice representa la posición del diálogo en la pila de diálogos. Por ejemplo, el siguiente fragmento de código finaliza el diálogo activo (índice = 0) y comienza el diálogo `mainMenu` en su lugar. El diálogo `mainMenu` se invoca en la posición 0 de la pila de diálogos, convirtiéndose así en el nuevo cuadro de diálogo predeterminado.
 

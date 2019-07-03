@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9bab3e3df6bb32607773da261698d785b1f261f7
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: b2cc303cdedbc3a9d44ce725bfc78dd308974763
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214228"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464671"
 ---
 # <a name="virtual-assistant-overview"></a>Introducción a Virtual Assistant
 
@@ -67,17 +67,17 @@ Virtual Assistant abarca una amplia gama de escenarios de la industria. A contin
 ### <a name="your-data-your-brand-and-your-experience"></a>Sus datos, su marca y su experiencia
 Podrá controlar todos los aspectos de la experiencia del usuario final, que le pertenece. Esto incluye la personalización de marca, el nombre, la voz, la personalidad, las respuestas y el avatar. El código fuente de Virtual Assistant y de las aptitudes auxiliares está disponible para que lo ajuste según sea necesario.
 
-Virtual Assistant se implementará en la suscripción de Azure. Por lo tanto, todos los datos generados por el asistente (preguntas, comportamiento de los usuarios, etc.) están incluidos por completo en la suscripción de Azure. Consulte [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) y la [sección de Azure del Centro de confianza](https://www.microsoft.com/en-us/TrustCenter/CloudServices/Azure) en concreto para más información.
+Virtual Assistant se implementará en la suscripción de Azure. Por lo tanto, todos los datos generados por el asistente (preguntas, comportamiento de los usuarios, etc.) están incluidos por completo en la suscripción de Azure. Consulte [Cognitive Services Azure Trusted Cloud](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) y la [sección de Azure del Centro de confianza](https://www.microsoft.com/TrustCenter/CloudServices/Azure) en concreto para más información.
 
 ### <a name="write-it-once-embed-it-anywhere"></a>Escríbalo solo una vez, insértelo en cualquier lugar
-Virtual Assistant aprovecha la plataforma de inteligencia artificial conversacional de Microsoft y, por lo tanto, se puede utilizar con cualquier [canal](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) de Bot Framework, por ejemplo, WebChat, FaceBook Messenger, Skype,etc. 
+Virtual Assistant aprovecha la plataforma de inteligencia artificial conversacional de Microsoft y, por lo tanto, se puede utilizar con cualquier [canal](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0) de Bot Framework, por ejemplo, WebChat, FaceBook Messenger, Skype,etc. 
 
-Además, mediante el canal [DirectLine](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) se pueden insertar experiencias en aplicaciones de escritorio y móviles, incluidos dispositivos como automóviles, altavoces, relojes con alarma, etc.
+Además, mediante el canal [DirectLine](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-concepts?view=azure-bot-service-4.0) se pueden insertar experiencias en aplicaciones de escritorio y móviles, incluidos dispositivos como automóviles, altavoces, relojes con alarma, etc.
 
 ### <a name="enterprise-grade-solutions"></a>Soluciones de clase empresarial
-La solución Virtual Assistant se basa en Azure Bot Service, Language Understanding Cognitive Service y Unified Speech, y cuenta con un amplio conjunto de componentes de Azure auxiliares, para que pueda disfrutar de todas las ventajas de la [infraestructura global de Azure](https://azure.microsoft.com/en-gb/global-infrastructure/), incluida la certificación ISO 27018, HIPPA, PCI DSS, SOC 1, 2 y 3.
+La solución Virtual Assistant se basa en Azure Bot Service, Language Understanding Cognitive Service y Unified Speech, y cuenta con un amplio conjunto de componentes de Azure auxiliares, para que pueda disfrutar de todas las ventajas de la [infraestructura global de Azure](https://azure.microsoft.com/global-infrastructure/), incluida la certificación ISO 27018, HIPPA, PCI DSS, SOC 1, 2 y 3.
 
-Además, LUIS Cognitive Service ofrece compatibilidad con Language Understanding para admitir un amplio conjunto de idiomas, que se [enumeran aquí](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-supported-languages). Para ampliar el alcance de Virtual Assistant, [Translator Cognitive Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/) ofrece funcionalidades de traducción automática adicionales.
+Además, LUIS Cognitive Service ofrece compatibilidad con Language Understanding para admitir un amplio conjunto de idiomas, que se [enumeran aquí](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages). Para ampliar el alcance de Virtual Assistant, [Translator Cognitive Service](https://azure.microsoft.com/services/cognitive-services/translator-text-api/) ofrece funcionalidades de traducción automática adicionales.
 
 ### <a name="integrated-and-context-aware"></a>Integración y reconocimiento contextual
 Virtual Assistant se puede integrar en el dispositivo y el ecosistema para una experiencia realmente integrada e inteligente. Con este reconocimiento contextual se pueden desarrollar experiencias más inteligentes y se consigue mayor personalización que de cualquier otra forma.
@@ -89,7 +89,7 @@ Virtual Assistant permite ofrecer una experiencia propia única, pero también e
 La arquitectura de Virtual Assistant es flexible y se integra con las inversiones existentes que haya realizado en las funcionalidades de voz basadas en dispositivos o de procesamiento de lenguaje natural y, por supuesto, también con los sistemas de back-end y las API existentes.
 
 ### <a name="adaptive-cards"></a>Tarjetas adaptables
-Las [tarjetas adaptables](https://adaptivecards.io/) permiten a Virtual Assistant devolver elementos de la experiencia del usuario (como tarjetas, imágenes, botones) junto a las respuestas de texto base. Si el lienzo de conversación o el dispositivo tienen pantalla, las tarjetas adaptables se pueden representar en una amplia gama de dispositivos y plataformas y proporcionar compatibilidad con la experiencia del usuario cuando proceda. [Aquí](https://adaptivecards.io/samples/) encontrará ejemplos de tarjetas adaptables e información sobre las opciones de representación en [esta](https://docs.microsoft.com/en-us/adaptive-cards/rendering-cards/getting-started) documentación.
+Las [tarjetas adaptables](https://adaptivecards.io/) permiten a Virtual Assistant devolver elementos de la experiencia del usuario (como tarjetas, imágenes, botones) junto a las respuestas de texto base. Si el lienzo de conversación o el dispositivo tienen pantalla, las tarjetas adaptables se pueden representar en una amplia gama de dispositivos y plataformas y proporcionar compatibilidad con la experiencia del usuario cuando proceda. [Aquí](https://adaptivecards.io/samples/) encontrará ejemplos de tarjetas adaptables e información sobre las opciones de representación en [esta](https://docs.microsoft.com/adaptive-cards/rendering-cards/getting-started) documentación.
 
 ### <a name="skills"></a>Aptitudes
 Además del asistente base, existe un amplio conjunto de funcionalidades comunes que cada desarrollador debe compilar. La productividad es un buen ejemplo donde cada organización necesitaría crear modelos de lenguaje (LUIS), diálogos (código), integración (código) y generación de lenguaje (respuestas) para habilitar experiencias comunes, como calendarios, tareas o correos electrónicos.
