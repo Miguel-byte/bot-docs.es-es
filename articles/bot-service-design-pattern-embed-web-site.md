@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f9fa2bee156752f1545d201768040b6106558e01
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 97bdb1cb8b2181904b6c6992b6e0c3bd3b9f20cd
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563747"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405867"
 ---
 # <a name="embed-a-bot-in-a-website"></a>Insertar un bot en un sitio web
 
@@ -31,7 +31,7 @@ Debido a que el control web de Skype simplemente actúa como interfaz para Skype
 
 ## <a name="open-source-web-control"></a>Control web de código abierto
 
-El <a href="https://aka.ms/BotFramework-WebChat" target="_blank">control de chat en web de código abierto</a> se basa en ReactJS y usa [Direct Line API][directLineAPI] para comunicarse con Bot Framework. El control de chat en web proporciona un lienzo en blanco para implementar el chat en web, lo que le proporciona un control total sobre el comportamiento que tendrá y la experiencia del usuario que ofrecerá. 
+El <a href="https://aka.ms/BotFramework-WebChat" target="_blank">control Chat en web de código abierto</a> se basa en ReactJS y usa [Direct Line API][directLineAPI] para comunicarse con Bot Framework. El control de chat en web proporciona un lienzo en blanco para implementar el chat en web, lo que le proporciona un control total sobre el comportamiento que tendrá y la experiencia del usuario que ofrecerá. 
 
 El mecanismo *backchannel* permite que la página web que aloja el control se comunique directamente con el bot de una manera totalmente invisible para el usuario. Esta capacidad proporciona cierta cantidad de escenarios útiles: 
 
@@ -51,8 +51,8 @@ El <a href="https://aka.ms/BotFramework-WebChat" target="_blank">control de chat
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Direct Line API][directLineAPI] (API de Direct Line)
+- [Direct Line API][directLineAPI]
 - [Control de chat en web de código abierto](https://github.com/Microsoft/BotFramework-WebChat)
 - [Use the backchannel mechanism](~/nodejs/bot-builder-nodejs-backchannel.md) (Usar el mecanismo backchannel)
 
-[directLineAPI]: https://docs.botframework.com/en-us/restapi/directline3/#navtitle
+[directLineAPI]: https://docs.botframework.com/restapi/directline3/#navtitle

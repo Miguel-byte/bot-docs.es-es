@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: fd7d20b71c8f6c3013e7af5c7c80623089f0dce0
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 9dd84e9e5e39e1e1b801e08fbee101dbfa8b0c49
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032896"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405678"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -86,10 +86,10 @@ Además de las respuestas de voz, Cortana puede mostrar datos adjuntos de tarjet
 | [HeroCard][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
 | [ThumbnailCard][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto. |
 | [ReceiptCard][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
-| [SignInCard][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para comenzar el proceso de inicio de sesión. |
+| [SignInCard][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o varios botones en los que el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
 
 
-Consulte [Card design best practices][CardDesign] (Prácticas recomendadas para el diseño de tarjetas) para ver el diseño de estas tarjetas en Cortana. Para obtener un ejemplo de cómo usar una tarjeta enriquecida en un bot, consulte [Add rich card attachments to messages](bot-builder-dotnet-add-rich-card-attachments.md) (Adición de tarjetas enriquecidas a mensajes). 
+Consulte los [procedimientos recomendados para el diseño de tarjetas][CardDesign] para ver el diseño de estas tarjetas en Cortana. Para obtener un ejemplo de cómo usar una tarjeta enriquecida en un bot, consulte [Add rich card attachments to messages](bot-builder-dotnet-add-rich-card-attachments.md) (Adición de tarjetas enriquecidas a mensajes). 
 
 <!--
 The following code demonstrates how to add the `Speak` and `InputHint` properties to a message containing a `HeroCard`.
@@ -99,7 +99,7 @@ The following code demonstrates how to add the `Speak` and `InputHint` propertie
 ## <a name="sample-rollerskill"></a>Sample: RollerSkill
 El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de Bot Builder](https://github.com/Microsoft/BotBuilder-Samples/).
 
-La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
+La habilidad se invoca diciendo su [nombre de invocación][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] y se registra como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
 
 ### <a name="explore-the-code"></a>Exploración del código
 
@@ -329,7 +329,7 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Kit de habilidades de Cortana][CortanaGetStarted]
-* [Incorporación de voz a mensajes](bot-builder-dotnet-text-to-speech.md)
+* [Incorporación de voz a los mensajes](bot-builder-dotnet-text-to-speech.md)
 * [Referencias de SSML][SSMLRef]
 * [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
 * [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]
@@ -341,7 +341,7 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 [BFPortal]: https://dev.botframework.com/
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

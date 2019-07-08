@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 09/20/2018
-ms.openlocfilehash: 0b5bc1e82b6ef2dc5550fcaa5db176d06a7d2ea7
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: ecccbcadab93417dd52f72512a0046e70a83e85e
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49999702"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405823"
 ---
 # <a name="design-the-user-experience"></a>Diseñar la experiencia de usuario
 
@@ -47,7 +47,7 @@ Las tarjetas de Microsoft Bot Service son objetos programables que contienen col
 
 Las tarjetas le permiten diseñar su bot una vez, y hacer que funcione en una variedad de canales. Sin embargo, no todos los tipos de tarjeta son totalmente compatibles en todos los canales disponibles. 
 
-Puede encontrar instrucciones detalladas para agregar tarjetas al bot en estas secciones: [Agregar archivos adjuntos multimedia en tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md) y [Agregar acciones sugeridas a los mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md). El código de ejemplo también se encuentra aquí para tarjetas: [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js) tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code) y acciones sugeridas: [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
+Puede encontrar instrucciones detalladas para agregar tarjetas al bot en estas secciones: [Agregar archivos adjuntos multimedia en tarjetas enriquecidas](v4sdk/bot-builder-howto-add-media-attachments.md) y [Agregar acciones sugeridas a los mensajes](v4sdk/bot-builder-howto-add-suggested-actions.md). El ejemplo de código también se puede encontrar aquí para las tarjetas: [C#](https://aka.ms/bot-cards-sample-code-cs)/[JS](https://aka.ms/bot-cards-sample-code-js), tarjetas adaptables: [C#](https://aka.ms/bot-adaptive-cards-sample-code)/[JS](https://aka.ms/bot-adaptive-cards-js-sample-code), datos adjuntos: [C#](https://aka.ms/bot-attachments-sample-code)/[JS](https://aka.ms/bot-attachments-js-sample-code), y acciones sugeridas: [C#](https://aka.ms/bot-suggested-actions-code)/[JS](https://aka.ms/bot-suggested-actions-js-code).
 
 
 
@@ -63,7 +63,7 @@ Un bot puede aceptar las entradas de **texto** de los usuarios e intentar analiz
 
 En algunos casos, un usuario puede estar **respondiendo una pregunta muy específica**. Por ejemplo, si el bot pregunta "¿Cuál es su nombre?", el usuario puede responder con texto que especifique solo el nombre ("Juan") o con una frase ("Mi nombre es Juan").
 
-Hacer preguntas específicas reduce el ámbito de las posibles respuestas que el bot podría recibir, lo que disminuye la complejidad de la lógica necesaria para analizar y comprender la respuesta. Por ejemplo, considere la siguiente pregunta amplia y abierta: "¿Cómo te sientes?". Comprender las gran cantidad de permutaciones posibles para responder a ese tipo de pregunta es una tarea muy compleja.
+Hacer preguntas específicas reduce el ámbito de las posibles respuestas que el bot podría recibir, lo que disminuye la complejidad de la lógica necesaria para analizar y comprender la respuesta. Por ejemplo, considere la siguiente pregunta amplia y abierta: "¿Cómo se siente?". Comprender las gran cantidad de permutaciones posibles para responder a ese tipo de pregunta es una tarea muy compleja.
 
 Por el contrario, preguntas específicas como "¿Sientes dolor? Sí/No" y "¿Dónde sientes dolor? Pecho/cabeza/brazo/pierna" probablemente generarían respuestas más específicas que un bot puede analizar y comprender sin necesidad de implementar la comprensión del lenguaje natural. 
 
@@ -77,7 +77,7 @@ En otros casos, un usuario puede estar **escribiendo un comando específico**. P
 > Diseñar un bot para que requiera comandos específicos del usuario a menudo puede proporcionar una buena experiencia de usuario y, al mismo tiempo, eliminar la necesidad de una capacidad de comprensión del lenguaje natural.
 
   
-En el caso de que sea un bot de una *base de conocimiento*  o un bot de *preguntas y respuestas*, el usuario puede **hacer preguntas generales**. Por ejemplo, imagine un bot que pueda responder preguntas basadas en el contenido de miles de documentos. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> y <a href="https://azure.microsoft.com/en-us/services/search/" target="_blank">Azure Search</a> son tecnologías diseñadas específicamente para este tipo de escenario. Para obtener más información, consulte [Design knowledge bots](bot-service-design-pattern-knowledge-base.md) (Diseñar bots de conocimiento).
+En el caso de que sea un bot de una *base de conocimiento*  o un bot de *preguntas y respuestas*, el usuario puede **hacer preguntas generales**. Por ejemplo, imagine un bot que pueda responder preguntas basadas en el contenido de miles de documentos. <a href="https://qnamaker.ai" target="_blank">QnA Maker</a> y <a href="https://azure.microsoft.com/services/search/" target="_blank">Azure Search</a> son tecnologías diseñadas específicamente para este tipo de escenario. Para obtener más información, consulte [Design knowledge bots](bot-service-design-pattern-knowledge-base.md) (Diseñar bots de conocimiento).
 
 > [!TIP]
 > Si está diseñando un bot que responderá preguntas basadas en datos estructurados o no estructurados de bases de datos, páginas web o documentos, considere usar tecnologías diseñadas específicamente para abordar este escenario en lugar de intentar resolver el problema con la comprensión del lenguaje natural.

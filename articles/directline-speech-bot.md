@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 966e1b6e884486ddc3d57bea0a52ee07ac982346
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 73a675c6e54d676f74dad2df24b3668d5e4e98be
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214323"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252380"
 ---
 ## <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot 
 
@@ -74,7 +74,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-7. Todavía en Startup.cs, vaya a la parte inferior del método ConfigureServices. Antes de la llamada a app.UseMvc(); (esto es importante porque el orden de las llamadas a Use es importante), agregue app.UseWebSockets();. El final del método debería parecerse al siguiente:
+7. Todavía en Startup.cs, navegue a la parte inferior del método Configure. Antes de la llamada a app.UseMvc(); (esto es importante porque el orden de las llamadas a Use es importante), agregue app.UseWebSockets();. El final del método debería parecerse al siguiente:
 
 ```cs
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)

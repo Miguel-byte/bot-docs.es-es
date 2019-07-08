@@ -10,25 +10,29 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 680d9148b463bbb5d10f4a6a06cc7b32b824b66e
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0f29520b993d12ce01c65cd29517b3a4b2aada84
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215422"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404554"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-La recopilación de información mediante la publicación de preguntas es una de las principales formas de interacción de un bot con los usuarios. La biblioteca de diálogos facilita la formulación de preguntas, así como la validación de la respuesta para asegurarse de que coincide con un tipo de datos específico o cumple con las reglas de validación personalizadas.
+La recopilación de información mediante la publicación de preguntas es una de las principales formas de interacción de un bot con los usuarios. La biblioteca de diálogos proporciona características integradas útiles, como las clases *prompt* que facilitan la formulación de preguntas y validan la respuesta para asegurarse de que coincide con un tipo de datos específico o cumple con las reglas de validación personalizadas. 
 
 Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos. En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza. En general, un diálogo es útil cuando el bot necesita recopilar información del usuario. En este tema se detalla cómo implementar un flujo de conversación simple mediante la creación de avisos y su llamada desde un diálogo en cascada. 
 
+> [!TIP]
+> Para obtener ejemplos de cómo escribir sus propias preguntas sin usar la biblioteca de diálogos, vea el artículo [Creación de mensajes propios para recopilar datos de entrada del usuario](bot-builder-primitive-prompts.md). 
+
+
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de los [conceptos básicos de bots][concept-basics], la [administración del estado][concept-state] y la [biblioteca de diálogos][concept-dialogs].
-- Una copia del ejemplo de **aviso con varios turnos** en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
+- Conocimiento de los [conceptos básicos de bots][concept-basics], [managing state][concept-state] y la [biblioteca de diálogos][concepts-dialogs].
+- Una copia del ejemplo de **solicitud de varios turnos** en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
 
@@ -63,6 +67,8 @@ En el constructor `UserProfileDialog`, se crean los pasos de cascada, los avisos
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 A continuación, implementamos los pasos que se usa el diálogo. Para usar un aviso, debe llamarlo desde un paso del diálogo y recuperar el resultado del aviso en el paso siguiente con `stepContext.Result`. En un segundo plano, las preguntas consisten en un diálogo de dos pasos. En primer lugar, el aviso pide una entrada; en segundo lugar, devuelve el valor válido o comienza de nuevo desde el principio con un nuevo aviso hasta que recibe una entrada válida.
+
+
 
 Siempre debe devolver un valor no NULL de `DialogTurnResult` desde un paso de cascada. Si no lo hace, el diálogo podría no funcionar según lo previsto. Aquí se muestra la implementación de `NameStepAsync` en el diálogo en cascada.
 

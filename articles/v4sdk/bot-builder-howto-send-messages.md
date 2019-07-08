@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4b2cd49d84ea90f0ac6449ce4da61495100d45c4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: a72c103204384188d509777639c2c90e63431dd8
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215363"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496692"
 ---
 # <a name="send-and-receive-text-message"></a>Envío y recepción de mensajes de texto
 
@@ -24,6 +24,8 @@ ms.locfileid: "66215363"
 La forma principal comunicación del bot con los usuarios y de recepción de comunicación es mediante actividades de **mensaje**. Algunos mensajes pueden constar simplemente de texto sin formato, mientras que otros pueden tener un contenido más rico, como tarjetas o datos adjuntos. El controlador de turnos del bot recibe mensajes del usuario y puede enviar respuestas al usuario desde ahí. El objeto de contexto de turnos proporciona métodos para enviar mensajes al usuario. Este artículo describe cómo enviar mensajes de texto simples.
 
 Markdown es compatible con la mayoría de los campos de texto, pero la compatibilidad puede variar según el canal.
+
+Para un bot en ejecución que envía y recibe mensajes, siga los tutoriales en la parte superior de la tabla de contenido o consulte el [artículo sobre cómo funcionan los bots](bot-builder-basics.md#bot-structure), que también incluye vínculos a ejemplos sencillos disponibles para que pueda ejecutarlos usted mismo.
 
 ## <a name="send-a-text-message"></a>Enviar un mensaje de texto
 

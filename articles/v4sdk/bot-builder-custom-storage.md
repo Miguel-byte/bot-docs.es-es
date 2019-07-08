@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2b77b19a3b2d0fbd8e545e563f154124af894ffa
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 138f3c943fc6c4a7882e808c3f280d4ebe04f62f
+ms.sourcegitcommit: 409e8f89a1e9bcd0e69a29a313add424f66a81e1
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693728"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67153084"
 ---
 # <a name="implement-custom-storage-for-your-bot"></a>Implementación de almacenamiento personalizado en un bot
 
@@ -114,7 +114,8 @@ Después de haber creado la clave adecuada se intentará cargar el estado corres
 
 La implementación OnTurn resultante tiene el siguiente aspecto:
 
-**ScaleoutBot.cs** [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
+**ScaleoutBot.cs**  
+[!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/Bots/ScaleOutBot.cs?range=43-72)]
 
 Tenga en cuenta que hemos modelado la ejecución del diálogo como una llamada de función. Quizás, en una implementación más sofisticada, se habría definido una interfaz y hecho que esta dependencia fuera inyectable, pero para nuestros propósitos, hacer que el diálogo esté detrás de una función estática enfatiza la naturaleza funcional de nuestro enfoque. Como norma general, organizar la implementación de tal forma que los elementos cruciales sean funcionales nos sitúa en muy buena posición en lo que respecta al uso correcto en las redes.
 
@@ -124,7 +125,8 @@ Tenga en cuenta que hemos modelado la ejecución del diálogo como una llamada d
 El siguiente requisito es que las actividades salientes se almacenen en búfer hasta que se haya realizado una operación de guardar correcta. Esto requerirá una implementación personalizada de BotAdapter. En este código, se implementará la función abstracta SendActivity para agregar la actividad a una lista en lugar de enviarla. El diálogo que vamos a hospedar no será el más correcto.
 En este escenario en particular, no se admiten las operaciones UpdateActivity y DeleteActivity, por lo que estos métodos solo generarán respuestas de No implementado. Tampoco nos vamos a preocupar por el valor devuelto por la operación SendActivity. Esto lo usan algunos canales en casos en los que se deben enviar las actualizaciones de las actividades, por ejemplo, para deshabilitar los botones o tarjetas que aparecen en el canal. Estos intercambios de mensajes pueden resultar complicados, especialmente cuando se requiere el estado, lo cual está fuera del objetivo de este artículo. La implementación completa del BotAdapter personalizado tiene este aspecto:
 
-**DialogHostAdapter.cs** [!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
+**DialogHostAdapter.cs**  
+[!code-csharp[DialogHostAdapter](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHostAdapter.cs?range=19-46)]
 
 ## <a name="integration"></a>Integración
 
@@ -136,11 +138,13 @@ Estamos siendo muy cuidadosos con la disposición en capas, y vamos a poner el c
 
 Este es el código del controlador:
 
-**DialogHost.cs** [!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
+**DialogHost.cs**  
+[!code-csharp[DialogHost](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/DialogHost.cs?range=22-72)]
 
 Y por último, el descriptor de acceso personalizado, en el que solo debemos implementar Get, porque el estado es por referencia:
 
-**RefAccessor.cs** [!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
+**RefAccessor.cs**  
+[!code-csharp[RefAccessor](~/../botbuilder-samples/samples/csharp_dotnetcore/42.scaleout/RefAccessor.cs?range=22-60)]
 
 ## <a name="additional-information"></a>Información adicional
 El código de [ejemplo de C#](http://aka.ms/scale-out) que se usa en este artículo está disponible en GitHub.

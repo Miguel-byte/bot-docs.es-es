@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 ROBOTS: NoIndex, NoFollow
-ms.openlocfilehash: d41c2c24ed38fffe76cd73a6bb8a685d3861ac55
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: fee70da7288b3214ff7f384998a69b40f91b3226
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000432"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464519"
 ---
 # <a name="configure-adaptive-cards"></a>Configuración de tarjetas adaptables
 > [!IMPORTANT]
@@ -41,19 +41,19 @@ Las tarjetas adaptables pueden contener formularios de entrada. En Conversation 
 
 El fragmento de código siguiente muestra cómo la entidad **myName** se define en el código:
 
-``javascript
+```javascript
 {
    "type": "Input.Text",
    "id": "myName",
    "placeholder": "Last, First"
 }
-``
+```
 
 Además, si un campo tiene un identificador de `@task`, entonces el valor del campo se usa como un nombre de tarea. Cuando se desencadena este campo (p. ej.: con un clic de botón), se ejecuta entonces la tarea designada. 
 
 Vamos a tomar este fragmento de código como ejemplo:
 
-``javascript
+```javascript
 {
   'type': 'Action.Submit',
   'title': 'Search',
@@ -62,7 +62,7 @@ Vamos a tomar este fragmento de código como ejemplo:
     '@task': 'Hotel Search'
   }
 }
-``
+```
 
 Cuando se hace clic en este botón, se desencadena una acción de envío y `context.sticky` se establece en `Hotel Search`. Como consecuencia, se ejecuta la tarea **Hotel Search**. Para usar esta característica, asegúrese de que `@task` coincida con un nombre de tarea que haya definido en Conversation Designer.
 
@@ -72,7 +72,7 @@ Las tarjetas adaptables admiten la resolución de generación de idioma completo
 * `entityName` usa entidades dentro de la tarjeta.
 * `responseTemplateName` usa plantillas de respuesta simple o condicional dentro de la tarjeta.
 
-Más información acerca de las tarjetas adaptables aquí TODO: Insertar vínculo a la documentación del esquema de las tarjetas adaptables -->
+Obtenga más información sobre las tarjetas adaptables aquí TODO: Insertar vínculo a documentación del esquema de tarjetas adaptables -->
 
 ## <a name="sample-adaptive-card-payload"></a>Ejemplo de carga de tarjeta adaptable
 

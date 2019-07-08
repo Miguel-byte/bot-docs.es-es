@@ -9,21 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 6bd918416c4eee9fc74809b0d5837012021556e0
-ms.sourcegitcommit: 152760771214865b9c7d0ed481acfba05bdc44dc
+ms.openlocfilehash: 25837bd9f462a2729a36fbd9decdc3e2bb6be0e3
+ms.sourcegitcommit: 697a577d72aaf91a0834d4b4c2ef5aa11291f28f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58655485"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67496663"
 ---
-# <a name="connect-a-bot-to-skype-for-business"></a>Conexión de un bot a Skype Empresarial
+# <a name="connect-a-bot-to-skype-for-business-preview"></a>Conexión de un bot a Skype Empresarial (versión preliminar)
 
 Skype Empresarial Online le mantiene conectado con los compañeros de trabajo y asociados de negocio por medio de mensajería instantánea, teléfono y videollamadas. Para ampliar esta funcionalidad, cree bots que los usuarios puedan detectar y con los que puedan interactuar mediante la interfaz de Skype Empresarial.
 
 > [!IMPORTANT]
 > **El canal de Skype Empresarial en Bot Framework quedará en desuso a partir del 30 de junio de 2019.**
 > 
-> Ningún bot nuevo podrá agregar el canal de Skype Empresarial después de esa fecha.  Los bots existentes continuarán funcionando hasta el 31 de octubre de 2019. Microsoft Teams es la herramienta de comunicación preferida de Microsoft.  Aprenda a [conectar el bot a Microsoft Teams](https://msdn.microsoft.com/en-us/microsoft-teams/bots).
+> Ningún bot nuevo podrá agregar el canal de Skype Empresarial después de esa fecha.  Los bots existentes continuarán funcionando hasta el 31 de octubre de 2019. Microsoft Teams es la herramienta de comunicación preferida de Microsoft.  Aprenda a [conectar el bot a Microsoft Teams](https://msdn.microsoft.com/microsoft-teams/bots).
 
 ## <a name="enable-the-channel"></a>Habilitación del canal
 
@@ -32,7 +32,7 @@ Abra el bot en [Azure Portal](https://portal.azure.com/), haga clic en la hoja *
 La conexión del bot a Skype Empresarial Online se realiza mediante un **administrador de inquilinos** de ese inquilino de Skype Empresarial.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Bot Framework para Skype Empresarial](https://msdn.microsoft.com/en-us/skype/Skype-For-Business-Bot-Framework/docs/overview)
+* [Bot Framework para Skype Empresarial](https://msdn.microsoft.com/skype/Skype-For-Business-Bot-Framework/docs/overview)
 
 
 

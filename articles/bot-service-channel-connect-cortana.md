@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 04/30/2018
-ms.openlocfilehash: 6bb4945801ee127cfa954289792987a57eae7fd5
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3df9d22b486e56547452cc5bce4add3946f670f5
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032991"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405937"
 ---
 # <a name="connect-a-bot-to-cortana"></a>Conectar un bot a Cortana
 
@@ -35,6 +35,8 @@ Al conectar su bot con el canal de Cortana, parte de la información básica sob
 | **Nombre de invocación** | Este es el nombre que los usuarios deben decir al invocar una habilidad. No debe tener más de tres palabras y debe ser fácil pronunciar. Consulte la [Invocation Name Guidelines][invocation] (Información del nombre de invocación) para obtener más información sobre cómo elegir este nombre.|
 
 ![Configuración predeterminada](~/media/channels/cortana-defaultsettings.png)
+
+>!NOTA: Cortana no admite actualmente el uso de autenticación de la cuenta de Azure Active Directory (AAD). Deberá usar una cuenta de Microsoft (MSA) para publicar correctamente su bot en Cortana.
 
 ## <a name="general-bot-information"></a>Información general sobre el bot
 
@@ -109,6 +111,6 @@ En este momento su bot está implementado como una habilidad de Cortana en su cu
 * [Habilitar depuración](bot-service-debug-cortana-skill.md)
 * [Publicar una habilidad de Cortana][publish]
 
-[invocation]: https://docs.microsoft.com/en-us/cortana/skills/cortana-invocation-guidelines
-[publish]: https://docs.microsoft.com/en-us/cortana/skills/publish-skill
+[invocation]: https://docs.microsoft.com/cortana/skills/cortana-invocation-guidelines
+[publish]: https://docs.microsoft.com/cortana/skills/publish-skill
 [CortanaEntity]: https://aka.ms/lgvcto

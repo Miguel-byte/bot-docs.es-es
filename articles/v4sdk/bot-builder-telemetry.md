@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b6b4d30aea493180fddaee4a7f74bef72c1992ae
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 7225387933630eb7343a57aa849581ff1cbfbb0c
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215275"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464699"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Adición de telemetría al bot
 
@@ -88,7 +88,7 @@ El marco de trabajo encontrará la clave, si tiene un formato correcto. El forma
     }
 ```
 
-Para más información sobre cómo agregar Application Insights a una aplicación de ASP.NET Core, consulte [este artículo](https://docs.microsoft.com/en-us/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
+Para más información sobre cómo agregar Application Insights a una aplicación de ASP.NET Core, consulte [este artículo](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core-no-visualstudio). 
 
 ### <a name="customize-your-telemetry-client"></a>Personalización del cliente de telemetría
 
@@ -134,7 +134,7 @@ Cuando se registran eventos en Application Insights, los eventos generados conti
 
 >Nota: Los clientes de telemetría personalizados no proporcionan estos valores.
 
-Propiedad |Type | Detalles
+Propiedad |type | Detalles
 --- | --- | ---
 `user_id`| `string` | [ChannelID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#channel-id) + [From.Id](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#from)
 `session_id`| `string`|  [ConversationID](https://github.com/Microsoft/BotBuilder/blob/master/specs/botframework-activity/botframework-activity.md#conversation)

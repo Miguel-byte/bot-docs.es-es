@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: ee2c261f6b028542b20771801b114d0b23ab21ca
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 4af367b04f84d935936b5752cf9dbc863430105c
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033200"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464838"
 ---
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -16,11 +16,13 @@ ms.locfileid: "65033200"
 - Conocimientos sobre [restify](http://restify.com/) y programación asincrónica en JavaScript.
 
 > [!NOTE]
-> La instalación de las herramientas de compilación de Windows que se indican a continuación solo se necesitan si se usa Windows como sistema operativo de desarrollo. En algunas instalaciones, el paso de instalación de restify genera un error relacionado con node-gyp.
+> La instalación de las herramientas de compilación de Windows que se indican a continuación solo se necesitan si se usa Windows como sistema operativo de desarrollo.
+> En algunas instalaciones, el paso de instalación de restify genera un error relacionado con node-gyp.
 > Si este es el caso, intente ejecutar este comando con permisos elevados.
 > Esta llamada también puede bloquearse si Python ya está instalado en el sistema:
 
 > ```bash
+> # only run this command if you are on Windows. Read the above note. 
 > npm install -g windows-build-tools
 > ```
 
@@ -56,15 +58,15 @@ Creación del bot e inicialización de sus paquetes
 
 Yeoman le solicitará alguna información con la que se va a crear el bot. En este tutorial, use los valores predeterminados.
 
-- Escriba un nombre para el bot. (myChatBot)
+- Escriba un nombre para el bot. (mi bot de chat)
 - Escriba una descripción. (Demostrar las capacidades básicas de Microsoft Bot Framework)
 - Elija el idioma del bot. (JavaScript)
-- Elija la plantilla que se va a usar. (Echo)
+- Elija la plantilla que se va a usar. (Bot de eco: https://aka.ms/bot-template-echo)
 
 Gracias a la plantilla, el proyecto contiene todo el código necesario para crear el bot en esta guía de inicio rápido. Realmente no necesita escribir ningún código adicional.
 
 > [!NOTE]
-> Si decide crear un bot `Basic`, necesitará un modelo de lenguaje LUIS. Puede crear uno en [luis.ai](https://www.luis.ai). Después de crear el modelo, actualice el archivo de configuración.
+> Si decide crear un bot `Core`, necesitará un modelo de lenguaje LUIS. Puede crear uno en [luis.ai](https://www.luis.ai). Después de crear el modelo, actualice el archivo de configuración.
 
 ## <a name="start-your-bot"></a>Inicio del bot
 
@@ -74,7 +76,8 @@ En un terminal o símbolo del sistema, mueva los directorios al que creó para e
 
 1. Inicie Bot Framework Emulator.
 2. Haga clic en el vínculo **Create a new bot configuration** (Crear configuración de bot) en la pestaña de bienvenida del emulador. 
-3. Rellene los campos del bot y haga clic en **Save and connect** (Guardar y conectar).
+3. Rellene los campos del bot. Use la dirección de la página principal del bot (normalmente http://localhost:3978) y anexe la información de enrutamiento "/api/messages" a esta dirección.
+4. A continuación, haga clic en **Save and connect** (Guardar y conectar).
 
 Envíe un mensaje al bot y este responderá con un mensaje.
 ![Emulador en ejecución](../media/emulator-v4/js-quickstart.png)

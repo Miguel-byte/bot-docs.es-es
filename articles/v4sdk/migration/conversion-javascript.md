@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 591f58e1cefca576e2e3e4a486ecc6fbe0a6b0e4
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
+ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215606"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67344592"
 ---
 # <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Migración de un bot de Javascript del SDK v3 a v4
 
@@ -411,7 +411,7 @@ Edite **./dialogs/hotels.js**.
     }
     ```
 
-    `createHotelHeroCard` crea una tarjeta de imagen prominente que contiene información sobre un hotel.
+    `createHotelHeroCard` crea una tarjeta de héroe que contiene información sobre un hotel.
 
 1. En la clase, agregue los pasos de cascada utilizados en el diálogo.
 
@@ -489,7 +489,7 @@ En la versión v4, los bots pueden reaccionar frente a actividades fuera del sis
 
 Cambie el nombre de **. /bot.js** a **./bots/reservationBot.js** y edítelo.
 
-1. El archivo ya importa **ActivityHandler**, que proporciona una implementación de base de un bot.
+1. El archivo ya importa `ActivityHandler`, que proporciona una implementación base de un bot.
 
     ```javascript
     const { ActivityHandler } = require('botbuilder');
@@ -634,3 +634,5 @@ Temas de procedimientos de la versión v4:
 - [Envío y recepción de mensajes de texto](../bot-builder-howto-send-messages.md)
 - [Guardar usuario y datos de conversación](../bot-builder-howto-v4-state.md)
 - [Implementación de flujo de conversación secuencial](../bot-builder-dialog-manage-conversation-flow.md)
+- [Depuración con el emulador](../../bot-service-debug-emulator.md)
+- [Adición de telemetría al bot](../bot-builder-telemetry.md)

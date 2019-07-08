@@ -9,18 +9,18 @@ ms.service: bot-service
 ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 26b23c9beda872b71defd779563531328b63a0c8
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: ebbaa7473ec44ef9369df25a41873583abc28034
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225380"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405661"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconocimiento de intenciones y entidades con LUIS 
 
 [!INCLUDE [pre-release-label](../includes/pre-release-label-v3.md)]
 
-Este artículo usa el ejemplo de un bot para tomar notas, a fin de demostrar cómo Language Understanding ([LUIS][LUIS]) ayuda a que el bot responda correctamente a la entrada de lenguaje natural. Un bot detecta lo que un usuario desea hacer mediante la identificación de su **intención**. Esta intención se determina a partir de la entrada de texto, voz o **grabaciones de voz**. La intención asigna grabaciones de voz a acciones que realiza el bot. Por ejemplo, un bot de toma de notas reconoce una intención `Notes.Create` para invocar la funcionalidad para crear una nota. Puede que un bot también necesite extraer **entidades**, que son palabras importantes de las grabaciones de voz. En el ejemplo de un bot de toma de notas, la entidad `Notes.Title` identifica el título de cada nota.
+En este artículo se usa el ejemplo de un bot para tomar notas, a fin de demostrar cómo Language Understanding ([LUIS][LUIS]) ayuda a que el bot responda correctamente a la entrada de lenguaje natural. Un bot detecta lo que un usuario desea hacer mediante la identificación de su **intención**. Esta intención se determina a partir de la entrada de texto, voz o **grabaciones de voz**. La intención asigna grabaciones de voz a acciones que realiza el bot. Por ejemplo, un bot de toma de notas reconoce una intención `Notes.Create` para invocar la funcionalidad para crear una nota. Puede que un bot también necesite extraer **entidades**, que son palabras importantes de las grabaciones de voz. En el ejemplo de un bot de toma de notas, la entidad `Notes.Title` identifica el título de cada nota.
 
 ## <a name="create-a-language-understanding-bot-with-bot-service"></a>Crear un bot de Language Understanding con Bot Service
 
@@ -34,7 +34,7 @@ Este artículo usa el ejemplo de un bot para tomar notas, a fin de demostrar có
 
 3. En la hoja **Servicio de bots**, proporcione la información necesaria y haga clic en **Crear**. Esto crea e implementa el servicio de bots y la aplicación de LUIS en Azure. 
    * Establezca **Nombre de la aplicación** en el nombre del bot. El nombre se usa como el subdominio cuando el bot se implementa en la nube (por ejemplo, mynotesbot.azurewebsites.net). Este nombre también se utiliza como el nombre de la aplicación de LUIS asociada con el bot. Cópielo para usarlo más adelante, para encontrar la aplicación de LUIS asociada con el bot.
-   * Seleccione la suscripción, el [grupo de recursos](/azure/azure-resource-manager/resource-group-overview), el plan de App Service y la [ubicación](https://azure.microsoft.com/en-us/regions/).
+   * Seleccione la suscripción, el [grupo de recursos](/azure/azure-resource-manager/resource-group-overview), el plan de App Service y la [ubicación](https://azure.microsoft.com/regions/).
    * Seleccione la plantilla **Language Understanding (C#)** en el campo **Bot template** (Plantilla de bot).
 
      ![Hoja Servicio de bots](../media/bot-builder-dotnet-use-luis/bot-service-setting-callout-template.png)

@@ -7,27 +7,29 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 12/13/2017
-ms.openlocfilehash: dd5e81ba3feaba09e60011c138dcbe1537144b5a
-ms.sourcegitcommit: 721bb09f10524b0cb3961d7131966f57501734b8
+ms.date: 06/13/2019
+ms.openlocfilehash: c99e7ce86415ee1291a92e2684b975fd03c822f7
+ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59541011"
+ms.lasthandoff: 06/19/2019
+ms.locfileid: "67252696"
 ---
 # <a name="receive-activities-from-the-bot"></a>Recepción de actividades del bot
 
-Con el protocolo Direct Line 3.0, los clientes pueden recibir actividades mediante una secuencia de `WebSocket` o recuperar actividades mediante la emisión de solicitudes `HTTP GET`. 
+Con el protocolo Direct Line 3.0, los clientes pueden recibir actividades mediante una secuencia de `WebSocket` o recuperar actividades mediante la emisión de solicitudes `HTTP GET`.
 
 ## <a name="websocket-vs-http-get"></a>WebSocket frente a HTTP GET
 
-Un protocolo WebSocket de streaming inserta mensajes en los clientes, siempre y cuando la interfaz GET permita que los clientes soliciten mensajes explícitamente. Aunque con frecuencia se prefiere el mecanismo WebSocket dada su eficacia, el mecanismo GET puede ser útil para los clientes que no pueden usar WebSockets. 
+Un protocolo WebSocket de streaming inserta mensajes en los clientes, siempre y cuando la interfaz GET permita que los clientes soliciten mensajes explícitamente. Aunque con frecuencia se prefiere el mecanismo WebSocket dada su eficacia, el mecanismo GET puede ser útil para los clientes que no pueden usar WebSockets.
+
+El servicio permite solo 1 conexión de WebSocket por conversación. Direct Line puede cerrar conexiones WebSocket adicionales con un valor de motivo de `collision`.
 
 No todos los [tipos de actividad](bot-framework-rest-connector-activities.md) están disponibles mediante WebSocket y HTTP GET. En la tabla siguiente se describe la disponibilidad de los distintos tipos de actividad para los clientes que usan el protocolo Direct Line.
 
 | Tipo de actividad | Disponibilidad | 
 |----|----|
-| Mensaje | HTTP GET y WebSocket |
+| message | HTTP GET y WebSocket |
 | typing | Solo WebSocket |
 | conversationUpdate | No enviados o recibidos mediante el cliente |
 | contactRelationUpdate | No se admite en Direct Line |

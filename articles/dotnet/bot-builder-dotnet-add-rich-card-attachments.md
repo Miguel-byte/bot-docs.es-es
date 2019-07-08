@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 5a6fc63005797a1c645de7506a8f15df2dcd0557
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.openlocfilehash: 51bdc5e52bd147747e9d068fc4721ca4b782ef27
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317680"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464508"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
 
@@ -25,7 +25,9 @@ ms.locfileid: "54317680"
 > - [Node.js](../nodejs/bot-builder-nodejs-send-rich-cards.md)
 > - [REST](../rest-api/bot-framework-rest-connector-add-rich-cards.md)
 
-Un intercambio de mensajes entre el usuario y el bot puede contener una o varias tarjetas enriquecidas que se presentan como una lista o un carrusel. La propiedad `Attachments` del objeto <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> contiene una matriz de objetos <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> que presentan las tarjetas enriquecidas y los datos adjuntos con elementos multimedia dentro del mensaje. 
+Un intercambio de mensajes entre el usuario y el bot puede contener una o varias tarjetas enriquecidas que se presentan como una lista o un carrusel. 
+
+La propiedad `Attachments` del objeto <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> contiene una matriz de objetos <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Attachment</a> que presentan las tarjetas enriquecidas y los datos adjuntos con elementos multimedia dentro del mensaje. 
 
 > [!NOTE]
 > Para información sobre cómo agregar datos adjuntos con elementos multimedia a los mensajes, consulte [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-builder-dotnet-add-media-attachments.md).
@@ -39,10 +41,10 @@ Bot Framework admite actualmente ocho tipos de tarjetas enriquecidas:
 | <a href="/adaptive-cards/get-started/bots">Tarjeta adaptable</a> | Una tarjeta personalizable que puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada. Consulte la [compatibilidad por canal](/adaptive-cards/get-started/bots#channel-status).  |
 | [Tarjeta de animación][animationCard] | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
 | [Tarjeta de audio][audioCard] | Una tarjeta que se puede reproducir un archivo de audio. |
-| [Tarjeta de imagen prominente][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
-| [Tarjeta de miniatura][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones y texto. |
-| [Tarjeta de recepción][receiptCard] | Una tarjeta que permite que un bot proporcione una recepción al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total y texto adicional. |
-| [Tarjeta de inicio de sesión][signinCard] | Una tarjeta que permite al bot solicitar el inicio de sesión del usuario. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
+| [Tarjeta de héroe][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
+| [Tarjeta de miniatura][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto. |
+| [Tarjeta de recepción][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
+| [Tarjeta de inicio de sesión][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o varios botones en los que el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
 | [Tarjeta de videollamada][videoCard] | Una tarjeta que puede reproducir vídeos. |
 
 > [!TIP]
@@ -54,7 +56,7 @@ Para procesar eventos dentro de tarjetas enriquecidas, defina los objetos `CardA
 
 | Propiedad | Escriba | DESCRIPCIÓN | 
 |----|----|----|
-| Escriba | string | tipo de acción (uno de los valores especificados en la tabla siguiente) |
+| type | string | tipo de acción (uno de los valores especificados en la tabla siguiente) |
 | Título | string | título del botón |
 | Imagen | string | dirección URL de la imagen del botón |
 | Valor | string | valor necesario para realizar el tipo de acción especificado |
@@ -125,12 +127,12 @@ La tarjeta resultante contiene tres bloques de texto, un campo de entrada (lista
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Preview features with the Channel Inspector][inspector] (Vista previa de las características con el Inspector de canales)
-- <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Tarjetas adaptables)
+- <a href="http://adaptivecards.io" target="_blank">Tarjetas adaptables</a>
 - [Activities overview](bot-builder-dotnet-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-builder-dotnet-create-messages.md)
 - [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-builder-dotnet-add-media-attachments.md)
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
-- <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Clase Attachment</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
+- <a href="https://docs.microsoft.com/dotnet/api/microsoft.bot.connector.attachments?view=botconnector-3.12.2.4" target="_blank">Clase Attachment</a>
 
 [animationCard]: /dotnet/api/microsoft.bot.connector.animationcard
 

@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3f726587c02315a1d2c0d7910fafabbd4577c73d
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 049d0d39d6e1d64e44f743ea7558bbc23ad0f2f5
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215516"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464773"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -59,7 +59,7 @@ Los avisos, en la biblioteca de diálogos, proporcionan una forma fácil de pedi
 
 En un segundo plano, las preguntas consisten en un diálogo de dos pasos. En primer lugar, el aviso pide información y, en segundo lugar, devuelve el valor válido o se inicia desde el principio con un nuevo aviso.
 
-A los avisos se les proporcionan *opciones de aviso* cuando se llama al aviso, que es el lugar en que se puede especificar el texto con el que se pide, el aviso de reintento si se produce un error de validación y las distintas opciones para responder al aviso.
+A los avisos se les proporcionan *opciones de aviso* cuando se llama al aviso, que es el lugar en que se puede especificar el texto con el que se pide, el aviso de reintento si se produce un error de validación y las distintas opciones para responder al aviso. Por lo general, las propiedades "prompt" y "retry prompt" son actividades, aunque hay algunas variaciones en la forma en que los distintos lenguajes de programación controlan esto.
 
 Además, puede agregar una validación personalizada para el aviso al crearlo. Por ejemplo, supongamos que deseamos conocer el tamaño de una entidad mediante el símbolo numérico, pero dicho tamaño debe ser superior a 2 e inferior a 12. En primer lugar, el aviso comprueba si ha recibido un número válido y, después, se ejecuta la validación personalizada, en caso de que se haya proporcionado. Si se produce un error en la validación personalizada, volverá a pedir el usuario como antes.
 
@@ -108,6 +108,40 @@ El contexto de un paso de una cascada contiene lo siguiente:
 * *Resultado*: contiene el resultado del paso anterior.
 
 Además, el *siguiente* método continúa hasta el paso siguiente del diálogo en cascada en el mismo turno, lo que permite que el bot omita un paso determinado si fuera necesario.
+
+#### <a name="prompt-options"></a>Opciones de pregunta
+
+El segundo parámetro del método _prompt_ del contexto del paso toma un objeto de _opciones de pregunta_ que tiene las siguientes propiedades.
+
+| Propiedad | DESCRIPCIÓN |
+| :--- | :--- |
+| _Pregunta_ | La actividad inicial para enviar al usuario para pedir su entrada. |
+| _Reintentar pregunta_ | La actividad para enviar al usuario si no se validó su primera entrada. |
+| _Opciones_ | Una lista de opciones entre las que el usuario puede elegir, para su uso en una solicitud de elección. |
+| _Validaciones_ | Parámetros adicionales que se van a usar con un validador personalizado. |
+| _Estilo_ | Define la forma en que las opciones de una solicitud de opción o de confirmación se presentará al usuario. | 
+
+Debe especificar siempre la actividad de pregunta inicial para enviar al usuario, así como una pregunta de reintento para las instancias en que no se valide la entrada del usuario. 
+
+Si la entrada del usuario no es válida, se envía la pregunta de reintento al usuario. Si no hay ningún reintento especificado, se vuelve a enviar la pregunta inicial. Sin embargo, si se devuelve una actividad al usuario desde el validador, no se envía ninguna pregunta de reintento. 
+
+##### <a name="prompt-validation"></a>Validación de pregunta 
+
+Puede validar una respuesta antes de devolver el valor al siguiente paso de la cascada. Una función de validador tiene un parámetro _prompt validator context_ que devuelve un valor booleano que indica si la entrada supera la validación.
+El contexto del validador de la solicitud incluye las siguientes propiedades:
+
+| Propiedad | DESCRIPCIÓN |
+| :--- | :--- |
+| _Contexto_ | El contexto del turno actual del bot. |
+| _Recognized_ | Un _resultado del reconocedor de la solicitud_ que contiene información sobre la entrada del usuario según la procesa el reconocedor. |
+| _Opciones_ | Contiene las _opciones de aviso_ que se proporcionaron en la llamada para iniciar el aviso. |
+
+El resultado del reconocedor de la solicitud tiene las siguientes propiedades:
+
+| Propiedad | DESCRIPCIÓN |
+| :--- | :--- |
+| _Correcto_ | Indica si el reconocedor ha podido analizar la entrada. |
+| _Valor_ | El valor devuelto por el reconocedor. Si es necesario, el código de validación puede modificar este valor. |
 
 ### <a name="component-dialog"></a>Diálogo de componente
 

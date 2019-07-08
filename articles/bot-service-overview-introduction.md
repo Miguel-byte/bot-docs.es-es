@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 05/05/2019
-ms.openlocfilehash: 569438e43a64a96239f7d9e490563498e7f6f279
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: b3c0efb243cc5b039034f908a46557e960adb7b0
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65039777"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464559"
 ---
 # <a name="about-azure-bot-service"></a>Acerca de Azure Bot Service
 
@@ -69,7 +69,7 @@ También tiene acceso a una variedad de [ejemplos](https://github.com/microsoft/
 ### <a name="test"></a>Prueba 
 Los bots son aplicaciones complejas con una gran cantidad de elementos diferentes que funcionan conjuntamente. Como cualquier otra aplicación compleja, esto puede provocar algunos errores interesantes o que el bot se comporte de forma diferente a la esperada. Antes de publicarlo, pruebe el bot. Hay varias maneras de probar los bots antes de liberarlos para su uso:
 
-- Pruebe el bot localmente con el [emulador](bot-service-debug-emulator.md). Bot Framework Emulator es una aplicación independiente que no solo proporciona una interfaz de chat, sino también herramientas de depuración y consulta que ayudan a conocer el funcionamiento del bot.  El emulador se puede ejecutar en un entorno local junto con la aplicación del bot en desarrollo. 
+- Pruebe el bot localmente con el [emulador](bot-service-debug-emulator.md). Bot Framework Emulator es una aplicación independiente que no solo proporciona una interfaz de chat, sino también herramientas de depuración y consulta que ayudan a conocer el funcionamiento del bot.  El emulador se puede ejecutar localmente junto con la aplicación del bot en desarrollo. 
  
 - Pruebe el bot en la [Web](bot-service-manage-test-webchat.md). Una vez configurado a través de Azure Portal, también se puede acceder al bot a través de una interfaz de chat web, que es una excelente manera de conceder acceso al bot tanto a los evaluadores como a otras personas que no tienen acceso directo al código de ejecución del bot.
 

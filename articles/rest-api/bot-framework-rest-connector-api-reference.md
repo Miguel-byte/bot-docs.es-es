@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: fd98b1bc8c3aa3b2c9fd716289dfd3ce75bec75b
-ms.sourcegitcommit: 8183bcb34cecbc17b356eadc425e9d3212547e27
+ms.openlocfilehash: 41aceaa20613d9b6b7ac95a7837b4ae197d1dd4a
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55971545"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464791"
 ---
 # <a name="api-reference"></a>Referencia de API
 
@@ -126,14 +126,17 @@ Use estas operaciones para crear conversaciones, enviar mensajes (actividades) y
 
 | Operación | DESCRIPCIÓN |
 |----|----|
-| [Crear conversación](#create-conversation) | Crea una conversación. | 
-| [Enviar a conversación](#send-to-conversation) | Envía una actividad (mensaje) al final de la conversación especificada. | 
-| [Responder a actividad](#reply-to-activity) | Envía una actividad (mensaje) a la conversación especificada, como una respuesta a la actividad especificada. | 
+| [Crear conversación](#create-conversation) | Crea una conversación. |
+| [Enviar a conversación](#send-to-conversation) | Envía una actividad (mensaje) al final de la conversación especificada. |
+| [Responder a actividad](#reply-to-activity) | Envía una actividad (mensaje) a la conversación especificada, como una respuesta a la actividad especificada. |
+| [Obtener conversaciones](#get-conversations) | Obtiene una lista de las conversaciones en las que ha participado el bot. |
 | [Obtener miembros de la conversación](#get-conversation-members) | Obtiene los miembros de la conversación especificada. |
 | [Obtener los miembros de la conversación paginados](#get-conversation-paged-members) | Obtiene los miembros de la conversación especificada una página a la vez. |
-| [Obtener miembros de la actividad](#get-activity-members) | Obtiene los miembros de la actividad especificada dentro de la conversación especificada. | 
-| [Actualizar actividad](#update-activity) | Actualiza una actividad existente. | 
-| [Eliminar actividad](#delete-activity) | Elimina una actividad existente. | 
+| [Obtener miembros de la actividad](#get-activity-members) | Obtiene los miembros de la actividad especificada dentro de la conversación especificada. |
+| [Actualizar actividad](#update-activity) | Actualiza una actividad existente. |
+| [Eliminar actividad](#delete-activity) | Elimina una actividad existente. |
+| [Eliminar miembro de la conversación](#delete-conversation-member) | Quita un miembro de una conversación. |
+| [Enviar historial de la conversación](#send-conversation-history) | Carga una transcripción de actividades pasadas a la conversación. |
 | [Cargar datos adjuntos al canal](#upload-attachment-to-channel) | Carga un archivo adjunto directamente al almacenamiento de blobs de un canal. |
 
 ### <a name="create-conversation"></a>Crear conversación
@@ -145,7 +148,7 @@ POST /v3/conversations
 | | |
 |----|----|
 | **Cuerpo de la solicitud** | Un objeto [Conversation](#conversation-object) |
-| **Devuelve** | Un objeto [ResourceResponse](#resourceresponse-object) | 
+| **Devuelve** | Un objeto [ConversationResourceResponse](#conversationresourceresponse-object) | 
 
 ### <a name="send-to-conversation"></a>Enviar a conversación
 Envía una actividad (mensaje) a la conversación especificada. La actividad se anexará al final de la conversación según la marca de tiempo o la semántica del canal. Para responder a un mensaje específico dentro de la conversación, en su lugar, use [Responder a actividad](#reply-to-activity).
@@ -169,6 +172,17 @@ POST /v3/conversations/{conversationId}/activities/{activityId}
 | **Cuerpo de la solicitud** | Un objeto [Activity](#activity-object) |
 | **Devuelve** | Un objeto [Identification](#identification-object) | 
 
+### <a name="get-conversations"></a>Obtener conversaciones
+Obtiene una lista de las conversaciones en las que ha participado el bot.
+```http
+GET /v3/conversations?continuationToken={continuationToken}
+```
+
+| | |
+|----|----|
+| **Cuerpo de la solicitud** | N/D |
+| **Devuelve** | Un objeto [ConversationsResult](#conversationsresult-object) | 
+
 ### <a name="get-conversation-members"></a>Obtener miembros de la conversación
 Obtiene los miembros de la conversación especificada.
 ```http
@@ -183,13 +197,13 @@ GET /v3/conversations/{conversationId}/members
 ### <a name="get-conversation-paged-members"></a>Obtener los miembros de la conversación paginados
 Obtiene los miembros de la conversación especificada una página a la vez.
 ```http
-GET /v3/conversations/{conversationId}/pagedmembers
+GET /v3/conversations/{conversationId}/pagedmembers?pageSize={pageSize}&continuationToken={continuationToken}
 ```
 
 | | |
 |----|----|
 | **Cuerpo de la solicitud** | N/D |
-| **Devuelve** | Una matriz de objetos [ChannelAccount](#channelaccount-object) y un token de continuación que se puede utilizar para obtener más valores.|
+| **Devuelve** | Una matriz de objetos [ChannelAccount](#channelaccount-object) y un token de continuación que se puede utilizar para obtener más valores. |
 
 ### <a name="get-activity-members"></a>Obtener miembros de la actividad
 Obtiene los miembros de la actividad especificada dentro de la conversación especificada.
@@ -224,8 +238,30 @@ DELETE /v3/conversations/{conversationId}/activities/{activityId}
 | **Cuerpo de la solicitud** | N/D |
 | **Devuelve** | Un código de estado HTTP que indica el resultado de la operación. No se especifica nada en el cuerpo de la respuesta. | 
 
+### <a name="delete-conversation-member"></a>Eliminar miembro de la conversación
+Quita un miembro de una conversación. Si ese miembro era el último miembro de la conversación, también se eliminará la conversación.
+```http
+DELETE /v3/conversations/{conversationId}/members/{memberId}
+```
+
+| | |
+|----|----|
+| **Cuerpo de la solicitud** | N/D |
+| **Devuelve** | Un código de estado HTTP que indica el resultado de la operación. No se especifica nada en el cuerpo de la respuesta. | 
+
+### <a name="send-conversation-history"></a>Enviar historial de la conversación
+Carga una transcripción de actividades pasadas a la conversación para que el cliente pueda representarlas.
+```http
+POST /v3/conversations/{conversationId}/activities/history
+```
+
+| | |
+|----|----|
+| **Cuerpo de la solicitud** | Un objeto [Transcript](#transcript-object). |
+| **Devuelve** | Un objeto [ResourceResponse](#resourceresponse-object). | 
+
 ### <a name="upload-attachment-to-channel"></a>Cargar datos adjuntos al canal
-Carga un archivo adjunto para la conversación especificada directamente en el almacenamiento de blobs de un canal. Esto le permite almacenar datos en un almacén compatible. 
+Carga un archivo adjunto para la conversación especificada directamente en el almacenamiento de blobs de un canal. Esto le permite almacenar datos en un almacén compatible.
 ```http 
 POST /v3/conversations/{conversationId}/attachments
 ```
@@ -359,12 +395,12 @@ DELETE /v3/botstate/{channelId}/users/{userId}
 
 El esquema define el objeto y sus propiedades que el bot puede usar para comunicarse con un usuario. 
 
-| Objeto | DESCRIPCIÓN |
+| Object | DESCRIPCIÓN |
 | ---- | ---- |
 | [Objeto Activity](#activity-object) | Define un mensaje que se intercambia entre el bot y el usuario. |
 | [Objeto AnimationCard](#animationcard-object) | Define una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
 | [Objeto Attachment](#attachment-object) | Define información adicional que se va a incluir en el mensaje. Los datos adjuntos pueden ser un archivo multimedia (por ejemplo, audio, vídeo, imagen o archivo) o una tarjeta enriquecida. |
-| [Objeto AttachmentData](#attachmentdata-object) |Describe los datos adjuntos. |
+| [Objeto AttachmentData](#attachmentdata-object) | Describe los datos adjuntos. |
 | [Objeto AttachmentInfo](#attachmentinfo-object) | Describe los datos adjuntos. |
 | [Objeto AttachmentView](#attachmentview-object) | Define una vista de datos adjuntos. |
 | [Objeto AttachmentUpload](#attachmentupload-object) | Define los datos adjuntos que se van a cargar. |
@@ -375,9 +411,11 @@ El esquema define el objeto y sus propiedades que el bot puede usar para comunic
 | [Objeto ChannelAccount](#channelaccount-object) | Define un bot o cuenta de usuario en el canal. |
 | [Objeto Conversation](#conversation-object) | Define una conversación, incluidos el bot y los usuarios que están incluidos en la conversación. |
 | [Objeto ConversationAccount](#conversationaccount-object) | Define una conversación en un canal. |
+| [Objeto ConversationMembers](#conversationmembers-object) | Define los miembros de una conversación. |
 | [Objeto ConversationParameters](#conversationparameters-object) | Define los parámetros para crear una conversación. |
 | [Objeto ConversationReference](#conversationreference-object) | Define un punto concreto de una conversación. |
-| [Objeto ConversationResourceResponse](#conversationresourceresponse-object) | Una respuesta que contiene un recurso. |
+| [Objeto ConversationResourceResponse](#conversationresourceresponse-object) | Define una respuesta para [Crear conversación](#create-conversation). |
+| [Objeto ConversationsResult](#conversationsresult-object) | Define el resultado de una llamada a [Obtener conversaciones](#get-conversations). |
 | [Objeto Entity](#entity-object) | Define un objeto entidad. |
 | [Objeto Error](#error-object) | Define un error. |
 | [Objeto ErrorResponse](#errorresponse-object) | Define una respuesta de la API HTTP. |
@@ -385,7 +423,7 @@ El esquema define el objeto y sus propiedades que el bot puede usar para comunic
 | [Objeto Geocoordinates](#geocoordinates-object) | Define una ubicación geográfica mediante las coordenadas del sistema geodésico mundial (WSG84). |
 | [Objeto HeroCard](#herocard-object) | Define una tarjeta con una imagen grande, título, texto y botones de acción. |
 | [Objeto Identification](#identification-object) | Identifica un recurso. |
-| [Objeto MediaEventValue](#mediaeventvalue-object) |Parámetros complementarios para eventos multimedia.|
+| [Objeto MediaEventValue](#mediaeventvalue-object) | Parámetros complementarios para eventos multimedia. |
 | [Objeto MediaUrl](#mediaurl-object) | Define la dirección URL al origen de un archivo multimedia. |
 | [Objeto Mention](#mention-object) | Define un usuario o un bot que se mencionó en la conversación. |
 | [Objeto MessageReaction](#messagereaction-object) | Define una reacción a un mensaje. |
@@ -393,12 +431,13 @@ El esquema define el objeto y sus propiedades que el bot puede usar para comunic
 | [Objeto ReceiptCard](#receiptcard-object) | Define una tarjeta que contiene una recepción de una compra. |
 | [Objeto ReceiptItem](#receiptitem-object) | Define un elemento de línea dentro de una confirmación. |
 | [Objeto ResourceResponse](#resourceresponse-object) | Define un recurso. |
+| [Objeto SemanticAction](#semanticaction-object) | Define una referencia a una acción mediante programación. |
 | [Objeto SignInCard](#signincard-object) | Define una tarjeta que permite a un usuario iniciar sesión en un servicio. |
 | [Objeto SuggestedActions](#suggestedactions-object) | Define las opciones que puede elegir un usuario. |
 | [Objeto ThumbnailCard](#thumbnailcard-object) | Define una tarjeta con una imagen en miniatura, título, texto y botones de acción. |
 | [Objeto ThumbnailUrl](#thumbnailurl-object) | Define la dirección URL al origen de una imagen. |
+| [Objeto Transcript](#transcript-object) | Una colección de actividades que se cargará mediante [Enviar historial de la conversación](#send-conversation-history). |
 | [Objeto VideoCard](#videocard-object) | Define una tarjeta que puede reproducir vídeos. |
-| [Objeto SemanticAction](#semanticaction-object) | Define una referencia a una acción mediante programación. |
 
 ### <a name="activity-object"></a>Objeto Activity
 Define un mensaje que se intercambia entre el bot y el usuario.<br/><br/> 
@@ -426,7 +465,7 @@ Define un mensaje que se intercambia entre el bot y el usuario.<br/><br/>
 | **relatesTo** | [ConversationReference](#conversationreference-object) | Un objeto **ConversationReference** que define un punto concreto en una conversación. |
 | **replyToId** | string | Identificador del mensaje al que responde este mensaje. Para responder a un mensaje que el usuario envía, establezca esta propiedad con el identificador del mensaje del usuario. No todos los canales admiten respuestas encadenadas. En estos casos, el canal ignorará esta propiedad y usará la semántica ordenada por tiempo (marca de tiempo) para anexar el mensaje a la conversación. | 
 | **serviceUrl** | string | Dirección URL que especifica el punto de conexión de servicio del canal. Se establece mediante el canal. | 
-| **speak** | string | Texto que pronuncia el bot en un canal habilitado para voz. Para controlar diversas características de voz del bot como voz, velocidad, volumen, pronunciación y tono, especifique esta propiedad con el formato de <a href="https://msdn.microsoft.com/en-us/library/hh378377(v=office.14).aspx" target="_blank">lenguaje de marcado de síntesis de voz (SSML)</a>. |
+| **speak** | string | Texto que pronuncia el bot en un canal habilitado para voz. Para controlar diversas características de voz del bot como voz, velocidad, volumen, pronunciación y tono, especifique esta propiedad con el formato de <a href="https://msdn.microsoft.com/library/hh378377(v=office.14).aspx" target="_blank">lenguaje de marcado de síntesis de voz (SSML)</a>. |
 | **suggestedActions** | [SuggestedActions](#suggestedactions-object) | Un objeto **SuggestedActions** que define las opciones entre las que el usuario puede elegir. |
 | **summary** | string | Resumen de la información que contiene el mensaje. Por ejemplo, en un mensaje que se envía en un canal de correo electrónico, esta propiedad puede especificar los 50 primeros caracteres del mensaje de correo electrónico. |
 | **text** | string | Texto del mensaje que se envía del usuario al bot o del bot al usuario. Consulte la documentación del canal para conocer los límites impuestos en el contenido de esta propiedad. |
@@ -472,7 +511,7 @@ Define información adicional que se va a incluir en el mensaje. Los datos adjun
 <a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="attachmentdata-object"></a>Objeto AttachmentData 
-Describe los datos adjuntos.
+Describe los datos adjuntos.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
@@ -480,6 +519,8 @@ Describe los datos adjuntos.
 | **originalBase64** | string | Contenido de los datos adjuntos. |
 | **thumbnailBase64** | string | Contenido de los datos adjuntos en miniatura. |
 | **type** | string | Tipo de contenido de los datos adjuntos. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="attachmentinfo-object"></a>Objeto AttachmentInfo
 Describe los datos adjuntos.<br/><br/> 
@@ -600,15 +641,25 @@ Define una conversación en un canal.<br/><br/>
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
-| **id** | string | Identificador de la conversación. El identificador es único para cada canal. Si el canal inicia la conversión, establece este identificador; de lo contrario, el bot establece esta propiedad en el identificador que obtiene con la respuesta cuando inicia la conversación (vea Inicio de una conversación). |
+| **id** | string | Identificador de la conversación. El identificador es único para cada canal. Si el canal inicia la conversación, establece este identificador; de lo contrario, el bot establece esta propiedad en el identificador que obtiene con la respuesta cuando inicia la conversación (vea Inicio de una conversación). |
 | **isGroup** | boolean | Marca que indica si la conversación contiene más de dos participantes en el momento en que se generó la actividad. Se establece en **true** si se trata de una conversación de grupo; en caso contrario, en **false**. El valor predeterminado es **false**. |
 | **name** | string | Un nombre para mostrar que se puede usar para identificar la conversación. |
 | **conversationType** | string | Indica el tipo de conversación en canales que distinguen entre tipos de conversación (por ejemplo, grupo o personal). |
 
 <a href="#objects">Volver a la tabla de esquema</a>
 
+### <a name="conversationmembers-object"></a>Objeto ConversationMembers
+Define los miembros de una conversación.<br/><br/>
+
+| Propiedad | Escriba | DESCRIPCIÓN |
+|----|----|----|
+| **id** | string | El identificador de la conversación. |
+| **members** | array | Una matriz de objetos [ChannelAccount](#channelaccount-object). |
+
+<a href="#objects">Volver a la tabla de esquema</a>
+
 ### <a name="conversationparameters-object"></a>Objeto ConversationParameters
-Define los parámetros para crear una conversación.
+Define los parámetros para crear una conversación.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
@@ -618,6 +669,8 @@ Define los parámetros para crear una conversación.
 | **topicName** | string | Título del tema de una conversación. Esta propiedad solo se usa si un canal la admite. |
 | **activity** | [Actividad](#activity-object) | (opcional) Use esta actividad como el mensaje inicial de la conversación cuando esta se crea. |
 | **channelData** | objeto | Carga útil específica del canal para crear la conversación. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="conversationreference-object"></a>Objeto ConversationReference
 Define un punto concreto de una conversación.<br/><br/>
@@ -634,7 +687,7 @@ Define un punto concreto de una conversación.<br/><br/>
 <a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="conversationresourceresponse-object"></a>Objeto ConversationResourceResponse
-Define una respuesta que contiene un recurso.
+Define una respuesta para [Crear conversación](#create-conversation).<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
@@ -642,8 +695,20 @@ Define una respuesta que contiene un recurso.
 | **id** | string | Identificador del recurso. |
 | **serviceUrl** | string | Punto de conexión de servicio. |
 
+<a href="#objects">Volver a la tabla de esquema</a>
+
+### <a name="conversationsresult-object"></a>Objeto ConversationsResult
+Define el resultado de [Obtener conversaciones](#get-conversations).<br/><br/> 
+
+| Propiedad | Escriba | DESCRIPCIÓN |
+|----|----|----|
+| **continuationToken** | string | El token de continuación que se puede usar en las llamadas subsiguientes a [Obtener conversaciones](#get-conversations). |
+| **conversaciones** | array | Una matriz de objetos [ConversationMembers](#conversationmembers-object) |
+
+<a href="#objects">Volver a la tabla de esquema</a>
+
 ### <a name="error-object"></a>Objeto Error
-Define un error.<br/><br/>
+Define un error.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
@@ -653,12 +718,13 @@ Define un error.<br/><br/>
 <a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="entity-object"></a>Objeto Entity
-Define un objeto entidad.
+Define un objeto entidad.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
 | **type** | string | Tipo de entidad. Normalmente contiene tipos de schema.org. |
 
+<a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="errorresponse-object"></a>Objeto ErrorResponse
 Define una respuesta de la API HTTP.<br/><br/> 
@@ -717,11 +783,13 @@ Identifica un recurso.<br/><br/>
 <a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="mediaeventvalue-object"></a>Objeto MediaEventValue 
-Parámetros complementarios para eventos multimedia.
+Parámetros complementarios para eventos multimedia.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
 | **cardValue** | objeto | Parámetro de devolución de llamada especificado en el campo **Valor** de la tarjeta multimedia que originó este evento. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="mediaurl-object"></a>Objeto MediaUrl
 Define la dirección URL al origen de un archivo multimedia.<br/><br/> 
@@ -747,11 +815,13 @@ Define un usuario o un bot que se mencionó en la conversación.<br/><br/>
 <a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="messagereaction-object"></a>Objeto MessageReaction
-Define una reacción a un mensaje.
+Define una reacción a un mensaje.<br/><br/> 
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
 | **type** | string | Tipo de reacción. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
 
 ### <a name="place-object"></a>Objeto Place
 Define un lugar mencionado en la conversación.<br/><br/> 
@@ -800,10 +870,19 @@ Define un elemento de línea dentro de una confirmación.<br/><br/>
 ### <a name="resourceresponse-object"></a>Objeto ResourceResponse
 Define una respuesta que contiene un identificador de recurso.<br/><br/>
 
-
 |      Propiedad       |  Escriba  |                DESCRIPCIÓN                |
 |---------------------|--------|-------------------------------------------|
 | <strong>id</strong> | string | Identificador que distingue de manera única el recurso. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
+
+### <a name="semanticaction-object"></a>Objeto SemanticAction
+Define una referencia a una acción mediante programación.<br/><br/>
+
+| Propiedad | Escriba | DESCRIPCIÓN |
+|----|----|----|
+| **id** | string | Identificación de esta acción |
+| **entities** | [Entidad](#entity-object) | Entidades asociadas a esta acción |
 
 <a href="#objects">Volver a la tabla de esquema</a>
 
@@ -851,6 +930,15 @@ Define la dirección URL al origen de una imagen.<br/><br/>
 
 <a href="#objects">Volver a la tabla de esquema</a>
 
+### <a name="transcript-object"></a>Objeto Transcript
+Una colección de actividades que se cargará mediante [Enviar historial de la conversación](#send-conversation-history).<br/><br/> 
+
+| Propiedad | Escriba | DESCRIPCIÓN |
+|----|----|----|
+| **activities** | array | Una matriz de objetos [Activity](#activity-object). Deben tener un identificador único y una marca de tiempo. |
+
+<a href="#objects">Volver a la tabla de esquema</a>
+
 ### <a name="videocard-object"></a>Objeto VideoCard
 Define una tarjeta que puede reproducir vídeos.<br/><br/>
 
@@ -868,15 +956,5 @@ Define una tarjeta que puede reproducir vídeos.<br/><br/>
 | **text** | string | Descripción o mensaje para mostrar debajo del título o subtítulo de la tarjeta. |
 | **title** | string | Título de la tarjeta. |
 | **value** | objeto | Parámetro complementario de esta tarjeta.|
-
-<a href="#objects">Volver a la tabla de esquema</a>
-
-### <a name="semanticaction-object"></a>Objeto SemanticAction
-Define una referencia a una acción mediante programación.<br/><br/>
-
-| Propiedad | Escriba | DESCRIPCIÓN |
-|----|----|----|
-| **id** | string | Identificación de esta acción |
-| **entities** | [Entidad](#entity-object) | Entidades asociadas a esta acción |
 
 <a href="#objects">Volver a la tabla de esquema</a>

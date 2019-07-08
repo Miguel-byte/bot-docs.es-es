@@ -7,18 +7,18 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/31/2019
+ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 89df62255c9ea6fbf55b2c7aed2d6f334d69c571
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: e708f6b556c832ed7f8858a893cc5fb0a8406ab2
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693688"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404326"
 ---
 <!-- Related TODO:
-- Check code in [Web Chat channel](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
-- Check guidance in [DirectLine authentication](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
+- Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
+- Check guidance in [DirectLine authentication](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
 -->
 
 <!-- General TODO: (Feedback from CSE (Nafis))
@@ -98,15 +98,15 @@ Hay un par de problemas de seguridad importantes que hay que tener en cuenta cua
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento sobre [conceptos básicos de los bots][concept-basics], [administración de estado][concept-state], [biblioteca de diálogos][concept-dialogs], [implementación de flujos de conversación secuenciales][simple-dialog] y [reutilización de diálogos][component-dialogs].
+- Conocimiento de los [conceptos básicos de los bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos][ los diálogos de conceptos], cómo [implementar el flujo de conversación secuencial][simple-dialog], and how to [reuse dialogs][component-dialogs].
 - Conocimientos de desarrollo de Azure y OAuth 2.0.
 - Visual Studio 2017 o versiones posteriores, Node.js, npm y git.
 - Uno de estos ejemplos.
 
 | Muestra | Versión de BotBuilder | Muestra |
 |:---|:---:|:---|
-| **Autenticación de bots** en [**CSharp**][cs-auth-sample] o [**JavaScript**][js-auth-sample] | v4 | Compatibilidad con OAuthCard |
-| **Autenticación de bots de MSGraph** en [**CSharp**][cs-msgraph-sample] o [**JavaScript**][js-msgraph-sample] | v4 |  Compatibilidad de Microsoft Graph API con OAuth 2 |
+| **Autenticación de bots** en [**CSharp**][cs-auth-sample] or [**JavaScript**][js-auth-sample] | v4 | Compatibilidad con OAuthCard |
+| **Autenticación MSGraph de bots** en [**CSharp**][cs-msgraph-sample] or [**JavaScript**][js-msgraph-sample] | v4 |  Compatibilidad de Microsoft Graph API con OAuth 2 |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Creación de un recurso de bot en Azure
 
@@ -126,10 +126,10 @@ Para obtener información sobre las diferencias entre los puntos de conexión v1
 Siga estos pasos para crear una aplicación de Azure AD. Puede usar los puntos de conexión v1 o v2 con la aplicación que cree.
 
 > [!TIP]
-> Deberá crear y registrar la aplicación de Azure AD en un inquilino en el que tenga derechos de administrador.
+> Deberá crear y registrar la aplicación de Azure AD en un inquilino en el que pueda dar su consentimiento para delegar los permisos solicitados por una aplicación.
 
 1. Abra el panel [Azure Active Directory][azure-aad-blade] en Azure Portal.
-    Si no está en el inquilino correcto, haga clic en **Cambiar directorio** para cambiar el inquilino. (Para obtener instrucciones sobre cómo crear un inquilino, consulte [Acceso al portal y creación de un inquilino](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)).
+    Si no está en el inquilino correcto, haga clic en **Cambiar directorio** para cambiar el inquilino. (Para obtener instrucciones sobre cómo crear un inquilino, consulte [Acceso al portal y creación de un inquilino](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)).
 1. Abra el panel **Registros de aplicaciones**.
 1. En el panel **Registros de aplicaciones**, haga clic en **Nuevo registro**.
 1. Rellene los campos obligatorios y cree el registro de aplicaciones.
@@ -247,7 +247,7 @@ Para completar este proceso, necesitará el id. de la aplicación y la contrase�
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. Clone el ejemplo con el que desee trabajar del repositorio de GitHub: [**Autenticación de bot**][cs-auth-sample] o [ **Autenticación de bot MSGraph**][cs-msgraph-sample].
+1. Clone el ejemplo con el que desee trabajar del repositorio de GitHub: [**Autenticación del bot**][cs-auth-sample] or [**Bot authentication MSGraph**][cs-msgraph-sample].
 1. Actualice **appsettings.json**:
 
     - Establezca en `ConnectionName` el nombre del valor de conexión de OAuth que agregó al bot.
@@ -259,7 +259,7 @@ Para completar este proceso, necesitará el id. de la aplicación y la contrase�
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. Clone del repositorio de GitHub el con el que desee trabajar: [**Autenticación de bot**][js-auth-sample] o [ **Autenticación de bot MSGraph**][js-msgraph-sample].
+1. Clone el bot del repositorio de GitHub el con el que desee trabajar: [**Autenticación del bot**][js-auth-sample] or [**Bot authentication MSGraph**][js-msgraph-sample].
 1. Actualice **.env**:
 
     - Establezca en `connectionName` el nombre del valor de conexión de OAuth que agregó al bot.

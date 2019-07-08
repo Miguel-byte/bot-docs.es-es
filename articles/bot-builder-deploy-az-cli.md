@@ -10,12 +10,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: afb27ad20ec8585c2ca30810a9be6858adc17187
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693519"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405973"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -26,7 +26,8 @@ En este artículo, le vamos a mostrar cómo implementar el bot en Azure. Es conv
 ## <a name="prerequisites"></a>Requisitos previos
 - Si no tiene una suscripción a Azure, cree una [cuenta](https://azure.microsoft.com/free/) antes de empezar.
 - Un bot de CSharp, JavaScript o TypeScript que haya desarrollado en la máquina local.
-- La versión más reciente de la [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+- La versión más reciente de la [CLI de Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+- Estar familiarizado con la [CLI de Azure y plantillas ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="1-prepare-for-deployment"></a>1. Preparación de la implementación
 Cuando crea un bot mediante las plantillas de Visual Studio o Yeoman, el código fuente que se genera, contiene una carpeta `deploymentTemplates` con plantillas de ARM. El proceso de implementación que se documenta aquí utiliza la plantilla ARM para aprovisionar los recursos necesarios para el bot en Azure mediante la CLI de Azure. 
@@ -182,7 +183,7 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 - Espere unos segundos después de una implementación correcta; también puede reiniciar la aplicación web para borrar toda la memoria caché. Vuelva a la hoja Bot de aplicación web y pruebe con el Chat en web proporcionado en Azure Portal.
 
 ## <a name="additional-information"></a>Información adicional
-La implementación de un bot en Azure conllevará el pago de los servicios que se usen. El artículo acerca de la [facturación y administración de costos](https://docs.microsoft.com/en-us/azure/billing/) sirve de ayuda para conocer la facturación de Azure, para supervisar el uso y los costos, y para administrar cuentas y suscripciones.
+La implementación de un bot en Azure conllevará el pago de los servicios que se usen. El artículo acerca de la [facturación y administración de costos](https://docs.microsoft.com/azure/billing/) sirve de ayuda para conocer la facturación de Azure, para supervisar el uso y los costos, y para administrar cuentas y suscripciones.
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]

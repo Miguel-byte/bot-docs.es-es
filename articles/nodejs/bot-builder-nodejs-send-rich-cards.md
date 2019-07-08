@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e3bf4a6868702f24af08e69d5f07c036082ec3b6
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: cba67dc4da5a0b505b4f91f9cbf7fbc0a47b8974
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225240"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67404802"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
 
@@ -36,11 +36,11 @@ Bot Framework admite actualmente ocho tipos de tarjetas enriquecidas:
 | <a href="/adaptive-cards/get-started/bots">Tarjeta adaptable</a> | Una tarjeta personalizable que puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada.  Consulte la [compatibilidad por canal](/adaptive-cards/get-started/bots#channel-status). |
 | [Tarjeta de animación][animationCard] | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
 | [Tarjeta de audio][audioCard] | Una tarjeta que se puede reproducir un archivo de audio. |
-| [Tarjeta de imagen prominente][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
-| [Tarjeta de miniatura][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones y texto.|
-| [Tarjeta de recepción][receiptCard] | Una tarjeta que permite que un bot proporcione una recepción al usuario. Normalmente, contiene la lista de elementos que se incluyen en la recepción, la información de impuestos y del total y otro texto. |
-| [Tarjeta de inicio de sesión][signinCard] | Tarjeta que permite que un bot solicite a un usuario que inicie sesión. Normalmente contiene texto y uno o más botones en los cuales el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
-| [Tarjeta de videollamada][videoCard] | Tarjeta que puede reproducir vídeos. |
+| [Tarjeta de héroe][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
+| [Tarjeta de miniatura][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto.|
+| [Tarjeta de recepción][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
+| [Tarjeta de inicio de sesión][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o varios botones en los que el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
+| [Tarjeta de videollamada][videoCard] | Una tarjeta que puede reproducir vídeos. |
 
 ## <a name="send-a-carousel-of-hero-cards"></a>Enviar un carrusel de tarjetas de imagen prominente
 En el ejemplo siguiente se muestra un bot para una compañía ficticia de camisetas y cómo enviar un carrusel de tarjetas en respuesta a la solicitud del usuario para "mostrar camisetas". 
@@ -149,7 +149,7 @@ Algunos canales tienden a descargar imágenes antes de mostrar un mensaje al usu
 To learn more about sending a typing indicator, see [How to send a typing indicator](bot-builder-nodejs-send-typing-indicator.md).
 -->
 
-Bot Framework implementa un procesamiento por lotes para intentar evitar varios mensajes del bot que muestren que no está en funcionamiento. <!-- Unfortunately, not all channels can guarantee this. --> Cuando su bot envía varias respuestas al usuario, los mensajes individuales se agrupan automáticamente en un lote y se entregan al usuario como un conjunto en un esfuerzo por conservar el orden original de los mensajes. Este procesamiento por lotes automático espera un tiempo predeterminado de 250 ms después de cada llamada a **session.send()** antes de iniciar la siguiente llamada a **send()**.
+Bot Framework implementa un procesamiento por lotes para intentar evitar varios mensajes del bot que muestren que no está en funcionamiento. <!-- Unfortunately, not all channels can guarantee this. --> Cuando su bot envía varias respuestas al usuario, los mensajes individuales se agrupan automáticamente en un lote y se entregan al usuario como un conjunto en un esfuerzo por conservar el orden original de los mensajes. Este procesamiento por lotes automático espera un tiempo predeterminado de 250 ms después de cada llamada a **session.send()** antes de iniciar la siguiente llamada a **send()** .
 
 El retraso de procesamiento por lotes del mensaje se puede configurar. Para deshabilitar la lógica del procesamiento por lotes automático del SDK, establezca el retraso predeterminado en un número grande y, a continuación, llame manualmente a **sendBatch()** con una devolución de llamada para realizar la invocación una vez que se haya entregado el lote.
 
@@ -170,7 +170,7 @@ La tarjeta resultante contiene tres bloques de texto, un campo de entrada (lista
 ## <a name="additional-resources"></a>Recursos adicionales
 
 * [Preview features with the Channel Inspector][inspector] (Vista previa de las características con el Inspector de canales)
-* <a href="http://adaptivecards.io" target="_blank">Adaptive Cards</a> (Tarjetas adaptables)
+* <a href="http://adaptivecards.io" target="_blank">Tarjetas adaptables</a>
 * [AnimationCard][animationCard]
 * [AudioCard][audioCard]
 * [HeroCard][heroCard]
@@ -178,25 +178,25 @@ La tarjeta resultante contiene tres bloques de texto, un campo de entrada (lista
 * [ReceiptCard][receiptCard]
 * [SigninCard][signinCard]
 * [VideoCard][videoCard]
-* [Message][Message]
+* [Mensaje][Message]
 * [How to send attachments](bot-builder-nodejs-send-receive-attachments.md) (Cómo enviar datos adjuntos)
 
 [MessageOrder]: bot-builder-nodejs-manage-conversation-flow.md#message-ordering
-[Message]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.message
-[IMessage]: http://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
+[Message]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.message
+[IMessage]: http://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage
 
-[animationCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
+[animationCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.animationcard.html 
 
-[audioCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
+[audioCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.audiocard.html 
 
-[heroCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
+[heroCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html
 
-[thumbnailCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
+[thumbnailCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html 
 
-[receiptCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
+[receiptCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html 
 
-[signinCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
+[signinCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.signincard.html 
 
-[videoCard]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
+[videoCard]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.videocard.html
 
 [inspector]: ../bot-service-channel-inspector.md

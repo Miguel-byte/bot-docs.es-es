@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 02/10/2019
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: ff2d55ccdd6312e95bdb1acb223d8e1d5f60b0b3
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 1b62ca7e98313fb0247d45cb66fcae8be32e6492
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032627"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405055"
 ---
 # <a name="build-a-speech-enabled-bot-with-cortana-skills"></a>Creación de un bot habilitado para la voz con habilidades de Cortana
 
@@ -28,7 +28,7 @@ Bot Framework SDK para Node.js le permite crear un bot habilitado para voz al co
 > [!TIP]
 > Para más información sobre qué es una habilidad y qué puede hacer, vea [The Cortana Skills Kit][CortanaGetStarted] (El kit de habilidades de Cortana).
 
-La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y se compone principalmente de la creación de un bot. Una de las diferencias principales respecto a otros bots que ha creado es que Cortana tiene componentes visuales y de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, proporcione texto o SSML en los mensajes del bot para que Cortana los lea al usuario, dándole una voz. 
+La creación de una habilidad de Cortana con Bot Framework requiere muy poco conocimiento específico de Cortana y consiste básicamente en compilar un bot. Una de las diferencias principales respecto a otros bots que ha creado es que Cortana tiene componentes visuales y de audio. Para el componente visual, Cortana proporciona un área del lienzo para representar el contenido, como tarjetas. Para el componente de audio, proporcione texto o SSML en los mensajes del bot para que Cortana los lea al usuario, dándole una voz. 
 
 > [!NOTE]
 > Cortana está disponible en muchos dispositivos diferentes. Algunos tienen una pantalla mientras que otros, como los altavoces independientes, puede que no. Asegúrese de que su bot es capaz de actuar en ambos escenarios. Consulte las [entidades específicas de Cortana][CortanaSpecificEntities] para obtener información sobre cómo comprobar la información del dispositivo.
@@ -49,7 +49,7 @@ El método tiene este formato:
 |------|------|
 | **displayText** | Un mensaje de texto para mostrar en la interfaz de usuario de Cortana.|
 | **speechText** | El texto o SSML que Cortana lee al usuario. |
-| **options** | Un objeto [IMessage][IMessage] que puede contener una sugerencia de entrada o datos adjuntos. Las sugerencias de entrada indican si el bot acepta, espera o ignora la entrada. Los datos adjuntos de la tarjeta se muestran en el lienzo de Cortana a continuación de la información **displayText**.   |
+| **options** | Un objeto [IMessage][IMessage] que puede contener datos adjuntos o una sugerencia de entrada. Las sugerencias de entrada indican si el bot acepta, espera o ignora la entrada. Los datos adjuntos de la tarjeta se muestran en el lienzo de Cortana a continuación de la información **displayText**.   |
 
 La propiedad **InputHint** ayuda a indicar a Cortana si su bot está esperando una entrada del usuario. Si usa un mensaje integrado, este valor se establece automáticamente en el valor predeterminado **expectingInput**.
 
@@ -58,7 +58,7 @@ La propiedad **InputHint** ayuda a indicar a Cortana si su bot está esperando u
 |------|------|
 | **acceptingInput** | El bot está listo para recibir información de forma pasiva, pero no está esperando una respuesta. Cortana acepta la entrada del usuario si el usuario mantiene presionado el botón del micrófono.|
 | **expectingInput** | Indica que el bot está esperando una respuesta del usuario de forma activa. Cortana escucha hasta que el usuario habla por el micrófono.  |
-||NOTA:  _No_ use **expectingInput** en dispositivos sin interfaz de usuario (dispositivos sin pantalla). Consulte las [pregungas más frecuentes sobre el kit de habilidades de Cortana](https://review.docs.microsoft.com/en-us/cortana/skills/faq).|
+||NOTA:  _No_ use **expectingInput** en dispositivos sin interfaz de usuario (dispositivos sin pantalla). Consulte las [pregungas más frecuentes sobre el kit de habilidades de Cortana](https://review.docs.microsoft.com/cortana/skills/faq).|
 | **ignoringInput** | Cortana está ignorando las entradas. El bot puede enviar esta sugerencia si se está procesando activamente una solicitud e ignorará la entrada de los usuarios hasta que se complete la solicitud.  |
 
 El ejemplo siguiente muestra cómo Cortana lee texto sin formato o SSML:
@@ -87,7 +87,7 @@ session.say('Hi there', 'Hi, what’s your name?', {
 
 ### <a name="prompts"></a>Mensajes
 
-Además de usar el método **session.say()**, también puede pasar texto o SSML a mensajes integrados con las opciones **speak** y **retrySpeak**.  
+Además de usar el método **session.say()** , también puede pasar texto o SSML a mensajes integrados con las opciones **speak** y **retrySpeak**.  
 
 ```javascript
 
@@ -156,9 +156,9 @@ module.exports.speak = function (template, params, options) {
 ## <a name="display-cards-in-cortana"></a>Visualización de tarjetas en Cortana
 
 Además de las respuestas de voz, Cortana puede mostrar datos adjuntos de tarjeta. Cortana es compatible con las siguientes tarjetas enriquecidas:
-* [HeroCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
-* [ReceiptCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
-* [ThumbnailCard](https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
+* [HeroCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.herocard.html)
+* [ReceiptCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.receiptcard.html)
+* [ThumbnailCard](https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.thumbnailcard.html)
 
 Consulte los [procedimientos recomendados para el diseño de tarjetas][CardDesign] para ver el diseño de estas tarjetas en Cortana. Para obtener un ejemplo de cómo agregar una tarjeta enriquecida a un bot, vea [Envío de tarjetas enriquecidas](bot-builder-nodejs-send-rich-cards.md). 
 
@@ -195,7 +195,7 @@ module.exports.speak = function (template, params, options) {
 ## <a name="sample-rollerskill"></a>Sample: RollerSkill
 El código en las secciones siguientes procede de una habilidad de Cortana de ejemplo para lanzar los dados. Descargue el código completo para el bot desde el [repositorio de ejemplos de Bot Builder](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/demo-RollerSkill).
 
-La habilidad se invoca al decir el [nombre de invocación][InvocationNameGuidelines] a Cortana. Para la habilidad Roller, después de que [agregue el bot al canal de Cortana][CortanaChannel] y lo registre como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
+La habilidad se invoca diciendo su [nombre de invocación][InvocationNameGuidelines] to Cortana. For the roller skill, after you [add the bot to the Cortana channel][CortanaChannel] y se registra como una habilidad de Cortana, puede invocarlo si dice a Cortana “Pedir a Roller” o “Pedir a Roller que lance los dados”.
 
 ### <a name="explore-the-code"></a>Exploración del código
 
@@ -417,7 +417,7 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Kit de habilidades de Cortana][CortanaGetStarted]
-* [Incorporación de voz a mensajes](bot-builder-nodejs-text-to-speech.md)
+* [Incorporación de voz a los mensajes](bot-builder-nodejs-text-to-speech.md)
 * [Referencias de SSML][SSMLRef]
 * [Procedimientos recomendados para el diseño de voz de Cortana][VoiceDesign]
 * [Procedimientos recomendados para el diseño de tarjetas de Cortana][CardDesign]
@@ -430,9 +430,9 @@ Si su bot se ejecuta localmente o se implementa en la nube, puede invocarlo desd
 
 
 [SSMLRef]: https://aka.ms/cortana-ssml
-[IMessage]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
-[Send]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.session#send
-[CortanaDevCenter]: https://developer.microsoft.com/en-us/cortana
+[IMessage]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.imessage.html
+[Send]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session#send
+[CortanaDevCenter]: https://developer.microsoft.com/cortana
 
 [CortanaSpecificEntities]: https://aka.ms/lgvcto
 [CortanaAuth]: https://aka.ms/vsdqcj

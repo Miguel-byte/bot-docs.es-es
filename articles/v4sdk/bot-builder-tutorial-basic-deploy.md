@@ -10,18 +10,18 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 305e89f5bef4b50e99b24780b0e31580e3b38fb9
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: fd6b1b7ed38b57e8245098679d7753bd5cbb9387
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693700"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464683"
 ---
 # <a name="tutorial-create-and-deploy-a-basic-bot"></a>Tutorial: Creación e implementación de un bot básico
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
-Este tutorial le guiará en la creación de un bot básico con Bot Framework SDK y su implementación en Azure. Si ya ha creado un bot básico que se ejecuta localmente, puede ir directamente a la sección [Implementación del bot](#deploy-your-bot).
+Este tutorial le guiará en la creación de un bot básico con el SDK de Bot Framework y su implementación en Azure. Si ya ha creado un bot básico que se ejecuta localmente, puede ir directamente a la sección [Implementación del bot](#deploy-your-bot).
 
 En este tutorial, aprenderá a:
 
@@ -47,7 +47,7 @@ Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.m
 ### <a name="prerequisites"></a>Requisitos previos
 - Si no tiene una suscripción a Azure, cree una [cuenta gratuita](https://azure.microsoft.com/free/) antes de empezar.
 - El bot anterior, en ejecución en la máquina local.
-- La versión más reciente de la [CLI de Azure](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest).
+- La versión más reciente de la [CLI de Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
 ### <a name="1-prepare-for-deployment"></a>1. Preparación de la implementación
 Cuando crea un bot mediante las plantillas de Visual Studio o Yeoman, el código fuente que se genera, contiene una carpeta `deploymentTemplates` con plantillas de ARM. El proceso de implementación que se documenta aquí utiliza la plantilla ARM para aprovisionar los recursos necesarios para el bot en Azure mediante la CLI de Azure. 
@@ -65,7 +65,7 @@ Se abrirá una ventana del explorador, lo que le permite iniciar sesión.
 Establezca la suscripción predeterminada que desea usar.
 
 ```cmd
-az account set --subscription "<azure-subscription>"
+az account set --subscription "azure-subscription"
 ```
 
 Si no está seguro de la suscripción que debe usar para implementar el bot y desea ver la lista de suscripciones para su cuenta, use el comando `az account list`. Vaya a la carpeta del bot.
@@ -94,7 +94,7 @@ Puede implementar el bot en un grupo de recursos nuevo o en uno ya existente. El
 Va a crear un nuevo grupo de recursos en Azure y, a continuación, usará la plantilla de ARM para crear los recursos que se especifican en ella. En este caso, se proporcionará un plan de App Service, una aplicación web y el registro de canales de bot.
 
 ```cmd
-az deployment create --name "<name-of-deployment>" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" botSku=F0 newAppServicePlanName="<name-of-app-service-plan>" newWebAppName="<name-of-web-app>" groupName="<new-group-name>" groupLocation="<location>" newAppServicePlanLocation="<location>"
+az deployment create --name "name-of-deployment" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" botSku=F0 newAppServicePlanName="name-of-app-service-plan" newWebAppName="name-of-web-app" groupName="new-group-name" groupLocation="location" newAppServicePlanLocation="location"
 ```
 
 | Opción   | DESCRIPCIÓN |
@@ -117,7 +117,7 @@ En este caso, se usará un plan de App Service ya existente, pero creando una ap
 _Nota: El parámetro botId debe ser único globalmente y se utiliza como identificador inmutable del bot. También sirve para configurar el nombre para mostrar del bot, nombre que es mutable._
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" existingAppServicePlan="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 **Opción 2: Nuevo plan de App Service** 
@@ -125,7 +125,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 En este caso, se creará un plan de App Service, una aplicación web y el registro de canales de bot. 
 
 ```cmd
-az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
+az group deployment create --name "name-of-deployment" --resource-group "name-of-resource-group" --template-file "template-with-preexisting-rg.json" --parameters appId="msa-app-guid" appSecret="msa-app-password" botId="id-or-name-of-bot" newWebAppName="name-of-web-app" newAppServicePlanName="name-of-app-service-plan" appServicePlanLocation="location"
 ```
 
 | Opción   | DESCRIPCIÓN |
@@ -177,7 +177,7 @@ Por tanto, es importante incluir el código compilado con todas las dependencias
 En este momento, estamos preparados para implementar el código en la aplicación web de Azure. Ejecute el siguiente comando en la línea de comandos para realizar la implementación mediante la implementación de inserción del archivo ZIP de Kudu para una aplicación web.
 
 ```cmd
-az webapp deployment source config-zip --resource-group "<new-group-name>" --name "<name-of-web-app>" --src "code.zip" 
+az webapp deployment source config-zip --resource-group "new-group-name" --name "name-of-web-app" --src "code.zip" 
 ```
 
 | Opción   | DESCRIPCIÓN |

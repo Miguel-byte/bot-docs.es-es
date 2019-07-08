@@ -1,26 +1,26 @@
 ---
-ms.openlocfilehash: 04f9101d0cf29618fb7d50e126c008190064a831
-ms.sourcegitcommit: 3e3c9986b95532197e187b9cc562e6a1452cbd95
+ms.openlocfilehash: 0570ec6a44c9fe1b007c1fd1b8c335288baa63cb
+ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199446"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67464854"
 ---
 ## <a name="prerequisites"></a>Requisitos previos
-- Visual Studio [2017 o cualquier versión posterior](https://www.visualstudio.com/downloads)
-- Plantilla de Bot Framework SDK v4 para [C#](https://aka.ms/bot-vsix)
+- [Visual Studio 2017 o cualquier versión posterior](https://www.visualstudio.com/downloads)
+- [Plantilla de Bot Framework SDK v4 para C#](https://aka.ms/bot-vsix)
 - [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme)
-- Conocimientos de [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) y [programación asincrónica en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/async/index)
+- Conocimientos de [ASP.Net Core](https://docs.microsoft.com/aspnet/core/) y [programación asincrónica en C#](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/index)
 
 ## <a name="create-a-bot"></a>Creación de un bot
 Instale la plantilla BotBuilderVSIX.vsix que descargó en la sección de requisitos previos.
 
-En Visual Studio, cree un proyecto de bot mediante la plantilla **Echo Bot (Bot Framework v4)**.
+En Visual Studio, cree un proyecto de bot mediante la plantilla **Echo Bot (Bot Framework v4)** .
 
 ![Proyecto de Visual Studio](~/media/azure-bot-quickstarts/bot-builder-dotnet-project.png)
 
 > [!TIP] 
-> Si es necesario, cambie el tipo de compilación del proyecto a ``.Net Core 2.1``. Si es necesario, actualice los [paquetes de NuGet](https://docs.microsoft.com/en-us/nuget/quickstart/install-and-use-a-package-in-visual-studio) de `Microsoft.Bot.Builder`.
+> Si es necesario, cambie el tipo de compilación del proyecto a ``.Net Core 2.1``. Si es necesario, actualice los [paquetes de NuGet](https://docs.microsoft.com/nuget/quickstart/install-and-use-a-package-in-visual-studio) de `Microsoft.Bot.Builder`.
 
 Gracias a la plantilla, el proyecto contiene todo el código necesario para crear el bot en esta guía de inicio rápido. Realmente no necesita escribir ningún código adicional.
 
@@ -33,7 +33,8 @@ Al hacer clic en el botón de ejecución, Visual Studio compila la aplicación, 
 A continuación, inicie el emulador y, después, conéctese al bot en el emulador:
 
 1. Haga clic en el vínculo **Create a new bot configuration** (Crear configuración de bot) en la pestaña de bienvenida del emulador. 
-2. Rellene los campos del bot y haga clic en **Save and connect** (Guardar y conectar).
+2. Rellene los campos del bot. Use la dirección de la página principal del bot (normalmente http://localhost:3978) y anexe la información de enrutamiento "/api/messages" a esta dirección.
+3. A continuación, haga clic en **Save and connect** (Guardar y conectar).
 
 ## <a name="interact-with-your-bot"></a>Interacción con el bot
 

@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0407ec0d90c58e10aa14616e2aa9205bb8840d55
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4df2dcc8857c2af9a69c18e6acf8c8d064e1e043
+ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225230"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67405689"
 ---
 # <a name="send-and-receive-activities"></a>Envío y recepción de actividades
 
@@ -29,7 +29,7 @@ En este artículo se describe cómo usar el conector con Bot Framework SDK para 
 
 ## <a name="create-a-connector-client"></a>Creación de un cliente de conector
 
-La clase [ConnectorClient][ConnectorClient] incluye los métodos que un bot usa para comunicarse con un usuario en un canal. Cuando el bot recibe un objeto <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> desde el conector, debe usar el objeto `ServiceUrl` especificado para esa actividad para crear el cliente de conector que usará posteriormente para generar una respuesta. 
+La clase [ConnectorClient][ConnectorClient] incluye los métodos que un bot usa para comunicarse con un usuario en un canal. Cuando el bot recibe un objeto <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Activity</a> desde el conector, debe usar el objeto `ServiceUrl` especificado para esa actividad para crear el cliente de conector que usará posteriormente para generar una respuesta. 
 
 [!code-csharp[Create connector client](../includes/code/dotnet-send-and-receive.cs#createConnectorClient)]
 
@@ -88,7 +88,7 @@ Este ejemplo de código utiliza el método `CreateConversation` para crear una c
 - [Activities overview](bot-builder-dotnet-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-builder-dotnet-create-messages.md)
 - <a href="/dotnet/api/?view=botbuilder-3.11.0" target="_blank">Referencia de Bot Framework SDK para .NET</a>
-- <a href="https://docs.botframework.com/en-us/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
+- <a href="https://docs.botframework.com/csharp/builder/sdkreference/dc/d2f/class_microsoft_1_1_bot_1_1_connector_1_1_activity.html" target="_blank">Clase Activity</a>
 - <a href="/dotnet/api/microsoft.bot.connector.connectorclient" target="_blank">Clase ConnectorClient</a>
 
 [ConnectorClient]: /dotnet/api/microsoft.bot.connector.connectorclient
