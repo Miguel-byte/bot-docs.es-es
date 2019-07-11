@@ -8,14 +8,14 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
-ms.date: 05/23/2019
+ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0f29520b993d12ce01c65cd29517b3a4b2aada84
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c3c116eec8222ce50cd7dde672cc86f9765a3f97
+ms.sourcegitcommit: b498649da0b44f073dc5b23c9011ea2831edb31e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404554"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67587484"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
@@ -122,29 +122,13 @@ El modo de transporte, el nombre y la edad del usuario se guardan en una instanc
 
 [!code-javascript[user profile](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/userProfile.js?range=4-10)]
 
-**Dialogs\UserProfileDialog.cs**
+**dialogs\userProfileDialog.js**
 
 En el último paso, comprobamos el valor de `step.result` devuelto por el diálogo que se llama en el paso de cascada anterior. Si el valor devuelto es true, se usa el descriptor de acceso del perfil de usuario para obtener y actualizar el perfil de usuario. Para obtener el perfil de usuario, llamamos al método `get` y, a continuación, se establecen los valores de las propiedades `userProfile.transport`, `userProfile.name` y `userProfile.age`. Por último, se resume la información del usuario antes de llamar a `endDialog`, que finaliza el diálogo. La finalización del diálogo lo extrae de la pila de diálogos y devuelve un resultado opcional al elemento primario del diálogo. El elemento primario es el diálogo o método que inició el diálogo que acaba de terminar.
 
 [!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
 
----
-
-## <a name="create-the-extension-method-to-run-the-waterfall-dialog"></a>Creación del método de extensión para ejecutar el diálogo en cascada
-
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-
-Hemos definido un método de extensión `Run` que se usará para crear y acceder al contexto del diálogo. En este caso, `accessor` es el descriptor de acceso de la propiedad de estado de la propiedad de estado del diálogo y `dialog` es el diálogo de componente de perfil de usuario. Puesto que los diálogos de componente definen un conjunto de diálogos interno, debemos crear un conjunto de diálogos externo que sea visible para el código del controlador de mensajes y usarlo para crear un contexto de diálogo.
-
-El contexto del diálogo se crea mediante una llamada al método `CreateContext` y se usa para interactuar con el conjunto de diálogos desde dentro del controlador de turnos del bot. El contexto del diálogo incluye el contexto del turno actual, el diálogo primario y el estado del diálogo, que proporciona un método para conservar información en el diálogo.
-
-El contexto del diálogo permite iniciar un diálogo con el identificador de cadena o continuar el diálogo actual (por ejemplo, un diálogo en cascada que tiene varios pasos). El contexto del diálogo se pasa a todos los diálogos y pasos de cascada del bot.
-
-**DialogExtensions.cs**
-
-[!code-csharp[Run method](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/DialogExtensions.cs?range=13-24)]
-
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**Creación del método de extensión para ejecutar el diálogo en cascada**
 
 Hemos definido un método auxiliar `run` dentro de `userProfileDialog` que se usará para crear y acceder al contexto del diálogo. En este caso, `accessor` es el descriptor de acceso de la propiedad de estado de la propiedad de estado del diálogo y `this` es el diálogo de componente de perfil de usuario. Puesto que los diálogos de componente definen un conjunto de diálogos interno, debemos crear un conjunto de diálogos externo que sea visible para el código del controlador de mensajes y usarlo para crear un contexto de diálogo.
 
@@ -162,7 +146,7 @@ El contexto del diálogo permite iniciar un diálogo con el identificador de cad
 
 **Bots\DialogBot.cs**
 
-El controlador `OnMessageActivityAsync` utiliza el método de extensión para iniciar o continuar el diálogo. En `OnTurnAsync`, usamos los objetos de administración de estado del bot para conservar los cambios de estado en el almacenamiento. (El método `ActivityHandler.OnTurnAsync` llama a los diversos métodos del controlador de actividades, como `OnMessageActivityAsync`. De este modo, se guarda el estado después de que finaliza el controlador de mensajes pero antes de la finalización del propio turno).
+El controlador `OnMessageActivityAsync` utiliza el método `RunAsync` para iniciar o continuar el diálogo. En `OnTurnAsync`, usamos los objetos de administración de estado del bot para conservar los cambios de estado en el almacenamiento. (El método `ActivityHandler.OnTurnAsync` llama a los diversos métodos del controlador de actividades, como `OnMessageActivityAsync`. De este modo, se guarda el estado después de que finaliza el controlador de mensajes pero antes de la finalización del propio turno).
 
 [!code-csharp[overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Bots/DialogBot.cs?range=33-48&highlight=5-7)]
 
