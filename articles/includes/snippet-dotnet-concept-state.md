@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 0b991c438c0006d1fb4bafa90982f73f4a18be77
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563448"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230662"
 ---
 Bot Builder Framework permite que el bot almacene y recupere datos de estado asociados a un usuario, una conversación o un usuario específico en el contexto de una conversación específica. Los datos de estado se pueden usar para muchos propósitos, como determinar dónde se dejó la conversación anterior o simplemente saludar a un usuario por su nombre cuando vuelva. Si almacena las preferencias del usuario, puede usar esa información para personalizar la conversación la próxima vez que chatee. Por ejemplo, podría alertar al usuario sobre un artículo de noticias que trate un tema que le interese, o bien cuando haya una cita disponible. 
 

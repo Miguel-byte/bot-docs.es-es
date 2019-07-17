@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c19287b38a2c807e6675af2c3f7e1824eb7eab8e
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230767"
+---
 Algunos canales proporcionan características que no se pueden implementar usando únicamente el texto y los datos adjuntos del mensaje. Para implementar una funcionalidad específica de canal, puede pasar los metadatos nativos a un canal en la propiedad _channel data_ del objeto activity. Por ejemplo, el bot puede usar la propiedad channel data para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
 
 En este artículo se describe cómo usar la propiedad channel data de la actividad de un mensaje para implementar esta funcionalidad específica de canal:
@@ -269,7 +277,7 @@ Para crear un mensaje que implemente las acciones específicas de Telegram, como
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
-| estático | El método de Telegram Bot API al que se llamará. |
+| method | El método de Telegram Bot API al que se llamará. |
 | parameters | Los parámetros del método especificado. |
 
 Se admiten los métodos de Telegram siguientes: 
@@ -392,7 +400,7 @@ Estas acciones de LINE se pueden especificar en el campo de acción del objeto J
 * Datetimerpicker 
 * Cámara 
 * Camera roll 
-* Ubicación 
+* Location 
 
 Para más información sobre estos métodos de LINE y sus parámetros, consulte la [documentación Bot API para LINE](https://developers.line.biz/en/docs/messaging-api/). 
 

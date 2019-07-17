@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: f09d0a7b81e3cfa69fd42356faf27f79e3bc038c
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563671"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230715"
 ---
 Cuando se recibe una devolución de llamada de actualización de dirección de envío o de actualización de opción de envío, se indicará al bot el estado actual de los detalles de pago del cliente en la propiedad `Activity.Value`.
 Como comerciante, debe tratar estas devoluciones de llamada como estáticas; dados los detalles de pago de entrada, calculará algunos detalles de pago de salida y se producirá un error si el estado de entrada proporcionado por el cliente no es válido por algún motivo. 
