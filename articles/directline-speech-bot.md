@@ -8,16 +8,16 @@ manager: kamrani
 ms.topic: get-started-article
 ms.service: bot-service
 ms.subservice: abs
-ms.date: 05/23/2019
+ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 73a675c6e54d676f74dad2df24b3668d5e4e98be
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: 898136303d2c5bbf6a8ce5ea5b87bff0bac0a5c7
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252380"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68230761"
 ---
-## <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot 
+# <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot 
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
@@ -29,11 +29,24 @@ Para Direct Line Speech (versión preliminar) hay paquetes de NuGet adicionales 
 
 2.  Vaya a Administrar paquetes de Nuget en las propiedades del proyecto del bot.
 
-3.  Si aún no lo tiene como un origen, agregue `https://botbuilder.myget.org/F/experimental/api/v3/index.json` como una fuente desde la configuración de fuentes de NuGet en la esquina superior derecha.
+3.  Agregue el paquete `Microsoft.Bot.Builder.StreamingExtensions`. Debes marcar la casilla "Include prerelease" (Incluir versión preliminar) para ver los paquetes de la versión preliminar.
 
-4.  Seleccione este origen de NuGet y agregue uno del paquete `Microsoft.Bot.Protocol.StreamingExtensions.NetCore`.
+4.  Acepte los mensajes para terminar de agregar el paquete al proyecto.
 
-5.  Acepte los mensajes para terminar de agregar el paquete al proyecto.
+## <a name="set-the-speak-field-on-activities-you-want-spoken-to-the-user"></a>Establecer el campo Speak (Hablar) en las actividades que quiera que se hablen con el usuario
+Debe establecer el campo Speak (Hablar) de cualquier actividad que se envíe desde el bot y que quiera que se hable con el usuario. 
+
+```cs
+public IActivity Speak(string message)
+{
+    var activity = MessageFactory.Text(message);
+    string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)'>" +
+        $"{message}" + "</voice></speak>";
+    activity.Speak = body;
+    return activity;
+}
+```
 
 ## <a name="option-1-update-your-net-core-bot-code-if-your-bot-has-a-botcontrollercs"></a>Opción 1: Actualización del código del bot de .NET Core _si el bot tiene un elemento BotController.cs_
 Cuando se crea un nuevo bot desde Azure Portal mediante una de las plantillas, como EchoBot, obtendrá un bot que incluye un controlador MVC de ASP.NET que expone un punto de conexión POST único. Estas instrucciones explican cómo expandirlo para exponer también un punto de conexión que acepte el punto de conexión de streaming de WebSocket, que es un punto de conexión GET.
@@ -55,7 +68,7 @@ public async Task PostAsync()
 5.  Agregue un nuevo espacio de nombres:
 
 ```cs
-using Microsoft.Bot.Protocol.StreamingExtensions.NetCore;
+using Microsoft.Bot.Builder.StreamingExtensions;
 ```
 
 6.  En el método ConfigureServices, reemplace el uso de AdapterWithErrorHandler por WebSocketEnabledHttpAdapter en la llamada a services.AddSingleton apropiada:
