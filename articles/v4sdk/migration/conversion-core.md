@@ -71,7 +71,7 @@ Vamos a crear una propiedad de estado para `DialogState`, que ahora es necesario
 
 En **Startup.cs**:
 
-1. Actualice las instrucciones `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)]
+1. Actualice las instrucciones `using`:  [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Startup.cs?range=4-13)]
 
 1. Quite este constructor:
     ```csharp
@@ -104,7 +104,7 @@ En v4, el controlador de turnos o la lógica del bucle de mensajes se encuentran
 
 1. Actualice el archivo **Bots\DialogBots.cs**.
 
-1. Actualice las instrucciones `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
+1. Actualice las instrucciones `using`:  [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=4-8)]
 
 1. Actualice `DialogBot` para incluir un parámetro genérico para el diálogo.
     [!code-csharp[Class definition](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Bots/DialogBot.cs?range=19)]
@@ -184,7 +184,7 @@ En este bot, de diálogo raíz pide al usuario que elija una opción de un conju
 
 En el archivo **Dialogs/RootDialog.cs**:
 
-1. Actualice las instrucciones `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
+1. Actualice las instrucciones `using`:  [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=4-10)]
 
 1. Necesitamos convertir las opciones `HelpdeskOptions` de una lista de cadenas en una lista de opciones. Se usará con un aviso de opciones, que aceptará como entrada válida el número de opción (en la lista), el valor de la opción o cualquiera de los sinónimos de la opción.
     [!code-csharp[HelpDeskOptions](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/RootDialog.cs?range=28-33)]
@@ -232,7 +232,7 @@ El diálogo de instalación de la aplicación realiza algunas tareas lógicas qu
 
 En el archivo **Dialogs/InstallAppDialog.cs**:
 
-1. Actualice las instrucciones `using`: [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
+1. Actualice las instrucciones `using`:  [!code-csharp[Using statements](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=4-11)]
 
 1. Defina una constante para la clave que usaremos para realizar el seguimiento de la información recopilada.
     [!code-csharp[Key ID](~/../botbuilder-samples/MigrationV3V4/CSharp/ContosoHelpdeskChatBot-V4NetCore/ContosoHelpdeskChatBot/Dialogs/InstallAppDialog.cs?range=17-18)]
