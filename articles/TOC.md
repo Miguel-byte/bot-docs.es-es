@@ -3,10 +3,9 @@
 ## [Acerca de Azure Bot Service](bot-service-overview-introduction.md)
 ## [Novedades](what-is-new.md)
 # Guía de inicio rápido
-## [Creación de un bot con Azure Bot Service](~/bot-service-quickstart.md)
-## Creación de un bot localmente
-### [.NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
-### [JavaScript](javascript/bot-builder-javascript-quickstart.md)
+## [Creación de un bot mediante .NET](dotnet/bot-builder-dotnet-sdk-quickstart.md)
+## [Creación de un bot mediante JavaScript](javascript/bot-builder-javascript-quickstart.md)
+## [Creación de un bot mediante Azure Bot Service](v4sdk/abs-quickstart.md)
 # Tutoriales
 ## [1. Creación e implementación de un bot básico](v4sdk/bot-builder-tutorial-basic-deploy.md)
 ## [2. Agregar QnA Maker y volver a implementar un bot](v4sdk/bot-builder-tutorial-add-qna.md)
@@ -55,6 +54,8 @@
 ### [Uso de Direct Line Speech en el bot](directline-speech-bot.md)
 ### [.NET](dotnet/TOC.md)
 ### [Node.js](nodejs/TOC.md)
+## Prueba
+### [Realización de pruebas unitarias en bots](v4sdk/unit-test-bots.md)
 ## [Depuración](debug/TOC.md)
 ## Implementación
 ### [Implementación de un bot en Azure](bot-builder-deploy-az-cli.md)
