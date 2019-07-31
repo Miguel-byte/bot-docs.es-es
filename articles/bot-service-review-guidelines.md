@@ -1,10 +1,12 @@
 ---
-ms.openlocfilehash: bbdad5f0cb51d99cf886070dd8400acae0ed24bb
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.topic: conceptual
+title: Directrices de revisión de bots
+ms.openlocfilehash: 6835c7573aced1d2552faf264ef27fc06d1e06ce
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464572"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671437"
 ---
 # <a name="bot-review-guidelines"></a>Directrices de revisión de bots
 
