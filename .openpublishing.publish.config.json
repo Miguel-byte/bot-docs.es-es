@@ -27,7 +27,7 @@
          "build_output_subfolder":"bot-framework-rest-api",
          "locale":"es-es",
          "monikers":[],
-         "open_to_public_contributors":false,
+         "open_to_public_contributors":true,
          "type_mapping":{
             "Conceptual":"Content",
             "ContextObject":"Toc",
