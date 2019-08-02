@@ -4,7 +4,7 @@
          "docset_name":"bot-framework",
          "build_source_folder":"articles",
          "build_output_subfolder":"bot-framework",
-         "locale":"en-us",
+         "locale":"es-es",
          "monikers":[],
          "moniker_ranges":[
             ">= azure-bot-service-3.0",
