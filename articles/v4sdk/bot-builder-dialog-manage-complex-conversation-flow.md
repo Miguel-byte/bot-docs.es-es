@@ -27,7 +27,7 @@ También le mostraremos cómo pasar argumentos entre las distintas partes del di
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de los [conceptos básicos de los bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos][ los diálogos de conceptos] y cómo [implementar el flujo de conversación secuencial][simple-dialog].
+- Conocimiento de los [conceptos básicos de los bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos] [los diálogos de conceptos] y cómo [implementar el flujo de conversación secuencial][simple-dialog].
 - Una copia del ejemplo de diálogo complejo en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
