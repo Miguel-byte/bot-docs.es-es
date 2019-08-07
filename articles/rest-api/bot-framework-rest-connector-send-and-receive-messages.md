@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d0b7b3250a62a995113bc9c7e087e2e62af0f413
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 15ad5855fef9bc20f351e196941fe81822db5451
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997072"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671518"
 ---
 # <a name="send-and-receive-messages"></a>Envío y recepción de mensajes
 
@@ -106,10 +106,10 @@ Para iniciar una conversación, emita esta solicitud:
 POST /v3/conversations
 ```
 
-Establezca el cuerpo de la solicitud como un objeto [Conversation][Conversation] que especifica la información de la cuenta de su bot y la información de la cuenta de los usuarios que se van a incluir en la conversación.
+Establezca el cuerpo de la solicitud como un objeto [ConversationParameters][] que especifica la información de la cuenta de su bot y la información de la cuenta de los usuarios que se van a incluir en la conversación.
 
 > [!NOTE]
-> No todos los canales son compatibles con las conversaciones en grupo. Consulte la documentación del canal para determinar si un canal es compatible con las conversaciones de grupo e identificar el número máximo de participantes que un canal permite en una conversación.
+> No todos los canales admiten conversaciones de grupo. Consulte la documentación del canal para determinar si un canal es compatible con las conversaciones de grupo e identificar el número máximo de participantes que un canal permite en una conversación.
 
 En el ejemplo siguiente se muestra una solicitud que inicia una conversación. En la solicitud del ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; el URI base para solicitudes que su bot emita puede ser distinto. Para obtener más información sobre cómo establecer el URI base, consulte [API Reference](bot-framework-rest-connector-api-reference.md#base-uri) (Referencia de la API).
 
@@ -149,9 +149,9 @@ Por lo tanto, el bot puede usar este identificador de conversación para [enviar
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
-- [Create messages](bot-framework-rest-connector-create-messages.md) (Creación de mensajes)
+- [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 
 [Activity]: bot-framework-rest-connector-api-reference.md#activity-object
 [ConversationAccount]: bot-framework-rest-connector-api-reference.md#conversationaccount-object
-[Conversation]: bot-framework-rest-connector-api-reference.md#conversation-object
+[ConversationParameters]: bot-framework-rest-connector-api-reference.md#conversationparameters-object
 

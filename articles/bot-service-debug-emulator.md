@@ -8,27 +8,63 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: 0e548700e81fff5029031fd1e349cc75d9d0bc7a
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 847ae51791ae66ef190ebefee765f2806ec91c5e
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464643"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68484038"
 ---
 # <a name="debug-with-the-emulator"></a>Depuración con el emulador
 
 Bot Framework Emulator es una aplicación de escritorio que permite que los desarrolladores de bots prueben y depuren sus bots de manera local o remota. Con el emulador, puede chatear con el bot e inspeccionar los mensajes que este envía y recibe. El emulador muestra los mensajes tal como aparecerían en la interfaz de usuario de un chat web y registra las respuestas y las solicitudes de JSON a medida que intercambia mensajes con su bot. Antes de implementar el bot en la nube, ejecútelo localmente y pruébelo con el emulador. Puede probar el bot con el emulador incluso si todavía no lo ha [creado](./bot-service-quickstart.md) con Azure Bot Service ni lo ha configurado para que se ejecute en ningún canal.
 
 ## <a name="prerequisites"></a>Requisitos previos
-- Instale el [emulador](https://aka.ms/Emulator-wiki-getting-started).
+- Instale [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)
+
+## <a name="run-a-bot-locally"></a>Ejecución local de un bot
+Antes de conectar el bot a Bot Framework Emulator, debe ejecutar el bot localmente. Puede usar Visual Studio o Visual Studio Code para ejecutar el bot, o bien usar la línea de comandos. Para ejecutar un bot mediante la línea de comandos, haga lo siguiente:
+
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+* En el símbolo del sistema, cambie el directorio al del proyecto del bot.
+* Para iniciar el bot, ejecute el siguiente comando: 
+    ```
+    dotnet run
+    ```
+* Copie el número de puerto que se indica la línea situada antes de *Application started. Press CTRL+C to shut down.* (Aplicación iniciada. Presione Ctrl+C para apagar).
+
+    ![Número de puerto (C#)](media/bot-service-debug-emulator/csharp_port_number.png)
+
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+* En el símbolo del sistema, cambie el directorio al del proyecto del bot.
+* Para iniciar el bot, ejecute el siguiente comando:
+    ```
+    node index.js
+    ```
+* Copie el número de puerto en el que restify escucha.
+
+    ![Número de puerto (JS)](media/bot-service-debug-emulator/js_port_number.png)
+---
+
+En este momento, el bot se ejecuta de forma local. 
+
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Una conexión a un bot que se ejecuta en un host local.
 
 ![UI del emulador](media/emulator-v4/emulator-welcome.png)
 
-Para conectarse a un bot que se ejecuta localmente, haga clic en **Open bot** (Abrir bot) o seleccione el archivo de configuración preconfigurado (un archivo .bot). No es necesario un archivo de configuración para conectarse al bot, pero el emulador seguirá funcionando con uno si el bot lo tiene. Si el bot se está ejecutando con [credenciales de una cuenta Microsoft (MSA)](#use-bot-credentials), escriba también estas credenciales.
+Para conectarse a un bot que se ejecuta localmente, haga clic en **Abrir bot**. Agregue el número de puerto que copió anteriormente en la siguiente dirección URL y pegue la dirección URL actualizada en la barra de direcciones URL del bot:
 
-![UI del emulador](media/emulator-v4/emulator-open-bot.png)
+*http://localhost:**número de puerto**/api/messages*
+
+![UI del emulador](media/bot-service-debug-emulator/open_bot_emulator.png)
+
+Si el bot se está ejecutando con [credenciales de una cuenta Microsoft (MSA)](#use-bot-credentials), escriba también estas credenciales.
+
 
 ### <a name="use-bot-credentials"></a>Usar credenciales de bot
 
@@ -36,36 +72,43 @@ Cuando abra el bot, establezca el **id. de aplicación de Microsoft** y la **con
 
 ## <a name="view-detailed-message-activity-with-the-inspector"></a>Vista detallada de la actividad de mensaje con el inspector
 
-Envíe un mensaje al bot y este debería responder. Puede hacer clic en una burbuja de mensaje dentro de la ventana de la conversación e inspeccionar la actividad JSON sin formato con la característica **INSPECTOR** que se encuentra a la derecha de la ventana. Cuando se selecciona, la burbuja de mensaje cambia a color amarillo y el objeto JSON de la actividad se mostrará a la izquierda de la ventana del chat. Esta información de JSON incluye metadatos de clave que incluyen el identificador de canal, el tipo de actividad, el identificador de la conversación, el mensaje de texto, la dirección URL del punto de conexión, etc. Puede inspeccionar las actividades de inspección enviadas desde el usuario, así como también las actividades con las que responde el bot. 
+Envíe un mensaje al bot y este debería responder. Puede hacer clic en una burbuja de mensaje dentro de la ventana de la conversación e inspeccionar la actividad JSON sin formato con la característica **INSPECTOR** que se encuentra a la derecha de la ventana. Cuando se selecciona, la burbuja de mensaje cambia a color amarillo y el objeto JSON de la actividad se mostrará a la izquierda de la ventana del chat. Esta información de JSON incluye metadatos de clave que incluyen el identificador de canal, el tipo de actividad, el identificador de la conversación, el mensaje de texto, la dirección URL del punto de conexión, etc. Puede inspeccionar las actividades de inspección enviadas desde el usuario, así como también las actividades con las que responde el bot.
 
 ![Actividad de mensaje del emulador](media/emulator-v4/emulator-view-message-activity-03.png)
 
-## <a name="save-and-load-conversations-with-bot-transcripts"></a>Guardado y carga de conversaciones con transcripciones de bots
+> [!TIP]
+> Para depurar los cambios de estado en un bot conectado a un canal, puede agregar [middleware de inspección](bot-service-debug-inspection-middleware.md) al bot.
 
-Las actividades del emulador se pueden guardar como transcripciones. En una ventana de chat en directo abierta, seleccione **Save Transcript As** (Guardar transcripción como) en el archivo de transcripción. El botón **Start Over** (Volver a empezar) se puede usar en cualquier momento para borrar una conversación y reiniciar una conexión con el bot.  
+<!--
+## Save and load conversations with bot transcripts
 
-![Guardar las transcripciones en el emulador](media/emulator-v4/emulator-save-transcript.png)
+Activities in the emulator can be saved as transcripts. From an open live chat window, select **Save Transcript As** to the transcript file. The **Start Over** button can be used any time to clear a conversation and restart a connection to the bot.  
 
-Para cargar las transcripciones, simplemente seleccione **Archivo > Open Transcript File** (Abrir archivo de transcripción) y seleccione la transcripción. Se abrirá una ventana de transcripción nueva que presentará la actividad de mensaje en la ventana de salida. 
+![Emulator save transcripts](media/emulator-v4/emulator-save-transcript.png)
 
-![Cargar transcripciones en el emulador](media/emulator-v4/emulator-load-transcript.png)
+To load transcripts, simply select **File > Open Transcript File** and select the transcript. A new Transcript window will open and render the message activity to the output window. 
 
-## <a name="add-services"></a>Agregar servicios 
+![Emulator load transcripts](media/emulator-v4/emulator-load-transcript.png)
+--->
+<!---
+## Add services 
 
-Puede agregar fácilmente una aplicación de LUIS o una base de conocimientos de QnA o un modelo de envío en el bot directamente desde el emulador. Cuando el bot se cargue, seleccione el botón de servicios en el extremo izquierdo de la ventana del emulador. En el menú **Servicios** verá opciones para agregar LUIS, QnA Maker y Dispatch. 
+You can easily add a LUIS app, QnA knowledge base, or dispatch model to your bot directly from the emulator. When the bot is loaded, select the services button on the far left of the emulator window. You will see options under the **Services** menu to add LUIS, QnA Maker, and Dispatch. 
 
-Para agregar una aplicación de servicio, solo tiene que hacer clic en el botón **+** y seleccionar el servicio que desea agregar. Se le pedirá que inicie sesión en Azure Portal para agregar el servicio al archivo de bot y conectar el servicio a la aplicación bot. 
+To add a service app, simply click on the **+** button and select the service you want to add. You will be prompted to sign in to the Azure portal to add the service to the bot file, and connect the service to your bot application. 
 
 > [!IMPORTANT]
-> La adición de servicios solo funciona si usa un archivo de configuración `.bot`. Se deben agregar los servicios de manera independiente. Para más información sobre esto, consulte [Administración de recursos de bot](v4sdk/bot-file-basics.md) o los artículos de procedimientos específicos del servicio que está intentando agregar.
+> Adding services only works if you're using a `.bot` configuration file. Services will need to be added independently. For details on that, see [Manage bot resources](v4sdk/bot-file-basics.md) or the individual how to articles for the service you're trying to add.
 >
-> Si no usa un archivo `.bot`, el panel izquierdo no mostrará los servicios (incluso aunque el bot los use) y aparecerá un mensaje que indica que los *servicios no están disponibles*.
+> If you are not using a `.bot` file, the left pane won't have your services listed (even if your bot uses services) and will display *Services not available*.
 
-![Conexión de LUIS](media/emulator-v4/emulator-connect-luis-btn.png)
+![LUIS connect](media/emulator-v4/emulator-connect-luis-btn.png)
 
-Cuando se conecta cualquiera de esos servicios, puede volver a una ventana de chat activo y comprobar que los servicios están conectados y en funcionamiento. 
+When either service is connected, you can go back to a live chat window and verify that your services are connected and working. 
 
-![QnA conectado](media/emulator-v4/emulator-view-message-activity.png)
+![QnA connected](media/emulator-v4/emulator-view-message-activity.png)
+
+--->
 
 ## <a name="inspect-services"></a>Inspección de servicios
 
@@ -88,18 +131,16 @@ Open the **Emulator Settings**, enter the path to ngrok, select whether or not t
 ![ngrok path](media/emulator-v4/emulator-ngrok-path.png)
 -->
 
-## <a name="login-to-azure"></a>Inicio de sesión en Azure
+<!---## Login to Azure
 
-Puede usar Emulator para iniciar sesión en la cuenta de Azure. Esto es especialmente útil para agregar y administrar los servicios de los que depende el bot. Consulte la información [anterior](#add-services) para más información acerca de los servicios que puede administrar mediante Emulator.
+You can use Emulator to login in to your Azure account. This is particularly helpful for you to add and manage services your bot depends on. 
+See [above](#add-services) to learn more about services you can manage using the Emulator.
+-->
 
-### <a name="to-login"></a>Para iniciar sesión
-
-![Inicio de sesión de Azure](media/emulator-v4/emulator-azure-login.png)
-
-Para iniciar sesión
-- Puede hacer clic en Archivo -> Iniciar sesión con Azure
+### <a name="login-to-azure"></a>Inicio de sesión en Azure
+Puede usar Emulator para iniciar sesión en la cuenta de Azure. Esto es especialmente útil para agregar y administrar los servicios de los que depende el bot. Siga estos pasos para iniciar sesión en Azure:
+- Haga clic en Archivo -> Iniciar sesión con Azure ![Inicio de sesión de Azure](media/emulator-v4/emulator-azure-login.png)
 - En la pantalla de inicio de sesión haga clic en Iniciar sesión con su cuenta de Azure. Opcionalmente, puede hacer que Emulator conserve su sesión iniciada entre varios reinicios de esta aplicación.
-
 ![Inicio de sesión de Azure](media/emulator-v4/emulator-azure-login-success.png)
 
 ## <a name="disabling-data-collection"></a>Deshabilitación de la recopilación de datos
@@ -128,10 +169,17 @@ Para solucionar el problema, consulte cómo [solucionar problemas generales](bot
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Guardar una conversación en un archivo de transcripción le permite crear rápidamente un borrador y reproducir un determinado conjunto de interacciones para la depuración.
+Use el middleware de inspección para depurar un bot conectado a un canal.
 
 > [!div class="nextstepaction"]
-> [Depuración del bot mediante archivos de transcripción](~/v4sdk/bot-builder-debug-transcript.md)
+> [Depuración del bot mediante archivos de transcripción](bot-service-debug-inspection-middleware.md)
+
+<!--
+Saving a conversation to a transcript file allows you to quickly draft and replay a certain set of interactions for debugging.
+
+> [!div class="nextstepaction"]
+> [Debug your bot using transcript files](~/v4sdk/bot-builder-debug-transcript.md)
+-->
 
 <!-- Footnote-style URLs -->
 

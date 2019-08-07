@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 03/28/2018
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: 1a3b8a4bfdd73674b972f43fe58afec49c63d8cc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67464803"
 ---
 # <a name="recognize-intents-and-entities-with-luis"></a>Reconocimiento de intenciones y entidades con LUIS 
@@ -265,7 +265,7 @@ bot.dialog('CreateNote', [
 });
 ```
 
-Todas las entidades de la grabación de voz se pasan al diálogo mediante el parámetro `args`. El primer paso de la [cascada][waterfall] calls [EntityRecognizer.findEntity][EntityRecognizer_findEntity] to get the title of the note from any `Note.Title` entities in the LUIS response. If the LUIS app didn't detect a `Note.Title` entity, the bot prompts the user for the name of the note. The second step of the waterfall prompts for the text to include in the note. Once the bot has the text of the note, the third step uses [session.userData][session_userData] para guardar la nota en un objeto `notes`, con el título como clave. Para más información sobre `session.UserData`, vea [Administración de datos de estado](./bot-builder-nodejs-state.md). 
+Todas las entidades de la grabación de voz se pasan al diálogo mediante el parámetro `args`. El primer paso de la [cascada][waterfall] llama a [EntityRecognizer.findEntity][EntityRecognizer_findEntity] para obtener el título de la nota de cualquier entidad `Note.Title` de la respuesta de LUIS. Si la aplicación de LUIS no detectó una entidad `Note.Title`, el bot pide al usuario el nombre de la nota. El segundo paso de la cascada pide el texto que se va a incluir en la nota. Una vez que el bot tiene el texto de la nota, el tercer paso usa [session.userData][session_userData] para guardar la nota en un objeto `notes`, para lo que usa el título como clave. Para más información sobre `session.UserData`, vea [Administración de datos de estado](./bot-builder-nodejs-state.md). 
 
 
 

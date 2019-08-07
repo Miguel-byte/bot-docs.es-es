@@ -11,14 +11,16 @@ ms.subservice: sdk
 ms.date: 04/18/2019
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bd8682966dbb2e33a536a72a4016ef23e9c1fc75
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: ba1bc99608558966f4cf45894b2e04b8f17c9a69
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032621"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68483964"
 ---
 # <a name="handle-user-interruptions"></a>Control de las interrupciones del usuario
+
+<!-- Rebuild to link to published samples in the master branch -->
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
@@ -26,8 +28,8 @@ El control de interrupciones es un aspecto importante de un bot sólido. Los usu
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de los [conceptos básicos de bots][concept-basics], [la administración del estado][concept-state], la [biblioteca de diálogos][concept-dialogs] y la [reutilización de diálogos][component-dialogs].
-- Una copia del ejemplo de bot básico en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
+- Conocimiento de los [conceptos básicos de bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos][concept-dialogs] y cómo [reutilizar diálogos][component-dialogs].
+- Una copia del ejemplo de bot básico en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
 
@@ -48,17 +50,17 @@ Para usar diálogos, instale el paquete de NuGet **Microsoft.Bot.Builder.Dialogs
 
 Comenzamos por la implementación de la clase `CancelAndHelpDialog` para controlar las interrupciones de usuario.
 
-[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=11)]
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
 
 En la clase `CancelAndHelpDialog`, los métodos `OnBeginDialogAsync` y `OnContinueDialogAsync` llaman al método `InerruptAsync` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `InterruptAsync`.
 
-[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=18-27)]
+[!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
 Si el usuario escribe "help", el método `InterrupAsync` envía un mensaje y, a continuación, llama a `DialogTurnResult (DialogTurnStatus.Waiting)` para indicar que el diálogo en la parte superior espera una respuesta del usuario. De este modo, se interrumpe el flujo de conversación solo para un turno y en el siguiente turno seguimos donde terminamos.
 
 Si el usuario escribe "cancel", llama a `CancelAllDialogsAsync` en el contexto de diálogo interno, que borra la pila de diálogos y hace que se cierre con un estado cancelado y sin valor de resultado. Para `MainDialog` (que se muestra más adelante), parece que el diálogo de reservas finalizó y devolvió NULL, de modo similar a cuando el usuario decide no confirmar su reserva.
 
-[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=40-61&highlight=11-12,16-17)]
+[!code-csharp[Interrupt](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=33-56&highlight=43-45,49-51)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -68,17 +70,17 @@ Para usar diálogos, instale el paquete de npm **botbuilder-dialogs**.
 
 Comenzamos por la implementación de la clase `CancelAndHelpDialog` para controlar las interrupciones de usuario.
 
-[!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=10)]
+[!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
 En la clase `CancelAndHelpDialog`, los métodos `onBeginDialog` y `onContinueDialog` llaman al método `interrupt` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `interrupt`.
 
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11-25)]
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 
 Si el usuario escribe "help", el método `interrupt` envía un mensaje y, a continuación, devuelve un objeto `{ status: DialogTurnStatus.waiting }` para indicar que el diálogo en la parte superior espera una respuesta del usuario. De este modo, se interrumpe el flujo de conversación solo para un turno y en el siguiente turno seguimos donde terminamos.
 
 Si el usuario escribe "cancel", llama a `cancelAllDialogs` en el contexto de diálogo interno, que borra la pila de diálogos y hace que se cierre con un estado cancelado y sin valor de resultado. Para `MainDialog` (que se muestra más adelante), parece que el diálogo de reservas finalizó y devolvió NULL, de modo similar a cuando el usuario decide no confirmar su reserva.
 
-[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=27-40&highlight=7-8,11-12)]
+[!code-javascript[Interrupt](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=20-37&highlight=27-29,32-34)]
 
 ---
 
@@ -92,11 +94,11 @@ Ahora que hemos analizado cómo funciona la clase de control de interrupciones, 
 
 Cuando llega la nueva actividad de mensaje, el bot ejecuta `MainDialog`. `MainDialog` pide al usuario en qué puede ayudarle. Y, a continuación, inicia `BookingDialog` en el método `MainDialog.ActStepAsync`, con una llamada a `BeginDialogAsync` tal como se muestra a continuación.
 
-[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=54-68&highlight=13-14)]
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=82-83)]
 
 Seguidamente, en el método `FinalStepAsync` de la clase `MainDialog`, el diálogo de reservas finaliza y la reserva se considera completada o cancelada.
 
-[!code-csharp[FinalStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=70-91)]
+[!code-csharp[FinalStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=130-150)]
 
 El código de `BookingDialog` no se muestra aquí, ya que no está directamente relacionado con el control de interrupciones. Se utiliza para pedir a los usuarios los detalles de la reserva. Puede encontrar dicho código en **Dialogs\BookingDialogs.cs**.
 
@@ -106,11 +108,11 @@ El código de `BookingDialog` no se muestra aquí, ya que no está directamente 
 
 Cuando llega la nueva actividad de mensaje, el bot ejecuta `MainDialog`. `MainDialog` pide al usuario en qué puede ayudarle. Y, a continuación, inicia `bookingDialog` en el método `MainDialog.actStep`, con una llamada a `beginDialog` tal como se muestra a continuación.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-88&highlight=16-17)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=90-97&highlight=96-97)]
 
 Seguidamente, en el método `finalStep` de la clase `MainDialog`, el diálogo de reservas finaliza y la reserva se considera completada o cancelada.
 
-[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=93-110)]
+[!code-javascript[Final step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=135-139)]
 
 El código de `BookingDialog` no se muestra aquí, ya que no está directamente relacionado con el control de interrupciones. Se utiliza para pedir a los usuarios los detalles de la reserva. Puede encontrar dicho código en **dialogs/bookingDialogs.js**.
 
@@ -126,7 +128,7 @@ A continuación, se tratan las excepciones no controladas que se produzcan.
 
 En nuestro ejemplo, el controlador `OnTurnError` del adaptador recibe las excepciones producidas por la lógica de turnos del bot. Si se produce una excepción, el controlador elimina el estado de la conversación actual para impedir que el bot se bloquee en un bucle de error causado por estar en mal estado.
 
-[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=12-41)]
+[!code-csharp[AdapterWithErrorHandler](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/AdapterWithErrorHandler.cs?range=13-45)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -134,7 +136,7 @@ En nuestro ejemplo, el controlador `OnTurnError` del adaptador recibe las excepc
 
 En nuestro ejemplo, el controlador `onTurnError` del adaptador recibe las excepciones producidas por la lógica de turnos del bot. Si se produce una excepción, el controlador elimina el estado de la conversación actual para impedir que el bot se bloquee en un bucle de error causado por estar en mal estado.
 
-[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=28-38)]
+[!code-javascript[AdapterWithErrorHandler](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=34-44)]
 
 ---
 
@@ -146,11 +148,11 @@ En nuestro ejemplo, el controlador `onTurnError` del adaptador recibe las excepc
 
 Por último, en `Startup.cs`, se crea el bot como transitorio y, en cada turno, se crea una nueva instancia del bot.
 
-[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=46-47)]
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=47-48)]
 
 Como referencia, estas son las definiciones de clase que se usan en la llamada para crear el bot anterior.
 
-[!code-csharp[MainDialog signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=15)]
+[!code-csharp[MainDialog signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=17)]
 [!code-csharp[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogAndWelcomeBot.cs?range=16)]
 [!code-csharp[DialogBot signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Bots/DialogBot.cs?range=18)]
 
@@ -160,11 +162,11 @@ Como referencia, estas son las definiciones de clase que se usan en la llamada p
 
 Por último, en `index.js`, se crea el bot.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=55-56)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=69-73)]
 
 Como referencia, estas son las definiciones de clase que se usan en la llamada para crear el bot anterior.
 
-[!code-javascript[MainDialog signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=12)]
+[!code-javascript[MainDialog signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=11)]
 [!code-javascript[DialogAndWelcomeBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogAndWelcomeBot.js?range=8)]
 [!code-javascript[DialogBot signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/bots/dialogBot.js?range=6)]
 
@@ -172,7 +174,7 @@ Como referencia, estas son las definiciones de clase que se usan en la llamada p
 
 ## <a name="to-test-the-bot"></a>Prueba del bot
 
-1. Si aún no lo hizo, instale [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
+1. Si aún no lo ha hecho, instale [Bot Framework Emulator](https://aka.ms/bot-framework-emulator-readme).
 1. Ejecute el ejemplo localmente en la máquina.
 1. Inicie el emulador, conéctese al bot y envíe mensajes como se muestra a continuación.
 

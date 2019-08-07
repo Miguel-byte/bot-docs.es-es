@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: ac74fff5fa7635bf0ef585423b0f8663a1df41c4
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67404834"
 ---
 # <a name="send-and-receive-attachments"></a>Envío y recepción de datos adjuntos
@@ -31,7 +31,7 @@ Un intercambio de mensajes entre el usuario y el bot puede contener datos adjunt
 * **Tarjetas**: puede enviar un amplio conjunto de tarjetas visuales <!-- and custom keyboards --> estableciendo **contentType** en el tipo de tarjeta deseado y, a continuación, pasando el código JSON de la tarjeta. Si usa una de las clases de generador de tarjetas enriquecidas, como **HeroCard**, los adjuntos se rellenan automáticamente. Consulte [envío de una tarjeta enriquecida](bot-builder-nodejs-send-rich-cards.md) para obtener un ejemplo de esto.
 
 ## <a name="add-a-media-attachment"></a>Incorporación de datos adjuntos con elementos multimedia
-El objeto del mensaje debe ser una instancia de un método [IMessage][IMessage] and it's most useful to send the user a message as an object when you’d like to include an attachment like an image. Use the [session.send()][SessionSend] para enviar mensajes en forma de un objeto JSON. 
+Se espera que el objeto del mensaje sea una instancia de [IMessage][IMessage] y lo más útil resulta enviar al usuario un mensaje como objeto cuando desea incluir adjuntos, como una imagen. Use el método [session.send()][SessionSend] para enviar mensajes en forma de objeto JSON. 
 
 ## <a name="example"></a>Ejemplo
 

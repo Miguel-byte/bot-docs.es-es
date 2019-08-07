@@ -6,18 +6,17 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: d69013c721552483cfd38b204936cb1c7f508f82
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64564009"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757193"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implementar una funcionalidad específica de canal
 
-Algunos canales proporcionan características que no se pueden implementar usando únicamente el [texto y los datos adjuntos del mensaje](bot-framework-rest-connector-create-messages.md). Para implementar una funcionalidad específica de canal, puede pasar los metadatos nativos a un canal en la propiedad `channelData` del objeto [Activity][Activity]. Por ejemplo, el bot puede usar la propiedad `channelData` para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
+Algunos canales proporcionan características que no se puede implementar mediante el uso de [texto y datos adjuntos del mensaje](bot-framework-rest-connector-create-messages.md) únicamente. Para implementar la funcionalidad específica del canal, puede pasar metadatos nativo a un canal en la propiedad `channelData` del objeto `Activity`. Por ejemplo, el bot puede usar la propiedad `channelData` para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
 
 En este artículo se describe cómo usar la propiedad `channelData` de la actividad de un mensaje para implementar esta funcionalidad específica de canal:
 
@@ -27,14 +26,14 @@ En este artículo se describe cómo usar la propiedad `channelData` de la activi
 | Slack | Envío de mensajes de Slack de plena fidelidad. |
 | Facebook | Envío de notificaciones de Facebook de forma nativa. |
 | Telegram | Acciones específicas de Telegram, como compartir una nota de voz o un adhesivo. |
-| Kik | Envío y recepción de mensajes nativos de Kik. | 
+| Kik | Envío y recepción mensajes nativos de Kik | 
 
 > [!NOTE]
-> El valor de la propiedad `channelData` de un objeto [Activity][Activity] es un objeto JSON. La estructura del objeto JSON variará según el canal y la funcionalidad que se implementa, tal como se describe a continuación. 
+> El valor de la propiedad `channelData` de un objeto `Activity` es un objeto JSON. La estructura del objeto JSON variará según el canal y la funcionalidad que se implementa, tal como se describe a continuación. 
 
 ## <a name="create-a-custom-email-message"></a>Crear un mensaje de correo electrónico personalizado
 
-Para crear un mensaje de correo electrónico, establezca la propiedad `channelData` del objeto [Activity][Activity] en un objeto JSON que contenga estas propiedades:
+Para crear un mensaje de correo electrónico, establezca la propiedad `channelData` del objeto `Activity` en un objeto JSON que contenga estas propiedades:
 
 [!INCLUDE [Email channelData table](~/includes/snippet-channelData-email.md)]
 
@@ -50,12 +49,12 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 }
 ```
 
-## <a name="create-a-full-fidelity-slack-message"></a>Crear un mensaje de Slack de plena fidelidad
+## <a name="create-a-full-fidelity-slack-message"></a>Creación de un mensaje de Slack de plena fidelidad
 
-Para crear un mensaje de Slack de plena fidelidad, establezca la propiedad `channelData` del objeto [Activity][Activity] en un objeto JSON que especifique <a href="https://api.slack.com/docs/messages" target="_blank">mensajes de Slack</a>, <a href="https://api.slack.com/docs/message-attachments" target="_blank">elementos adjuntos de Slack</a> o <a href="https://api.slack.com/docs/message-buttons" target="_blank">botones de Slack</a>. 
+Para crear un mensaje de Slack de plena fidelidad, establezca la propiedad `channelData` del objeto `Activity` en un objeto JSON que especifique <a href="https://api.slack.com/docs/messages" target="_blank">mensajes de Slack</a>, <a href="https://api.slack.com/docs/message-attachments" target="_blank">adjuntos de Slack</a> o <a href="https://api.slack.com/docs/message-buttons" target="_blank">botones de Slack</a>. 
 
 > [!NOTE]
-> Para admitir botones en los mensajes de Slack, debe habilitar **Mensajes interactivos** cuando [conecte el bot](../bot-service-manage-channels.md) al canal de Slack.
+> Para admitir botones en los mensajes de Slack, debe habilitar **Mensajes interactivos** cuando [conecta el bot](../bot-service-manage-channels.md) al canal de Slack.
 
 En este fragmento de código se muestra un ejemplo de la propiedad `channelData` para un mensaje de Slack personalizado.
 
@@ -134,9 +133,9 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 
 El bot puede responder a este mensaje de la [forma normal](bot-framework-rest-connector-send-and-receive-messages.md#create-reply) o puede registrar su respuesta directamente en punto de conexión que haya especificado la propiedad `response_url` del objeto `payload`. Para obtener información sobre cuándo y cómo publicar una respuesta en `response_url`, consulte <a href="https://api.slack.com/docs/message-buttons" target="_blank">Botones de Slack</a>. 
 
-## <a name="create-a-facebook-notification"></a>Crear una notificación de Facebook
+## <a name="create-a-facebook-notification"></a>Creación de una notificación de Facebook
 
-Para crear una notificación de Facebook, establezca la propiedad `channelData` del objeto [Activity][Activity] en un objeto JSON que especifique estas propiedades: 
+Para crear una notificación de Facebook, establezca la propiedad `channelData` del objeto `Activity` en un objeto JSON que especifique estas propiedades: 
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
@@ -161,9 +160,9 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 }
 ```
 
-## <a name="create-a-telegram-message"></a>Crear un mensaje de Telegram
+## <a name="create-a-telegram-message"></a>Creación de un mensaje de Telegram
 
-Para crear un mensaje que implemente las acciones específicas de Telegram, como compartir una nota de voz o un sticker, establezca la propiedad `channelData` del objeto [Activity][Activity] en un objeto JSON que especifique estas propiedades: 
+Para crear un mensaje que implemente las acciones específicas de Telegram, como compartir una nota de voz o un sticker, establezca la propiedad `channelData` del objeto `Activity` en un objeto JSON que especifique estas propiedades: 
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
@@ -235,9 +234,9 @@ En este fragmento de código se muestra un ejemplo de una propiedad `channelData
 ]
 ```
 
-## <a name="create-a-native-kik-message"></a>Crear un mensaje de Kik nativo
+## <a name="create-a-native-kik-message"></a>Creación de un mensaje de Kik nativo
 
-Para crear un mensaje de Kik nativo, establezca la propiedad `channelData` del objeto [Activity][Activity] en un objeto JSON que especifique esta propiedad: 
+Para crear un mensaje de Kik nativo, establezca la propiedad `channelData` del objeto `Activity` en un objeto JSON que especifique esta propiedad: 
 
 | Propiedad | DESCRIPCIÓN |
 |----|----|
@@ -274,6 +273,5 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 - [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Preview features with the Channel Inspector](../bot-service-channel-inspector.md) (Vista previa de las características con el Inspector de canales)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

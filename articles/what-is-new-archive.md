@@ -5,17 +5,17 @@ keywords: bot framework, azure bot service
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 0b7342274e37ff33afb8695e8f25fbf0fa707178
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: 4553335cbca5b5eb720c7cffd11c8e14c8aa19c1
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336756"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671527"
 ---
 # <a name="whats-new-in-bot-framework-may-2019"></a>Novedades de Bot Framework (mayo de 2019)
 
@@ -23,7 +23,7 @@ ms.locfileid: "68336756"
 |---|:---:|:---:|:------:|:-----:|
 |SDK |[4.4.3][1] | [4.4.0][2] | [4.4.0b1 (versión preliminar)][3] | [4.0.0a6 (versión preliminar)][3a]|
 |Docs | [docs][5] |[docs][5] |  | |
-|Ejemplos |[.NET Core][6], [WebAPI][10] |[Node.js][7] , [TypeScript][8], [es6][9]  | [Python][111] | | 
+|Ejemplos |[.NET Core][6], [WebAPI][10] |[Node.js][7], [TypeScript][8], [es6][9]  | [Python][111] | | 
 
 [1a]:https://github.com/microsoft/botframework-sdk/#readme
 [1]:https://github.com/Microsoft/botbuilder-dotnet/#packages
@@ -42,7 +42,7 @@ ms.locfileid: "68336756"
 <a name="V4-whats-new"></a>
 ## <a name="bot-framework-sdk-new-in-preview"></a>SDK Bot Framework (Nuevo. En versión preliminar)
 
-- [Cuadro de diálogo adaptable][47] | [docs][48] | [Ejemplos de C#][49]: Los diálogos adaptables permiten a los desarrolladores crear conversaciones que se pueden cambiar dinámicamente a medida que la conversación progresa.  Tradicionalmente, los desarrolladores han trazado un mapa de todo el flujo de una conversación al principio, lo que limita la flexibilidad de la conversación.  Los diálogos adaptables les permiten ser más flexibles, responder a los cambios de contexto e insertar nuevos pasos o diálogos secundarios completos en la conversación a medida que esta avanza. 
+- [Diálogo adaptable][47] | [docs][48] | [Ejemplos de C#][49]: Los diálogos adaptables permiten a los desarrolladores crear conversaciones que se pueden cambiar dinámicamente a medida que la conversación progresa.  Tradicionalmente, los desarrolladores han trazado un mapa de todo el flujo de una conversación al principio, lo que limita la flexibilidad de la conversación.  Los diálogos adaptables les permiten ser más flexibles, responder a los cambios de contexto e insertar nuevos pasos o diálogos secundarios completos en la conversación a medida que esta avanza. 
 
 - [Generación de lenguaje][43] | [docs][44] | [Ejemplos de C#][45]: generación del lenguaje; que permite al desarrollador extraer las cadenas insertadas de los archivos de código y recursos, y administrarlas mediante un entorno de ejecución de generación del lenguaje y un formato de archivo.  La generación del lenguaje permite a los clientes definir múltiples variaciones de una frase, ejecutar expresiones simples basadas en el contexto, referirse a la memoria conversacional, y con el tiempo permitirá traer funcionalidades adicionales que ofrecerán una experiencia conversacional más natural.
 
@@ -62,7 +62,7 @@ ms.locfileid: "68336756"
 ## <a name="botkit"></a>Botkit
 [Botkit][100] es una herramienta de desarrollo y un SDK para crear bots de chat, aplicaciones e integraciones personalizadas para las principales plataformas de mensajería. Los bots de Botkit utilizan `hear()` para escuchar a los desencadenadores, `ask()` para preguntar y `say()` para responder. Los desarrolladores pueden usar esta sintaxis para construir diálogos, ahora compatibles con la última versión del SDK Bot Framework. 
 
-Además, Botkit trae consigo seis adaptadores de plataforma que permiten a las aplicaciones de Javascript comunicarse directamente con las plataformas de mensajería: [Slack][102], [Webex Teams][103], [Google Hangouts][104], [Facebook Messenger][105], [Twilio][106] y [Chat en web][107].
+Además, Botkit trae consigo seis adaptadores de plataforma que permiten a las aplicaciones de Javascript comunicarse directamente con las plataformas de mensajería: [Slack][102], [Webex Teams][103], [Google Hangouts][104], [Facebook Messenger][105], [Twilio][106] y [Web chat][107].
 
 Botkit forma parte de Microsoft Bot Framework y está publicado bajo la [licencia de código abierto de MIT][101].
 
@@ -86,7 +86,7 @@ En el [repositorio de soluciones de Bot Framework](https://github.com/Microsoft/
 |[**Análisis**](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics)| Obtenga información clave sobre el estado y el comportamiento del bot con las soluciones de análisis de inteligencia artificial conversacional. Revise la telemetría disponible, ejemplos de consultas de Application Insights y paneles de Power BI para comprender la amplitud de las conversaciones del bot con los usuarios. |
 
 ## <a name="azure-bot-service"></a>Azure Bot Service
-Azure Bot Service le permite hospedar bots inteligentes de nivel empresarial con total propiedad y control de sus datos. Los desarrolladores pueden registrar y conectar los bots a usuarios de Skype, Microsoft Teams, Cortana, Web Chat y mucho más. [Azure][27] |  [docs][28] | [conectarse a canales][29] 
+Azure Bot Service le permite hospedar bots inteligentes de nivel empresarial con total propiedad y control de sus datos. Los desarrolladores pueden registrar y conectar los bots a usuarios de Skype, Microsoft Teams, Cortana, Web Chat y mucho más. [Azure][27]  |  [docs][28] | [conexión a los canales][29] 
 
 * **Cliente de Direct Line para JS**: Si desea utilizar el canal de Direct Line en Azure Bot Service y no usa el cliente de Web Chat, el cliente Direct Line para JS puede emplearse en la aplicación personalizada. Vaya a [Github][30] para obtener más información.
 
@@ -126,7 +126,7 @@ Un servicio basado en el aprendizaje automático para crear experiencias en leng
 
 - **Nuevo. Panel de análisis**: LUIS está iniciando un panel de análisis integral más detallado y visualmente rico. Su diseño fácil de usar destaca los problemas comunes a los que se enfrentan la mayoría de los usuarios al diseñar aplicaciones; para ello, proporciona explicaciones sencillas sobre cómo resolverlos para ayudar a los usuarios a comprender mejor la calidad de sus modelos, los posibles problemas de datos y la guía para adoptar los procedimientos recomendados.
 
-[Docs][31] | [Add language understanding to your bot][32] 
+[Docs][31] | [Incorporación de comprensión del lenguaje al bot][32] 
 
 [18]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS#readme
 [19]:https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker#readme
@@ -143,7 +143,7 @@ Un servicio basado en el aprendizaje automático para crear experiencias en leng
 - **Nuevo. Inteligencia**: Modelos de clasificación contextuales, sugerencias de aprendizaje activo
 - **Nuevo. Conversación**: Conversaciones de varios turnos en QnA Maker.
 
-[Docs][34]  | [add qnamaker to your bot][35] 
+[Docs][34]  | [agregar qnamaker al bot][35] 
 
 [33]:https://www.qnamaker.ai/
 [34]:https://aka.ms/qnamaker-docs-home

@@ -5,17 +5,17 @@ keywords: deploy bot, azure deploy bot, publish bot
 author: ivorb
 ms.author: v-ivorb
 manager: kamrani
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: bot-service
 ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: cc49cab1a3c82b3f0af2a4d8ebf261415c137e36
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405973"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671384"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -63,7 +63,7 @@ az ad app create --display-name "displayName" --password "AtLeastSixteenCharacte
 | Opción   | DESCRIPCIÓN |
 |:---------|:------------|
 | display-name | Nombre para mostrar de la aplicación. |
-| contraseña | Contraseña de aplicación, también conocida como "secreto de cliente". La contraseña debe tener al menos 16 caracteres, contener al menos un carácter alfabético en mayúsculas o minúsculas, y contener al menos 1 carácter especial|
+| password | Contraseña de aplicación, también conocida como "secreto de cliente". La contraseña debe tener al menos 16 caracteres, contener al menos un carácter alfabético en mayúsculas o minúsculas, y contener al menos 1 carácter especial|
 | available-to-other-tenants| Se puede usar la aplicación desde cualquier inquilino de Azure AD. Debe ser `true` para permitir al bot que funcione con los canales de Azure Bot Service.|
 
 El comando anterior da como resultado un JSON con la clave `appId`, guarde el valor de esta clave para la implementación de ARM, donde se usará para el parámetro `appId`. La contraseña proporcionada se usará para el parámetro `appSecret`.
@@ -178,9 +178,19 @@ az webapp deployment source config-zip --resource-group "<new-group-name>" --nam
 | src  | La ruta de acceso al archivo ZIP que ha creado. |
 
 ## <a name="3-test-in-web-chat"></a>3. Probar en Chat en web
-- En Azure Portal, vaya a la hoja del bot de la aplicación web.
-- En la sección **Administración del bot**, haga clic en **Probar en Chat en web**. Azure Bot Service cargará el control Chat en web y se conectará al bot.
-- Espere unos segundos después de una implementación correcta; también puede reiniciar la aplicación web para borrar toda la memoria caché. Vuelva a la hoja Bot de aplicación web y pruebe con el Chat en web proporcionado en Azure Portal.
+
+1. En el explorador, vaya a [Azure Portal](https://ms.portal.azure.com).
+2. Haga clic en **Grupos de recursos** en el panel izquierdo.
+3. En el panel derecho, busque el grupo.
+4. Haga clic en el nombre del grupo.
+5. Haga clic en el vínculo del registro de canales de bot.
+6. En la *hoja Bot Channel Registration* (Registro de canales de bot), haga clic en **Test in Web Chat** (Probar en Chat en web).
+O bien, en el panel derecho, haga clic en el cuadro Probar.
+
+Para más información sobre el registro de canales, consulte [Registro de un bot en Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+
+> [!NOTE]
+> Una hoja es la superficie en la que aparecen las funciones de servicio o los elementos de navegación cuando se seleccionan.
 
 ## <a name="additional-information"></a>Información adicional
 La implementación de un bot en Azure conllevará el pago de los servicios que se usen. El artículo acerca de la [facturación y administración de costos](https://docs.microsoft.com/azure/billing/) sirve de ayuda para conocer la facturación de Azure, para supervisar el uso y los costos, y para administrar cuentas y suscripciones.

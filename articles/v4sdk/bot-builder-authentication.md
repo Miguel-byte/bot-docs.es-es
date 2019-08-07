@@ -9,12 +9,12 @@ ms.service: bot-service
 ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: e708f6b556c832ed7f8858a893cc5fb0a8406ab2
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
+ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404326"
+ms.lasthandoff: 07/27/2019
+ms.locfileid: "68591053"
 ---
 <!-- Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -98,21 +98,21 @@ Hay un par de problemas de seguridad importantes que hay que tener en cuenta cua
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de los [conceptos básicos de los bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos][ los diálogos de conceptos], cómo [implementar el flujo de conversación secuencial][simple-dialog], and how to [reuse dialogs][component-dialogs].
+- Conocimiento sobre [conceptos básicos de los bots][concept-basics], [administración de estado][concept-state], [biblioteca de diálogos][concept-dialogs], [implementación de flujos de conversación secuenciales][simple-dialog] y [reutilización de diálogos][component-dialogs].
 - Conocimientos de desarrollo de Azure y OAuth 2.0.
 - Visual Studio 2017 o versiones posteriores, Node.js, npm y git.
 - Uno de estos ejemplos.
 
 | Muestra | Versión de BotBuilder | Muestra |
 |:---|:---:|:---|
-| **Autenticación de bots** en [**CSharp**][cs-auth-sample] or [**JavaScript**][js-auth-sample] | v4 | Compatibilidad con OAuthCard |
-| **Autenticación MSGraph de bots** en [**CSharp**][cs-msgraph-sample] or [**JavaScript**][js-msgraph-sample] | v4 |  Compatibilidad de Microsoft Graph API con OAuth 2 |
+| **Autenticación de bots** en [**CSharp**][cs-auth-sample] o [**JavaScript**][js-auth-sample] | v4 | Compatibilidad con OAuthCard |
+| **Autenticación de bots de MSGraph** en [**CSharp**][cs-msgraph-sample] o [**JavaScript**][js-msgraph-sample] | v4 |  Compatibilidad de Microsoft Graph API con OAuth 2 |
 
 ## <a name="create-your-bot-resource-on-azure"></a>Creación de un recurso de bot en Azure
 
-Cree un **Registro de canales de bot** mediante [Azure Portal](https://portal.azure.com/).
+Cree un **recurso de bot** mediante [Azure Portal](https://portal.azure.com/).
 
-Registre el identificador de aplicación y la contraseña del bot. Para recopilar esta información, consulte [Administración de un bot](../bot-service-manage-overview.md).
+Para más información, consulte [Creación de un bot con Azure Bot Service](./abs-quickstart.md).
 
 ## <a name="create-and-register-an-azure-ad-application"></a>Creación y registro de una aplicación de Azure AD
 
@@ -247,7 +247,7 @@ Para completar este proceso, necesitará el id. de la aplicación y la contrase�
 
 <!-- TODO: Add guidance (once we have it) on how not to hard-code IDs and ABS auth. -->
 
-1. Clone el ejemplo con el que desee trabajar del repositorio de GitHub: [**Autenticación del bot**][cs-auth-sample] or [**Bot authentication MSGraph**][cs-msgraph-sample].
+1. Clone el ejemplo con el que desee trabajar del repositorio de GitHub: [**Autenticación de bot**][cs-auth-sample] o [**Autenticación de bot MSGraph**][cs-msgraph-sample].
 1. Actualice **appsettings.json**:
 
     - Establezca en `ConnectionName` el nombre del valor de conexión de OAuth que agregó al bot.
@@ -259,7 +259,7 @@ Para completar este proceso, necesitará el id. de la aplicación y la contrase�
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-1. Clone el bot del repositorio de GitHub el con el que desee trabajar: [**Autenticación del bot**][js-auth-sample] or [**Bot authentication MSGraph**][js-msgraph-sample].
+1. Clone el bot del repositorio de GitHub el con el que desee trabajar: [**Autenticación de bot**][js-auth-sample] o [**Autenticación de bot MSGraph**][js-msgraph-sample].
 1. Actualice **.env**:
 
     - Establezca en `connectionName` el nombre del valor de conexión de OAuth que agregó al bot.

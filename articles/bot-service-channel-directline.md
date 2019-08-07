@@ -10,12 +10,12 @@ ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: v-ivorb
-ms.openlocfilehash: 0b108d90d18261cd22214db9a7926bdac1bfee40
-ms.sourcegitcommit: a4181f35dbe6a8b107eea28122372f524e19880a
+ms.openlocfilehash: 08765793611a0c2543fea481479ea4cfa2c8b74c
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030198"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671422"
 ---
 ## <a name="about-direct-line"></a>Acerca de Direct Line
 
@@ -29,16 +29,16 @@ Puede elegir qué oferta de Direct Line es la mejor para usted mediante la evalu
 
 |                            | Direct Line | Extensión de App Service de Direct Line | Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
-| Disponibilidad general y Acuerdo de Nivel de Servicio    | Disponibilidad general | Versión preliminar privada, sin Acuerdo de Nivel de Servicio  | Versión preliminar privada, sin Acuerdo de Nivel de Servicio |
+| Disponibilidad y licencias    | Disponibilidad general | Versión preliminar privada, sin Acuerdo de Nivel de Servicio  | Versión preliminar privada, sin Acuerdo de Nivel de Servicio |
 | Rendimiento en reconocimiento de voz y de texto a voz | Estándar | Estándar | Alto rendimiento |
-| OAuth integrado           | Sí | Sí | Sin  |
-| Telemetría integrada       | Sí | Sí | Sin  |
-| Es compatible con los exploradores web heredados | Sí | No | Sin  |
+| OAuth integrado           | Sí | Sí | Sin |
+| Telemetría integrada       | Sí | Sí | Sin |
+| Es compatible con los exploradores web heredados | Sí | No | Sin |
 | Compatibilidad con Bot Framework SDK | Todas las v3, v4 | Necesaria v4.5+ | Necesaria v4.5+ |
 | Compatibilidad con SDK de cliente    | JS, C# | JS, C# | C++, C#, Unity |
-| Funciona con Chat en web  | Sí | Sí | Sin |
-| API de historial de conversaciones | Sí | Sí| Sin |
-| VNET | Sin  | Versión preliminar* | Sin  |
+| Funciona con Chat en web  | Sí | Sí | Sin|
+| API de historial de conversaciones | Sí | Sí| Sin|
+| VNET | Sin | Versión preliminar* | Sin |
 
 _* Las extensiones de App Service de Direct Line se pueden usar en redes virtuales, pero aún no permiten la restricción de las llamadas salientes._
 

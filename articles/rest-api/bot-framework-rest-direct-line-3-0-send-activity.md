@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 290a2733b96a458eb3529b0b0854703631e05f22
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: a9a98419a8ac65c7e1093e1281e03917fa4eca11
+ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000042"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68671501"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envío de una actividad al bot
 
@@ -46,7 +46,12 @@ Content-Type: application/json
 
 ### <a name="response"></a>Response
 
-Cuando se entrega la actividad al bot, el servicio responde con un código de estado HTTP que refleja el código de estado del bot. Si el bot genera un error, se devuelve una respuesta HTTP 502 ("Puerta de enlace incorrecta") al cliente en respuesta a su solicitud de envío de actividad. Si la solicitud POST se realiza correctamente, la respuesta contiene una carga JSON que especifica el identificador de la actividad que se envió al bot.
+Cuando se entrega la actividad al bot, el servicio responde con un código de estado HTTP que refleja el código de estado del bot. Si el bot genera un error, se devuelve una respuesta HTTP 502 ("Puerta de enlace incorrecta") al cliente en respuesta a su solicitud de envío de actividad.
+
+> [!NOTE]
+> Esto puede deberse al hecho de que no se ha usado un token correcto. Para enviar una actividad solo se puede usar el token que se recibió al *iniciar la conversación*.
+
+Si la solicitud POST se realiza correctamente, la respuesta contiene una carga JSON que especifica el identificador de la actividad que se envió al bot.
 
 ```http
 HTTP/1.1 200 OK
