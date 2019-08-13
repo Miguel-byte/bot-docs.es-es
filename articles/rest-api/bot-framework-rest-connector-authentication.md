@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: cbe2a6e449ecc2920e3a2d1ecb04a63dcb489b66
-ms.sourcegitcommit: 8336a06941d09e1107b38f494d048dd785a13069
+ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68631566"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757051"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -181,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 El cuerpo de la respuesta especifica el documento en [formato JWK](https://tools.ietf.org/html/rfc7517), pero también incluye una propiedad adicional para cada clave: `endorsements`. La lista de claves es relativamente estable y se puede almacenar en caché durante largos períodos de tiempo (de forma predeterminada, 5 días en Bot Framework SDK).
 
-La propiedad `endorsements` dentro de cada clave contiene una o más cadenas de aprobación que puede usar para comprobar que el identificador de canal especificado en la propiedad `channelId` dentro del objeto [Activity][Activity] de la solicitud entrante es auténtico. La lista de identificadores de canal que requieren aprobaciones es configurable en cada bot. De forma predeterminada, será la lista de todos los identificadores de canal publicados, aunque los desarrolladores de bots pueden invalidar los valores de identificador de canal seleccionados en cualquier caso. 
+La propiedad `endorsements` dentro de cada clave contiene una o más cadenas de aprobación que puede usar para comprobar que el identificador de canal especificado en la propiedad `channelId` dentro del objeto `Activity` de la solicitud entrante es auténtico. La lista de identificadores de canal que requieren aprobaciones es configurable en cada bot. De forma predeterminada, será la lista de todos los identificadores de canal publicados, aunque los desarrolladores de bots pueden invalidar los valores de identificador de canal seleccionados en cualquier caso. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Paso 4: Verificación del token JWT
 
@@ -195,11 +194,11 @@ Hay disponibles bibliotecas de análisis de JWT para muchas plataformas y la may
 4. El token contiene una notificación "audience" (audiencia) con un valor igual al identificador de aplicación de Microsoft del bot.
 5. El token está dentro de su período de validez. El tiempo estándar del sector es de 5 minutos.
 6. El token tiene una firma criptográfica válida, con una clave enumerada en el documento de claves de OpenID que se recuperó en el [Paso 3](#connector-to-bot-step-3), utilizando el algoritmo de firma que se especifica en la propiedad `id_token_signing_alg_values_supported` del documento de metadatos de OpenID que se recuperó en [Paso 2](#openid-metadata-document).
-7. El token contiene una notificación "serviceUrl" (dirección URL de servicio) cuyo valor coincide con la propiedad `servieUrl` en la raíz del objeto [Activity][Activity] de la solicitud entrante. 
+7. El token contiene una notificación "serviceUrl" (dirección URL de servicio) cuyo valor coincide con la propiedad `servieUrl` en la raíz del objeto `Activity` de la solicitud entrante. 
 
 Si se requiere aprobación para un identificador de canal:
 
-- Debe requerir que cualquier objeto [Activity][Activity] enviado al bot con ese identificador de canal venga acompañado de un token JWT firmado con una aprobación para ese canal. 
+- Debe requerir que cualquier objeto `Activity` enviado al bot con ese identificador de canal venga acompañado de un token JWT firmado con una aprobación para ese canal. 
 - Si la aprobación no está presente, el bot debe rechazar la solicitud devolviendo un código de estado **HTTP 403 (prohibido)** .
 
 > [!IMPORTANT]
@@ -389,8 +388,7 @@ payload:
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Solución de problemas de autenticación de Bot Framework](../bot-service-troubleshoot-authentication-problems.md)
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [JSON Web Token (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [Firma web JSON (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [Clave web JSON (JWK) RFC 7517](https://tools.ietf.org/html/rfc7517)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

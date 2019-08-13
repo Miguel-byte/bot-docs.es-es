@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 57babac9594118c12805ff9023cf7086e526a273
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997945"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757147"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Crear un bot con el servicio Bot Connector
 > [!div class="op_single_selector"]
@@ -71,7 +70,7 @@ Una conversación es una serie de mensajes que se intercambian un usuario y su b
 
 ### <a name="receive-a-message-from-the-user"></a>Recibir un mensaje del usuario
 
-Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitud al punto de conexión que se especificó cuando se [registró](../bot-service-quickstart-registration.md) el bot. El cuerpo de la solicitud es un objeto [Activity][Activity]. En el siguiente ejemplo se muestra el cuerpo de la solicitud que recibe un bot cuando el usuario le envía un mensaje simple. 
+Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitud al punto de conexión que se especificó cuando se [registró](../bot-service-quickstart-registration.md) el bot. El cuerpo de la solicitud es un objeto `Activity`. En el siguiente ejemplo se muestra el cuerpo de la solicitud que recibe un bot cuando el usuario le envía un mensaje simple. 
 
 ```json
 {
@@ -98,7 +97,7 @@ Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitu
 
 ### <a name="reply-to-the-users-message"></a>Responder al mensaje del usuario
 
-Cuando el punto de conexión del bot recibe una solicitud `POST` que representa un mensaje del usuario (es decir, `type` = **mensaje**), use la información de esa solicitud para crear el objeto [Activity][Activity] de la respuesta.
+Cuando el punto de conexión del bot recibe una solicitud `POST` que representa un mensaje del usuario (es decir, `type` = **message**), use la información de esa solicitud para crear el objeto `Activity` de la respuesta.
 
 1. Establezca la propiedad **conversation** en el contenido de la propiedad **conversation** del mensaje del usuario.
 2. Establezca la propiedad **from** en el contenido de la propiedad **recipient** del mensaje del usuario.
@@ -107,7 +106,7 @@ Cuando el punto de conexión del bot recibe una solicitud `POST` que representa 
 
 Use la propiedad `serviceUrl` de la solicitud entrante para [identificar el URI base](bot-framework-rest-connector-api-reference.md#base-uri) que el bot debería usar para emitir su respuesta. 
 
-Para enviar la respuesta, `POST` el objeto [Activity][Activity] a `/v3/conversations/{conversationId}/activities/{activityId}`, tal como se muestra en el siguiente ejemplo. El cuerpo de esta solicitud es un objeto [Activity][Activity] que solicita al usuario que seleccione una hora de cita disponible.
+Para enviar la respuesta, envíe mediante `POST` el objeto `Activity` a `/v3/conversations/{conversationId}/activities/{activityId}`, tal como se muestra en el siguiente ejemplo. El cuerpo de esta solicitud es un objeto `Activity` que solicita al usuario que seleccione una hora de cita disponible.
 
 ```http
 POST https://smba.trafficmanager.net/apis/v3/conversations/abcd1234/activities/bf3cc9a2f5de... 
@@ -135,7 +134,7 @@ Content-Type: application/json
 }
 ```
 
-En esta solicitud de ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; los URI base para las solicitudes que emite el bot pueden ser diferentes. Para obtener más información sobre cómo establecer el URI base, consulte [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri). 
+En la solicitud del ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; el URI base para solicitudes que su bot emita puede ser distinto. Para obtener más información sobre cómo establecer el URI base, consulte [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri). 
 
 > [!IMPORTANT]
 > Tal como se muestra en este ejemplo, el encabezado `Authorization` de cada solicitud de API que envíe debe contener la palabra **Bearer** (portador) seguida del token de acceso que [obtuvo en Bot Framework](#get-token).
@@ -195,6 +194,3 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Pasos siguientes
 
 En este tutorial obtuvo un token de acceso de Bot Framework y usó el servicio Bot Connector para intercambiar mensajes con el usuario. Puede usar [Bot Framework Emulator](../bot-service-debug-emulator.md) para probar y depurar el bot. Si desea compartir su bot con otros usuarios, deberá [configurarlo](../bot-service-manage-channels.md) para que se ejecute en uno o más canales.
-
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -3,20 +3,19 @@ title: Control de las interrupciones del usuario | Microsoft Docs
 description: Obtenga información sobre cómo controlar el flujo de conversación directa y la interrupción del usuario.
 keywords: interrumpir, interrupciones, cambio de tema, interrupción
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 04/18/2019
 ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ba1bc99608558966f4cf45894b2e04b8f17c9a69
-ms.sourcegitcommit: 23a1808e18176f1704f2f6f2763ace872b1388ae
+ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68483964"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757004"
 ---
 # <a name="handle-user-interruptions"></a>Control de las interrupciones del usuario
 
@@ -28,8 +27,8 @@ El control de interrupciones es un aspecto importante de un bot sólido. Los usu
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de los [conceptos básicos de bots][concept-basics], [managing state][concept-state], la [biblioteca de diálogos][concept-dialogs] y cómo [reutilizar diálogos][component-dialogs].
-- Una copia del ejemplo de bot básico en [**CSharp**][cs-sample] or [**JavaScript**][js-sample].
+- Conocimiento de los [conceptos básicos de bots][concept-basics], la [administración del estado][concept-state], la [biblioteca de diálogos][concept-dialogs] y la [reutilización de diálogos][component-dialogs].
+- Una copia del ejemplo de bot básico en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo
 
@@ -52,7 +51,7 @@ Comenzamos por la implementación de la clase `CancelAndHelpDialog` para control
 
 [!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
 
-En la clase `CancelAndHelpDialog`, los métodos `OnBeginDialogAsync` y `OnContinueDialogAsync` llaman al método `InerruptAsync` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `InterruptAsync`.
+En la clase `CancelAndHelpDialog`, el método `OnContinueDialogAsync` llama al método `InerruptAsync` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `InterruptAsync`.
 
 [!code-csharp[Overrides](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=22-31)]
 
@@ -72,7 +71,7 @@ Comenzamos por la implementación de la clase `CancelAndHelpDialog` para control
 
 [!code-javascript[Class signature](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=11)]
 
-En la clase `CancelAndHelpDialog`, los métodos `onBeginDialog` y `onContinueDialog` llaman al método `interrupt` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `interrupt`.
+En la clase `CancelAndHelpDialog`, el método `onContinueDialog` llama al método `interrupt` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `interrupt`.
 
 [!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/cancelAndHelpDialog.js?range=12-18)]
 

@@ -3,19 +3,18 @@ title: Implementación del bot | Microsoft Docs
 description: Implemente su bot en la nube de Azure.
 keywords: deploy bot, azure deploy bot, publish bot
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: ed7c9d7a883a1d1807237b636bbb59d25df60e08
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: a5ef32f16ae8424093cebd77ed137fb31ed53a22
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671384"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756792"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -43,6 +42,10 @@ Ya ha creado y probado localmente un bot y ahora quiere implementarlo en Azure. 
 az login
 ```
 Se abrirá una ventana del explorador, lo que le permite iniciar sesión.
+
+> [!NOTE]
+> Si implementa el bot en una nube que no es de Azure, como Gov (US), debe ejecutar `az cloud set --name <name-of-cloud>` antes de `az login`, donde &lt;name-of-cloud> es el nombre de una nube registrada, como `AzureUSGovernment`. Si desea volver a la nube pública, puede ejecutar `az cloud set --name AzureCloud`. 
+
 
 ### <a name="set-the-subscription"></a>Establecimiento de la suscripción
 Establezca la suscripción predeterminada que desea usar.
@@ -123,7 +126,7 @@ az group deployment create --name "<name-of-deployment>" --resource-group "<name
 
 ### <a name="retrieve-or-create-necessary-iiskudu-files"></a>Recuperación o creación de los archivos IIS/Kudu necesarios
 
-**Para bots de C#**
+### <a name="c-botstabcsharp"></a>[Bots de C#](#tab/csharp)
 
 ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
@@ -131,7 +134,7 @@ az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.cspro
 
 Debe proporcionar la ruta de acceso al archivo .csproj relacionada con --code-dir. Esto puede realizarse mediante el argumento --proj-file-path. El comando debería resolver --code-dir y --proj-file-path en "./MyBot.csproj"
 
-**Para bots de JavaScript**
+### <a name="javascript-botstabjavascript"></a>[Bots de JavaScript](#tab/javascript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
@@ -139,13 +142,15 @@ az bot prepare-deploy --code-dir "." --lang Javascript
 
 Este comando capturará un archivo web.config que es necesario para que las aplicaciones de Node.js funcionen con IIS en Azure App Services. Asegúrese de que el archivo web.config se guarda en la raíz del bot.
 
-**Para bots de TypeScript**
+### <a name="typescript-botstabtypescript"></a>[Bots de TypeScript](#tab/typescript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
 ```
 
 Este comando funciona de forma similar al de JavaScript que se mencionó anteriormente, pero para un bot de TypeScript.
+
+---
 
 ### <a name="zip-up-the-code-directory-manually"></a>Comprimir el directorio de código manualmente
 

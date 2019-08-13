@@ -7,15 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c72f978e927f05f430ec94cf747016f4ebc15c5d
-ms.sourcegitcommit: 0e6c49964b96c1ac8485ba7afe0daae04b671138
+ms.openlocfilehash: 26622b5757a2fb8e7297484c02d1d8ba1a2c1b04
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67492009"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757199"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -24,9 +23,9 @@ ms.locfileid: "67492009"
 Si un bot utiliza varios modelos LUIS e instancias de QnA Maker Knowledge Base de QnA Maker (Knowledge Base), puede utilizar la herramienta de distribución para determinar qué modelo LUIS o Knowledge Base de QnA Maker es el que mejor se adapta a la entrada del usuario. La herramienta de distribución lo hace mediante la creación de una única aplicación LUIS para dirigir la entrada del usuario al modelo correcto. Para más información sobre la herramienta de distribución, incluidos los comandos de la CLI, consulte el archivo [LÉAME][dispatch-readme].
 
 ## <a name="prerequisites"></a>Requisitos previos
-- Conocimientos de los [conceptos básicos de bot](bot-builder-basics.md) y [LUIS][howto-luis], and [QnA Maker][howto-qna]. 
+- Base de conocimiento de [conceptos básicos de bots](bot-builder-basics.md), [LUIS][howto-luis] y [QnA Maker][howto-qna]. 
 - [Herramienta de distribución](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-- Una copia de **NLP con distribución** del repositorio de código de [ejemplo en C#][cs-sample] or [JS Sample][js-sample].
+- Una copia de **NLP con Dispatch** desde el repositorio de código [Ejemplo en C#][cs-sample] o [Ejemplo en JS][js-sample].
 - Una cuenta [luis.ai](https://www.luis.ai/) para publicar aplicaciones de LUIS.
 - Una cuenta de [QnA Maker](https://www.qnamaker.ai/) para publicar la base de conocimiento de QnA.
 
@@ -86,7 +85,7 @@ Antes de que pueda crear el modelo de distribución, tendrá que crear y publica
 
 7. Una vez que se ha publicado la nueva aplicación de LUIS, seleccione la pestaña _MANAGE_ (Administrar). En la página "Application Information" (Información de aplicación), registre los valores `Application ID` como "_id-aplicación-para-aplicación_" y `Display name` como "_nombre-de-aplicación_". En la página "Key and Endpoints" (Clave y puntos de conexión), registre los valores `Authoring Key` como "_su-clave-creación-luis_" y `Region` como "_su-región_". Estos valores se utilizarán más adelante en el archivo "appsetting.json".
 
-8. Una vez terminadas, _entrene_ y _publique_ la aplicación meteorológica y la de distribución de LUIS repitiendo los pasos anteriores para el archivo "Weather.json".
+8. Una vez terminadas, _entrene_ y _publique_ la aplicación **meteorológica** y la de **distribución** de LUIS repitiendo los pasos anteriores para el archivo "Weather.json".
 
 ### <a name="create-qna-maker-knowledge-base"></a>Creación de una base de conocimiento de QnA Maker
 
@@ -141,12 +140,18 @@ Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ d
 
 ## <a name="dispatch-app-needs-read-access-to-existing-apps"></a>La aplicación de distribución necesita acceso de lectura a las aplicaciones existentes
 
-La herramienta de distribución necesita acceso de creación para leer las aplicaciones LUIS y QnA Maker existentes con el fin de crear una nueva aplicación LUIS primaria que distribuya a las aplicaciones LUIS y QnA Maker. Este acceso se proporciona con los id. de la aplicación y las claves de creación. Necesita un id. y clave para cada una de las dos aplicaciones LUIS y la aplicación QnA Maker.
+La herramienta de distribución necesita acceso de creación para leer las aplicaciones LUIS y QnA Maker existentes con el fin de crear una nueva aplicación LUIS primaria que distribuya a las aplicaciones LUIS y QnA Maker. Este acceso se proporciona con los id. de la aplicación y las claves de creación. 
+
+### <a name="service-authoring-keys"></a>Claves de creación de servicios
+
+La **clave de creación** solo se usa para crear y editar los modelos. Necesita un id. y clave para cada una de las dos aplicaciones LUIS y la aplicación QnA Maker.
 
 |Aplicación|Ubicación de la información|
 |--|--|
-|LUIS|Id. de la aplicación: se encuentra en el [portal de LUIS](https://www.luis.ai) para cada aplicación, Administrar -> Información de la aplicación<br>Clave de creación: se encuentra en el portal de LUIS, esquina superior derecha, seleccione su propio usuario y, a continuación, Configuración.|
-|QnA Maker| Id. de la aplicación: se encuentra en el [portal de QnA Maker](https://http://qnamaker.ai) en la página de configuración después de publicar la aplicación. Este es el identificador encontrado en la primera parte del comando POST después de knowledgebase. Un ejemplo de dónde encontrar el id. de la aplicación es `POST /knowledgebases/{APP-ID}/generateAnswer`.<br>Clave de creación: se encuentra en Azure Portal, para el recurso de QnA Maker, en **Claves**. Solo necesita una de las claves.|
+|LUIS|**Id. de la aplicación**: se encuentra en el [portal de LUIS](https://www.luis.ai) para cada aplicación, Administrar -> Información de la aplicación.<br>**Clave de creación**: se encuentra en el portal de LUIS, esquina superior derecha, seleccione su propio usuario y, a continuación, Configuración.|
+|QnA Maker| **Id. de la aplicación**: se encuentra en el [portal de QnA Maker](https://http://qnamaker.ai) en la página de configuración después de publicar la aplicación. Este es el identificador encontrado en la primera parte del comando POST después de knowledgebase. Un ejemplo de dónde encontrar el id. de la aplicación es `POST /knowledgebases/{APP-ID}/generateAnswer`.<br>**Clave de creación**: se encuentra en Azure Portal, para el recurso de QnA Maker, en **Claves**. Solo necesita una de las claves.|
+
+La clave de creación no se utiliza para obtener una puntuación de predicción o una puntuación de confianza de la aplicación publicada. Necesita las claves del punto de conexión para esta acción. Las **[claves del punto de conexión](#service-endpoint-keys)** se encuentran y se usan más adelante en este tutorial. 
 
 ## <a name="create-the-dispatch-model"></a>Creación del modelo de distribución
 
@@ -192,6 +197,8 @@ La aplicación LUIS generada define las intenciones para cada una de las aplicac
 - `q_sample-qna`
 
 Tenga en cuenta que estos servicios deben publicarse con los nombres correctos para que el bot funcione correctamente. El bot necesita información sobre los servicios publicados para poder acceder a ellos.
+
+### <a name="service-endpoint-keys"></a>Claves del punto de conexión de servicio
 
 El bot necesita los puntos de conexión de predicción de consulta para las tres aplicaciones LUIS (distribución, tiempo y automatización del hogar) y la única instancia de Knowledge Base de QnA Maker. Use la tabla siguiente para buscar los puntos de conexión:
 

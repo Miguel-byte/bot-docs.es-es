@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a9a98419a8ac65c7e1093e1281e03917fa4eca11
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 8dfa76d02b2338916011040771a1c1b7e7cb7d76
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671501"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756906"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envío de una actividad al bot
 
@@ -21,7 +20,7 @@ Mediante el protocolo Direct Line 3.0, los clientes y los bots pueden intercambi
 
 ## <a name="send-an-activity"></a>Envío de una actividad
 
-Para enviar una actividad al bot, el cliente debe crear un objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) para definir la actividad y, a continuación, emitir una solicitud `POST` a `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, especificando el objeto Activity en el cuerpo de la solicitud.
+Para enviar una actividad al bot, el cliente debe crear un objeto `Activity` para definir la actividad y, a continuación, emitir una solicitud `POST` a `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, especificando el objeto Activity en el cuerpo de la solicitud.
 
 Los fragmentos de código siguientes proporcionan un ejemplo de la solicitud de envío de la actividad y la respuesta.
 
@@ -76,11 +75,11 @@ El tiempo total para el envío POST de un mensaje en una conversación de Direct
 
 ## <a name="send-attachments-to-the-bot"></a>Envío de datos adjuntos al bot
 
-En algunas situaciones, un cliente debe enviar datos adjuntos al bot, como imágenes o documentos. Un cliente puede enviar datos adjuntos al bot ya sea [especificando las direcciones URL](#send-by-url) de los datos adjuntos en el objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) que envía mediante `POST /v3/directline/conversations/{conversationId}/activities` o [cargando los datos adjuntos](#upload-attachments) mediante `POST /v3/directline/conversations/{conversationId}/upload`.
+En algunas situaciones, un cliente debe enviar datos adjuntos al bot, como imágenes o documentos. Un cliente puede enviar datos adjuntos al bot ya sea [especificando las direcciones URL](#send-by-url) de los datos adjuntos en el objeto `Activity` que envía mediante `POST /v3/directline/conversations/{conversationId}/activities` o [cargando datos adjuntos](#upload-attachments) mediante `POST /v3/directline/conversations/{conversationId}/upload`.
 
 ## <a id="send-by-url"></a> Envío de datos adjuntos por dirección URL
 
-Para enviar uno o varios archivos adjuntos como parte del objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) mediante `POST /v3/directline/conversations/{conversationId}/activities`, basta con incluir uno o varios objetos [Attachment](bot-framework-rest-connector-api-reference.md#attachment-object) dentro del objeto Activity y establecer la propiedad `contentUrl` de cada objeto Attachment para especificar la dirección HTTP o HTTPS o el identificador URI `data` de los datos adjuntos.
+Para enviar uno o varios archivos adjuntos como parte del objeto `Activity` mediante `POST /v3/directline/conversations/{conversationId}/activities`, basta con incluir uno o varios objetos `Attachment` dentro del objeto Activity y establecer la propiedad `contentUrl` de cada objeto Attachment para especificar la dirección HTTP o HTTPS o el identificador URI `data` de los datos adjuntos.
 
 ## <a id="upload-attachments"></a> Envío de datos adjuntos mediante carga
 
@@ -135,7 +134,7 @@ HTTP/1.1 200 OK
 
 Para enviar varios datos adjuntos mediante carga, emita una solicitud `POST` de varias partes al punto de conexión `/v3/directline/conversations/{conversationId}/upload`. Establezca el encabezado `Content-Type` de la solicitud en `multipart/form-data` e incluya el encabezado `Content-Type` y el encabezado `Content-Disposition` para que cada parte especifique el tipo y el nombre de archivo de los datos adjuntos. En el identificador URI de la solicitud, establezca el parámetro `userId` en el identificador del usuario que envía el mensaje. 
 
-Puede incluir un objeto [Activity](bot-framework-rest-connector-api-reference.md#activity-object) en la solicitud con la adición de una parte que especifica como encabezado `Content-Type` el valor `application/vnd.microsoft.activity`. Si la solicitud incluye una actividad, los datos adjuntos especificados por otras partes de la carga se agregan como datos adjuntos a esa actividad antes de enviarla. Si la solicitud no incluye una actividad, se crea una actividad vacía para servir como el contenedor en el que se envían los datos adjuntos especificados.
+Puede incluir un objeto `Activity` en la solicitud con la adición de una parte que especifica como encabezado `Content-Type` el valor `application/vnd.microsoft.activity`. Si la solicitud incluye una actividad, los datos adjuntos especificados por otras partes de la carga se agregan como datos adjuntos a esa actividad antes de enviarla. Si la solicitud no incluye una actividad, se crea una actividad vacía para servir como el contenedor en el que se envían los datos adjuntos especificados.
 
 Los fragmentos de código siguientes proporcionan un ejemplo de la solicitud de envío de varios datos adjuntos y la respuesta. En este ejemplo, la solicitud envía un mensaje que contiene texto y un único adjunto de imagen. Se pueden agregar partes adicionales a la solicitud para incluir varios datos adjuntos en este mensaje.
 
@@ -192,3 +191,4 @@ HTTP/1.1 200 OK
 - [Volver a conectarse a una conversación](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md)
 - [Recepción de actividades del bot](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [Finalización de una conversación](bot-framework-rest-direct-line-3-0-end-conversation.md)
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)

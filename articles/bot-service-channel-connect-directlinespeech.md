@@ -6,17 +6,16 @@ services: bot-service
 author: trrwilson
 manager: nitinme
 ms.service: bot-service
-ms.subservice: bot-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 114274a66492d421a7b3d6294d77ee83d336d3ca
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: f38caad2a1b09e8f07e5fe8c7ea7bf7e2b2dfd6f
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405918"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68756831"
 ---
 # <a name="connect-a-bot-to-direct-line-speech-preview"></a>Conexión de un bot a Direct Line Speech (versión preliminar)
 
@@ -32,7 +31,7 @@ Actualmente, Direct Line Speech está en versión preliminar y requiere una susc
 
 ## <a name="add-the-direct-line-speech-channel"></a>Incorporación del canal Direct Line Speech
 
-1. Para agregar el canal de Direct Line Channel, abra primero el bot en [Azure Portal](https://portal.azure.com) y haga clic en **Channels** (Canales) en la hoja de configuración.
+1. En el explorador, vaya a [Azure Portal](https://portal.azure.com). En los recursos, seleccione el recurso de **Registro del canal del bot**. Haga clic en **Canales** en la sección *Administración del bot* de la hoja de configuración.
 
     ![resaltado de la ubicación para la selección de canales a los que conectarse](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-selectchannel.png "selección de canales")
 
@@ -50,19 +49,17 @@ Actualmente, Direct Line Speech está en versión preliminar y requiere una susc
 
 Con el canal de Direct Line Speech conectado al bot, necesita habilitar la compatibilidad con las extensiones de streaming del protocolo de Bot Framework para que la interacción de baja latencia sea óptima.
 
-1. Si no lo ha hecho aún, abra la hoja del bot en [Azure Portal](https://portal.azure.com). 
-
-1. Haga clic en **Settings** (Configuración) bajo la categoría **Bot Management** (Administración de bot), que está inmediatamente debajo de **Channels** (Canales). Haga clic en la casilla **Enable Streaming Endpoint** (Habilitar punto de conexión de streaming).
+1. En la hoja de configuración del recurso de **Registro del canal del bot**, haga clic en **Configuración** en la categoría **Administración del bot** (justo debajo de **Canales**). Haga clic en la casilla **Enable Streaming Endpoint** (Habilitar punto de conexión de streaming).
 
     ![habilitar el protocolo de streaming](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablestreamingsupport.png "habilitar la compatibilidad con las extensiones de streaming")
 
 1. Haga clic en **Guardar** en la parte superior de la página.
 
-1. En la misma hoja, en la categoría **App Service Settings** (Configuración de App Service), haga clic en **Configuration** (Configuración).
+1. En los recursos, seleccione el recurso de **App Service**. En la hoja que se muestra, en la categoría **Configuración de App Service**, haga clic en **Configuración**.
 
     ![vaya a la configuración de App Service](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-configureappservice.png "configurar App Service")
 
-1. Haga clic en `General settings` y seleccione la opción para habilitar la compatibilidad con `Web socket`.
+1. Haga clic en la pestaña `General settings` y seleccione la opción para habilitar la compatibilidad con `Web socket`.
 
     ![habilitar WebSockets para App Service](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-enablewebsockets.png "habilitar WebSockets")
 
@@ -72,9 +69,17 @@ Con el canal de Direct Line Speech conectado al bot, necesita habilitar la compa
 
 ## <a name="manage-secret-keys"></a>Administrar claves secretas
 
-Las aplicaciones cliente necesitarán un secreto de canal para conectarse al bot a través del canal de Direct Line Speech. Una vez que haya guardado la selección de canales, puede recuperar estas claves secretas en la página **Configure Direct Line Speech** (Configurar Direct Line Speech) de Azure Portal.
+Las aplicaciones cliente necesitarán un secreto de canal para conectarse al bot a través del canal de Direct Line Speech. Una vez que haya guardado la selección de canal, puede recuperar estas claves secretas con los pasos siguientes.
 
-![obtención de claves secretas para Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "getting secret keys for Direct Line Speech")
+1. En los recursos, seleccione el recurso de **Registro del canal del bot**. Haga clic en **Canales** en la sección *Administración del bot* de la hoja de configuración.
+1. Haga clic en el vínculo **Editar** para Direct Line Speech.
+
+    ![obtención de claves secretas para Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys1.png "getting secret keys for Direct Line Speech")
+
+    Se muestra la siguiente ventana.
+
+    ![obtención de claves secretas para Direct Line Speech](media/voice-first-virtual-assistants/bot-service-channel-directlinespeech-getspeechsecretkeys.png "getting secret keys for Direct Line Speech")
+1. Seleccione Mostrar y copie las claves que se van a usar en la aplicación.
 
 ## <a name="adding-protocol-support-to-your-bot"></a>Adición de la compatibilidad con protocolos al bot
 

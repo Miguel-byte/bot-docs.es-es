@@ -3,22 +3,21 @@ title: Introducción a Chat en web | Microsoft Docs
 description: Obtenga información sobre cómo configurar Chat en web de Bot Framework.
 keywords: bot framework, chat en web, chat, ejemplos, react, referencia
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 06/07/2019
-ms.openlocfilehash: 1d787d375fcd1ddade544724bb28dea9aaeb1dd6
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671418"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757102"
 ---
 # <a name="web-chat-overview"></a>Introducción a Chat en web
 
-En este artículo se incluyen los detalles del componente [Chat en web de Bot Framework](https://github.com/microsoft/BotFramework-WebChat). El componente Chat en web de Bot Framework es un cliente basado en web muy personalizable para el SDK de Bot Framework V4. El SDK de Framework Bot v4 permite a los desarrolladores modelar la conversación y compilar aplicaciones sofisticadas de bot.
+En este artículo se incluyen los detalles del componente [Chat en web de Bot Framework](https://github.com/microsoft/BotFramework-WebChat). El componente Chat en web de Bot Framework es un cliente basado en web muy personalizable para Bot Framework SDK V4. Bot Framework SDK V4 permite a los desarrolladores modelar la conversación y crear aplicaciones sofisticadas de bots.
 
 Si desea migrar desde Chat en web v3 a v4, vaya a la [sección sobre la migración](#migrating-from-web-chat-v3-to-v4).
 
@@ -57,12 +56,12 @@ A continuación, se muestra cómo puede agregar el control Chat en web a su siti
 </html>
 ```
 
-> `userID`, `username`, `locale`, `botAvatarInitials` y `userAvatarInitials` son parámetros opcionales para pasar al método `renderWebChat`. Para obtener más información sobre las propiedades de Chat en web, examine la sección [Referencia de la API de Chat en web ](#web-chat-api-reference) de este `README`.
+> `userID`, `username`, `locale`, `botAvatarInitials` y `userAvatarInitials` son parámetros opcionales para pasar al método `renderWebChat`. Para más información sobre las propiedades de Chat en web, examine la sección [Referencia de la API de Chat en web](#web-chat-api-reference) de este artículo.
 > ![Captura de pantalla de Chat en web](https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/weatherquery.png.jpg)
 
 ### <a name="integrate-with-javascript"></a>Integración con JavaScript
 
-Chat en web está diseñado para integrarse con su sitio web existente mediante JavaScript o React. La integración con JavaScript le proporcionará una capacidad moderada de personalización y aplicación de estilos.
+Chat en web está diseñado para integrarse con su sitio web existente mediante JavaScript o React. La integración con JavaScript le proporcionará algunos estilos y personalizaciones; para más información, consulte el artículo [Integración de Chat en web en su sitio web](https://aka.ms/integrate-webchat-into-site).
 
 Puede usar el paquete completo y típico de Chat en web, que contiene las características usadas más habitualmente.
 
@@ -91,9 +90,9 @@ Vea el ejemplo funcional del [conjunto completo de Chat en web](https://github.c
 
 ### <a name="integrate-with-react"></a>Integración con React
 
-Para una capacidad de personalización completa, puede usar React para volver a componer los componentes de Chat en web.
+Para una capacidad de personalización completa, puede usar [React](https://reactjs.org/) para volver a componer los componentes de Chat en web.
 
-Para instalar la compilación de producción desde NPM, ejecute `npm install botframework-webchat`.
+Para instalar la compilación de producción desde npm, ejecute `npm install botframework-webchat`.
 
 ```jsx
 import { DirectLine } from 'botframework-directlinejs';
@@ -120,6 +119,10 @@ export default class extends React.Component {
 
 Vea un ejemplo funcional de [Chat en web representado vía React](https://github.com/Microsoft/BotFramework-WebChat/tree/master/samples/03.a.host-with-react/).
 
+> [!TIP]
+> Si no está familiarizado con React y jsx, puede encontrar material de aprendizaje en la página. [Introducción](https://reactjs.org/docs/getting-started.html) de React.
+
+
 ## <a name="customize-web-chat-ui"></a>Personalizar la interfaz de usuario de Chat en web
 
 Chat en web está diseñado para ser personalizable sin bifurcación del código fuente. En la tabla siguiente se describe qué tipo de personalizaciones puede realizar al importar Chat en web de maneras diferentes. Esta lista no es exhaustiva.
@@ -137,6 +140,9 @@ Chat en web está diseñado para ser personalizable sin bifurcación del código
 | Recomponer toda la interfaz de usuario        |                    | :heavy_check_mark: |
 
 Consulte la información sobre la [personalización de Chat en web](https://github.com/Microsoft/BotFramework-WebChat/blob/master/SAMPLES.md) para aprender más sobre la personalización.
+
+> [!NOTE] 
+> Para obtener información sobre las redes de entrega de contenido (CDN), consulte [Redes de entrega de contenido (CDN)](https://aka.ms/CDN-best-practices).
 
 ## <a name="migrating-from-web-chat-v3-to-v4"></a>Migración desde Chat en web v3 a v4
 

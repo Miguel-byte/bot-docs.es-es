@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 10/25/2018
-ms.openlocfilehash: 3fad5b66f5137cd4098087e1b01d1f2493800994
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 03facdff733787e95ca3bc68dfee15d747340453
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032602"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757092"
 ---
 # <a name="add-media-attachments-to-messages"></a>Incorporación de datos adjuntos con elementos multimedia a mensajes
 > [!div class="op_single_selector"]
@@ -28,7 +27,7 @@ Los bots y los canales suelen intercambiar cadenas de texto, pero algunos canale
 
 ## <a name="add-a-media-attachment"></a>Incorporación de datos adjuntos con elementos multimedia  
 
-Para agregar datos adjuntos de elementos multimedia a un mensaje, cree un objeto [Attachment][Attachment], establezca la propiedad `name`, establezca la propiedad `contentUrl` en la dirección URL del archivo multimedia y establezca la propiedad `contentType` en el tipo de elemento multimedia adecuado (por ejemplo, **imagen/png**, **audio/wav**, **vídeo/mp4**). A continuación, en el objeto [Activity][Activity] que representa el mensaje, especifique el objeto [Attachment][Attachment] dentro de la matriz `attachments`. 
+Para agregar datos adjuntos de elementos multimedia a un mensaje, cree un objeto `Attachment`, establezca la propiedad `name`, establezca la propiedad `contentUrl` en la dirección URL del archivo multimedia y establezca la propiedad `contentType` en el tipo de elemento multimedia adecuado (por ejemplo, **imagen/png**, **audio/wav**, **video/mp4**). A continuación, en el objeto `Activity` que representa el mensaje, especifique el objeto `Attachment` dentro de la matriz `attachments`. 
 
 En el ejemplo siguiente se muestra una solicitud que envía un mensaje que contiene texto y datos adjuntos con una sola imagen. En esta solicitud de ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; los URI base para las solicitudes que emite el bot pueden ser diferentes. Para más información sobre cómo establecer el URI base, consulte [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -102,7 +101,7 @@ Puede adjuntar un archivo de vídeo o de audio a un mensaje siguiendo el mismo p
 
 ## <a name="add-an-audiocard-attachment"></a>Incorporación de datos adjuntos de tarjeta de audio
 
-Agregar datos adjuntos de [tarjeta de audio](bot-framework-rest-connector-api-reference.md#audiocard-object) o [tarjeta de vídeo](bot-framework-rest-connector-api-reference.md#videocard-object) es lo mismo que agregar datos adjuntos de elementos multimedia. Por ejemplo, el siguiente código JSON muestra cómo agregar una tarjeta de audio en los datos adjuntos de elementos multimedia.
+Agregar datos adjuntos de `AudioCard` o `VideoCard` es lo mismo que agregar datos adjuntos de elementos multimedia. Por ejemplo, el siguiente código JSON muestra cómo agregar una tarjeta de audio en los datos adjuntos de elementos multimedia.
 
 ```json
 {
@@ -176,7 +175,5 @@ El nombre del evento multimedia **media/pause** aparecerá en el campo `activity
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de tarjetas enriquecidas a mensajes](bot-framework-rest-connector-add-rich-cards.md)
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Esquema de tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema)
-
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object

@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a662bb24f384d072a162242a4634fe4fe3a4b395
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 739af17f39a8537833aafcc8d03fb63ea2c8c914
+ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033452"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68757063"
 ---
 # <a name="add-rich-card-attachments-to-messages"></a>Incorporación de datos adjuntos de tarjetas enriquecidas a mensajes
 > [!div class="op_single_selector"]
@@ -34,20 +33,20 @@ Bot Framework admite actualmente ocho tipos de tarjetas enriquecidas:
 | Tipo de tarjeta | DESCRIPCIÓN |
 |----|----|
 | <a href="/adaptive-cards/get-started/bots">AdaptiveCard</a> | Una tarjeta personalizable que puede contener cualquier combinación de texto, voz, imágenes, botones y campos de entrada. Consulte la [compatibilidad por canal](/adaptive-cards/get-started/bots#channel-status).  |
-| [AnimationCard][animationCard] | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
-| [AudioCard][audioCard] | Una tarjeta que se puede reproducir un archivo de audio. |
-| [HeroCard][heroCard] | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
-| [ThumbnailCard][thumbnailCard] | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto. |
-| [ReceiptCard][receiptCard] | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
-| [SignInCard][signinCard] | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o varios botones en los que el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
-| [VideoCard][videoCard] | Una tarjeta que puede reproducir vídeos. |
+| `AnimationCard` | Una tarjeta que puede reproducir archivos GIF animados o vídeos cortos. |
+| `AudioCard` | Una tarjeta que se puede reproducir un archivo de audio. |
+| `HeroCard` | Una tarjeta que normalmente contiene una sola imagen grande, uno o varios botones y texto. |
+| `ThumbnailCard` | Una tarjeta que normalmente contiene una sola imagen miniatura, uno o varios botones, y texto. |
+| `ReceiptCard` | Una tarjeta que permite que un bot proporcione un recibo al usuario. Normalmente, contiene la lista de elementos que se incluyen en el recibo, la información de impuestos y del total, y texto adicional. |
+| `SignInCard` | Una tarjeta que permite al bot solicitar que un usuario inicie sesión. Normalmente contiene texto y uno o varios botones en los que el usuario puede hacer clic para iniciar el proceso de inicio de sesión. |
+| `VideoCard` | Una tarjeta que puede reproducir vídeos. |
 
 > [!TIP]
-> Para determinar el tipo de tarjetas enriquecidas que admite un canal y ver cómo las presenta, consulte el [Inspector de canales][ChannelInspector]. Consulte la documentación del canal para obtener información sobre las limitaciones del contenido de las tarjetas (por ejemplo, el número máximo de botones o la longitud máxima del título).
+> Para determinar el tipo de tarjetas enriquecidas que admite un canal y ver cómo el canal presenta las tarjeta enriquecidas, consulte el [Inspector de canales][ChannelInspector]. Consulte la documentación del canal para obtener información sobre las limitaciones del contenido de las tarjetas (por ejemplo, el número máximo de botones o la longitud máxima del título).
 
 ## <a name="process-events-within-rich-cards"></a>Procesamiento de eventos dentro de tarjetas enriquecidas
 
-Para procesar eventos dentro de tarjetas enriquecidas, use los objetos [CardAction][CardAction] para especificar qué debe ocurrir cuando el usuario hace clic en un botón o pulsa una sección de la tarjeta. Cada objeto [CardAction][CardAction] contiene estas propiedades:
+Para procesar eventos dentro de tarjetas enriquecidas, utilice objetos `CardAction` para especificar qué debe ocurrir cuando el usuario hace clic en un botón o pulsa una sección de la tarjeta. Cada objeto `CardAction` contiene estas propiedades:
 
 | Propiedad | Escriba | DESCRIPCIÓN | 
 |----|----|----|
@@ -59,7 +58,7 @@ Para procesar eventos dentro de tarjetas enriquecidas, use los objetos [CardActi
 > [!NOTE]
 > Los botones dentro de las tarjetas adaptables no se crean mediante el uso de objetos `CardAction`, sino que mediante el esquema que definen las <a href="http://adaptivecards.io" target="_blank">tarjetas adaptables</a>. Consulte [Incorporación de una tarjeta adaptable a un mensaje](#adaptive-card) para ver un ejemplo que muestra cómo agregar botones a una tarjeta adaptable.
 
-En esta tabla se enumeran los valores válidos para la propiedad `type` de un objeto de [CardAction][CardAction] y describe el contenido esperado de la propiedad `value` de cada tipo:
+En esta tabla se enumeran los valores válidos para la propiedad `type` de un objeto `CardAction` y se describe el contenido esperado de la propiedad `value` de cada tipo:
 
 | Tipo | value | 
 |----|----|
@@ -75,7 +74,7 @@ En esta tabla se enumeran los valores válidos para la propiedad `type` de un ob
 
 ## <a name="add-a-hero-card-to-a-message"></a>Incorporación de una tarjeta de imagen prominente a un mensaje
 
-Para agregar un archivo adjunto de tarjeta enriquecido a un mensaje, cree primero un objeto que corresponda al [tipo de tarjeta](#types-of-cards) que desee agregar al mensaje. A continuación, cree un objeto [Attachment][Attachment], establezca su propiedad `contentType` en el tipo de elemento multimedia de la tarjeta y su propiedad `content` como el objeto que ha creado para representar la tarjeta. Especifique su objeto [Attachment][Attachment] dentro de la matriz `attachments` del mensaje.
+Para agregar un archivo adjunto de tarjeta enriquecido a un mensaje, cree primero un objeto que corresponda al [tipo de tarjeta](#types-of-cards) que desee agregar al mensaje. A continuación, cree un objeto `Attachment`, establezca su propiedad `contentType` en el tipo de elemento multimedia de la tarjeta y su propiedad `content` como el objeto que ha creado para representar la tarjeta. Especifique su objeto `Attachment` dentro de la matriz `attachments` del mensaje.
 
 > [!TIP]
 > Los mensajes que contienen datos adjuntos de tarjeta enriquecida normalmente no especifican `text`.
@@ -83,7 +82,7 @@ Para agregar un archivo adjunto de tarjeta enriquecido a un mensaje, cree primer
 Algunos canales permiten agregar varias tarjetas enriquecidas a la matriz `attachments` dentro de un mensaje. Esta funcionalidad puede ser útil en escenarios donde desee proporcionar al usuario varias opciones. Por ejemplo, si el bot permite a los usuarios reservar habitaciones de hotel, podría presentar al usuario una lista de tarjetas enriquecidas que muestre los tipos de habitaciones disponibles. Cada tarjeta podría contener una imagen y una lista de servicios correspondientes al tipo de habitación y el usuario podría seleccionar una punteando en una tarjeta o haciendo clic en un botón.
 
 > [!TIP]
-> Para mostrar varias tarjetas enriquecidas en formato de lista, establezca la propiedad `attachmentLayout` del objeto [Activity][Activity] en "list" (lista). Para mostrar varias tarjetas enriquecidas en formato de carrusel, establezca la propiedad `attachmentLayout` del objeto [Activity][Activity] en "carousel" (carrusel). Si el canal no admite el formato de carrusel, mostrará las tarjetas enriquecidas en el formato de lista, incluso si la propiedad `attachmentLayout` especifica "carousel" (carrusel).
+> Para mostrar varias tarjetas enriquecidas en formato de lista, establezca la propiedad `attachmentLayout` del objeto `Activity` en "list" (lista). Para mostrar varias tarjetas enriquecidas en formato de carrusel, establezca la propiedad `attachmentLayout` del objeto `Activity` en "carousel" (carrusel). Si el canal no admite el formato de carrusel, mostrará las tarjetas enriquecidas en el formato de lista, incluso si la propiedad `attachmentLayout` especifica "carousel" (carrusel).
 
 En el ejemplo siguiente se muestra una solicitud que envía un mensaje que contiene datos adjuntos con una sola tarjeta de imagen prominente. En esta solicitud de ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; los URI base para las solicitudes que emite el bot pueden ser diferentes. Para más información sobre cómo establecer el URI base, consulte [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -256,19 +255,8 @@ La tarjeta resultante contiene tres bloques de texto, un campo de entrada (lista
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-framework-rest-connector-add-media-attachments.md)
-- [Inspector de canales][ChannelInspector]
+- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
+- [Channel Inspector][ChannelInspector]
 - <a href="http://adaptivecards.io" target="_blank">Tarjetas adaptables</a>
 
 [ChannelInspector]: ../bot-service-channel-inspector.md
-
-[animationCard]: bot-framework-rest-connector-api-reference.md#animationcard-object
-[audioCard]: bot-framework-rest-connector-api-reference.md#audiocard-object
-[heroCard]: bot-framework-rest-connector-api-reference.md#herocard-object
-[thumbnailCard]: bot-framework-rest-connector-api-reference.md#thumbnailcard-object
-[receiptCard]: bot-framework-rest-connector-api-reference.md#receiptcard-object
-[signinCard]: bot-framework-rest-connector-api-reference.md#signincard-object
-[videoCard]: bot-framework-rest-connector-api-reference.md#videocard-object
-
-[CardAction]: bot-framework-rest-connector-api-reference.md#cardaction-object
-[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
-[Attachment]: bot-framework-rest-connector-api-reference.md#attachment-object
