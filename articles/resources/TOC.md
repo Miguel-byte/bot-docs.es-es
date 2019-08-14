@@ -1,10 +1,8 @@
 # Asistente virtual
 ## [Información general](../v4sdk/bot-builder-virtual-assistant-introduction.md)
 ## [Introducción a la plantilla](../v4sdk/bot-builder-virtual-assistant-template.md)
-## [Introducción](../v4sdk/bot-builder-virtual-assistant-gettingstarted.md)
 # Aptitudes 
 ## [Información general](../v4sdk/bot-builder-skills-overview.md)
-## [Introducción](../v4sdk/bot-builder-skills-gettingstarted.md)
 # WebChat
 ## [Información general](../v4sdk/bot-builder-webchat-overview.md)
 ## [Personalización](../v4sdk/bot-builder-webchat-customization.md)

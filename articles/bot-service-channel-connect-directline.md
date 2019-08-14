@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 10/11/2018
-ms.openlocfilehash: 9383e15590569458e795e9a0603df21f63609001
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.date: 08/7/2019
+ms.openlocfilehash: edfb61a4f4ca33089bce7d4b44ed242f83cbcc0d
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997742"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866622"
 ---
 # <a name="connect-a-bot-to-direct-line"></a>Conectar un bot con Direct Line
 
@@ -24,24 +23,24 @@ Para permitir que su propia aplicación cliente se comunique con su bot, puede u
 
 Para agregar el canal de Direct Line, abra el bot en [Azure Portal](https://portal.azure.com/), haga clic en la pestaña **Canales** y, luego, en **Direct Line**.
 
-![Agregar el canal de Direct Line](~/media/bot-service-channel-connect-directline/directline-addchannel.png)
+![Agregar el canal de Direct Line](media/bot-service-channel-connect-directline/directline-addchannel.png)
 
 ## <a name="add-new-site"></a>Agregar un nuevo sitio
 
 Después, agregue un nuevo sitio que represente la aplicación cliente que quiere conectar con el bot. Haga clic en **Add new site** (Agregar nuevo sitio), escriba un nombre para el sitio y haga clic en **Listo**.
 
-![Agregar un sitio de Direct Line](~/media/bot-service-channel-connect-directline/directline-addsite.png)
+![Agregar un sitio de Direct Line](media/bot-service-channel-connect-directline/directline-addsite.png)
 
 ## <a name="manage-secret-keys"></a>Administrar claves secretas
 
 Cuando se cree el sitio, Bot Framework generará unas claves secretas que la aplicación cliente puede usar para [autenticar](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md) las solicitudes de Direct Line API que emite para comunicarse con el bot. Para ver una clave en texto sin formato, haga clic en **Mostrar** junto a la clave correspondiente.
 
-![Mostrar la clave de Direct Line](~/media/bot-service-channel-connect-directline/directline-showkey.png)
+![Mostrar la clave de Direct Line](media/bot-service-channel-connect-directline/directline-showkey.png)
 
 Copie y almacene de forma segura la clave que se muestra. Después, use la clave para [autenticar](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md) las solicitudes de Direct Line API que el cliente emite para comunicarse con el bot.
 También puede usar Direct Line API para [intercambiar la clave por un token](~/rest-api/bot-framework-rest-direct-line-3-0-authentication.md#generate-token) que el cliente pueda usar para autenticar sus solicitudes posteriores en el ámbito de una sola conversación.
 
-![Copiar la clave de Direct Line](~/media/bot-service-channel-connect-directline/directline-copykey.png)
+![Copiar la clave de Direct Line](media/bot-service-channel-connect-directline/directline-copykey.png)
 
 ## <a name="configure-settings"></a>Definición de la configuración
 

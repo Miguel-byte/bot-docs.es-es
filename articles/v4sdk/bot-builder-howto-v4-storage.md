@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1213e7d0c03fd6faa3768fac85a59bf4c7b5b28a
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3743f798377de5bb1279e2af1b0124682a5575f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756978"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970700"
 ---
 # <a name="write-directly-to-storage"></a>Escritura directa en el almacenamiento
 
@@ -390,8 +390,8 @@ Marque como comentario el almacenamiento en memoria y reemplácelo por una refer
 **bot.js**
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 
 // Create local Memory Storage - commented out.
 // var storage = new MemoryStorage();
@@ -523,8 +523,8 @@ Si no agregó código para cargar el archivo `.env` para implementar el almacena
 
 ```javascript
 // initialized to access values in .env file.
-var dotenv = require('dotenv');
-dotenv.load();
+const ENV_FILE = path.join(__dirname, '.env');
+require('dotenv').config({ path: ENV_FILE });
 ```
 Ahora, actualice el código para que apunte el "_almacenamiento_" hacia la cuenta de Blob Storage ya existente, marcando como comentario las definiciones de almacenamiento anteriores y agregando lo siguiente.
 

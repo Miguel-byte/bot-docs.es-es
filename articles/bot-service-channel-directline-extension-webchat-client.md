@@ -8,25 +8,25 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 5e74627530e77f4ae5f1f8ec1ae36dc5b07959a6
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: a11870dfa728621d346a7376363c7e31ddb1596c
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757747"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866431"
 ---
-## <a name="use-webchat-with-the-direct-line-app-service-extension"></a>Uso de WebChat con la extensión de App Service para Direct Line
+# <a name="use-webchat-with-the-direct-line-app-service-extension"></a>Uso de WebChat con la extensión de App Service para Direct Line
 
 En este artículo se describe cómo usar WebChat con la extensión de App Service para Direct Line
 
-### <a name="get-your-direct-line-secret"></a>Obtención del secreto de Direct Line
+## <a name="get-your-direct-line-secret"></a>Obtención del secreto de Direct Line
 
-El primer paso es encontrar el secreto de Direct Line. Puede hacerlo según las instrucciones descritas en [Conexión de un bot a Direct Line](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-directline?view=azure-bot-service-4.0).
+El primer paso es encontrar el secreto de Direct Line. Puede hacerlo según las instrucciones descritas en [Conexión de un bot a Direct Line](bot-service-channel-connect-directline.md).
 
-### <a name="get-the-preview-version-of-directlinejs"></a>Obtención de la versión preliminar de DirectLineJS
+## <a name="get-the-preview-version-of-directlinejs"></a>Obtención de la versión preliminar de DirectLineJS
 La versión preliminar de DirectLineJS se puede encontrar aquí: https://github.com/Jeffders/DirectLineAppServiceExtensionPreview/tree/master/libraries
 
-### <a name="integrate-webchat-client"></a>Integración del cliente de WebChat
+## <a name="integrate-webchat-client"></a>Integración del cliente de WebChat
 
 En términos generales, el enfoque es el mismo que antes. Con la excepción de que se ha creado una nueva versión de **WebChat** que admite el tráfico bidireccional de **WebSocket** y que en lugar de conectarse a https://directline.botframework.com/ se conecta directamente al bot hospedado.
 La dirección URL de Direct Line para el bot será `https://<your_app_service>.azurewebsites.net/.bot/`, donde la extensión `/.bot/` es el **punto de conexión** de Direct Line en la instancia de App Service.
