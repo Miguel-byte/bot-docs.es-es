@@ -2,23 +2,21 @@
 title: Conexión de un bot a Facebook Messenger | Microsoft Docs
 description: Obtenga información sobre cómo configurar la conexión de un bot a Facebook Messenger.
 keywords: Facebook Messenger, canal de bot, aplicación de Facebook, id. de aplicación, secreto de aplicación, bot de Facebook, credenciales
-author: RobStand
-ms.author: RobStand
 manager: kamrani
 ms.topic: article
+ms.author: kamrani
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 10/12/2018
-ms.openlocfilehash: 36d98c6eeb368399ee11ef9a048bb42922103f16
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.date: 08/03/2019
+ms.openlocfilehash: 4e5dc332b463e9490c7aa265a08e8f126d59d3f9
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693615"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866495"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Conexión de un bot a Facebook
 
-El bot se puede conectar a Facebook Messenger y Facebook Workplace para comunicarse con usuarios de estas plataformas. En el siguiente tutorial se muestra cómo conectar un bot con estos dos canales paso a paso.
+El bot se puede conectar a Facebook Messenger y Facebook Workplace para comunicarse con usuarios de estas plataformas. En el siguiente tutorial se muestra cómo conectar un bot con estos dos canales.
 
 > [!NOTE]
 > La UI de Facebook puede aparecer de forma ligeramente diferente dependiendo de la versión que use.
@@ -27,74 +25,95 @@ El bot se puede conectar a Facebook Messenger y Facebook Workplace para comunica
 
 Para obtener más información acerca del desarrollo de Facebook Messenger, consulte la [documentación de la plataforma de Messenger](https://developers.facebook.com/docs/messenger-platform). Puede que quiera revisar la [lista de verificación previa al lanzamiento](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), el [tutorial de inicio rápido](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) y la [guía de configuración](https://developers.facebook.com/docs/messenger-platform/guides/setup) de Facebook.
 
-Para configurar un bot para que se comunique con Facebook Messenger, habilite Facebook Messenger en una página de Facebook y, a continuación, conecte el bot a la aplicación.
+Para configurar un bot para que se comunique con Facebook Messenger, habilite Facebook Messenger en una página de Facebook y, a continuación, conecte el bot.
 
 ### <a name="copy-the-page-id"></a>Copia del id. de página
 
-Se accede al bot a través de una página de Facebook. [Cree una nueva página de Facebook](https://www.facebook.com/bookmarks/pages) o vaya a una página existente.
+Se accede al bot a través de una página de Facebook.
 
-* Abra la página **Sobre** de la página de Facebook y, a continuación, copie y guarde el **id. de página**.
+1. [Cree una nueva página de Facebook](https://www.facebook.com/bookmarks/pages) o vaya a una página existente.
+
+1. Abra la página **Sobre** de la página de Facebook y, a continuación, copie y guarde el **id. de página**.
 
 ### <a name="create-a-facebook-app"></a>Creación de una aplicación de Facebook
 
-[Cree una nueva aplicación de Facebook](https://developers.facebook.com/quickstarts/?platform=web) en la página y genere un id. y un secreto de aplicación.
+1. En el explorador, vaya a [Crear una nueva aplicación de Facebook](https://developers.facebook.com/quickstarts/?platform=web).
+1. Escriba el nombre de la aplicación y haga clic en el botón **Crear nuevo id. de aplicación de Facebook**.
 
-![Creación de un id. de aplicación](~/media/channels/FB-CreateAppId.png)
+    ![Crear aplicación](media/channels/fb-create-messenger-bot-app.png)
 
-* Copie y guarde el **id. de aplicación** y el **secreto de aplicación**.
+1. En el cuadro de diálogo que aparece, escriba su dirección de correo electrónico y haga clic en el botón **Crear id. de aplicación**.
 
-![Guardar el id. y el secreto de aplicación](~/media/channels/FB-get-appid.png)
+    ![Creación de un id. de aplicación](media/channels/fb-create-messenger-bot-app-id.png)
 
-Establezca el control deslizante "Allow API Access to App Settings" (Permitir el acceso de la API a la configuración de la aplicación) en "Sí".
+1. Realice los pasos que le indique el asistente.
 
-![Configuración de la aplicación](~/media/bot-service-channel-connect-facebook/api_settings.png)
+1. Escriba la información de comprobación necesaria y haga clic en el botón **Omitir Inicio rápido** en la parte superior derecha.
+
+1. En el panel izquierdo de la ventana que se muestra a continuación, expanda *Configuración* y haga clic en **Básico**.
+
+1. En el panel derecho, copie y guarde el **id. de aplicación** y el **secreto de aplicación**.
+
+    ![Copiar identificador y secreto de la aplicación](media/channels/fb-messenger-bot-get-appid-secret.png)
+
+1. En el panel izquierdo, en *Configuración*, haga clic en **Avanzado**.
+
+1. En el panel derecho, establezca el control deslizante **Permitir el acceso de la API a la configuración de la aplicación** en **Sí**.
+
+    ![Copiar identificador y secreto de la aplicación](media/channels/fb-messenger-bot-api-settings.png)
+
+1. En la página inferior derecha, haga clic en el botón **Guardar cambios**.
 
 ### <a name="enable-messenger"></a>Habilitación de Messenger
 
-Habilite Facebook Messenger en la nueva aplicación de Facebook.
+1. En el panel izquierdo, haga clic en **Panel**.
+1. En el panel derecho, desplácese hacia abajo y, en el cuadro **Messenger**, haga clic en el botón **Configurar**. La entrada de Messenger se muestra en la sección *PRODUCTOS* del panel izquierdo.  
 
-![Habilitación de Messenger](~/media/channels/FB-AddMessaging1.png)
+    ![Habilitación de Messenger](media/channels/fb-messenger-bot-enable-messenger.png)
 
 ### <a name="generate-a-page-access-token"></a>Generación de un token de acceso a la página
 
-En el panel **Generación de tokens** de la sección de Messenger, seleccione la página de destino. Se generará un token de acceso a la página.
+1. En el panel izquierdo, en la entrada de Messenger, haga clic en **Configuración**.
+1. En el panel derecho, desplácese hacia abajo y, en la sección **Generación de tokens**, seleccione la página de destino.
 
-* Copie y guarde el **token de acceso a la página**.
+    ![Habilitación de Messenger](media/channels/fb-messenger-bot-select-messenger-page.png)
 
-![Generación del token](~/media/channels/FB-generateToken.png)
+1. Haga clic en el botón **Editar permisos** para conceder a la aplicación pages_messaging permiso para generar un token de acceso.
+1. Siga las instrucciones del asistente. En el último paso, acepte la configuración predeterminada y haga clic en el botón **Listo**. Al final, se genera un **token de acceso a la página**.
+
+    ![Permisos de Messenger](media/channels/fb-messenger-bot-permissions.png)
+
+1. Copie y guarde el **token de acceso a la página**.
 
 ### <a name="enable-webhooks"></a>Habilitación de webhooks
 
-Haga clic en **Configurar webhooks** para reenviar eventos de mensajería de Facebook Messenger al bot.
+Para enviar mensajes y otros eventos desde el bot a Facebook Messenger, debe habilitar la integración de webhooks. En este punto, vamos a dejar pendientes los pasos de configuración de Facebook; volveremos más tarde a ellos.
 
-![Habilitación del webhook](~/media/channels/FB-webhook.png)
+1. En el explorador, abra una nueva ventana y vaya a [Azure portal](https://portal.azure.com/). 
 
-### <a name="provide-webhook-callback-url-and-verify-token"></a>Aprovisionamiento de la dirección URL de devolución de llamada de webhook y comprobación del token
+1. En la lista de recursos, haga clic en el registro de recursos del bot y, en la hoja correspondiente, haga clic en **Canales**.
 
-En [Azure Portal](https://portal.azure.com/), abra el bot, haga clic en la pestaña **Canales** y, a continuación, haga clic en **Facebook Messenger**.
+1. En el panel derecho, haga clic en el icono de **Facebook**.
 
-* Copie los valores **Dirección URL de devolución de llamada** y **Comprobar token** desde el portal.
+1. En el asistente, escriba la información de Facebook almacenada en los pasos anteriores. Si la información es correcta, en la parte inferior del asistente debería ver la **dirección URL de devolución de llamada** y el **token de comprobación**. Cópielos y almacénelos.  
 
-![Copia de valores](~/media/channels/fb-callbackVerify.png)
+    ![configuración del canal de fb messenger](media/channels/fb-messenger-bot-config-channel.PNG)
 
-1. Vuelva a Facebook Messenger y pegue los valores **Dirección URL de devolución de llamada** y **Comprobar token**.
-
-2. En **Campos de suscripción**, seleccione *message\_deliveries*, *messages*, *messaging\_options* y *messaging\_postbacks*.
-
-3. Haga clic en **Comprobar y guardar**.
-
-![Configuración del webhook](~/media/channels/FB-webhookConfig.png)
-
-4. Subscriba el webhook a la página de Facebook.
-
-![Suscripción del webhook](~/media/bot-service-channel-connect-facebook/subscribe-webhook.png)
+1. Haga clic en el botón **Save** (Guardar).
 
 
-### <a name="provide-facebook-credentials"></a>Aprovisionamiento de credenciales de Facebook
+1. Volvamos a la configuración de Facebook. En el panel derecho, desplácese hacia abajo y, en la sección **Webhooks**, haga clic en el botón **Suscribirse a eventos**. Esto es para reenviar eventos de mensajería de Facebook Messenger al bot.
 
-En Azure Portal, pegue los valores de **Identificador de aplicación de Facebook**, **Secreto de aplicación de Facebook**, **Identificador de página** y **Token de acceso a la página** copiados de Facebook Messenger anteriormente. Puede usar el mismo bot en varias páginas de Facebook mediante la adición de identificadores de página y tokens de acceso adicionales.
+    ![Habilitación de webhooks](media/channels/fb-messenger-bot-webhooks.PNG)
 
-![Escribir credenciales](~/media/channels/fb-credentials2.png)
+1. En el cuadro de diálogo que aparece, escriba la **dirección URL de devolución de llamada** y compruebe los valores del **token de comprobación** almacenados anteriormente. En **Campos de suscripción**, seleccione *message\_deliveries*, *messages*, *messaging\_options* y *messaging\_postbacks*.
+
+    ![Configurar webhooks](media/channels/fb-messenger-bot-config-webhooks.png)
+
+1. Haga clic en el botón **Comprobar y guardar**.
+1. Seleccione la página de Facebook para suscribirse al webhook. Haga clic en el botón **Suscribirse**.
+
+    ![Página Configurar webhooks](media/channels/fb-messenger-bot-config-webhooks-page.PNG)
 
 ### <a name="submit-for-review"></a>Envío para revisión
 
@@ -116,30 +135,25 @@ Consulte el [servicio de ayuda Workplace](https://workplace.facebook.com/help/wo
 
 Para configurar un bot para que se comunique mediante Facebook Workplace, cree una integración personalizada y conecte el bot con ella.
 
-### <a name="create-a-facebook-workplace-premium-account"></a>Creación de una cuenta de Facebook Workplace Premium
 
-Siga [estas](https://www.facebook.com/workplace) instrucciones para crear una cuenta de Facebook Workplace Premium y establecerse como administrador del sistema. Tenga en cuenta que solo el administrador del sistema de Workplace puede crear integraciones personalizadas.
+1. Cree una cuenta de Facebook Workplace Premium. Siga [estas](https://www.facebook.com/workplace) instrucciones para crear una cuenta de Facebook Workplace Premium y establecerse como administrador del sistema. Tenga en cuenta que solo el administrador del sistema de Workplace puede crear integraciones personalizadas.
 
-### <a name="create-a-custom-integration"></a>Creación de una integración personalizada
+1. Cree una [integración personalizada](https://developers.facebook.com/docs/workplace/custom-integrations-new) para Workplace con los pasos que se describen a continuación. Al crear una integración personalizada se crean una aplicación con permisos definidos y una página de tipo bot que solo se ven en la comunidad de Workplace.
 
-Al crear una integración personalizada se crean una aplicación con permisos definidos y una página de tipo bot que solo se ven en la comunidad de Workplace.
+1. En el **panel de administración**, abra la pestaña **Integraciones**.
+1. Haga clic en el botón **Create your own custom App** (Crear una aplicación personalizada propia).
 
-Cree una [integración personalizada](https://developers.facebook.com/docs/workplace/custom-integrations-new) para Workplace con los siguientes pasos:
+    ![Integración en Workplace](media/channels/fb-integration.png)
 
-- En el **panel de administración**, abra la pestaña **Integraciones**.
-- Haga clic en el botón **Create your own custom App** (Crear una aplicación personalizada propia).
+1. Elija un nombre para mostrar y una imagen de perfil para la aplicación. Esta información se compartirá con la página de tipo bot.
+1. Establezca **Allow API Access to App Settings** (Permitir el acceso de la API a la configuración de la aplicación) en "Sí".
+1. Copie el identificador, el secreto y el token de la aplicación que aparecen y guárdelos con seguridad.
 
-![Integración en Workplace](~/media/channels/fb-integration.png)
+    ![Claves de Workplace](media/channels/fb-keys.png)
 
-- Elija un nombre para mostrar y una imagen de perfil para la aplicación. Esta información se compartirá con la página de tipo bot.
-- Establezca **Allow API Access to App Settings** (Permitir el acceso de la API a la configuración de la aplicación) en "Sí".
-- Copie el identificador, el secreto y el token de la aplicación que aparecen y guárdelos con seguridad.
+1. Ahora ha terminado de crear la integración personalizada. Encontrará la página de tipo bot en la comunidad de Workplace, como se muestra a continuación.
 
-![Claves de Workplace](~/media/channels/fb-keys.png)
-
-Ahora ha terminado de crear la integración personalizada. Encontrará la página de tipo bot en la comunidad de Workplace, como se muestra a continuación.
-
-![Página de Workplace](~/media/channels/fb-page.png)
+    ![Página de Workplace](media/channels/fb-page.png)
 
 ### <a name="provide-facebook-credentials"></a>Aprovisionamiento de credenciales de Facebook
 
@@ -155,12 +169,10 @@ Consulte la sección**Conexión de un bot a Facebook Messenger** para más infor
 
 Si recibe una notificación de Facebook sobre una determinada versión de Graph API en desuso, vaya a la [página para desarrolladores de Facebook](https://developers.facebook.com). Vaya a la sección **Configuración de la aplicación** del bot y a **Configuración > Avanzada > Upgrade API version (Actualizar versión de API)** y, después, cambie la opción **Upgrade All Calls (Actualizar todas las llamadas)** a 3.0.
 
-![Actualización de la versión de API](~/media/channels/facebook-version-upgrade.png)
+![Actualización de la versión de API](media/channels/fb-version-upgrade.png)
 
-## <a name="sample-code"></a>Código de ejemplo
+## <a name="see-also"></a>Otras referencias
 
-Para más información, con el bot de ejemplo <a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> puede explorar la comunicación del bot con Facebook Messenger.
+- **Código de ejemplo**. Use el bot de ejemplo <a href="https://aka.ms/facebook-events" target="_blank">Facebook-events</a> para explorar la comunicación del bot con Facebook Messenger.
 
-## <a name="also-available-as-an-adapter"></a>También está disponible como un adaptador
-
-Este canal también está [disponible como un adaptador](https://botkit.ai/docs/v4/platforms/facebook.html). Para ayudarle a elegir entre un adaptador y un canal, consulte [Adaptadores disponibles actualmente](bot-service-channel-additional-channels.md#currently-available-adapters).
+- **Disponible como adaptador**. Este canal también está [disponible como un adaptador](https://botkit.ai/docs/v4/platforms/facebook.html). Para ayudarle a elegir entre un adaptador y un canal, consulte [Adaptadores disponibles actualmente](bot-service-channel-additional-channels.md#currently-available-adapters).

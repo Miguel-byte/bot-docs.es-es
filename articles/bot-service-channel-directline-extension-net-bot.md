@@ -8,14 +8,14 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 6b6e841e49ab800b239961cf5ae54dc2d5feab23
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757777"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970600"
 ---
-## <a name="net-bot-with-direct-line-app-service-extension"></a>Bot de .NET con la extensión de App Service para Direct Line
+# <a name="configure-net-bot-for-extension"></a>Configuración de un bot de .NET para la extensión
 
 [!INCLUDE[applies-to-v4](includes/applies-to.md)]
 
@@ -24,6 +24,10 @@ En este artículo se describe cómo actualizar un bot para trabajar con **canali
 ## <a name="prerequisites"></a>Requisitos previos
 
 Para realizar los pasos que se describen a continuación, debe tener un recurso de **Azure App Service** y **App Service** relacionados en Azure.
+
+## <a name="enable-direct-line-app-service-extension"></a>Habilitación de la extensión de App Service para Direct Line
+
+En esta sección se describe cómo habilitar la extensión de App Service para Direct Line mediante las claves de la configuración de canales del bot y el recurso de **Azure App Service** en el que se hospeda el bot.
 
 ## <a name="update-net-bot-to-use-direct-line-app-service-extension"></a>Actualización de un bot de .NET para utilizar la extensión de App Service para Direct Line
 
@@ -71,10 +75,6 @@ Para realizar los pasos que se describen a continuación, debe tener un recurso 
 
 1. **Publique** el bot en la instancia de Azure App Service.
 1. En el explorador, vaya a https://<instancia_de_app_service>.azurewebsites.net/.bot. Si todo está correcto, la página devolverá este contenido JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`.
-
-## <a name="enable-direct-line-app-service-extension"></a>Habilitación de la extensión de App Service para Direct Line
-
-En esta sección se describe cómo habilitar la extensión de App Service para Direct Line mediante las claves de la configuración de canales del bot y el recurso de **Azure App Service** en el que se hospeda el bot.
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Recopilación de las claves de la extensión Direct Line
 

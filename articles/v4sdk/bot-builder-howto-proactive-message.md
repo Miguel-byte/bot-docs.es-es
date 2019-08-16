@@ -3,19 +3,18 @@ title: Envío de notificaciones activas a los usuarios | Microsoft Docs
 description: Descripción de cómo enviar mensajes de notificación
 keywords: mensaje proactivo, mensaje de notificación, notificación de bot,
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9389f97cbba2e8766bf29b2502d36e9ec03077cf
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 0c5268a16f7dcff8e46d3a14f32409517eb98489
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215381"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970711"
 ---
 # <a name="send-proactive-notifications-to-users"></a>Envío de notificaciones activas a los usuarios
 
@@ -123,7 +122,7 @@ MicrosoftAppCredentials.TrustServiceUrl(serviceUrl);
 
 Para la mensajería proactiva, `serviceUrl` es la dirección URL del canal que el destinatario del mensaje automático usa y se puede encontrar en `Activity.ServiceUrl`. 
 
-Deseará agregar el código anterior inmediatamente antes del código que envía el mensaje automático. Este ejemplo lo tiene cerca del final de `CreateCallback()` en `ProactiveBot.cs`, pero está marcada como comentario porque no funcionará en el emulador sin un `appId` y `appPassword`.
+Deseará agregar el código anterior inmediatamente antes del código que envía el mensaje automático. En el [ejemplo de mensajes proactivos](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/16.proactive-messages), lo colocaría en `NotifyController.cs` justo antes de `await turnContext.SendActivityAsync("proactive hello");`.
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -133,7 +132,7 @@ MicrosoftAppCredentials.trustServiceUrl(serviceUrl);
 
 Para la mensajería proactiva, `serviceUrl` es la dirección URL del canal que el destinatario del mensaje automático usa y se puede encontrar en `activity.serviceUrl`.
 
-Deseará agregar el código anterior inmediatamente antes del código que envía el mensaje automático. Este ejemplo lo tiene cerca del final de `completeJob()` en `bot.js`, pero está marcada como comentario porque no funcionará en el emulador sin un `appId` y `appPassword`.
+Deseará agregar el código anterior inmediatamente antes del código que envía el mensaje automático. En el [ejemplo de mensajes proactivos](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/16.proactive-messages), lo colocaría en `index.js` justo antes de `await turnContext.sendActivity('proactive hello');`.
 
 ---
 

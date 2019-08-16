@@ -2,21 +2,24 @@
 title: Incorporación de autenticación al bot mediante Azure Bot Service | Microsoft Docs
 description: Obtenga información sobre cómo usar las características de autenticación de Azure Bot Service para agregar el inicio de sesión único al bot.
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 06/07/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3467c45ed97c84a2bad28cd5fef2de03a3caed22
-ms.sourcegitcommit: 3574fa4e79edf2a0c179d8b4a71939d7b5ffe2cf
+ms.openlocfilehash: b5d3031a23959d054056f89968c35a1e1e49c1dd
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/27/2019
-ms.locfileid: "68591053"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991987"
 ---
-<!-- Related TODO:
+<!-- 
+
+ms.author: v-jofing
+
+Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
 - Check guidance in [DirectLine authentication](https://docs.microsoft.com/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-authentication?view=azure-bot-service-4.0)
 -->
@@ -79,8 +82,6 @@ En este artículo se crea un bot de ejemplo que se conecta a Microsoft Graph med
 - **Preparar el código de ejemplo del bot**
 
 Cuando haya terminado, tendrá un bot ejecutándose localmente que puede responder a una serie de tareas simples en una aplicación de Azure AD, como las de comprobar y enviar un correo electrónico, o bien mostrar quién es usted y quién es el administrador. Para ello, el bot usará un token de una aplicación de Azure AD con la biblioteca Microsoft.Graph. No es necesario publicar su bot para probar las características de inicio de sesión de OAuth; sin embargo, su bot necesitará un identificador y una contraseña de aplicación de Azure válidos.
-
-Estas características de autenticación funcionan también con otros tipos de bots. Sin embargo, en este tutorial se usa un bot solo de registro.
 
 ### <a name="web-chat-and-direct-line-considerations"></a>Consideraciones de Web Chat y Direct Line
 
@@ -406,6 +407,33 @@ Se recomienda encarecidamente permitir a los usuarios cerrar sesión de forma ex
 
 ---
 
+### <a name="adding-teams-authentication"></a>Incorporación de la autenticación de Teams
+
+Teams se comporta de forma ligeramente diferente a otros canales en lo que respecta a OAuth y requiere algunos cambios para implementar correctamente la autenticación. Agregaremos código desde el ejemplo de bot de autenticación de Teams ([C#][cs-teams-auth-sample]/[JavaScript][js-teams-auth-sample]).
+ 
+Una diferencia entre otros canales y Teams es que Teams envía una actividad de *invocación* al bot, en lugar de una actividad de *evento*. 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight34)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-31&highlight=27)]
+
+---
+
+Si usa un *símbolo del sistema de OAuth*, esta actividad de invocación se debe reenviar al diálogo. Lo haremos en `TeamsActivityHandler`. Agregue el siguiente código al archivo de diálogo principal. 
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+
+---
+Por último, asegúrese de agregar un archivo `TeamsActivityHandler` adecuado (`TeamsActivityHandler.cs` para los bots de C# y `teamsActivityHandler.js` para bots de JavaScript) en el nivel superior de la carpeta del bot.
+
+También `TeamsActivityHandler` envía actividades de *reacción de mensajes*. Una actividad de reacción de mensaje hace referencia a la actividad original mediante el campo *reply to ID* (responder a id.). Esta actividad también debe ser visible mediante la [fuente de actividades][teams-activity-feed] de Microsoft Teams.
+
 ### <a name="further-reading"></a>Lecturas adicionales
 
 - [Recursos adicionales de Bot Framework](https://docs.microsoft.com/azure/bot-service/bot-service-resources-links-help) incluye vínculos para obtener más ayuda.
@@ -429,3 +457,6 @@ Se recomienda encarecidamente permitir a los usuarios cerrar sesión de forma ex
 [js-auth-sample]: https://aka.ms/v4js-bot-auth-sample
 [cs-msgraph-sample]: https://aka.ms/v4cs-auth-msgraph-sample
 [js-msgraph-sample]: https://aka.ms/v4js-auth-msgraph-sample
+[cs-teams-auth-sample]:https://aka.ms/cs-teams-auth-sample
+[js-teams-auth-sample]:https://aka.ms/js-teams-auth-sample
+[teams-activity-feed]:[https://aka.ms/teams-activity-feed

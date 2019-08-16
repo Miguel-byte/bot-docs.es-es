@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 503ec19444c51120bf46838e14edb891ec5c3bb5
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
+ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464661"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68991949"
 ---
 # <a name="virtual-assistant---template-outline"></a>Virtual Assistant: esquema de la plantilla
 
@@ -48,9 +48,9 @@ De forma estándar se proporciona una tarjeta de presentación sencilla que se p
 
 ## <a name="basic-language-understanding-luis-intents"></a>Intenciones básicas de Language Understanding (LUIS)
 
-Todos los bots deben ser capaces de reconocer un nivel básico de idioma en la conversación. Por ejemplo, los saludos son algo básico que todos los bots deben controlar con facilidad. Normalmente, los desarrolladores necesitan crear estas intenciones base y proporcionar datos de entrenamiento inicial para comenzar. La plantilla de Virtual Assistant proporciona archivos de unidad lógica de ejemplo con los que se puede empezar a trabajar y evita que todos los proyectos tengan que crearlas cada vez, al tiempo que garantiza un nivel base de funcionalidad de forma estándar.
+Todos los bots deben ser capaces de reconocer un nivel básico de idioma en la conversación. Por ejemplo, los saludos son algo básico que todos los bots deben controlar con facilidad. Normalmente, los desarrolladores necesitan crear estas intenciones base y proporcionar datos de entrenamiento inicial para comenzar. La plantilla de Virtual Assistant proporciona archivos .lu de ejemplo con los que se puede empezar a trabajar y evita que todos los proyectos tengan que crearlos cada vez, al tiempo que garantiza un nivel base de funcionalidad de forma estándar.
 
-Los archivos de LU proporcionan las siguientes intenciones en inglés, chino, francés, italiano, alemán y español.
+Los archivos .lu proporcionan las siguientes intenciones en inglés, chino, francés, italiano, alemán y español.
 
 Intención       | Expresiones de ejemplo |
 -------------|-------------|
@@ -68,7 +68,7 @@ ShowPrevious |*mostrar anterior*|
 StartOver    |*restart*|
 Stop         |*stop*|
 
-El formato de [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) es similar a Markdown, lo que facilita la modificación y el control de código fuente. Después, la herramienta [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) convierte los archivos .LU en modelos de LUIS para que los pueda publicar en su suscripción de LUIS ya sea mediante el portal o la herramienta de la CLI de [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) (línea de comandos) asociada.
+El formato [.lu](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) es similar a Markdown, lo que facilita la modificación y el control de código fuente. Después, la herramienta [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) convierte los archivos .lu en modelos de LUIS para que los pueda publicar en su suscripción de LUIS ya sea mediante el portal o la herramienta de la CLI de [LUIS](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) (línea de comandos) asociada.
 
 ## <a name="telemetry"></a>Telemetría
 
@@ -80,7 +80,7 @@ La telemetría a nivel de bot está intrínsecamente vinculada a los datos de te
 
 La combinación de un componente de middleware con una clase de contenedor en torno a las clases de SDK de QnAMaker y LuisRecognizer supone una forma elegante de recopilar un conjunto coherente de eventos. Las herramientas de Application Insights pueden usar estos eventos coherentes con herramientas como PowerBI.
 
-Un panel de PowerBI de ejemplo que forma parte del repositorio de Bot Framework Solutions y funciona de forma estándar con todas las plantillas de Virtual Assistant. Para más información, consulte la sección de [Analytics](https://github.com/Microsoft/AI/blob/master/docs/readme.md#analytics).
+Un panel de Power BI de ejemplo que forma parte del repositorio de Bot Framework Solutions y funciona de forma estándar con todas las plantillas de Virtual Assistant. Para más información, consulte la sección de [Analytics](https://aka.ms/bfsanalytics).
 
 ![Ejemplo de Analytics](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -88,7 +88,7 @@ Un panel de PowerBI de ejemplo que forma parte del repositorio de Bot Framework 
 
 Un patrón de diseño clave que se usa para mejorar el rendimiento de la primera ola de experiencias conversacionales era aprovechar Language Understanding (LUIS) y QnA Maker. LUIS podría entrenarse con tareas que el bot pudiera hacer para el usuario final y QnA Maker se entrenaría con conocimiento más general.
 
-Todas las grabaciones de voz entrantes (preguntas) se enrutarían a LUIS para el análisis. Si la intención de una grabación de voz no se identificara, se marcaría como None. Entonces se usaría QnA Maker para intentar encontrar una respuesta para el usuario final.
+Todas las grabaciones de voz entrantes (preguntas) se enrutarían a LUIS para el análisis. Si la intención de una grabación de voz no se identificara, se marcaría como *None*. Entonces se usaría QnA Maker para intentar encontrar una respuesta para el usuario final.
 
 Si bien este modelo funcionó bien, dos escenarios clave pueden suponer problemas.
 
@@ -97,31 +97,31 @@ Si bien este modelo funcionó bien, dos escenarios clave pueden suponer problema
 
 El [distribuidor](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csaddref%2Ccsbotconfig) es una solución elegante en este caso, ya que extrae las grabaciones de voz de los modelos LUIS configurados y las preguntas de QnA Maker y crea un modelo LUIS de distribución central.
 
-Así, el bot puede identificar rápidamente el modelo LUIS o el componente que debe administrar una grabación determinada y garantiza que los datos de QnA Maker se consideran en el máximo nivel de intención, sin procesarlos únicamente como con intención None como antes.
+Así, el bot puede identificar rápidamente el modelo LUIS o el componente que debe administrar una grabación determinada y garantiza que los datos de QnA Maker se consideran en el máximo nivel de intención, sin procesarlos únicamente como con intención *None* como antes.
 
-Esta herramienta de distribución también facilita la evaluación al resaltar la confusión y superponer los modelos LUIS y las bases de conocimiento de QnA Maker para destacar los problemas antes de la implementación.
+Esta herramienta de distribución también facilita la evaluación al resaltar la confusión, los problemas y superponer los modelos LUIS y las bases de conocimiento de QnA Maker antes de la implementación.
 
-Dispatcher se usa en el núcleo de cada proyecto que se crea con la plantilla. El modelo de distribuidor se usa en la clase `MainDialog` para identificar si el destino es un modelo de LUIS o QnA. En el caso de LUIS, se invoca el modelo LUIS secundario para que se devuelva la intención y las entidades como de costumbre. Dispatcher también se usa para la detección de interrupciones.
+Dispatcher se usa en el núcleo de cada proyecto que se crea con la plantilla. El modelo de distribuidor se usa en la clase `MainDialog` para identificar si el destino es un modelo de LUIS o QnA. En el caso de LUIS, se invoca el modelo LUIS secundario para que se devuelva la intención y las entidades. Dispatcher también se usa para la detección de interrupciones.
 
 ![Ejemplo de Dispatch](./media/enterprise-template/dispatchexample.png)
 
 ## <a name="qna-maker"></a>QnA Maker
 
-[QnA Maker](https://www.qnamaker.ai/) ofrece a personas que no sean desarrolladores conocimientos generales en forma de parejas de preguntas y respuestas. Este conocimiento puede importarse desde orígenes de datos de preguntas frecuentes, manuales de productos e interactivamente desde el portal de QnaMaker.
+[QnA Maker](https://www.qnamaker.ai/) ofrece a personas que no sean desarrolladores conocimientos generales en forma de parejas de preguntas y respuestas. Este conocimiento puede importarse desde orígenes de datos de preguntas frecuentes, manuales de productos e interactivamente desde el portal de QnA Maker.
 
-Se proporcionan dos modelos de QnA Maker de ejemplo en el formato de archivo [LU](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) en la carpeta QnA de CognitiveModels, uno de preguntas frecuentes y otro de charla. Después, se usa [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) como parte del script de implementación para crear un archivo JSON de QnA Maker que la CLI de [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) (línea de comandos) usará después para publicar elementos en la base de conocimiento de QnA Maker.
+Se proporcionan dos modelos de QnA Maker de ejemplo en el formato de archivo [.lu](https://github.com/Microsoft/botbuilder-tools/blob/master/packages/Ludown/docs/lu-file-format.md) en la carpeta QnA de CognitiveModels, uno de preguntas frecuentes y otro de charla. Después, se usa [LuDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) como parte del script de implementación para crear un archivo JSON de QnA Maker que la CLI de [QnA Maker](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/QnAMaker) (línea de comandos) usará después para publicar elementos en la base de conocimiento de QnA Maker.
 
 ![Ejemplo de QnA ChitChat](./media/enterprise-template/qnachitchatexample.png)
 
 ## <a name="content-moderator"></a>Content Moderator
 
-Content Moderator es un componente opcional que permite la detección de posibles blasfemias y ayuda a comprobar los datos de carácter personal (DCP). Esto puede resultar útil para la integración en los bots para que reaccionen a las blasfemias o si el usuario comparte datos de carácter personal. Por ejemplo, un bot se puede disculpar y rechazar a una persona o puede no guardar registros de telemetría si detecta información de carácter personal.
+Content Moderator es un componente opcional que permite la detección de posibles blasfemias y ayuda a comprobar los datos de carácter personal (DCP). Por ejemplo, un bot se puede disculpar y rechazar a una persona en caso de palabras soeces o puede no guardar registros de telemetría si detecta información de carácter personal.
 
 Se proporciona un componente de middleware que supervisa los textos y las superficies con ```TextModeratorResult``` en el objeto TurnState.
 
-# <a name="next-steps"></a>Pasos siguientes
-Consulte [Introducción](https://github.com/Microsoft/AI/tree/master/docs#tutorials) para aprender a crear e implementar Virtual Assistant. 
+## <a name="next-steps"></a>Pasos siguientes
+Consulte los [tutoriales](https://aka.ms/bfstutorials) para aprender a crear e implementar Virtual Assistant. 
 
-# <a name="additional-resources"></a>Recursos adicionales
-El código fuente completo de la plantilla de Virtual Assistant se puede encontrar en [GitHub](https://github.com/Microsoft/AI/).
+## <a name="additional-resources"></a>Recursos adicionales
+El código fuente completo de la plantilla de Virtual Assistant se puede encontrar en [GitHub](https://aka.ms/bfsolutions).
 

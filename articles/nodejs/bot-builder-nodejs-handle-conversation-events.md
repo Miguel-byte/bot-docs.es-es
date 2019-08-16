@@ -10,10 +10,10 @@ ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
 ms.openlocfilehash: a6149b750a4432f00268571df6d12b611114181f
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67404908"
 ---
 # <a name="handle-user-and-conversation-events"></a>Control de eventos de usuario y conversación
@@ -44,7 +44,7 @@ En el ejemplo siguiente, agregamos una función que desencadena el diálogo cada
 
 [!INCLUDE [first-run sample Node.js](../includes/snippet-code-node-first-run-dialog-1.md)]
 
-También puede personalizar lo que hace una acción después de que se ha desencadenado si proporciona un controlador [onSelectAction][onSelectAction] handler. For trigger actions you can provide an [onInterrupted][onInterrupted] para interceptar una interrupción antes de que se produzca. Para más información, consulte [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md).
+También puede personalizar lo que hace una acción después de que se ha desencadenado si proporciona un controlador [onSelectAction][onSelectAction]. Para desencadenar acciones, puede proporcionar un controlador [onInterrupted][onInterrupted] para interceptar una interrupción antes de que ocurra. Para más información, consulte [Control de acciones del usuario](bot-builder-nodejs-dialog-actions.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: a37ae6f3a9a9cd43c28d353745f0da9065a7886b
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 7c565d77879641d92a3e331852ff38ea21fdaf9e
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757757"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866450"
 ---
-## <a name="use-direct-line-app-service-extension-within-a-vnet"></a>Uso de la extensión de App Service para Direct Line en una red virtual
+# <a name="use-direct-line-app-service-extension-within-a-vnet"></a>Uso de la extensión de App Service para Direct Line en una red virtual
 
 En este artículo se describe cómo usar la extensión de App Service para Direct Line con una red virtual de Azure (VNET).
 
-### <a name="create-an-app-service-environment-and-other-azure-resources"></a>Creación de un entorno de App Service Environment y otros recursos de Azure
+## <a name="create-an-app-service-environment-and-other-azure-resources"></a>Creación de un entorno de App Service Environment y otros recursos de Azure
 
 1. La extensión de App Service para Direct Line está disponible en todos los servicios de **Azure App Service**, incluidos los hospedados en un entorno de **Azure App Service Environment**. Un entorno de Azure App Service Environment proporciona aislamiento y es ideal para trabajar en una red virtual.
     - Puede encontrar instrucciones para crear un entorno de App Service Environment externo en el artículo [Creación de un entorno de App Service externo](https://docs.microsoft.com/en-us/azure/app-service/environment/create-external-ase).
@@ -30,7 +30,7 @@ En este artículo se describe cómo usar la extensión de App Service para Direc
     - En Región, seleccione su entorno de App Service Environment.
     - Termine de crear el plan de App Service.
 
-### <a name="configure-the-vnet-network-security-groups-nsg"></a>Configuración de los grupos de seguridad de red (NSG) de la red virtual
+## <a name="configure-the-vnet-network-security-groups-nsg"></a>Configuración de los grupos de seguridad de red (NSG) de la red virtual
 
 1. La extensión de App Service para Direct Line requiere una conexión de salida para que pueda emitir solicitudes HTTP. Esto se puede configurar como una regla de salida en el grupo de seguridad de red de la red virtual que está asociada a la subred del entorno de App Service Environment. La regla que se requiere es la siguiente:
 
@@ -38,7 +38,7 @@ En este artículo se describe cómo usar la extensión de App Service para Direc
 |---|---|
 |Puerto de origen|*|
 |Destino|Direcciones IP|
-|Direcciones IP de destino|52.155.168.246, 13.83.242.172|
+|Direcciones IP de destino|20.38.80.64, 40.82.248.64|
 |Intervalos de puertos de destino|443|
 |Protocolo|Any|
 |Action|Allow|
@@ -54,7 +54,7 @@ En este artículo se describe cómo usar la extensión de App Service para Direc
 Para la versión preliminar, deberá cambiar el modo en que la extensión de App Service para Direct Line se comunica con Azure. Para hacerlo, agregue una nueva **Configuración de la aplicación de App Service** a la aplicación mediante el portal o el archivo `applicationsettings.json`:
 
 - Propiedad: DirectLineExtensionABSEndpoint
-- Valor: https://dlase.botframework.com/v3/extension
+- Valor: https://st-directline.botframework.com/v3/extension
 
 >[!NOTE]
 > Solo será necesario para la versión preliminar de la extensión de App Service para Direct Line.

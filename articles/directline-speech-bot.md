@@ -3,21 +3,20 @@ title: Desarrollo de un bot de DirectLine Speech | Microsoft Docs
 description: Desarrollo de un bot de DirectLine Speech
 keywords: desarrollo de un bot de DirectLine Speech, bot de voz
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
-ms.topic: conceptuals
+ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4f33f799af3c7a6aecec172f5512791b52fdbffe
-ms.sourcegitcommit: f3fda6791f48ab178721b72d4f4a77c373573e38
+ms.openlocfilehash: d4b44fdc2d063c2d91020435473346fdfbda589b
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68671481"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68970612"
 ---
-# <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot 
+# <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
@@ -48,7 +47,7 @@ public IActivity Speak(string message)
 }
 ```
 
-## <a name="option-1-update-your-net-core-bot-code-if-your-bot-has-a-botcontrollercs"></a>Opción 1: Actualización del código del bot de .NET Core _si el bot tiene un elemento BotController.cs_
+## <a name="option-1-update-your-net-core-bot-code-_if-your-bot-has-a-botcontrollercs_"></a>Opción 1: Actualización del código del bot de .NET Core _si el bot tiene un elemento BotController.cs_
 Cuando se crea un nuevo bot desde Azure Portal mediante una de las plantillas, como EchoBot, obtendrá un bot que incluye un controlador MVC de ASP.NET que expone un punto de conexión POST único. Estas instrucciones explican cómo expandirlo para exponer también un punto de conexión que acepte el punto de conexión de streaming de WebSocket, que es un punto de conexión GET.
 1.  Abra BotController.cs en la carpeta Controllers de la solución
 
@@ -105,7 +104,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 8.  El resto del código del bot sigue siendo el mismo.
 
-## <a name="option-2-update-your-net-core-bot-code-if-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller"></a>Opción 2: Actualización del código del bot de .NET Core _si el bot usa AddBot y UseBotFramework en lugar de BotController_
+## <a name="option-2-update-your-net-core-bot-code-_if-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller_"></a>Opción 2: Actualización del código del bot de .NET Core _si el bot usa AddBot y UseBotFramework en lugar de BotController_
 
 Si ha creado un bot con una versión v4 de Bot Builder SDK anterior a la versión 4.3.2, es probable que el bot no incluya un elemento BotController sino que use los métodos AddBot() y UseBotFramework() en el archivo Startup.cs para exponer el punto de conexión POST en el que el bot recibe los mensajes. Para exponer el nuevo punto de conexión de streaming, deberá agregar un elemento BotController y quitar los métodos AddBot() y UseBotFramework(). Estas instrucciones le guiarán en los cambios que deben realizarse.
 
@@ -167,6 +166,10 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 4.  El resto del código del bot sigue siendo el mismo.
+
+## <a name="additional-information"></a>Información adicional
+
+Para más información sobre cómo trabajar con actividades, consulte [cómo funcionan los bots](v4sdk/bot-builder-basics.md) y [cómo enviar y recibir mensajes de texto](v4sdk/bot-builder-howto-send-messages.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 > [!div class="nextstepaction"]

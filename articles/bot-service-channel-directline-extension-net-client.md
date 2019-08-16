@@ -8,18 +8,18 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 1b3b11723cc93c32aef92250518d2ffc16435460
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 62fda46569c6134f798b4d253a0676a037fdfa0f
+ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757787"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68866456"
 ---
-## <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Creación de un cliente de .NET para conectarse a la extensión de App Service para Direct Line
+# <a name="create-net-client-to-connect-to-direct-line-app-service-extension"></a>Creación de un cliente de .NET para conectarse a la extensión de App Service para Direct Line
 
 En este artículo se describe cómo crear un cliente de .NET en C# que se conecta a la extensión de App Service para Direct Line.
 
-### <a name="gather-your-direct-line-extension-keys"></a>Recopilación de las claves de la extensión Direct Line
+## <a name="gather-your-direct-line-extension-keys"></a>Recopilación de las claves de la extensión Direct Line
 
 1. En el explorador, vaya a [Azure Portal](https://portal.azure.com/).
 1. En Azure Portal, busque el recurso de **Azure Bot Service**.
@@ -29,12 +29,12 @@ En este artículo se describe cómo crear un cliente de .NET en C# que se conect
 1. Desplácese a la sección Sitios. Normalmente, hay un Sitio predeterminado a menos que se haya eliminado o cambiado de nombre.
 1. Haga clic en el vínculo **Mostrar** para mostrar una de las claves y, a continuación, copie su valor.
 
-![Claves de la extensión de App Service](./media/channels/direct-line-extension-extension-keys-net-client.png)
+    ![Claves de la extensión de App Service](./media/channels/direct-line-extension-extension-keys-net-client.png)
 
 > [!NOTE]
 > Este valor es el secreto de cliente de Direct Line que se usa para conectarse a la extensión de App Service para Direct Line. Puede crear sitios adicionales si lo desea y usar también esos valores de secreto.
 
-### <a name="add-the-preview-nuget-package-source"></a>Adición del origen del paquete de Nuget de la versión preliminar
+## <a name="add-the-preview-nuget-package-source"></a>Adición del origen del paquete de Nuget de la versión preliminar
 
 Los paquetes de NuGet de la versión preliminar necesarios para crear un cliente de Direct Line en C# se pueden encontrar en una fuente de NuGet.
 
@@ -46,7 +46,7 @@ Los paquetes de NuGet de la versión preliminar necesarios para crear un cliente
 1. Haga clic en el botón **Actualizar** para guardar los valores.
 1. Haga clic en **Aceptar** para salir de la configuración de orígenes del paquete.
 
-### <a name="create-a-c-direct-line-client"></a>Creación de un cliente de Direct Line en C#
+## <a name="create-a-c-direct-line-client"></a>Creación de un cliente de Direct Line en C#
 
 Las interacciones con la extensión de App Service para Direct Line se producen de manera diferente al modo tradicional de Direct Line porque la mayoría de las comunicaciones se producen mediante un *WebSocket*. El cliente de Direct Line actualizado incluye clases auxiliares para abrir y cerrar un *WebSocket*, enviar comandos a través del WebSocket y recibir las actividades del bot. En esta sección se describe cómo crear un cliente simple en C# para interactuar con un bot.
 
