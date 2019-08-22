@@ -7,15 +7,14 @@ ms.author: johtaylo
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 187a8427fd8627b0ce6b812ce8ee857e62b0394d
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c728962141c1beec89f2830fa15d5985922ddfa5
+ms.sourcegitcommit: 3eaf06dd9691a27a1cd4a7f6434e922cd530795a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252689"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565395"
 ---
 # <a name="how-bots-work"></a>Funcionamiento de los bots
 
@@ -142,13 +141,16 @@ Los controladores definidos en `ActivityHandler` son:
 | Evento | Controlador | DESCRIPCIÓN |
 | :-- | :-- | :-- |
 | Cualquier tipo de actividad recibida | `OnTurnAsync` | Llama a uno de los otros controladores, en función del tipo de actividad que reciba. |
-| Actividad de mensaje recibida | `OnMessageActivityAsync` | Se invalida para controlar un actividad `Message`. |
-| Actividad de actualización de conversación recibida | `OnConversationUpdateActivityAsync` | En una actividad `ConversationUpdate`, llama a un controlador si cualquiera de los miembros, que no sea el bot, se une a la conversación, o la abandona. |
+| Actividad de mensaje recibida | `OnMessageActivityAsync` | Se invalida para controlar un actividad `message`. |
+| Actividad de actualización de conversación recibida | `OnConversationUpdateActivityAsync` | En una actividad `conversationUpdate`, llama a un controlador si cualquiera de los miembros, que no sea el bot, se une a la conversación, o la abandona. |
 | Miembros que no son el bot se han unido a la conversación | `OnMembersAddedAsync` | Se invalida para controlar a los miembros que se unen a una conversación. |
 | Miembros que no son el bot ha abandonado la conversación | `OnMembersRemovedAsync` | Se invalida para controlar a los miembros que abandonan una conversación. |
-| Actividad de evento recibida | `OnEventActivityAsync` | En una actividad `Event`, llama a un controlador específico del tipo de evento. |
+| Actividad de evento recibida | `OnEventActivityAsync` | En una actividad `event`, llama a un controlador específico del tipo de evento. |
 | Actividad de evento token-respuesta recibida | `OnTokenResponseEventAsync` | Se invalida para controlar los eventos de respuesta del token. |
 | Actividad de evento no token-respuesta recibida | `OnEventAsync` | Se invalida para controlar otros tipos de eventos. |
+| Actividad de reacción de mensajes recibida | `OnMessageReactionActivityAsync` | En una actividad `messageReaction`, llama a un controlador si se han agregado o quitado una o más reacciones de un mensaje. |
+| Reacciones de mensajes agregadas a un mensaje | `OnReactionsAddedAsync` | Invalide esto para controlar las reacciones agregadas a un mensaje. |
+| Reacciones de mensajes eliminadas de un mensaje | `OnReactionsRemovedAsync` | Invalide esto para controlar las reacciones eliminadas de un mensaje. |
 | Otro tipo de actividad recibida | `OnUnrecognizedActivityTypeAsync` | Se invalida para controlar cualquier tipo de actividad que no se controle de otra forma. |
 
 Estos controladores tienen un objeto `turnContext` que proporciona información acerca de la actividad entrante, que corresponde a la solicitud HTTP entrante. Las actividades pueden ser de diversos tipos, por lo que cada controlador proporciona una actividad fuertemente tipada en su parámetro de contexto de turno; en la mayoría de los casos, `OnMessageActivityAsync` siempre se controlará y, por lo general, es el más común.
@@ -186,15 +188,20 @@ Los controladores definidos en `ActivityHandler` son:
 
 | Evento | Controlador | DESCRIPCIÓN |
 | :-- | :-- | :-- |
-| Cualquier tipo de actividad recibida | `onTurn` | Llama a uno de los otros controladores, en función del tipo de actividad que reciba. |
-| Actividad de mensaje recibida | `onMessage` | Se proporciona una función para que controle un actividad `Message`. |
-| Actividad de actualización de conversación recibida | `onConversationUpdate` | En una actividad `ConversationUpdate`, llama a un controlador si cualquiera de los miembros, que no sea el bot, se une a la conversación, o la abandona. |
-| Miembros que no son el bot se han unido a la conversación | `onMembersAdded` | Se proporciona una función para que controle a los miembros que se unen a una conversación. |
-| Miembros que no son el bot ha abandonado la conversación | `onMembersRemoved` | Se proporciona una función para que controle a los miembros que abandonan una conversación. |
-| Actividad de evento recibida | `onEvent` | En una actividad `Event`, llama a un controlador específico del tipo de evento. |
-| Actividad de evento token-respuesta recibida | `onTokenResponseEvent` | Se proporciona una función para que controle los eventos de respuesta del token. |
-| Otro tipo de actividad recibida | `onUnrecognizedActivityType` | Se proporciona una función para que controle cualquier tipo de actividad que no se controle de otra forma. |
-| Los controladores de actividad se han completado | `onDialog` | Se proporciona una función para que controle todo el procesamiento que se debe realizar al final de un turno, después de que se hayan completado el resto de los controladores de actividad. |
+| Cualquier tipo de actividad recibida | `onTurn` | Se llama cuando se recibe cualquier actividad. |
+| Actividad de mensaje recibida | `onMessage` | Se llama cuando se recibe una actividad `message`. |
+| Actividad de actualización de conversación recibida | `onConversationUpdate` | Se llama cuando se recibe cualquier actividad `conversationUpdate`. |
+| Miembros se unen a la conversación | `onMembersAdded` | Se llama cuando algún miembro se une a la conversación, incluido el bot. |
+| Miembros abandonan la conversación | `onMembersRemoved` | Se llama cuando algún miembro abandona la conversación, incluido el bot. |
+| Actividad de reacción de mensajes recibida | `onMessageReaction` | Se llama cuando se recibe cualquier actividad `messageReaction`. |
+| Reacciones de mensajes agregadas a un mensaje | `onReactionsAdded` | Se llama cuando se agregan reacciones a un mensaje. |
+| Reacciones de mensajes eliminadas de un mensaje | `onReactionsRemoved` | Se llama cuando se eliminan reacciones de un mensaje. |
+| Actividad de evento recibida | `onEvent` | Se llama cuando se recibe cualquier actividad `event`. |
+| Actividad de evento token-respuesta recibida | `onTokenResponseEvent` | Se llama cuando se recibe un evento `tokens/response`. |
+| Otro tipo de actividad recibida | `onUnrecognizedActivityType` | Se llama cuando no hay definido un controlador para el tipo de actividad específico. |
+| Los controladores de actividad se han completado | `onDialog` | Se llama después de que se hayan completado los controladores correspondientes. |
+
+Llame al parámetro de función `next` desde cada controlador para permitir que continúe el procesamiento. Si no se llama a `next`, el procesamiento de la actividad finaliza.
 
 En primer lugar, se comprueba en cada turno si el bot ha recibido un mensaje. Cuando recibimos un mensaje del usuario, devolvemos el mensaje que ha enviado.
 
