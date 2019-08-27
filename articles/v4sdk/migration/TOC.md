@@ -5,7 +5,9 @@
 # [Referencia rápida de migración de JavaScript](javascript-migration-quickreference.md)
 # [Migración de un bot de .NET v3 a un bot de .NET Framework v4](conversion-framework.md)
 # [Migración de un bot de .NET v3 a un bot de .NET Core v4](conversion-core.md)
-# [Migración de un bot de JavaScript v3 a la versión v4](conversion-javascript.md)
+# [Uso del estado de usuario de .NET v3 en un bot de la versión v4](csharp-user-state-using.md)
+# [Migración de un bot de JavaScript v3 a un bot de la versión v4](conversion-javascript.md)
+<!-- Remember to add JavaScript user state topic -->
 
 <!-- Current target:
 _intro/overview_
