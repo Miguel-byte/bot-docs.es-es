@@ -8,18 +8,15 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/18/2019
-ms.reviewer: ''
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 75f6cc720042ad7f10c0b016dedba7af5fd84435
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: b3e2a2f60c3a3f44c81e31b280315d8fee06138b
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757004"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026333"
 ---
 # <a name="handle-user-interruptions"></a>Control de las interrupciones del usuario
-
-<!-- Rebuild to link to published samples in the master branch -->
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
@@ -49,7 +46,7 @@ Para usar diálogos, instale el paquete de NuGet **Microsoft.Bot.Builder.Dialogs
 
 Comenzamos por la implementación de la clase `CancelAndHelpDialog` para controlar las interrupciones de usuario.
 
-[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=10)]
+[!code-csharp[Class signature](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/CancelAndHelpDialog.cs?range=12)]
 
 En la clase `CancelAndHelpDialog`, el método `OnContinueDialogAsync` llama al método `InerruptAsync` para comprobar si el usuario ha interrumpido el flujo normal o no. Si se interrumpe el flujo, se llama a los métodos de la clase base; en caso contrario, se devuelve el valor devuelto desde `InterruptAsync`.
 
@@ -93,7 +90,7 @@ Ahora que hemos analizado cómo funciona la clase de control de interrupciones, 
 
 Cuando llega la nueva actividad de mensaje, el bot ejecuta `MainDialog`. `MainDialog` pide al usuario en qué puede ayudarle. Y, a continuación, inicia `BookingDialog` en el método `MainDialog.ActStepAsync`, con una llamada a `BeginDialogAsync` tal como se muestra a continuación.
 
-[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=82-83)]
+[!code-csharp[ActStepAsync](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Dialogs/MainDialog.cs?range=58-101&highlight=6,26)]
 
 Seguidamente, en el método `FinalStepAsync` de la clase `MainDialog`, el diálogo de reservas finaliza y la reserva se considera completada o cancelada.
 
@@ -107,7 +104,7 @@ El código de `BookingDialog` no se muestra aquí, ya que no está directamente 
 
 Cuando llega la nueva actividad de mensaje, el bot ejecuta `MainDialog`. `MainDialog` pide al usuario en qué puede ayudarle. Y, a continuación, inicia `bookingDialog` en el método `MainDialog.actStep`, con una llamada a `beginDialog` tal como se muestra a continuación.
 
-[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=90-97&highlight=96-97)]
+[!code-javascript[Act step](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/dialogs/mainDialog.js?range=71-112&highlight=6,27)]
 
 Seguidamente, en el método `finalStep` de la clase `MainDialog`, el diálogo de reservas finaliza y la reserva se considera completada o cancelada.
 
@@ -147,7 +144,7 @@ En nuestro ejemplo, el controlador `onTurnError` del adaptador recibe las excepc
 
 Por último, en `Startup.cs`, se crea el bot como transitorio y, en cada turno, se crea una nueva instancia del bot.
 
-[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=47-48)]
+[!code-csharp[Add transient bot](~/../botbuilder-samples/samples/csharp_dotnetcore/13.core-bot/Startup.cs?range=43-44)]
 
 Como referencia, estas son las definiciones de clase que se usan en la llamada para crear el bot anterior.
 
@@ -161,7 +158,7 @@ Como referencia, estas son las definiciones de clase que se usan en la llamada p
 
 Por último, en `index.js`, se crea el bot.
 
-[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=69-73)]
+[!code-javascript[Create bot](~/../botbuilder-samples/samples/javascript_nodejs/13.core-bot/index.js?range=65)]
 
 Como referencia, estas son las definiciones de clase que se usan en la llamada para crear el bot anterior.
 

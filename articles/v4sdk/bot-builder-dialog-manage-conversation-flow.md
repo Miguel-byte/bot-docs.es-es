@@ -3,31 +3,29 @@ title: Implementación de un flujo de conversación secuencial | Microsoft Docs
 description: Aprenda a administrar un flujo de conversación simple con diálogos en Bot Framework SDK.
 keywords: flujo de conversación simple, flujo de conversación secuencial, diálogos, avisos, cascadas, conjunto de diálogos
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c3c116eec8222ce50cd7dde672cc86f9765a3f97
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 27d7e5ee6edd4cedfb9d59b318d9a3765e2f0ad8
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67587484"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890608"
 ---
 # <a name="implement-sequential-conversation-flow"></a>Implementación de un flujo de conversación secuencial
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
 
-La recopilación de información mediante la publicación de preguntas es una de las principales formas de interacción de un bot con los usuarios. La biblioteca de diálogos proporciona características integradas útiles, como las clases *prompt* que facilitan la formulación de preguntas y validan la respuesta para asegurarse de que coincide con un tipo de datos específico o cumple con las reglas de validación personalizadas. 
+La recopilación de información mediante la publicación de preguntas es una de las principales formas de interacción de un bot con los usuarios. La biblioteca de diálogos proporciona características integradas útiles, como las clases *prompt* que facilitan la formulación de preguntas y validan la respuesta para asegurarse de que coincide con un tipo de datos específico o cumple con las reglas de validación personalizadas.
 
-Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos. En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza. En general, un diálogo es útil cuando el bot necesita recopilar información del usuario. En este tema se detalla cómo implementar un flujo de conversación simple mediante la creación de avisos y su llamada desde un diálogo en cascada. 
+Mediante la biblioteca Dialogs es posible administrar flujos de conversación simples y complejos. En una interacción simple, el bot ejecuta una secuencia fija de pasos y la conversación finaliza. En general, un diálogo es útil cuando el bot necesita recopilar información del usuario. En este tema se detalla cómo implementar un flujo de conversación simple mediante la creación de avisos y su llamada desde un diálogo en cascada.
 
 > [!TIP]
-> Para obtener ejemplos de cómo escribir sus propias preguntas sin usar la biblioteca de diálogos, vea el artículo [Creación de mensajes propios para recopilar datos de entrada del usuario](bot-builder-primitive-prompts.md). 
-
+> Para obtener ejemplos de cómo escribir sus propias preguntas sin usar la biblioteca de diálogos, vea el artículo [Creación de mensajes propios para recopilar datos de entrada del usuario](bot-builder-primitive-prompts.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -39,7 +37,7 @@ Mediante la biblioteca Dialogs es posible administrar flujos de conversación si
 En el ejemplo de aviso de varios turnos, usamos un diálogo en cascada, algunos avisos y un diálogos de componente para crear una interacción simple que formula al usuario una serie de preguntas. El código usa un diálogo para desplazarse por estos pasos:
 
 | Pasos        | Tipo de aviso  |
-|:-------------|:-------------| 
+|:-------------|:-------------|
 | Pedir al usuario su modo de transporte | Aviso de elección |
 | Pedir al usuario su nombre | Aviso de texto |
 | Pedir al usuario si desea proporcionar su edad | Aviso de confirmación |
@@ -67,8 +65,6 @@ En el constructor `UserProfileDialog`, se crean los pasos de cascada, los avisos
 [!code-csharp[Constructor snippet](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Dialogs/UserProfileDialog.cs?range=22-41)]
 
 A continuación, implementamos los pasos que se usa el diálogo. Para usar un aviso, debe llamarlo desde un paso del diálogo y recuperar el resultado del aviso en el paso siguiente con `stepContext.Result`. En un segundo plano, las preguntas consisten en un diálogo de dos pasos. En primer lugar, el aviso pide una entrada; en segundo lugar, devuelve el valor válido o comienza de nuevo desde el principio con un nuevo aviso hasta que recibe una entrada válida.
-
-
 
 Siempre debe devolver un valor no NULL de `DialogTurnResult` desde un paso de cascada. Si no lo hace, el diálogo podría no funcionar según lo previsto. Aquí se muestra la implementación de `NameStepAsync` en el diálogo en cascada.
 
@@ -104,17 +100,17 @@ Comenzamos por la creación de `UserProfileDialog`, que se deriva de la clase `C
 
 En el constructor `UserProfileDialog`, se crean los pasos de cascada, los avisos y el diálogo en cascada y se agregan al conjunto de diálogos. Los avisos deben estar en el mismo conjunto de diálogos en el que se utilizan.
 
-[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
+[!code-javascript[Constructor snippet](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
 
 A continuación, implementamos los pasos que se usa el diálogo. Para usar un aviso, debe llamarlo desde un paso del diálogo y recuperar el resultado del aviso en el paso siguiente del contexto del paso, en este caso con `step.result`. En un segundo plano, las preguntas consisten en un diálogo de dos pasos. En primer lugar, el aviso pide una entrada; en segundo lugar, devuelve el valor válido o comienza de nuevo desde el principio con un nuevo aviso hasta que recibe una entrada válida.
 
 Siempre debe devolver un valor no NULL de `DialogTurnResult` desde un paso de cascada. Si no lo hace, el diálogo podría no funcionar según lo previsto. Aquí se muestra la implementación de `nameStep` en el diálogo en cascada.
 
-[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=75-78)]
+[!code-javascript[name step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=73-76)]
 
 En `ageStep`, especificamos un aviso de reintento cuando se produce un error al validar la entrada del usuario, ya sea porque tiene un formato que el aviso no puede analizar o porque se produce un error en un criterio de validación de la entrada, como se especifica en el constructor anterior. En este caso, si no se ha proporcionado un aviso de reintento, el aviso utilizará el texto del aviso inicial para volver a pedir la entrada al usuario.
 
-[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=90-101&highlight=5)]
+[!code-javascript[age step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=88-99&highlight=5)]
 
 **userProfile.js**
 
@@ -126,7 +122,7 @@ El modo de transporte, el nombre y la edad del usuario se guardan en una instanc
 
 En el último paso, comprobamos el valor de `step.result` devuelto por el diálogo que se llama en el paso de cascada anterior. Si el valor devuelto es true, se usa el descriptor de acceso del perfil de usuario para obtener y actualizar el perfil de usuario. Para obtener el perfil de usuario, llamamos al método `get` y, a continuación, se establecen los valores de las propiedades `userProfile.transport`, `userProfile.name` y `userProfile.age`. Por último, se resume la información del usuario antes de llamar a `endDialog`, que finaliza el diálogo. La finalización del diálogo lo extrae de la pila de diálogos y devuelve un resultado opcional al elemento primario del diálogo. El elemento primario es el diálogo o método que inició el diálogo que acaba de terminar.
 
-[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=115-136&highlight=4-8,20-21)]
+[!code-javascript[summary step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=113-134&highlight=4-8,20-21)]
 
 **Creación del método de extensión para ejecutar el diálogo en cascada**
 
@@ -136,7 +132,7 @@ El contexto del diálogo se crea mediante una llamada al método `createContext`
 
 El contexto del diálogo permite iniciar un diálogo con el identificador de cadena o continuar el diálogo actual (por ejemplo, un diálogo en cascada que tiene varios pasos). El contexto del diálogo se pasa a todos los diálogos y pasos de cascada del bot.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
 
 ---
 
@@ -154,7 +150,9 @@ El controlador `OnMessageActivityAsync` utiliza el método `RunAsync` para inici
 
 El controlador `onMessage` utiliza el método auxiliar para iniciar o continuar el diálogo. En `onDialog`, usamos los objetos de administración de estado del bot para conservar los cambios de estado en el almacenamiento. (El método `onDialog` se llama por última vez después de la ejecución de otros controladores definidos, como `onMessage`. De este modo, se guarda el estado después de que finaliza el controlador de mensajes pero antes de la finalización del propio turno).
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-44)]
+**bots/dialogBot.js**
+
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-38&highlight=11-13)]
 
 ---
 
@@ -172,15 +170,15 @@ Este bot usa los siguientes _servicios_.
 
 Registramos los servicios del bot en `Startup`. Estos servicios están disponibles para otras partes del código mediante la inserción de dependencias.
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-41)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/05.multi-turn-prompt/Startup.cs?range=17-39)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
-Registramos los servicios del bot en `index.js`. 
+Registramos los servicios del bot en `index.js`.
 
-[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-49)]
+[!code-javascript[overrides](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/index.js?range=18-46)]
 
 ---
 

@@ -7,14 +7,13 @@ ms.author: rstand
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
-ms.date: 4/13/2019
-ms.openlocfilehash: f3e0ac52a3bfe5759202af6c704626acafef617b
-ms.sourcegitcommit: 4086189a9c856fbdc832eb1a1d205e5f1b4e3acd
+ms.date: 8/13/2019
+ms.openlocfilehash: 2aea5c5feb144f5e9b1cb7f2947f409f827fb009
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65733311"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890495"
 ---
 # <a name="manage-a-bot"></a>Administración de un bot
 
@@ -55,7 +54,7 @@ La hoja **Configuración de la aplicación** contiene información detallada sob
 **MicrosoftAppID** y **MicrosoftAppPassword** se guardan en el archivo de configuración del bot (`appsettings.json` o `.env`) o en Azure Key Vault. Para recuperarlos, descargue la configuración del bot o el archivo de configuración (para bots anteriores, si existe) o acceda a Azure Key Vault. Puede que sea necesario realizar pruebas localmente con el identificador y la contraseña.
 
 > [!NOTE]
-> El servicio de bots **Registro de canales de bots** incluye un valor *MicrosoftAppID*, pero como no hay un servicio de aplicaciones asociado con este tipo de servicio, no hay una hoja **Configuración de la aplicación** para que consulte el valor *MicrosoftAppPassword*. Para obtener la contraseña, debe generar una. Para generar la contraseña para un **registro de canales de Bot**, consulte [Bot Channels Registration password](bot-service-quickstart-registration.md#bot-channels-registration-password) (Contraseña de registro de canales de bots).
+> El servicio de bots **Registro de canales de bots** incluye un valor *MicrosoftAppID*, pero como no hay un servicio de aplicaciones asociado con este tipo de servicio, no hay una hoja **Configuración de la aplicación** para que consulte el valor *MicrosoftAppPassword*. Para obtener la contraseña, debe generar una. Para generar la contraseña para un **registro de canales de Bot**, consulte [Bot Channels Registration password](bot-service-quickstart-registration.md#get-registration-password) (Contraseña de registro de canales de bots).
 
 ## <a name="next-steps"></a>Pasos siguientes
 Ahora que ha explorado la hoja de Bot Service en Azure Portal, aprenda a usar el Editor de código en línea para personalizar su bot.

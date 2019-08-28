@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 645ab3c8bcf2bc253128219b5aa1332d8ae23dc1
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757051"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037536"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -180,7 +180,7 @@ GET https://login.botframework.com/v1/.well-known/keys
 
 El cuerpo de la respuesta especifica el documento en [formato JWK](https://tools.ietf.org/html/rfc7517), pero también incluye una propiedad adicional para cada clave: `endorsements`. La lista de claves es relativamente estable y se puede almacenar en caché durante largos períodos de tiempo (de forma predeterminada, 5 días en Bot Framework SDK).
 
-La propiedad `endorsements` dentro de cada clave contiene una o más cadenas de aprobación que puede usar para comprobar que el identificador de canal especificado en la propiedad `channelId` dentro del objeto `Activity` de la solicitud entrante es auténtico. La lista de identificadores de canal que requieren aprobaciones es configurable en cada bot. De forma predeterminada, será la lista de todos los identificadores de canal publicados, aunque los desarrolladores de bots pueden invalidar los valores de identificador de canal seleccionados en cualquier caso. 
+La propiedad `endorsements` dentro de cada clave contiene una o más cadenas de aprobación que puede usar para comprobar que el identificador de canal especificado en la propiedad `channelId` dentro del objeto [Actividad][] de la solicitud entrante es auténtico. La lista de identificadores de canal que requieren aprobaciones es configurable en cada bot. De forma predeterminada, será la lista de todos los identificadores de canal publicados, aunque los desarrolladores de bots pueden invalidar los valores de identificador de canal seleccionados en cualquier caso. 
 
 ### <a name="step-4-verify-the-jwt-token"></a>Paso 4: Verificación del token JWT
 
@@ -194,7 +194,7 @@ Hay disponibles bibliotecas de análisis de JWT para muchas plataformas y la may
 4. El token contiene una notificación "audience" (audiencia) con un valor igual al identificador de aplicación de Microsoft del bot.
 5. El token está dentro de su período de validez. El tiempo estándar del sector es de 5 minutos.
 6. El token tiene una firma criptográfica válida, con una clave enumerada en el documento de claves de OpenID que se recuperó en el [Paso 3](#connector-to-bot-step-3), utilizando el algoritmo de firma que se especifica en la propiedad `id_token_signing_alg_values_supported` del documento de metadatos de OpenID que se recuperó en [Paso 2](#openid-metadata-document).
-7. El token contiene una notificación "serviceUrl" (dirección URL de servicio) cuyo valor coincide con la propiedad `servieUrl` en la raíz del objeto `Activity` de la solicitud entrante. 
+7. El token contiene una notificación "serviceUrl" (dirección URL de servicio) cuyo valor coincide con la propiedad `servieUrl` en la raíz del objeto [Actividad][] de la solicitud entrante. 
 
 Si se requiere aprobación para un identificador de canal:
 
@@ -392,3 +392,5 @@ payload:
 - [JSON Web Token (JWT) draft-jones-json-web-token-07](http://openid.net/specs/draft-jones-json-web-token-07.html)
 - [Firma web JSON (JWS) draft-jones-json-web-signature-04](https://tools.ietf.org/html/draft-jones-json-web-signature-04)
 - [Clave web JSON (JWK) RFC 7517](https://tools.ietf.org/html/rfc7517)
+
+[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 2575ac196bd3e875d8523da99d7114b789e70558
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: e5a6320a645f55fe9e023688af23ec8fe62e3006
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757102"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037383"
 ---
 # <a name="web-chat-overview"></a>Introducción a Chat en web
 
@@ -27,7 +27,7 @@ Si desea migrar desde Chat en web v3 a v4, vaya a la [sección sobre la migraci�
 > Para versiones anteriores de Chat en web (v3), visite la [rama del Chat en web v3](https://github.com/Microsoft/BotFramework-WebChat/tree/v3).
 
 En primer lugar, cree un bot con [Azure Bot Service](https://azure.microsoft.com/services/bot-service/).
-Una vez creado el bot, deberá [obtener el secreto de Chat en web del bot](../bot-service-channel-connect-webchat.md#step-1) en Azure Portal. A continuación, use el secreto para [generar un token](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) y páselo a Chat en web.
+Una vez creado el bot, deberá [obtener el secreto de Chat en web del bot](../bot-service-channel-connect-webchat.md#get-your-bot-secret-key) en Azure Portal. A continuación, use el secreto para [generar un token](../rest-api/bot-framework-rest-direct-line-3-0-authentication.md) y páselo a Chat en web.
 
 A continuación, se muestra cómo puede agregar el control Chat en web a su sitio web:
 

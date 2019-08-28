@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8dfa76d02b2338916011040771a1c1b7e7cb7d76
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 0b9e2c406ee20535dfb065639beda8b66d0a2996
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756906"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037355"
 ---
 # <a name="send-an-activity-to-the-bot"></a>Envío de una actividad al bot
 
@@ -20,7 +20,7 @@ Mediante el protocolo Direct Line 3.0, los clientes y los bots pueden intercambi
 
 ## <a name="send-an-activity"></a>Envío de una actividad
 
-Para enviar una actividad al bot, el cliente debe crear un objeto `Activity` para definir la actividad y, a continuación, emitir una solicitud `POST` a `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, especificando el objeto Activity en el cuerpo de la solicitud.
+Para enviar una actividad al bot, el cliente debe crear un objeto [Actividad][] para definir la actividad y, a continuación, emitir una solicitud `POST` a `https://directline.botframework.com/v3/directline/conversations/{conversationId}/activities`, especificando el objeto Activity en el cuerpo de la solicitud.
 
 Los fragmentos de código siguientes proporcionan un ejemplo de la solicitud de envío de la actividad y la respuesta.
 
@@ -75,11 +75,11 @@ El tiempo total para el envío POST de un mensaje en una conversación de Direct
 
 ## <a name="send-attachments-to-the-bot"></a>Envío de datos adjuntos al bot
 
-En algunas situaciones, un cliente debe enviar datos adjuntos al bot, como imágenes o documentos. Un cliente puede enviar datos adjuntos al bot ya sea [especificando las direcciones URL](#send-by-url) de los datos adjuntos en el objeto `Activity` que envía mediante `POST /v3/directline/conversations/{conversationId}/activities` o [cargando datos adjuntos](#upload-attachments) mediante `POST /v3/directline/conversations/{conversationId}/upload`.
+En algunas situaciones, un cliente debe enviar datos adjuntos al bot, como imágenes o documentos. Un cliente puede enviar datos adjuntos al bot ya sea [especificando las direcciones URL](#send-by-url) de los datos adjuntos en el objeto [Actividad][] que envía mediante `POST /v3/directline/conversations/{conversationId}/activities` o [cargando los datos adjuntos](#upload-attachments) mediante `POST /v3/directline/conversations/{conversationId}/upload`.
 
 ## <a id="send-by-url"></a> Envío de datos adjuntos por dirección URL
 
-Para enviar uno o varios archivos adjuntos como parte del objeto `Activity` mediante `POST /v3/directline/conversations/{conversationId}/activities`, basta con incluir uno o varios objetos `Attachment` dentro del objeto Activity y establecer la propiedad `contentUrl` de cada objeto Attachment para especificar la dirección HTTP o HTTPS o el identificador URI `data` de los datos adjuntos.
+Para enviar uno o varios archivos adjuntos como parte del objeto [Actividad][] mediante `POST /v3/directline/conversations/{conversationId}/activities`, basta con incluir uno o varios objetos [Datos adjuntos][] dentro del objeto Activity y establecer la propiedad `contentUrl` de cada objeto Attachment para especificar la dirección HTTP o HTTPS o el identificador URI `data` de los datos adjuntos.
 
 ## <a id="upload-attachments"></a> Envío de datos adjuntos mediante carga
 
@@ -192,3 +192,6 @@ HTTP/1.1 200 OK
 - [Recepción de actividades del bot](bot-framework-rest-direct-line-3-0-receive-activities.md)
 - [Finalización de una conversación](bot-framework-rest-direct-line-3-0-end-conversation.md)
 - [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object
+[Datos adjuntos]: bot-framework-rest-connector-api-reference.md#attachment-object
