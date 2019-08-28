@@ -312,7 +312,7 @@ bot.dialog('DeleteNote', [
 
 El código que controla `Note.Delete` usa la función `noteCount` para determinar si el objeto `notes` contiene las notas. 
 
-Pegue la función de la aplicación auxiliar `noteCount` al final de `app.js`.
+Pegue la función auxiliar `noteCount` al final de `app.js`.
 
 [!code-js[Add a helper function that returns the number of notes (JavaScript)](../includes/code/node-basicNote.js#CountNotesHelper)]
 

@@ -38,7 +38,7 @@ Se utilizan cuatro tecnologías de autenticación para establecer la confianza e
 | **JSON Web Token (JWT)** | Los JSON Web Token se usan para codificar los tokens que se envían hacia y desde el bot. **Los clientes deben comprobar completamente todos los tokens JWT que reciben**, según los requisitos descritos en este artículo. |
 | **Metadatos de OpenID** | El servicio Bot Connector publica una lista de tokens válidos que usa para firmar sus propios tokens JWT en los metadatos de OpenID en un punto de conexión conocido y estático. |
 
-En este artículo se describe cómo usar estas tecnologías mediante HTTPS y JSON estándar. No es necesario ningún SDK especial, aunque es posible que las aplicaciones auxiliares para OpenID y otras le sean útiles.
+En este artículo se describe cómo usar estas tecnologías mediante HTTPS y JSON estándar. No es necesario ningún SDK especial, aunque es posible que los asistentes para OpenID y otras le sean útiles.
 
 ## <a id="bot-to-connector"></a> Autenticación de las solicitudes del bot al servicio Bot Connector
 

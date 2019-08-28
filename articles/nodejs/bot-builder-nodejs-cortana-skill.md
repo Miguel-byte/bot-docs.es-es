@@ -134,7 +134,7 @@ En el ejemplo anterior, el SSML de la propiedad **speak** del mensaje adopta el 
 
 ```
 
-Una función de la aplicación auxiliar compila después el elemento raíz necesario del documento de lenguaje de marcado de síntesis de voz (SSML). 
+Una función auxiliar compila después el elemento raíz necesario del documento de lenguaje de marcado de síntesis de voz (SSML). 
 
 ```javascript
 
