@@ -2,22 +2,20 @@
 title: Migración de un bot de JavaScript v3 existente a un nuevo proyecto de v4 | Microsoft Docs
 description: Tomamos un bot de JavaScript v3 existente y lo migramos al SDK v4 utilizando un nuevo proyecto.
 keywords: JavaScript, bot migration, dialogs, v3 bot
-author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 573dabba7a16f88db890f0d095a2d4a0f983660c
-ms.sourcegitcommit: 41c8caf0e0c849beeeb50cdccf6dbc1ba7cce442
+ms.openlocfilehash: 2dac81ea653729043294ed3ebe6037b6cd8b67eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67344592"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026395"
 ---
-# <a name="migrate-a-sdk-v3-javascript-bot-to-v4"></a>Migración de un bot de Javascript del SDK v3 a v4
+# <a name="migrate-a-javascript-v3-bot-to-a-v4-bot"></a>Migración de un bot de JavaScript v3 a un bot de la versión v4
 
 En este artículo, se portará el bot [core-MultiDialogs-v3](https://aka.ms/v3-js-core-multidialog-migration-sample) del SDK para JavaScript v3 a un nuevo bot de JavaScript v4.
 Esta conversión se divide en estas fases:

@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 95ec59da7b2b64391a599fa690bf3e8410c3cd53
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 242774949243802c267a9db3b8461113b161c13a
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757193"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037337"
 ---
 # <a name="implement-channel-specific-functionality"></a>Implementar una funcionalidad específica de canal
 
-Algunos canales proporcionan características que no se puede implementar mediante el uso de [texto y datos adjuntos del mensaje](bot-framework-rest-connector-create-messages.md) únicamente. Para implementar la funcionalidad específica del canal, puede pasar metadatos nativo a un canal en la propiedad `channelData` del objeto `Activity`. Por ejemplo, el bot puede usar la propiedad `channelData` para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
+Algunos canales proporcionan características que no se pueden implementar usando únicamente el [texto y los datos adjuntos del mensaje](bot-framework-rest-connector-create-messages.md). Para implementar una funcionalidad específica de canal, puede pasar los metadatos nativos a un canal en la propiedad `channelData` del objeto [Activity[]]. Por ejemplo, el bot puede usar la propiedad `channelData` para indicar a Telegram que envíe un adhesivo o para indicar a Office 365 que envíe un correo electrónico.
 
 En este artículo se describe cómo usar la propiedad `channelData` de la actividad de un mensaje para implementar esta funcionalidad específica de canal:
 
@@ -275,3 +275,5 @@ En este fragmento de código se muestra un ejemplo de la propiedad `channelData`
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - [Preview features with the Channel Inspector](../bot-service-channel-inspector.md) (Vista previa de las características con el Inspector de canales)
+
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

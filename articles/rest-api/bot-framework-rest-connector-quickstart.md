@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 4c4bfacaeb0be0c3f6dd71f0dd2a195aa2261541
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 751a5d8430bb675e8ad5e10d02f94ee5642672cb
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757147"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037477"
 ---
 # <a name="create-a-bot-with-the-bot-connector-service"></a>Crear un bot con el servicio Bot Connector
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ Una conversación es una serie de mensajes que se intercambian un usuario y su b
 
 ### <a name="receive-a-message-from-the-user"></a>Recibir un mensaje del usuario
 
-Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitud al punto de conexión que se especificó cuando se [registró](../bot-service-quickstart-registration.md) el bot. El cuerpo de la solicitud es un objeto `Activity`. En el siguiente ejemplo se muestra el cuerpo de la solicitud que recibe un bot cuando el usuario le envía un mensaje simple. 
+Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitud al punto de conexión que se especificó cuando se [registró](../bot-service-quickstart-registration.md) el bot. El cuerpo de la solicitud es un objeto [Actividad][]. En el siguiente ejemplo se muestra el cuerpo de la solicitud que recibe un bot cuando el usuario le envía un mensaje simple. 
 
 ```json
 {
@@ -97,7 +97,7 @@ Cuando el usuario envía un mensaje, Bot Framework Connector envía una solicitu
 
 ### <a name="reply-to-the-users-message"></a>Responder al mensaje del usuario
 
-Cuando el punto de conexión del bot recibe una solicitud `POST` que representa un mensaje del usuario (es decir, `type` = **message**), use la información de esa solicitud para crear el objeto `Activity` de la respuesta.
+Cuando el punto de conexión del bot recibe una solicitud `POST` que representa un mensaje del usuario (es decir, `type` = **mensaje**), use la información de esa solicitud para crear el objeto [Actividad][] de la respuesta.
 
 1. Establezca la propiedad **conversation** en el contenido de la propiedad **conversation** del mensaje del usuario.
 2. Establezca la propiedad **from** en el contenido de la propiedad **recipient** del mensaje del usuario.
@@ -194,3 +194,5 @@ Content-Type: application/json
 ## <a name="next-steps"></a>Pasos siguientes
 
 En este tutorial obtuvo un token de acceso de Bot Framework y usó el servicio Bot Connector para intercambiar mensajes con el usuario. Puede usar [Bot Framework Emulator](../bot-service-debug-emulator.md) para probar y depurar el bot. Si desea compartir su bot con otros usuarios, deberá [configurarlo](../bot-service-manage-channels.md) para que se ejecute en uno o más canales.
+
+[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 26622b5757a2fb8e7297484c02d1d8ba1a2c1b04
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
+ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68757199"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70026345"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -271,6 +271,7 @@ Una vez creadas todas las aplicaciones de servicio, se tiene que agregar la info
 Agregue los valores de conexión de servicio como se muestra a continuación:
 
 **.env**
+
 ```file
 MicrosoftAppId=""
 MicrosoftAppPassword=""
@@ -282,8 +283,8 @@ QnAEndpointHostName="<your-hostname>"
 LuisAppId=<app-id-for-dispatch-app>
 LuisAPIKey=<your-luis-endpoint-key>
 LuisAPIHostName=<your-dispatch-app-region>
-
 ```
+
 Cuando se hayan realizado todos los cambios, guarde este archivo.
 
 ---
@@ -303,8 +304,8 @@ En **BotServices.js** la información contenida en el archivo de configuración 
 
 En **dispatchBot.js** la información contenida en el archivo de configuración _.env_ se usa para conectar el bot de distribución a los servicios _LuisRecognizer(dispatch)_ y _QnAMaker_. Los constructores utilizan los valores que proporcionó para conectarse a estos servicios.
 
-**dispatchBot.js**  
-[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=18-31)]
+**bots/dispatchBot.js**  
+[!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
 
 ---
 
@@ -316,16 +317,16 @@ Para cada entrada del usuario, la lógica del bot comprueba la entrada del usuar
 
 En el archivo **DispatchBot.cs** cada vez que se llama al método `OnMessageActivityAsync`, comprobamos el mensaje de usuario entrante con el modelo de Dispatch. Después, se pasan `topIntent` y `recognizerResult` del modelo de Dispatch al método correcto para llamar al servicio y devolver el resultado.
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 En el método `onMessage` de **dispatchBot.js**, comprobamos el mensaje de entrada del usuario contra el modelo de Dispatch, buscamos _topIntent_ y después lo pasamos llamando a _dispatchToTopIntentAsync_.
 
-**dispatchBot.js**  
+**bots/dispatchBot.js**  
 
-[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=37-50)]
+[!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
 
 ---
 
@@ -335,7 +336,7 @@ En el método `onMessage` de **dispatchBot.js**, comprobamos el mensaje de entra
 
 Cuando el modelo genera un resultado, indica qué servicio puede procesar de la manera más adecuada la declaración. El código de este bot enruta la solicitud al servicio correspondiente y, a continuación, resume la respuesta del servicio que llama. Dependiendo de la _intención_ devuelta desde Dispatch, este código utiliza la intención devuelto para dirigir al modelo LUIS o servicio QnA correcto.
 
-**DispatchBot.cs**  
+**bots\DispatchBot.cs**  
 [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 Si se llama al método `ProcessHomeAutomationAsync` o `ProcessWeatherAsync`, se pasan los resultados del modelo de Dispatch a _luisResult.ConnectedServiceResult_. El método especificado proporciona los comentarios del usuario que muestran la intención superior del modelo de Dispatch, además de una lista clasificada de todas las intenciones y entidades que se detectaron.
@@ -346,8 +347,8 @@ Si se llama al método `q_sample-qna`, utiliza la entrada de usuario contenida e
 
 Cuando el modelo genera un resultado, indica qué servicio puede procesar de la manera más adecuada la declaración. El código de este ejemplo utiliza el método _topIntent_ reconocido para mostrar cómo dirigir la solicitud al servicio correspondiente.
 
-**DispatchBot.cs**  
-[!code-javascript[DispatchToTop](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=67-83)]
+**bots/dispatchBot.js**  
+[!code-javascript[dispatchToTopIntentAsync](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=59-75)]
 
 Si se llama al método `processHomeAutomation` o `processWeather`, se pasan los resultados del modelo de Dispatch en _recognizerResult.luisResult_. El método especificado proporciona los comentarios del usuario que muestran la intención superior del modelo de Dispatch, además de una lista clasificada de todas las intenciones y entidades que se detectaron.
 

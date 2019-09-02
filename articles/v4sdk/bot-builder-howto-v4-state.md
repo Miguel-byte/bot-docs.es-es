@@ -3,19 +3,18 @@ title: Guardado de los datos del usuario y la conversación | Microsoft Docs
 description: Obtenga información sobre cómo guardar y recuperar datos de estado con Bot Framework SDK.
 keywords: estado de la conversación, estado de usuario, conversación, guardar el estado, administrar estado del bot
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e844a254f1aee709d7dd0b0866ee4ae14737f65
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 3f298f728f11327da1613549c08e405a89d8d180
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693718"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890590"
 ---
 # <a name="save-user-and-conversation-data"></a>Guardado de los datos del usuario y la conversación
 
@@ -68,7 +67,7 @@ El primer paso es solicitar el servicio botbuilder que incluye definiciones de `
 A continuación, se registra `MemoryStorage` que se usa para crear objetos `UserState` y `ConversationState`. Los objetos de estado de usuario y conversación se crean en `Startup` y se inserta la dependencia en el constructor del bot. Otros servicios que se registran para un bot son: un proveedor de credenciales, un adaptador y la implementación del bot.
 
 **Startup.cs**  
-[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=16-38)]
+[!code-csharp[ConfigureServices](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/Startup.cs?range=17-36)]
 
 **StateManagementBot.cs**  
 [!code-csharp[StateManagement](~/../BotBuilder-Samples/samples/csharp_dotnetcore/45.state-management/bots/StateManagementBot.cs?range=15-22)]

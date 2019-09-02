@@ -1,88 +1,106 @@
 ---
 title: Creación de Bot Channels Registration con Bot Service | Microsoft Docs
 description: Obtenga información sobre cómo registrar un bot existente en Bot Service.
-author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
-ms.topic: article
+ms.topic: conceptual
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 0d13a27ef81660c6702f5a09487b731bc891c750
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 72c4d972b3f403beadad6d098a3c639cbbc1694d
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405804"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890549"
 ---
-# <a name="register-a-bot-with-bot-service"></a>Registro de un bot en Bot Service
+# <a name="register-a-bot-with-azure-bot-service"></a>Registro de un bot con Azure Bot Service
 
+En este tema se muestra cómo crear un recurso de **Azure Bot Service** para registrar el bot. Lo necesitará si el bot se hospeda en otro lugar y desea que esté disponible en Azure y que se conecte a los canales de Azure Bot Service.
 
-
-Si ya tiene un bot hospedado en otra parte y le gustaría usar Bot Service para conectarlo a otros canales, deberá registrar su bot en el Servicio de bots. En este tema, aprenderá a registrar el bot en Bot Service mediante la creación de un servicio de bots **Bot Channels Registration**.
+Esto le permite compilar, conectarse y administrar su bot para interactuar con los usuarios, dondequiera que estos se encuentren, mediante Cortana, Skype, Messenger y muchos otros servicios.
 
 > [!IMPORTANT] 
-> Solo deberá registrar su bot si no está hospedado en Azure. Si [creó un bot](bot-service-quickstart.md) a través de Azure Portal, el bot ya está registrado en Bot Service.
+> Solo deberá registrar su bot si no está hospedado en Azure. Si [creó un bot](v4sdk/abs-quickstart.md) mediante Azure Portal, el bot ya está registrado en el servicio.
 
-## <a name="log-in-to-azure"></a>Inicio de sesión en Azure
-Inicie sesión en [Azure Portal](http://portal.azure.com).
+## <a name="create-a-registration-resource"></a>Creación de un recurso de registro
 
-> [!TIP]
-> Si aún no tiene una suscripción, puede registrarse para obtener una <a href="https://azure.microsoft.com/free/" target="_blank">cuenta gratuita</a>.
+1. En el explorador, vaya a [Azure Portal](https://ms.portal.azure.com).
 
-## <a name="create-a-bot-channels-registration"></a>Creación de un Bot Channels Registration
-Necesita un servicio de bots **Bot Channels Registration** para poder usar la funcionalidad de Bot Service. Un bot de registro le permite conectar el bot a los canales.
+    > [!TIP]
+    > Si no tiene una suscripción, puede registrarse para obtener una <a href="https://azure.microsoft.com/free/" target="_blank">cuenta gratuita</a>.
 
-Para crear un **Bot Channels Registration**, haga lo siguiente:
+1. En el panel izquierdo, haga clic en **Crear un recurso**.
+1. En el cuadro de selección del panel derecho, escriba *bot*. Y, en la lista desplegable, seleccione **Registro de canales de bot** o **Bot de aplicación web** según su aplicación.
+1. Haga clic en el botón **Crear** para iniciar el proceso.
+1. En la hoja **Bot Service**, indique la información solicitada sobre el bot según se especifica en la tabla debajo de la imagen.  
 
-1. Haga clic en el botón **Nuevo** de la esquina superior izquierda de Azure Portal y seleccione **IA y Cognitive Services > Bot Channels Registration** (Registro de canales de bot). 
+   ![Hoja de creación de registro de bot](media/azure-bot-quickstarts/registration-create-bot-service-blade.png)
 
-2. Se abrirá una nueva hoja con información sobre ell **Bot Channels Registration**. Haga clic en el botón **Crear** para iniciar el proceso de creación. 
+   |Configuración |Valor sugerido|DESCRIPCIÓN|
+   |---|---|--|
+   |**Nombre del bot** <img width="300px">|Nombre para mostrar del bot|Nombre para mostrar del bot que aparece en los canales y directorios. Este nombre se puede cambiar en cualquier momento.|
+   |**Suscripción**|Su suscripción|Seleccione la suscripción de Azure que quiere usar.|
+   |**Grupo de recursos**|myResourceGroup|Puede crear un [grupo de recursos](/azure/azure-resource-manager/resource-group-overview#resource-groups) o elegir uno existente.|
+   |**Ubicación**|Oeste de EE. UU.|Elija una ubicación cerca de donde se implementa el bot o cerca de otros servicios a los que tendrá acceso su bot.|
+   |**Plan de tarifa**|F0|Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/pricing/details/bot-service/).|
+   |**Punto de conexión de mensajería**|URL|Escriba la dirección URL de punto de conexión de mensajería del bot.|
+   |**Application Insights**|Por| Decida si quiere **Activar** o **Desactivar** [Application Insights](bot-service-manage-analytics.md). Si selecciona **Activar**, también debe especificar una ubicación regional. |
+   |**Id. y contraseña de la aplicación de Microsoft**| Creación automática del id. y contraseña de la aplicación |Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. Consulte la siguiente sección [Registro de aplicación manual](#manual-app-registration). En caso contrario, se crearán automáticamente un identificador y contraseña de aplicación de Microsoft en el proceso de registro. |
 
-3. En la hoja **Servicio de bots**, indique la información solicitada sobre el bot tal como se especifica en la tabla debajo de la imagen.  <br/>
-   ![Hoja de creación de registro de bot](~/media/azure-bot-quickstarts/registration-create-bot-service-blade.png)
+    > [!IMPORTANT]
+    > No olvide escribir la dirección URL del punto de conexión de mensajería del bot.
 
+1. Haga clic en el botón **Crear**. Espere a que el recurso se cree. Aparecerá en la lista de recursos.
 
-   |                    Configuración                     |         Valor sugerido         |                                                                                                  DESCRIPCIÓN                                                                                                  |
-   |------------------------------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-   |           <strong>Nombre del bot</strong>            |     Nombre para mostrar del bot     |                                                  Nombre para mostrar del bot que aparece en los canales y directorios. Este nombre se puede cambiar en cualquier momento.                                                  |
-   |         <strong>Suscripción</strong>          |        Su suscripción        |                                                                                Seleccione la suscripción de Azure que quiere usar.                                                                                 |
-   |        <strong>Grupo de recursos</strong>         |         myResourceGroup         |                                 Puede crear un [grupo de recursos](/azure/azure-resource-manager/resource-group-overview#resource-groups) o elegir uno existente.                                  |
-   |                    Location                    |             Oeste de EE. UU.             |                                                        Elija una ubicación cerca de donde se implementa el bot o cerca de otros servicios a los que tendrá acceso su bot.                                                         |
-   |         <strong>Plan de tarifa</strong>          |               F0                |             Seleccione un plan de tarifa. Puede actualizar el plan de tarifa en cualquier momento. Para más información, consulte [Precios de Azure Bot Service](https://azure.microsoft.com/pricing/details/bot-service/).              |
-   |      <strong>Punto de conexión de mensajería</strong>       |               URL               |                                                                               Escriba la dirección URL de punto de conexión de mensajería del bot.                                                                                |
-   |     <strong>Application Insights</strong>      |               Por                | Decida si quiere <strong>Activar</strong> o <strong>Desactivar</strong> [Application Insights](bot-service-manage-analytics.md). Si selecciona <strong>Activar</strong>, también debe especificar una ubicación regional. |
-   | <strong>Id. y contraseña de la aplicación de Microsoft</strong> | Creación automática del id. y contraseña de la aplicación |              Use esta opción si tiene que escribir manualmente un id. y contraseña de aplicación de Microsoft. En caso contrario, un Id. y contraseña nuevos de aplicación de Microsoft se crearán automáticamente en el proceso de creación del bot.               |
+### <a name="get-registration-password"></a>Obtención de la contraseña de registro
 
+Una vez completado el registro, Azure Active Directory asigna un identificador de aplicación único al registro y se le dirige a la página *Información general* de la aplicación.
 
-4. Haga clic en **Crear** para crear el servicio y registrar punto de conexión de mensajería del bot.
+Para obtener la contraseña, siga los pasos que se describen a continuación.
 
-Para confirmar que se ha creado el registro, consulte las **Notificaciones**. Las notificaciones cambiarán de **Implementación en curso...** a **Implementación correcta**. Haga clic en el botón **Ir al recurso** para abrir la hoja de recursos del bot. 
+1. En lista de recursos, haga clic en el recurso de Azure App Service que acaba de crear.
+1. En el panel derecho, en la hoja de recursos, haga clic en **Configuración**. Aparece la página *Configuración* del recurso.
+1. En la página Configuración, copie el **identificador de aplicación de Microsoft** generado y guárdelo en un archivo.
+1. Haga clic en el vínculo **Administrar** junto al *identificador de aplicación de Microsoft*.
 
-## <a name="bot-channels-registration-password"></a>Contraseña de Bot Channels Registration
+    ![Hoja de creación de registro de bot](media/azure-bot-quickstarts/bot-channels-registration-app-settings.png)
 
-El servicio de bots **Bot Channels Registration** no tiene asociado un servicio de aplicación. Por este motivo, este servicio de bots solo tiene un *MicrosoftAppID*. Debe generar manualmente la contraseña y guardarla usted mismo. Necesitará esta contraseña si desea probar el bot con el [emulador](bot-service-debug-emulator.md).
+1. En la página de *Certificados y secretos* que aparece, haga clic en el botón **Nuevo secreto de cliente**.
 
-Para generar un MicrosoftAppPassword, haga lo siguiente:
+    ![Hoja de creación de registro de bot](media/azure-bot-quickstarts/bot-channels-registration-app-secrets.png)
 
-1. En la hoja **Configuración**, haga clic en **Administrar**. Este es el vínculo que aparecen junto al **Id. de aplicación de Microsoft**. Este vínculo abrirá una ventana donde puede generar una nueva contraseña. <br/>
-  ![Vínculo Administrar en la hoja Configuración](~/media/azure-bot-quickstarts/registration-settings-manage-link.png)
+1. Agregue la descripción, seleccione la fecha de expiración y haga clic en el botón **Agregar**.
 
-2. Haga clic en **Generar nueva contraseña**. Esto generará una nueva contraseña para el bot. Copie esta contraseña y guárdela en un archivo. Esta es la única vez que verá esta contraseña. Si no guarda la contraseña completa, deberá repetir el proceso para crear una nueva contraseña en caso de que la necesite más adelante. <br/>
-  ![Generar contraseña de aplicación de Microsoft](~/media/azure-bot-quickstarts/registration-generate-app-password.png)
+    ![Hoja de creación de registro de bot](media/azure-bot-quickstarts/bot-channels-registration-app-secrets-create.png)
+
+    Esto generará una nueva contraseña para el bot. Copie esta contraseña y guárdela en un archivo. Esta es la única vez que verá esta contraseña. Si no guarda la contraseña completa, deberá repetir el proceso para crear una nueva contraseña en caso de que la necesite más adelante.
+
+Para **Bot de aplicación web**, siga los pasos descritos en el artículo: [Creación de un bot con Azure Bot Service](v4sdk/abs-quickstart.md). Va a crear un bot en Azure que se registra automáticamente con Azure Bot Service.
+
+## <a name="manual-app-registration"></a>Registro de aplicación manual
+
+Un registro manual es necesario en situaciones como:
+
+- No puede realizar registros en su organización y necesita otra entidad para crear el identificador de aplicación para el bot que está compilando.
+- Deberá crear manualmente su propio identificador de aplicación (y contraseña).
+
+Consulte [Preguntas más frecuentes sobre el registro de aplicación](bot-service-resources-bot-framework-faq.md#app-registration).
+
+> [!IMPORTANT]
+> En la sección *Admite tipos de cuenta*, debe elegir uno de los 2 tipos de multiinquilino, es decir: *Cuentas en cualquier directorio organizativo (todas las instancias de Azure AD: multiinquilino)* o *Cuentas en cualquier directorio organizativo (todas las instancias de Azure AD: multiinquilino) y cuentas personales de Microsoft (por ejemplo, Skype, Xbox, Outlook.com)* , al crear la aplicación ya que, de lo contrario, el bot no funcionará. Para más información, consulte [Registro de una aplicación nueva mediante Azure Portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal).
 
 ## <a name="update-the-bot"></a>Actualización del bot
 
-Si usa Bot Framework SDK para Node.js, establezca las variables de entorno siguientes:
-
-* MICROSOFT_APP_ID
-* MICROSOFT_APP_PASSWORD
-
 Si usa Bot Framework SDK para. NET, establezca los siguientes valores de clave en el archivo web.config:
 
-* MicrosoftAppId
-* MicrosoftAppPassword
+- `MicrosoftAppId = <appId>`
+- `MicrosoftAppPassword = <appSecret>`
+
+Si usa Bot Framework SDK para Node.js, establezca las variables de entorno siguientes:
+
+- `MICROSOFT_APP_ID = <appId>`
+- `MICROSOFT_APP_PASSWORD = <appSecret>`
 
 ## <a name="test-the-bot"></a>Probar el bot
 
@@ -94,4 +112,3 @@ En este tema, ha aprendido cómo registrar su bot hospedado en Bot Service. El s
 
 > [!div class="nextstepaction"]
 > [Administración de un bot](bot-service-manage-overview.md)
-

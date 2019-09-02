@@ -7,14 +7,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 12/04/2018
-ms.openlocfilehash: 20ee5a5a0849cef91e59aece7a87f8e9ac4e86ec
-ms.sourcegitcommit: b94361234816e6b95459f142add936732fc40344
+ms.date: 08/22/2019
+ms.openlocfilehash: b6174f20be47d40287cedd2a94b2d4e87c29bc2f
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54317635"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037493"
 ---
 # <a name="connect-a-bot-to-web-chat"></a>Conexión de un bot a un Chat en web
 
@@ -26,7 +25,12 @@ Cuando se [crea un bot](bot-service-quickstart.md) con Bot Service, el canal Cha
 
 El canal Chat en web del portal de Framework Bot contiene todo lo que necesita para insertar el control Chat en web en una página web. Lo único que debe hacer para usar el control Chat en web es obtener la clave secreta del bot e insertar el control en una página web.
 
-## <a id="step-1"></a> Obtener la clave secreta del bot
+## <a name="web-chat-and-direct-line-considerations"></a>Consideraciones de Web Chat y Direct Line
+
+> [!IMPORTANT]
+> Tenga en cuenta estas [consideraciones de seguridad](rest-api/bot-framework-rest-direct-line-3-0-authentication.md#security-considerations) importantes.
+
+## <a name="get-your-bot-secret-key"></a>Obtener la clave secreta del bot
 
 1. Abra el bot en [Azure Portal](http://portal.azure.com) y haga clic en la hoja **Canales**.
 
@@ -54,7 +58,7 @@ Para intercambiar el secreto por un token y generar la inserción, siga los sigu
 
 2. La respuesta a su solicitud **GET** contendrá el token (entre comillas) que se puede usar para iniciar una conversación al representar el control Chat en web dentro de un **IFrame**. Un token es válido solo para una conversación. Para iniciar otra conversación, debe generar un nuevo token.
 
-3. Dentro del `iframe` **Código para insertar** que ha copiado del canal WebChat del portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#step-1) anterior), cambie el parámetro `s=` por `t=` y reemplace "YOUR_SECRET_HERE" por su token.
+3. Dentro del `iframe` **Código para insertar** que ha copiado del canal WebChat del portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#get-your-bot-secret-key) anterior), cambie el parámetro `s=` por `t=` y reemplace "YOUR_SECRET_HERE" por su token.
 
 > [!NOTE]
 > Los tokens se renovarán automáticamente antes de que expiren. 
@@ -113,7 +117,7 @@ Use esta opción si quiere permitir que otros desarrolladores inserten fácilmen
 
 Para insertar el bot en su sitio web indicando el secreto en la etiqueta `iframe`, siga los siguientes pasos:
 
-1. Copie el **Código para insertar** `iframe` desde el canal Chat en web en el portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#step-1) anterior).
+1. Copie el **Código para insertar** `iframe` desde el canal Chat en web en el portal de Bot Framework (como se describe en la sección [Obtener la clave secreta del bot](#get-your-bot-secret-key) anterior).
 
 2. En ese **Código para insertar**, reemplace "YOUR_SECRET_HERE" por la **clave secreta** que copió de la misma página.
 

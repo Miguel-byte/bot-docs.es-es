@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 522f4f133e6a7b4e5379a27c1ce1a02138402559
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 25f6e30898101b87289af775e8386f941aa747a9
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68756933"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037374"
 ---
 # <a name="api-reference---direct-line-api-30"></a>Referencia de API: Direct Line API 3.0
 
@@ -46,7 +46,7 @@ El <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_bla
 | 204 | La solicitud se realizó correctamente, pero no se devolvió ningún contenido. |
 | 400 | La solicitud tenía formato incorrecto o era incorrecta por otro motivo. |
 | 401 | El cliente no está autorizado a realizar solicitudes. A menudo, este código de estado se produce porque falta el encabezado `Authorization` o tiene un formato incorrecto. |
-| 403 | El cliente no tiene permitido llevar a cabo la operación solicitada. Si la solicitud especificaba un token que previamente era válido, pero ha expirado, la propiedad `code` del objeto `Error` que se devuelve dentro del objeto `ErrorResponse` se establece en `TokenExpired`. |
+| 403 | El cliente no tiene permitido llevar a cabo la operación solicitada. Si la solicitud especificaba un token que previamente era válido, pero ha expirado, la propiedad `code` del [Error][] que se devuelve dentro del objeto [ErrorResponse][] se establece en `TokenExpired`. |
 | 404 | No se encontró el recurso solicitado. Normalmente, este código de estado indica un URI de solicitud no válido. |
 | 500 | Se ha producido un error interno del servidor en el servicio de Direct Line. |
 | 502 | El bot no está disponible o devolvió un error. **Se trata de un código de error común.** |
@@ -56,7 +56,7 @@ El <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" target="_bla
 
 ### <a name="errors"></a>Errors
 
-Cualquier respuesta que especifique un código de estado HTTP en el rango de 4xx o 5xx incluirá un objeto `ErrorResponse` en el cuerpo de la respuesta que proporciona información sobre el error. Si recibe una respuesta de error en el rango de 4xx, inspeccione el objeto **ErrorResponse** para identificar la causa del error y resolver el problema antes de volver a enviar la solicitud.
+Cualquier respuesta que especifique un código de estado HTTP en el rango de 4xx o 5xx incluirá un objeto [ErrorResponse][] en el cuerpo de la respuesta que proporciona información sobre el error. Si recibe una respuesta de error en el rango de 4xx, inspeccione el objeto **ErrorResponse** para identificar la causa del error y resolver el problema antes de volver a enviar la solicitud.
 
 > [!NOTE]
 > Los códigos de estado HTTP y los valores especificados en la propiedad `code` dentro del objeto **ErrorResponse** son estables. Los valores especificados en la propiedad `message` dentro del objeto **ErrorResponse** pueden cambiar con el tiempo.
@@ -167,8 +167,8 @@ POST /v3/directline/conversations/{conversationId}/activities
 
 | | |
 |----|----|
-| **Cuerpo de la solicitud** | Un objeto `Activity`. |
-| **Devuelve** | Un objeto `ResourceResponse` que contiene una propiedad `id` que especifica el identificador de la actividad que se envió al bot. | 
+| **Cuerpo de la solicitud** | Un objeto [Actividad][] |
+| **Devuelve** | Un objeto [ResourceResponse][] que contiene una propiedad `id` que especifica el id. de la actividad que se envió al bot. | 
 
 ### <a id="upload-send-files"></a> Cargar y enviar archivos
 Carga y envía archivos como adjuntos. Establecer el parámetro `userId` en el URI de la solicitud para especificar el id. del usuario que envía los adjuntos.
@@ -178,8 +178,8 @@ POST /v3/directline/conversations/{conversationId}/upload?userId={userId}
 
 | | |
 |----|----|
-| **Cuerpo de la solicitud** | Para un único dato adjunto, rellene el cuerpo de la solicitud con el contenido del archivo. Para varios datos adjuntos, cree un cuerpo de solicitud de varias partes que contenga una parte para cada dato adjunto y, además (de manera opcional), una parte para el objeto `Activity` que debe actuar como contenedor para los datos adjuntos especificados. Para obtener más información, consulte [Envío de una actividad al bot](bot-framework-rest-direct-line-3-0-send-activity.md). |
-| **Devuelve** | Un objeto `ResourceResponse` que contiene una propiedad `id` que especifica el identificador de la actividad que se envió al bot. | 
+| **Cuerpo de la solicitud** | Para un único dato adjunto, rellene el cuerpo de la solicitud con el contenido del archivo. Para varios archivos adjuntos, cree un cuerpo de solicitud de varias partes que contenga una parte para cada archivo adjunto y, además (de manera opcional), una parte para el objeto [Actividad][] que debe actuar como contenedor para los archivos adjuntos especificados. Para obtener más información, consulte [Envío de una actividad al bot](bot-framework-rest-direct-line-3-0-send-activity.md). |
+| **Devuelve** | Un objeto [ResourceResponse][] que contiene una propiedad `id` que especifica el id. de la actividad que se envió al bot. | 
 
 > [!NOTE]
 > Los archivos cargados se eliminan después de 24 horas.
@@ -193,7 +193,7 @@ Define un conjunto de actividades.<br/><br/>
 
 | Propiedad | Escriba | DESCRIPCIÓN |
 |----|----|----|
-| **activities** | `Activity`[] | Matriz de objetos **Activity**. |
+| **activities** | [Actividad][][] | Matriz de objetos **Activity**. |
 | **watermark** | string | Marca de agua máxima de actividades dentro del conjunto. Un cliente puede utilizar el valor `watermark` para indicar el mensaje más reciente que ha visto al [recuperar actividades del bot](bot-framework-rest-direct-line-3-0-receive-activities.md#http-get) o al [generar una nueva dirección URL del flujo de WebSocket](bot-framework-rest-direct-line-3-0-reconnect-to-conversation.md). |
 
 ### <a name="conversation-object"></a>Objeto Conversation
@@ -208,7 +208,7 @@ Define una conversación de Direct Line.<br/><br/>
 
 ### <a name="activities"></a>Actividades
 
-Para cada objeto `Activity` que un cliente recibe de un bot mediante Direct Line:
+Para cada [Actividad][] que un cliente recibe de un bot a través de Direct Line:
 
 - Se conservan las tarjetas de archivos adjuntos.
 - Las direcciones URL para los archivos adjuntos cargados se ocultan con un vínculo privado.
@@ -229,3 +229,8 @@ Es posible que los clientes [envíen](bot-framework-rest-direct-line-3-0-send-ac
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
+
+[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object
+[Error]: bot-framework-rest-connector-api-reference.md#error-object
+[ErrorResponse]: bot-framework-rest-connector-api-reference.md#errorresponse-object
+[ResourceResponse]: bot-framework-rest-connector-api-reference.md#resourceresponse-object

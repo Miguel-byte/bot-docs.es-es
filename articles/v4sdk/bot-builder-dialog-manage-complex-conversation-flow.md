@@ -3,19 +3,18 @@ title: Creación de un flujo de conversación avanzado con ramas y bucles | Micr
 description: Aprenda a administrar un flujo de conversación complejo con diálogos en Bot Framework SDK.
 keywords: flujo de conversación complejo, repetir, bucle, menú, diálogos, avisos, cascadas, conjunto de diálogos
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: b7ffa16c2f0a00043b12faec1d31bbfe5bfa250f
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: 9f88c854f2af18ae0c9fb724f8c3a3c99b6141ba
+ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "67587473"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69890633"
 ---
 # <a name="create-advanced-conversation-flow-using-branches-and-loops"></a>Creación de un flujo de conversación avanzado con ramas y bucles
 
@@ -64,7 +63,7 @@ Registramos los servicios del bot en `Startup`. Estos servicios están disponibl
 - Servicios para administrar el estado: almacenamiento, estado del usuario y estado de la conversación.
 - El diálogo que va a usar el bot.
 
-[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-39)]
+[!code-csharp[ConfigureServices](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Startup.cs?range=22-36)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -80,8 +79,7 @@ Creamos servicios para el bot que otras partes del código requieren.
 - Servicios para administrar el estado: almacenamiento, estado del usuario y estado de la conversación.
 - El diálogo que va a usar el bot.
 
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-38)]
-[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=43-45)]
+[!code-javascript[ConfigureServices](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/index.js?range=25-55)]
 
 ---
 
@@ -206,7 +204,7 @@ El controlador de mensajes llama al método `RunAsync` para administrar el diál
 
 **Bots\DialogAndWelcome.cs**
 
-`DialogAndWelcomeBot` extiende `DialogBot` para proporcionar un mensaje de bienvenida cuando el usuario se une a la conversación y es a lo que llama `Startup.cs`.
+`DialogAndWelcomeBot` extiende `DialogBot` para proporcionar un mensaje de bienvenida cuando el usuario se une a la conversación y es el que se crea en `Startup.cs`.
 
 [!code-csharp[On members added](~/../botbuilder-samples/samples/csharp_dotnetcore/43.complex-dialog/Bots/DialogAndWelcome.cs?range=21-38)]
 
@@ -226,11 +224,11 @@ Puesto que los diálogos de componentes definen un conjunto de diálogos interno
 
 El controlador de mensajes llama al método asistente `run` para administrar el diálogo e implementamos un controlador de turnos para guardar los cambios en la conversación y en el estado del usuario que se puedan haber ocurrido durante el turno. La llamada a `next` permitirá que la implementación base llame al método `onDialog`, lo que garantiza que se producen llamadas de guardado al final del turno.
 
-[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=30-47)]
+[!code-javascript[Overrides](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogBot.js?range=24-41)]
 
 **bots/dialogAndWelcomeBot.js**
 
-`DialogAndWelcomeBot` extiende `DialogBot` para proporcionar un mensaje de bienvenida cuando el usuario se une a la conversación y es a lo que llama `Startup.cs`.
+`DialogAndWelcomeBot` extiende `DialogBot` para proporcionar un mensaje de bienvenida cuando el usuario se une a la conversación y es el que se crea en `index.js`.
 
 [!code-javascript[On members added](~/../botbuilder-samples/samples/javascript_nodejs/43.complex-dialog/bots/dialogAndWelcomeBot.js?range=10-21)]
 

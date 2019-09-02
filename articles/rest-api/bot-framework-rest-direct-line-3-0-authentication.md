@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
-ms.date: 04/10/2019
-ms.openlocfilehash: 717a95d580bad218ade9a884522724f1c6b96ad7
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.date: 08/22/2019
+ms.openlocfilehash: d79cea421e6743c504e3fa68056de71974194923
+ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65032638"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70037444"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -74,7 +73,7 @@ La carga de la solicitud, que contiene los parámetros del token, es opcional pe
 }
 ```
 
-| Parámetro | Type | DESCRIPCIÓN |
+| Parámetro | type | DESCRIPCIÓN |
 | :--- | :--- | :--- |
 | `user.id` | string | Opcional. Identificador de usuario específico del canal para su codificación dentro del token. Para un usuario de Direct Line, debe comenzar con `dl_`. Puede crear un identificador de usuario único para cada conversación y, para mejorar la seguridad, no se debería poder averiguar este identificador. |
 | `user.name` | string | Opcional. Nombre para mostrar descriptivo del usuario para su codificación dentro del token. |
@@ -140,7 +139,132 @@ HTTP/1.1 200 OK
 }
 ```
 
+## <a name="azure-bot-service-authentication"></a>Autenticación de Azure Bot Service
+
+La información que se presenta en esta sección se basa en el artículo [Incorporación de autenticación al bot mediante Azure Bot Service](../v4sdk/bot-builder-authentication.md).
+
+La **autenticación de Azure Bot Service** le permite autenticar usuarios y obtener **tokens de acceso** de diversos proveedores de identidades como *Azure Active Directory*, *GitHub*, *Uber*, etc. También puede configurar la autenticación para un proveedor de identidades de **OAuth2** personalizado. Todo esto le permite escribir **un fragmento de código de autenticación** que funciona en todos los proveedores de identidades y canales admitidos. Para utilizar estas funcionalidades debe realizar los siguientes pasos:
+
+1. Configure `settings` de forma estática en el bot que contiene los detalles del registro de aplicación con un proveedor de identidades.
+2. Use un `OAuthCard`, con el respaldo de la información de la aplicación que proporcionó en el paso anterior, para iniciar sesión en un usuario.
+3. Recupere los tokens de acceso mediante la **API de Azure Bot Service**.
+
+### <a name="security-considerations"></a>Consideraciones sobre la seguridad
+
+<!-- Summarized from: https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features/ -->
+
+Cuando se usa la *autenticación de Azure Bot Service* con [Web Chat](../bot-service-channel-connect-webchat.md) hay algunos aspectos de seguridad importantes que debe tener en cuenta.
+
+1. **Suplantación**. La suplantación aquí significa que un atacante hace que el bot crea que es otra persona. En Web Chat, un atacante puede suplantar a otra persona **cambiando el identificador de usuario** de su instancia de Web Chat. Para evitar esto, se recomienda a los desarrolladores de bots que hagan que el **identificador de usuario no se pueda adivinar**. Si habilita las opciones de **autenticación mejoradas**, Azure Bot Service puede además detectar y rechazar cualquier cambio de identificador de usuario. Esto significa que en los mensajes de Direct Line al bot, el identificador de usuario (`Activity.From.Id`) siempre será igual al identificador con el que inicializó Web Chat. Tenga en cuenta que esta característica requiere que el identificador de usuario empiece por `dl_`.
+1. **Identidades de usuario**. Debe tener en cuenta que está tratando con dos identidades de usuario:
+
+    1. La identidad de un usuario en un canal.
+    1. La identidad del usuario en un proveedor de identidades en el que el bot está interesado.
+  
+    Si un bot solicita al usuario A de un canal iniciar sesión en un proveedor de identidades P, el proceso de inicio de sesión debe garantizar que el usuario A es el que inicia sesión en P. Si se permitiera a otro usuario B iniciar sesión, el usuario A tendría acceso a los recursos del usuario B a través del bot. En Web Chat existen 2 mecanismos para asegurarse de que ha iniciado sesión el usuario correcto como se describe a continuación.
+
+    1. En el pasado, al final del inicio de sesión, se presentaba al usuario un código de 6 dígitos generado aleatoriamente (también conocido como código mágico). El usuario debía escribir este código en la conversación que iniciaba el inicio de sesión para completar dicho proceso. Este mecanismo solía producir una mala experiencia del usuario. Además, aún así se corría el riesgo de sufrir ataques de suplantación de identidad (phishing). Un usuario malintencionado puede engañar a otro usuario para que inicie sesión y obtenga el código mágico mediante la suplantación de identidad (phishing).
+
+    2. Debido a los problemas con el enfoque anterior, Azure Bot Service eliminó la necesidad del código mágico. Azure Bot Service garantiza que el proceso de inicio de sesión solo se puede completar en la **misma sesión del explorador** que el propio Web Chat. 
+    Para habilitar esta protección, como desarrollador de bots, debe iniciar Web Chat con un **token de Direct Line** que contiene una **lista de dominios de confianza que pueden hospedar el cliente de Web Chat del bot**. Antes, solo podía obtener este token pasando un parámetro opcional no documentado a la API de token de Direct Line. Ahora, con las opciones de autenticación mejoradas, puede especificar estáticamente la lista de dominios de confianza (origen) en la página de configuración de Direct Line.
+
+### <a name="code-examples"></a>Ejemplos de código
+
+El siguiente controlador de .NET funciona con opciones de autenticación mejoradas habilitadas y devuelve un token y un identificador de usuario de Direct Line.
+
+```csharp
+public class HomeController : Controller
+{
+    public async Task<ActionResult> Index()
+    {
+        var secret = GetSecret();
+
+        HttpClient client = new HttpClient();
+
+        HttpRequestMessage request = new HttpRequestMessage(
+            HttpMethod.Post,
+            $"https://directline.botframework.com/v3/directline/tokens/generate");
+
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", secret);
+
+        var userId = $"dl_{Guid.NewGuid()}";
+
+        request.Content = new StringContent(
+            JsonConvert.SerializeObject(
+                new { User = new { Id = userId } }),
+                Encoding.UTF8,
+                "application/json");
+
+        var response = await client.SendAsync(request);
+        string token = String.Empty;
+
+        if (response.IsSuccessStatusCode)
+        {
+            var body = await response.Content.ReadAsStringAsync();
+            token = JsonConvert.DeserializeObject<DirectLineToken>(body).token;
+        }
+
+        var config = new ChatConfig()
+        {
+            Token = token,
+            UserId = userId  
+        };
+
+        return View(config);
+    }
+}
+
+public class DirectLineToken
+{
+    public string conversationId { get; set; }
+    public string token { get; set; }
+    public int expires_in { get; set; }
+}
+public class ChatConfig
+{
+    public string Token { get; set; }
+    public string UserId { get; set; }
+}
+
+```
+
+El siguiente controlador de JavaScript funciona con opciones de autenticación mejoradas habilitadas y devuelve un token y un identificador de usuario de Direct Line.
+
+```javascript
+var router = express.Router(); // get an instance of the express Router
+
+// Get a directline configuration (accessed at GET /api/config)
+const userId = "dl_" + createUniqueId();
+
+router.get('/config', function(req, res) {
+    const options = {
+        method: 'POST',
+        uri: 'https://directline.botframework.com/v3/directline/tokens/generate',
+        headers: {
+            'Authorization': 'Bearer ' + secret
+        },
+        json: {
+            User: { Id: userId }
+        }
+    };
+
+    request.post(options, (error, response, body) => {
+        if (!error && response.statusCode < 300) {
+            res.json({ 
+                    token: body.token,
+                    userId: userId
+                });
+        }
+        else {
+            res.status(500).send('Call to retrieve token from Direct Line failed');
+        } 
+    });
+});
+
+```
+
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Conceptos clave](bot-framework-rest-direct-line-3-0-concepts.md)
 - [Conectar un bot con Direct Line](../bot-service-channel-connect-directline.md)
+- [Incorporación de autenticación al bot mediante Azure Bot Service](../bot-builder-tutorial-authentication.md)
