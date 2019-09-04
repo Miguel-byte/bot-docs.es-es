@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6bf567729e0c4799672f773ddcfadb4fabfa36fc
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 82385510894213a386c3f38836c85aad44306a23
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991949"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167061"
 ---
 # <a name="virtual-assistant---template-outline"></a>Virtual Assistant: esquema de la plantilla
 
@@ -80,7 +80,7 @@ La telemetría a nivel de bot está intrínsecamente vinculada a los datos de te
 
 La combinación de un componente de middleware con una clase de contenedor en torno a las clases de SDK de QnAMaker y LuisRecognizer supone una forma elegante de recopilar un conjunto coherente de eventos. Las herramientas de Application Insights pueden usar estos eventos coherentes con herramientas como PowerBI.
 
-Un panel de Power BI de ejemplo que forma parte del repositorio de Bot Framework Solutions y funciona de forma estándar con todas las plantillas de Virtual Assistant. Para más información, consulte la sección de [Analytics](https://aka.ms/bfsanalytics).
+Un panel de Power BI de ejemplo que forma parte del repositorio de Bot Framework Solutions y funciona de forma estándar con todas las plantillas de Virtual Assistant. Para más información, consulte la sección de [Analytics](https://aka.ms/bfs-analytics).
 
 ![Ejemplo de Analytics](./media/enterprise-template/powerbi-conversationanalytics-luisintents.png)
 
@@ -120,8 +120,8 @@ Content Moderator es un componente opcional que permite la detección de posible
 Se proporciona un componente de middleware que supervisa los textos y las superficies con ```TextModeratorResult``` en el objeto TurnState.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Consulte los [tutoriales](https://aka.ms/bfstutorials) para aprender a crear e implementar Virtual Assistant. 
+Consulte los [tutoriales](https://aka.ms/bfs-tutorials) para aprender a crear e implementar Virtual Assistant. 
 
 ## <a name="additional-resources"></a>Recursos adicionales
-El código fuente completo de la plantilla de Virtual Assistant se puede encontrar en [GitHub](https://aka.ms/bfsolutions).
+El código fuente completo de la plantilla de Virtual Assistant se puede encontrar en [GitHub](https://aka.ms/bf-solutions).
 

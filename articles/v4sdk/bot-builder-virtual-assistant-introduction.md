@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 2b238f4455fc031e1d8ac66f9b408e6d5d936ec9
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: dedd9c7eb8d562acd30e137cb1a99f618f79ff7e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991929"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167331"
 ---
 # <a name="virtual-assistant-overview"></a>Introducción a Virtual Assistant
 
@@ -33,7 +33,7 @@ Normalmente, Virtual Assistant ofrece a los usuarios finales una amplia gama de 
 
 ## <a name="getting-started"></a>Introducción
 
-Para más información, explore la documentación de [Virtual Assistant y sus aptitudes](https://aka.ms/bfsolutionsdocs).
+Para más información, explore la documentación de [Virtual Assistant y sus aptitudes](https://aka.ms/bf-solutions-docs).
 
 ## <a name="whats-in-the-box"></a>Contenido 
 
@@ -106,4 +106,4 @@ Todos los aspectos de cada aptitud (modelo de lenguaje, diálogos, código de in
 
 ## <a name="getting-started"></a>Introducción
 
-Consulte los [tutoriales](https://aka.ms/bfstutorials) para aprender a crear e implementar Virtual Assistant.
+Consulte los [tutoriales](https://aka.ms/bfs-tutorials) para aprender a crear e implementar Virtual Assistant.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 72c4d972b3f403beadad6d098a3c639cbbc1694d
-ms.sourcegitcommit: 9e1034a86ffdf2289b0d13cba2bd9bdf1958e7bc
+ms.openlocfilehash: 014f5c998fcb9d322439ca8b0e0bf2ba5f9f0679
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69890549"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076513"
 ---
 # <a name="register-a-bot-with-azure-bot-service"></a>Registro de un bot con Azure Bot Service
 
@@ -32,6 +32,7 @@ Esto le permite compilar, conectarse y administrar su bot para interactuar con l
 
 1. En el panel izquierdo, haga clic en **Crear un recurso**.
 1. En el cuadro de selección del panel derecho, escriba *bot*. Y, en la lista desplegable, seleccione **Registro de canales de bot** o **Bot de aplicación web** según su aplicación.
+Para **Bot de aplicación web**, siga los pasos descritos en el artículo: [Creación de un bot con Azure Bot Service](v4sdk/abs-quickstart.md). Va a crear un bot en Azure que se registra automáticamente con Azure Bot Service.
 1. Haga clic en el botón **Crear** para iniciar el proceso.
 1. En la hoja **Bot Service**, indique la información solicitada sobre el bot según se especifica en la tabla debajo de la imagen.  
 
@@ -75,8 +76,6 @@ Para obtener la contraseña, siga los pasos que se describen a continuación.
     ![Hoja de creación de registro de bot](media/azure-bot-quickstarts/bot-channels-registration-app-secrets-create.png)
 
     Esto generará una nueva contraseña para el bot. Copie esta contraseña y guárdela en un archivo. Esta es la única vez que verá esta contraseña. Si no guarda la contraseña completa, deberá repetir el proceso para crear una nueva contraseña en caso de que la necesite más adelante.
-
-Para **Bot de aplicación web**, siga los pasos descritos en el artículo: [Creación de un bot con Azure Bot Service](v4sdk/abs-quickstart.md). Va a crear un bot en Azure que se registra automáticamente con Azure Bot Service.
 
 ## <a name="manual-app-registration"></a>Registro de aplicación manual
 

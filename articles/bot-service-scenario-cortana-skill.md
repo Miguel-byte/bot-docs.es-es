@@ -2,19 +2,18 @@
 title: Escenario del bot de habilidades de Cortana | Microsoft Docs
 description: Explore el escenario del bot de habilidades de Cortana con Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: cognitive-services
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 7676b7bd75a45130b62c1a691499095d6ba07291
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: d6ba5b414ff7e600fac1e5d4ebce27363340f42f
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50000232"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167053"
 ---
 # <a name="cortana-skills-bot-scenario"></a>Escenario del bot de habilidades de Cortana
 
@@ -38,7 +37,7 @@ Este es el flujo lógico de un bot habilidades de Cortana para una tienda de aut
 ## <a name="sample-bot"></a>Bot de ejemplo
 Con un bot de habilidades de Cortana, todo gira en torno a un contexto personal. Gracias a Cortana, puede usar su voz para solicitar "Mantenimiento de automóviles de Bob" para que venga a hacer el mantenimiento del automóvil en función de su ubicación. Al usar información personal expuesta a través de Cortana, el bot puede confirmar la ubicación en función de dónde se encuentra el usuario cuando está hablando con el bot.
 
-Puede descargar o clonar el código fuente de este bot de ejemplo de [Samples for Common Bot Framework Scenarios](https://aka.ms/bot/scenarios) (Muestras para escenarios comunes de Bot Framework).
+Puede descargar o clonar el código fuente de este bot de ejemplo de [Samples for Common Bot Framework Scenarios](https://aka.ms/abs-scenarios) (Muestras para escenarios comunes de Bot Framework).
 
 ## <a name="components-youll-use"></a>Componentes que va a utilizar
 El bot Cortana utiliza los siguientes componentes:

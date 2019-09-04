@@ -2,18 +2,18 @@
 title: Introducción a los escenarios de Servicio de bots | Microsoft Docs
 description: Explore los escenarios clave para bots potentes y eficaces creados con Servicio de bots.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f8b64e5705085af5b00de6a3c00059dbdea24cb9
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: c4a0af8bfd6496b82ddcc9219e948395d87e4ff3
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405764"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167357"
 ---
 # <a name="bot-scenarios"></a>Escenarios de bot
 
@@ -21,7 +21,7 @@ ms.locfileid: "67405764"
 
 En este tema se exploran los escenarios clave para bots potentes y eficaces creados con Servicio de bots.
 
-Puede descargar o clonar el código fuente de todos los ejemplos de escenarios de bots de [Samples for Common Bot Framework Scenarios](https://aka.ms/bot/scenarios).
+Puede descargar o clonar el código fuente de todos los ejemplos de escenarios de bots de [Samples for Common Bot Framework Scenarios](https://aka.ms/abs-scenarios).
 
 ## <a name="commerce-bot-scenario"></a>Escenario de bot comercial
 El escenario de [bot comercial](bot-service-scenario-commerce.md) describe un bot que reemplaza las interacciones tradicionales de correo electrónico y llamada telefónica que normalmente tienen los usuarios con el servicio de conserjería de un hotel. El bot aprovecha Cognitive Services para procesar mejor las solicitudes de los clientes a través de texto y voz con contexto recopilado de la integración con servicios back-end.

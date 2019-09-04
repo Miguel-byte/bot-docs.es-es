@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 4af367b04f84d935936b5752cf9dbc863430105c
-ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.openlocfilehash: f6d12b0031ec14e8c7c6e8bee876e7abb96c01f6
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68230813"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174658"
 ---
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -61,7 +61,7 @@ Yeoman le solicitará alguna información con la que se va a crear el bot. En es
 - Escriba un nombre para el bot. (mi bot de chat)
 - Escriba una descripción. (Demostrar las capacidades básicas de Microsoft Bot Framework)
 - Elija el idioma del bot. (JavaScript)
-- Elija la plantilla que se va a usar. (Bot de eco: https://aka.ms/bot-template-echo)
+- Elija la plantilla que se va a usar. (Bot de eco: https://aka.ms/generator-botbuilder-templates)
 
 Gracias a la plantilla, el proyecto contiene todo el código necesario para crear el bot en esta guía de inicio rápido. Realmente no necesita escribir ningún código adicional.
 

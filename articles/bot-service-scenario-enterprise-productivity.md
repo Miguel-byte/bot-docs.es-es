@@ -2,18 +2,18 @@
 title: Escenario de bot de productividad empresarial | Microsoft Docs
 description: Explore el escenario de bot de productividad empresarial con Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1fe68144662be3de349d05ea861a230641ae1efb
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 3ae87b52864ae1a9a4b7b439529e5093d6d3be8e
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996713"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167076"
 ---
 # <a name="enterprise-productivity-bot-scenario"></a>Escenario de bot de productividad empresarial
 
@@ -34,7 +34,7 @@ Este es el flujo lógico de un bot de productividad empresarial:
 5. La información se devuelve al empleado, que puede filtrar los datos sin dejar el bot.
 6. Application Insights recopila telemetría de tiempo de ejecución para ayudar al desarrollo con el uso y el rendimiento del bot.
 
-Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/bot/scenarios).
+Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="sample-bot"></a>Bot de ejemplo
 Como los bots son accesibles desde una variedad de canales, puede usarlos en el escritorio desde un portal corporativo o desde Skype en cualquier lugar: solo se debe autenticar. Con la integración de Azure AD, el bot de productividad empresarial sabe que si puede acceder a él, es porque Azure AD lo autenticó. Desde allí, puede pedirle al bot que compruebe cuándo es su próxima cita con un cliente determinado. El bot obtiene esta información mediante una consulta a Office 365 a través de Graph API. A continuación, si hay una cita en los próximos siete días, el bot consulta a CMR que busca cualquier caso reciente para el cliente. El bot responde ya sea sin casos encontrados o con el número de casos abiertos y cerrados. Desde allí puede pedirle al bot para enumerar los casos por tipo y profundizar en los casos individuales.

@@ -6,15 +6,14 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 2/13/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d81a7e55ab7ac5e3b430ae051d1abbb4ca94b44d
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 8bad1459dfce89f79906dec0f4c03cb50a242449
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405830"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70166954"
 ---
 # <a name="create-task-automation-bots"></a>Creación de bots para automatizar tareas
 
@@ -91,13 +90,6 @@ Sin embargo, en muchos casos la creación de una aplicación o sitio web puede s
 
 Además, los bots ofrecen la libertad de ampliarse y extenderse fácilmente. Por ejemplo, un desarrollador puede optar por agregar funcionalidades de lenguaje natural y de voz al bot para el restablecimiento de contraseña, de modo que se pueda acceder a él a través de llamadas de audio, o bien puede agregar compatibilidad con mensajes de texto. La empresa puede configurar quioscos multimedia en toda la compilación y puede insertar el bot de restablecimiento de contraseña en esa experiencia.
 
-<!-- TODO: SimpleTaskAutomation no longer exists
-## Sample code
-
-For a complete sample that shows how to implement simple task automation using the Bot Framework SDK for .NET, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
-
-For a complete sample that shows how to implement simple task automation using the Bot Framework SDK for Node.js, see the <a href="https://aka.ms/capability-SimpleTaskAutomation" target="_blank">Simple Task Automation sample</a> in GitHub.
--->
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

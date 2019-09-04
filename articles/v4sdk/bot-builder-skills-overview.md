@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 59b5e340ee9f2eeb89eaf420a0cca031fcc7f2b1
-ms.sourcegitcommit: 7b3d2b5b9b8ce77887a9e6124a347ad798a139ca
+ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991940"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167119"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Virtual Assistant: introducción a las aptitudes
 
@@ -40,13 +40,13 @@ En este momento están disponibles las siguientes aptitudes de Bot Framework, co
 
 | NOMBRE | DESCRIPCIÓN |
 | ---- | ----------- |
-|[Aptitud de calendario](https://aka.ms/bfcalendarskill)|Agregar funcionalidades de calendario al asistente. Con tecnología de Microsoft Graph y Google.|
-|[Aptitud de correo electrónico](https://aka.ms/bfemailskill)|Agregar funcionalidades de correo al asistente. Con tecnología de Microsoft Graph y Google.|
-|[Aptitud de tarea pendientes](https://aka.ms/bftodoskill)|Agregar funcionalidades de administración de tarea al asistente. Con tecnología de Microsoft Graph.|
-|[Aptitud de punto de interés](https://aka.ms/bfpoiskill)|Buscar puntos de interés y direcciones. Con tecnología de Azure Maps y FourSquare.|
-|[Aptitud de automoción](https://aka.ms/bfautoskill)|Aptitud vertical de la industria para mostrar la habilitación del control de características del automóvil.|
-|[Aptitudes experimentales](https://aka.ms/bfexperimentalskills)|Noticias, reservas en restaurantes y previsiones meteorológicas.|
+|[Aptitud de calendario](https://aka.ms/bf-calendar-skill)|Agregar funcionalidades de calendario al asistente. Con tecnología de Microsoft Graph y Google.|
+|[Aptitud de correo electrónico](https://aka.ms/bf-email-skill)|Agregar funcionalidades de correo al asistente. Con tecnología de Microsoft Graph y Google.|
+|[Aptitud de tarea pendientes](https://aka.ms/bf-todo-skill)|Agregar funcionalidades de administración de tarea al asistente. Con tecnología de Microsoft Graph.|
+|[Aptitud de punto de interés](https://aka.ms/bf-poi-skill)|Buscar puntos de interés y direcciones. Con tecnología de Azure Maps y FourSquare.|
+|[Aptitud de automoción](https://aka.ms/bf-autos-kill)|Aptitud vertical de la industria para mostrar la habilitación del control de características del automóvil.|
+|[Aptitudes experimentales](https://aka.ms/bf-experimental-skills)|Noticias, reservas en restaurantes y previsiones meteorológicas.|
 
 ## <a name="getting-started"></a>Introducción
 
-Consulte los [tutoriales](https://aka.ms/bfstutorials) para aprender a aprovechar las aptitudes existentes y a crear las propias.
+Consulte los [tutoriales](https://aka.ms/bfs-tutorials) para aprender a aprovechar las aptitudes existentes y a crear las propias.
