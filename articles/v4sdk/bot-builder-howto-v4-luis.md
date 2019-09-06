@@ -9,22 +9,21 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 1641260f6673a810e7bc71ecaca1ada234286e42
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: b20670b85b876d7cf10dea7f031e4d24221071a8
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026319"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167148"
 ---
 # <a name="add-natural-language-understanding-to-your-bot"></a>Incorporación de reconocimiento de lenguaje natural al bot
 
 [!INCLUDE[applies-to](../includes/applies-to.md)]
-
 La tarea de entender qué quiere decir el usuario conversacionalmente y contextualmente puede ser difícil, pero hace que la conversación del bot parezca más natural. Language Understanding, denominado LUIS, le permite hacer precisamente esto, de modo que el bot pueda reconocer la intención de los mensajes de usuario, permitir al usuario emplear un lenguaje más natural y dirigir mejor el flujo de conversación. En este tema se explica cómo agregar LUIS a una aplicación de reserva de vuelos para reconocer las diferentes intenciones y entidades que contiene la entrada del usuario. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Una cuenta de [LUIS](https://www.luis.ai)
-- El código de este artículo se basa en el ejemplo de **Core Bot**. Necesitará una copia del ejemplo en **[CSharp](https://aka.ms/cs-core-sample) o [JavaScript](https://aka.ms/js-core-sample)** . 
+- El código de este artículo se basa en el ejemplo de **Core Bot**. Necesitará una copia del ejemplo en **[C#](https://aka.ms/cs-core-sample) o en [JavaScript](https://aka.ms/js-core-sample)** . 
 - Conocimientos sobre los [conceptos básicos de los bots](bot-builder-basics.md), el [procesamiento de lenguaje natural](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis) y la [administración de recursos de bots](bot-file-basics.md).
 
 ## <a name="about-this-sample"></a>Acerca de este ejemplo

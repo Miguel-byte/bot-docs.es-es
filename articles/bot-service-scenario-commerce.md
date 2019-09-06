@@ -2,18 +2,18 @@
 title: Escenario de bot comercial | Microsoft Docs
 description: Explore el escenario de bot de comercial con Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f880bc9a424fd9905f7e4ced25e97e2c37155072
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 9e2eac132922ad90437c88404cbfb97f6f495945
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996832"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167082"
 ---
 # <a name="commerce-bot-scenario"></a>Escenario de bot comercial
 
@@ -36,7 +36,7 @@ Este es el flujo de la lógica de un bot comercial que funciona como el conserje
 ## <a name="sample-bot"></a>Bot de ejemplo
 El bot comercial de ejemplo está diseñado en torno a un servicio de conserjería de hotel ficticio. Escrito en C#, los clientes acceden al bot una vez que han autenticado Azure AD B2C en un hotel mediante la aplicación móvil de los servicios de miembros de la cadena. La cadena almacena las reservas en una base de datos SQL. Un cliente puede usar preguntas de frases naturales como "¿Cuánto cuesta alquilar una cabaña con piscina durante mi estancia?". El bot a su vez tiene contexto sobre el hotel y la duración de la estancia del huésped. Además, Language Understanding Service (LUIS) permite que los bots obtengan contexto de forma fácil a partir de una frase tan simple como "cabaña con piscina". El bot proporciona la respuesta y, a continuación, puede ofrecerse a reservar una cabaña para el huésped, con opciones en torno al número de días y el tipo de cabaña. Una vez que el bot tiene todos los datos necesarios, reserva la petición. El huésped también puede usar su voz para realizar la misma petición.
 
-Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/bot/scenarios).
+Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Componentes que usará
 El bot comercial usa los siguientes componentes:

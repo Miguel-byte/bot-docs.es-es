@@ -2,18 +2,18 @@
 title: Escenario de bot de información | Microsoft Docs
 description: Explore el escenario del bot de información con Bot Framework.
 author: BrianRandell
-ms.author: v-brra
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 22902f1f590661c0973d7f0427b13ee45f0d7227
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: f62f58de5e15092e34c1e612ef0b54bc2e4b5886
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998992"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167374"
 ---
 # <a name="information-bot-scenario"></a>Escenario de bot de información
 
@@ -36,9 +36,9 @@ Este es el flujo de la lógica de un bot de información:
 7. Application Insights recopila telemetría de tiempo de ejecución para ayudar al desarrollo con el uso y el rendimiento del bot.
 
 ## <a name="sample-bot"></a>Bot de ejemplo
-El bot de ejemplo, escrito en C#, se ejecuta en Microsoft Azure, y trabaja con datos indexados por Azure Search desde una instancia de SQL Database. El bot expone una lista de preguntas que se pueden hacer con información sobre cómo formular la pregunta (la respuesta) mediante QnA Maker de Cognitive Services. El usuario del bot puede escribir entonces una consulta que busca los datos mediante Azure Search en un área amplia o específica de la base de datos que se indexa. En el ejemplo se proporciona una base de datos sencilla con información de clientes y pedidos. Application Insights realiza un seguimiento de uso del bot y le ayuda a supervisar el bot en busca de excepciones. El bot se publica como una aplicación de Azure AD para que pueda restringir quién tiene acceso a la información.
+El bot de ejemplo, escrito en C#, se ejecuta en Microsoft Azure, y trabaja con datos indexados por Azure Search desde una instancia de SQL Database. El bot expone una lista de preguntas que se pueden hacer con información sobre cómo formular la pregunta (la respuesta) mediante Cognitive Services: QnA Maker. El usuario del bot puede escribir entonces una consulta que busca los datos mediante Azure Search en un área amplia o específica de la base de datos que se indexa. En el ejemplo se proporciona una base de datos sencilla con información de clientes y pedidos. Application Insights realiza un seguimiento de uso del bot y le ayuda a supervisar el bot en busca de excepciones. El bot se publica como una aplicación de Azure AD para que pueda restringir quién tiene acceso a la información.
 
-Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/bot/scenarios).
+Puede descargar o clonar el código fuente de este bot de ejemplo desde los [ejemplos para escenarios comunes de Bot Framework](https://aka.ms/abs-scenarios).
 
 ## <a name="components-youll-use"></a>Componentes que usará
 El bot de información usa los siguientes componentes:

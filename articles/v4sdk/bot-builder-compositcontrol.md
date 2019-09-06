@@ -3,19 +3,18 @@ title: Reutilización de diálogos | Microsoft Docs
 description: Aprenda a modularizar la lógica del bot mediante diálogos de componentes en Bot Framework SDK.
 keywords: control compuesto, lógica de bot modular
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 77f1c154af5821b1e476546f307a01be27f568c0
-ms.sourcegitcommit: a1eaa44f182a7210197bd793250907df00e9edab
+ms.openlocfilehash: bb359ec2493b1c29624f5fb0135478cae1dea0e0
+ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "67587492"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70167177"
 ---
 # <a name="reuse-dialogs"></a>Reutilización de diálogos
 
@@ -26,7 +25,7 @@ Con los diálogos de componentes se pueden crear diálogos independientes para c
 ## <a name="prerequisites"></a>Requisitos previos
 
 - Conocimiento de los [conceptos básicos de bots][concept-basics], la [biblioteca de diálogos][concept-dialogs] y la [administración de conversaciones][simple-flow].
-- Una copia del ejemplo de aviso con varios turnos en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
+- Una copia del ejemplo de aviso con varios turnos en [**C#** ][cs-sample] o [**JavaScript**][js-sample].
 
 ## <a name="about-the-sample"></a>Sobre el ejemplo
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8eea0bfd49bfd142c648d8ce842e1c24aa8ab45a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 8b12068984396a015bfbb441f9b1e506acbb9154
+ms.sourcegitcommit: 0b647dc6716b0c06f04ee22ebdd7b53039c2784a
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037519"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70076575"
 ---
 <!-- 
 
@@ -431,6 +431,9 @@ Si usa un *símbolo del sistema de OAuth*, esta actividad de invocación se debe
 Por último, asegúrese de agregar un archivo `TeamsActivityHandler` adecuado (`TeamsActivityHandler.cs` para los bots de C# y `teamsActivityHandler.js` para bots de JavaScript) en el nivel superior de la carpeta del bot.
 
 También `TeamsActivityHandler` envía actividades de *reacción de mensajes*. Una actividad de reacción de mensaje hace referencia a la actividad original mediante el campo *reply to ID* (responder a id.). Esta actividad también debe ser visible mediante la [fuente de actividades][teams-activity-feed] de Microsoft Teams.
+
+> [!NOTE]
+> Debe crear un manifiesto e incluir `token.botframework.com` en la sección `validDomains`. En caso contrario, el botón **Iniciar sesión** de OAuthCard no abrirá la ventana de autenticación. Use [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio) para generar el manifiesto.
 
 ### <a name="further-reading"></a>Lecturas adicionales
 
