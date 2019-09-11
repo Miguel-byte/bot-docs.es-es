@@ -3,19 +3,18 @@ title: Migrar un bot existente dentro del mismo proyecto de .NET Framework | Mic
 description: Tomamos un bot de .NET v3 existente y lo migramos al SDK de .NET v4, utilizando el mismo proyecto.
 keywords: bot migration, formflow, dialogs, v3 bot
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 519515a2174a7028af7bc170ca8a7c40f7d48c52
-ms.sourcegitcommit: b053c0ca7f2e9e60679f7e82e583c57ae83fcb50
+ms.openlocfilehash: 0dfe98c13d74f2f7d13a3eece505dd901184c849
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336727"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299058"
 ---
 # <a name="migrate-a-net-v3-bot-to-a-net-framework-v4-bot"></a>Migración de un bot de .NET v3 a un bot de .NET Framework v4
 

@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 3f8badd90c3be5191e24556d5f7fde66cc72fd6b
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 727a319ef479a1f8954151d0e7dcaefaf3d249a1
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037363"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876160"
 ---
 # <a name="create-messages"></a>Creación de mensajes
 
@@ -55,7 +55,7 @@ La propiedad `suggestedActions` de un objeto [Actividad][] puede usarse para pre
 ## <a name="additional-resources"></a>Recursos adicionales
 
 - [Preview features with the Channel Inspector][ChannelInspector] (Vista previa de las características con el Inspector de canales)
-- [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
+- [Activities overview](https://aka.ms/botSpecs-activitySchema) (Introducción a las actividades)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de datos adjuntos con elementos multimedia a mensajes](bot-framework-rest-connector-add-media-attachments.md)
 - [Incorporación de tarjetas enriquecidas a mensajes](bot-framework-rest-connector-add-rich-cards.md)

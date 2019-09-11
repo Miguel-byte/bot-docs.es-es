@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 4108f02a350d7e02d66db06cd7e65fa9c7a98e7d
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297353"
+---
 Un **mensaje proactivo ad hoc** es el tipo más simple de mensaje proactivo.
 El bot simplemente interpone el mensaje en la conversación cada vez que se desencadena, sin tener en cuenta si el usuario está implicado actualmente en otro tema de conversación con el bot, y no intentará cambiar la conversación de ninguna manera.
 

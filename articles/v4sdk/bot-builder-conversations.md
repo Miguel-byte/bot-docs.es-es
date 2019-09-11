@@ -3,19 +3,18 @@ title: Conversaciones en Bot Framework SDK | Microsoft Docs
 description: Describe qué es una conversación en Bot Framework SDK.
 keywords: flujo de conversación, reconocimiento de intenciones, un solo turno, varios turnos, conversación de bot
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3138b591519ff76865f007ae091c6c33cd0da79c
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: ea5cf37ec788f68e8eea32ee6610f59ec286193c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404145"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299391"
 ---
 # <a name="conversation-flow"></a>Flujo de conversación
 [!INCLUDE[applies-to](../includes/applies-to.md)]

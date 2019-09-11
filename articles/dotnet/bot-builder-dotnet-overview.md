@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: f54ea91bbe04f5b9b8a0701a3473ef7e76cacaeb
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: f9f15903bf3b004e64fbe737f25d6cb34cdfe7fe
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224730"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297845"
 ---
 # <a name="bot-framework-sdk-for-net"></a>Bot Framework SDK para .NET
 
@@ -46,7 +45,7 @@ El SDK está disponible como paquete de NuGet y como código abierto en <a href=
 
 Para instalar el SDK dentro de un proyecto de Visual Studio, complete los pasos siguientes:
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el nombre del proyecto y seleccione **Administrar paquetes NuGet…**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en el nombre del proyecto y seleccione **Administrar paquetes NuGet…** .
 2. En la pestaña **Examinar**, escriba "Microsoft.Bot.Builder" en el cuadro de búsqueda.
 3. Seleccione **Microsoft.Bot.Builder** en la lista de resultados, haga clic en **Instalar** y acepte los cambios.
 

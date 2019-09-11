@@ -6,20 +6,19 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 01/06/2019
-ms.openlocfilehash: 94ef9cc221e67f4f3762eb7a1a006a915e3c5307
-ms.sourcegitcommit: fd60ad0ff51b92fa6495b016e136eaf333413512
+ms.openlocfilehash: 6727530ec6267a63e28e103bdfc12183ebed8016
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55764103"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299592"
 ---
 # <a name="key-concepts-in-direct-line-api-30"></a>Conceptos clave de Direct Line API 3.0
 
 Para habilitar la comunicación entre el bot y su propia aplicación cliente, use la API Direct Line. En este artículo se presentan los conceptos clave de Direct Line API 3.0 y se proporciona información acerca de los recursos pertinentes para desarrolladores.
 
-## <a name="authentication"></a>Autenticación
+## <a name="authentication"></a>Authentication
 
 Las solicitudes de Direct Line API 3.0 se pueden autenticar ya sea mediante un **secreto**, que se obtiene desde la página de configuración del canal de Direct Line en el <a href="https://dev.botframework.com/" target="_blank">portal de Bot Framework</a>, o mediante un **token**  que se obtiene en el entorno en tiempo de ejecución. Para más información, consulte [Autenticación](bot-framework-rest-direct-line-3-0-authentication.md).
 

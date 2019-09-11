@@ -3,18 +3,17 @@ title: Conexión de un bot a GroupMe | Microsoft Docs
 description: Aprenda a configurar la conexión de un bot a GroupMe.
 keywords: canal de bot, GroupMe, crear GroupMe, credenciales
 author: RobStand
-ms.author: RobStand
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: a2004293ff10cfbc7132f58b7c0c834a2012cfd1
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 67bcd518f8c6ae7a1e383c611108c15b51bd0292
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563586"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298730"
 ---
 # <a name="connect-a-bot-to-groupme"></a>Conexión de un bot a GroupMe
 
@@ -36,7 +35,7 @@ Use esta dirección URL de devolución de llamada: `https://groupme.botframework
 
 ## <a name="gather-credentials"></a>Obtención de las credenciales
 
-1. En el campo **Redirect URL** (URL de redireccionamiento), copie el valor que aparece después de **client_id=**.
+1. En el campo **Redirect URL** (URL de redireccionamiento), copie el valor que aparece después de **client_id=** .
 2. Copie el valor de **Access Token** (Token de acceso).
 
 ![Copia del identificador de cliente y el token de acceso](~/media/channels/GM-StepClientId.png)

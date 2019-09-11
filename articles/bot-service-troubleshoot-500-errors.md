@@ -3,18 +3,17 @@ title: Solución de errores de HTTP 500 de bot | Microsoft Docs
 description: Cómo solucionar errores de HTTP 500 en un bot implementado.
 keywords: solución de problemas, HTTP 500, problemas
 author: jonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 4/30/2019
-ms.openlocfilehash: 93689b7cee1c89bd9a7079c15ddf6aa16fcacc26
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: 3dcb22c2310f8c686f02fae27617061681910d01
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033081"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298604"
 ---
 # <a name="troubleshoot-http-500-errors"></a>Solución de errores de HTTP 500
 

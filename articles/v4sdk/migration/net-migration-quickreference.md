@@ -3,19 +3,18 @@ title: Referencia rápida de la migración de la versión v3 a la v4 de .NET | M
 description: Esquema de las principales diferencias del SDK de Bot Framework para .NET en las versiones v3 y v4.
 keywords: .net, bot migration, dialogs, v3 bot
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c878007731ecf6a2f4c3129ef411a8d18d080fef
-ms.sourcegitcommit: 565a5df8b34a6d73ddf452ca7808eb83bb5be503
+ms.openlocfilehash: 3ede676cd1a09566b42dc49cc3258aa6e42cbe05
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68508074"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298951"
 ---
 # <a name="net-migration-quick-reference"></a>Referencia rápida de la migración de .NET
 

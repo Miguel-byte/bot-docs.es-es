@@ -3,18 +3,17 @@ title: Configuración de un bot para ejecutarlo en uno o más canales | Microsof
 description: Obtenga información sobre cómo configurar un bot para ejecutarlo en uno o más canales mediante el Portal de Framework Bot.
 keywords: canales de bot, configurar, cortana, facebook messenger, kik, slack, skype, azure portal
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 09/22/2018
-ms.openlocfilehash: 448bd1acd39445c39e49f27c3b9446523124bf87
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: cb951e9fd2bad6e68552a025ff3188fecd1783b2
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563723"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297604"
 ---
 # <a name="connect-a-bot-to-channels"></a>Conexión de un bot a canales
 

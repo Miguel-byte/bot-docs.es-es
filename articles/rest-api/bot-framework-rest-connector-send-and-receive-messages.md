@@ -7,16 +7,16 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: d694f20985b6bf2875fe28f599ff603512b87757
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 5e0f35b7fe62c93f4f4e17b5343960fa2b617ef9
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037343"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876093"
 ---
 # <a name="send-and-receive-messages"></a>Envío y recepción de mensajes
 
-El servicio Bot Connector le permite a un bot comunicarse a través de varios canales, como Skype, correo electrónico, Slack y mucho más. Facilita la comunicación entre el bot y el usuario mediante la retransmisión de [actividades](bot-framework-rest-connector-activities.md) desde el bot hacia el canal y viceversa. Cada actividad contiene información utilizada para enrutar el mensaje al destino adecuado junto con información sobre quién creó el mensaje, cuál es su contexto y quién es el destinatario del mismo. En este artículo se describe cómo usar el servicio Bot Connector para intercambiar actividades de **mensaje** entre el bot y el usuario en un canal. 
+El servicio Bot Connector le permite a un bot comunicarse a través de varios canales, como Skype, correo electrónico, Slack y mucho más. Facilita la comunicación entre el bot y el usuario mediante la retransmisión de [actividades](https://aka.ms/botSpecs-activitySchema) desde el bot hacia el canal y viceversa. Cada actividad contiene información utilizada para enrutar el mensaje al destino adecuado junto con información sobre quién creó el mensaje, cuál es su contexto y quién es el destinatario del mismo. En este artículo se describe cómo usar el servicio Bot Connector para intercambiar actividades de **mensaje** entre el bot y el usuario en un canal. 
 
 ## <a id="create-reply"></a> Respuestas para un mensaje
 
@@ -147,7 +147,6 @@ Por lo tanto, el bot puede usar este identificador de conversación para [enviar
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Activities overview](bot-framework-rest-connector-activities.md) (Introducción a las actividades)
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 

@@ -2,19 +2,18 @@
 title: Definición de los pasos de conversación con cascadas | Microsoft Docs
 description: Obtenga información sobre cómo usar cascadas para definir los pasos de una conversación con Bot Framework SDK para Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 526091d61f10ac0c241b994aa3ea99c1d2a70074
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 2a5ade5e6407537e72b520a22d74bc2c3943fce4
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225330"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299840"
 ---
 # <a name="define-conversation-steps-with-waterfalls"></a>Definición de los pasos de la conversación con cascadas
 
@@ -166,7 +165,7 @@ Un diálogo que se crea con una cascada se debe terminar explícitamente, de lo 
 
 * `session.endDialog`: Utilice este método para finalizar la cascada si no hay ningún dato para devolver al diálogo que realiza la llamada.
 
-* `session.endDialogWithResult`: Utilice este método para finalizar la cascada si hay datos para devolver al diálogo que realiza la llamada. El argumento `response` que se devuelve puede ser un objeto JSON o cualquier tipo de datos primitivo de JavaScript. Por ejemplo: 
+* `session.endDialogWithResult`: Utilice este método para finalizar la cascada si hay datos para devolver al diálogo que realiza la llamada. El argumento `response` que se devuelve puede ser un objeto JSON o cualquier tipo de datos primitivo de JavaScript. Por ejemplo:
   ```javascript
   session.endDialogWithResult({
     response: { name: session.dialogData.name, company: session.dialogData.company }
@@ -175,7 +174,7 @@ Un diálogo que se crea con una cascada se debe terminar explícitamente, de lo 
 
 * `session.endConversation`: Utilice este método para finalizar la cascada si el fin de la cascada representa el fin de la conversación.
 
-Como alternativa al uso de uno de estos tres métodos para finalizar una cascada, puede asociar el desencadenador `endConversationAction` al diálogo. Por ejemplo: 
+Como alternativa al uso de uno de estos tres métodos para finalizar una cascada, puede asociar el desencadenador `endConversationAction` al diálogo. Por ejemplo:
 
 ```javascript
 bot.dialog('dinnerOrder', [

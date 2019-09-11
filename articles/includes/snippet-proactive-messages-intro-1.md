@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: c6abff25dcccce4c18ad0083ef24b69495222c9f
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297352"
+---
 Normalmente, cada mensaje que envía un bot al usuario se relaciona directamente con la anterior entrada del usuario.
 En algunos casos, puede que un bot tenga que enviar al usuario un mensaje que no está relacionado directamente con el tema actual de la conversación o con el último mensaje que envió el usuario. Este tipo de mensajes se llaman **mensajes proactivos**.
 

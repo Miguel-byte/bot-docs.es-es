@@ -3,18 +3,17 @@ title: Configuración de las opciones del bot | Microsoft Docs
 description: Obtenga información sobre cómo configurar las distintas opciones para el bot mediante Azure Portal.
 keywords: configure opciones de bot, nombre para mostrar, icono, Application Insights, hoja Configuración
 author: v-royhar
-ms.author: v-royhar
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/13/2017
-ms.openlocfilehash: 640e5675adce627ed14d732e529e9a86ec8b195f
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7497726039823777afeb8a7d317212d859d66a36
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49996692"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297550"
 ---
 # <a name="configure-bot-settings"></a>Configuración de las opciones del bot
 

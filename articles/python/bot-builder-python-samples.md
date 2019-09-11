@@ -2,19 +2,18 @@
 title: Ejemplo de bots de Bot Framework SDK para Python | Microsoft Docs
 description: Explore los bots de ejemplo para comenzar el desarrollo de bots con Bot Framework SDK para Python.
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 073eac837373b0f8552cb0f2334797ca9f295bfe
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 4b89af18c69abccd02b7cc9d5ba63c2573845ddb
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215254"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299664"
 ---
 # <a name="python-samples-for-bot-framework-sdk"></a>Ejemplos de Python de Bot Framework SDK
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]

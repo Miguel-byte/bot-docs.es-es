@@ -2,19 +2,18 @@
 title: Administración de un flujo de conversación con diálogos | Microsoft Docs
 description: Aprenda a administrar una conversación con diálogos entre un bot y un usuario en Bot Framework SDK para Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 497a00dd9327d3b4c26c1468bba04f18e2244ca1
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: 08edd665b5aedef6dd05c34e3b30d1f11effa19d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67405036"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299881"
 ---
 # <a name="manage-conversation-flow-with-dialogs"></a>Administración del flujo de conversación con diálogos
 

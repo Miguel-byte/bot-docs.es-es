@@ -3,18 +3,17 @@ title: Canales adicionales | Microsoft Docs
 description: Aprenda a configurar canales adicionales para el bot.
 keywords: canales de bot, hangouts, Twilio, facebook, azure portal
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 02/08/2019
-ms.openlocfilehash: d6cf068f3cd4d57ff9cde2be6d41e084cee6524d
-ms.sourcegitcommit: e276008fb5dd7a37554e202ba5c37948954301f1
+ms.openlocfilehash: 15b5a0a654996bd01a09e63c13631c39f716f133
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693745"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297670"
 ---
 # <a name="additional-channels"></a>Canales adicionales
 

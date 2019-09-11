@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 08/06/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: d44b1339b367c7243cfb6d2311a553becb6245ff
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 1e5c2068fe9b4fdc13641d098eb1579c01dd24c2
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037502"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386042"
 ---
 # <a name="deploy-your-bot"></a>Implementación del bot
 
@@ -22,199 +22,196 @@ ms.locfileid: "70037502"
 
 En este artículo, se indica cómo implementar un bot básico en Azure. Se explica cómo preparar el bot para su implementación, cómo implementarlo en Azure y cómo probarlo en Web Chat. Es conveniente leerlo antes de seguir los pasos, con el fin de tener un conocimiento completo de lo que implica la implementación de un bot.
 
-<!-- create your Azure Application, 2) prepare your source code for deployment, and 3) deploy your code to your Azure Application.  -->
-
 ## <a name="prerequisites"></a>Requisitos previos
-- Una suscripción a [Microsoft Azure](https://azure.microsoft.com/free/).
-- Un bot de C#, JavaScript o TypeScript que haya desarrollado en la máquina local.
-- La versión más reciente de la [CLI de Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
-- Estar familiarizado con la [CLI de Azure y las plantillas de Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+[!INCLUDE [deploy prerequisite](~/includes/deploy/snippet-prerequisite.md)]
+<!-- - A subscription to [Microsoft Azure](https://azure.microsoft.com/free/)
+- A C#, JavaScript, or TypeScript bot that you have developed on your local machine
+- Latest version of the [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+- Familiarity with [Azure CLI and ARM templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) -->
 
 ## <a name="prepare-for-deployment"></a>Preparación de la implementación
-Cuando crea un bot mediante una [plantilla de Visual Studio](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) o [Yeoman](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0), el código fuente que se genera contiene una carpeta `deploymentTemplates` con plantillas de Resource Manager. El proceso de implementación que se documenta aquí utiliza la plantilla ARM para aprovisionar los recursos necesarios para el bot en Azure mediante la CLI de Azure. 
+[!INCLUDE [deploy prepare intro](~/includes/deploy/snippet-prepare-deploy-intro.md)]
+<!-- When you create a bot using [Visual Studio template](https://docs.microsoft.com/azure/bot-service/dotnet/bot-builder-dotnet-sdk-quickstart?view=azure-bot-service-4.0) or [Yeoman template](https://docs.microsoft.com/azure/bot-service/javascript/bot-builder-javascript-quickstart?view=azure-bot-service-4.0), the source code generated contains a `deploymentTemplates` folder with ARM templates. The deployment process documented here uses the ARM template to provision required resources for the bot in Azure by using the Azure CLI. 
 
 > [!NOTE]
-> Con el lanzamiento de Bot Framework SDK 4.3, la utilización del archivo .bot está _en desuso_ en favor de un archivo appsettings.json o .env para administrar los recursos. Para más información sobre cómo migrar la configuración del archivo .bot al archivo appsettings.json o .env, consulte [Administración de recursos del bot](v4sdk/bot-file-basics.md).
+> With the release of Bot Framework SDK 4.3, we have _deprecated_ the use of .bot file in favor of appsettings.json or .env file for managing resources. For information on migrating settings from the .bot file to appsettings.json or .env file, see [managing bot resources](v4sdk/bot-file-basics.md). -->
 
 ### <a name="1-login-to-azure"></a>1. Inicio de sesión en Azure
-
-Ya ha creado y probado localmente un bot y ahora quiere implementarlo en Azure. Abra un símbolo del sistema para iniciar sesión en Azure Portal.
+[!INCLUDE [deploy az login](~/includes/deploy/snippet-az-login.md)]
+<!-- You've already created and tested a bot locally, and now you want to deploy it to Azure. Open a command prompt to log in to the Azure portal.
 
 ```cmd
 az login
 ```
-Se abrirá una ventana del explorador, lo que le permite iniciar sesión.
+A browser window will open, allowing you to sign in.
 
 > [!NOTE]
-> Si implementa el bot en una nube que no es de Azure, como Gov (US), debe ejecutar `az cloud set --name <name-of-cloud>` antes de `az login`, donde &lt;name-of-cloud> es el nombre de una nube registrada, como `AzureUSGovernment`. Si desea volver a la nube pública, puede ejecutar `az cloud set --name AzureCloud`. 
+> If you deploy your bot to a non-Azure cloud such as US Gov, you need to run `az cloud set --name <name-of-cloud>` before `az login`, where &lt;name-of-cloud> is the name of a registered cloud, such as `AzureUSGovernment`. If you want to go back to public cloud, you can run `az cloud set --name AzureCloud`.  -->
+
 
 ### <a name="2-set-the-subscription"></a>2. Establecimiento de la suscripción
-
-Establezca la suscripción predeterminada que desea usar.
+[!INCLUDE [deploy az subscription](~/includes/deploy/snippet-az-set-subscription.md)]
+<!-- Set the default subscription to use.
 
 ```cmd
 az account set --subscription "<azure-subscription>"
 ```
 
-Si no está seguro de la suscripción que debe usar para implementar el bot y desea ver la lista de suscripciones para su cuenta, use el comando `az account list`. Vaya a la carpeta del bot.
+If you are not sure which subscription to use for deploying the bot, you can view the list of subscriptions for your account by using `az account list` command. Navigate to the bot folder. -->
 
 ### <a name="3-create-an-app-registration"></a>3. Creación de un registro de aplicación
-
-Registrar la aplicación significa que puede usar Azure AD para autenticar usuarios y solicitar acceso a recursos de usuarios. El bot requiere una aplicación registrada en Azure que le proporcione acceso al servicio Bot Framework para enviar y recibir mensajes autenticados. Para crear el registro de una aplicación mediante la CLI de Azure, ejecute el siguiente comando:
+[!INCLUDE [deploy create app registration](~/includes/deploy/snippet-create-app-registration.md)]
+<!-- Registering the application means that you can use Azure AD to authenticate users and request access to user resources. Your bot requires a Registered app in Azure that provides the bot access to the Bot Framework Service for sending and receiving authenticated messages. To create register an app via the Azure CLI, perform the following command:
 
 ```cmd
 az ad app create --display-name "displayName" --password "AtLeastSixteenCharacters_0" --available-to-other-tenants
 ```
 
-| Opción   | DESCRIPCIÓN |
+| Option   | Description |
 |:---------|:------------|
-| display-name | Nombre para mostrar de la aplicación. |
-| password | Contraseña de aplicación, también conocida como "secreto de cliente". La contraseña debe tener al menos 16 caracteres, contener al menos un carácter alfabético en mayúsculas o minúsculas, y contener al menos 1 carácter especial.|
-| available-to-other-tenants| Se puede usar la aplicación desde cualquier inquilino de Azure AD. Debe ser `true` para permitir al bot que funcione con los canales de Azure Bot Service.|
+| display-name | The display name of the application. |
+| password | App password, aka 'client secret'. The password must be at least 16 characters long, contain at least 1 upper or lower case alphabetical character, and contain at least 1 special character.|
+| available-to-other-tenants| The application can be used from any Azure AD tenants. This must be `true` to enable your bot to work with the Azure Bot Service channels.|
 
-El comando anterior da como resultado un JSON con la clave `appId`, guarde el valor de esta clave para la implementación de ARM, donde se usará para el parámetro `appId`. La contraseña proporcionada se usará para el parámetro `appSecret`.
+The above command outputs JSON with the key `appId`, save the value of this key for the ARM deployment, where it will be used for the `appId` parameter. The password provided will be used for the `appSecret` parameter.
 
 > [!NOTE] 
-> Si desea usar un registro de aplicación existente, puede usar el comando:
+> If you would like to use an existing App registration you can use the command:
 > ``` cmd
 > az bot create --kind webapp --resource-group "<name-of-resource-group>" --name "<name-of-web-app>" --appid "<existing-app-id>" --password "<existing-app-password>" --lang <Javascript|Csharp>
-> ```
+> ``` -->
 
 ### <a name="4-deploy-via-arm-template"></a>4. Implementación de una plantilla de Resource Manager
 Puede implementar el bot en un grupo de recursos nuevo o en uno ya existente. Elija la opción que mejor funcione en su caso. 
-<!--
-## [Deploy via ARM template (with **new**  Resource Group)](#tab/nerg)
--->
+
 #### <a name="deploy-via-arm-template-with-new-resource-group"></a>**Implementación mediante la plantilla de ARM (con un **grupo de recursos** nuevo)**
 <!-- ##### Create Azure resources -->
-Va a crear un nuevo grupo de recursos en Azure y, a continuación, usará la plantilla de ARM para crear los recursos que se especifican en ella. En este caso, se proporcionará un plan de App Service, una aplicación web y el registro de canales de bot.
+[!INCLUDE [ARM with new resourece group](~/includes/deploy/snippet-ARM-new-resource-group.md)]
+<!-- You'll create a new resource group in Azure and then use the ARM template to create the resources specified in it. In this case, we are providing App Service Plan, Web App, and Bot Channels Registration.
 
 ```cmd
 az deployment create --name "<name-of-deployment>" --template-file "template-with-new-rg.json" --location "location-name" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" botSku=F0 newAppServicePlanName="<name-of-app-service-plan>" newWebAppName="<name-of-web-app>" groupName="<new-group-name>" groupLocation="<location>" newAppServicePlanLocation="<location>"
 ```
 
-| Opción   | DESCRIPCIÓN |
+| Option   | Description |
 |:---------|:------------|
-| Nombre | Nombre descriptivo para la implementación. |
-| template-file | La ruta de acceso a la plantilla de ARM. Puede usar el archivo `template-with-new-rg.json` que se proporciona en la carpeta `deploymentTemplates` del proyecto. |
-| location |Ubicación. Los valores de: `az account list-locations`. Puede configurar la ubicación predeterminada mediante `az configure --defaults location=<location>`. |
-| parameters | Proporcione los valores de los parámetros de implementación. El valor `appId` que se obtuvo al ejecutar el comando `az ad app create`. `appSecret` es la contraseña que proporcionó en el paso anterior. El parámetro `botId` debe ser único globalmente y se utiliza como identificador inmutable del bot. También sirve para configurar el nombre para mostrar del bot, nombre que es mutable. `botSku` es el plan de tarifa y puede ser F0 (gratis) o S1 (Estándar). `newAppServicePlanName` es el nombre del plan de App Service. `newWebAppName` es el nombre de la aplicación web que va a crear. `groupName` es el nombre del grupo de recursos de Azure que va a crear. `groupLocation` es la ubicación del grupo de recursos de Azure. `newAppServicePlanLocation` es la ubicación del plan de App Service. |
+| name | Friendly name for the deployment. |
+| template-file | The path to the ARM template. You can use `template-with-new-rg.json` file provided in the `deploymentTemplates` folder of the project. |
+| location |Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`. |
+| parameters | Provide deployment parameter values. `appId` value you got from running the `az ad app create` command. `appSecret` is the password you provided in the previous step. The `botId` parameter should be globally unique and is used as the immutable bot ID. It is also used to configure the display name of the bot, which is mutable. `botSku` is the pricing tier and can be F0 (Free) or S1 (Standard). `newAppServicePlanName` is the name of App Service Plan. `newWebAppName` is the name of the Web App you are creating. `groupName` is the name of the Azure resource group you are creating. `groupLocation` is the location of the Azure resource group. `newAppServicePlanLocation` is the location of the App Service Plan. | -->
 
 #### <a name="deploy-via-arm-template-with-existing--resource-group"></a>**Implementación mediante la plantilla de ARM (con un **grupo de recursos** ya existente)**
-<!--
-## [Deploy via ARM template (with **existing**  Resource Group)](#tab/erg)
-##### Create Azure resources
--->
-Cuando se usa un grupo de recursos existente, puede usar un plan de App Service que ya exista o crear uno nuevo. A continuación, se muestran los pasos para ambas opciones. 
 
-**Opción 1: Plan de App Service existente** 
+[!INCLUDE [ARM with existing resourece group](~/includes/deploy/snippet-ARM-existing-resource-group.md)]
+<!-- When using an existing resource group, you can either use an existing App Service Plan or create a new one. Steps for both options are listed below. 
 
-En este caso, se usará un plan de App Service ya existente, pero creando una aplicación web y el registro de canales de bot. 
+**Option 1: Existing App Service Plan** 
+
+In this case, we are using existing App Service Plan, but creating new a Web App and Bot Channels Registration. 
 
 > [!NOTE]
-> El parámetro botId debe ser único globalmente y se utiliza como identificador inmutable del bot. También sirve para configurar el nombre para mostrar del bot, nombre que es mutable.
+> The botId parameter should be globally unique and is used as the immutable bot ID. Also used to configure the displayName of the bot, which is mutable.
 
 ```cmd
 az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" existingAppServicePlan="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
-**Opción 2: Nuevo plan de App Service**
+**Option 2: New App Service Plan**
 
-En este caso, se creará un plan de App Service, una aplicación web y el registro de canales de bot. 
+In this case, we are creating App Service Plan, Web App, and Bot Channels Registration. 
 
 ```cmd
 az group deployment create --name "<name-of-deployment>" --resource-group "<name-of-resource-group>" --template-file "template-with-preexisting-rg.json" --parameters appId="<msa-app-guid>" appSecret="<msa-app-password>" botId="<id-or-name-of-bot>" newWebAppName="<name-of-web-app>" newAppServicePlanName="<name-of-app-service-plan>" appServicePlanLocation="<location>"
 ```
 
-| Opción   | DESCRIPCIÓN |
+| Option   | Description |
 |:---------|:------------|
-| Nombre | Nombre descriptivo para la implementación. |
-| resource-group | El nombre del grupo de recursos de Azure. |
-| template-file | La ruta de acceso a la plantilla de ARM. Puede usar el archivo `template-with-preexisting-rg.json` que se proporciona en la carpeta `deploymentTemplates` del proyecto. |
-| location |Ubicación. Los valores de: `az account list-locations`. Puede configurar la ubicación predeterminada mediante `az configure --defaults location=<location>`. |
-| parameters | Proporcione los valores de los parámetros de implementación. El valor `appId` que se obtuvo al ejecutar el comando `az ad app create`. `appSecret` es la contraseña que proporcionó en el paso anterior. El parámetro `botId` debe ser único globalmente y se utiliza como identificador inmutable del bot. También sirve para configurar el nombre para mostrar del bot, nombre que es mutable. `newWebAppName` es el nombre de la aplicación web que va a crear. `newAppServicePlanName` es el nombre del plan de App Service. `newAppServicePlanLocation` es la ubicación del plan de App Service. |
+| name | Friendly name for the deployment. |
+| resource-group | Name of the azure resource group |
+| template-file | The path to the ARM template. You can use `template-with-preexisting-rg.json` file provided in the `deploymentTemplates` folder of the project. |
+| location |Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`. |
+| parameters | Provide deployment parameter values. `appId` value you got from running the `az ad app create` command. `appSecret` is the password you provided in the previous step. The `botId` parameter should be globally unique and is used as the immutable bot ID. It is also used to configure the display name of the bot, which is mutable. `newWebAppName` is the name of the Web App you are creating. `newAppServicePlanName` is the name of App Service Plan. `newAppServicePlanLocation` is the location of the App Service Plan. | -->
 
 ---
 
 ### <a name="5-prepare-your-code-for-deployment"></a>5. Preparación del código para la implementación
 #### <a name="51-retrieve-or-create-necessary-iiskudu-files"></a>5.1 Recuperación o creación de los archivos IIS/Kudu necesarios
+[!INCLUDE [retrieve or create IIS/Kudu files](~/includes/deploy/snippet-IIS-Kudu-files.md)]
 
-<!-- **C# bots** -->
-##### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+<!-- ##### [C#](#tab/csharp) -->
 
-```cmd
+<!-- ```cmd
 az bot prepare-deploy --lang Csharp --code-dir "." --proj-file-path "MyBot.csproj"
 ```
 
-Debe proporcionar la ruta de acceso al archivo .csproj relacionada con --code-dir. Esto puede realizarse mediante el argumento --proj-file-path. El comando debería resolver --code-dir y --proj-file-path en "./MyBot.csproj"
+You must provide the path to the .csproj file relative to --code-dir. This can be performed via the --proj-file-path argument. The command would resolve --code-dir and --proj-file-path to "./MyBot.csproj"
 
-<!-- **JavaScript bots** -->
-##### <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+##### [JavaScript](#tab/javascript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Javascript
 ```
 
-Este comando capturará un archivo web.config que es necesario para que las aplicaciones de Node.js funcionen con IIS en Azure App Services. Asegúrese de que el archivo web.config se guarda en la raíz del bot.
+This command will fetch a web.config which is needed for Node.js apps to work with IIS on Azure App Services. Make sure web.config is saved to the root of your bot.
 
-<!-- **TypeScript bots** -->
-##### <a name="typescripttabtypescript"></a>[TypeScript](#tab/typescript)
+##### [TypeScript](#tab/typescript)
 
 ```cmd
 az bot prepare-deploy --code-dir "." --lang Typescript
 ```
 
-Este comando funciona de forma similar al de JavaScript que se mencionó anteriormente, pero para un bot de TypeScript.
+This command works similarly to JavaScript above, but for a Typescript bot.
 
 ---
 
 > [!NOTE]
-> Después de ejecutar el comando mencionado anteriormente, debería poder ver un archivo `.deployment` en la carpeta de proyecto del bot.
+> After executing the above-mentioned command, you should be able to see a `.deployment` file in your bot project folder. -->
 
 #### <a name="52-zip-up-the-code-directory-manually"></a>5.2 Compresión del directorio de código manualmente
+[!INCLUDE [zip up code](~/includes/deploy/snippet-zip-code.md)]
+<!-- When using the non-configured [zip deploy API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) to deploy your bot's code, Web App/Kudu's behavior is as follows:
 
-Cuando se usa [ZIP deploy API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) para implementar el código del bot, el comportamiento de la aplicación web o de Kudu es el siguiente:
+_Kudu assumes by default that deployments from zip files are ready to run and do not require additional build steps during deployment, such as npm install or dotnet restore/dotnet publish._
 
-_Kudu supone de forma predeterminada que las implementaciones de los archivos ZIP están listas para ejecutarse y que no necesitan pasos de compilación adicionales durante la implementación como, por ejemplo, npm install o dotnet restore/dotnet publish._
-
-Por tanto, es importante incluir el código compilado con todas las dependencias necesarias en el archivo ZIP que se va a implementar en la aplicación web ya que, de lo contrario, el bot no funcionará como se espera.
+As such, it is important to include your built code and with all necessary dependencies in the zip file being deployed to the Web App, otherwise your bot will not work as intended.
 
 > [!IMPORTANT]
-> Antes de comprimir los archivos de proyecto, asegúrese de que está _en_ la carpeta correcta. 
-> - Para bots de C#, es la carpeta que contiene el archivo .csproj. 
-> - Para bots de JS, es la carpeta que contiene el archivo app.js o index.js. 
+> Before zipping your project files, make sure that you are _in_ the correct folder. 
+> - For C# bots, it is the folder that has the .csproj file. 
+> - For JS bots, it is the folder that has the app.js or index.js file. 
 >
->Seleccione todos los archivos y comprímalos **mientras está en esa carpeta** y, a continuación, ejecute el comando también en esa carpeta. 
+>**Within** the project folder, select all the files and zip them up, then run the command while still in the folder. 
 >
-> Si la ubicación de la carpeta raíz es incorrecta, el **bot no podrá ejecutarse en Azure Portal**.
+> If your root folder location is incorrect, the **bot will fail to run in the Azure portal**. -->
 
 ## <a name="deploy-code-to-azure"></a>Implementación del código en Azure
-En este momento, estamos preparados para implementar el código en la aplicación web de Azure. Ejecute el siguiente comando en la línea de comandos para realizar la implementación mediante la implementación de inserción del archivo ZIP de Kudu para una aplicación web.
-
+[!INCLUDE [deploy code to Azure](~/includes/deploy/snippet-deploy-code-to-az.md)]
+<!-- At this point we are ready to deploy the code to the Azure Web App. Run the following command from the command line to perform deployment using the kudu zip push deployment for a web app. -->
+<!-- 
 ```cmd
 az webapp deployment source config-zip --resource-group "<new-group-name>" --name "<name-of-web-app>" --src "code.zip" 
 ```
 
-| Opción   | DESCRIPCIÓN |
+| Option   | Description |
 |:---------|:------------|
-| resource-group | El nombre del grupo de recursos de Azure que ha creado anteriormente. |
-| Nombre | Nombre de la aplicación web que ha usado anteriormente. |
-| src  | La ruta de acceso al archivo ZIP que ha creado. |
+| resource-group | Resource group name in Azure that you created earlier. |
+| name | Name of the Web App you used earlier. |
+| src  | The path to the zipped file you created. | -->
 
 ## <a name="test-in-web-chat"></a>Probar en Chat en web
+[!INCLUDE [test in web chat](~/includes/deploy/snippet-test-in-web-chat.md)]
+<!-- 1. In your browser, navigate to the [Azure portal](https://ms.portal.azure.com).
+2. In the left panel, click **Resource groups**.
+3. In the right panel, search for your group.
+4. Click on your group name.
+5. Click the link of your Bot Channel Registration.
+6. In the *Bot Channel Registration blade*, click **Test in Web Chat**.
+Alternatively, in the right panel, click the Test box.
 
-1. En el explorador, vaya a [Azure Portal](https://ms.portal.azure.com).
-2. Haga clic en **Grupos de recursos** en el panel izquierdo.
-3. En el panel derecho, busque el grupo.
-4. Haga clic en el nombre del grupo.
-5. Haga clic en el vínculo del registro de canales de bot.
-6. En la *hoja Bot Channel Registration* (Registro de canales de bot), haga clic en **Test in Web Chat** (Probar en Chat en web).
-O bien, en el panel derecho, haga clic en el cuadro Probar.
-
-Para más información sobre el registro de canales, consulte [Registro de un bot en Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
+For more information about channel registration, see [Register a bot with Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart-registration?view=azure-bot-service-3.0).
 
 > [!NOTE]
-> Una hoja es la superficie en la que aparecen las funciones de servicio o los elementos de navegación cuando se seleccionan.
+> A blade is the surface on which service functions or navigation elements appear when selected. -->
 
 ## <a name="additional-information"></a>Información adicional
 La implementación de un bot en Azure conllevará el pago de los servicios que se usen. El artículo acerca de la [facturación y administración de costos](https://docs.microsoft.com/azure/billing/) sirve de ayuda para conocer la facturación de Azure, para supervisar el uso y los costos, y para administrar cuentas y suscripciones.

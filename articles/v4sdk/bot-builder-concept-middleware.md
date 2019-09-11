@@ -3,19 +3,18 @@ title: Software intermedio | Microsoft Docs
 description: Descripción del software intermedio y de sus usos en el SDK del bot.
 keywords: software intermedio, canalización de software intermedio, cortocircuito, usos del software intermedio
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: c70470d66d1402fc3d4c29d8772193f8e0576913
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 42082f90db8079e7bc0152b2947705a9c1f15115
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215490"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299462"
 ---
 # <a name="middleware"></a>Software intermedio
 
@@ -41,7 +40,7 @@ El SDK define el middleware de registro que puede grabar las actividades de entr
 ## <a name="the-bot-middleware-pipeline"></a>La canalización de software intermedio del bot
 Para cada actividad, el adaptador llama al middleware en el orden en que se ha agregado. El adaptador pasa el objeto de contexto para el turno y un delegado _next_, y el software intermedio llama al delegado para pasar el control al siguiente software intermedio de la canalización. El software intermedio también puede llevar a cabo acciones después de que se devuelva el delegado _next_ antes de completar el método. Es como si cada objeto de software intermedio tuviese la oportunidad de actuar directamente sobre los objetos de software intermedio que lo siguen en la canalización.
 
-Por ejemplo: 
+Por ejemplo:
 
 - El primer controlador de turno del objeto de software intermedio ejecuta código antes de llamar a _next_.
   - El segundo controlador de turno del objeto de software intermedio ejecuta código antes de llamar a _next_.

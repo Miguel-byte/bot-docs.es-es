@@ -3,18 +3,17 @@ title: Análisis del bot | Microsoft Docs
 description: Obtenga información sobre cómo usar la recopilación y el análisis de datos para mejorar su bot con análisis de Bot Framework.
 keywords: análisis de bot, application insights, tráfico, latencia, integraciones, AppInsights
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: abs
 ms.date: 12/04/2018
-ms.openlocfilehash: 2f7474500af4305f4c51193a2a5af264d419569b
-ms.sourcegitcommit: 91156d0866316eda8d68454a0c4cd74be5060144
+ms.openlocfilehash: 324050c625f5d9666811f63191d783643816104c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010520"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298688"
 ---
 # <a name="bot-analytics"></a>Análisis del bot
 

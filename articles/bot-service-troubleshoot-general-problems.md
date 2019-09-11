@@ -2,17 +2,17 @@
 title: Solución de problemas de bots | Microsoft Docs
 description: Solución de problemas generales de desarrollo de bots con las preguntas técnicas más frecuentes.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 7a018855b11aa638cbad1b70b53505395ae7f5f9
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: c9c8ff04e7093cd0375e52c4ecd90b44af4f4798
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464583"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298563"
 ---
 # <a name="troubleshooting-general-problems"></a>Solución de problemas generales
 Estas preguntas más frecuentes pueden ayudarle a solucionar problemas comunes de desarrollo de bots o problemas de funcionamiento.
@@ -265,7 +265,7 @@ Tanto Bot Framework SDK para Node.js como Bot Framework SDK para .NET admiten ll
 
 * [ES6 BotBuilder](https://github.com/brene/botbuilder-es6-template): plantilla de ES6 de Bot Builder
 
-## <a name="why-do-i-get-an-authorizationrequestdenied-exception-when-creating-a-bot"></a>¿Por qué obtengo una excepción Authorization_RequestDenied al crear un bot?
+## <a name="why-do-i-get-an-authorization_requestdenied-exception-when-creating-a-bot"></a>¿Por qué obtengo una excepción Authorization_RequestDenied al crear un bot?
 
 Los permisos para crear bots de Azure Bot Service se administran mediante el portal de Azure Active Directory (AAD). Si los permisos no están configurados correctamente en el [portal de AAD](http://aad.portal.azure.com), los usuarios obtendrán la excepción **Authorization_RequestDenied** al intentar crear un servicio de bots.
 

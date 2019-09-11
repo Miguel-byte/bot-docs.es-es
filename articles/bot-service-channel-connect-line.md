@@ -3,18 +3,17 @@ title: Conexión de un bot a LINE | Microsoft Docs
 description: Aprenda a configurar la conexión de un bot a LINE.
 keywords: connect a bot, bot channel, LINE bot, credentials, configure, phone
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 1/7/2019
-ms.openlocfilehash: f6ed40c5ad3999ea5a123bf051de849917f22b42
-ms.sourcegitcommit: e41dabe407fdd7e6b1d6b6bf19bef5f7aae36e61
+ms.openlocfilehash: 8be0c7f89595e3222e5170fc7f11d052f9cb6851
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56893515"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298472"
 ---
 # <a name="connect-a-bot-to-line"></a>Conexión de un bot a LINE
 
@@ -100,7 +99,7 @@ Cuando haya completado estos pasos, el bot estará configurado correctamente par
 
 En la consola del desarrollador de LINE, vaya a la página de configuración y verá el código QR de su bot. 
 
-En la aplicación móvil LINE, vaya a la pestaña de navegación situada más a la derecha, con tres puntos [**...** ], y mantenga pulsado el icono del código QR. 
+En la aplicación móvil LINE, vaya a la pestaña de navegación situada más a la derecha, con tres puntos [ **...** ], y mantenga pulsado el icono del código QR. 
 
 ![Captura de pantalla de LINE: aplicación móvil](./media/channels/LINE-screenshot-12.jpg)
 

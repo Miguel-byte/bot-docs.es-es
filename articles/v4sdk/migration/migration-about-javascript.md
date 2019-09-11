@@ -7,15 +7,14 @@ ms.author: v-mimiel
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 07/08/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 24725df2f109e73df142194c05ee27c2d8ba5da4
-ms.sourcegitcommit: 4f78e68507fa3594971bfcbb13231c5bfd2ba555
+ms.openlocfilehash: d1fce8dfc6a8097ac14f72a9fe596560ddaac1a2
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68292215"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299010"
 ---
 # <a name="differences-between-the-v3-and-v4-javascript-sdk"></a>Diferencias entre las versiones v3 y v4 del SDK para JavaScript
 
@@ -139,7 +138,7 @@ Presentamos una lista de operaciones comunes en la versión v3 y cómo realizarl
 
 Otras notas sobre el código de la versión v4:
 
-- En la versión v4, las distintas clases derivadas `Prompt` implementan los avisos al usuario como diálogos independientes en dos pasos. Consulte el procedimiento para [implementar un flujo de conversación secuencial][sequential-flow]..
+- En la versión v4, las distintas clases derivadas `Prompt` implementan los avisos al usuario como diálogos independientes en dos pasos. Consulte el procedimiento para [implementar un flujo de conversación secuencial][sequential-flow].
 - Use `DialogSet.createContext` para crear un contexto de diálogo para el turno actual.
 - Dentro de un diálogo, use la propiedad `DialogContext.context` para obtener el contexto del turno actual.
 - Los pasos de la cascada tienen un parámetro `WaterfallStepContext`, que deriva de `DialogContext`.

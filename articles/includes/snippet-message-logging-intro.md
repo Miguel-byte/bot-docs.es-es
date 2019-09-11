@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 12ead266dea859c84450e08ae12ed98d4952d698
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.sourcegitcommit: fa6e775dcf95a4253ad854796f5906f33af05a42
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54226020"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "70297370"
 ---
 La funcionalidad **middleware** de Bot Framework SDK permite al bot interceptar todos los mensajes que se intercambian entre usuario y bot. Para cada mensaje que se intercepta, puede elegir realizar acciones como guardar el mensaje en un almacén de datos que especifique, lo que crea un registro de la conversación o inspeccionar el mensaje de alguna manera y realizar cualquier acción que el código especifique. 
 

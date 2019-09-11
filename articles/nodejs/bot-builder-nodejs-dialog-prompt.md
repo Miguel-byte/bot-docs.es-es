@@ -2,19 +2,18 @@
 title: Petición de datos de entrada al usuario | Microsoft Docs
 description: Aprenda a usar avisos para recopilar información del usuario con Bot Framework SDK para Node.js.
 author: v-ducvo
-ms.author: v-ducvo
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 1cad11c8b1dde800543c919ab579b0112e7d3036
-ms.sourcegitcommit: a295a90eac461f8b96770dd902ba44919acf33fc
+ms.openlocfilehash: f0b9e7457c63ee1be8b2d3063d098e4186b1db3a
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67404992"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299863"
 ---
 # <a name="prompt-for-user-input"></a>Petición de datos de entrada al usuario
 

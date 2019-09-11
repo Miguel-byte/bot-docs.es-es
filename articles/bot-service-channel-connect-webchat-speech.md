@@ -3,19 +3,18 @@ title: Habilitación de voz en un chat en web | Microsoft Docs
 description: Obtenga información sobre cómo habilitar la característica de voz en un control de chat en web para un bot conectado al canal Chat en web.
 keywords: característica de voz, chat en web, voz, audio, micrófono
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: cdb512b0efe111870b34c440f978105786b6f36a
-ms.sourcegitcommit: 8161753641368567f239e24a35ad61768acccd8e
+ms.openlocfilehash: b83dff7969c58451e5752938f74b682b2163c49d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54202581"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298205"
 ---
 # <a name="enable-speech-in-web-chat"></a>Habilitación de voz en un chat en web
 Puede habilitar una interfaz de voz en el control de chat en web. Los usuarios interactúan con la interfaz de voz utilizando el micrófono en el control de chat en web.
@@ -57,7 +56,7 @@ Para habilitar la funcionalidad de voz en Chat en web, debe personalizar el cód
    | dominio | Opcional. Dirección URL de un punto de conexión de línea directa alternativo.  |
    | WebSocket | Opcional. Establecer en "true" para usar WebSocket para recibir mensajes. El valor predeterminado es `false`. |
    | userid | Opcional. Id. del usuario del bot.  |
-   | nombre de usuario | Opcional. Nombre de usuario del usuario del bot.  |
+   | username | Opcional. Nombre de usuario del usuario del bot.  |
    | botid | Opcional. Id. del bot. |
    | botname | Opcional. Nombre del bot. |
 

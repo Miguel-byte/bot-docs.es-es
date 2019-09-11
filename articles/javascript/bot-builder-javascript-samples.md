@@ -2,19 +2,18 @@
 title: Ejemplo de bots de Bot Framework SDK para JavaScript | Microsoft Docs
 description: Explore una amplia selección de bots de ejemplo que pueden ayudarle a comenzar a desarrollar bots con Bot Framework SDK para JavaScript.
 author: jonathanfingold
-ms.author: jonathanfingold
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8892bdf0f4a0e5dad765610d30e67fce4296e810
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 12a5c31ea77c6cbcf7297a8d21226654a2028e95
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66214341"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298855"
 ---
 # <a name="javascript-samples-for-bot-framework-sdk"></a>Ejemplos de JavaScript de Bot Framework SDK
 [!INCLUDE [pre-release-label](../includes/pre-release-label.md)]
