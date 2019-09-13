@@ -2,19 +2,18 @@
 title: Creación de experiencias controladas por datos con Azure Search | Microsoft Docs
 description: Obtenga información sobre cómo crear experiencias controladas por datos con Azure Search y ayude a los usuarios a explorar grandes cantidades de contenido en un bot con Bot Framework SDK para Node.js y Azure Search.
 author: matthewshim-ms
-ms.author: v-shimma
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 259f709ae460fde13cdf25ce6d7cbf5dd44a333d
-ms.sourcegitcommit: cf3786c6e092adec5409d852849927dc1428e8a2
+ms.openlocfilehash: 0a5ebd10e076b44708f13de0b8485bffff3419af
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57224863"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299750"
 ---
 # <a name="create-data-driven-experiences-with-azure-search"></a>Creación de experiencias controladas por datos con Azure Search 
 

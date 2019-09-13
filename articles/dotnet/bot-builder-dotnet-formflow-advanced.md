@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d04e13babef847a44438e1a748990d7405478fa2
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4dc065905c71aef0b3f0108032ca79a2a15f8af0
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225960"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298026"
 ---
 # <a name="advanced-features-of-formflow"></a>Características avanzadas de FormFlow
 
@@ -24,7 +23,7 @@ ms.locfileid: "54225960"
 
 ## <a name="specify-initial-form-state-and-entities"></a>Especificación de las entidades y del estado inicial del formulario
 
-Cuando inicie [FormDialog][formDialog], también puede pasar una instancia de su estado de forma opcional. Si pasa una instancia del estado, FormFlow omitirá de forma predeterminada los pasos para todos los campos que ya contienen valores. No se pedirá al usuario que rellene esos campos. Para forzar que el formulario solicite al usuario todos los campos (incluso los que ya contienen valores en el estado inicial), pase [FormOptions.PromptFieldsWithValues][promptFieldsWithValues] cuando inicie `FormDialog`. Si un campo contiene un valor inicial, el mensaje lo usará como valor predeterminado.
+Cuando inicie [FormDialog][formDialog], también puede pasar una instancia de su estado de forma opcional. Si pasa una instancia del estado, FormFlow omitirá de forma predeterminada los pasos para todos los campos que ya contienen valores. No se pedirá al usuario que rellene esos campos. Para forzar al formulario para que solicite al usuario todos los campos (incluso los que ya contienen valores en el estado inicial), pase [FormOptions.PromptFieldsWithValues][promptFieldsWithValues] cuando inicie `FormDialog`. Si un campo contiene un valor inicial, el mensaje lo usará como valor predeterminado.
 
 También puede pasar entidades de [LUIS](https://luis.ai/) para enlazarlas con el estado. Si `EntityRecommendation.Type` es una ruta de acceso a un campo de la clase de C#, `EntityRecommendation.Entity` se pasará por el reconocedor para enlazarla con el campo. FormFlow omitirá los pasos para todos los campos que estén enlazados a una entidad; no se pedirá al usuario que rellene esos campos. 
 
@@ -71,12 +70,12 @@ Puede agregar estos atributos de C# a la clase para personalizar el comportamien
 | Atributo | Propósito |
 |----|----| 
 | [Describe][describeAttribute] | Modifica cómo se muestra un campo o un valor en una plantilla o tarjeta. |
-| [Numeric][numericAttribute] | Restringe los valores aceptados de un campo numérico. |
-| [Optional][optionalAttribute] | Marca un campo como opcional. |
-| [Pattern][patternAttribute] | Define una expresión regular para validar un campo de cadena. |
-| [Prompt][promptAttribute] | Define el mensaje para un campo. |
-| [Template][templateAttribute] | Define la plantilla utilizada para generar mensajes o valores en los mensajes. |
-| [Terms][termsAttribute] | Define los términos de entrada que coinciden con un campo o valor. |
+| [Numérica][numericAttribute] | Restringe los valores aceptados de un campo numérico. |
+| [Opcional][optionalAttribute] | Marca un campo como opcional. |
+| [Patrón][patternAttribute] | Define una expresión regular para validar un campo de cadena. |
+| [Pregunta][promptAttribute] | Define el mensaje para un campo. |
+| [Plantilla][templateAttribute] | Define la plantilla utilizada para generar mensajes o valores en los mensajes. |
+| [Términos][termsAttribute] | Define los términos de entrada que coinciden con un campo o valor. |
 
 ## <a name="customize-prompts-using-the-prompt-attribute"></a>Personalización de mensajes con el atributo Prompt
 

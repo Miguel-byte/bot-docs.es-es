@@ -7,14 +7,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: f2a97b35f7e83a825e533be528951e8c04c521a1
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7d1bfe669ebafa7e4a2104f384265760720d663c
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998090"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298123"
 ---
 # <a name="design-bot-navigation"></a>Diseño de navegación de bots
 
@@ -45,7 +44,7 @@ A menudo, los usuarios cambian de parecer, deciden cancelar o a veces desean vol
 > [!TIP]
 > <b>Sí</b>: diseñe el bot para que tenga en cuenta que un usuario puede intentar cambiar el curso de la conversación en cualquier momento. 
 >
-> <b>No</b>: diseñe el bot para ignorar la entrada del usuario y seguir repitiendo la misma pregunta en un bucle interminable. 
+> <b>No</b> diseñe el bot para ignorar la entrada del usuario y seguir repitiendo la misma pregunta en un bucle interminable. 
 
 Existen muchos métodos para evitar este problema, pero quizás la manera más fácil de impedir que un bot haga la misma pregunta constantemente sea simplemente especificar un número máximo de reintentos para cada pregunta. Si se diseña de este modo, el bot no hace nada "inteligente" para comprender la entrada del usuario y responder de manera apropiada, pero al menos evitará hacer la misma pregunta en un bucle infinito. 
 
@@ -60,9 +59,9 @@ Considere el siguiente escenario:
 Aunque es posible que se vea tentado a diseñar cada cuadro de diálogo en el bot para que escuche ciertas palabras clave y responda de manera apropiada a ellas, no se recomienda este enfoque. 
 
 > [!TIP]
-> <b>Sí</b>: implemente [software intermedio](v4sdk/bot-builder-create-middleware.md) que examine la entrada del usuario para las palabras clave que especifique (por ejemplo, "ayuda", "cancelar", "empezar de nuevo", etc.) y responder según corresponda. 
+> <b>Sí</b>: implemente [middleware](v4sdk/bot-builder-create-middleware.md) que examine la entrada del usuario para las palabras clave que especifique (por ejemplo, "ayuda", "cancelar", "empezar de nuevo", etc.) y responda según corresponda. 
 > 
-> <b>No</b>: diseñe cada cuadro de diálogo para examinar la entrada del usuario en busca de una lista de palabras clave. 
+> <b>No</b> diseñe cada cuadro de diálogo para examinar la entrada del usuario en busca de una lista de palabras clave. 
 
 Al definir la lógica en el **software intermedio**, la hará accesible a cada intercambio con el usuario. Con este enfoque, los avisos y cuadros de diálogo individuales pueden crearse para pasar por alto las palabras clave con seguridad, si es necesario.
 
@@ -79,7 +78,7 @@ En algunos casos, esta situación podría ser un indicador de que el bot tiene u
 > [!TIP]
 > <b>Sí</b>: diseñe el bot para que reconozca de inmediato la entrada del usuario, incluso en casos donde el bot pueda tardar algún tiempo en compilar la respuesta. 
 > 
-> <b>No</b>: diseñe el bot para posponer la confirmación de la entrada del usuario hasta que el bot termine de compilar la respuesta.
+> <b>No</b> diseñe el bot para posponer la confirmación de la entrada del usuario hasta que el bot termine de compilar la respuesta.
 
 Al reconocer de inmediato la entrada del usuario, elimina cualquier posibilidad de confusión en cuanto al estado del bot. Si la respuesta tarda mucho tiempo en compilarse, considere la posibilidad de enviar un mensaje de "escritura" para indicar que el bot está trabajando y, a continuación, envíe un [mensaje proactivo](v4sdk/bot-builder-howto-proactive-message.md).
 
@@ -94,7 +93,7 @@ Considere el siguiente escenario:
 > [!TIP]
 > <b>Sí</b>: diseñe el bot para proporcionar información que sea útil para el usuario. 
 > 
-> <b>No</b>: diseñe el bot para proporcionar información que el usuario no pidió y probablemente le resulte inútil.
+> <b>No</b> diseñe el bot para proporcionar información que el usuario no pidió y que probablemente le resulte inútil.
 
 Al diseñar el bot para proporcionar información útil, aumentará la probabilidad de que el usuario interactúe con el bot.
 
@@ -107,9 +106,9 @@ Considere el siguiente escenario:
 ![bot](~/media/bot-service-design-navigation/rememberall-bot.png)
 
 > [!TIP]
-> <b>Sí</b>: diseñe el bot para que mantenga el tema actual de la conversación, a menos/hasta que el usuario exprese su deseo de volver a un tema anterior. 
+> <b>Sí</b>: diseñe el bot para que mantenga el tema actual de la conversación a menos que el usuario exprese su deseo de volver a un tema anterior. 
 > 
-> <b>No</b>: diseñe el bot para interponer información de las conversaciones anteriores cuando no sea pertinente para la conversación actual.
+> <b>No</b> diseñe el bot para interponer información de las conversaciones anteriores cuando no sea pertinente para la conversación actual.
 
 Al mantener el tema actual de la conversación, reduce la posibilidad de confusión y frustración, así como aumenta la probabilidad de que el usuario continúe interactuando con el bot.
 

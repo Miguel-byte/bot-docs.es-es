@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 710a8ce315faa02a72eaeb753c44b9b212524ec3
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 4e9aa1b7bffd55518bd4ef03512d873ac48b49a7
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54224680"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297863"
 ---
 # <a name="basic-features-of-formflow"></a>Características básicas de FormFlow
 
@@ -32,8 +31,8 @@ Para crear un bot con FormFlow, debe especificar la información que el robot de
 
 - Integral (sbyte, byte, short, ushort, int, uint, long, ulong)
 - Punto flotante (float, double)
-- string
-- Datetime
+- Cadena
+- DateTime
 - Enumeration
 - Lista de enumeraciones
 

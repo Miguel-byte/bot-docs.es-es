@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 8a13358afca190606e235475a58f6aedd146fee5
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: b738296d3d796cdccd40e0d3bda503b9d6349bff
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225410"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297993"
 ---
 # <a name="customize-a-form-using-formbuilder"></a>Personalización de un formulario mediante FormBuilder
 

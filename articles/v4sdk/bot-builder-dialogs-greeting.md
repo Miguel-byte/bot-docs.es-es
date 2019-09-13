@@ -3,19 +3,18 @@ title: Implementación de un diálogo de saludo | Microsoft Docs
 description: Utilice un diálogo para saludar a los usuarios cuando se unen a una conversación.
 keywords: saludo, diálogos, flujo de conversación, conjunto de diálogos
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 82e6273b8d6dc984e29bef891f3e8f67b1c53eed
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 5ea41c8ea879d20ba9d031bf3345b0862171458d
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215413"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299289"
 ---
 # <a name="implement-a-greeting-dialog"></a>Implementación de un diálogo de saludo
 
@@ -27,8 +26,8 @@ Para más información acerca de cómo dar la bienvenida a los usuarios, consult
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Conocimiento de [administración del estado][concept-state], la [biblioteca de diálogos][concept-dialogs], cómo [administrar conversaciones] [ simple-flow]y cómo [recopilar la entrada de usuario mediante aviso de diálogo][prompting].
-- Una copia del ejemplo ??? en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
+- Conocimiento de [administración del estado][concept-state], la [biblioteca de diálogos][concept-dialogs], cómo [administrar conversaciones][simple-flow] y cómo [recopilar la entrada de usuario mediante un aviso de diálogo][prompting].
+- Una copia del ejemplo ejemplo en [**CSharp**][cs-sample] o [**JavaScript**][js-sample].
 
 ## <a name="task-as-in-to-do-x-do-these-things"></a>\<tarea > [como en para hacer X, haga esto]
 

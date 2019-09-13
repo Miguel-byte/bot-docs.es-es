@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: e01473a06a0cdbef635de33e5734b02351e36cea
-ms.sourcegitcommit: 980612a922b8290b2faadaca193496c4117e415a
+ms.openlocfilehash: 0b0493d9975e58dda0f2195c03d887e4681ca0bf
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64563438"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298386"
 ---
 # <a name="key-concepts-in-the-bot-framework-sdk-for-net"></a>Conceptos clave de Bot Framework SDK para .NET
 
@@ -30,7 +29,7 @@ En este artículo se presentan los conceptos clave de Bot Framework SDK para .NE
 
 El [conector de Bot Framework](bot-builder-dotnet-connector.md) proporciona una única API REST que permite que un bot se comunique a través de varios canales, como Skype, correo electrónico, Slack y mucho más. Facilita la comunicación entre el bot y el usuario mediante la retransmisión de mensajes del bot al canal y viceversa. 
 
-En Bot Framework SDK para .NET, la biblioteca [Connector][connectorLibrary] habilita el acceso al conector. 
+En SDK Bot Framework para .NET, la biblioteca [Connector][connectorLibrary] permite el acceso al conector. 
 
 ## <a name="activity"></a>Actividad
 
@@ -42,13 +41,13 @@ Para más información acerca de las actividades en Bot Framework SDK para .NET,
 
 Al crear un bot con Bot Framework SDK para .NET, puede usar [diálogos](bot-builder-dotnet-dialogs.md) para modelar una conversación y administrar el [flujo de conversación](../bot-service-design-conversation-flow.md#dialog-stack). Un diálogo puede estar formado por otros diálogos para maximizar la reutilización, y un contexto de diálogo mantiene la [pila de diálogos](../bot-service-design-conversation-flow.md) que están activos en la conversación en cualquier momento dado. Una conversación que consta de diálogos se puede transferir entre varios equipos, lo que permite escalar la implementación del bot. 
 
-En Bot Framework SDK para .NET, la biblioteca [Builder][builderLibrary] le permite administrar los diálogos.
+En SDK Bot Framework para .NET, la biblioteca [Builder][builderLibrary] le permite administrar los diálogos.
 
 ## <a name="formflow"></a>FormFlow
 
 Puede usar [FormFlow](bot-builder-dotnet-formflow.md) en Bot Framework SDK para .NET para simplificar la creación de un bot de que recopila información del usuario. Por ejemplo, un bot que recibe pedidos de sándwich debe recopilar cierta información del usuario, como tipo de pan, elección de ingredientes, tamaño, etc. Dadas las instrucciones básicas, FormFlow puede generar automáticamente los diálogos necesarios para administrar una conversación guiada como esta.
 
-## <a name="state"></a>Estado
+## <a name="state"></a>State
 
 [!INCLUDE [State concept overview](../includes/snippet-dotnet-concept-state.md)]
 

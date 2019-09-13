@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3089e7a073f6a6d9af3a3720954af3a915106888
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: fe45d873369b28a0081df28d2d3971e5b77ca4f9
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225000"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298370"
 ---
 # <a name="dialogs-in-the-bot-framework-sdk-for-net"></a>Diálogos en Bot Framework SDK para .NET
 
@@ -37,7 +36,7 @@ Considere este ejemplo de repetición de bot, que describe cómo cambiar el bot 
 
 ### <a name="messagescontrollercs"></a>MessagesController.cs 
 
-En Bot Framework SDK para .NET, la biblioteca [Builder][builderLibrary] le permite implementar diálogos. Para acceder a las clases pertinentes, importe el espacio de nombres `Dialogs`.
+En SDK Bot Framework para .NET, la biblioteca [Builder][builderLibrary] le permite implementar diálogos. Para acceder a las clases pertinentes, importe el espacio de nombres `Dialogs`.
 
 [!code-csharp[Using statement](../includes/code/dotnet-dialogs.cs#usingStatement)]
 
@@ -110,7 +109,7 @@ Para usar la reflexión para serializar clases que no están marcadas como seria
 Aunque puede administrar explícitamente la pila de diálogos activos mediante `IDialogStack.Call<R>` y `IDialogStack.Done<R>`, también puede administrarla implícitamente mediante estos métodos fluidos de [cadena][chain].
 
 
-|           Método            |  Escriba   |                                 Notas                                  |
+|           Método            |  type   |                                 Notas                                  |
 |-----------------------------|---------|------------------------------------------------------------------------|
 |     Chain.Select<T, R>      |  LINQ   |           Admite "select" y "let" en la sintaxis de consulta LINQ.            |
 |  Chain.SelectMany<T, C, R>  |  LINQ   |            Admite sucesivos "from" en la sintaxis de consulta LINQ.            |

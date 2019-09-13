@@ -6,14 +6,13 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3607957cd5cb8738e8268ece6eba4417250bc596
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 7db0ccb84b2c5172348eeac667f78f3abaf95f94
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49997967"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70299651"
 ---
 # <a name="api-reference---direct-line-api-11"></a>Referencia de API: Direct Line API 1.1
 
@@ -162,7 +161,7 @@ Define un mensaje que un cliente envía a un bot o recibe de un bot.
 | **created** | string | Fecha y hora en que se creó el mensaje, expresado en el formato <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO-8601</a>. | 
 | **from** | string | Identificador que identifica el usuario que es el remitente del mensaje. Al crear un mensaje, los clientes deben establecer esta propiedad en un identificador de usuario estable. Aunque Direct Line asignará un identificador de usuario si no se proporciona ninguno, esto da lugar normalmente a un comportamiento inesperado. | 
 | **text** | string | Texto del mensaje que se envía del usuario al bot o del bot al usuario. | 
-| **channelData** | objeto | Objeto que incluye contenido específico de canal. Algunos canales proporcionan características que requieren información adicional que no se puede representar mediante el esquema de datos adjuntos. Para esos casos, establezca esta propiedad en el contenido específico de canal tal como se define en la documentación del canal. Estos datos se envían sin modificar entre el cliente y el bot. Esta propiedad se debe establecer en un objeto complejo o dejarse vacía. No la establezca en una cadena, número u otro tipo simple. | 
+| **channelData** | object | Objeto que incluye contenido específico de canal. Algunos canales proporcionan características que requieren información adicional que no se puede representar mediante el esquema de datos adjuntos. Para esos casos, establezca esta propiedad en el contenido específico de canal tal como se define en la documentación del canal. Estos datos se envían sin modificar entre el cliente y el bot. Esta propiedad se debe establecer en un objeto complejo o dejarse vacía. No la establezca en una cadena, número u otro tipo simple. | 
 | **images** | string[] | Matriz de cadenas que contiene las direcciones URL para las imágenes que contiene el mensaje. En algunos casos, las cadenas de esta matriz pueden ser direcciones URL relativas. Si cualquier cadena de esta matriz no comienza con "http" o "https", anteponga `https://directline.botframework.com` a la cadena para formar la dirección URL completa. | 
 | **attachments** | [Attachment](#attachment-object)[] | Matriz de objetos **Attachment** que representan los datos adjuntos que no son imágenes que contiene el mensaje. Cada objeto de la matriz contiene una propiedad `url` y una propiedad `contentType`. En los mensajes que recibe un cliente de un bot, la propiedad `url` puede especificar a veces una dirección URL relativa. Para cualquier valor de propiedad `url` que no comience por "http" o "https", anteponga `https://directline.botframework.com` a la cadena para formar la dirección URL completa. | 
 

@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: d84252281baa57a15b093cfd0ba92fe5fe422027
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: a29f376afa4a9d3027960407f688cbef76b35473
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225860"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298804"
 ---
 # <a name="define-a-form-using-json-schema"></a>Definición de un formulario mediante esquemas JSON
 
@@ -66,7 +65,7 @@ Para especificar plantillas y avisos en el esquema JSON, use el mismo vocabulari
 
 |   Propiedad   |          Contenido           |                                                   DESCRIPCIÓN                                                    |
 |--------------|-----------------------------|------------------------------------------------------------------------------------------------------------------|
-|   Datetime   |            booleano             |                                  Indica si el campo es un campo `DateTime`.                                  |
+|   DateTime   |            booleano             |                                  Indica si el campo es un campo `DateTime`.                                  |
 |   Describe   |      cadena u objeto       |                  Descripción de un campo como se describe en [DescribeAttribute][describeAttribute].                  |
 |    Términos     |       `[string,...]`        |                  Expresiones regulares para la coincidencia con un valor de campo como se describe en TermsAttribute.                  |
 |  MaxPhrase   |             int             |                  Ejecuta los términos a través de `Language.GenerateTerms(string, int)` para expandirlos.                   |
@@ -94,7 +93,7 @@ Algunas de las propiedades que se han descrito anteriormente contienen un script
 | ifield | `IField<JObject>` para permitir el razonamiento sobre el campo actual para todos los scripts, excepto los generadores de mensajes o avisos de confirmación. |
 | value | Valor de objeto que se va a validar con **Validate**. |
 | campo | `Field<JObject>` para permitir la actualización dinámica de un campo en **Define**. |
-| contexto | `IDialogContext` contexto para permitir la publicación de resultados en **OnCompletion**. |
+| context | `IDialogContext` contexto para permitir la publicación de resultados en **OnCompletion**. |
 
 Los campos que se definen mediante el esquema JSON tienen la misma capacidad para ampliar o reemplazar las definiciones mediante programación que tiene cualquier otro campo. También se pueden localizar de la misma manera.
 

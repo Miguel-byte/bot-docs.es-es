@@ -3,19 +3,18 @@ title: Diferencias entre las versiones v3 y v4 del SDK | Microsoft Docs
 description: Describe las diferencias entre las versiones v3 y v4 del SDK.
 keywords: bot migration, formflow, dialogs, state
 author: JonathanFingold
-ms.author: v-jofing
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 862fbf59cf33406e35e9051c0814489fdfdaa8f3
-ms.sourcegitcommit: ea64a56acfabc6a9c1576ebf9f17ac81e7e2a6b7
+ms.openlocfilehash: 6444c1e3ef1948b3e407df50255aaa7c5350bf34
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66215578"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70298993"
 ---
 # <a name="differences-between-the-v3-and-v4-net-sdk"></a>Diferencias entre las versiones v3 y v4 del SDK para .NET
 
@@ -67,7 +66,7 @@ Los árboles de envío de componentes puntuables que admiten composición y los 
 En la versión v3, podría almacenar los datos de la conversación en el servicio Bot State, parte de la serie de servicios proporcionados por Bot Framework. Sin embargo, el servicio se ha retirado desde el 31 de marzo de 2018. A partir de la versión v4, las consideraciones de diseño sobre la administración de estado es igual que en cualquier aplicación web y hay una serie de opciones disponibles. El almacenamiento en caché en memoria y en el mismo proceso normalmente es la más sencilla; sin embargo, para aplicaciones de producción debería almacenar el estado de manera más permanente, como en una base de datos SQL o no SQL o como blobs.
 
 La versión v4 no utiliza las propiedades `UserData`, `ConversationData` y `PrivateConversationData` ni contenedores de datos para administrar el estado.
-Ahora, el estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedades, tal y como se describe en [Administración del estado][about-state].
+Ahora, el estado se administra mediante objetos de administración de estado y descriptores de acceso de propiedad, tal y como se describe en [Administración del estado][about-state].
 
 La versión v4 define las clases `UserState`, `ConversationState` y `PrivateConversationState` que administran el estado del bot. Deberá crear un descriptor de acceso de propiedad de estado para cada propiedad que desee conservar, en lugar de solo leer y escribir en un contenedor de datos predefinido.
 
@@ -126,7 +125,7 @@ En la versión v3, se usaba `FormFlow` para realizar un número determinado de p
 
 También puede crear flujos de control complejos mediante el uso de varios diálogos; consulte el [flujo de conversación avanzada][complex-flow].
 
-Para acceder a un diálogo, deberá poner una instancia de él en un _conjunto de diálogos_ y, después, generar un _contexto de diálogo_ para ese conjunto. Debe proporcionar un descriptor de acceso de propiedad de estado de diálogo al crear el conjunto de diálogos. Esto permite al marco conservar el estado del diálogo de un turno al siguiente. En [Administración del estado][about-state] se describe cómo administrar el estado en la versión v4.
+Para acceder a un diálogo, deberá poner una instancia de él en un _conjunto de diálogos_ y, después, generar un _contexto de diálogo_ para ese conjunto. Debe proporcionar un descriptor de acceso de propiedad de estado de diálogo al crear el conjunto de diálogos. Esto permite al marco conservar el estado del diálogo de un turno al siguiente. En [Administración del estado][about-state] se describe cómo administrar el estado en la versióon v4.
 
 ### <a name="using-dialogs"></a>Uso de diálogos
 

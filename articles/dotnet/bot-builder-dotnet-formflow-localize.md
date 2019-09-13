@@ -6,15 +6,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 11/02/2018
 monikerRange: azure-bot-service-3.0
-ms.openlocfilehash: 3ec3d12a7d35f65adca901395edff2db3ab71c66
-ms.sourcegitcommit: b15cf37afc4f57d13ca6636d4227433809562f8b
+ms.openlocfilehash: 795232b401284becd940daed6bf7da8642c12efd
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54225590"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297949"
 ---
 # <a name="localize-form-content"></a>Localización del contenido de un formulario
 
@@ -83,7 +82,7 @@ Después de haber generado un archivo de recursos, agréguelo al proyecto y, a c
 2. Haga clic en **Información de ensamblado**.
 3. Seleccione el valor **Idioma neutro** que corresponde al idioma en que ha desarrollado el bot.
 
-Cuando se crea el formulario, el método [IFormBuilder.Build][build] buscará automáticamente recursos que contienen el nombre de tipo de formulario y los usará para localizar las cadenas estáticas en el formulario. 
+Cuando se crea el formulario, el método [IFormBuilder.Build][build] busca automáticamente recursos que contienen el nombre del tipo de formulario y los usa para localizar las cadenas estáticas en el formulario. 
 
 > [!NOTE]
 > No es posible localizar los campos calculados dinámicamente que se definen mediante [Advanced.Field.SetDefine][setDefine] (como se describe en [Using Dynamic Fields](bot-builder-dotnet-formflow-formbuilder.md#dynamically-define-field-values-confirmations-and-messages) [Uso de campos dinámicos]) de la misma manera que los campos estáticos, puesto que las cadenas para los campos que se calculan dinámicamente se construyen en el momento en que se rellena el formulario. Sin embargo, puede localizar los campos calculados dinámicamente usando mecanismos de localización de C# normales.

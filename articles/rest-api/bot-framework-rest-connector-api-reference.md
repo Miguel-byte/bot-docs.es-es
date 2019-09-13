@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 08/02/2019
-ms.openlocfilehash: 68ba9f8b2b47d501ebf629e8a804e6a1479e1839
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 52902456903fb8c5c9fd2037150a55a05f66f31c
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167217"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876124"
 ---
 # <a name="api-reference"></a>Referencia de API
 
@@ -433,7 +433,7 @@ Define un mensaje que se intercambia entre el bot y el usuario.
 | **textHighlights** | [TextHighlight](#texthighlight-object)[] | Colección de fragmentos de texto que se resaltará si la actividad contiene un valor **replyToId**. |
 | **timestamp** | string | Fecha y hora en que se envió el mensaje en la zona horaria UTC, expresada en el formato [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601). |
 | **topicName** | string | Tema de la conversación a la que pertenece la actividad. |
-| **type** | string | Tipo de actividad. Uno de estos valores: **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Para obtener detalles sobre los tipos de actividad, vea [Introducción a las actividades](bot-framework-rest-connector-activities.md). |
+| **type** | string | Tipo de actividad. Uno de estos valores: **message**, **contactRelationUpdate**, **conversationUpdate**, **typing**, **endOfConversation**, **event**, **invoke**, **deleteUserData**, **messageUpdate**, **messageDelete**, **installationUpdate**, **messageReaction**, **suggestion**, **trace**, **handoff**. Para obtener detalles sobre los tipos de actividad, vea [Introducción a las actividades](https://aka.ms/botSpecs-activitySchema). |
 | **value** | object | Valor de final abierto. |
 | **valueType** | string | Tipo del objeto de valor de la actividad. |
 
@@ -451,7 +451,7 @@ Define una tarjeta que puede reproducir archivos GIF animados o vídeos cortos.
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
 | **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de archivos GIF animados para reproducir. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl**. Cuando este campo contiene más de una dirección URL, cada dirección URL es un formato alternativo del mismo contenido.|
 | **shareable** | boolean | Marca que indica si la animación puede compartirse con otros usuarios. Establezca esta propiedad en **true** si la animación puede compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
 | **subtitle** | string | Subtítulo que se mostrará debajo del título de la tarjeta. |
 | **text** | string | Descripción o mensaje para mostrar debajo del título o subtítulo de la tarjeta. |
@@ -522,7 +522,7 @@ Define una tarjeta que puede reproducir un archivo de audio.
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
 | **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de archivos de audio para reproducir. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl**.  Cuando este campo contiene más de una dirección URL, cada dirección URL es un formato alternativo del mismo contenido. |
 | **shareable** | boolean | Marca que indica si los archivos de audio compartirse con otros usuarios. Establezca esta propiedad en **true** si el audio puede compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
 | **subtitle** | string | Subtítulo que se mostrará debajo del título de la tarjeta. |
 | **text** | string | Descripción o mensaje para mostrar debajo del título o subtítulo de la tarjeta. |
@@ -940,7 +940,7 @@ Define una tarjeta que puede reproducir vídeos.
 | **buttons** | [CardAction](#cardaction-object)[] | Matriz de objetos **CardAction** que permite al usuario realizar una o varias acciones. El canal determina el número de botones que se pueden especificar. |
 | **duration** | string | La longitud del contenido multimedia, en el [formato de duración ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html). |
 | **image** | [ThumbnailUrl](#thumbnailurl-object) | Un objeto **ThumbnailUrl** que especifica la imagen que se mostrará en la tarjeta. |
-| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de objetos **MediaUrl** que especifica la lista de vídeos para mostrar. |
+| **media** | [MediaUrl](#mediaurl-object)[] | Matriz de **MediaUrl**.  Cuando este campo contiene más de una dirección URL, cada dirección URL es un formato alternativo del mismo contenido. |
 | **shareable** | boolean | Marca que indica si los vídeos pueden compartirse con otros usuarios. Establezca esta propiedad en **true** si los vídeos pueden compartirse; de lo contrario, en **false**. El valor predeterminado es **true**. |
 | **subtitle** | string | Subtítulo que se mostrará debajo del título de la tarjeta. |
 | **text** | string | Descripción o mensaje para mostrar debajo del título o subtítulo de la tarjeta. |

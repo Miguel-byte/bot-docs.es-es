@@ -7,14 +7,13 @@ ms.author: mateusv
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 12/13/2017
-ms.openlocfilehash: 3ac767e525c1082005f4521af9e9714dd8c39cff
-ms.sourcegitcommit: b78fe3d8dd604c4f7233740658a229e85b8535dd
+ms.openlocfilehash: 27553a88ee4373eacb089eb6358520820509e195
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49998522"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297594"
 ---
 # <a name="principles-of-bot-design"></a>Principios de diseño de bots
 

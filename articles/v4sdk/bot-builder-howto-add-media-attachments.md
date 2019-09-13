@@ -3,19 +3,18 @@ title: Incorporación de elementos multimedia a los mensajes | Microsoft Docs
 description: Obtenga información sobre cómo agregar elementos multimedia a los mensajes mediante Bot Framework SDK.
 keywords: multimedia, mensajes, imágenes, audio, vídeo, archivos, MessageFactory, tarjetas enriquecidas, mensajes, tarjetas adaptables, tarjeta de imagen prominente, acciones sugeridas
 author: ivorb
-ms.author: v-ivorb
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.subservice: sdk
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9478a3861b24746b4081ab2176486e59ccc7d4bc
-ms.sourcegitcommit: dbbfcf45a8d0ba66bd4fb5620d093abfa3b2f725
+ms.openlocfilehash: 4caa11221ed930a627b53d7f46107adb226a816d
+ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67464710"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70876174"
 ---
 # <a name="add-media-to-messages"></a>Incorporación de elementos multimedia a los mensajes
 
@@ -23,7 +22,15 @@ ms.locfileid: "67464710"
 
 Un intercambio de mensajes entre el usuario y el bot puede contener datos adjuntos con elementos multimedia, como imágenes, vídeo, audio y archivos. Bot Framework SDK es compatible con la tarea de enviar mensajes enriquecidos al usuario. Para determinar el tipo de mensajes enriquecidos que admite un canal (Facebook, Skype, Slack, etc), consulte la documentación del canal para más información sobre las limitaciones.
 
-Consulte cómo [diseñar la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
+## <a name="prerequisites"></a>Requisitos previos
+- Conocimiento de los [conceptos básicos de bot](bot-builder-basics.md).
+- El código de este artículo se basa en los siguientes ejemplos:
+
+  | Código de ejemplo | C# | JS |
+  | :------ | :----- | :---|
+  | Cards | [Ejemplo de C#](https://aka.ms/bot-cards-sample-code) | [Ejemplo de JS](https://aka.ms/bot-cards-js-sample-code) |
+  | Datos adjuntos | [Ejemplo de C#](https://aka.ms/bot-attachments-sample-code) | [Ejemplo de JS](https://aka.ms/bot-attachments-sample-code-js) |
+  | Acciones sugeridas | [Ejemplo de C#](https://aka.ms/SuggestedActionsCSharp) | [Ejemplo de JS](https://aka.ms/SuggestedActionsJS) |
 
 ## <a name="send-attachments"></a>Envío de datos adjuntos
 
@@ -241,14 +248,6 @@ Para enviar un carrusel de tarjetas, envíe una respuesta con los datos adjuntos
 Consulte cómo [diseñar la experiencia del usuario](../bot-service-design-user-experience.md) para obtener una lista de las tarjetas disponibles.
 
 Para más información sobre el esquema, consulte el [esquema de la tarjeta de Bot Framework](https://aka.ms/botSpecs-cardSchema) y la [sección sobre la actividad de mensajes](https://aka.ms/botSpecs-activitySchema#message-activity) del esquema de actividad de Bot Framework.
-
-| Código de ejemplo | C# | JS |
-| :------ | :----- | :---|
-| Cards | [Ejemplo de C#](https://aka.ms/bot-cards-sample-code) | [Ejemplo de JS](https://aka.ms/bot-cards-js-sample-code) |
-| Datos adjuntos | [Ejemplo de C#](https://aka.ms/bot-attachments-sample-code) | [Ejemplo de JS](https://aka.ms/bot-attachments-sample-code-js) |
-| Acciones sugeridas | [Ejemplo de C#](https://aka.ms/SuggestedActionsCSharp) | [Ejemplo de JS](https://aka.ms/SuggestedActionsJS) |
-
-Consulte el repositorio de ejemplos de Bot Builder en [GitHub](https://aka.ms/bot-samples-readme) para obtener ejemplos adicionales.
 
 ### <a name="code-sample-for-processing-adaptive-card-input"></a>Ejemplo de código para procesar la entrada de tarjeta adaptable
 

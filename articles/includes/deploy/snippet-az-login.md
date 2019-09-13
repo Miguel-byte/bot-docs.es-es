@@ -1,31 +1,17 @@
 ---
-ms.openlocfilehash: f8aad539a2d1e415833609f66cd5b398c88206f1
-ms.sourcegitcommit: a47183f5d1c2b2454c4a06c0f292d7c075612cdd
+ms.openlocfilehash: c664749bc6ad63d1b0f60e001b2603898e58a9ea
+ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/19/2019
-ms.locfileid: "67252667"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70386006"
 ---
-Abra un símbolo del sistema para iniciar sesión en Azure Portal.
+Una vez que haya creado y probado localmente un bot, puede implementarlo en Azure. Abra un símbolo del sistema para iniciar sesión en Azure Portal.
 
 ```cmd
 az login
 ```
-
 Se abrirá una ventana del explorador, lo que le permite iniciar sesión.
 
-### <a name="set-the-subscription"></a>Establecimiento de la suscripción
-
-Establezca la suscripción predeterminada que desea usar.
-
-```cmd
-az account set --subscription "<azure-subscription>"
-```
-
-Si no está seguro de la suscripción que debe usar para implementar el bot y desea ver la lista de `subscriptions` para su cuenta, use el comando `az account list`.
-
-Vaya a la carpeta del bot.
-
-```cmd
-cd <local-bot-folder>
-```
+> [!NOTE]
+> Si implementa el bot en una nube que no es de Azure, como Gov (US), debe ejecutar `az cloud set --name <name-of-cloud>` antes de `az login`, donde &lt;name-of-cloud> es el nombre de una nube registrada, como `AzureUSGovernment`. Si desea volver a la nube pública, puede ejecutar `az cloud set --name AzureCloud`. 

@@ -2,24 +2,24 @@
 title: Solución de problemas de autenticación de Bot Framework | Microsoft Docs
 description: Aprenda a solucionar errores de autenticación con un bot.
 author: DeniseMak
-ms.author: v-demak
+ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 04/30/2019
-ms.openlocfilehash: 756e24409532de1473e546e3f771be416cb44c78
-ms.sourcegitcommit: f84b56beecd41debe6baf056e98332f20b646bda
+ms.openlocfilehash: c929a97175858f8e159b660346cb897183bbcf73
+ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65033655"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70297453"
 ---
 # <a name="troubleshooting-bot-framework-authentication"></a>Solución de problemas de autenticación de Bot Framework
 
 Esta guía puede ayudarle a solucionar problemas de autenticación con el bot evaluando una serie de escenarios para determinar dónde se produce el problema. 
 
 > [!NOTE]
-> Para completar todos los pasos descritos en esta guía, debe descargar y usar [Bot Framework Emulator][ Emulator] y debe tener acceso a la configuración de registro del bot en <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+> Para completar todos los pasos descritos en esta guía, debe descargar y usar [Bot Framework Emulator][Emulator] y debe tener acceso a la configuración de registro del bot en <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
 ## <a id="PW"></a>Identificador de aplicación y contraseña
 
@@ -224,7 +224,7 @@ Si sigue experimentando problemas después de completar los pasos anteriores, pu
 * Consulte el tema de procedimientos para [depurar un bot](bot-service-debug-bot.md) y los otros artículos de depuración de esa sección.
 * [Depurar el bot en la nube](~/bot-service-debug-emulator.md) mediante Bot Framework Emulator y el software de túneles <a href="https://ngrok.com/" target="_blank">ngrok</a>. *ngrok no es un producto de Microsoft.*
 * Usar una herramienta de creación de conexiones proxy como [Fiddler](https://www.telerik.com/fiddler) para inspeccionar el tráfico HTTPS a y desde su bot. *Fiddler no es un producto de Microsoft.*
-* Revisar la [Guía de autenticación de Bot Connector][ BotConnectorAuthGuide] para obtener información acerca de las tecnologías de autenticación que usa Bot Framework.
+* Revisar la [Guía de autenticación de Bot Connector][BotConnectorAuthGuide] para obtener información acerca de las tecnologías de autenticación que usa Bot Framework.
 * Solicitar ayuda a otros usuarios con los recursos de [soporte técnico][Support] de Bot Framework. 
 
 [BotConnectorAuthGuide]: ~/rest-api/bot-framework-rest-connector-authentication.md
