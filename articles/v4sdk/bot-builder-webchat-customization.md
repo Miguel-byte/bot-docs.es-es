@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 06/07/2019
-ms.openlocfilehash: 9e61e7e9d7bc6ba06d4c239cbf8b0dc0c4e7e16e
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 9310bdf8cab253cd379b7b49daa18deed79f27ae
+ms.sourcegitcommit: 96d26f6b0576747fa62767710af922ace0ff0e3b
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299095"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71060343"
 ---
 # <a name="web-chat-customization"></a>Personalización de Chat en web
 
@@ -155,7 +155,7 @@ Para cambiar el estilo en profundidad, también puede modificar de forma manual 
 
 ## <a name="change-the-avatar-of-the-bot-within-the-dialog-box"></a>Cambiar el avatar del bot en el cuadro de diálogo
 
-El Chat en web más reciente admite avatares y puede personalizarlos con las propiedades `botAvatarInitials` y `userAvatarInitials`.
+La versión más reciente de Chat en web admite avatares, que puede personalizar estableciendo `botAvatarInitials` y `userAvatarInitials` en la propiedad `styleOptions`.
 
 <img alt="Screenshot with avatar initials" src="https://raw.githubusercontent.com/Microsoft/BotFramework-WebChat/master/media/sample-avatar-initials.png" width="396" />
 
@@ -166,15 +166,17 @@ El Chat en web más reciente admite avatares y puede personalizarlos con las pro
       <div id="webchat" role="main"></div>
       <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
       <script>
+         const styleOptions = {
+            botAvatarInitials: 'BF',
+            userAvatarInitials: 'WC'
+         };
+
          window.WebChat.renderWebChat(
             {
                directLine: window.WebChat.createDirectLine({
                   secret: 'YOUR_BOT_SECRET'
                }),
-
-               // Passing avatar initials when rendering Web Chat
-               botAvatarInitials: 'BF',
-               userAvatarInitials: 'WC'
+               styleOptions
             },
             document.getElementById('webchat')
          );
@@ -183,7 +185,7 @@ El Chat en web más reciente admite avatares y puede personalizarlos con las pro
 </html>
 ```
 
-Dentro del código `renderWebChat`, agregamos `botAvatarInitials` y `userAvatarInitials`:
+Dentro de la propiedad `styleOptions` de Chat en web, hemos añadido `botAvatarInitials` y `userAvatarInitials`:
 
 ```js
 botAvatarInitials: 'BF',
