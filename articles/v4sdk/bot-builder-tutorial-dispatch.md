@@ -7,14 +7,14 @@ ms.author: diberry
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 4d95eafeb5b1b5923f38c40e884b5e3cee8b16eb
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
+ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026345"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71224788"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -91,7 +91,11 @@ Antes de que pueda crear el modelo de distribución, tendrá que crear y publica
 
 El primer paso para configurar una instancia de Knowledge Base de QnA Maker es configurar un servicio QnA Maker en Azure. Para ello, siga las instrucciones detalladas que se indican [aquí](https://aka.ms/create-qna-maker).
 
-Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ de Cognitive Services proporcionada para el servicio QnA Maker. Esto se usará como \<azure-qna-service-key1> al agregar la aplicación QnA Maker a la aplicación de distribución. Los pasos siguientes le proporcionan esta clave:
+Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ de Cognitive Services proporcionada para el servicio QnA Maker. Esto se usará como \<azure-qna-service-key1> al agregar la aplicación QnA Maker a la aplicación de distribución. 
+
+Obtenga más información sobre los [dos tipos diferentes de claves](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) que se usan con QnA Maker.
+
+Los pasos siguientes le proporcionan esta clave:
     
 ![Selección de Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
@@ -152,6 +156,8 @@ La **clave de creación** solo se usa para crear y editar los modelos. Necesita 
 |QnA Maker| **Id. de la aplicación**: se encuentra en el [portal de QnA Maker](https://http://qnamaker.ai) en la página de configuración después de publicar la aplicación. Este es el identificador encontrado en la primera parte del comando POST después de knowledgebase. Un ejemplo de dónde encontrar el id. de la aplicación es `POST /knowledgebases/{APP-ID}/generateAnswer`.<br>**Clave de creación**: se encuentra en Azure Portal, para el recurso de QnA Maker, en **Claves**. Solo necesita una de las claves.|
 
 La clave de creación no se utiliza para obtener una puntuación de predicción o una puntuación de confianza de la aplicación publicada. Necesita las claves del punto de conexión para esta acción. Las **[claves del punto de conexión](#service-endpoint-keys)** se encuentran y se usan más adelante en este tutorial. 
+
+Obtenga más información sobre los [dos tipos diferentes de claves](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) que se usan con QnA Maker.
 
 ## <a name="create-the-dispatch-model"></a>Creación del modelo de distribución
 
