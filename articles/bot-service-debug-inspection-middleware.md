@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 7/9/2019
-ms.openlocfilehash: fe96131a7087f3f2c4980fe4f2eacb94a4ae9e4a
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037510"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693130"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Depuración de un bot con middleware de inspección
 En este artículo se describe cómo depurar el bot mediante middleware de inspección. Esta característica permite a Bot Framework Emulator depurar el tráfico dentro y fuera del bot, además de examinar el estado actual de este. Puede usar un mensaje de seguimiento para enviar datos al emulador y, a continuación, inspeccionar el estado del bot en cualquier turno determinado de la conversación. 
@@ -38,12 +38,14 @@ Para comprobar la versión del emulador, seleccione **Ayuda** -> **Acerca de** e
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 Configure el estado de inspección en el archivo de **inicio**. Agregue el middleware de inspección al adaptador. El estado de inspección se proporciona mediante la inserción de dependencias. Vea la siguiente actualización del código o consulte este ejemplo de inspección aquí: [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/47.inspection). 
 
-**Startup.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
+**Startup.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
 
-**EchoBot.cs** [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
+**EchoBot.cs**  
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 Antes de actualizar el código del bot, debe actualizar sus paquetes a las versiones más recientes ejecutando el siguiente comando en el terminal: 

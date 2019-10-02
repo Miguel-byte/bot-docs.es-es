@@ -8,13 +8,15 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/14/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3e0619a21b68ee98e112a15a863063d0d3ef802c
-ms.sourcegitcommit: 008aa6223aef800c3abccda9a7f72684959ce5e7
+ms.openlocfilehash: 4697ecf47464114de68ec6c0d872b45ff1ee5e54
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70026694"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71278980"
 ---
+<!-- This article is on hold -->
+
 # <a name="using-javascript-v3-user-state-in-a-v4-bot"></a>Uso del estado de usuario de JavaScript v3 en un bot de la versión v4
 
 En este artículo se muestra un ejemplo de cómo un bot de la versión v4 puede realizar operaciones de lectura, escritura y eliminación en la información de un estado de usuario de la versión v3.

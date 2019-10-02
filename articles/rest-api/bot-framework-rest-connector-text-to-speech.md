@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: e5d0ee3ffd97de190c4e009fe96568b1463c07ab
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: e02d71084690d95e0767a6b5a351f8dc86ffe7cf
+ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037456"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694522"
 ---
 # <a name="add-speech-to-messages"></a>Incorporación de voz a los mensajes
 > [!div class="op_single_selector"]
@@ -24,7 +24,8 @@ Si está creando un bot para un canal habilitado para voz, como Cortana, puede c
 
 ## <a name="specify-text-to-be-spoken-by-your-bot"></a>Especificación del texto que dirá el bot
 
-Para especificar el texto que dirá el bot en un canal habilitado para voz, establezca la propiedad `speak` dentro del objeto [Actividad][] que representa el mensaje. Puede establecer la propiedad `speak` en una cadena de texto sin formato o en una cadena con formato de <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">lenguaje de marcado de síntesis de voz (SSML)</a>, un lenguaje de marcado basado en XML que le permite controlar diversas características de la voz del bot, como la voz, la velocidad, el volumen, la pronunciación, el tono y mucho más. 
+Para especificar el texto que dirá el bot en un canal habilitado para voz, establezca la propiedad `speak` dentro del objeto [Actividad][Activity] que representa el mensaje. Puede establecer la propiedad `speak` en una cadena de texto sin formato o en una cadena con formato de <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">lenguaje de marcado de síntesis de voz (SSML)</a>, un lenguaje de marcado basado en XML que le permite controlar diversas características de la voz del bot, como la voz, la velocidad, el volumen, la pronunciación, el tono y mucho más. 
+
 
 La siguiente solicitud envía un mensaje que especifica el texto que se mostrará y el texto que se dirá, e indica que el bot [espera la entrad del usuario](bot-framework-rest-connector-add-input-hints.md). Especifica la propiedad `speak` con el formato <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">SSML</a> para indicar que la palabra "sure" se debe decir con una cantidad moderada de énfasis. En la solicitud del ejemplo, `https://smba.trafficmanager.net/apis` representa el URI base; el URI base para solicitudes que su bot emita puede ser distinto. Para obtener más información sobre cómo establecer el URI de base, consulte [Referencia de la API](bot-framework-rest-connector-api-reference.md#base-uri).
 
@@ -65,7 +66,6 @@ Cuando envía un mensaje en un canal habilitado para voz, puede intentar influir
 - [Creación de mensajes](bot-framework-rest-connector-create-messages.md)
 - [Envío y recepción de mensajes](bot-framework-rest-connector-send-and-receive-messages.md)
 - [Incorporación de sugerencias de entrada a los mensajes](bot-framework-rest-connector-add-input-hints.md)
-- [Esquema Activity de Bot Framework](https://aka.ms/botSpecs-activitySchema)
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup" target="_blank">Lenguaje de marcado de síntesis de voz (SSML)</a>
 
-[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object
