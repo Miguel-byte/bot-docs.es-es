@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/15/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5a8a79139c7efa1141c79921836d778c6fae5c89
-ms.sourcegitcommit: 4ddaae622fffb2c3bcfd3bff3c97bcc8088f93e0
+ms.openlocfilehash: 8294ca4b58c2a50d55bdfd9a81cc2c6fb57f3922
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69448580"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279006"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot
 
@@ -26,8 +26,11 @@ Direct Line Speech usa una nueva funcionalidad de streaming basada en WebSocket 
 
 Para Direct Line Speech (versión preliminar) hay paquetes de NuGet adicionales que deberá agregar al bot.
 
-- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 - **Microsoft.Bot.Builder.StreamingExtensions** 4.5.1-preview1
+
+También instalará el paquete siguiente:
+
+- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
 
 Si no los encuentra al principio, asegúrese de que ha incluido los paquetes de versión preliminar en la búsqueda.
 
@@ -40,10 +43,19 @@ public IActivity Speak(string message)
 {
     var activity = MessageFactory.Text(message);
     string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
-        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)'>" +
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>" +
         $"{message}" + "</voice></speak>";
     activity.Speak = body;
     return activity;
+}
+```
+
+En el fragmento de código siguiente se muestra cómo usar la función *Speak* anterior:
+
+```cs
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+{
+    await turnContext.SendActivityAsync(Speak($"Echo: {turnContext.Activity.Text}"), cancellationToken);
 }
 ```
 
@@ -174,9 +186,11 @@ Si ha creado un bot con una versión v4 de Bot Builder SDK anterior a la versió
 
 ## <a name="additional-information"></a>Información adicional
 
-Para más información sobre cómo trabajar con actividades, consulte [cómo funcionan los bots](v4sdk/bot-builder-basics.md) y [cómo enviar y recibir mensajes de texto](v4sdk/bot-builder-howto-send-messages.md).
+- Para ver un ejemplo completo de cómo crear y usar un bot habilitado para voz, consulte [Tutorial: Habilitación del bot con voz mediante el SDK de Speech](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk).
+
+- Para más información sobre cómo trabajar con actividades, consulte [cómo funcionan los bots](v4sdk/bot-builder-basics.md) y [cómo enviar y recibir mensajes de texto](v4sdk/bot-builder-howto-send-messages.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Conexión de un bot a Direct Line Speech (versión preliminar)](./bot-service-channel-connect-directlinespeech.md)
+> [Conexión de un bot con Direct Line Speech](./bot-service-channel-connect-directlinespeech.md)

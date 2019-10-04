@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 12/13/2017
-ms.openlocfilehash: 8f9b66165c0f88b92d81bfec58fd20a182e43e1d
-ms.sourcegitcommit: c200cc2db62dbb46c2a089fb76017cc55bdf26b0
+ms.openlocfilehash: ed02e02e73f8cf326963da0002477df3441719a2
+ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70037536"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71279878"
 ---
 # <a name="authentication"></a>Authentication
 
@@ -34,7 +34,7 @@ Se utilizan cuatro tecnologías de autenticación para establecer la confianza e
 | Technology | DESCRIPCIÓN |
 |----|----|
 | **SSL/TLS** | Se usa SSL/TLS para todas las conexiones de servicio a servicio. Se utilizan certificados`X.509v3` para establecer la identidad de todos los servicios HTTPS. **Los clientes siempre deben inspeccionar los certificados del servicio para asegurarse de que son válidos y de confianza.** (No se usan certificados de cliente como parte de este esquema). |
-| **OAuth 2.0** | El inicio de sesión de OAuth 2.0 de la cuenta Microsoft (MSA) y el servicio de inicio de sesión de AAD v2 se usan para generar un token seguro que un bot puede usar para enviar mensajes. Este token es un token de servicio a servicio, no es necesario ningún inicio de sesión de usuario. |
+| **OAuth 2.0** | OAuth 2.0 usa el servicio de inicio de sesión de cuenta de Azure Active Directory (Azure AD) v2 para generar un token seguro que un bot puede usar para enviar mensajes. Este token es un token de servicio a servicio, no es necesario ningún inicio de sesión de usuario. |
 | **JSON Web Token (JWT)** | Los JSON Web Token se usan para codificar los tokens que se envían hacia y desde el bot. **Los clientes deben comprobar completamente todos los tokens JWT que reciben**, según los requisitos descritos en este artículo. |
 | **Metadatos de OpenID** | El servicio Bot Connector publica una lista de tokens válidos que usa para firmar sus propios tokens JWT en los metadatos de OpenID en un punto de conexión conocido y estático. |
 
@@ -55,9 +55,9 @@ Este diagrama muestra los pasos de la autenticación de bot a Connector:
 > [!IMPORTANT]
 > Si aún no lo ha hecho, deberá [registrar el bot](../bot-service-quickstart-registration.md) con Bot Framework para obtener el identificador de aplicación y la contraseña. Necesitará el identificador de la aplicación del bot y la contraseña para solicitar un token de acceso.
 
-### <a name="step-1-request-an-access-token-from-the-msaaad-v2-login-service"></a>Paso 1: Solicitud de un token de acceso al servicio de inicio de sesión de MSA o AAD v2
+### <a name="step-1-request-an-access-token-from-the-azure-ad-v2-account-login-service"></a>Paso 1: Solicitud de un token de acceso al servicio de inicio de sesión de cuenta de Azure AD v2
 
-Para solicitar un token de acceso al servicio de inicio de sesión de MSA o AAD v2, emita la siguiente solicitud y reemplace **MICROSOFT-APP-ID** y **MICROSOFT-APP-PASSWORD** por el identificador de aplicación y la contraseña que obtuvo cuando [registró](../bot-service-quickstart-registration.md) el bot con Bot Framework.
+Para solicitar un token de acceso al servicio de inicio de sesión, emita la siguiente solicitud y reemplace **MICROSOFT-APP-ID** y **MICROSOFT-APP-PASSWORD** por el identificador de aplicación y la contraseña que obtuvo cuando [registró](../bot-service-quickstart-registration.md) el bot con Bot Framework.
 
 ```http
 POST https://login.microsoftonline.com/botframework.com/oauth2/v2.0/token
@@ -67,17 +67,17 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=MICROSOFT-APP-ID&client_secret=MICROSOFT-APP-PASSWORD&scope=https%3A%2F%2Fapi.botframework.com%2F.default
 ```
 
-### <a name="step-2-obtain-the-jwt-token-from-the-msaaad-v2-login-service-response"></a>Paso 2: Obtención del token JWT de la respuesta del servicio de inicio de sesión de MSA o AAD v2
+### <a name="step-2-obtain-the-jwt-token-from-the-the-azure-ad-v2-account-login-service-response"></a>Paso 2: Obtención del token JWT de la respuesta del servicio de inicio de sesión de cuenta de Azure AD v2
 
-Si la aplicación es autorizada por el servicio de inicio de sesión de MSA o AAD v2, el cuerpo de la respuesta JSON especificará el token de acceso, su tipo y la expiración (en segundos). 
+Si la aplicación es autorizada por el servicio de inicio de sesión, el cuerpo de la respuesta JSON especificará el token de acceso, su tipo y la expiración (en segundos).
 
 Al agregar el token al encabezado `Authorization` de una solicitud, debe usar el valor exacto especificado en esta respuesta (es decir, sin escape ni codificación del valor del token). El token de acceso es válido hasta su expiración. Para evitar que expire el token y afecte al rendimiento del bot, puede almacenarlo en caché y actualizar el token de forma proactiva.
 
-En este ejemplo se muestra una respuesta del servicio de inicio de sesión de MSA o AAD v2:
+En este ejemplo se muestra una respuesta del servicio de inicio de sesión de cuenta de Azure AD v2:
 
 ```http
 HTTP/1.1 200 OK
-... (other headers) 
+... (other headers)
 ```
 
 ```json
@@ -97,7 +97,8 @@ Cuando se envía una solicitud de API al servicio Bot Connector, debe especifica
 Authorization: Bearer ACCESS_TOKEN
 ```
 
-Todas las solicitudes que envíe al servicio Bot Connector deben incluir el token de acceso en el encabezado `Authorization`. Si el token tiene un formato correcto, no ha expirado y fue generado por el servicio de inicio de sesión de MSA o AAD v2, el servicio Bot Connector autorizará la solicitud. Se realizan comprobaciones adicionales para asegurarse de que el token pertenece al bot que envió la solicitud.
+Todas las solicitudes que envíe al servicio Bot Connector deben incluir el token de acceso en el encabezado `Authorization`.
+Si el token tiene un formato correcto, no ha expirado y fue generado por el servicio de inicio de sesión de cuenta de Azure AD v2, el servicio Bot Connector autorizará la solicitud. Se realizan comprobaciones adicionales para asegurarse de que el token pertenece al bot que envió la solicitud.
 
 El ejemplo siguiente muestra cómo especificar el token de acceso en el encabezado `Authorization` de la solicitud. 
 
@@ -109,7 +110,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1Ni...
 ```
 
 > [!IMPORTANT]
-> Especifique el token JWT solo en el encabezado `Authorization` de las solicitudes que envíe al servicio Bot Connector. No envíe el token por canales no seguros y no lo incluya en las solicitudes HTTP que se envían a otros servicios. El token JWT que obtiene del servicio de inicio de sesión de MSA o AAD v2 es como una contraseña y debe utilizarse con mucho cuidado. Cualquiera que tenga el token puede usarlo para realizar operaciones en nombre del bot. 
+> Especifique el token JWT solo en el encabezado `Authorization` de las solicitudes que envíe al servicio Bot Connector.
+> No envíe el token por canales no seguros y no lo incluya en las solicitudes HTTP que se envían a otros servicios.
+> El token JWT que obtiene del servicio de inicio de sesión de cuenta de Azure AD v2 es como una contraseña y debe utilizarse con mucho cuidado. Cualquiera que tenga el token puede usarlo para realizar operaciones en nombre del bot.
 
 #### <a name="bot-to-connector-example-jwt-components"></a>Bot a Connector: componentes JWT de ejemplo
 
