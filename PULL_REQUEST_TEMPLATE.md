@@ -1,3 +1,3 @@
-Hilfreiche Informationen zum Einreichen eines Vorschlags:
-1. Wechseln Sie zu [Quick Start Localization Style Guides (Style Guides für die Lokalisierung – Schnellstart)](https://docs.microsoft.com/globalization/localization/styleguides), und lesen Sie die **10 wichtigsten Regeln** aus dem Style Guide von Microsoft.
-2. Wechseln Sie zum [Microsoft-Sprachenportal](https://www.microsoft.com/language), um eine **standardisierte Begriffsübersetzung** für Microsoft-Produkte zu überprüfen.
+Información útil para hacer una sugerencia:
+1. Vaya a [Quick Start Localization Style Guides(Guías de estilo de localización de inicio rápido)](https://docs.Microsoft.com/Globalization/Localization/styleguides) para comprobar las **diez reglas más importantes** de la guía de estilo de Microsoft.
+2. Vaya a [Portal lingüístico de Microsoft](https://www.Microsoft.com/Language) para comprobar la **traducción normalizada de un término** en todos los productos de Microsoft.
