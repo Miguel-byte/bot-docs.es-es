@@ -7,12 +7,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 01/16/2019
-ms.openlocfilehash: 0e97ad58fc81b52086eb691950845eec1665b064
-ms.sourcegitcommit: e815e786413296deea0bd78e5a495df329a9a7cb
+ms.openlocfilehash: 25adbcda6b1f33f5379f9231291c5a511e9c1d04
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70876084"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039746"
 ---
 # <a name="key-concepts"></a>Conceptos clave
 
@@ -24,7 +24,7 @@ El servicio Bot Connector permite al bot intercambiar mensajes con canales confi
 
 ### <a name="activity"></a>Actividad
 
-Bot Connector Service intercambia información entre el bot y el canal (usuario) pasando un objeto [Actividad][]. El tipo de actividad más común es **message**, pero hay otros tipos de actividades que se pueden usar para comunicar distintos tipos de información a un bot o canal. Para obtener información detallada sobre las actividades del servicio Bot Connector, consulte [Introducción a las actividades]https://aka.ms/botSpecs-activitySchema.
+Bot Connector Service intercambia información entre el bot y el canal (usuario) pasando un objeto [Activity][Activity]. El tipo de actividad más común es **message**, pero hay otros tipos de actividades que se pueden usar para comunicar distintos tipos de información a un bot o canal. Para obtener información detallada sobre las actividades del servicio Bot Connector, vea [Introducción a las actividades](https://aka.ms/botSpecs-activitySchema).
 
 ## <a name="bot-state-service"></a>Servicio Bot State
 
@@ -50,4 +50,4 @@ Además de modelar el servicio Bot Connector, cada Bot Framework SDK también pr
 
 Para más información sobre cómo crear bots con el servicio Bot Connector, consulte los artículos de esta sección, que comienzan por el artículo de [Autenticación](bot-framework-rest-connector-authentication.md). Si tiene problemas o sugerencias sobre el servicio Bot Connector, consulte el artículo [Soporte técnico](../bot-service-resources-links-help.md) para obtener una lista de los recursos disponibles. 
 
-[Actividad]: bot-framework-rest-connector-api-reference.md#activity-object
+[Activity]: bot-framework-rest-connector-api-reference.md#activity-object

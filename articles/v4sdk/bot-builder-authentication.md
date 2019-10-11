@@ -7,12 +7,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 08/22/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: da7c9f76c65a70acc8cbb4a12ee93fc8f99de53b
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 953f52a7bc95c0b87435be70bb4052cf939b0a63
+ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299563"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72039769"
 ---
 <!-- 
 
@@ -411,21 +411,25 @@ Teams se comporta de forma ligeramente diferente a otros canales en lo que respe
  
 Una diferencia entre otros canales y Teams es que Teams envía una actividad de *invocación* al bot, en lugar de una actividad de *evento*. 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/TeamsBot.cs** [!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/TeamsBot.cs**  
+[!code-csharp[Invoke Activity](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/TeamsBot.cs?range=34-42&highlight=1)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**bots/teamsBot.js** [!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**bots/teamsBot.js**  
+[!code-javascript[Invoke Activity](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/teamsBot.js?range=27-32&highlight=3)]
 
 ---
 
 Si usa un *símbolo del sistema de OAuth*, esta actividad de invocación se debe reenviar al diálogo. Lo haremos en `TeamsActivityHandler`. Agregue el siguiente código al archivo de diálogo principal. 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
-**Bots/DialogBot.cs** [!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)  
+**Bots/DialogBot.cs**  
+[!code-csharp[Dialogs Handler](~/../botbuilder-samples/samples/csharp_dotnetcore/46.teams-auth/Bots/DialogBot.cs?range=18)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
-**Bots/dialogBot.js** [!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)  
+**Bots/dialogBot.js**  
+[!code-javascript[Dialogs Handler](~/../botbuilder-samples/samples/javascript_nodejs/46.teams-auth/bots/dialogBot.js?range=4-6)]
 
 ---
 Por último, asegúrese de agregar un archivo `TeamsActivityHandler` adecuado (`TeamsActivityHandler.cs` para los bots de C# y `teamsActivityHandler.js` para bots de JavaScript) en el nivel superior de la carpeta del bot.
