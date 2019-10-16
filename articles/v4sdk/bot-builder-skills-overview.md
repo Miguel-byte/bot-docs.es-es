@@ -6,14 +6,14 @@ ms.author: darrenj
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 10/09/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 566eb58f98335b9c55499051c6a23a6e0e0b6bc5
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 9bb149773fe1b2cdd09da0165a4fff4e647f419d
+ms.sourcegitcommit: 5d81c5b25ea56e04f09d05916ee947d631009172
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167119"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72236433"
 ---
 # <a name="virtual-assistant---skills-overview"></a>Virtual Assistant: introducción a las aptitudes
 
@@ -44,7 +44,7 @@ En este momento están disponibles las siguientes aptitudes de Bot Framework, co
 |[Aptitud de correo electrónico](https://aka.ms/bf-email-skill)|Agregar funcionalidades de correo al asistente. Con tecnología de Microsoft Graph y Google.|
 |[Aptitud de tarea pendientes](https://aka.ms/bf-todo-skill)|Agregar funcionalidades de administración de tarea al asistente. Con tecnología de Microsoft Graph.|
 |[Aptitud de punto de interés](https://aka.ms/bf-poi-skill)|Buscar puntos de interés y direcciones. Con tecnología de Azure Maps y FourSquare.|
-|[Aptitud de automoción](https://aka.ms/bf-autos-kill)|Aptitud vertical de la industria para mostrar la habilitación del control de características del automóvil.|
+|[Aptitud de automoción](https://aka.ms/bf-auto-skill)|Aptitud vertical de la industria para mostrar la habilitación del control de características del automóvil.|
 |[Aptitudes experimentales](https://aka.ms/bf-experimental-skills)|Noticias, reservas en restaurantes y previsiones meteorológicas.|
 
 ## <a name="getting-started"></a>Introducción
