@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 09/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: df7c608b32b2b570c50eb9a045d965adabd96881
-ms.sourcegitcommit: b869b6c325017df22158f4575576fb63c8ded488
+ms.openlocfilehash: c9303962c992ef9b0801d0bdaabf08886755777d
+ms.sourcegitcommit: 33b67191b3a1c5744e1b93b0c02345536db41a54
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224788"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72561363"
 ---
 # <a name="use-multiple-luis-and-qna-models"></a>Uso de varios modelos de LUIS y QnA
 
@@ -23,7 +23,8 @@ ms.locfileid: "71224788"
 Si un bot utiliza varios modelos LUIS e instancias de QnA Maker Knowledge Base de QnA Maker (Knowledge Base), puede utilizar la herramienta de distribución para determinar qué modelo LUIS o Knowledge Base de QnA Maker es el que mejor se adapta a la entrada del usuario. La herramienta de distribución lo hace mediante la creación de una única aplicación LUIS para dirigir la entrada del usuario al modelo correcto. Para más información sobre la herramienta de distribución, incluidos los comandos de la CLI, consulte el archivo [LÉAME][dispatch-readme].
 
 ## <a name="prerequisites"></a>Requisitos previos
-- Base de conocimiento de [conceptos básicos de bots](bot-builder-basics.md), [LUIS][howto-luis] y [QnA Maker][howto-qna]. 
+
+- Base de conocimiento de [conceptos básicos de bots](bot-builder-basics.md), [LUIS][howto-luis] y [QnA Maker][howto-qna].
 - [Herramienta de distribución](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 - Una copia de **NLP con Dispatch** desde el repositorio de código [Ejemplo en C#][cs-sample] o [Ejemplo en JS][js-sample].
 - Una cuenta [luis.ai](https://www.luis.ai/) para publicar aplicaciones de LUIS.
@@ -58,7 +59,8 @@ Se llama a `onMessage` para cada entrada del usuario recibida. Este módulo busc
 El controlador llama al servicio LUIS o QnA Maker y devuelve el resultado generado al usuario.
 
 ## <a name="create-luis-apps-and-qna-knowledge-base"></a>Creación de aplicaciones de LUIS y Knowledge Base de QnA
-Antes de que pueda crear el modelo de distribución, tendrá que crear y publicar las aplicaciones de LUIS y Knowledge Base de QnA. En este artículo, se publicarán los siguientes modelos que se incluyen con el ejemplo _NLP con distribución_ en la carpeta `\CognitiveModels`: 
+
+Antes de que pueda crear el modelo de distribución, tendrá que crear y publicar las aplicaciones de LUIS y Knowledge Base de QnA. En este artículo, se publicarán los siguientes modelos que se incluyen con el ejemplo _NLP con distribución_ en la carpeta `\CognitiveModels`:
 
 | NOMBRE | DESCRIPCIÓN |
 |------|------|
@@ -67,11 +69,12 @@ Antes de que pueda crear el modelo de distribución, tendrá que crear y publica
 | QnAMaker  | Una instancia de Knowledge Base de QnA Maker que proporciona respuestas a preguntas sencillas sobre el bot. |
 
 ### <a name="create-luis-apps"></a>Creación de aplicaciones de LUIS
+
 1. Inicie sesión en el [portal web de LUIS](https://www.luis.ai/). En la sección _Mis aplicaciones_, seleccione la pestaña _Importar nueva aplicación_. Aparecerá el siguiente cuadro de diálogo:
 
     ![Importar archivo json de LUIS](./media/tutorial-dispatch/import-new-luis-app.png)
 
-2. Seleccione el botón _Choose app file_ (Elegir archivo de aplicación), vaya a la carpeta CognitiveModel del código de ejemplo y seleccione el archivo "HomeAutomation.json". Deje en blanco el campo de nombre opcional. 
+2. Seleccione el botón _Choose app file_ (Elegir archivo de aplicación), vaya a la carpeta CognitiveModel del código de ejemplo y seleccione el archivo "HomeAutomation.json". Deje en blanco el campo de nombre opcional.
 
 3. Seleccione _Listo_.
 
@@ -91,12 +94,12 @@ Antes de que pueda crear el modelo de distribución, tendrá que crear y publica
 
 El primer paso para configurar una instancia de Knowledge Base de QnA Maker es configurar un servicio QnA Maker en Azure. Para ello, siga las instrucciones detalladas que se indican [aquí](https://aka.ms/create-qna-maker).
 
-Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ de Cognitive Services proporcionada para el servicio QnA Maker. Esto se usará como \<azure-qna-service-key1> al agregar la aplicación QnA Maker a la aplicación de distribución. 
+Una vez creado el servicio QnA Maker en Azure, debe registrar la clave _Key 1_ de Cognitive Services proporcionada para el servicio QnA Maker. Esto se usará como \<azure-qna-service-key1> al agregar la aplicación QnA Maker a la aplicación de distribución.
 
 Obtenga más información sobre los [dos tipos diferentes de claves](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) que se usan con QnA Maker.
 
 Los pasos siguientes le proporcionan esta clave:
-    
+
 ![Selección de Cognitive Services](./media/tutorial-dispatch/select-qna-cognitive-service.png)
 
 1. Desde Azure Portal, seleccione el servicio QnA Maker de Cognitive Services.
@@ -109,16 +112,15 @@ Los pasos siguientes le proporcionan esta clave:
 
 1. Copie el valor de _Key 1_ en el Portapapeles y guárdelo en local. Esto se usará como el valor de clave (-k) \<azure-qna-service-key1> al agregar la aplicación QnA Maker a la aplicación de distribución.
 
-1. Ahora, inicie sesión en el [portal web de QnAMaker](https://qnamaker.ai). 
+1. Ahora, inicie sesión en el [portal web de QnAMaker](https://qnamaker.ai).
 
 1. En el paso 2, seleccione lo siguiente:
 
-    * La cuenta de Azure AD.
-    * El nombre de la suscripción de Azure.
-    * El nombre que ha creado para el servicio QnA Maker. (Si el servicio Azure QnA no aparece inicialmente en esta lista desplegable, pruebe a actualizar la página).
+    - La cuenta de Azure AD.
+    - El nombre de la suscripción de Azure.
+    - El nombre que ha creado para el servicio QnA Maker. (Si el servicio Azure QnA no aparece inicialmente en esta lista desplegable, pruebe a actualizar la página).
 
-    ![Paso 2, crear QnA](./media/tutorial-dispatch/create-qna-step-2.png) 
-     
+    ![Paso 2, crear QnA](./media/tutorial-dispatch/create-qna-step-2.png)
 
 1. En el paso 3, proporcione un nombre para la instancia de Knowledge Base de QnA Maker. En este ejemplo, utilice el nombre "sample-qna".
 
@@ -139,12 +141,12 @@ Los pasos siguientes le proporcionan esta clave:
     Host: <your-hostname>  // NOTE - this is a URL.
     Authorization: EndpointKey <qna-maker-resource-key>
     ```
-    
-    La cadena completa de la dirección URL del nombre de host se verá como "https://< >.azure.net/qnamaker". Estos valores se utilizarán más adelante en el archivo `appsettings.json` o `.env`.
+
+    La cadena completa de la dirección URL del nombre de host se verá como "https://<host-id>.azure.net/qnamaker". Estos valores se utilizarán más adelante en el archivo `appsettings.json` o `.env`.
 
 ## <a name="dispatch-app-needs-read-access-to-existing-apps"></a>La aplicación de distribución necesita acceso de lectura a las aplicaciones existentes
 
-La herramienta de distribución necesita acceso de creación para leer las aplicaciones LUIS y QnA Maker existentes con el fin de crear una nueva aplicación LUIS primaria que distribuya a las aplicaciones LUIS y QnA Maker. Este acceso se proporciona con los id. de la aplicación y las claves de creación. 
+La herramienta de distribución necesita acceso de creación para leer las aplicaciones LUIS y QnA Maker existentes con el fin de crear una nueva aplicación LUIS primaria que distribuya a las aplicaciones LUIS y QnA Maker. Este acceso se proporciona con los id. de la aplicación y las claves de creación.
 
 ### <a name="service-authoring-keys"></a>Claves de creación de servicios
 
@@ -153,9 +155,9 @@ La **clave de creación** solo se usa para crear y editar los modelos. Necesita 
 |Aplicación|Ubicación de la información|
 |--|--|
 |LUIS|**Id. de la aplicación**: se encuentra en el [portal de LUIS](https://www.luis.ai) para cada aplicación, Administrar -> Información de la aplicación.<br>**Clave de creación**: se encuentra en el portal de LUIS, esquina superior derecha, seleccione su propio usuario y, a continuación, Configuración.|
-|QnA Maker| **Id. de la aplicación**: se encuentra en el [portal de QnA Maker](https://http://qnamaker.ai) en la página de configuración después de publicar la aplicación. Este es el identificador encontrado en la primera parte del comando POST después de knowledgebase. Un ejemplo de dónde encontrar el id. de la aplicación es `POST /knowledgebases/{APP-ID}/generateAnswer`.<br>**Clave de creación**: se encuentra en Azure Portal, para el recurso de QnA Maker, en **Claves**. Solo necesita una de las claves.|
+|QnA Maker| **Id. de la aplicación**: se encuentra en el [portal de QnA Maker](https://http://qnamaker.ai) en la página de configuración después de publicar la aplicación. Este es el identificador encontrado en la primera parte del comando POST después de knowledgebase. Un ejemplo de dónde encontrar el id. de la aplicación es `POST /knowledgebases/<APP-ID>/generateAnswer`.<br>**Clave de creación**: se encuentra en Azure Portal, para el recurso de QnA Maker, en **Claves**. Solo necesita una de las claves.|
 
-La clave de creación no se utiliza para obtener una puntuación de predicción o una puntuación de confianza de la aplicación publicada. Necesita las claves del punto de conexión para esta acción. Las **[claves del punto de conexión](#service-endpoint-keys)** se encuentran y se usan más adelante en este tutorial. 
+La clave de creación no se utiliza para obtener una puntuación de predicción o una puntuación de confianza de la aplicación publicada. Necesita las claves del punto de conexión para esta acción. Las **[claves del punto de conexión](#service-endpoint-keys)** se encuentran y se usan más adelante en este tutorial.
 
 Obtenga más información sobre los [dos tipos diferentes de claves](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure#types-of-keys-in-qna-maker) que se usan con QnA Maker.
 
@@ -202,7 +204,8 @@ La aplicación LUIS generada define las intenciones para cada una de las aplicac
 - `None`
 - `q_sample-qna`
 
-Tenga en cuenta que estos servicios deben publicarse con los nombres correctos para que el bot funcione correctamente. El bot necesita información sobre los servicios publicados para poder acceder a ellos.
+Tenga en cuenta que estos servicios deben publicarse con los nombres correctos para que el bot funcione correctamente.
+El bot necesita información sobre los servicios publicados para poder acceder a ellos.
 
 ### <a name="service-endpoint-keys"></a>Claves del punto de conexión de servicio
 
@@ -211,7 +214,7 @@ El bot necesita los puntos de conexión de predicción de consulta para las tres
 |Aplicación|Ubicación de clave de punto de conexión de consulta|
 |--|--|
 |LUIS|En el portal de LUIS, para cada aplicación LUIS, en la sección Administrar, seleccione **Configuración de claves y puntos de conexión** para encontrar las claves asociadas con cada aplicación. Si está siguiendo este tutorial, la clave del punto de conexión es la misma clave que `<your-luis-authoring-key>`. La clave de creación permite 1000 visitas al punto de conexión y después expira.|
-|QnA Maker|En el portal de QnA Maker, para la instancia de Knowledge Base, en la opción Administrar, use el valor de clave que se muestra en la configuración de Postman para el encabezado **Autorización**, sin el texto de `EndpointKey `.|
+|QnA Maker|En el portal de QnA Maker, para la instancia de Knowledge Base, en la opción Administrar, use el valor de clave que se muestra en la configuración de Postman para el encabezado **Autorización**, sin el texto de `EndpointKey`.|
 
 Estos valores se usan en **appsettings.json** para C# y el archivo **.env** para JavaScript.
 
@@ -219,24 +222,24 @@ Estos valores se usan en **appsettings.json** para C# y el archivo **.env** para
 
 ### <a name="installing-packages"></a>Instalación de paquetes
 
-Antes de ejecutar esta aplicación por primera vez, asegúrese de que hay varios paquetes nuget instalados:
+Antes de ejecutar esta aplicación por primera vez, asegúrese de que hay varios paquetes NuGet instalados:
 
-**Microsoft.Bot.Builder**
-
-**Microsoft.Bot.Builder.AI.Luis**
-
-**Microsoft.Bot.Builder.AI.QnA**
+- **Microsoft.Bot.Builder**
+- **Microsoft.Bot.Builder.AI.Luis**
+- **Microsoft.Bot.Builder.AI.QnA**
 
 ### <a name="manually-update-your-appsettingsjson-file"></a>Actualización manual del archivo appsettings.json
 
 Una vez creadas todas las aplicaciones de servicio, la información de cada una de ellas debe agregarse al archivo "appsettings.json". El código inicial de [Ejemplo en C#][cs-sample] contiene un archivo appsettings.json vacío:
 
-**appsettings.json**  
+**appsettings.json**
+
 [!code-json[AppSettings](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/AppSettings.json?range=8-17)]
 
 Para cada una de las entidades que se muestran a continuación, agregue los valores que ha registrado antes en estas instrucciones:
 
 **appsettings.json**
+
 ```json
 "MicrosoftAppId": "",
 "MicrosoftAppPassword": "",
@@ -249,6 +252,7 @@ Para cada una de las entidades que se muestran a continuación, agregue los valo
 "LuisAPIKey": "<your-luis-endpoint-key>",
 "LuisAPIHostName": "<your-dispatch-app-region>",
 ```
+
 Cuando se hayan realizado todos los cambios, guarde este archivo.
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
@@ -261,6 +265,7 @@ Antes de ejecutar esta aplicación por primera vez, necesitará instalar varios 
 npm install --save botbuilder
 npm install --save botbuilder-ai
 ```
+
 El bot necesita incluir un paquete adicional para usar el archivo de configuración .env:
 
 ```powershell
@@ -303,17 +308,22 @@ Para conectarse a los servicios Dispatch, LUIS y QnA Maker, el bot extrae inform
 
 En **BotServices.js** la información contenida en el archivo de configuración _appsettings.json_ se usa para conectar el bot de distribución a los servicios `Dispatch` y `SampleQnA`. Los constructores utilizan los valores que proporcionó para conectarse a estos servicios.
 
-**BotServices.cs**  
+**BotServices.cs**
+
 [!code-csharp[ReadConfigurationInfo](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/BotServices.cs?range=14-30)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 En **dispatchBot.js** la información contenida en el archivo de configuración _.env_ se usa para conectar el bot de distribución a los servicios _LuisRecognizer(dispatch)_ y _QnAMaker_. Los constructores utilizan los valores que proporcionó para conectarse a estos servicios.
 
-**bots/dispatchBot.js**  
+**bots/dispatchBot.js**
+
 [!code-javascript[ReadConfigurationInfo](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=11-24)]
 
 ---
+
+> [!NOTE]
+> De forma predeterminada, el parámetro `includeApiResults` está establecido en false, lo que significa que el reconocedor solo devolverá información básica acerca de las entidades y las intenciones. Si necesita la respuesta completa de LUIS (como el valor de `ConnectedServiceResult` que se usa más adelante en este tutorial), establezca este parámetro en true. A continuación, se agregará la respuesta completa del servicio LUIS a la colección Properties en `RecognizerResult`.
 
 ### <a name="call-the-services-from-your-bot"></a>Llamada a los servicios desde el bot
 
@@ -323,14 +333,15 @@ Para cada entrada del usuario, la lógica del bot comprueba la entrada del usuar
 
 En el archivo **DispatchBot.cs** cada vez que se llama al método `OnMessageActivityAsync`, comprobamos el mensaje de usuario entrante con el modelo de Dispatch. Después, se pasan `topIntent` y `recognizerResult` del modelo de Dispatch al método correcto para llamar al servicio y devolver el resultado.
 
-**bots\DispatchBot.cs**  
+**bots\DispatchBot.cs**
+
 [!code-csharp[OnMessageActivity](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=26-36)]
 
 ## <a name="javascripttabjs"></a>[JavaScript](#tab/js)
 
 En el método `onMessage` de **dispatchBot.js**, comprobamos el mensaje de entrada del usuario contra el modelo de Dispatch, buscamos _topIntent_ y después lo pasamos llamando a _dispatchToTopIntentAsync_.
 
-**bots/dispatchBot.js**  
+**bots/dispatchBot.js**
 
 [!code-javascript[OnMessageActivity](~/../botbuilder-samples/samples/javascript_nodejs/14.nlp-with-dispatch/bots/dispatchBot.js?range=29-42)]
 
@@ -342,7 +353,8 @@ En el método `onMessage` de **dispatchBot.js**, comprobamos el mensaje de entra
 
 Cuando el modelo genera un resultado, indica qué servicio puede procesar de la manera más adecuada la declaración. El código de este bot enruta la solicitud al servicio correspondiente y, a continuación, resume la respuesta del servicio que llama. Dependiendo de la _intención_ devuelta desde Dispatch, este código utiliza la intención devuelto para dirigir al modelo LUIS o servicio QnA correcto.
 
-**bots\DispatchBot.cs**  
+**bots\DispatchBot.cs**
+
 [!code-csharp[DispatchToTop](~/../botbuilder-samples/samples/csharp_dotnetcore/14.nlp-with-dispatch/bots/DispatchBot.cs?range=51-69)]
 
 Si se llama al método `ProcessHomeAutomationAsync` o `ProcessWeatherAsync`, se pasan los resultados del modelo de Dispatch a _luisResult.ConnectedServiceResult_. El método especificado proporciona los comentarios del usuario que muestran la intención superior del modelo de Dispatch, además de una lista clasificada de todas las intenciones y entidades que se detectaron.
@@ -387,9 +399,9 @@ Si se llama al método `q_sample-qna`, utiliza la entrada de usuario contenida e
 
 ## <a name="dispatch-for-user-utterance-to-qna-maker"></a>Distribución de la expresión de usuario a QnA Maker
 
-1. En emulador de bot, escriba el texto `hi` y envíe la expresión. El bot envía esta consulta a la aplicación LUIS de distribución y recibe una respuesta que indica qué aplicación secundaria debe obtener esta instrucción para su posterior procesamiento. 
+1. En emulador de bot, escriba el texto `hi` y envíe la expresión. El bot envía esta consulta a la aplicación LUIS de distribución y recibe una respuesta que indica qué aplicación secundaria debe obtener esta instrucción para su posterior procesamiento.
 
-1. Si selecciona la línea `LUIS Trace` en el registro, puede ver la respuesta de LUIS en el emulador de bot. El resultado de LUIS de la aplicación LUIS de distribución se muestra en Inspector. 
+1. Si selecciona la línea `LUIS Trace` en el registro, puede ver la respuesta de LUIS en el emulador de bot. El resultado de LUIS de la aplicación LUIS de distribución se muestra en Inspector.
 
     ```json
     {
@@ -421,10 +433,10 @@ Si se llama al método `q_sample-qna`, utiliza la entrada de usuario contenida e
       }
     }
     ```
-    
-    Dado que la expresión, `hi`, forma parte de la intención **q_sample qna** de la aplicación LUIS de distribución y se selecciona como `topScoringIntent`, el bot realizará una segunda solicitud, esta vez a la aplicación de QnA Maker con la misma expresión. 
 
-1. Seleccione la línea `QnAMaker Trace` en el registro del emulador de bot. El resultado de QnA Maker se muestra en Inspector. 
+    Dado que la expresión, `hi`, forma parte de la intención **q_sample qna** de la aplicación LUIS de distribución y se selecciona como `topScoringIntent`, el bot realizará una segunda solicitud, esta vez a la aplicación de QnA Maker con la misma expresión.
+
+1. Seleccione la línea `QnAMaker Trace` en el registro del emulador de bot. El resultado de QnA Maker se muestra en Inspector.
 
 ```json
 {
@@ -448,14 +460,17 @@ Si se llama al método `q_sample-qna`, utiliza la entrada de usuario contenida e
 
 ## <a name="resolving-incorrect-top-intent-from-dispatch"></a>Resolución de la intención superior incorrecta de la distribución
 
-Una vez que el bot se esté ejecutando, es posible mejorar su rendimiento mediante la eliminación de expresiones parecidas o superpuestas entre las aplicaciones distribuidas. Por ejemplo, supongamos que en la aplicación LUIS `Home Automation`, las solicitudes como "encender las luces" se asignan a una intención "TurnOnLights", pero las solicitudes como "¿Por qué no se encienden las luces?" se asignan a una intención "None" para que se puedan pasar a QnA Maker. Estas dos expresiones están demasiado cerca para que la aplicación LUIS de distribución determine si la aplicación secundaria correcta es la aplicación LUIS o la aplicación QnA Maker.
+Una vez que el bot se esté ejecutando, es posible mejorar su rendimiento mediante la eliminación de expresiones parecidas o superpuestas entre las aplicaciones distribuidas.
+<!--For example, let's say that in the `Home Automation` LUIS app requests like "turn my lights on" map to a "TurnOnLights" intent, but requests like "Why won't my lights turn on?" map to a "None" intent so that they can be passed on to QnA Maker. These two utterances are too close for the dispatch LUIS app to determine if the correct child app is the LUIS app or the QnA Maker app.
 
-Al combinar la aplicación LUIS y la aplicación QnA Maker mediante la distribución, es preciso llevar a cabo _una_ de las acciones siguientes:
+When you combine the LUIS app and the QnA Maker app using dispatch, you need to do _one_ of the following:
 
-* Quitar la intención "None" de la aplicación LUIS `Home Automation` secundaria y, en su lugar, agregar las expresiones de esa intención a la intención "None" de la aplicación de distribuidor.
-* Agregar lógica en su bot para pasar los mensajes que coinciden con la intención "None" de la aplicación LUIS de distribución en el servicio QnA Maker. Comparar la puntuación de la aplicación LUIS de distribución y la puntuación de la aplicación QnA Maker. Usar la puntuación más alta. De este modo se quita QnA Maker del ciclo de distribución. 
+- Remove the "None" intent from the child `Home Automation` LUIS app, and instead add the utterances from that intent to the "None" intent in the dispatcher app.
+- Add logic in your bot to pass the messages that match the Dispatch LUIS app's "None" intent on to the QnA maker service. Compare the score of the Dispatch LUIS app's score and the score of the QnA Maker app. Use the highest score. This effectively removes QnA Maker from the Dispatch cycle.
 
-Cualquiera de las dos acciones anteriores reducirá el número de veces que el bot responderá a los usuarios con el mensaje "Couldn't find an answer" (No se pudo encontrar una respuesta).
+Either of the above two actions will reduce the number of times that your bot responds back to your users with the message, 'Couldn't find an answer.'
+-->
+Puede usar la herramienta de línea de comandos [Dispatch][dispatch-readme] para probar y evaluar el modelo de envío.
 
 ### <a name="to-update-or-create-a-new-luis-model"></a>Para actualizar o crear un nuevo modelo de LUIS
 
@@ -485,6 +500,7 @@ Para eliminar los recursos de QnA Maker:
 
 para mejorar los servicios utilizados en este ejemplo, consulte los procedimientos recomendados para [LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices) y [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices).
 
+<!-- Foot-note style links -->
 
 [howto-luis]: bot-builder-howto-v4-luis.md
 [howto-qna]: bot-builder-howto-qna.md
@@ -492,4 +508,5 @@ para mejorar los servicios utilizados en este ejemplo, consulte los procedimient
 [cs-sample]: https://aka.ms/dispatch-sample-cs
 [js-sample]: https://aka.ms/dispatch-sample-js
 
-[dispatch-readme]: https://aka.ms/botbuilder-tools-dispatch
+[dispatch-readme]: https://aka.ms/dispatch-command-line-tool
+<!--[dispatch-evaluate]: https://aka.ms/dispatch-command-line-tool#evaluating-your-dispatch-model-->
