@@ -6,13 +6,13 @@ manager: kamrani
 ms.topic: article
 ms.author: kamrani
 ms.service: bot-service
-ms.date: 08/03/2019
-ms.openlocfilehash: a856e3cc578b8c73583126df9f670bfde68ec9dc
-ms.sourcegitcommit: dd12ddf408c010182b09da88e2aac0de124cef22
+ms.date: 10/28/2019
+ms.openlocfilehash: 0821d9cac50828cc7802c4be8221538d4e1e620d
+ms.sourcegitcommit: b2819741e2bcace92510e7b250cd5c1ab667d774
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70386105"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73031221"
 ---
 # <a name="connect-a-bot-to-facebook"></a>Conexión de un bot a Facebook
 
@@ -22,6 +22,9 @@ El bot se puede conectar a Facebook Messenger y Facebook Workplace para comunica
 > La UI de Facebook puede aparecer de forma ligeramente diferente dependiendo de la versión que use.
 
 ## <a name="connect-a-bot-to-facebook-messenger"></a>Conexión de un bot a Facebook Messenger
+
+> [!NOTE]
+> A partir del 16 de diciembre de 2019, Workplace by Facebook cambia el modelo de seguridad de las integraciones personalizadas.  Las integraciones actuales creadas con Microsoft Bot Framework deben actualizarse para usar el adaptador de Bot Framework (disponible en JavaScript/node.js) e implementarse mediante una aplicación web en Azure.  Los nuevos bots de área de trabajo que se desarrollen con Microsoft Bot Framework también deben usar el adaptador de Facebook de JavaScript. Obtenga más información acerca de cómo [usar el adaptador de Facebook](https://aka.ms/botframework-workplace-adapter). Las instrucciones siguientes solo funcionarán hasta el 16 de diciembre de 2019.
 
 Para obtener más información acerca del desarrollo de Facebook Messenger, consulte la [documentación de la plataforma de Messenger](https://developers.facebook.com/docs/messenger-platform). Puede que quiera revisar la [lista de verificación previa al lanzamiento](https://developers.facebook.com/docs/messenger-platform/product-overview/launch#app_public), el [tutorial de inicio rápido](https://developers.facebook.com/docs/messenger-platform/guides/quick-start) y la [guía de configuración](https://developers.facebook.com/docs/messenger-platform/guides/setup) de Facebook.
 
