@@ -25,6 +25,7 @@
 ## [Slack](../bot-service-channel-connect-slack.md) 
 ## [Telegram](../bot-service-channel-connect-telegram.md) 
 ## [Twilio](../bot-service-channel-connect-twilio.md)
+## [WeChat](../bot-service-channel-connect-wechat.md)
 ## [Chat en web](../bot-service-channel-connect-webchat.md)
 ## [Canales adicionales](../bot-service-channel-additional-channels.md)
 # [Configuración de los valores del bot](../bot-service-manage-settings.md)
