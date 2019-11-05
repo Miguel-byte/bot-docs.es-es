@@ -19,6 +19,7 @@
 ## [Software intermedio](v4sdk/bot-builder-concept-middleware.md)
 ## [Autenticación de usuarios](v4sdk/bot-builder-concept-authentication.md)
 ## [Administración de recursos de bot](v4sdk/bot-file-basics.md)
+## [Cómo funcionan los bots para Microsoft Teams](v4sdk/bot-builder-basics-teams.md)
 <!-- [Language understanding](v4sdk/bot-builder-concept-luis.md) -->
 ## [Plantillas de Bot Service](bot-service-concept-templates.md)
 ## [Cognitive Services](bot-service-concept-intelligence.md)
@@ -56,6 +57,7 @@
 ### [Node.js](nodejs/TOC.md)
 ## Prueba
 ### [Realización de pruebas unitarias en bots](v4sdk/unit-test-bots.md)
+### [Incorporación de actividades de seguimiento al bot](v4sdk/using-trace-activities.md)
 ## [Depuración](debug/TOC.md)
 ## Implementación
 ### [Implementación de un bot en Azure](bot-builder-deploy-az-cli.md)
@@ -68,5 +70,8 @@
 ## [REST](rest-api/TOC.md)
 ## [.NET SDK v3](https://aka.ms/botframework-v3-cs-sdk)
 ## [Node.js SDK v3](https://aka.ms/bot-jssdk-v3)
+## Referencia de la herramienta CLI de BF
+### [Introducción a la CLI de BF](v4sdk/bf-cli-overview.md)
+### [Referencia de la CLI de BF](v4sdk/bf-cli-reference.md)
 ## [Entidades y tipos de actividad](bot-service-activities-entities.md)
 # [Recursos](resources/TOC.md)
