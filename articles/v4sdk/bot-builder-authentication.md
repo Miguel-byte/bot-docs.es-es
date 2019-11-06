@@ -5,18 +5,16 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 08/22/2019
+ms.date: 11/04/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 953f52a7bc95c0b87435be70bb4052cf939b0a63
-ms.sourcegitcommit: 7e901f5f39a0cfb0d37e532321b90a1dcf4baadd
+ms.openlocfilehash: c55e14f10bf6a5f4032033472c07401bde82a334
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039769"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592277"
 ---
 <!-- 
-
-ms.author: kamrani
 
 Related TODO:
 - Check code in [Web Chat channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat?view=azure-bot-service-4.0)
@@ -172,7 +170,7 @@ El paso siguiente consiste en registrar la aplicación de Azure AD que acaba de 
 
 #### <a name="azure-ad-v1"></a>Azure AD v1
 
-1. Vaya hasta la página de recursos del bot en [Azure Portal](http://portal.azure.com/).
+1. Vaya hasta la página de recursos del bot en [Azure Portal](https://portal.azure.com/).
 1. Haga clic en **Configuración**.
 1. En **Configuración de conexión de OAuth**, cerca de la parte inferior de la página, haga clic en **Agregar configuración**.
 1. Rellene el formulario de la siguiente manera:
@@ -201,7 +199,7 @@ El paso siguiente consiste en registrar la aplicación de Azure AD que acaba de 
 
 #### <a name="azure-ad-v2"></a>Azure AD v2
 
-1. Vaya a la página de registro de canales del bot en [Azure Portal](http://portal.azure.com/).
+1. Vaya a la página de registro de canales del bot en [Azure Portal](https://portal.azure.com/).
 1. Haga clic en **Configuración**.
 1. En **Configuración de conexión de OAuth**, cerca de la parte inferior de la página, haga clic en **Agregar configuración**.
 1. Rellene el formulario de la siguiente manera:
@@ -437,7 +435,7 @@ Por último, asegúrese de agregar un archivo `TeamsActivityHandler` adecuado (`
 También `TeamsActivityHandler` envía actividades de *reacción de mensajes*. Una actividad de reacción de mensaje hace referencia a la actividad original mediante el campo *reply to ID* (responder a id.). Esta actividad también debe ser visible mediante la [fuente de actividades][teams-activity-feed] de Microsoft Teams.
 
 > [!NOTE]
-> Debe crear un manifiesto e incluir `token.botframework.com` en la sección `validDomains`. En caso contrario, el botón **Iniciar sesión** de OAuthCard no abrirá la ventana de autenticación. Use [App Studio](https://docs.microsoft.com/en-us/microsoftteams/platform/get-started/get-started-app-studio) para generar el manifiesto.
+> Debe crear un manifiesto e incluir `token.botframework.com` en la sección `validDomains`. En caso contrario, el botón **Iniciar sesión** de OAuthCard no abrirá la ventana de autenticación. Use [App Studio](https://docs.microsoft.com/microsoftteams/platform/get-started/get-started-app-studio) para generar el manifiesto.
 
 ### <a name="further-reading"></a>Lecturas adicionales
 

@@ -7,13 +7,13 @@ keywords: Bot Framework SDK, debug bot, inspection middleware, bot emulator, Azu
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 7/9/2019
-ms.openlocfilehash: 4a3ff1ef255b914a30c10f6ebd070b7ca98d2f86
-ms.sourcegitcommit: e9cd857ee11945ef0b98a1ffb4792494dfaeb126
+ms.date: 11/01/2019
+ms.openlocfilehash: 86521259b284694fcc35f27899953c9eea1b57d0
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693130"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592259"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Depuración de un bot con middleware de inspección
 En este artículo se describe cómo depurar el bot mediante middleware de inspección. Esta característica permite a Bot Framework Emulator depurar el tráfico dentro y fuera del bot, además de examinar el estado actual de este. Puede usar un mensaje de seguimiento para enviar datos al emulador y, a continuación, inspeccionar el estado del bot en cualquier turno determinado de la conversación. 
@@ -22,8 +22,8 @@ Se usa un EchoBot compilado localmente mediante Bot Framework v4 ([C#](https://d
 
 ## <a name="prerequisites"></a>Requisitos previos
 - Descargar e instalar [Bot Framework Emulator](https://aka.ms/Emulator-wiki-getting-started)
-- Conocimientos del [middleware](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) del bot
-- Conocimientos sobre el [estado de administración](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) del bot
+- Conocimientos del [middleware](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-middleware?view=azure-bot-service-4.0) del bot
+- Conocimientos sobre el [estado de administración](https://docs.microsoft.com/azure/bot-service/bot-builder-concept-state?view=azure-bot-service-4.0) del bot
 - Descargar e instalar [ngrok](https://ngrok.com/) (si quiere depurar un bot configurado en Azure para usar canales adicionales)
 
 ## <a name="update-your-emulator-to-the-latest-version"></a>Actualización del emulador a la versión más reciente 
