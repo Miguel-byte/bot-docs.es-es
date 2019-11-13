@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/05/2019
+ms.date: 11/05/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: bb359ec2493b1c29624f5fb0135478cae1dea0e0
-ms.sourcegitcommit: eacf1522d648338eebefe2cc5686c1f7866ec6a2
+ms.openlocfilehash: 6ef79b62aecbc79ed277f3962606d5ed5d9ceeb3
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70167177"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933574"
 ---
 # <a name="reuse-dialogs"></a>Reutilización de diálogos
 
@@ -79,11 +79,11 @@ Aquí la clase `UserProfileDialog` extiende `ComponentDialog`.
 
 Dentro del constructor, el método `AddDialog` agrega diálogos y avisos al diálogo de componente. El primer elemento que se agregue con este método se establece como diálogo inicial, pero se puede cambiar. Para ello, es preciso establecer explícitamente la propiedad `InitialDialogId`. Al iniciar un diálogo de componente, se iniciará su _initial dialog_.
 
-[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-47)]
+[!code-javascript[Constructor](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=25-45)]
 
 Se trata de la implementación del primer paso del diálogo en cascada.
 
-[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=66-73)]
+[!code-javascript[First step](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=64-71)]
 
 Para más información acerca de la implementación de los diálogo en cascada, consulte cómo [implementar un flujo de conversaciones secuencial](bot-builder-dialog-manage-complex-conversation-flow.md).
 
@@ -117,13 +117,13 @@ En el ejemplo, esto se hace con el método `RunAsync` al que se llama desde el m
 
 En el ejemplo, se ha agregado un método `run` al diálogo del perfil de usuario.
 
-[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=55-64)]
+[!code-javascript[run method](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/dialogs/userProfileDialog.js?range=53-62)]
 
 **bots/dialogBot.js**
 
 Se llama al método `run` desde el método `onMessage` del bot.
 
-[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=30-37)]
+[!code-javascript[onMessage](~/../botbuilder-samples/samples/javascript_nodejs/05.multi-turn-prompt/bots/dialogBot.js?range=24-31&highlight=5)]
 
 ---
 

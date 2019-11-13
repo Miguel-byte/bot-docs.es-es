@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 11/01/2019
-ms.openlocfilehash: 86521259b284694fcc35f27899953c9eea1b57d0
-ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
+ms.openlocfilehash: 0e59c6d3548e273a8fb164526ddeb6ba66f48e3e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73592259"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933526"
 ---
 # <a name="debug-a-bot-with-inspection-middleware"></a>Depuración de un bot con middleware de inspección
 En este artículo se describe cómo depurar el bot mediante middleware de inspección. Esta característica permite a Bot Framework Emulator depurar el tráfico dentro y fuera del bot, además de examinar el estado actual de este. Puede usar un mensaje de seguimiento para enviar datos al emulador y, a continuación, inspeccionar el estado del bot en cualquier turno determinado de la conversación. 
@@ -42,7 +42,7 @@ Configure el estado de inspección en el archivo de **inicio**. Agregue el middl
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Startup.cs?range=17-37)]
 
 **AdapterWithInspection.cs**  
-[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-21)]
+[!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/AdapterwithInspection.cs?range=11-37)]
 
 **EchoBot.cs**  
 [!code-csharp [inspection bot sample](~/../botbuilder-samples/samples/csharp_dotnetcore/47.inspection/Bots/EchoBot.cs?range=14-43)]
