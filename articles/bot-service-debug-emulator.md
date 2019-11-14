@@ -8,12 +8,12 @@ manager: kamrani
 ms.topic: article
 ms.service: bot-service
 ms.date: 2/26/2019
-ms.openlocfilehash: b6db4fd406b115ca88298d0727ff118821dad0d5
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: de15fbc7fb000bde3b62883405149d22f3ac23a0
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298261"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933646"
 ---
 # <a name="debug-with-the-emulator"></a>Depuración con el emulador
 
@@ -55,6 +55,37 @@ En este momento, el bot se ejecuta de forma local.
 
 ## <a name="connect-to-a-bot-running-on-localhost"></a>Una conexión a un bot que se ejecuta en un host local.
 
+<!-- auth config steps -->
+### <a name="configure-the-emulator-for-authentication"></a>Configuración del emulador para autenticación
+
+Si un bot requiere autenticación y muestra un cuadro de diálogo de inicio de sesión, debe configurar el emulador tal y como se muestra a continuación.
+
+#### <a name="using-sign-in-verification-code"></a>Uso del código de verificación de inicio de sesión
+
+1. Inicie el emulador.
+1. En el emulador, haga clic en el icono de engranaje en la parte inferior izquierda o en la pestaña **Emulator Settings** en la esquina superior derecha.
+1. Active la casilla **Use a sign-in verification code for OAuthCards** (Usar un código de verificación de inicio de sesión para OAuthCards).
+1. Active la casilla **Bypass ngrok for local address** (Omitir ngrok para la dirección local).
+1. Haga clic en el botón **Save** (Guardar).
+
+Al hacer clic en el botón de inicio de sesión que muestra el bot, se generará un código de validación.
+El código se escribe en el cuadro de chat de entrada del bot para que tenga lugar la autenticación.
+Después, puede realizar las operaciones permitidas.
+
+También tiene la opción de realizar los pasos que se describen a continuación.
+
+#### <a name="using-authentication-tokens"></a>Uso de tokens de autenticación
+
+1. Inicie el emulador.
+1. En el emulador, haga clic en el icono de engranaje en la parte inferior izquierda o en la pestaña **Emulator Settings** en la esquina superior derecha.
+1. Active la casilla **Use version1.0 authentication tokens** (Usar los tokens de autenticación de la versión 1.0).
+1. Escriba la ruta de acceso local a la herramienta **ngrok**. Para más información sobre la herramienta, consulte [ngrok](https://ngrok.com/).
+1. Active la casilla **Run ngrok when the Emulator starts up** (Ejecutar ngrok cuando se inicie el emulador).
+1. Haga clic en el botón **Save** (Guardar).
+
+Al hacer clic en el botón de inicio de sesión que muestra el bot, se le pedirá que escriba sus credenciales. Se genera un token de autenticación. Después, puede realizar las operaciones permitidas.
+
+
 ![UI del emulador](media/emulator-v4/emulator-welcome.png)
 
 Para conectarse a un bot que se ejecuta localmente, haga clic en **Abrir bot**. Agregue el número de puerto que copió anteriormente en la siguiente dirección URL y pegue la dirección URL actualizada en la barra de direcciones URL del bot:
@@ -64,7 +95,6 @@ Para conectarse a un bot que se ejecuta localmente, haga clic en **Abrir bot**. 
 ![UI del emulador](media/bot-service-debug-emulator/open_bot_emulator.png)
 
 Si el bot se está ejecutando con [credenciales de una cuenta Microsoft (MSA)](#use-bot-credentials), escriba también estas credenciales.
-
 
 ### <a name="use-bot-credentials"></a>Usar credenciales de bot
 

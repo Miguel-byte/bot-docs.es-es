@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/23/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9911fda3458d686cce993a54223ab06036dee745
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: 9dbb64dd941cdd7706b0ec8f7bd531530c8db59e
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70299508"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933601"
 ---
 # <a name="dialogs-library"></a>Biblioteca de diálogos
 
@@ -106,7 +106,7 @@ El contexto de un paso de una cascada contiene lo siguiente:
 * *Valores*: contiene información que se puede agregar al contexto y que se transmite a los pasos siguientes.
 * *Resultado*: contiene el resultado del paso anterior.
 
-Además, el *siguiente* método continúa hasta el paso siguiente del diálogo en cascada en el mismo turno, lo que permite que el bot omita un paso determinado si fuera necesario.
+Además, el método *next* (**NextAsync** en C#, **next** en JS) continúa hasta el paso siguiente del diálogo en cascada en el mismo turno, lo que permite que el bot omita un paso determinado si fuera necesario.
 
 #### <a name="prompt-options"></a>Opciones de pregunta
 

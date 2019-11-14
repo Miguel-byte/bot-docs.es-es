@@ -8,12 +8,12 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.author: kamrani
 ms.date: 07/25/2019
-ms.openlocfilehash: 68ef5f1d24c464489ff500fe290de2a151f87f5a
-ms.sourcegitcommit: 6a83b2c8ab2902121e8ee9531a7aa2d85b827396
+ms.openlocfilehash: 3ed589bff5c3740dddcfb62226714006313ae330
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68970600"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933677"
 ---
 # <a name="configure-net-bot-for-extension"></a>Configuración de un bot de .NET para la extensión
 
@@ -74,7 +74,13 @@ En esta sección se describe cómo habilitar la extensión de App Service para D
     Los valores son los elementos **appid** y **appSecret** asociados con el grupo de registro del servicio.
 
 1. **Publique** el bot en la instancia de Azure App Service.
-1. En el explorador, vaya a https://<instancia_de_app_service>.azurewebsites.net/.bot. Si todo está correcto, la página devolverá este contenido JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`.
+1. En el explorador, vaya a https://<instancia_de_app_service>.azurewebsites.net/.bot. Si todo está correcto, la página devolverá este contenido JSON: `{"k":true,"ib":true,"ob":true,"initialized":true}`. Esta es la información que se obtiene cuando **todo funciona correctamente**; en ella:
+
+    - **k** determina si la extensión Direct Line de App Service (ASE) puede leer una clave de extensión de su configuración. 
+    - **initialized** determina si la extensión Direct Line de App Service puede usar la clave de extensión para descargar los metadatos de bot de Azure Bot Service.
+    - **ib** determina si la extensión Direct Line de App Service puede establecer una conexión entrante con el bot.
+    - **ob** determina si la extensión Direct Line de App Service puede establecer una conexión saliente con el bot. 
+
 
 ### <a name="gather-your-direct-line-extension-keys"></a>Recopilación de las claves de la extensión Direct Line
 
@@ -97,7 +103,7 @@ En esta sección se describe cómo habilitar la extensión de App Service para D
     |NOMBRE|Valor|
     |---|---|
     |DirectLineExtensionKey|<Clave_de_la_extensión_de_App_Service_de_la_seccion_1>|
-    |DIRECTLINE_EXTENSION_VERSION|más reciente|
+    |DIRECTLINE_EXTENSION_VERSION|latest|
 
 1. En la sección *Configuración*, haga clic en la sección **Configuración general** y active **Sockets web**.
 1. Haga clic en **Guardar** para guardar la configuración. Esto reinicia la instancia de Azure App Service.

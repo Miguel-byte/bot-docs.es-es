@@ -9,37 +9,33 @@ ms.service: bot-service
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: kamrani
-ms.openlocfilehash: cba508d0895b2e2657abd37073bc5c348c1eef44
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 1caf469a7ec37e932ae2b7ffde85d0dbf24938a3
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441602"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933478"
 ---
 # <a name="about-direct-line"></a>Acerca de Direct Line
 
 El canal de Direct Line de Bot Framework es una manera fácil de integrar el bot en la aplicación móvil, página web u otro tipo de aplicación.
 Direct Line está disponible en tres formas:
 - Servicio Direct Line: un servicio global y sólido para la mayoría de los desarrolladores
-- Extensiones de App Service de Direct Line: funcionalidad dedicada de Direct Line para la seguridad y el rendimiento (disponible en la versión preliminar privada a partir de mayo de 2019)
-- Direct Line Speech: optimizado para voz de alto rendimiento (disponible en la versión preliminar privada a partir de mayo de 2019)
+- Extensión Direct Line de App Service: funcionalidad de Direct Line dedicada para la seguridad y el rendimiento (disponible en versión preliminar pública)
+- Direct Line Speech: optimizado para voz de alto rendimiento (disponibilidad general)
 
 Puede elegir qué oferta de Direct Line es la mejor para usted mediante la evaluación de las características que ofrece cada una y las necesidades de su solución. Estas ofertas serán simplificadas con el tiempo.
 
 |                            | Direct Line | Extensión de App Service de Direct Line | Direct Line Speech |
 |----------------------------|-------------|-----------------------------------|--------------------|
-| Disponibilidad y licencias    | Disponibilidad general | Versión preliminar privada, sin Acuerdo de Nivel de Servicio  | Versión preliminar privada, sin Acuerdo de Nivel de Servicio |
+| Disponibilidad y licencias    | Disponibilidad general | Versión preliminar privada, sin SLA  | GA |
 | Rendimiento en reconocimiento de voz y de texto a voz | Estándar | Estándar | Alto rendimiento |
-| OAuth integrado           | Sí | Sí | Sin |
-| Telemetría integrada       | Sí | Sí | Sin |
-| Es compatible con los exploradores web heredados | Sí | No | Sin |
-| Compatibilidad con Bot Framework SDK | Todas las v3, v4 | Necesaria v4.5+ | Necesaria v4.5+ |
-| Compatibilidad con SDK de cliente    | JS, C# | JS, C# | C++, C#, Unity |
+| Es compatible con los exploradores web heredados | Sí | Disponibilidad general | Sí |
+| Compatibilidad con Bot Framework SDK | Todas las v3, v4 | Requiere v4.63 y versiones posteriores | Requiere v4.63 y versiones posteriores |
+| Compatibilidad con SDK de cliente    | JS, C# | JS, C# | C++, C#, Unity, JS|
 | Funciona con Chat en web  | Sí | Sí | Sin|
-| API de historial de conversaciones | Sí | Sí| Sin|
-| VNET | Sin | Versión preliminar* | Sin |
+| VNET | Sin | Vista previa | Sin |
 
-_* Las extensiones de App Service de Direct Line se pueden usar en redes virtuales, pero aún no permiten la restricción de las llamadas salientes._
 
 ## <a name="addtional-resources"></a>Recursos adicionales
 - [Conectar un bot con Direct Line](bot-service-channel-connect-directline.md)
