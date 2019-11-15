@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: bot-service
 ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 6d73ad7bc0226874253dfe37a00b09ab22677b92
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: a57e5bd2b17cb2ac7553e71ac66f2bdfe97f3b35
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441646"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933748"
 ---
 # <a name="whats-new-july-2019"></a>Novedades (julio de 2019)
 
@@ -70,7 +70,7 @@ El inspector de bots se incorporó en Microsoft Build 2019 y es una caracterís
   
 - [Chat para Dynamics 365](https://www.powerobjects.com/powerpacks/powerchat/): el chat para Dynamics 365 ofrece varias funcionalidades para que los agentes de soporte técnico y los usuarios finales puedan interactuar eficazmente y sigan siendo muy productivos. Charle en directo y realice un seguimiento de las conversaciones de los visitantes de su sitio web en Microsoft Dynamics 365.
 
-# <a name="whats-new-may-2019"></a>Novedades (mayo de 2019)
+## <a name="whats-new-may-2019"></a>Novedades (mayo de 2019)
 
 |   | C#  | JS  | Python |  Java | 
 |---|:---:|:---:|:------:|:-----:|
