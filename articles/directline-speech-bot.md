@@ -7,190 +7,165 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 07/15/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 8294ca4b58c2a50d55bdfd9a81cc2c6fb57f3922
-ms.sourcegitcommit: d493caf74b87b790c99bcdaddb30682251e3fdd4
+ms.openlocfilehash: 4fc2eb84751f64a1ca1493515ccb231a0a78bbd4
+ms.sourcegitcommit: 490810d278d1c8207330b132f28a5eaf2b37bd07
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71279006"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73592252"
 ---
 # <a name="use-direct-line-speech-in-your-bot"></a>Uso de Direct Line Speech en el bot
 
 [!INCLUDE [applies-to-v4](includes/applies-to.md)]
 
-Direct Line Speech usa una nueva funcionalidad de streaming basada en WebSocket de Bot Framework para intercambiar mensajes entre el canal de Direct Line Speech y el bot. Después de habilitar el canal de Direct Line Speech en Azure Portal, deberá actualizar el bot para escuchar y aceptar estas conexiones de WebSocket. Estas instrucciones explican cómo hacerlo.
+Direct Line Speech usa una nueva funcionalidad de streaming basada en WebSocket de Bot Framework para intercambiar mensajes entre el canal de Direct Line Speech y el bot. Después de habilitar el canal de Direct Line Speech en Azure Portal, deberá actualizar el bot para escuchar y aceptar estas conexiones de WebSocket. Estas instrucciones explican cómo hacerlo.  
 
-## <a name="add-additional-nuget-packages"></a>Adición de paquetes NuGet adicionales
+## <a name="step-1-upgrade-to-the-46-sdk"></a>Paso 1: Actualización al SDK 4.6 
 
-Para Direct Line Speech (versión preliminar) hay paquetes de NuGet adicionales que deberá agregar al bot.
+Para Direct Line Speech, asegúrese de que usa la versión 4.6 o superior de SDK Bot Builder. 
 
-- **Microsoft.Bot.Builder.StreamingExtensions** 4.5.1-preview1
+## <a name="step-2-update-your-net-core-bot-codeif-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller"></a>Paso 2: Actualice el código del bot de .NET Core si el bot usa AddBot y UseBotFramework en lugar de un elemento BotController. 
 
-También instalará el paquete siguiente:
+Si ha creado un bot con una versión v4 de Bot Builder SDK anterior a la versión 4.3.2, es probable que el bot no incluya un elemento BotController sino que use los métodos AddBot() y UseBotFramework() en el archivo Startup.cs para exponer el punto de conexión POST en el que el bot recibe los mensajes. Para exponer el nuevo punto de conexión de streaming, deberá agregar un elemento BotController y quitar los métodos AddBot() y UseBotFramework(). Estas instrucciones le guiarán en los cambios que deben realizarse. Si ya tiene estos cambios, continúe con el paso siguiente. 
 
-- **Microsoft.Bot.StreamingExtensions** 4.5.1-preview1
-
-Si no los encuentra al principio, asegúrese de que ha incluido los paquetes de versión preliminar en la búsqueda.
-
-## <a name="set-the-speak-field-on-activities-you-want-spoken-to-the-user"></a>Establecer el campo Speak (Hablar) en las actividades que quiera que se hablen con el usuario
-
-Debe establecer el campo Speak (Hablar) de cualquier actividad que se envíe desde el bot y que quiera que se hable con el usuario.
+Agregue un nuevo controlador MVC al proyecto del bot mediante la adición de un archivo llamado BotController.cs. Agregue el código del controlador a este archivo: 
 
 ```cs
-public IActivity Speak(string message)
-{
-    var activity = MessageFactory.Text(message);
-    string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
-        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>" +
-        $"{message}" + "</voice></speak>";
-    activity.Speak = body;
-    return activity;
-}
+
+[Route("api/messages")] 
+
+[ApiController] 
+
+public class BotController : ControllerBase 
+{ 
+    private readonly IBotFrameworkHttpAdapter _adapter; 
+    private readonly IBot _bot; 
+    public BotController(IBotFrameworkHttpAdapter adapter, IBot bot) 
+    { 
+        _adapter = adapter; 
+
+        _bot = bot; 
+    } 
+
+    [HttpPost, HttpGet] 
+    public async Task ProcessMessageAsync() 
+    { 
+        await _adapter.ProcessAsync(Request, Response, _bot); 
+    } 
+} 
 ```
 
-En el fragmento de código siguiente se muestra cómo usar la función *Speak* anterior:
+En el archivo **Startup.cs**, busque el método Configure. Elimine la línea de `UseBotFramework()` y asegúrese de que tiene estas líneas para `UseWebSockets`: 
 
 ```cs
-protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
-{
-    await turnContext.SendActivityAsync(Speak($"Echo: {turnContext.Activity.Text}"), cancellationToken);
-}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env) 
+{ 
+    ... 
+    app.UseDefaultFiles(); 
+    app.UseStaticFiles(); 
+    app.UseWebSockets(); 
+    app.UseMvc(); 
+    ... 
+} 
 ```
 
-## <a name="option-1-update-your-net-core-bot-code-_if-your-bot-has-a-botcontrollercs_"></a>Opción 1: Actualización del código del bot de .NET Core _si el bot tiene un elemento BotController.cs_
+También en el archivo Startup.cs, busque el método ConfigureServices. Elimine la línea de `AddBot()` y asegúrese de que tiene líneas para agregar el elemento `IBot` y un elemento `BotFrameworkHttpAdapter`: 
 
-Cuando se crea un nuevo bot desde Azure Portal mediante una de las plantillas, como EchoBot, obtendrá un bot que incluye un controlador MVC de ASP.NET que expone un punto de conexión POST único. Estas instrucciones explican cómo expandirlo para exponer también un punto de conexión que acepte el punto de conexión de streaming de WebSocket, que es un punto de conexión GET.
+```cs
 
-1. Abra BotController.cs en la carpeta Controllers de la solución
+public void ConfigureServices(IServiceCollection services) 
+{ 
+    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1); 
+    services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>(); 
+    services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>(); 
+    
+    // Create the Bot Framework Adapter. 
+    services.AddSingleton<IBotFrameworkHttpAdapter, BotFrameworkHttpAdapter>(); 
 
-2. Busque el método PostAsync en la clase y actualice su decoración de [HttpPost] a [HttpGet, HttpPost]:
+    // Create the bot as a transient. In this case the ASP Controller is expecting an IBot. 
+    services.AddTransient<IBot, EchoBot>(); 
+} 
+```
 
-    ```cs
-    [HttpPost, HttpGet]
-    public async Task PostAsync()
-    {
-        await _adapter.ProcessAsync(Request, Response, _bot);
-    }
-    ```
+El resto del código del bot sigue siendo el mismo. 
 
-3. Guarde y cierre BotController.cs
+## <a name="step3-ensure-websockets-are-enabled"></a>Paso 3: Asegurarse de que los WebSockets están habilitados 
 
-4. Abra Startup.cs en la raíz de la solución.
+Cuando se crea un nuevo bot desde Azure Portal mediante una de las plantillas, como EchoBot, obtendrá un bot que incluye un controlador MVC de ASP.NET que expone un punto de conexión GET y POST único y que también utilizará WebSockets. En estas instrucciones se explica cómo agregar estos elementos al bot si lo está actualizando o si no creó el bot a partir de una plantilla. 
 
-5. Agregue un nuevo espacio de nombres:
+Abra **BotController.cs** en la carpeta Controllers de la solución. 
 
-    ```cs
-    using Microsoft.Bot.Builder.StreamingExtensions;
-    ```
+Busque el método `PostAsync` de la clase y actualice su decoración de [HttpPost] a [HttpPost, HttpGet]: 
 
-6. En el método ConfigureServices, reemplace el uso de AdapterWithErrorHandler por WebSocketEnabledHttpAdapter en la llamada a services.AddSingleton apropiada:
+```cs
 
-    ```cs
-    public void ConfigureServices(IServiceCollection services)
-    {
-        ...
+[HttpPost, HttpGet] 
+public async Task PostAsync() 
+{ 
+    await _adapter.ProcessAsync(Request, Response, _bot); 
+} 
+```
 
-        // Create the Bot Framework Adapter.
-        services.AddSingleton<IBotFrameworkHttpAdapter, WebSocketEnabledHttpAdapter>();
+Guarde y cierre BotController.cs 
 
-        services.AddTransient<IBot, EchoBot>();
+Abra **Startup.cs** en la carpeta raíz de la solución. 
 
-        ...
-    }
-    ```
+En Startup.cs, vaya a la parte inferior del método Configure. Antes de la llamada a  `app.UseMvc()`, agregue una llamada a  `app.UseWebSockets()`. Esto es importante, ya que el orden de estas llamadas a use importa. El final del método debería parecerse al siguiente: 
 
-7. Todavía en Startup.cs, navegue a la parte inferior del método Configure. Antes de la llamada a `app.UseMvc()`, agregue una llamada a `app.UseWebSockets()`. Esto es importante, ya que el orden de estas llamadas a _use_ importa. El final del método debería parecerse al siguiente:
+```cs
+public void Configure(IApplicationBuilder app, IHostingEnvironment env) 
+{ 
+    ... 
+    app.UseDefaultFiles(); 
+    app.UseStaticFiles(); 
+    app.UseWebSockets(); 
+    app.UseMvc(); 
+    ... 
+} 
 
-    ```cs
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        ...
+```
+El resto del código del bot sigue siendo el mismo. 
 
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-        app.UseWebSockets();
-        app.UseMvc();
+ 
 
-        ...
-    }
-    ```
+Paso 4: Opcionalmente, puede establecer el campo Speak en Activities para personalizar lo que se habla al usuario. 
 
-8. El resto del código del bot sigue siendo el mismo.
+De forma predeterminada, se hablarán todos los mensajes enviados mediante Direct Line Speech al usuario.  
 
-## <a name="option-2-update-your-net-core-bot-code-_if-your-bot-uses-addbot-and-usebotframework-instead-of-a-botcontroller_"></a>Opción 2: Actualización del código del bot de .NET Core _si el bot usa AddBot y UseBotFramework en lugar de BotController_
+Opcionalmente, puede personalizar cómo se habla el mensaje estableciendo el campo Speak de cualquier actividad enviada desde el bot: 
 
-Si ha creado un bot con una versión v4 de Bot Builder SDK anterior a la versión 4.3.2, es probable que el bot no incluya un elemento BotController sino que use los métodos AddBot() y UseBotFramework() en el archivo Startup.cs para exponer el punto de conexión POST en el que el bot recibe los mensajes. Para exponer el nuevo punto de conexión de streaming, deberá agregar un elemento BotController y quitar los métodos AddBot() y UseBotFramework(). Estas instrucciones le guiarán en los cambios que deben realizarse.
+```cs 
 
-1. Agregue un nuevo controlador MVC al proyecto del bot mediante la adición de un archivo llamado BotController.cs. Agregue el código del controlador a este archivo:
+public IActivity Speak(string message) 
+{ 
+    var activity = MessageFactory.Text(message); 
+    string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'> 
 
-    ```cs
-    [Route("api/messages")]
-    [ApiController]
-    public class BotController : ControllerBase
-    {
-        private readonly IBotFrameworkHttpAdapter _adapter;
-        private readonly IBot _bot;
+        <voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>" + 
+        $"{message}" + "</voice></speak>"; 
 
-        public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
-        {
-            _adapter = adapter;
-            _bot = bot;
-        }
+    activity.Speak = body; 
+    return activity; 
+} 
+```
 
-        [HttpPost, HttpGet]
-        public async Task ProcessMessageAsync()
-        {
-            await _adapter.ProcessAsync(Request, Response, _bot);
-        }
-    }
-    ```
+En el fragmento de código siguiente se muestra cómo usar la función Speak anterior: 
 
-2. En el archivo Startup.cs, busque el método Configure. Quite la línea UseBotFramework() y asegúrese de tener estas líneas:
+```cs
 
-    ```cs
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        ...
+protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken) 
+{ 
+    await turnContext.SendActivityAsync(Speak($"Echo: {turnContext.Activity.Text}"), cancellationToken); 
+} 
+``` 
 
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-        app.UseWebSockets();
-        app.UseMvc();
+## <a name="additional-information"></a>Información adicional 
 
-        ...
-    }
-    ```
+- Para ver un ejemplo completo de cómo crear y usar un bot habilitado para voz, consulte  [Tutorial: Habilitación del bot con voz mediante el SDK de Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk). 
 
-3. También en el archivo Startup.cs, busque el método ConfigureServices. Quite la línea AddBot() y asegúrese de tener estas líneas:
+- Para más información sobre cómo trabajar con actividades, consulte  [Cómo funcionan los bots](https://docs.microsoft.com/azure/bot-service/bot-builder-basics) y  [Cómo enviar y recibir mensajes de texto https://docs.microsoft.com/azure/bot-service/bot-builder-howto-send-messages?view=azure-bot-service-4.0](). 
 
-    ```cs
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-        services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
-
-        services.AddSingleton<IChannelProvider, ConfigurationChannelProvider>();
-
-        // Create the Bot Framework Adapter.
-        services.AddSingleton<IBotFrameworkHttpAdapter, WebSocketEnabledHttpAdapter>();
-
-        // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-        services.AddTransient<IBot, EchoBot>();
-    }
-    ```
-
-4. El resto del código del bot sigue siendo el mismo.
-
-## <a name="additional-information"></a>Información adicional
-
-- Para ver un ejemplo completo de cómo crear y usar un bot habilitado para voz, consulte [Tutorial: Habilitación del bot con voz mediante el SDK de Speech](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk).
-
-- Para más información sobre cómo trabajar con actividades, consulte [cómo funcionan los bots](v4sdk/bot-builder-basics.md) y [cómo enviar y recibir mensajes de texto](v4sdk/bot-builder-howto-send-messages.md).
-
-## <a name="next-steps"></a>Pasos siguientes
-
-> [!div class="nextstepaction"]
-> [Conexión de un bot con Direct Line Speech](./bot-service-channel-connect-directlinespeech.md)
+ 

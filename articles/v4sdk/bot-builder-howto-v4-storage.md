@@ -7,14 +7,14 @@ ms.author: kamrani
 manager: kamrani
 ms.topic: article
 ms.service: bot-service
-ms.date: 05/23/2019
+ms.date: 11/01/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 9a5a8f8eac9f0b20278b2506063c6e14e4d9fd5b
-ms.sourcegitcommit: 514a3c1ffe0ebe69e07565446ddde0370b35aeaa
+ms.openlocfilehash: bd34b7f369fddfeaa0cd97b10fb49b86e2207c64
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69903669"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441577"
 ---
 # <a name="write-directly-to-storage"></a>Escritura directa en el almacenamiento
 
@@ -253,13 +253,13 @@ Envíe un mensaje al bot. El bot mostrará la lista de mensajes que ha recibido.
 Ahora que ha usado el almacenamiento en memoria, actualizaremos el código para usar Azure Cosmos DB. Cosmos DB es la base de datos multimodelo de distribución global de Microsoft. Azure Cosmos DB permite escalar de forma elástica e individual el rendimiento y el almacenamiento en cualquiera de las regiones geográficas de Azure. Ofrece garantía de rendimiento, latencia, disponibilidad y coherencia con Acuerdos de Nivel de Servicio (SLA) integrales. 
 
 ### <a name="set-up"></a>Instalación
-Para utilizar Cosmos DB en el bot, es necesario configurar algunas cosas antes de meternos en el código. Para obtener una descripción detallada sobre la base de datos de Cosmos DB y la creación de aplicaciones acceda a esta documentación para [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) o [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
+Para utilizar Cosmos DB en el bot, es necesario crear un recurso de base de datos antes de meternos en el código. Para obtener una descripción detallada sobre la base de datos de Cosmos DB y la creación de aplicaciones acceda a esta documentación para [Cosmos DB dotnet](https://aka.ms/Bot-framework-create-dotnet-cosmosdb) o [Cosmos DB nodejs](https://aka.ms/Bot-framework-create-nodejs-cosmosdb).
 
 ### <a name="create-your-database-account"></a>Creación de la cuenta de base de datos
 
-1. En una nueva ventana del explorador, inicie sesión en [Azure Portal](http://portal.azure.com).
+1. En una nueva ventana del explorador, inicie sesión en [Azure Portal](https://portal.azure.com).
 
-![Creación de una base de datos de Cosmos DB](./media/create-cosmosdb-database.png)
+![Creación de una cuenta de base de datos de Cosmos DB](./media/create-cosmosdb-database.png)
 
 2. Haga clic en **Crear un recurso > Bases de datos > Azure Cosmos DB**
 
@@ -271,22 +271,31 @@ Para utilizar Cosmos DB en el bot, es necesario configurar algunas cosas antes d
 
 La cuenta tarda unos minutos en crearse. Espere a que el portal muestre la página "Enhorabuena. Se ha creado su cuenta de Azure Cosmos DB".
 
-### <a name="add-a-collection"></a>Agregar una colección
+### <a name="add-a-database"></a>Adición de una base de datos
 
-![Adición de una colección de Cosmos DB](./media/add_database_collection.png)
+1. Vaya a la página **Data Explorer** dentro de la cuenta de Cosmos DB recién creada y, después, elija **Crear base de datos** en el cuadro desplegable situado junto al botón **Crear contenedor**. A continuación, se abrirá un panel en el lado derecho de la ventana, donde puede especificar los detalles del nuevo contenedor. 
 
-1. Haga clic en **Configuración > Nueva colección**. El área **Agregar colección** se muestra en el extremo derecho, pero es posible que haya que desplazarse hacia la derecha para verlo. Debido a actualizaciones recientes de Cosmos DB, asegúrese de agregar una clave de partición única: _/id_. Esta clave evita errores de consultas entre particiones.
+![Cosmos DB](./media/create-cosmosdb-database-resource.png)
 
-![Cosmos DB](./media/cosmos-db-sql-database.png)
+2. Escriba un identificador para la nueva base de datos y, opcionalmente, establezca el rendimiento (puede cambiarlo más adelante) y, por último, haga clic en **Aceptar** para crear la base de datos. Tome nota de este identificador de base de datos para usarlo más adelante al configurar el bot.
 
-2. La nueva colección de base de datos, "bot-cosmos-sql-db" con el identificador de colección "bot-storage". Usaremos estos valores en el ejemplo de código siguiente.
+![Cosmos DB](./media/create-cosmosdb-database-resource-details.png)
+
+3. Ahora que ha creado una cuenta de Cosmos DB y una base de datos, debe copiar algunos valores para integrar la nueva base de datos en el bot.  Para recuperarlos, vaya a la pestaña **Claves** de la sección de configuración de la base de datos de la cuenta de Cosmos DB.  De esta página, necesitará el punto de conexión de Cosmos DB (**URI**) y la clave de autorización (**clave principal**).
 
 ![Claves de Cosmos DB](./media/comos-db-keys.png)
 
-3. El identificador URI del punto de conexión y la clave están disponibles en la pestaña **Claves** de la configuración de la base de datos. Necesitará estos valores para configurar el código más adelante en este artículo. 
+Ahora debe tener una cuenta de Cosmos DB que contiene una base de datos y tener los siguientes detalles listos para configurar el bot.
+
+- Punto de conexión de Cosmos DB
+- Clave de autorización
+- Identificador de base de datos
 
 ### <a name="add-configuration-information"></a>Adición de la información de configuración
-Los datos de configuración para agregar el almacenamiento de Cosmos DB son cortos y sencillos; puede agregar una configuración adicional con estos mismos métodos a medida que el bot se vuelva más complejo. En este ejemplo se usan los nombres de la base de datos y de la colección de Cosmos DB del ejemplo anterior.
+Los datos de configuración para agregar almacenamiento de Cosmos DB son breves y sencillos.  Use los detalles que anotó en la parte anterior de este artículo para establecer el punto de conexión, la clave de autorización y el identificador de base de datos.  Por último, debe elegir un nombre apropiado para el contenedor que se creará en la base de datos para almacenar el estado de bot. En el ejemplo siguiente, el contenedor se llamará "bot-storage".
+
+> [!NOTE]
+> No debe crear el contenedor usted mismo. El bot lo creará automáticamente al crear su cliente interno de Cosmos DB, asegurándose de que esté configurado correctamente para almacenar el estado del bot.
 
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -295,9 +304,9 @@ Los datos de configuración para agregar el almacenamiento de Cosmos DB son cort
 public class EchoBot : ActivityHandler
 {
    private const string CosmosServiceEndpoint = "<your-cosmos-db-URI>";
-   private const string CosmosDBKey = "<your-cosmos-db-account-key>";
-   private const string CosmosDBDatabaseName = "bot-cosmos-sql-db";
-   private const string CosmosDBCollectionName = "bot-storage";
+   private const string CosmosDBKey = "<your-authorization-key>";
+   private const string CosmosDBDatabaseId = "<your-database-id>";
+   private const string CosmosDBContainerId = "bot-storage";
    ...
    
 }
@@ -309,10 +318,10 @@ Agregue la siguiente información al archivo `.env`.
 
 **.env**
 ```javascript
-DB_SERVICE_ENDPOINT="<your-Cosmos-db-URI>"
-AUTH_KEY="<your-cosmos-db-account-key>"
-DATABASE="<bot-cosmos-sql-db>"
-COLLECTION="<bot-storage>"
+DB_SERVICE_ENDPOINT="<your-cosmos-db-URI>"
+AUTH_KEY="<your-authorization-key>"
+DATABASE_ID="<your-database-id>"
+CONTAINER="bot-storage"
 ```
 ---
 
@@ -343,6 +352,9 @@ npm install --save dotenv
 
 ### <a name="implementation"></a>Implementación 
 
+> [!NOTE]
+> En la versión 4.6 se presentó un nuevo proveedor de almacenamiento de Cosmos DB, `CosmosDbPartitionedStorage`. Los bots existentes que usan el proveedor `CosmosDbStorage` original deben seguir usando `CosmosDbStorage`. Los bots que usan el proveedor anterior seguirán funcionando según lo previsto. Los nuevos bots deben usar `CosmosDbPartitionedStorage`, ya que la creación de particiones ofrece un mayor rendimiento.
+
 ### <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 El código de ejemplo siguiente se ejecuta con el mismo código de bot que el ejemplo de [almacenamiento en memoria](#memory-storage) anterior.
@@ -361,12 +373,12 @@ public class EchoBot : ActivityHandler
    // private static readonly MemoryStorage _myStorage = new MemoryStorage();
 
    // Replaces Memory Storage with reference to Cosmos DB.
-   private static readonly CosmosDbStorage _myStorage = new CosmosDbStorage(new CosmosDbStorageOptions
+   private static readonly CosmosDbStorage _myStorage = new CosmosDbPartitionedStorage(new CosmosDbPartitionedStorageOptions
    {
-      AuthKey = CosmosDBKey,
-      CollectionId = CosmosDBCollectionName,
-      CosmosDBEndpoint = new Uri(CosmosServiceEndpoint),
-      DatabaseId = CosmosDBDatabaseName,
+        CosmosDbEndpoint = CosmosServiceEndpoint,
+        AuthKey = CosmosDBKey,
+        DatabaseId = CosmosDBDatabaseId,
+        ContainerId = CosmosDBContainerId,
    });
    
    ...
@@ -397,11 +409,11 @@ require('dotenv').config({ path: ENV_FILE });
 // var storage = new MemoryStorage();
 
 // Create access to CosmosDb Storage - this replaces local Memory Storage.
-var storage = new CosmosDbStorage({
-    serviceEndpoint: process.env.DB_SERVICE_ENDPOINT, 
+var storage = new CosmosDbPartitionedStorage({
+    cosmosDbEndpoint: process.env.DB_SERVICE_ENDPOINT, 
     authKey: process.env.AUTH_KEY, 
-    databaseId: process.env.DATABASE,
-    collectionId: process.env.COLLECTION
+    databaseId: process.env.DATABASE_ID,
+    containerId: process.env.CONTAINER
 })
 
 ```
@@ -432,7 +444,7 @@ Azure Blob Storage es la solución de almacenamiento de objetos de Microsoft par
 
 ### <a name="create-your-blob-storage-account"></a>Creación de la cuenta de Blob Storage
 Para utilizar Blob Storage en el bot, es necesario configurar algunas cosas antes de meternos en el código.
-1. En una nueva ventana del explorador, inicie sesión en [Azure Portal](http://portal.azure.com).
+1. En una nueva ventana del explorador, inicie sesión en [Azure Portal](https://portal.azure.com).
 
 ![Creación de un almacenamiento de blobs](./media/create-blob-storage.png)
 

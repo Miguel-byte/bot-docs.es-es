@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 17e9925cf8e34eb4d31964b9cebac367abaec58c
-ms.sourcegitcommit: 378dbffd3960a1fa063ffb314878ccd64fb8fb49
+ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71094443"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441509"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Adición de telemetría al bot
 
@@ -22,6 +22,8 @@ ms.locfileid: "71094443"
 
 
 En la versión 4.2 de SDK Bot Framework, se agregó el registro de datos de telemetría.  Esto permite que las aplicaciones de bot envíen datos de eventos a servicios de telemetría como [Application Insights](https://aka.ms/appinsights-overview). La telemetría ofrece información al bot mostrando las características que se usan con mayor frecuencia, permite detectar comportamientos no deseados y ofrece visibilidad sobre la disponibilidad, el rendimiento y el uso.
+
+***Nota: En la versión 4.6, el método estándar para implementar la telemetría en un bot se ha actualizado con el fin de garantizar que la telemetría se registra correctamente cuando se usa un adaptador personalizado. Este artículo se ha actualizado para mostrar el método actualizado. Los cambios son compatibles con versiones anteriores y los bots que usan el método anterior seguirán registrando correctamente la telemetría.***
 
 
 En este artículo, aprenderá a implementar la telemetría en el bot mediante Application Insights:
@@ -74,46 +76,33 @@ Vamos a empezar con la [aplicación de ejemplo de CoreBot](https://aka.ms/cs-cor
     public void ConfigureServices(IServiceCollection services)
     {
         ...
-
         // Create the Bot Framework Adapter with error handling enabled.
         services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
         // Add Application Insights services into service collection
         services.AddApplicationInsightsTelemetry();
 
-        // Create the telemetry client.
+        // Add the standard telemetry client
         services.AddSingleton<IBotTelemetryClient, BotTelemetryClient>();
 
-        // Add ASP middleware to store the http body mapped with bot activity key in the httpcontext.items. This will be picked by the TelemetryBotIdInitializer
-        services.AddTransient<TelemetrySaveBodyASPMiddleware>();
+        // Create the telemetry middleware to track conversation events
+        services.AddSingleton<TelemetryLoggerMiddleware>();
 
-        // Add telemetry initializer that will set the correlation context for all telemetry items.
+        // Add the telemetry initializer middleware
+        services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>();
+
+        // Add telemetry initializer that will set the correlation context for all telemetry items
         services.AddSingleton<ITelemetryInitializer, OperationCorrelationTelemetryInitializer>();
 
-        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties such as activity ID)
+        // Add telemetry initializer that sets the user ID and session ID (in addition to other bot-specific properties, such as activity ID)
         services.AddSingleton<ITelemetryInitializer, TelemetryBotIdInitializer>();
-
-        // Create the telemetry middleware to track conversation events
-        services.AddSingleton<IMiddleware, TelemetryLoggerMiddleware>();
-
         ...
     }
     ```
     
     Nota: Si continúa con la actualización del código de ejemplo de CoreBot, observará que `services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();` ya existe. 
 
-5. Agregue la llamada al método `UseBotApplicationInsights()` en el método `Configure()` en `Startup.cs`. Esto le permite al bot almacenar las propiedades específicas de bot necesarias en el contexto HTTP para que el inicializador de telemetría pueda recuperarlas cuando se realice el seguimiento de un evento:
-
-    ```csharp
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        ...
-
-        app.UseBotApplicationInsights();
-    }
-    ```
-6. Indique al adaptador que use el código de middleware que se agregó al método `ConfigureServices()`. Puede hacerlo en `AdapterWithErrorHandler.cs` con el parámetro IMiddleware middleware de la lista de parámetros de los constructores y en la instrucción `Use(middleware);` del constructor como se indica aquí:
+5. Indique al adaptador que use el código de middleware que se agregó al método `ConfigureServices()`. Puede hacerlo en `AdapterWithErrorHandler.cs` con el parámetro IMiddleware middleware de la lista de parámetros de los constructores y en la instrucción `Use(middleware);` del constructor como se indica aquí:
     ```csharp
     public AdapterWithErrorHandler(ICredentialProvider credentialProvider, ILogger<BotFrameworkHttpAdapter> logger, IMiddleware middleware, ConversationState conversationState = null)
             : base(credentialProvider)
@@ -123,6 +112,7 @@ Vamos a empezar con la [aplicación de ejemplo de CoreBot](https://aka.ms/cs-cor
         Use(middleware);
     }
     ```
+
 7. Agregue la clave de instrumentación de Application Insights en el archivo `appsettings.json`. El archivo `appsettings.json` contiene metadatos acerca de los servicios externos que usa el bot durante la ejecución. Por ejemplo, aquí se almacenan los metadatos y la conexión de servicio de CosmosDB, Application Insights y Language Understanding (LUIS). La adición al archivo `appsettings.json` debe estar en este formato:
 
     ```json
@@ -137,6 +127,45 @@ Vamos a empezar con la [aplicación de ejemplo de CoreBot](https://aka.ms/cs-cor
     Nota: Puede encontrar información detallada sobre cómo obtener la _clave de instrumentación de Application Insights_ en el artículo [Claves de Application Insights](../bot-service-resources-app-insights-keys.md).
 
 En este punto, ya se ha realizado el trabajo preliminar para habilitar la telemetría mediante Application Insights.  Puede ejecutar el bot localmente mediante el emulador de bots y, a continuación, entrar en Application Insights para ver qué se está registrando como, por ejemplo, el tiempo de respuesta, el estado general de la aplicación y la información de ejecución general. 
+
+## <a name="enabling--disabling-activity-event-and-personal-information-logging"></a>Habilitación o deshabilitación del registro de información personal y de eventos de actividades
+
+### <a name="enabling-or-disabling-activity-logging"></a>Habilitación o deshabilitación del registro de actividades
+
+De forma predeterminada, `TelemetryInitializerMiddleware` usará `TelemetryLoggerMiddleware` para registrar la telemetría cuando el bot envía o recibe actividades. El registro de actividades crea registros de eventos personalizados en el recurso de Application Insights.  Si lo desea, puede deshabilitar el registro de eventos de actividades si establece `logActivityTelemetry` en False en `TelemetryInitializerMiddleware` antes de registrarlo en **Startup.cs**.
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<IMiddleware, TelemetryInitializerMiddleware>(sp =>
+            {
+                var httpContextAccessor = sp.GetService<IHttpContextAccessor>();
+                var loggerMiddleware = sp.GetService<TelemetryLoggerMiddleware>();
+                return new TelemetryInitializerMiddleware(httpContextAccessor, loggerMiddleware, logActivityTelemetry: false);
+            });
+    ...
+}
+```
+
+### <a name="enable-or-disable-logging-personal-information"></a>Habilitación o deshabilitación del registro de información personal
+
+De forma predeterminada, si está habilitado el registro de actividades, algunas propiedades de las actividades entrantes y salientes se excluyen del registro, ya que es probable que contengan información personal, como el nombre de usuario y el texto de la actividad. Puede optar por incluir estas propiedades en el registro realizando el siguiente cambio en **Startup.cs** al registrar `TelemetryLoggerMiddleware`.
+
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    // Add the telemetry initializer middleware
+    services.AddSingleton<TelemetryLoggerMiddleware>(sp =>
+            {
+                var telemetryClient = sp.GetService<IBotTelemetryClient>();
+                return new TelemetryLoggerMiddleware(telemetryClient, logPersonalInformation: true);
+            });
+    ...
+}
+```
 
 A continuación, vamos a ver qué se debe incluir para agregar la funcionalidad de telemetría a los diálogos. Esto le permitirá obtener información adicional como, por ejemplo, qué diálogos ejecutar y las estadísticas de cada uno.
 

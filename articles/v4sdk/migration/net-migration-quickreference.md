@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 05/31/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 3ede676cd1a09566b42dc49cc3258aa6e42cbe05
-ms.sourcegitcommit: a6d02ec4738e7fc90b7108934740e9077667f3c5
+ms.openlocfilehash: ff072cd3a16c3a58099cf91c1de962837994075b
+ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70298951"
+ms.lasthandoff: 11/02/2019
+ms.locfileid: "73441504"
 ---
 # <a name="net-migration-quick-reference"></a>Referencia rápida de la migración de .NET
 
@@ -529,19 +529,22 @@ Task WriteAsync(IDictionary<string, object> changes, CancellationToken cancellat
 ```
 
 ```csharp
-var storageOptions = new CosmosDbStorageOptions()
+var storageOptions = new CosmosDbPartitionedStorageOptions()
 {
     AuthKey = configuration["cosmosKey"],
-    CollectionId = configuration["cosmosCollection"],
-    CosmosDBEndpoint = new Uri(configuration["cosmosPath"]),
+    ContainerId = configuration["cosmosContainer"],
+    CosmosDbEndpoint = configuration["cosmosPath"],
     DatabaseId = configuration["cosmosDatabase"]
 };
 
-IStorage dataStore = new CosmosDbStorage(storageOptions);
+IStorage dataStore = new CosmosDbPartitionedStorage(storageOptions);
 var conversationState = new ConversationState(dataStore);
 services.AddSingleton(conversationState);
 
 ```
+
+> [!NOTE]
+> Al usar `CosmosDbPartitionedStorage`, es responsable de crear una base de datos y proporcionar el punto de conexión de Cosmos DB, la clave de autorización y el identificador de base de datos como se muestra anteriormente. Simplemente debe especificar un identificador para un contenedor: el bot lo creará automáticamente y se asegura de que esté configurado correctamente para almacenar el estado del bot. Si crea el contenedor usted mismo, asegúrese de que la clave de partición está establecida en **/id** y establezca la propiedad `CosmosDbPartitionedStorageOptions.ContainerId`.
 
 ## <a name="to-use-form-flow"></a>Para usar FormFlow
 
