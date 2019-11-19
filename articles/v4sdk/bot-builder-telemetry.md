@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: bot-service
 ms.date: 07/17/2019
 monikerRange: azure-bot-service-4.0
-ms.openlocfilehash: 5b8c812d7521edb2907b1a52d3acb890adf5ac67
-ms.sourcegitcommit: 4751c7b8ff1d3603d4596e4fa99e0071036c207c
+ms.openlocfilehash: 524ffa37d1d089bfec01fa7b89a456ecdda719f9
+ms.sourcegitcommit: 312a4593177840433dfee405335100ce59aac347
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/02/2019
-ms.locfileid: "73441509"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73933711"
 ---
 # <a name="add-telemetry-to-your-bot"></a>Adición de telemetría al bot
 
@@ -171,9 +171,9 @@ A continuación, vamos a ver qué se debe incluir para agregar la funcionalidad 
 
 ## <a name="enabling-telemetry-in-your-bots-dialogs"></a>Habilitar la telemetría en los diálogos del bot
 
-Para obtener la información de telemetría integrada acerca de los diálogos, debe agregar el cliente de telemetría a cada diálogo. Siga los pasos que se indican a continuación para actualizar el ejemplo de CoreBot:
+ Siga los pasos que se indican a continuación para actualizar el ejemplo de CoreBot:
 
-1.  En `MainDialog.cs`, debe agregar un nuevo campo TelemetryClient a la clase `MainDialog` y, a continuación, actualizar la lista de parámetros de constructores para que incluya un parámetro `IBotTelemetryClient` y, finalmente, pasarlo a cada llamada al método `AddDialog()`.
+1.  En `MainDialog.cs`, agregue un nuevo campo TelemetryClient a la clase `MainDialog` y, a continuación, actualice la lista de parámetros de constructores para que incluya un parámetro `IBotTelemetryClient` y, finalmente, páselo a cada llamada al método `AddDialog()`.
 
 
     * Agregue el parámetro `IBotTelemetryClient telemetryClient` al constructor de clases MainDialog y asígnelo al campo `TelemetryClient`:
@@ -224,7 +224,7 @@ Para obtener la información de telemetría integrada acerca de los diálogos, d
 
         ```
 
-2. En `DialogExtensions.cs`, debe establecer la propiedad `TelemetryClient` del objeto `dialogSet` del método `Run()`:
+2. En `DialogExtensions.cs`, establezca la propiedad `TelemetryClient` del objeto `dialogSet` del método `Run()`:
 
 
     ```csharp
