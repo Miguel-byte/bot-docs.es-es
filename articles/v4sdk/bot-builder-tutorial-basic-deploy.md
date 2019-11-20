@@ -20,7 +20,7 @@ ms.locfileid: "71694549"
 
 [!INCLUDE [applies-to-v4](../includes/applies-to.md)]
 
-Este tutorial le guiará en la creación de un bot básico con el SDK de Bot Framework y su implementación en Azure. Si ya ha creado un bot básico que se ejecuta localmente, puede ir directamente a la sección [Implementación del bot](#deploy-your-bot).
+Este tutorial lo guiará en la creación de un bot básico con el SDK de Bot Framework y su implementación en Azure. Si ya ha creado un bot básico que se ejecuta localmente, puede ir directamente a la sección [Implementación del bot](#deploy-your-bot).
 
 En este tutorial, aprenderá a:
 
